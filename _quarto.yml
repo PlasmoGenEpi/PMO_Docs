@@ -1,0 +1,44 @@
+project:
+  type: website
+  output-dir: Portable_Microhaplotype_Object_Tools
+  render: 
+    - index.qmd
+    # - Tools_Installation/pmotools-python_installation.qmd
+    - References.qmd
+
+website:
+  title: "Portable Microhaplotype Object (PMO)"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      # - text: "Tools Installation"
+        # menu:
+          # - href: Tools_Installation/pmotools-python_installation.qmd
+    right: 
+      - text: "Resources"
+        menu: 
+          - text: "References"
+            href: References.qmd
+
+format:
+  html:
+    theme: journal
+    css: styles.css
+    fig-height: 10
+    fig-width: 15
+    fig-dpi: 300
+    toc: true
+    toc-depth: 5 # default is 3
+    toc-title: Contents
+    anchor-sections: true
+    smooth-scroll: true
+    highlight-style: dracula
+    page-layout: full
+    code-fold: show
+    code-tools: true
+    code-link: true
+    bibliography: [references.bib]
+    biblio-style: apalike
+    
+editor: source

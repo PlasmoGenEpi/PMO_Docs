@@ -1,0 +1,16 @@
+---
+title: References
+nocite: |
+  @*
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+source("common.R")
+```
+
+
+
+::: {#refs}
+
+:::
+

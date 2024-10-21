@@ -1,0 +1,21 @@
+/* css styles */
+
+
+.menuTitle {
+  color: #30659B;
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+}
+
+.subMenuTitle {
+  color: #3DB7E9;
+  text-align: center;
+  font-weight: bold;
+  /*font-size: large;*/
+}
+
+
+.titleColoring {
+  color: #30659B;
+}

@@ -1,0 +1,14 @@
+---
+title: "Portable Microhaplotype Object (PMO)"
+---
+
+
+```{r setup, echo=F}
+source("common.R")
+```
+
+
+Website hosting documentation on the tools for interacting with the [Portable Microhaplotype Object (PMO)](https://seekdeep.brown.edu/Portable_Microhaplotype_Object/) files. 
+
+Currently tool development is being done for python, [pmotools-python](https://github.com/PlasmoGenEpi/pmotools-python/tree/develop) but in future will include other languages like R 
+

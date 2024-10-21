@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "Tools_Installation/pmotools-python_installation.html",
+    "href": "Tools_Installation/pmotools-python_installation.html",
+    "title": "pmotools-python installation",
+    "section": "",
+    "text": "pmotools-python is a tool base for interacting with the PMO format file in python. It provides both code to include in your python package as well as a command line interface to run some basic scripts on PMO files.\n\npmotools-python code can be found on github https://github.com/PlasmoGenEpi/pmotools-python/tree/develop\n\nDownloading repo\n\nCodegit clone git@github.com:PlasmoGenEpi/pmotools-python.git\n\n\nCurrently (as 2024-10) majority of code is currently still in develop branch\n\nCodecd pmotools-python\ngit checkout develop\n\n\n\nTo set up environment that has all the python libraries install a env library is included and can be install/activated via conda or mamba\n\nCodeconda env create -f envs/pmotools-env.yml \n\nconda active pmotools\n\n\n\nFrom within repo can install with pip in a virtual environment\n\nCodepip install -e . \n\n\n\npmotools-python can be included in python scripts but also there is a command line interface that includes several utilities that uses the code base, this interface can be included by including the scripts directory in your PATH or by calling the script directory\n\nCode# navigate to git directory\ncd pmotools-python\n\n##  add to path (must be done when within the git directory, or replace $(pwd) with the full path nmae to the git repo\nexport PATH=\"$(pwd)/scripts:$PATH\""
+  },
+  {
+    "objectID": "Tools_Installation/pmotools-python_installation.html#installation",
+    "href": "Tools_Installation/pmotools-python_installation.html#installation",
+    "title": "pmotools-python installation",
+    "section": "",
+    "text": "pmotools-python code can be found on github https://github.com/PlasmoGenEpi/pmotools-python/tree/develop\n\nDownloading repo\n\nCodegit clone git@github.com:PlasmoGenEpi/pmotools-python.git\n\n\nCurrently (as 2024-10) majority of code is currently still in develop branch\n\nCodecd pmotools-python\ngit checkout develop\n\n\n\nTo set up environment that has all the python libraries install a env library is included and can be install/activated via conda or mamba\n\nCodeconda env create -f envs/pmotools-env.yml \n\nconda active pmotools\n\n\n\nFrom within repo can install with pip in a virtual environment\n\nCodepip install -e . \n\n\n\npmotools-python can be included in python scripts but also there is a command line interface that includes several utilities that uses the code base, this interface can be included by including the scripts directory in your PATH or by calling the script directory\n\nCode# navigate to git directory\ncd pmotools-python\n\n##  add to path (must be done when within the git directory, or replace $(pwd) with the full path nmae to the git repo\nexport PATH=\"$(pwd)/scripts:$PATH\""
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Portable Microhaplotype Object (PMO)",
+    "section": "",
+    "text": "Website hosting documentation on the tools for interacting with the Portable Microhaplotype Object (PMO) files.\nCurrently tool development is being done for python, pmotools-python but in future will include other languages like R"
+  },
+  {
+    "objectID": "References.html",
+    "href": "References.html",
+    "title": "References",
+    "section": "",
+    "text": "Tessema, Sofonias K, Nicholas J Hathaway, Noam B Teyssier, Maxwell Murphy, Anna Chen, Ozkan Aydemir, Elias M Duarte, et al. 2022. “Sensitive, Highly Multiplexed Sequencing of Microhaplotypes from the Plasmodium Falciparum Heterozygome.” J. Infect. Dis. 225 (April): 1227–37."
+  }
+]

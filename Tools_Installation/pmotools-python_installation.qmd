@@ -1,0 +1,98 @@
+---
+title: pmotools-python installation
+---
+
+```{r setup, echo=F}
+source("../common.R")
+```
+
+
+# pmotools-python
+
+pmotools-python is a tool base for interacting with the PMO format file in python. It provides both code to include in your python package as well as a command line interface to run some basic scripts on PMO files. 
+
+
+## Installation 
+
+pmotools-python code can be found on github <https://github.com/PlasmoGenEpi/pmotools-python/tree/develop>
+
+### Set up
+
+Downloading repo 
+
+```{bash, eval = F}
+git clone git@github.com:PlasmoGenEpi/pmotools-python.git
+```
+
+Currently (as 2024-10) majority of code is currently still in develop branch 
+```{bash, eval = F}
+cd pmotools-python
+git checkout develop
+```
+
+
+#### Setting up python environment 
+
+To set up environment that has all the python libraries install a env library is included and can be install/activated via conda or mamba 
+
+```{bash, eval = F}
+conda env create -f envs/pmotools-env.yml 
+
+conda active pmotools
+
+```
+
+### Installing 
+
+From within repo can install with pip in a virtual environment 
+
+```{bash, eval = F}
+pip install -e . 
+
+```
+
+
+### Adding scripts to PATH 
+
+pmotools-python can be included in python scripts but also there is a command line interface that includes several utilities that uses the code base, this interface can be included by including the `scripts` directory in your PATH or by calling the script directory  
+
+```{bash, eval = F}
+# navigate to git directory
+cd pmotools-python
+
+##  add to path (must be done when within the git directory, or replace $(pwd) with the full path nmae to the git repo
+export PATH="$(pwd)/scripts:$PATH"
+```
+
+### Adding autocompletion 
+
+To enable bash auto-completion for `pmotools-runner.py` script located in the scripts directory mentioned above, add the following to your `~/.bash_completion` and make sure it's being loaded as part of your .bashrc and/or ~/.bash_profile (on MacOS) or ~/.profile (on ubuntu)
+
+```{bash, eval = F}
+_comp_pmotools_runner()
+{
+    local cur prev opts base
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    if [[ $COMP_CWORD -lt 2 ]] ; then
+    	opts=$(for x in `${COMP_WORDS[0]} | grep "^\s.*-" | sed 's/ -.*//g' | tr -d '[:blank:]'`; do echo ${x} ; done )
+		COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
+    elif [[ ${cur} == -* ]]; then
+    	opts=$(for x in `${COMP_WORDS[0]} ${COMP_WORDS[1]} -h | grep " -" | sed "s/^. *-/-/g" | sed "s/   .*//g" | sed "s/, / /g"`; do echo ${x} ; done )
+		COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
+    else
+    	_filedir
+    fi
+   return 0
+}
+
+
+complete -F _comp_pmotools_runner pmotools-runner.py
+
+```
+
+The above can also be found within the repo in the `etc/` folder. 
+
+
+

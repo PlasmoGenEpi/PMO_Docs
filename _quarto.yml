@@ -3,7 +3,7 @@ project:
   output-dir: Portable_Microhaplotype_Object_Tools
   render: 
     - index.qmd
-    # - Tools_Installation/pmotools-python_installation.qmd
+    - Tools_Installation/pmotools-python_installation.qmd
     - References.qmd
 
 website:
@@ -12,9 +12,9 @@ website:
     left:
       - href: index.qmd
         text: Home
-      # - text: "Tools Installation"
-        # menu:
-          # - href: Tools_Installation/pmotools-python_installation.qmd
+      - text: "Tools Installation"
+        menu:
+          - href: Tools_Installation/pmotools-python_installation.qmd
     right: 
       - text: "Resources"
         menu: 

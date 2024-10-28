@@ -1,0 +1,3 @@
+[submodule "pmotools-python"]
+	path = pmotools-python
+	url = git@github.com:PlasmoGenEpi/pmotools-python.git

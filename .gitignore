@@ -6,3 +6,6 @@
 Portable_Microhaplotype_Object_Tools
 
 /.quarto/
+env
+
+/env/

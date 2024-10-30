@@ -1,0 +1,55 @@
+---
+title: Handling multiple PMOs pmotools-python
+---
+
+```{r setup, echo=F}
+source("../common.R")
+```
+
+
+# pmotools-runner.py combine_pmos
+
+Can download multiple PMOs here 
+
+<https://seekdeep.brown.edu/Portable_Microhaplotype_Object/format/moz2018_PMO.json.gz> 
+
+<https://seekdeep.brown.edu/Portable_Microhaplotype_Object/format/PathWeaverHeome1_PMO.json.gz> 
+
+
+
+```{bash}
+pmotools-runner.py combine_pmos --help
+```
+
+
+The list of PMO files can be given comma separated to thier relative paths from where you run the script or in a file where each line is a different file to combine
+
+```{bash, eval = F}
+cd example 
+
+wget https://seekdeep.brown.edu/Portable_Microhaplotype_Object/format/moz2018_PMO.json.gz
+wget https://seekdeep.brown.edu/Portable_Microhaplotype_Object/format/PathWeaverHeome1_PMO.json.gz
+
+
+pmotools-runner.py combine_pmos --pmo_files moz2018_PMO.json.gz,PathWeaverHeome1_PMO.json.gz --output combined_Heome1_PMO.json.gz --overwrite
+```
+
+
+```{bash, echo = F, eval = F}
+cd example 
+
+pmotools-runner.py combine_pmos --pmo_files moz2018_PMO.json.gz,PathWeaverHeome1_PMO.json.gz --output combined_Heome1_PMO.json.gz --overwrite
+```
+
+The python code for `combine_pmos` script is below
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-line-numbers: true
+#| filename: pmotools-python/scripts/pmo_utils/combine_pmos.py
+#| file: ../pmotools-python/scripts/pmo_utils/combine_pmos.py
+```
+
+

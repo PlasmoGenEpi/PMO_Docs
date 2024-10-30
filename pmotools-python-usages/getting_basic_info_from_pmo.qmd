@@ -1,0 +1,256 @@
+---
+title: Getting basic info out of PMO using pmotools-python
+---
+
+```{r setup, echo=F}
+source("../common.R")
+```
+
+# Extract basic info counts from PMO 
+
+
+To get simple counts of number of targets with sample counts, samples with target counts, the counts of meta fields 
+
+Most of these basic info extractor can be found underneath `extract_basic_info_from_pmo`
+
+```{bash, eval = F}
+pmotools-runner.py
+```
+
+```{bash, echo = F}
+pmotools-runner.py | perl -pe 's/\e\[[0-9;]*m(?:\e\[K)?//g'
+```
+
+
+Getting files for examples 
+
+
+```{bash, eval = F}
+cd example 
+
+wget https://seekdeep.brown.edu/Portable_Microhaplotype_Object/format/moz2018_PMO.json.gz
+wget https://seekdeep.brown.edu/Portable_Microhaplotype_Object/format/PathWeaverHeome1_PMO.json.gz
+
+
+
+```
+
+
+
+
+## list_specimen_meta_fields
+
+
+This will list all the meta fields within the `specimen_infos` section of a PMO file. Since not all meta fields are always present in all specimens, this will list the count of samples each field appears in and the number of total specimens  
+
+```{bash}
+pmotools-runner.py list_specimen_meta_fields -h 
+```
+
+
+The python code for `list_specimen_meta_fields` script is below
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-line-numbers: true
+#| filename: pmotools-python/scripts/extract_info_from_pmo/list_specimen_meta_fields.py
+#| file: ../pmotools-python/scripts/extract_info_from_pmo/list_specimen_meta_fields.py
+```
+
+```{bash}
+cd example 
+pmotools-runner.py list_specimen_meta_fields --file moz2018_PMO.json.gz
+
+```
+
+```{bash}
+cd example 
+pmotools-runner.py list_specimen_meta_fields --file moz2018_PMO.json.gz --output spec_fields_moz2018_PMO.tsv --overwrite
+
+```
+
+
+
+
+## count_specimen_meta
+
+
+This will list all the meta values (and the combinations) for the meta fields within the `specimen_infos` section of a PMO file.
+
+
+```{bash}
+pmotools-runner.py count_specimen_meta -h 
+```
+
+
+The python code for `count_specimen_meta` script is below
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-line-numbers: true
+#| filename: pmotools-python/scripts/extract_info_from_pmo/count_specimen_meta.py
+#| file: ../pmotools-python/scripts/extract_info_from_pmo/count_specimen_meta.py
+```
+
+
+```{bash}
+cd example 
+pmotools-runner.py count_specimen_meta --file moz2018_PMO.json.gz --meta_fields collection_country
+
+```
+
+```{bash}
+cd example 
+pmotools-runner.py count_specimen_meta --file moz2018_PMO.json.gz --meta_fields collection_country --overwrite --output collection_country_count_moz2018_PMO.tsv.gz 
+
+```
+
+```{bash}
+cd example 
+pmotools-runner.py count_specimen_meta --file moz2018_PMO.json.gz --meta_fields collection_country,geo_admin3
+
+```
+
+```{bash}
+cd example 
+pmotools-runner.py count_specimen_meta --file PathWeaverHeome1_PMO.json.gz --meta_fields collection_country,collection_date | head
+
+```
+
+## list_tar_amp_bioinformatics_info_ids 
+
+
+This will simply list out all the analyses (all the `tar_amp_bioinformatics_info_id`s) stored within a PMO 
+
+
+```{bash}
+pmotools-runner.py list_tar_amp_bioinformatics_info_ids -h 
+```
+
+
+The python code for `list_tar_amp_bioinformatics_info_ids` script is below
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-line-numbers: true
+#| filename: pmotools-python/scripts/extract_info_from_pmo/list_tar_amp_bioinformatics_info_ids.py
+#| file: ../pmotools-python/scripts/extract_info_from_pmo/list_tar_amp_bioinformatics_info_ids.py
+```
+
+
+
+```{bash}
+cd example 
+pmotools-runner.py list_tar_amp_bioinformatics_info_ids --file moz2018_PMO.json.gz  
+
+```
+
+```{bash}
+cd example 
+pmotools-runner.py list_tar_amp_bioinformatics_info_ids --file PathWeaverHeome1_PMO.json.gz 
+
+```
+
+This can be helpful after combining PMOs 
+
+
+```{bash, eval = F}
+cd example 
+
+pmotools-runner.py combine_pmos --pmo_files moz2018_PMO.json.gz,PathWeaverHeome1_PMO.json.gz --output combined_Heome1_PMO.json.gz --overwrite
+
+pmotools-runner.py list_tar_amp_bioinformatics_info_ids --file combined_Heome1_PMO.json.gz 
+
+```
+
+```{bash, echo = F}
+cd example 
+pmotools-runner.py list_tar_amp_bioinformatics_info_ids --file combined_Heome1_PMO.json.gz 
+
+```
+
+
+
+## count_targets_per_sample 
+
+Count up the number targets each experimental_sample_id has. A read filter can be applied to see how targets would be kept if such a filter was applied 
+
+```{bash}
+pmotools-runner.py count_targets_per_sample -h 
+```
+
+
+The python code for `count_targets_per_sample` script is below
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-line-numbers: true
+#| filename: pmotools-python/scripts/extract_info_from_pmo/count_targets_per_sample.py
+#| file: ../pmotools-python/scripts/extract_info_from_pmo/count_targets_per_sample.py
+```
+
+```{bash}
+cd example 
+
+pmotools-runner.py count_targets_per_sample --file moz2018_PMO.json.gz  | head
+
+```
+
+Apply a read count minimum filter (this a total read count summed for a target and not on a haplotype level) 
+
+```{bash}
+cd example 
+
+pmotools-runner.py count_targets_per_sample --read_count_minimum 3000 --file moz2018_PMO.json.gz  | head
+
+```
+
+## count_samples_per_target  
+
+
+Count up the number of experimental_sample_ids each target has. A read filter can be applied to see how many samples a taget would have if a filter was applied 
+
+
+```{bash}
+pmotools-runner.py count_samples_per_target -h 
+```
+
+
+The python code for `count_samples_per_target` script is below
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-line-numbers: true
+#| filename: pmotools-python/scripts/extract_info_from_pmo/count_samples_per_target.py
+#| file: ../pmotools-python/scripts/extract_info_from_pmo/count_samples_per_target.py
+```
+
+
+
+```{bash}
+cd example 
+
+pmotools-runner.py count_samples_per_target --file moz2018_PMO.json.gz  | head
+
+```
+
+Apply a read count minimum filter (this a total read count summed for a target and not on a haplotype level) 
+
+```{bash}
+cd example 
+
+pmotools-runner.py count_samples_per_target --read_count_minimum 3000 --file moz2018_PMO.json.gz  | head
+
+```
+
+

@@ -1,10 +1,16 @@
 project:
   type: website
-  output-dir: Portable_Microhaplotype_Object_Tools
+  output-dir: PMO_Docs
   render: 
     - index.qmd
+    - format/FormatOverview.qmd
+    - format/FormatExample.qmd
     - Tools_Installation/pmotools-python_installation.qmd
+    - pmotools-python-usages/pmotools-runner.qmd
     - pmotools-python-usages/extracting_allele_tables.qmd
+    - pmotools-python-usages/subsetting_from_PMO.qmd
+    - pmotools-python-usages/handling_multiple_pmos.qmd
+    - pmotools-python-usages/getting_basic_info_from_pmo.qmd
     - References.qmd
 
 website:
@@ -13,12 +19,26 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - text: Format Info
+        menu: 
+          - href: format/FormatOverview.qmd
+          - href: format/FormatExample.qmd
       - text: "Tools Installation"
         menu:
           - href: Tools_Installation/pmotools-python_installation.qmd
       - text: "pmotools-python usages"
         menu: 
+          - text: <span class='menuTitle'>Command line interface</span>
+          - text: "------------"
+          - text: <span class='menuTitle'>pmotools-runner.py</span>
+          - href: pmotools-python-usages/pmotools-runner.qmd
+          - text: <span class='menuTitle'>Extracting out of PMO</span>
           - href: pmotools-python-usages/extracting_allele_tables.qmd
+          - text: <span class='menuTitle'>Subset PMO</span>
+          - href: pmotools-python-usages/subsetting_from_PMO.qmd
+          - href: pmotools-python-usages/getting_basic_info_from_pmo.qmd
+          - text: <span class='menuTitle'>Handling Multiple PMOs</span>
+          - href: pmotools-python-usages/handling_multiple_pmos.qmd
     right: 
       - text: "Resources"
         menu: 
@@ -27,7 +47,7 @@ website:
 
 format:
   html:
-    theme: journal
+    theme: cosmo
     css: styles.css
     fig-height: 10
     fig-width: 15

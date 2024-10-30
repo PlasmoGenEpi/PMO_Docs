@@ -1,0 +1,50 @@
+---
+title: PMO Examples 
+---
+
+{{< fa file >}}
+
+```{r setup, echo=FALSE}
+source("../common.R")
+```
+
+<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+
+<script>
+$(document).ready(function() {
+	document.querySelectorAll('.downloadLink').forEach(function(e) { e.setAttribute('download', e.text); });
+	document.querySelectorAll('.downloadLink').forEach(function(e) { e.innerHTML = '<i class="fa fa-download"></i>  ' + e.text; });
+});
+</script>
+
+
+# Example data format 
+
+Example created from a study from Mozambique[@Tessema2022-fg] 
+
+<https://academic.oup.com/jid/article/225/7/1227/5897005>
+
+```{r}
+#| results: asis
+#| echo: false
+
+cat(createDownloadLink("moz2018_PMO.json.gz"))
+
+```
+
+## From Pf7+ data for the same panel above 
+
+
+Global data microhaplotypes were constructed by PathWeaver for the same targeted amplicon panel above. This includes approximately 1900 samples.  
+
+
+```{r}
+#| results: asis
+#| echo: false
+
+cat(createDownloadLink("PathWeaverHeome1_PMO.json.gz"))
+
+```
+
+
+

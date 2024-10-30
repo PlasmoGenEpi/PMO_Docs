@@ -14,7 +14,8 @@ packagesUsed = c(
   "fastmatch",
   "rwantshue",
   "ComplexHeatmap",
-  "ggthemes"
+  "ggthemes", 
+  "here"
 )
 
 suppressMessages(lapply(packagesUsed, require, character.only = TRUE))

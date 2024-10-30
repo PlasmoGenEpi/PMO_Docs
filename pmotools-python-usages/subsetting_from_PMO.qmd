@@ -1,0 +1,263 @@
+---
+title: Subsetting from a PMO using pmotools-python
+---
+
+```{r setup, echo=F}
+source("../common.R")
+```
+
+# Subsetting 
+
+There may be some instances were you want to subset a much larger PMO file into a smaller PMO file to focus only one a set of samples and/or targets. There are several ways of doing this. 
+
+
+## Subsetting by specific targets  
+
+Can subset to only specific targets by using `pmotools-runner.py extract_pmo_with_select_targets`
+
+```{bash}
+pmotools-runner.py extract_pmo_with_select_targets -h
+```
+
+The python code for `extract_pmo_with_select_targets` script is below
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-line-numbers: true
+#| filename: pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_targets.py
+#| file: ../pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_targets.py
+```
+
+
+
+You can extract by supplies the desired targets with comma separated values on the command line 
+```{bash}
+cd example 
+
+pmotools-runner.py extract_pmo_with_select_targets --file moz2018_PMO.json.gz --targets t1,t20,t31  --output t1_t20_t31_moz2018_PMO.json.gz --overwrite
+```
+
+You can also provide a single column file where each line is a desired target 
+```{bash}
+cd example 
+
+echo -e "t1\nt20\nt31" > select_targets.txt 
+pmotools-runner.py extract_pmo_with_select_targets --file moz2018_PMO.json.gz --targets select_targets.txt  --output t1_t20_t31_moz2018_PMO.json.gz --overwrite
+
+echo -e "t1\nt20\nt31" | pmotools-runner.py extract_pmo_with_select_targets --file moz2018_PMO.json.gz --targets STDIN --output t1_t20_t31_moz2018_PMO.json.gz --overwrite
+
+```
+
+
+## Subsetting by specific specimen_ids 
+
+You can subset to just to just select specimen_id, each specimen can have several experiments associated with it, by supplying the specimen_id all associated experiments will also be pulled 
+
+Similar to above you can supply the specimen_ids either as comma separated values or in a plain text file where each line is a specimen_id
+
+```{bash}
+pmotools-runner.py extract_pmo_with_select_specimen_ids -h
+```
+
+The python code for `extract_pmo_with_select_specimen_ids` script is below
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-line-numbers: true
+#| filename: pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_specimen_ids.py
+#| file: ../pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_specimen_ids.py
+```
+
+```{bash}
+cd example 
+
+pmotools-runner.py extract_pmo_with_select_specimen_ids --specimen_ids 8025874217,8025875146,8034209589 --file moz2018_PMO.json.gz --output 8025874217_8025875146_8034209589_moz2018_PMO.json.gz --overwrite
+
+echo -e "8025874217\n8025875146\n8034209589" > select_specimen_ids.txt 
+
+pmotools-runner.py extract_pmo_with_select_specimen_ids --specimen_ids select_specimen_ids.txt --file moz2018_PMO.json.gz --output 8025874217_8025875146_8034209589_moz2018_PMO.json.gz --overwrite
+
+echo -e "8025874217\n8025875146\n8034209589" | pmotools-runner.py extract_pmo_with_select_specimen_ids --specimen_ids STDIN --file moz2018_PMO.json.gz --output 8025874217_8025875146_8034209589_moz2018_PMO.json.gz --overwrite
+```
+
+## Subsetting by specific experiment_sample_ids 
+
+If you want just specific experiment_sample_id you can supply those instead too  
+
+Similar to above you can supply the experiment_sample_ids either as comma separated values or in a plain text file where each line is a experiment_sample_id or from standard in (STDIN)
+
+```{bash}
+pmotools-runner.py extract_pmo_with_select_experiment_sample_ids -h
+```
+
+The python code for `extract_pmo_with_select_experiment_sample_ids` script is below
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-line-numbers: true
+#| filename: pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_experiment_sample_ids.py
+#| file: ../pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_experiment_sample_ids.py
+```
+
+```{bash}
+cd example 
+
+pmotools-runner.py extract_pmo_with_select_experiment_sample_ids --experiment_sample_ids 8025875029,8034209834,8034209115 --file moz2018_PMO.json.gz --output 8025875029_8034209834_8034209115_moz2018_PMO.json.gz --overwrite
+
+echo -e "8025875029\n8034209834\n8034209115" > select_experiment_sample_ids.txt 
+  
+pmotools-runner.py extract_pmo_with_select_experiment_sample_ids --experiment_sample_ids select_experiment_sample_ids.txt --file moz2018_PMO.json.gz --output 8025875029_8034209834_8034209115_moz2018_PMO.json.gz --overwrite
+
+
+echo -e "8025875029\n8034209834\n8034209115" | pmotools-runner.py extract_pmo_with_select_experiment_sample_ids --experiment_sample_ids STDIN --file moz2018_PMO.json.gz --output 8025875029_8034209834_8034209115_moz2018_PMO.json.gz --overwrite
+```
+
+
+## Subsetting by samples within specific metafields  
+
+If you want to get specific samples that match certain meta fields like specific collection_country or collection_date you can use ``
+
+```{bash}
+pmotools-runner.py extract_pmo_with_selected_meta -h 
+```
+
+The python code for `extract_pmo_with_selected_meta` script is below
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-line-numbers: true
+#| filename: pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_selected_meta.py
+#| file: ../pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_selected_meta.py
+```
+
+`pmotools-runner.py extract_pmo_with_selected_meta` is written to allow the extraction on multiple intersecting meta field requirments that can be either supplied in a file or with delimited on the command line 
+
+You may also want to know what current meta fields are present and how many samples in each. This can be done with [`pmotools-runner.py list_specimen_meta_fields`](getting_basic_info_from_pmo.qmd#list_specimen_meta_fields) and `pmotools-runner.py count_specimen_meta`
+
+```{bash, eval = F}
+cd example 
+wget https://seekdeep.brown.edu/Portable_Microhaplotype_Object/format/PathWeaverHeome1_PMO.json.gz
+
+```
+
+```{bash}
+cd example 
+pmotools-runner.py list_specimen_meta_fields --file PathWeaverHeome1_PMO.json.gz
+
+```
+
+```{bash}
+cd example 
+pmotools-runner.py count_specimen_meta --file PathWeaverHeome1_PMO.json.gz  --meta_fields collection_country,collection_date | head -20
+
+```
+
+
+Extracting on matching 1 meta field, below will extract just the samples that have collection_country=Bangladesh
+
+```{bash, eval = F}
+cd example 
+pmotools-runner.py extract_pmo_with_selected_meta  --file PathWeaverHeome1_PMO.json.gz --metaFieldsValues "collection_country=Bangladesh" --output Bangladesh_moz2018_PMO.json.gz   --overwrite
+
+```
+
+If you want to see how many samples were extracted can use `--verbose`
+
+```{bash}
+cd example 
+pmotools-runner.py extract_pmo_with_selected_meta  --file PathWeaverHeome1_PMO.json.gz --metaFieldsValues "collection_country=Bangladesh" --output Bangladesh_moz2018_PMO.json.gz   --overwrite --verbose
+
+```
+
+Collecting more than 1 matching field separate by comma, for example to extract both Bangladesh,Benin
+
+```{bash}
+cd example 
+
+pmotools-runner.py extract_pmo_with_selected_meta  --file PathWeaverHeome1_PMO.json.gz --metaFieldsValues "collection_country=Bangladesh,Benin" --output Bangladesh_Benin_moz2018_PMO.json.gz   --overwrite --verbose 
+
+```
+
+Can add more extraction criteria meta, for example to extract samples with collection_country of Bangladesh or Benin and with collection_date of 2016 
+
+```{bash}
+cd example 
+
+pmotools-runner.py extract_pmo_with_selected_meta  --file PathWeaverHeome1_PMO.json.gz --metaFieldsValues "collection_country=Bangladesh,Benin:collection_date=2016" --output Bangladesh_Benin_2016_moz2018_PMO.json.gz   --overwrite --verbose 
+
+```
+
+To get more specific you can group meta field extraction criteria , for example if you wanted samples from Bangladesh from year 2015 but wanted Benin from year 2016 you can separate by a ; 
+
+```{bash}
+cd example 
+
+pmotools-runner.py extract_pmo_with_selected_meta  --file PathWeaverHeome1_PMO.json.gz --metaFieldsValues "collection_country=Bangladesh:collection_date=2015;collection_country=Benin:collection_date=2016" --output Bangladesh2015_Benin2016_moz2018_PMO.json.gz   --overwrite --verbose 
+
+```
+
+
+Rather than supplying with the command line a file can be created 
+
+```{bash}
+cd example 
+
+echo -e "group\tfield\tvalues" > Bangladesh2015_Benin2016_extractionCriteria.tsv 
+echo -e "Bangladesh2015\tcollection_country\tBangladesh" >> Bangladesh2015_Benin2016_extractionCriteria.tsv 
+echo -e "Bangladesh2015\tcollection_date\t2015" >> Bangladesh2015_Benin2016_extractionCriteria.tsv 
+echo -e "Benin2016\tcollection_country\tBenin" >> Bangladesh2015_Benin2016_extractionCriteria.tsv 
+echo -e "Benin2016\tcollection_date\t2016" >> Bangladesh2015_Benin2016_extractionCriteria.tsv 
+
+
+pmotools-runner.py extract_pmo_with_selected_meta  --file PathWeaverHeome1_PMO.json.gz --metaFieldsValues Bangladesh2015_Benin2016_extractionCriteria.tsv --output Bangladesh2015_Benin2016_moz2018_PMO.json.gz   --overwrite --verbose 
+
+```
+
+
+
+```{bash}
+cd example 
+pmotools-runner.py extract_pmo_with_selected_meta  --file moz2018_PMO.json.gz --metaFieldsValues "collection_country=Mozambique:geo_admin3=Inhassoro;collection_country=Mozambique:geo_admin3=Mandlakazi,Namaacha" --output Mozambique_moz2018_PMO.json.gz  --verbose  --overwrite
+
+```
+
+
+
+## Piping together extraction 
+
+The extraction methods also allow for STDOUT and STDIN piping for example  
+```{bash}
+cd example 
+
+echo -e "8025875029\n8034209834\n8034209115" | pmotools-runner.py extract_pmo_with_select_experiment_sample_ids --experiment_sample_ids STDIN --file moz2018_PMO.json.gz --output STDOUT | pmotools-runner.py extract_pmo_with_select_targets --file STDIN --targets t1,t20,t31  --output t1_t20_t31_8025875029_8034209834_8034209115_moz2018_PMO.json.gz --overwrite
+
+```
+
+Can also pipe into other `pmotools-runner.py` functions like extracting allele tables 
+
+```{bash}
+cd example 
+
+echo -e "8025875029\n8034209834\n8034209115" | pmotools-runner.py extract_pmo_with_select_experiment_sample_ids --experiment_sample_ids STDIN --file moz2018_PMO.json.gz --output STDOUT | pmotools-runner.py extract_pmo_with_select_targets --file STDIN --targets t1,t20,t31  --output STDOUT | pmotools-runner.py extract_allele_table --file STDIN --bioid Mozambique2018-SeekDeep --output alleles_data_t1_t20_t31_8025875029_8034209834_8034209115_moz2018_PMO.tsv.gz --overwrite
+
+```
+
+
+Can pipe final output to STDOUT as well for further processing 
+
+```{bash}
+cd example 
+
+echo -e "8025875029\n8034209834\n8034209115" | pmotools-runner.py extract_pmo_with_select_experiment_sample_ids --experiment_sample_ids STDIN --file moz2018_PMO.json.gz --output STDOUT | pmotools-runner.py extract_pmo_with_select_targets --file STDIN --targets t1,t20,t31  --output STDOUT | pmotools-runner.py extract_allele_table --file STDIN --bioid Mozambique2018-SeekDeep --output STDOUT  --specimen_info_meta_fields specimen_id,collection_country
+
+```
+
+

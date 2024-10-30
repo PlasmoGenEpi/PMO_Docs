@@ -22,6 +22,9 @@ Other notable users of LinkML/MIxS [National Microbiome Data Collaborative Schem
 
 Below is an overview of the entire format currently in alpha development and is still under heavy development and optimization so structure and names are subject to undergo significant changes as development continues. Please send questions to [info@plasmogenepi.org](mailto:info@plasmogenepi.org)
 
+
+A more informative overview can also be viewed here <https://drive.google.com/file/d/193B1BBLagay_CYhJm4Nee7Fl4T4BFdL_/view?usp=sharing>
+
 <https://github.com/PlasmoGenEpi/portable-microhaplotype-object>
 
 :::{.column-screen}

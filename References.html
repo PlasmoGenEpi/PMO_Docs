@@ -137,6 +137,21 @@ div.csl-indent {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-format-info" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Format Info</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-format-info">
+<li>
+    <a class="dropdown-item" href="./format/FormatOverview.html">
+ <span class="dropdown-text">PMO fields overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./format/FormatExample.html">
+ <span class="dropdown-text">PMO Examples</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tools-installation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Tools Installation</span>
     </a>
@@ -152,9 +167,31 @@ div.csl-indent {
  <span class="menu-text">pmotools-python usages</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python-usages">
-<li>
+<li class="dropdown-header"><span class="menuTitle">Command line interface</span></li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header"><span class="menuTitle">pmotools-runner.py</span></li>
+        <li>
+    <a class="dropdown-item" href="./pmotools-python-usages/pmotools-runner.html">
+ <span class="dropdown-text">Command line interface to pmotools-python with pmotools-runner.py</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Extracting out of PMO</span></li>
+        <li>
     <a class="dropdown-item" href="./pmotools-python-usages/extracting_allele_tables.html">
  <span class="dropdown-text">Extracting allele tables using pmotools-python</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Subset PMO</span></li>
+        <li>
+    <a class="dropdown-item" href="./pmotools-python-usages/subsetting_from_PMO.html">
+ <span class="dropdown-text">Subsetting from a PMO using pmotools-python</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./pmotools-python-usages/getting_basic_info_from_pmo.html">
+ <span class="dropdown-text">Getting basic info out of PMO using pmotools-python</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Handling Multiple PMOs</span></li>
+        <li>
+    <a class="dropdown-item" href="./pmotools-python-usages/handling_multiple_pmos.html">
+ <span class="dropdown-text">Handling multiple PMOs pmotools-python</span></a>
   </li>  
     </ul>
 </li>
@@ -199,8 +236,26 @@ div.csl-indent {
 
 
 </header><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Crystal-Ornelas2022-sk" class="csl-entry" role="listitem">
+Crystal-Ornelas, Robert, Charuleka Varadharajan, Dylan O’Ryan, Kathleen Beilsmith, Benjamin Bond-Lamberty, Kristin Boye, Madison Burrus, et al. 2022. <span>“Enabling <span>FAIR</span> Data in Earth and Environmental Science with Community-Centric (Meta)data Reporting Formats.”</span> <em>Sci Data</em> 9 (1): 700.
+</div>
+<div id="ref-Oldoni2019-kb" class="csl-entry" role="listitem">
+Oldoni, Fabio, Kenneth K Kidd, and Daniele Podini. 2019. <span>“Microhaplotypes in Forensic Genetics.”</span> <em>Forensic Sci. Int. Genet.</em> 38 (January): 54–69.
+</div>
+<div id="ref-noauthor_undated-jo" class="csl-entry" role="listitem">
+<span>“<span>SRA</span> Metadata and Submission Overview.”</span> n.d. <a href="https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/" class="uri">https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/</a>.
+</div>
 <div id="ref-Tessema2022-fg" class="csl-entry" role="listitem">
 Tessema, Sofonias K, Nicholas J Hathaway, Noam B Teyssier, Maxwell Murphy, Anna Chen, Ozkan Aydemir, Elias M Duarte, et al. 2022. <span>“Sensitive, Highly Multiplexed Sequencing of Microhaplotypes from the Plasmodium Falciparum Heterozygome.”</span> <em>J. Infect. Dis.</em> 225 (April): 1227–37.
+</div>
+<div id="ref-Vangay_Pajau2021-cd" class="csl-entry" role="listitem">
+Vangay Pajau, Burgin Josephine, Johnston Anjanette, Beck Kristen L., Berrios Daniel C., Blumberg Kai, Canon Shane, et al. 2021. <span>“Microbiome Metadata Standards: Report of the National Microbiome Data Collaborative’s Workshop and <span>Follow-On</span> Activities.”</span> <em>mSystems</em> 6 (1): e01194–20.
+</div>
+<div id="ref-Weisenhorn2022-he" class="csl-entry" role="listitem">
+Weisenhorn, Pamela, and Kathleen Beilsmith. 2022. <span>“<span>ESS-DIVE</span> Reporting Format for Amplicon Abundance Table.”</span> Environmental System Science Data Infrastructure for a Virtual Ecosystem; Environmental Systems Science Data Infrastructure for a Virtual Ecosystem (ESS-DIVE).
+</div>
+<div id="ref-Yilmaz2011-ao" class="csl-entry" role="listitem">
+Yilmaz, Pelin, Renzo Kottmann, Dawn Field, Rob Knight, James R Cole, Linda Amaral-Zettler, Jack A Gilbert, et al. 2011. <span>“Minimum Information about a Marker Gene Sequence (<span>MIMARKS</span>) and Minimum Information about Any (x) Sequence (<span>MIxS</span>) Specifications.”</span> <em>Nat. Biotechnol.</em> 29 (5): 415–20.
 </div>
 </div>
 
@@ -351,7 +406,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/PlasmoGenEpi\.github\.io\/Portable_Microhaplotype_Object_Tools\/");
+      var filterRegex = new RegExp("https:\/\/PlasmoGenEpi\.github\.io\/PMO_Docs\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

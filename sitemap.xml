@@ -1,19 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://PlasmoGenEpi.github.io/Portable_Microhaplotype_Object_Tools/pmotools-python-usages/extracting_allele_tables.html</loc>
-    <lastmod>2024-10-28T18:59:04.720Z</lastmod>
+    <loc>https://PlasmoGenEpi.github.io/PMO_Docs/pmotools-python-usages/getting_basic_info_from_pmo.html</loc>
+    <lastmod>2024-10-30T05:09:40.744Z</lastmod>
   </url>
   <url>
-    <loc>https://PlasmoGenEpi.github.io/Portable_Microhaplotype_Object_Tools/References.html</loc>
-    <lastmod>2024-10-21T18:36:50.000Z</lastmod>
+    <loc>https://PlasmoGenEpi.github.io/PMO_Docs/format/FormatOverview.html</loc>
+    <lastmod>2024-10-30T05:50:46.084Z</lastmod>
   </url>
   <url>
-    <loc>https://PlasmoGenEpi.github.io/Portable_Microhaplotype_Object_Tools/index.html</loc>
-    <lastmod>2024-10-21T18:36:50.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://PlasmoGenEpi.github.io/Portable_Microhaplotype_Object_Tools/Tools_Installation/pmotools-python_installation.html</loc>
+    <loc>https://PlasmoGenEpi.github.io/PMO_Docs/Tools_Installation/pmotools-python_installation.html</loc>
     <lastmod>2024-10-28T16:50:58.705Z</lastmod>
+  </url>
+  <url>
+    <loc>https://PlasmoGenEpi.github.io/PMO_Docs/format/FormatExample.html</loc>
+    <lastmod>2024-10-30T05:39:08.892Z</lastmod>
+  </url>
+  <url>
+    <loc>https://PlasmoGenEpi.github.io/PMO_Docs/References.html</loc>
+    <lastmod>2024-10-21T18:36:50.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://PlasmoGenEpi.github.io/PMO_Docs/index.html</loc>
+    <lastmod>2024-10-30T05:41:58.738Z</lastmod>
+  </url>
+  <url>
+    <loc>https://PlasmoGenEpi.github.io/PMO_Docs/pmotools-python-usages/pmotools-runner.html</loc>
+    <lastmod>2024-10-29T21:42:49.983Z</lastmod>
+  </url>
+  <url>
+    <loc>https://PlasmoGenEpi.github.io/PMO_Docs/pmotools-python-usages/handling_multiple_pmos.html</loc>
+    <lastmod>2024-10-30T02:46:15.723Z</lastmod>
+  </url>
+  <url>
+    <loc>https://PlasmoGenEpi.github.io/PMO_Docs/pmotools-python-usages/extracting_allele_tables.html</loc>
+    <lastmod>2024-10-30T05:20:46.594Z</lastmod>
+  </url>
+  <url>
+    <loc>https://PlasmoGenEpi.github.io/PMO_Docs/pmotools-python-usages/subsetting_from_PMO.html</loc>
+    <lastmod>2024-10-30T04:43:27.329Z</lastmod>
   </url>
 </urlset>

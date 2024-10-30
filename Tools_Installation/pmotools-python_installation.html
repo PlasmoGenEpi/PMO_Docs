@@ -117,6 +117,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-format-info" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Format Info</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-format-info">
+<li>
+    <a class="dropdown-item" href="../format/FormatOverview.html">
+ <span class="dropdown-text">PMO fields overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../format/FormatExample.html">
+ <span class="dropdown-text">PMO Examples</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tools-installation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Tools Installation</span>
     </a>
@@ -132,9 +147,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">pmotools-python usages</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python-usages">
-<li>
+<li class="dropdown-header"><span class="menuTitle">Command line interface</span></li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header"><span class="menuTitle">pmotools-runner.py</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages/pmotools-runner.html">
+ <span class="dropdown-text">Command line interface to pmotools-python with pmotools-runner.py</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Extracting out of PMO</span></li>
+        <li>
     <a class="dropdown-item" href="../pmotools-python-usages/extracting_allele_tables.html">
  <span class="dropdown-text">Extracting allele tables using pmotools-python</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Subset PMO</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages/subsetting_from_PMO.html">
+ <span class="dropdown-text">Subsetting from a PMO using pmotools-python</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages/getting_basic_info_from_pmo.html">
+ <span class="dropdown-text">Getting basic info out of PMO using pmotools-python</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Handling Multiple PMOs</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages/handling_multiple_pmos.html">
+ <span class="dropdown-text">Handling multiple PMOs pmotools-python</span></a>
   </li>  
     </ul>
 </li>
@@ -413,7 +450,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/PlasmoGenEpi\.github\.io\/Portable_Microhaplotype_Object_Tools\/");
+      var filterRegex = new RegExp("https:\/\/PlasmoGenEpi\.github\.io\/PMO_Docs\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

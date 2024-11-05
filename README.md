@@ -1,2 +1,3 @@
-# Portable_Microhaplotype_Object_Tools
-Documentation for Portable Microhaplotype Object Tools
+# PMO Docs
+
+Documentation for Portable Microhaplotype Object and the tools that interact with this file format

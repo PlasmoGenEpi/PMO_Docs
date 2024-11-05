@@ -11,6 +11,7 @@ project:
     - pmotools-python-usages/subsetting_from_PMO.qmd
     - pmotools-python-usages/handling_multiple_pmos.qmd
     - pmotools-python-usages/getting_basic_info_from_pmo.qmd
+    - pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.ipynb
     - References.qmd
 
 website:
@@ -39,6 +40,9 @@ website:
           - href: pmotools-python-usages/getting_basic_info_from_pmo.qmd
           - text: <span class='menuTitle'>Handling Multiple PMOs</span>
           - href: pmotools-python-usages/handling_multiple_pmos.qmd
+          - text: "------------"
+          - text: <span class='menuTitle'>Python interface</span>
+          - href: pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.ipynb
     right: 
       - text: "Resources"
         menu: 

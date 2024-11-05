@@ -144,7 +144,7 @@ You may also want to know what current meta fields are present and how many samp
 
 ```{bash, eval = F}
 cd example 
-wget https://seekdeep.brown.edu/Portable_Microhaplotype_Object/format/PathWeaverHeome1_PMO.json.gz
+wget https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz
 
 ```
 

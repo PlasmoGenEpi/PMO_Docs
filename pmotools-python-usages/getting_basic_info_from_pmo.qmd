@@ -28,8 +28,8 @@ Getting files for examples
 ```{bash, eval = F}
 cd example 
 
-wget https://seekdeep.brown.edu/Portable_Microhaplotype_Object/format/moz2018_PMO.json.gz
-wget https://seekdeep.brown.edu/Portable_Microhaplotype_Object/format/PathWeaverHeome1_PMO.json.gz
+wget https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz
+wget https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz
 
 
 

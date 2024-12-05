@@ -61,13 +61,13 @@ The python code for `list_specimen_meta_fields` script is below
 
 ```{bash}
 cd example 
-pmotools-runner.py list_specimen_meta_fields --file moz2018_PMO.json.gz
+pmotools-runner.py list_specimen_meta_fields --file ../../format/moz2018_PMO.json.gz
 
 ```
 
 ```{bash}
 cd example 
-pmotools-runner.py list_specimen_meta_fields --file moz2018_PMO.json.gz --output spec_fields_moz2018_PMO.tsv --overwrite
+pmotools-runner.py list_specimen_meta_fields --file ../../format/moz2018_PMO.json.gz --output spec_fields_moz2018_PMO.tsv --overwrite
 
 ```
 
@@ -99,25 +99,25 @@ The python code for `count_specimen_meta` script is below
 
 ```{bash}
 cd example 
-pmotools-runner.py count_specimen_meta --file moz2018_PMO.json.gz --meta_fields collection_country
+pmotools-runner.py count_specimen_meta --file ../../format/moz2018_PMO.json.gz --meta_fields collection_country
 
 ```
 
 ```{bash}
 cd example 
-pmotools-runner.py count_specimen_meta --file moz2018_PMO.json.gz --meta_fields collection_country --overwrite --output collection_country_count_moz2018_PMO.tsv.gz 
+pmotools-runner.py count_specimen_meta --file ../../format/moz2018_PMO.json.gz --meta_fields collection_country --overwrite --output collection_country_count_moz2018_PMO.tsv.gz 
 
 ```
 
 ```{bash}
 cd example 
-pmotools-runner.py count_specimen_meta --file moz2018_PMO.json.gz --meta_fields collection_country,geo_admin3
+pmotools-runner.py count_specimen_meta --file ../../format/moz2018_PMO.json.gz --meta_fields collection_country,geo_admin3
 
 ```
 
 ```{bash}
 cd example 
-pmotools-runner.py count_specimen_meta --file PathWeaverHeome1_PMO.json.gz --meta_fields collection_country,collection_date | head
+pmotools-runner.py count_specimen_meta --file ../../format/PathWeaverHeome1_PMO.json.gz --meta_fields collection_country,collection_date | head
 
 ```
 
@@ -147,13 +147,13 @@ The python code for `list_tar_amp_bioinformatics_info_ids` script is below
 
 ```{bash}
 cd example 
-pmotools-runner.py list_tar_amp_bioinformatics_info_ids --file moz2018_PMO.json.gz  
+pmotools-runner.py list_tar_amp_bioinformatics_info_ids --file ../../format/moz2018_PMO.json.gz  
 
 ```
 
 ```{bash}
 cd example 
-pmotools-runner.py list_tar_amp_bioinformatics_info_ids --file PathWeaverHeome1_PMO.json.gz 
+pmotools-runner.py list_tar_amp_bioinformatics_info_ids --file ../../format/PathWeaverHeome1_PMO.json.gz 
 
 ```
 
@@ -163,7 +163,7 @@ This can be helpful after combining PMOs
 ```{bash, eval = F}
 cd example 
 
-pmotools-runner.py combine_pmos --pmo_files moz2018_PMO.json.gz,PathWeaverHeome1_PMO.json.gz --output combined_Heome1_PMO.json.gz --overwrite
+pmotools-runner.py combine_pmos --pmo_files ../../format/moz2018_PMO.json.gz,../../format/PathWeaverHeome1_PMO.json.gz --output combined_Heome1_PMO.json.gz --overwrite
 
 pmotools-runner.py list_tar_amp_bioinformatics_info_ids --file combined_Heome1_PMO.json.gz 
 
@@ -200,7 +200,7 @@ The python code for `count_targets_per_sample` script is below
 ```{bash}
 cd example 
 
-pmotools-runner.py count_targets_per_sample --file moz2018_PMO.json.gz  | head
+pmotools-runner.py count_targets_per_sample --file ../../format/moz2018_PMO.json.gz  | head
 
 ```
 
@@ -209,7 +209,7 @@ Apply a read count minimum filter (this a total read count summed for a target a
 ```{bash}
 cd example 
 
-pmotools-runner.py count_targets_per_sample --read_count_minimum 3000 --file moz2018_PMO.json.gz  | head
+pmotools-runner.py count_targets_per_sample --read_count_minimum 3000 --file ../../format/moz2018_PMO.json.gz  | head
 
 ```
 
@@ -240,7 +240,7 @@ The python code for `count_samples_per_target` script is below
 ```{bash}
 cd example 
 
-pmotools-runner.py count_samples_per_target --file moz2018_PMO.json.gz  | head
+pmotools-runner.py count_samples_per_target --file ../../format/moz2018_PMO.json.gz  | head
 
 ```
 
@@ -249,7 +249,7 @@ Apply a read count minimum filter (this a total read count summed for a target a
 ```{bash}
 cd example 
 
-pmotools-runner.py count_samples_per_target --read_count_minimum 3000 --file moz2018_PMO.json.gz  | head
+pmotools-runner.py count_samples_per_target --read_count_minimum 3000 --file ../../format/moz2018_PMO.json.gz  | head
 
 ```
 

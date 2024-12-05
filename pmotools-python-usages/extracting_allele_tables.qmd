@@ -64,7 +64,7 @@ mkdir -p example
 cd example 
 
 # default 
-pmotools-runner.py extract_allele_table --file moz2018_PMO.json.gz --bioid Mozambique2018-SeekDeep --output extraction --overwrite
+pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz --bioid Mozambique2018-SeekDeep --output extraction --overwrite
 ```
 
 
@@ -72,7 +72,7 @@ pmotools-runner.py extract_allele_table --file moz2018_PMO.json.gz --bioid Mozam
 cd example 
 
 # changing default column names  
-pmotools-runner.py extract_allele_table --file moz2018_PMO.json.gz --bioid Mozambique2018-SeekDeep --output extraction --overwrite --default_base_col_names sample,target,hapid
+pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz --bioid Mozambique2018-SeekDeep --output extraction --overwrite --default_base_col_names sample,target,hapid
 ```
 
 Changing the output file delimiter  
@@ -80,7 +80,7 @@ Changing the output file delimiter
 ```{bash}
 cd example 
 
-pmotools-runner.py extract_allele_table --file moz2018_PMO.json.gz --bioid Mozambique2018-SeekDeep --output extraction --overwrite --delim ,
+pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz --bioid Mozambique2018-SeekDeep --output extraction --overwrite --delim ,
 ```
 
 Adding on additional columns from the specimen_infos section 
@@ -89,7 +89,7 @@ Adding on additional columns from the specimen_infos section
 cd example 
 
 # adding other PMO fields 
-pmotools-runner.py extract_allele_table --file moz2018_PMO.json.gz --bioid Mozambique2018-SeekDeep --output STDOUT --specimen_info_meta_fields collection_country,parasite_density | head  
+pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz --bioid Mozambique2018-SeekDeep --output STDOUT --specimen_info_meta_fields collection_country,parasite_density | head  
 
 ```
 
@@ -97,7 +97,7 @@ pmotools-runner.py extract_allele_table --file moz2018_PMO.json.gz --bioid Mozam
 cd example 
 
 # adding other PMO fields 
-pmotools-runner.py extract_allele_table --file moz2018_PMO.json.gz --bioid Mozambique2018-SeekDeep --output STDOUT --specimen_info_meta_fields collection_country,parasite_density 2>/dev/null | head  
+pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz --bioid Mozambique2018-SeekDeep --output STDOUT --specimen_info_meta_fields collection_country,parasite_density 2>/dev/null | head  
 
 ```
 
@@ -108,7 +108,7 @@ Can continue to add on more columns from other sections
 cd example 
 
 # adding other PMO fields including seq field 
-pmotools-runner.py extract_allele_table --file moz2018_PMO.json.gz --bioid Mozambique2018-SeekDeep --output STDOUT --specimen_info_meta_fields collection_country,parasite_density --representative_haps_fields seq | head 
+pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz --bioid Mozambique2018-SeekDeep --output STDOUT --specimen_info_meta_fields collection_country,parasite_density --representative_haps_fields seq | head 
 
 ```
 
@@ -116,7 +116,7 @@ pmotools-runner.py extract_allele_table --file moz2018_PMO.json.gz --bioid Mozam
 cd example 
 
 # adding other PMO fields including seq field 
-pmotools-runner.py extract_allele_table --file moz2018_PMO.json.gz --bioid Mozambique2018-SeekDeep --output STDOUT --specimen_info_meta_fields collection_country,parasite_density --representative_haps_fields seq 2>/dev/null | head 
+pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz --bioid Mozambique2018-SeekDeep --output STDOUT --specimen_info_meta_fields collection_country,parasite_density --representative_haps_fields seq 2>/dev/null | head 
 
 ```
 
@@ -129,7 +129,7 @@ mkdir -p example
 cd example 
 
 # default table is all moire needs 
-pmotools-runner.py extract_allele_table --file moz2018_PMO.json.gz --bioid Mozambique2018-SeekDeep --output extraction --overwrite
+pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz --bioid Mozambique2018-SeekDeep --output extraction --overwrite
 
 ```
 
@@ -152,10 +152,10 @@ mkdir -p example
 cd example 
 
 # default 
-pmotools-runner.py extract_allele_table --file moz2018_PMO.json.gz --bioid Mozambique2018-SeekDeep --output extraction --overwrite --delim ,
+pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz --bioid Mozambique2018-SeekDeep --output extraction --overwrite --delim ,
 
 # dcifer can calculate allele frequencies if not provided or you can have extract_allele_table write them as well 
-pmotools-runner.py extract_allele_table --file moz2018_PMO.json.gz --bioid Mozambique2018-SeekDeep --output extraction --overwrite --allele_freqs_output allele_freqs_extraction --delim ,
+pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz --bioid Mozambique2018-SeekDeep --output extraction --overwrite --allele_freqs_output allele_freqs_extraction --delim ,
 
 ```
 

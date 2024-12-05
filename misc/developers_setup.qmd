@@ -1,0 +1,75 @@
+---
+title: Developers notes for working with PMO_Docs repo 
+---
+
+## Repo set up 
+
+after cloning repo, checkout develop branch 
+
+```{bash, eval = F}
+git clone git@github.com:PlasmoGenEpi/PMO_Docs.git
+cd PMO_Docs 
+
+git checkout develop
+
+```
+
+Getting pmotools-python submodule updated and code pulled down 
+
+
+```{bash, eval = F}
+git pull && git submodule init && git submodule sync && git submodule update
+
+```
+
+Git submodules work by pulling repo in a headless state and at a specific commit, to use the submodule as repo to further develop code in for pmotools-python recommend then going into repo to checkout the develop 
+
+```{bash, eval = F}
+cd pmotools-python 
+git checkout develop
+```
+
+
+## Setting up bash environment 
+
+Set up conda environment to have python dependencies and pmotools installed  
+
+From within PMO_Docs after pull the submodule pmotools-python
+
+```{bash, eval = F}
+conda env create --prefix env -f pmotools-python/envs/pmotools-env.yml
+```
+
+Activate the environment and add the scripts directory to run the tools. Install with pip install the pmotools 
+
+```{bash, eval = F}
+conda activate /Users/nick/projects/plasmodium/falciparum/PMO_Docs/env
+export PATH=$(pwd)/pmotools-python/scripts:$PATH
+cd pmotools-python 
+pip install .
+```
+
+Can also install ipython notebook to use as an editor for ipython notebook 
+
+```{bash, eval = F}
+pip3 install ipython jupyter jupyter_kernel_gateway
+```
+
+And then the following lines are in the .Rprofile so that these loaded as well for when running quarto the paths also get loaded for running bash code blocks
+
+```{r, eval = F}
+
+Sys.setenv(RETICULATE_PYTHON = paste0(Sys.getenv("PWD"),"/env/bin/python3"))
+Sys.setenv(PATH = paste0(Sys.getenv("PWD"),"/env/bin:",Sys.getenv("PATH")))
+Sys.setenv(PATH = paste0(Sys.getenv("PWD"),"/pmotools-python/scripts:",Sys.getenv("PATH")))
+```
+
+
+
+
+
+
+
+
+
+

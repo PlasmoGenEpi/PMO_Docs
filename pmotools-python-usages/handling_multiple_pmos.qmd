@@ -35,10 +35,10 @@ pmotools-runner.py combine_pmos --pmo_files moz2018_PMO.json.gz,PathWeaverHeome1
 ```
 
 
-```{bash, echo = F, eval = F}
+```{bash, echo = F, eval = T}
 cd example 
 
-pmotools-runner.py combine_pmos --pmo_files moz2018_PMO.json.gz,PathWeaverHeome1_PMO.json.gz --output combined_Heome1_PMO.json.gz --overwrite
+pmotools-runner.py combine_pmos --pmo_files ../../format/moz2018_PMO.json.gz,../../format/PathWeaverHeome1_PMO.json.gz --output combined_Heome1_PMO.json.gz --overwrite
 ```
 
 The python code for `combine_pmos` script is below

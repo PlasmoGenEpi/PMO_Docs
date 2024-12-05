@@ -43,7 +43,7 @@ conda env create --prefix env -f pmotools-python/envs/pmotools-env.yml
 Activate the environment and add the scripts directory to run the tools. Install with pip install the pmotools 
 
 ```{bash, eval = F}
-conda activate /Users/nick/projects/plasmodium/falciparum/PMO_Docs/env
+conda activate env/
 export PATH=$(pwd)/pmotools-python/scripts:$PATH
 cd pmotools-python 
 pip install .

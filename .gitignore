@@ -11,3 +11,5 @@ env
 /env/
 pmotools-python-usages/example/*
 PMO_Docs
+
+*.ipynb_checkpoints*

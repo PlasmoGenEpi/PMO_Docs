@@ -230,6 +230,31 @@ pmotools-runner.py extract_pmo_with_selected_meta  --file ../../format/moz2018_P
 ```
 
 
+## Subsetting by a read filter for detected microhaplotypes 
+
+
+
+```{bash}
+pmotools-runner.py extract_pmo_with_read_filter -h
+```
+
+The python code for `extract_pmo_with_read_filter` script is below
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-line-numbers: true
+#| filename: pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_read_filter.py
+#| file: ../pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_read_filter.py
+```
+
+```{bash}
+cd example 
+
+pmotools-runner.py extract_pmo_with_read_filter --read_count_minimum 1000 --file ../../format/moz2018_PMO.json.gz --output moz2018_PMO_minReadCount1000.json.gz --overwrite
+```
+
 
 ## Piping together extraction 
 
@@ -260,4 +285,12 @@ echo -e "8025875029\n8034209834\n8034209115" | pmotools-runner.py extract_pmo_wi
 
 ```
 
+filter to a read amount and then write allele table 
+
+```{bash}
+cd example 
+
+pmotools-runner.py extract_pmo_with_read_filter --read_count_minimum 1000 --file ../../format/moz2018_PMO.json.gz --output STDOUT | pmotools-runner.py extract_allele_table --file STDIN --bioid Mozambique2018-SeekDeep --output moz2018_PMO_minReadCount1000_allele_table.tsv.gz  --microhap_fields read_count --representative_haps_fields seq --default_base_col_names specimen_id,target_id,allele
+
+```
 

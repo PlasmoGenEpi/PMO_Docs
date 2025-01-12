@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Getting panel info out of PMO using pmotools-python – Portable Microhaplotype Object (PMO)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-704a3d686fdb3e6b26ef47c77620618f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-83b1d0b3b459d34b5b0f98adfe5eb835.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><style>html{ scroll-behavior: smooth; }</style>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Portable Microhaplotype Object (PMO)</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+<li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-format-info" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Format Info</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-format-info">
+<li>
+    <a class="dropdown-item" href="../format/FormatOverview.html">
+ <span class="dropdown-text">PMO fields overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../format/FormatExample.html">
+ <span class="dropdown-text">PMO Examples</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tools-installation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tools Installation</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-tools-installation">
+<li>
+    <a class="dropdown-item" href="../Tools_Installation/pmotools-python_installation.html">
+ <span class="dropdown-text">pmotools-python installation</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pmotools-python-usages" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">pmotools-python usages</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python-usages">
+<li class="dropdown-header"><span class="menuTitle">Command line interface</span></li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header"><span class="menuTitle">pmotools-runner.py</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages/pmotools-runner.html">
+ <span class="dropdown-text">Command line interface to pmotools-python with pmotools-runner.py</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Extracting out of PMO</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages/extracting_allele_tables.html">
+ <span class="dropdown-text">Extracting allele tables using pmotools-python</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Subset PMO</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages/subsetting_from_PMO.html">
+ <span class="dropdown-text">Subsetting from a PMO using pmotools-python</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Getting sub info from PMO</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages/getting_basic_info_from_pmo.html">
+ <span class="dropdown-text">Getting basic info out of PMO using pmotools-python</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages/extracting_panel_info_from_pmo.html">
+ <span class="dropdown-text">Getting panel info out of PMO using pmotools-python</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Handling Multiple PMOs</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages/handling_multiple_pmos.html">
+ <span class="dropdown-text">Handling multiple PMOs pmotools-python</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header"><span class="menuTitle">Python interface</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.html">
+ <span class="dropdown-text">Getting basic info out of a PMO</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/build_pmo.html">
+ <span class="dropdown-text">Creating a PMO File</span></a>
+  </li>  
+    </ul>
+</li>
+</ul>
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-resources">
+<li>
+    <a class="dropdown-item" href="../References.html">
+ <span class="dropdown-text">References</span></a>
+  </li>  
+    </ul>
+</li>
+</ul>
+</div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
+   
+  <ul>
+<li><a href="#extract-insert-locations-of-panels-from-pmo" id="toc-extract-insert-locations-of-panels-from-pmo" class="nav-link active" data-scroll-target="#extract-insert-locations-of-panels-from-pmo">Extract insert locations of panels from PMO</a></li>
+  <li><a href="#extract-ref-sequences-of-insert-locations-of-panels-from-pmo" id="toc-extract-ref-sequences-of-insert-locations-of-panels-from-pmo" class="nav-link" data-scroll-target="#extract-ref-sequences-of-insert-locations-of-panels-from-pmo">Extract ref sequences of insert locations of panels from PMO</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Getting panel info out of PMO using pmotools-python</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><p>Most of these basic panel info can be found underneath <code>extract_panel_info_from_pmo</code></p>
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>pmotools v1.0.0 - A suite of tools for interacting with Portable Microhaplotype Object (pmo) file format
+
+Available functions organized by groups are
+convertors_to_json
+    text_meta_to_json_meta - Convert text file meta to JSON Meta
+    excel_meta_to_json_meta - Convert excel file meta to JSON Meta
+    microhaplotype_table_to_json_file - Convert microhaplotype table to JSON Meta
+    terra_amp_output_to_json - Convert terra output table to JSON seq table
+
+extractors_from_pmo
+    extract_pmo_with_selected_meta - Extract from PMO samples and associated haplotypes with selected meta
+    extract_pmo_with_select_specimen_ids - Extract from PMO specific samples from the specimens table
+    extract_pmo_with_select_experiment_sample_ids - Extract from PMO specific experiment sample ids from the experiment_info table
+    extract_pmo_with_select_targets - Extract from PMO specific targets
+    extract_pmo_with_read_filter - Extract from PMO with a read filter
+    extract_allele_table - Extract allele tables which can be as used as input to such tools as dcifer or moire
+
+working_with_multiple_pmos
+    combine_pmos - Combine multiple pmos of the same panel into a single pmo
+
+extract_basic_info_from_pmo
+    list_experiment_sample_ids_per_specimen_id - Each specimen_id can have multiple experiment_sample_ids, list out all in a PMO
+    list_specimen_meta_fields - List out the specimen meta fields in the specimen_info section
+    list_tar_amp_bioinformatics_info_ids - List out all the tar_amp_bioinformatics_info_ids in a PMO file
+    count_specimen_meta - Count the values of specific specimen meta fields in the specimen_info section
+    count_targets_per_sample - Count the number of targets per sample
+    count_samples_per_target - Count the number of samples per target
+
+extract_panel_info_from_pmo
+    extract_insert_of_panels - Extract the insert of panels from a PMO
+    extract_refseq_of_inserts_of_panels - Extract the ref_seq of panels from a PMO</code></pre>
+</div>
+</div>
+<p>Getting files for examples</p>
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="extract-insert-locations-of-panels-from-pmo" class="level1"><h1>Extract insert locations of panels from PMO</h1>
+<p>This will extract the insert location of targets of the panel infos out of a PMO and write it out as a bed file</p>
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_insert_of_panels <span class="at">-h</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>usage: pmotools-runner.py extract_insert_of_panels [-h] --file FILE
+                                                   [--output OUTPUT]
+                                                   [--overwrite]
+
+options:
+  -h, --help       show this help message and exit
+  --file FILE      PMO file
+  --output OUTPUT  output file
+  --overwrite      If output file exists, overwrite it</code></pre>
+</div>
+</div>
+<p>The python code for <code>extract_insert_of_panels</code> script is below</p>
+<div class="cell" data-layout-align="center">
+<div class="code-with-filename">
+<details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
+<pre><strong>pmotools-python/scripts/extract_info_from_pmo/extract_insert_of_panels.py</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="im">import</span> os, argparse, json</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="im">import</span> sys</span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
+<span id="cb6-5"><a href="#cb6-5"></a></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-7"><a href="#cb6-7"></a></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="im">from</span> pmotools.pmo_utils.PMOExtractor <span class="im">import</span> PMOExtractor</span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="im">from</span> pmotools.pmo_utils.PMOReader <span class="im">import</span> PMOReader</span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
+<span id="cb6-11"><a href="#cb6-11"></a></span>
+<span id="cb6-12"><a href="#cb6-12"></a></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="kw">def</span> parse_args_extract_insert_of_panels():</span>
+<span id="cb6-14"><a href="#cb6-14"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
+<span id="cb6-15"><a href="#cb6-15"></a>    parser.add_argument(<span class="st">'--file'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'PMO file'</span>)</span>
+<span id="cb6-16"><a href="#cb6-16"></a>    parser.add_argument(<span class="st">'--output'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'output file'</span>)</span>
+<span id="cb6-17"><a href="#cb6-17"></a>    parser.add_argument(<span class="st">'--overwrite'</span>, action <span class="op">=</span> <span class="st">'store_true'</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'If output file exists, overwrite it'</span>)</span>
+<span id="cb6-18"><a href="#cb6-18"></a></span>
+<span id="cb6-19"><a href="#cb6-19"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb6-20"><a href="#cb6-20"></a></span>
+<span id="cb6-21"><a href="#cb6-21"></a><span class="kw">def</span> extract_insert_of_panels():</span>
+<span id="cb6-22"><a href="#cb6-22"></a>    args <span class="op">=</span> parse_args_extract_insert_of_panels()</span>
+<span id="cb6-23"><a href="#cb6-23"></a></span>
+<span id="cb6-24"><a href="#cb6-24"></a>    <span class="co"># check files</span></span>
+<span id="cb6-25"><a href="#cb6-25"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb6-26"><a href="#cb6-26"></a></span>
+<span id="cb6-27"><a href="#cb6-27"></a>    <span class="co"># read in PMO</span></span>
+<span id="cb6-28"><a href="#cb6-28"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb6-29"><a href="#cb6-29"></a></span>
+<span id="cb6-30"><a href="#cb6-30"></a>    <span class="co"># get panel insert locations</span></span>
+<span id="cb6-31"><a href="#cb6-31"></a>    panel_bed_locs <span class="op">=</span> PMOExtractor.extract_panels_insert_bed_loc(pmo)</span>
+<span id="cb6-32"><a href="#cb6-32"></a></span>
+<span id="cb6-33"><a href="#cb6-33"></a>    <span class="co"># write</span></span>
+<span id="cb6-34"><a href="#cb6-34"></a>    output_target <span class="op">=</span> sys.stdout <span class="cf">if</span> args.output <span class="op">==</span> <span class="st">"STDOUT"</span> <span class="cf">else</span> <span class="bu">open</span>(args.output, <span class="st">"w"</span>)</span>
+<span id="cb6-35"><a href="#cb6-35"></a>    <span class="cf">with</span> output_target <span class="im">as</span> f:</span>
+<span id="cb6-36"><a href="#cb6-36"></a>        f.write(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join([<span class="st">"#chrom"</span>, <span class="st">"start"</span>, <span class="st">"end"</span>, <span class="st">"name"</span>, <span class="st">"length"</span>, <span class="st">"strand"</span>, <span class="st">"extra_info"</span>]) <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb6-37"><a href="#cb6-37"></a>        <span class="cf">for</span> panel_id, bed_locs <span class="kw">in</span> panel_bed_locs.items():</span>
+<span id="cb6-38"><a href="#cb6-38"></a>            <span class="cf">for</span> loc <span class="kw">in</span> bed_locs:</span>
+<span id="cb6-39"><a href="#cb6-39"></a>                f.write(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join([loc.chrom, <span class="bu">str</span>(loc.start), <span class="bu">str</span>(loc.end), loc.name, <span class="bu">str</span>(loc.score), loc.strand, loc.extra_info]) <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb6-40"><a href="#cb6-40"></a></span>
+<span id="cb6-41"><a href="#cb6-41"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb6-42"><a href="#cb6-42"></a>    extract_insert_of_panels()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_insert_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>#chrom  start   end name    length  strand  extra_info
+Pf3D7_01_v3 145449  145622  t1  173 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_02_v3 109807  109982  t10 175 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_14_v3 3214351 3214478 t100    127 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_02_v3 278165  278336  t11 171 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_02_v3 470492  470676  t12 184 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_02_v3 805822  805942  t13 120 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_03_v3 85440   85646   t14 206 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_03_v3 141963  142181  t15 218 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_03_v3 221363  221495  t16 132 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_03_v3 618396  618581  t17 185 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_03_v3 654002  654175  t18 173 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_03_v3 850816  850989  t19 173 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_01_v3 179903  180115  t2  212 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_04_v3 109912  110087  t20 175 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_04_v3 133491  133701  t21 210 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_04_v3 141778  141945  t22 167 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_04_v3 415653  415826  t23 173 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_04_v3 544718  544861  t24 143 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_04_v3 748230  748436  t25 206 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_04_v3 748533  748696  t26 163 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_04_v3 802525  802713  t27 188 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_04_v3 1037634 1037844 t28 210 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_04_v3 1100656 1100831 t29 175 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_01_v3 181557  181673  t3  116 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_04_v3 1102389 1102578 t30 189 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_04_v3 1113450 1113604 t31 154 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_04_v3 1128489 1128673 t32 184 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_05_v3 329378  329550  t33 172 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_05_v3 958059  958221  t34 162 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_05_v3 958389  958506  t35 117 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_05_v3 1042162 1042281 t36 119 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_05_v3 1309609 1309744 t37 135 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_06_v3 145343  145501  t38 158 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_06_v3 532195  532378  t39 183 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_01_v3 495971  496143  t4  172 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_07_v3 165235  165422  t40 187 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_07_v3 166035  166167  t41 132 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_07_v3 298886  299005  t42 119 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_07_v3 729975  730088  t43 113 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_07_v3 1149415 1149585 t44 170 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_07_v3 1358694 1358911 t45 217 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_08_v3 102326  102500  t46 174 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_08_v3 336468  336647  t47 179 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_08_v3 339168  339357  t48 189 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_08_v3 549993  550218  t49 225 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_01_v3 512199  512388  t5  189 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_08_v3 933023  933143  t50 120 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_08_v3 1269320 1269456 t51 136 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_08_v3 1344686 1344819 t52 133 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_08_v3 1362891 1363087 t53 196 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_09_v3 516928  517092  t54 164 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_09_v3 596133  596334  t55 201 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_09_v3 685601  685792  t56 191 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_09_v3 1178894 1179078 t57 184 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_09_v3 1406405 1406541 t58 136 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_09_v3 1437114 1437303 t59 189 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_01_v3 531682  531900  t6  218 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_10_v3 377095  377209  t60 114 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_10_v3 992371  992544  t61 173 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_10_v3 1386700 1386869 t62 169 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_10_v3 1399544 1399711 t63 167 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_10_v3 1436479 1436682 t64 203 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_11_v3 119486  119693  t65 207 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_11_v3 1009856 1010038 t66 182 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_11_v3 1018953 1019085 t67 132 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_11_v3 1376185 1376372 t68 187 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_11_v3 1552430 1552640 t69 210 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_01_v3 532690  532844  t7  154 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_11_v3 1750865 1751055 t70 190 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_11_v3 1816211 1816425 t71 214 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_12_v3 63166   63280   t72 114 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_12_v3 659891  660010  t73 119 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_12_v3 684088  684261  t74 173 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_12_v3 943258  943428  t75 170 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_12_v3 1237431 1237603 t76 172 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_12_v3 2050130 2050314 t77 184 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_13_v3 103659  103879  t78 220 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_13_v3 156566  156722  t79 156 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_01_v3 534215  534368  t8  153 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_13_v3 1150303 1150493 t80 190 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_13_v3 1419543 1419670 t81 127 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_13_v3 1725365 1725570 t82 205 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_13_v3 1876352 1876534 t83 182 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_13_v3 2114975 2115142 t84 167 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_13_v3 2124634 2124847 t85 213 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_13_v3 2479086 2479246 t86 160 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_13_v3 2481106 2481288 t87 182 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_13_v3 2669135 2669307 t88 172 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_14_v3 39953   40137   t89 184 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_01_v3 534941  535110  t9  169 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_14_v3 120215  120351  t90 136 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_14_v3 150105  150294  t91 189 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_14_v3 279663  279786  t92 123 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_14_v3 407379  407571  t93 192 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_14_v3 564208  564377  t94 169 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_14_v3 1038369 1038486 t95 117 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_14_v3 1956129 1956286 t96 157 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_14_v3 1992289 1992426 t97 137 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_14_v3 2524962 2525089 t98 127 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
+Pf3D7_14_v3 3124642 3124842 t99 200 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_insert_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> moz2018_PMO_panel_insert_locs.bed <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section><section id="extract-ref-sequences-of-insert-locations-of-panels-from-pmo" class="level1"><h1>Extract ref sequences of insert locations of panels from PMO</h1>
+<p>This will extract the reference sequence of the insert location of the targets within the panel info out of a PMO and write it out as a table. The reference sequence is an optional field and so if no reference sequence is loaded then just blanks will be extracted</p>
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_refseq_of_inserts_of_panels <span class="at">-h</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>usage: pmotools-runner.py extract_refseq_of_inserts_of_panels
+       [-h] --file FILE [--output OUTPUT] [--overwrite]
+
+extract ref_seq of inserts of panels, but if no ref_seq is save in the PMO
+will just be blank
+
+options:
+  -h, --help       show this help message and exit
+  --file FILE      PMO file
+  --output OUTPUT  output file
+  --overwrite      If output file exists, overwrite it</code></pre>
+</div>
+</div>
+<p>The python code for <code>extract_refseq_of_inserts_of_panels</code> script is below</p>
+<div class="cell" data-layout-align="center">
+<div class="code-with-filename">
+<details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
+<pre><strong>pmotools-python/scripts/extract_info_from_pmo/extract_refseq_of_inserts_of_panels.py</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="im">import</span> os, argparse, json</span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="im">import</span> sys</span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
+<span id="cb12-5"><a href="#cb12-5"></a></span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb12-7"><a href="#cb12-7"></a></span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="im">from</span> pmotools.pmo_utils.PMOExtractor <span class="im">import</span> PMOExtractor</span>
+<span id="cb12-9"><a href="#cb12-9"></a><span class="im">from</span> pmotools.pmo_utils.PMOReader <span class="im">import</span> PMOReader</span>
+<span id="cb12-10"><a href="#cb12-10"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
+<span id="cb12-11"><a href="#cb12-11"></a></span>
+<span id="cb12-12"><a href="#cb12-12"></a></span>
+<span id="cb12-13"><a href="#cb12-13"></a><span class="kw">def</span> parse_args_extract_refseq_of_inserts_of_panels():</span>
+<span id="cb12-14"><a href="#cb12-14"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
+<span id="cb12-15"><a href="#cb12-15"></a>    parser.add_argument(<span class="st">'--file'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'PMO file'</span>)</span>
+<span id="cb12-16"><a href="#cb12-16"></a>    parser.add_argument(<span class="st">'--output'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'output file'</span>)</span>
+<span id="cb12-17"><a href="#cb12-17"></a>    parser.add_argument(<span class="st">'--overwrite'</span>, action <span class="op">=</span> <span class="st">'store_true'</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'If output file exists, overwrite it'</span>)</span>
+<span id="cb12-18"><a href="#cb12-18"></a>    parser.description <span class="op">=</span> <span class="st">"extract ref_seq of inserts of panels, but if no ref_seq is save in the PMO will just be blank"</span></span>
+<span id="cb12-19"><a href="#cb12-19"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb12-20"><a href="#cb12-20"></a></span>
+<span id="cb12-21"><a href="#cb12-21"></a><span class="kw">def</span> extract_refseq_of_inserts_of_panels():</span>
+<span id="cb12-22"><a href="#cb12-22"></a>    args <span class="op">=</span> parse_args_extract_refseq_of_inserts_of_panels()</span>
+<span id="cb12-23"><a href="#cb12-23"></a></span>
+<span id="cb12-24"><a href="#cb12-24"></a>    <span class="co"># check files</span></span>
+<span id="cb12-25"><a href="#cb12-25"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb12-26"><a href="#cb12-26"></a></span>
+<span id="cb12-27"><a href="#cb12-27"></a>    <span class="co"># read in PMO</span></span>
+<span id="cb12-28"><a href="#cb12-28"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb12-29"><a href="#cb12-29"></a></span>
+<span id="cb12-30"><a href="#cb12-30"></a>    <span class="co"># get panel insert locations</span></span>
+<span id="cb12-31"><a href="#cb12-31"></a>    panel_bed_locs <span class="op">=</span> PMOExtractor.extract_panels_insert_bed_loc(pmo)</span>
+<span id="cb12-32"><a href="#cb12-32"></a></span>
+<span id="cb12-33"><a href="#cb12-33"></a>    <span class="co"># write</span></span>
+<span id="cb12-34"><a href="#cb12-34"></a>    output_target <span class="op">=</span> sys.stdout <span class="cf">if</span> args.output <span class="op">==</span> <span class="st">"STDOUT"</span> <span class="cf">else</span> <span class="bu">open</span>(args.output, <span class="st">"w"</span>)</span>
+<span id="cb12-35"><a href="#cb12-35"></a>    <span class="cf">with</span> output_target <span class="im">as</span> f:</span>
+<span id="cb12-36"><a href="#cb12-36"></a>        f.write(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join([<span class="st">"panel_id"</span>, <span class="st">"target_id"</span>, <span class="st">"ref_seq"</span>]) <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb12-37"><a href="#cb12-37"></a>        <span class="cf">for</span> panel_id, bed_locs <span class="kw">in</span> panel_bed_locs.items():</span>
+<span id="cb12-38"><a href="#cb12-38"></a>            <span class="cf">for</span> loc <span class="kw">in</span> bed_locs:</span>
+<span id="cb12-39"><a href="#cb12-39"></a>                f.write(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join([<span class="bu">str</span>(panel_id), loc.name, loc.ref_seq]) <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb12-40"><a href="#cb12-40"></a></span>
+<span id="cb12-41"><a href="#cb12-41"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb12-42"><a href="#cb12-42"></a>    extract_refseq_of_inserts_of_panels()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_refseq_of_inserts_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>panel_id    target_id   ref_seq
+heomev1 t1  
+heomev1 t10 
+heomev1 t100    
+heomev1 t11 
+heomev1 t12 
+heomev1 t13 
+heomev1 t14 
+heomev1 t15 
+heomev1 t16 
+heomev1 t17 
+heomev1 t18 
+heomev1 t19 
+heomev1 t2  
+heomev1 t20 
+heomev1 t21 
+heomev1 t22 
+heomev1 t23 
+heomev1 t24 
+heomev1 t25 
+heomev1 t26 
+heomev1 t27 
+heomev1 t28 
+heomev1 t29 
+heomev1 t3  
+heomev1 t30 
+heomev1 t31 
+heomev1 t32 
+heomev1 t33 
+heomev1 t34 
+heomev1 t35 
+heomev1 t36 
+heomev1 t37 
+heomev1 t38 
+heomev1 t39 
+heomev1 t4  
+heomev1 t40 
+heomev1 t41 
+heomev1 t42 
+heomev1 t43 
+heomev1 t44 
+heomev1 t45 
+heomev1 t46 
+heomev1 t47 
+heomev1 t48 
+heomev1 t49 
+heomev1 t5  
+heomev1 t50 
+heomev1 t51 
+heomev1 t52 
+heomev1 t53 
+heomev1 t54 
+heomev1 t55 
+heomev1 t56 
+heomev1 t57 
+heomev1 t58 
+heomev1 t59 
+heomev1 t6  
+heomev1 t60 
+heomev1 t61 
+heomev1 t62 
+heomev1 t63 
+heomev1 t64 
+heomev1 t65 
+heomev1 t66 
+heomev1 t67 
+heomev1 t68 
+heomev1 t69 
+heomev1 t7  
+heomev1 t70 
+heomev1 t71 
+heomev1 t72 
+heomev1 t73 
+heomev1 t74 
+heomev1 t75 
+heomev1 t76 
+heomev1 t77 
+heomev1 t78 
+heomev1 t79 
+heomev1 t8  
+heomev1 t80 
+heomev1 t81 
+heomev1 t82 
+heomev1 t83 
+heomev1 t84 
+heomev1 t85 
+heomev1 t86 
+heomev1 t87 
+heomev1 t88 
+heomev1 t89 
+heomev1 t9  
+heomev1 t90 
+heomev1 t91 
+heomev1 t92 
+heomev1 t93 
+heomev1 t94 
+heomev1 t95 
+heomev1 t96 
+heomev1 t97 
+heomev1 t98 
+heomev1 t99 </code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_refseq_of_inserts_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> moz2018_PMO_panel_ref_seqs.tsv <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+
+
+<!-- -->
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/PlasmoGenEpi\.github\.io\/PMO_Docs\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb16" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Getting panel info out of PMO using pmotools-python</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, echo=F}</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="in">source("../common.R")</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>Most of these basic panel info can be found underneath <span class="in">`extract_panel_info_from_pmo`</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="in">pmotools-runner.py</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, echo = F}</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="in">pmotools-runner.py | perl -pe 's/\e\[[0-9;]*m(?:\e\[K)?//g'</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>Getting files for examples </span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a><span class="in">cd example </span></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="in">wget https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz</span></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="in">wget https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz</span></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a><span class="fu"># Extract insert locations of panels from PMO </span></span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>This will extract the insert location of targets of the panel infos out of a PMO and write it out as a bed file </span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_insert_of_panels <span class="at">-h</span> </span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`extract_insert_of_panels`</span> script is below</span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/scripts/extract_info_from_pmo/extract_insert_of_panels.py</span></span>
+<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/scripts/extract_info_from_pmo/extract_insert_of_panels.py</span></span>
+<span id="cb16-57"><a href="#cb16-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb16-58"><a href="#cb16-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-61"><a href="#cb16-61" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb16-62"><a href="#cb16-62" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb16-63"><a href="#cb16-63" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_insert_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz</span>
+<span id="cb16-64"><a href="#cb16-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-65"><a href="#cb16-65" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb16-66"><a href="#cb16-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-69"><a href="#cb16-69" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb16-70"><a href="#cb16-70" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb16-71"><a href="#cb16-71" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_insert_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> moz2018_PMO_panel_insert_locs.bed <span class="at">--overwrite</span></span>
+<span id="cb16-72"><a href="#cb16-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-73"><a href="#cb16-73" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb16-74"><a href="#cb16-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-75"><a href="#cb16-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-76"><a href="#cb16-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-77"><a href="#cb16-77" aria-hidden="true" tabindex="-1"></a><span class="fu"># Extract ref sequences of insert locations of panels from PMO </span></span>
+<span id="cb16-78"><a href="#cb16-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-79"><a href="#cb16-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-80"><a href="#cb16-80" aria-hidden="true" tabindex="-1"></a>This will extract the reference sequence of the insert location of the targets within the panel info out of a PMO and write it out as a table. The reference sequence is an optional field and so if no reference sequence is loaded then just blanks will be extracted </span>
+<span id="cb16-81"><a href="#cb16-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-84"><a href="#cb16-84" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb16-85"><a href="#cb16-85" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_refseq_of_inserts_of_panels <span class="at">-h</span> </span>
+<span id="cb16-86"><a href="#cb16-86" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb16-87"><a href="#cb16-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-88"><a href="#cb16-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-89"><a href="#cb16-89" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`extract_refseq_of_inserts_of_panels`</span> script is below</span>
+<span id="cb16-90"><a href="#cb16-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-93"><a href="#cb16-93" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb16-94"><a href="#cb16-94" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb16-95"><a href="#cb16-95" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb16-96"><a href="#cb16-96" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb16-97"><a href="#cb16-97" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb16-98"><a href="#cb16-98" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/scripts/extract_info_from_pmo/extract_refseq_of_inserts_of_panels.py</span></span>
+<span id="cb16-99"><a href="#cb16-99" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/scripts/extract_info_from_pmo/extract_refseq_of_inserts_of_panels.py</span></span>
+<span id="cb16-100"><a href="#cb16-100" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb16-101"><a href="#cb16-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-104"><a href="#cb16-104" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb16-105"><a href="#cb16-105" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb16-106"><a href="#cb16-106" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_refseq_of_inserts_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz</span>
+<span id="cb16-107"><a href="#cb16-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-108"><a href="#cb16-108" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb16-109"><a href="#cb16-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-112"><a href="#cb16-112" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb16-113"><a href="#cb16-113" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb16-114"><a href="#cb16-114" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_refseq_of_inserts_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> moz2018_PMO_panel_ref_seqs.tsv <span class="at">--overwrite</span></span>
+<span id="cb16-115"><a href="#cb16-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-116"><a href="#cb16-116" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.6.40">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Command line interface to pmotools-python with pmotools-runner.py – Portable Microhaplotype Object (PMO)</title>
 <style>
@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-cee8642dd6abb73bb51e0193ec9c0780.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-704a3d686fdb3e6b26ef47c77620618f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-83b1d0b3b459d34b5b0f98adfe5eb835.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
@@ -164,9 +164,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../pmotools-python-usages/subsetting_from_PMO.html">
  <span class="dropdown-text">Subsetting from a PMO using pmotools-python</span></a>
   </li>  
+        <li class="dropdown-header"><span class="menuTitle">Getting sub info from PMO</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/getting_basic_info_from_pmo.html">
  <span class="dropdown-text">Getting basic info out of PMO using pmotools-python</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages/extracting_panel_info_from_pmo.html">
+ <span class="dropdown-text">Getting panel info out of PMO using pmotools-python</span></a>
   </li>  
         <li class="dropdown-header"><span class="menuTitle">Handling Multiple PMOs</span></li>
         <li>
@@ -234,27 +239,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>pmotools v1.0.0 - A suite of tools for interacting with Portable Microhaplotype Object (pmo) file format
 
-Available functions are
+Available functions organized by groups are
 convertors_to_json
     text_meta_to_json_meta - Convert text file meta to JSON Meta
     excel_meta_to_json_meta - Convert excel file meta to JSON Meta
     microhaplotype_table_to_json_file - Convert microhaplotype table to JSON Meta
     terra_amp_output_to_json - Convert terra output table to JSON seq table
+
 extractors_from_pmo
     extract_pmo_with_selected_meta - Extract from PMO samples and associated haplotypes with selected meta
     extract_pmo_with_select_specimen_ids - Extract from PMO specific samples from the specimens table
     extract_pmo_with_select_experiment_sample_ids - Extract from PMO specific experiment sample ids from the experiment_info table
     extract_pmo_with_select_targets - Extract from PMO specific targets
+    extract_pmo_with_read_filter - Extract from PMO with a read filter
     extract_allele_table - Extract allele tables which can be as used as input to such tools as dcifer or moire
+
 working_with_multiple_pmos
     combine_pmos - Combine multiple pmos of the same panel into a single pmo
+
 extract_basic_info_from_pmo
     list_experiment_sample_ids_per_specimen_id - Each specimen_id can have multiple experiment_sample_ids, list out all in a PMO
     list_specimen_meta_fields - List out the specimen meta fields in the specimen_info section
     list_tar_amp_bioinformatics_info_ids - List out all the tar_amp_bioinformatics_info_ids in a PMO file
     count_specimen_meta - Count the values of specific specimen meta fields in the specimen_info section
     count_targets_per_sample - Count the number of targets per sample
-    count_samples_per_target - Count the number of samples per target</code></pre>
+    count_samples_per_target - Count the number of samples per target
+
+extract_panel_info_from_pmo
+    extract_insert_of_panels - Extract the insert of panels from a PMO
+    extract_refseq_of_inserts_of_panels - Extract the ref_seq of panels from a PMO</code></pre>
 </div>
 </div>
 

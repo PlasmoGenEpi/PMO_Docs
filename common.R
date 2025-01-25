@@ -15,7 +15,8 @@ packagesUsed = c(
   "rwantshue",
   "ComplexHeatmap",
   "ggthemes", 
-  "here"
+  "here", 
+  "reticulate"
 )
 
 suppressMessages(lapply(packagesUsed, require, character.only = TRUE))

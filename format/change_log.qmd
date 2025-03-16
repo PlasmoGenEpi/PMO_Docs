@@ -1,0 +1,51 @@
+---
+title: "Change Log"
+---
+
+
+# 2025-03-15
+
+*  removed pmo_name
+*  major change to the organization of indexes and names
+    *  _id will be the integer index into tables 
+    *  _name will be a character name identifier for a class 
+    *  adding sequencing_info_name, specimen_name, experimental_sample_name, microhaplotype_name to their respective classes 
+*  adding pmo_header
+    *  info on the PMO file .e.g version etc 
+    *  several new classes, including PmoGenerationMethod
+*  adding read_counts_by_stage
+    *  read counts by each stage 
+    *  this led to the creation of several classes to hold this info
+*  adding bioinformatics_run_info
+    *  info on the pipeline run 
+    *  new class of BioinformaticsRunInfo to run info about a run
+*  modified BioinformaticsMethoInfo
+    *  purpose -> program_description 
+*  renaming 
+    *  representative_microhaplotype_sequences -> microhaplotype_info
+    *  experiment_infos ->  experiment_info
+    *  specimen_infos -> specimen_info
+    *  sequenceing_infos -> sequenceing_info
+    *  taramp_bioinformatics_infos -> bioinformatics_methods_info
+    *  removed any mention of taramp
+*  adding target_info
+    *  a list of the targets in this file to be referred to by panel_info (see below) instead of listed underneath each panel, this allows for the listing of targets that may be shared across panels/reactions 
+    *  added class for MarkerOfInterest to list different markers for each target covers e.g. drug_resistance 
+*  updating panel_info
+    *  modified to be a list of reactions which will have the collection of targets 
+    *  added ReactionInfo, listing the reaction targets 
+*  modified panel_info/target_info to remove targeted_genome, moved the genome info to the genomic location class instead
+*  adding a list of TargetedGenomes 
+    *  this list will then be indexed into to list which genomes are being targeted
+*  made a large number of the sequencing_info fields optional
+*  to list multiple parasite densities for a specimen added a ParasiteDensity class
+    *  has method and density
+    *  optional list of densities under SpecimenInfo
+*  added project name for specimens 
+*  a reorganization of microhaplotypes_detected and microhaplotypes_info
+  *  microhaplotypes_info
+      *  is now a list rather than a dictionary of targets
+      *  each list will have a target_id (index into the target infos) and then another list of microhaplotypes 
+  *  microhaplotypes_detected
+      *  made everything into lists rather than dictionary and changed identifiers to indexes 
+

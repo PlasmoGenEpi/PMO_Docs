@@ -34,47 +34,67 @@ A more informative overview can also be viewed here <https://drive.google.com/fi
 
 erDiagram
 PortableMicrohaplotypeObject {
-    string pmo_name  
+
 }
-BioMethod {
-    string program  
-    string purpose  
+ReadCountsByStage {
+    integer bioinformatics_run_id  
+}
+ReadCountsByStageForExperimentalSample {
+    integer experiment_sample_id  
+    integer total_raw_count  
+}
+ReadCountsByStageForTarget {
+    integer target_id  
+}
+StageReadCounts {
+    integer read_count  
+    string stage  
+}
+PmoHeader {
+    string pmo_version  
+    string creation_date  
+}
+PmoGenerationMethod {
     string program_version  
-    stringList additional_argument  
-}
-TarAmpBioinformaticsInfo {
-    string tar_amp_bioinformatics_info_id  
-}
-DemultiplexedExperimentSamples {
-    string tar_amp_bioinformatics_info_id  
-}
-DemultiplexedTargetsForExperimentSample {
-    string experiment_sample_id  
-}
-DemultiplexedTargetForExperimentSample {
-    string target_id  
-    double raw_read_count  
+    string program_name  
 }
 MicrohaplotypesDetected {
-    string tar_amp_bioinformatics_info_id  
+    integer bioinformatics_run_id  
 }
 MicrohaplotypesForSample {
-    string experiment_sample_id  
+    integer experiment_sample_id  
 }
 MicrohaplotypesForTarget {
-    string target_id  
+    integer mhaps_target_id  
 }
 MicrohaplotypeForTarget {
-    string microhaplotype_id  
-    double read_count  
-    double umi_count  
+    integer mhap_id  
+    integer reads  
+    integer umis  
+}
+BioinformaticsRunInfo {
+    integer bioinformatics_methods_id  
+    string run_date  
+    string bioinformatics_run_name  
+}
+BioinformaticsMethodInfo {
+    string bioinformatics_method_name  
+}
+BioMethod {
+    string program_version  
+    string program  
+    string program_description  
+    stringList additional_argument  
+}
+RepresentativeMicrohaplotypes {
+
 }
 RepresentativeMicrohaplotypesForTarget {
-    string target_id  
+    integer target_id  
 }
-RepresentativeMicrohaplotypeSequence {
+RepresentativeMicrohaplotype {
     string seq  
-    string microhaplotype_id  
+    string microhaplotype_name  
     string quality  
     string pseudocigar  
     stringList alt_annotations  
@@ -84,33 +104,39 @@ MaskingInfo {
     integer seq_segment_size  
     integer replacement_size  
 }
-PanelInfo {
-    string panel_id  
+GenomeInfo {
+    string name  
+    string genome_version  
+    integer taxon_id  
+    string url  
+    stringList chromosomes  
+    string gff_url  
 }
 TargetInfo {
-    string target_id  
-    string gene_id  
-    stringList target_type  
+    string target_name  
+    string gene_name  
+    stringList target_attributes  
 }
 PrimerInfo {
     string seq  
 }
 GenomicLocation {
+    integer genome_id  
     string chrom  
     integer start  
     integer end  
     string strand  
     string ref_seq  
 }
-GenomeInfo {
-    string name  
-    string version  
-    integer taxon_id  
-    string url  
-    string gff_url  
+PanelInfo {
+    string panel_name  
+}
+ReactionInfo {
+    integerList panel_targets  
+    string reaction_name  
 }
 SequencingInfo {
-    string sequencing_info_id  
+    string sequencing_info_name  
     string seq_instrument  
     string seq_date  
     string nucl_acid_ext  
@@ -124,16 +150,17 @@ SequencingInfo {
     string seq_center  
 }
 SpecimenInfo {
-    string specimen_id  
     string plate_name  
     string plate_row  
     integer plate_col  
+    string specimen_name  
     integer samp_taxon_id  
-    string individual_id  
+    integer individual_id  
     integer host_taxon_id  
     stringList alternate_identifiers  
-    integer parasite_density  
+    string specimen_sex  
     string collection_date  
+    string date_of_birth  
     string collection_country  
     string geo_admin1  
     string geo_admin2  
@@ -145,863 +172,187 @@ SpecimenInfo {
     string project_name  
     string sample_comments  
 }
+ParasiteDensity {
+    string method  
+    double density  
+}
 ExperimentInfo {
-    string sequencing_info_id  
+    integer sequencing_info_id  
     string plate_name  
     string plate_row  
     integer plate_col  
-    string specimen_id  
-    string panel_id  
-    string experiment_sample_id  
+    integer specimen_id  
+    integer panel_id  
     string accession  
+    string experiment_sample_name  
 }
 
-PortableMicrohaplotypeObject ||--}| ExperimentInfo : "experiment_infos"
-PortableMicrohaplotypeObject ||--}| SpecimenInfo : "specimen_infos"
-PortableMicrohaplotypeObject ||--|| SequencingInfo : "sequencing_infos"
-PortableMicrohaplotypeObject ||--|| PanelInfo : "panel_info"
-PortableMicrohaplotypeObject ||--}| RepresentativeMicrohaplotypeSequences : "representative_microhaplotype_sequences"
-PortableMicrohaplotypeObject ||--|| MicrohaplotypesDetected : "microhaplotypes_detected"
-PortableMicrohaplotypeObject ||--|o DemultiplexedExperimentSamples : "target_demultiplexed_experiment_samples"
-PortableMicrohaplotypeObject ||--|| TarAmpBioinformaticsInfo : "taramp_bioinformatics_infos"
-PortableMicrohaplotypeObject ||--|o BioMethod : "postprocessing_bioinformatics_infos"
-TarAmpBioinformaticsInfo ||--|| BioMethod : "demultiplexing_method"
-TarAmpBioinformaticsInfo ||--|| BioMethod : "denoising_method"
-TarAmpBioinformaticsInfo ||--|| BioMethod : "population_clustering_method"
-TarAmpBioinformaticsInfo ||--}o BioMethod : "additional_methods"
-DemultiplexedExperimentSamples ||--}| DemultiplexedTargetsForExperimentSample : "demultiplexed_experiment_samples"
-DemultiplexedTargetsForExperimentSample ||--}| DemultiplexedTargetForExperimentSample : "demultiplexed_targets"
+PortableMicrohaplotypeObject ||--}| ExperimentInfo : "experiment_info"
+PortableMicrohaplotypeObject ||--}| SpecimenInfo : "specimen_info"
+PortableMicrohaplotypeObject ||--}| SequencingInfo : "sequencing_info"
+PortableMicrohaplotypeObject ||--}| PanelInfo : "panel_info"
+PortableMicrohaplotypeObject ||--}| TargetInfo : "target_info"
+PortableMicrohaplotypeObject ||--}| GenomeInfo : "targeted_genomes"
+PortableMicrohaplotypeObject ||--|| RepresentativeMicrohaplotypes : "microhaplotypes_info"
+PortableMicrohaplotypeObject ||--}| BioinformaticsMethodInfo : "bioinformatics_methods_info"
+PortableMicrohaplotypeObject ||--}| BioinformaticsRunInfo : "bioinformatics_run_info"
+PortableMicrohaplotypeObject ||--}| MicrohaplotypesDetected : "microhaplotypes_detected"
+PortableMicrohaplotypeObject ||--|| PmoHeader : "pmo_header"
+PortableMicrohaplotypeObject ||--}o ReadCountsByStage : "read_counts_by_stage"
+ReadCountsByStage ||--}| ReadCountsByStageForExperimentalSample : "read_counts_by_experimental_sample_by_stage"
+ReadCountsByStageForExperimentalSample ||--}o ReadCountsByStageForTarget : "read_counts_for_targets"
+ReadCountsByStageForTarget ||--}| StageReadCounts : "stages"
+PmoHeader ||--|o PmoGenerationMethod : "generation_method"
 MicrohaplotypesDetected ||--}| MicrohaplotypesForSample : "experiment_samples"
 MicrohaplotypesForSample ||--}| MicrohaplotypesForTarget : "target_results"
-MicrohaplotypesForTarget ||--}| MicrohaplotypeForTarget : "microhaplotypes"
-RepresentativeMicrohaplotypeSequences ||--}| RepresentativeMicrohaplotypesForTarget : "targets"
-RepresentativeMicrohaplotypesForTarget ||--}| RepresentativeMicrohaplotypeSequence : "seqs"
-RepresentativeMicrohaplotypeSequence ||--}o MaskingInfo : "masking"
-PanelInfo ||--|| GenomeInfo : "target_genome"
-PanelInfo ||--}| TargetInfo : "panel_targets"
+MicrohaplotypesForTarget ||--}| MicrohaplotypeForTarget : "haps"
+BioinformaticsMethodInfo ||--|| BioMethod : "demultiplexing_method"
+BioinformaticsMethodInfo ||--|| BioMethod : "denoising_method"
+BioinformaticsMethodInfo ||--}o BioMethod : "additional_methods"
+RepresentativeMicrohaplotypes ||--}| RepresentativeMicrohaplotypesForTarget : "targets"
+RepresentativeMicrohaplotypesForTarget ||--}| RepresentativeMicrohaplotype : "microhaplotypes"
+RepresentativeMicrohaplotype ||--}o MaskingInfo : "masking"
 TargetInfo ||--|o GenomicLocation : "insert_location"
 TargetInfo ||--}| PrimerInfo : "forward_primers"
 TargetInfo ||--}| PrimerInfo : "reverse_primers"
 PrimerInfo ||--|o GenomicLocation : "location"
+PanelInfo ||--}| ReactionInfo : "reactions"
+SpecimenInfo ||--}o ParasiteDensity : "parasite_density_info"
 
 ```
 
 :::
 
+
 ## PortableMicrohaplotypeObject  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/PortableMicrohaplotypeObject/>  
 
 ### Required  
-*  pmo_name (***type=string***)  
-    *  a name for this PMO, can be a concatenation of names if combined more than one PMO  
-*  experiment_infos (***type=[ExperimentInfo](#experimentinfo)***)  
-    *  a list of experiments of all the seq/amp of samples within this project  
-*  specimen_infos (***type=[SpecimenInfo](#specimeninfo)***)  
-    *  a list of SpecimenInfo of all the samples within this project  
-*  sequencing_infos (***type=[SequencingInfo](#sequencinginfo)***)  
-    *  the sequencing info for this project  
+*  experiment_info (***type=[ExperimentInfo](#experimentinfo)***)  
+    *  a list of experiments of all the seq/amp of the specimens within this project  
+*  specimen_info (***type=[SpecimenInfo](#specimeninfo)***)  
+    *  a list of specimens of all the samples within this project  
+*  sequencing_info (***type=[SequencingInfo](#sequencinginfo)***)  
+    *  a list of sequencing info for this project  
 *  panel_info (***type=[PanelInfo](#panelinfo)***)  
-    *  the info on the targeted sequencing panel used for this project  
-*  representative_microhaplotype_sequences (***type=[RepresentativeMicrohaplotypeSequences](#representativemicrohaplotypesequences)***)  
-    *  a list of the representative sequences for the results for this project  
+    *  a list of info on the panels  
+*  target_info (***type=[TargetInfo](#targetinfo)***)  
+    *  a list of info on the targets  
+*  targeted_genomes (***type=[GenomeInfo](#genomeinfo)***)  
+    *  a list of genomes that the targets in TargetInfo refer to  
+*  microhaplotypes_info (***type=[RepresentativeMicrohaplotypes](#representativemicrohaplotypes)***)  
+    *  a list of the information on the representative microhaplotypes  
+*  bioinformatics_methods_info (***type=[BioinformaticsMethodInfo](#bioinformaticsmethodinfo)***)  
+    *  the bioinformatics pipeline/methods used to generated the amplicon analysis for this project  
+*  bioinformatics_run_info (***type=[BioinformaticsRunInfo](#bioinformaticsruninfo)***)  
+    *  the runtime info for the bioinformatics pipeline used to generated the amplicon analysis for this project  
 *  microhaplotypes_detected (***type=[MicrohaplotypesDetected](#microhaplotypesdetected)***)  
     *  the microhaplotypes detected in this projects  
-*  taramp_bioinformatics_infos (***type=[TarAmpBioinformaticsInfo](#tarampbioinformaticsinfo)***)  
-    *  the bioinformatics pipeline/methods used to generated the amplicon analysis for this project  
+*  pmo_header (***type=[PmoHeader](#pmoheader)***)  
+    *  the PMO information for this file including version etc  
 
 ### Optional  
-*  postprocessing_bioinformatics_infos (***type=[BioMethod](#biomethod)***)  
-    *  any additional methods that were applied to the processing of this file/analysis, this can be filtering, adding info etc  
-*  target_demultiplexed_experiment_samples (***type=[DemultiplexedExperimentSamples](#demultiplexedexperimentsamples)***)  
-    *  the raw demultiplex target counts for each sample  
-
-
-
-
-
-## TarAmpBioinformaticsInfo  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/TarAmpBioinformaticsInfo/>  
-
-### Required  
-*  tar_amp_bioinformatics_info_id (***type=string***)  
-    *  a unique identifier for this targeted amplicon bioinformatics pipeline run  
-*  demultiplexing_method (***type=[BioMethod](#biomethod)***)  
-    *  the demultiplexing method used to separate raw reads from barcodes and primer targets  
-*  denoising_method (***type=[BioMethod](#biomethod)***)  
-    *  the method used to de-noise and/or cluster the raw reads  
-*  population_clustering_method (***type=[BioMethod](#biomethod)***)  
-    *  the method used to compare clustered/de-noised reads across samples for a target  
-
-### Optional  
-*  additional_methods (***type=[BioMethod](#biomethod)***)  
-    *  any additional methods used to analyze the data  
+*  read_counts_by_stage (***type=[ReadCountsByStage](#readcountsbystage)***)  
+    *  the read counts for different stages of the pipeline  
 
 ### Example  
 ```{json}  
-		{
-			"demultiplexing_method" : 
-			{
-				"program" : "SeekDeep extractorPairedEnd",
-				"purpose" : "Takes raw paired-end reads and demultiplexes on primers and does QC filtering",
-				"version" : "v2.6.5"
-			},
-			"denoising_method" : 
-			{
-				"additional_argument" : "--illumina --qualThres 25,20 --trimFront 1 --trimBack 1",
-				"program" : "SeekDeep qluster",
-				"purpose" : "Takes sequences per sample per target and clusters them",
-				"version" : "v2.6.5"
-			},
-			"population_clustering_method" : 
-			{
-				"additional_argument" : "--strictErrors  --illumina --removeOneSampOnlyOneOffHaps --excludeCommonlyLowFreqHaplotypes --excludeLowFreqOneOffs --rescueExcludedOneOffLowFreqHaplotypes",
-				"program" : "SeekDeep processClusters",
-				"purpose" : "Compare across samples for each target to create population level identifiers and do post artifact cleanup",
-				"version" : "v2.6.5"
-			},
-			"tar_amp_bioinformatics_info_id" : "Mozambique2018-SeekDeep"
-		}
+
 ```  
+
 
 ## BioMethod  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/BioMethod/>  
-
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseBioMethod" aria-expanded="false" aria-controls="collapseExample">
+  Show BioMethod fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseBioMethod">
+  <div class="card card-body">
 ### Required  
+*  program_version (***type=string***)  
+    *  the version of generation method, should be in the format of v[MAJOR].[MINOR].[PATCH]  
 *  program (***type=string***)  
     *  name of the program used for this portion of the pipeline  
-*  purpose (***type=string***)  
-    *  the purpose for this method  
-*  program_version (***type=string***)  
-    *  versioning info for the program  
 
 ### Optional  
 *  additional_argument (***type=array***)  
     *  any additional arguments that differ from the default  
+*  program_description (***type=string***)  
+    *  a short description of what this method does  
 
 ### Example  
 ```{json}  
-			{
-				"additional_argument" : "--strictErrors  --illumina --removeOneSampOnlyOneOffHaps --excludeCommonlyLowFreqHaplotypes --excludeLowFreqOneOffs --rescueExcludedOneOffLowFreqHaplotypes",
-				"program" : "SeekDeep processClusters",
-				"purpose" : "Compare across samples for each target to create population level identifiers and do post artifact cleanup",
-				"version" : "v2.6.5"
-			},
+
 ```  
+  </div>
+</div><br>
 
-
-## DemultiplexedExperimentSamples  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/DemultiplexedExperimentSamples/>  
-
+## BioinformaticsMethodInfo  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/BioinformaticsMethodInfo/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseBioinformaticsMethodInfo" aria-expanded="false" aria-controls="collapseExample">
+  Show BioinformaticsMethodInfo fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseBioinformaticsMethodInfo">
+  <div class="card card-body">
 ### Required  
-*  tar_amp_bioinformatics_info_id (***type=string***)  
-    *  a unique identifier for this targeted amplicon bioinformatics pipeline run  
-*  demultiplexed_experiment_samples (***type=[DemultiplexedTargetsForExperimentSample](#demultiplexedtargetsforexperimentsample)***)  
-    *  a list of the samples with the number of raw reads extracted   
-
-### Example  
-```{json}  
-			"tar_amp_bioinformatics_info_id" : "Mozambique2018-SeekDeep", 
-			"demultiplexed_experiment_samples" : 
-			{
-				"1112282540" : 
-				{
-					"demultiplexed_targets" : 
-					{
-						"t1" : 
-						{
-							"raw_read_count" : 34.0,
-							"target_id" : "t1"
-						},
-						"t10" : 
-						{
-							"raw_read_count" : 205.0,
-							"target_id" : "t10"
-						},
-						"t100" : 
-						{
-							"raw_read_count" : 159.0,
-							"target_id" : "t100"
-						},
-```  
-
-
-## DemultiplexedTargetForExperimentSample  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/DemultiplexedTargetForExperimentSample/>  
-
-### Required  
-*  target_id (***type=string***)  
-    *  name of the target  
-*  raw_read_count (***type=number***)  
-    *  the raw read counts extracted for a target for a experiment sample  
-
-### Example  
-```{json}  
-						"t100" : 
-						{
-							"raw_read_count" : 159.0,
-							"target_id" : "t100"
-						},
-```  
-
-
-## DemultiplexedTargetsForExperimentSample  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/DemultiplexedTargetsForExperimentSample/>  
-
-### Required  
-*  experiment_sample_id (***type=string***)  
-    *  a unique identifier for this sequence/amplification run on a specimen  
-*  demultiplexed_targets (***type=[DemultiplexedTargetForExperimentSample](#demultiplexedtargetforexperimentsample)***)  
-    *  a list of the targets extracted for a sample   
-
-### Example  
-```{json}  
-					"demultiplexed_targets" : 
-					{
-						"t1" : 
-						{
-							"raw_read_count" : 34.0,
-							"target_id" : "t1"
-						},
-						"t10" : 
-						{
-							"raw_read_count" : 205.0,
-							"target_id" : "t10"
-						},
-						"t100" : 
-						{
-							"raw_read_count" : 159.0,
-							"target_id" : "t100"
-						},
-						"t11" : 
-						{
-							"raw_read_count" : 198.0,
-							"target_id" : "t11"
-						},
-						"t12" : 
-						{
-							"raw_read_count" : 19.0,
-							"target_id" : "t12"
-						},
-						"t13" : 
-						{
-							"raw_read_count" : 66.0,
-							"target_id" : "t13"
-						},
-					"experiment_sample_id" : "1112282540"
-```  
-
-
-
-
-
-## MicrohaplotypeForTarget  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/MicrohaplotypeForTarget/>  
-
-### Required  
-*  microhaplotype_id (***type=string***)  
-    *  name of the microhaplotype, should be unique to this microhaplotype  
-*  read_count (***type=number***)  
-    *  the read count associated with this microhaplotype  
+*  demultiplexing_method (***type=[BioMethod](#biomethod)***)  
+    *  the demultiplexing method used to separate raw reads from barcodes and primer targets  
+*  denoising_method (***type=[BioMethod](#biomethod)***)  
+    *  the method used to de-noise and/or cluster the raw reads  
 
 ### Optional  
-*  umi_count (***type=number***)  
-    *  the unique molecular identifier (umi) count associated with this microhaplotype  
+*  additional_methods (***type=[BioMethod](#biomethod)***)  
+    *  any additional methods used to analyze the data  
+*  bioinformatics_method_name (***type=string***)  
+    *  name of the collection of methods is called, e.g. pipeline   
 
 ### Example  
 ```{json}  
-								{
-									"microhaplotype_id" : "t1.0",
-									"read_count" : 11600.0
-								}
+
 ```  
+  </div>
+</div><br>
 
-
-## MicrohaplotypesDetected  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/MicrohaplotypesDetected/>  
-
+## BioinformaticsRunInfo  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/BioinformaticsRunInfo/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseBioinformaticsRunInfo" aria-expanded="false" aria-controls="collapseExample">
+  Show BioinformaticsRunInfo fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseBioinformaticsRunInfo">
+  <div class="card card-body">
 ### Required  
-*  tar_amp_bioinformatics_info_id (***type=string***)  
-    *  a unique identifier for this targeted amplicon bioinformatics pipeline run  
-*  experiment_samples (***type=[MicrohaplotypesForSample](#microhaplotypesforsample)***)  
-    *  a list of the microhaplotypes detected for a sample for various targets   
-
-### Example  
-```{json}  
-			"tar_amp_bioinformatics_info_id" : "Mozambique2018-SeekDeep", 
-			"experiment_samples" : 
-			{
-				"8025874217" : 
-				{
-					"experiment_sample_id" : "8025874217",
-					"target_results" : 
-					{
-						"t1" : 
-						{
-							"microhaplotypes" : 
-							[
-								{
-									"microhaplotype_id" : "t1.2",
-									"read_count" : 34463.0
-								},
-								{
-									"microhaplotype_id" : "t1.0",
-									"read_count" : 11600.0
-								}
-							],
-							"target_id" : "t1"
-						},
-						"t10" : 
-						{
-							"microhaplotypes" : 
-							[
-								{
-									"microhaplotype_id" : "t10.0",
-									"read_count" : 49728.0
-								}
-							],
-							"target_id" : "t10"
-						},
-						"t100" : 
-						{
-							"microhaplotypes" : 
-							[
-								{
-									"microhaplotype_id" : "t100.05",
-									"read_count" : 49740.0
-								}
-							],
-							"target_id" : "t100"
-						},
-```  
-
-
-## MicrohaplotypesForSample  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/MicrohaplotypesForSample/>  
-
-### Required  
-*  experiment_sample_id (***type=string***)  
-    *  a unique identifier for this sequence/amplification run on a specimen  
-*  target_results (***type=[MicrohaplotypesForTarget](#microhaplotypesfortarget)***)  
-    *  a list of the microhaplotypes detected for a list of targets  
-
-### Example  
-```{json}  
-				{
-					"experiment_sample_id" : "8025874217",
-					"target_results" : 
-					{
-						"t1" : 
-						{
-							"microhaplotypes" : 
-							[
-								{
-									"microhaplotype_id" : "t1.2",
-									"read_count" : 34463.0
-								},
-								{
-									"microhaplotype_id" : "t1.0",
-									"read_count" : 11600.0
-								}
-							],
-							"target_id" : "t1"
-						},
-						"t10" : 
-						{
-							"microhaplotypes" : 
-							[
-								{
-									"microhaplotype_id" : "t10.0",
-									"read_count" : 49728.0
-								}
-							],
-							"target_id" : "t10"
-						},
-						"t100" : 
-						{
-							"microhaplotypes" : 
-							[
-								{
-									"microhaplotype_id" : "t100.05",
-									"read_count" : 49740.0
-								}
-							],
-							"target_id" : "t100"
-						},
-```  
-
-
-## MicrohaplotypesForTarget  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/MicrohaplotypesForTarget/>  
-
-### Required  
-*  target_id (***type=string***)  
-    *  name of the target  
-*  microhaplotypes (***type=[MicrohaplotypeForTarget](#microhaplotypefortarget)***)  
-    *  a list of the microhaplotypes detected for this target  
-
-### Example  
-```{json}  
-						{
-							"microhaplotypes" : 
-							[
-								{
-									"microhaplotype_id" : "t1.2",
-									"read_count" : 34463.0
-								},
-								{
-									"microhaplotype_id" : "t1.0",
-									"read_count" : 11600.0
-								}
-							],
-							"target_id" : "t1"
-						},
-```  
-
-
-## PanelInfo  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/PanelInfo/>  
-
-### Required  
-*  panel_id (***type=string***)  
-    *  name of the panel  
-*  target_genome (***type=[GenomeInfo](#genomeinfo)***)  
-    *  the info on the target reference genome for this panel  
-*  panel_targets (***type=[TargetInfo](#targetinfo)***)  
-    *  a list of the target infos for the targets in this panel   
-
-### Example  
-```{json}  
-	"panel_info" : 
-	{
-		"panel_id" : "heomev1",
-		"target_genome" : 
-		{
-			"gff_url" : "https://plasmodb.org/common/downloads/release-65/Pfalciparum3D7/gff/data/PlasmoDB-65_Pfalciparum3D7.gff",
-			"name" : "3D7",
-			"taxon_id" : 5833,
-			"url" : "https://plasmodb.org/common/downloads/release-65/Pfalciparum3D7/fasta/data/PlasmoDB-65_Pfalciparum3D7_Genome.fasta",
-			"version" : "2020-09-01"
-		},
-		"targets" : 
-		{
-			"t1" : 
-			{
-				"forward_primers" : 
-				[
-					{
-						"location" : 
-						{
-							"chrom" : "Pf3D7_01_v3",
-							"end" : 145449,
-							"start" : 145416,
-							"strand" : "+"
-						},
-						"seq" : "TGTTCGATATGTTTAAATATATGATTCTCGAAA"
-					}
-				],
-				"gene_id" : "PF3D7_0103300",
-				"insert_location" : 
-				{
-					"chrom" : "Pf3D7_01_v3",
-					"end" : 145622,
-					"start" : 145449,
-					"strand" : "+"
-				},
-				"reverse_primers" : 
-				[
-					{
-						"location" : 
-						{
-							"chrom" : "Pf3D7_01_v3",
-							"end" : 145449,
-							"start" : 145416,
-							"strand" : "+"
-						},
-						"seq" : "CCAATATGTCAAGGTATATTAAAGTATGGTATC"
-					}
-				],
-				"target_id" : "t1"
-			},
-			"t10" : 
-			{
-				"forward_primers" : 
-				[
-					{
-						"location" : 
-						{
-							"chrom" : "Pf3D7_02_v3",
-							"end" : 109807,
-							"start" : 109776,
-							"strand" : "+"
-						},
-						"seq" : "CCACCATTTCTTCATTTTAATTTTGAATGGT"
-					}
-				],
-				"gene_id" : "PF3D7_0202100",
-				"insert_location" : 
-				{
-					"chrom" : "Pf3D7_02_v3",
-					"end" : 109982,
-					"start" : 109807,
-					"strand" : "+"
-				},
-				"reverse_primers" : 
-				[
-					{
-						"location" : 
-						{
-							"chrom" : "Pf3D7_02_v3",
-							"end" : 109807,
-							"start" : 109776,
-							"strand" : "+"
-						},
-						"seq" : "ACCATTTGGATTAAAACCTTCAGATTTAAATA"
-					}
-				],
-				"target_id" : "t10"
-			},
-```  
-
-
-## TargetInfo  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/TargetInfo/>  
-
-### Required  
-*  target_id (***type=string***)  
-    *  name of the target  
-*  forward_primers (***type=[PrimerInfo](#primerinfo)***)  
-    *  A list of forward primers associated with this target  
-*  reverse_primers (***type=[PrimerInfo](#primerinfo)***)  
-    *  A list of reverse primers associated with this target  
+*  bioinformatics_methods_id (***type=integer***)  
+    *  the index into the bioinformatics_methods_info list  
+*  run_date (***type=string***)  
+    *  the date when the run was done, should be YYYY-MM-DD  
 
 ### Optional  
-*  gene_id (***type=string***)  
-    *  an identifier of the gene, if any, is being covered with this targeted  
-*  insert_location (***type=[GenomicLocation](#genomiclocation)***)  
-    *  the intended genomic location of the insert of the amplicon (the location between the end of the forward primer and the beginning of the reverse primer)  
-*  target_type (***type=array***)  
-    *  a list of classification type for the primer target  
+*  bioinformatics_run_name (***type=string***)  
+    *  a name to for this run  
 
 ### Example  
 ```{json}  
-			{
-				"forward_primers" : 
-				[
-					{
-						"location" : 
-						{
-							"chrom" : "Pf3D7_01_v3",
-							"end" : 145449,
-							"start" : 145416,
-							"strand" : "+"
-						},
-						"seq" : "TGTTCGATATGTTTAAATATATGATTCTCGAAA"
-					}
-				],
-				"gene_id" : "PF3D7_0103300",
-				"insert_location" : 
-				{
-					"chrom" : "Pf3D7_01_v3",
-					"end" : 145622,
-					"start" : 145449,
-					"strand" : "+"
-				},
-				"reverse_primers" : 
-				[
-					{
-						"location" : 
-						{
-							"chrom" : "Pf3D7_01_v3",
-							"end" : 145449,
-							"start" : 145416,
-							"strand" : "+"
-						},
-						"seq" : "CCAATATGTCAAGGTATATTAAAGTATGGTATC"
-					}
-				],
-				"target_id" : "t1"
-			},
+
 ```  
-
-
-
-## PrimerInfo  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/PrimerInfo/>  
-
-### Required  
-*  seq (***type=string***)  
-    *  the DNA sequence  
-
-### Optional  
-*  location (***type=[GenomicLocation](#genomiclocation)***)  
-    *  what the intended genomic location of the primer is  
-
-### Example  
-```{json}  
-					{
-						"location" : 
-						{
-							"chrom" : "Pf3D7_01_v3",
-							"end" : 145449,
-							"start" : 145416,
-							"strand" : "+"
-						},
-						"seq" : "TGTTCGATATGTTTAAATATATGATTCTCGAAA"
-					}
-```  
-
-
-
-## MaskingInfo  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/MaskingInfo/>  
-
-### Required  
-*  seq_start (***type=integer***)  
-    *  the start of the masking  
-*  seq_segment_size (***type=integer***)  
-    *  the size of the masking  
-*  replacement_size (***type=integer***)  
-    *  the size of replacement mask  
-
-### Example  
-```{json}  
-[
-	{
-  		seq_start : 10, 
-  		seq_segment_size : 5, 
-  		replacement_size : 3  
-	}, 
-	{
-  		seq_start : 45, 
-  		seq_segment_size : 7, 
-  		replacement_size : 7
-	}, 
-]
-```  
-
-
-
-## GenomeInfo  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/GenomeInfo/>  
-
-### Required  
-*  name (***type=string***)  
-    *  name of the genome  
-*  version (***type=string***)  
-    *  the genome version  
-*  taxon_id (***type=integer***)  
-    *  the NCBI taxonomy number  
-*  url (***type=string***)  
-    *  a link to the where this genome file could be downloaded  
-
-### Optional  
-*  gff_url (***type=string***)  
-    *  a link to the where this genome's annotation file could be downloaded  
-
-### Example  
-```{json}  
-		{
-			"gff_url" : "https://plasmodb.org/common/downloads/release-65/Pfalciparum3D7/gff/data/PlasmoDB-65_Pfalciparum3D7.gff",
-			"name" : "3D7",
-			"taxon_id" : 5833,
-			"url" : "https://plasmodb.org/common/downloads/release-65/Pfalciparum3D7/fasta/data/PlasmoDB-65_Pfalciparum3D7_Genome.fasta",
-			"version" : "2020-09-01"
-		},
-```  
-
-
-## GenomicLocation  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/GenomicLocation/>  
-
-### Required  
-*  chrom (***type=string***)  
-    *  the chromosome name  
-*  start (***type=integer***)  
-    *  the start of the location, 0-based positioning  
-*  end (***type=integer***)  
-    *  the end of the location, 0-based positioning  
-
-### Optional  
-*  ref_seq (***type=string***)  
-    *  the reference sequence of this genomic location   
-*  strand (***type=string***)  
-    *  which strand the location is, either + for plus strand or - for negative strand  
-
-### Example  
-```{json}  
-						{
-							"chrom" : "Pf3D7_01_v3",
-							"end" : 145449,
-							"start" : 145416,
-							"strand" : "+"
-						},
-```  
-
-
-
-## RepresentativeMicrohaplotypeSequences  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotypeSequences/>  
-
-### Required  
-*  targets (***type=[RepresentativeMicrohaplotypesForTarget](#representativemicrohaplotypesfortarget)***)  
-    *  a list of the targets detected for this analysis   
-
-### Example  
-```{json}  
-			"targets" : 
-			{
-				"t1" : 
-				{
-					"seqs" : 
-					{
-						"t1.0" : 
-						{
-							"microhaplotype_id" : "t1.0",
-							"seq" : "AACTTTTTTTATTTTTTTTGTCAATAGATAAATGATCAATATTTTCTATATTTAATCTATCAAGTATTTTTATATATCTATTATTTCTTTCTTCGATGGATAAATTATAAGAATCAATATCCTTTCTTTCATCAACAAACTTTTTTATTGTTAACTCCATTTTTTTATTTA"
-						},
-						"t1.1" : 
-						{
-							"microhaplotype_id" : "t1.1",
-							"seq" : "AACTTTTTTTATTTTTTTTGTCAATAGATAAATGATCAATATTTTCTATATTTAATCTATCAAGAATTTTTATATATCTATTATTTCTTTCTTCGATGGATAAATTATATGAATCAATATCCTTTCTTTCATCAACAAACTTTTTTATTGTTAACTCCATTTTTTTATTTA"
-						},
-```  
-
-
-## RepresentativeMicrohaplotypesForTarget  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotypesForTarget/>  
-
-### Required  
-*  target_id (***type=string***)  
-    *  name of the target  
-*  seqs (***type=[RepresentativeMicrohaplotypeSequence](#representativemicrohaplotypesequence)***)  
-    *  a list of the microhaplotypes detected for a target   
-
-### Example  
-```{json}  
-				{
-					"seqs" : 
-					{
-						"t1.0" : 
-						{
-							"microhaplotype_id" : "t1.0",
-							"seq" : "AACTTTTTTTATTTTTTTTGTCAATAGATAAATGATCAATATTTTCTATATTTAATCTATCAAGTATTTTTATATATCTATTATTTCTTTCTTCGATGGATAAATTATAAGAATCAATATCCTTTCTTTCATCAACAAACTTTTTTATTGTTAACTCCATTTTTTTATTTA"
-						},
-						"t1.1" : 
-						{
-							"microhaplotype_id" : "t1.1",
-							"seq" : "AACTTTTTTTATTTTTTTTGTCAATAGATAAATGATCAATATTTTCTATATTTAATCTATCAAGAATTTTTATATATCTATTATTTCTTTCTTCGATGGATAAATTATATGAATCAATATCCTTTCTTTCATCAACAAACTTTTTTATTGTTAACTCCATTTTTTTATTTA"
-						},
-						"t1.2" : 
-						{
-							"microhaplotype_id" : "t1.2",
-							"seq" : "AACTTTTTTTATTTTTTTTGTCAATAGATAAATGATCAATATTTTCTATATTTAATCTATCAAGTATTTTTATATATCTATTATTTCTTTCTTCGATGGATAAATTATATGAATCAATATCCTTTCTTTCATCAACAAACTTTTTTATTGTTAACTCCATTTTTTTATTTA"
-						},
-						"t1.3" : 
-						{
-							"microhaplotype_id" : "t1.3",
-							"seq" : "AACTTTTTTTATTTTTTTTGTCAATAGATAAATGATCAATATTTTCTATATTTAATCTATCAAGAATTTTTATATATCTATTATTTCTTTCTTCGATGGATAAATTATAAGAATCAATATCCTTTCTTTCATCAACAAACTTTTTTATTGTTAACTCCATTTTTTTATTTA"
-						},
-						"t1.4" : 
-						{
-							"microhaplotype_id" : "t1.4",
-							"seq" : "AACTTTTTTTATTTTTTTTGTCAATAGATAAATGATCAATATTTTCTATATTTAATCTATCAAGTATTTTTATATATCTATTATTTCTTTCTTCGATGGATAAATTATAAGAATCAATATCCTTTCTTTCATCAACAAACTTTTTTATGGTTAACTCCATTTTTTTATTTA"
-						},
-						"t1.5" : 
-						{
-							"microhaplotype_id" : "t1.5",
-							"seq" : "AACTTTTTTTATTTTTTTTGTCAATAGATAAATGATCAATATTTTCTATATTTAATCTATCAAGAATTTTTATATATCTATTATTTCTTTCTTCGAAGGATAAATTATAAGAATCAATATCCTTTCTTTCATCAACAAACTTTTTTATTGTTAACTCCATTTTTTTATTTA"
-						}
-					},
-					"target_id" : "t1"
-				},
-```  
-
-## RepresentativeMicrohaplotypeSequence  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotypeSequence/>  
-
-### Required  
-*  seq (***type=string***)  
-    *  the DNA sequence  
-*  microhaplotype_id (***type=string***)  
-    *  name of the microhaplotype, should be unique to this microhaplotype  
-
-### Optional  
-*  alt_annotations (***type=array***)  
-    *  a list of additional annotations associated with this microhaplotype, e.g. wildtype, amino acid changes etc  
-*  masking (***type=[MaskingInfo](#maskinginfo)***)  
-    *  masking info for the sequence  
-*  pseudocigar (***type=string***)  
-    *  the pseudocigar of the haplotype  
-*  quality (***type=string***)  
-    *  the ansi fastq per base quality score for this sequence, this is optional  
-
-### Example  
-```{json}  
-						{
-							"microhaplotype_id" : "t1.0",
-							"seq" : "AACTTTTTTTATTTTTTTTGTCAATAGATAAATGATCAATATTTTCTATATTTAATCTATCAAGTATTTTTATATATCTATTATTTCTTTCTTCGATGGATAAATTATAAGAATCAATATCCTTTCTTTCATCAACAAACTTTTTTATTGTTAACTCCATTTTTTTATTTA"
-						},
-```  
-
-
-## SequencingInfo  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/SequencingInfo/>  
-
-### Required  
-*  sequencing_info_id (***type=string***)  
-    *  a unique identifier for this sequencing info  
-*  seq_instrument (***type=string***)  
-    *  the sequencing instrument used to sequence the run, e.g. ILLUMINA, Illumina MiSeq  
-*  seq_date (***type=string***)  
-    *  the date of sequencing, should be YYYY-MM or YYYY-MM-DD  
-*  nucl_acid_ext (***type=string***)  
-    *  Link to a reference or kit that describes the recovery of nucleic acids from the sample  
-*  nucl_acid_amp (***type=string***)  
-    *  Link to a reference or kit that describes the enzymatic amplification of nucleic acids,  
-*  nucl_acid_ext_date (***type=string***)  
-    *  the date of the nucleoacide extraction  
-*  nucl_acid_amp_date (***type=string***)  
-    *  the date of the nucleoacide amplification  
-*  pcr_cond (***type=string***)  
-    *  the method/conditions for PCR, List PCR cycles used to amplify the target  
-*  lib_screen (***type=string***)  
-    *  Describe enrichment, screening, or normalization methods applied during amplification or library preparation, e.g. size selection 390bp, diluted to 1 ng DNA/sample  
-*  lib_layout (***type=string***)  
-    *  Specify the configuration of reads, e.g. paired-end  
-*  lib_kit (***type=string***)  
-    *  Name, version, and applicable cell or cycle numbers for the kit used to prepare libraries and load cells or chips for sequencing. If possible, include a part number, e.g. MiSeq Reagent Kit v3 (150-cycle), MS-102-3001  
-*  seq_center (***type=string***)  
-    *  Name of facility where sequencing was performed (lab, core facility, or company)  
-
-### Example  
-```{json}  
-		{
-			"lib_kit" : "TruSeq i5/i7 barcode primers",
-			"lib_layout" : "paired-end",
-			"lib_screen" : "40 µL reaction containing 10 µL of bead purified digested product, 18μL of nuclease-free water, 8μL of 5X secondary PCR master mix, and 5 µL of 10 µM TruSeq i5/i7 barcode primers",
-			"nucl_acid_amp" : "https://www.paragongenomics.com/targeted-sequencing/amplicon-sequencing/cleanplex-ngs-amplicon-sequencing/",
-			"nucl_acid_date" : "2019-07-15",
-			"nucl_acid_ext" : "https://www.paragongenomics.com/targeted-sequencing/amplicon-sequencing/cleanplex-ngs-amplicon-sequencing/",
-			"pcr_cond" : "10 min at 95°C, 13 cycles for high density samples (or 15 cycles for low density samples) of 15 sec at 98°C and 75 sec at 60°C",
-			"seq_center" : "UCSF",
-			"seq_date" : "2019-07-15",
-			"seq_instrument" : "NextSeq 550 instrument",
-			"sequencing_info_id" : "Mozambique2018"
-		}
-```  
+  </div>
+</div><br>
 
 ## ExperimentInfo  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/ExperimentInfo/>  
-
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseExperimentInfo" aria-expanded="false" aria-controls="collapseExample">
+  Show ExperimentInfo fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseExperimentInfo">
+  <div class="card card-body">
 ### Required  
-*  sequencing_info_id (***type=string***)  
-    *  a unique identifier for this sequencing info  
-*  specimen_id (***type=string***)  
-    *  the name of the specimen of a individual  
-*  panel_id (***type=string***)  
-    *  name of the panel  
-*  experiment_sample_id (***type=string***)  
-    *  a unique identifier for this sequence/amplification run on a specimen  
+*  sequencing_info_id (***type=integer***)  
+    *  the index into the sequencing_info list  
+*  specimen_id (***type=integer***)  
+    *  the index into the specimen_info list  
+*  panel_id (***type=integer***)  
+    *  the index into the panel_info list  
+*  experiment_sample_name (***type=string***)  
+    *  a unique identifier for this sequence/amplification run on a specimen_name  
 
 ### Optional  
 *  accession (***type=string***)  
@@ -1015,25 +366,509 @@ PrimerInfo ||--|o GenomicLocation : "location"
 
 ### Example  
 ```{json}  
-		{
-			"experiment_sample_id" : "8025874217",
-			"panel_id" : "heomev1",
-			"plate_col" : 12,
-			"plate_name" : "8",
-			"plate_row" : "C",
-			"sequencing_info_id" : "Mozambique2018",
-			"specimen_id" : "8025874217"
-		},
+
 ```  
+  </div>
+</div><br>
 
+## GenomeInfo  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/GenomeInfo/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseGenomeInfo" aria-expanded="false" aria-controls="collapseExample">
+  Show GenomeInfo fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseGenomeInfo">
+  <div class="card card-body">
+### Required  
+*  name (***type=string***)  
+    *  name of the genome  
+*  genome_version (***type=string***)  
+    *  the genome version  
+*  taxon_id (***type=integer***)  
+    *  the NCBI taxonomy number  
+*  url (***type=string***)  
+    *  a link to the where this genome file could be downloaded  
 
+### Optional  
+*  chromosomes (***type=array***)  
+    *  a list of chromosomes found within this genome  
+*  gff_url (***type=string***)  
+    *  a link to the where this genome's annotation file could be downloaded  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## GenomicLocation  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/GenomicLocation/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseGenomicLocation" aria-expanded="false" aria-controls="collapseExample">
+  Show GenomicLocation fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseGenomicLocation">
+  <div class="card card-body">
+### Required  
+*  genome_id (***type=integer***)  
+    *  the index to the genome in the targeted_genomes list that this location refers to   
+*  chrom (***type=string***)  
+    *  the chromosome name  
+*  start (***type=integer***)  
+    *  the start of the location, 0-based positioning  
+*  end (***type=integer***)  
+    *  the end of the location, 0-based positioning  
+
+### Optional  
+*  ref_seq (***type=string***)  
+    *  the reference sequence of this genomic location  
+*  strand (***type=string***)  
+    *  which strand the location is, either + for plus strand or - for negative strand  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## MarkerOfInterest  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/MarkerOfInterest/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseMarkerOfInterest" aria-expanded="false" aria-controls="collapseExample">
+  Show MarkerOfInterest fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseMarkerOfInterest">
+  <div class="card card-body">
+### Required  
+
+### Optional  
+*  associations (***type=array***)  
+    *  a list of associations with this marker, e.g. SP resistance, etc  
+*  marker_location (***type=[GenomicLocation](#genomiclocation)***)  
+    *  the genomic location  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## MaskingInfo  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/MaskingInfo/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseMaskingInfo" aria-expanded="false" aria-controls="collapseExample">
+  Show MaskingInfo fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseMaskingInfo">
+  <div class="card card-body">
+### Required  
+*  seq_start (***type=integer***)  
+    *  the start of the masking  
+*  seq_segment_size (***type=integer***)  
+    *  the size of the masking  
+*  replacement_size (***type=integer***)  
+    *  the size of replacement mask  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## MicrohaplotypeForTarget  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/MicrohaplotypeForTarget/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseMicrohaplotypeForTarget" aria-expanded="false" aria-controls="collapseExample">
+  Show MicrohaplotypeForTarget fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseMicrohaplotypeForTarget">
+  <div class="card card-body">
+### Required  
+*  mhap_id (***type=integer***)  
+    *  the index for a microhaplotype for a target in the microhaplotypes_info list, e.g. microhaplotypes_info[mhaps_target_id][mhap_id]  
+*  reads (***type=integer***)  
+    *  the read count associated with this microhaplotype  
+
+### Optional  
+*  umis (***type=integer***)  
+    *  the unique molecular identifier (umi) count associated with this microhaplotype  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## MicrohaplotypesDetected  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/MicrohaplotypesDetected/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseMicrohaplotypesDetected" aria-expanded="false" aria-controls="collapseExample">
+  Show MicrohaplotypesDetected fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseMicrohaplotypesDetected">
+  <div class="card card-body">
+### Required  
+*  bioinformatics_run_id (***type=integer***)  
+    *  the index into bioinformatics_run_info list  
+*  experiment_samples (***type=[MicrohaplotypesForSample](#microhaplotypesforsample)***)  
+    *  a list of the microhaplotypes detected for a sample by targets   
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## MicrohaplotypesForSample  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/MicrohaplotypesForSample/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseMicrohaplotypesForSample" aria-expanded="false" aria-controls="collapseExample">
+  Show MicrohaplotypesForSample fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseMicrohaplotypesForSample">
+  <div class="card card-body">
+### Required  
+*  experiment_sample_id (***type=integer***)  
+    *  the index into the experiment_info list  
+*  target_results (***type=[MicrohaplotypesForTarget](#microhaplotypesfortarget)***)  
+    *  a list of the microhaplotypes detected for a list of targets  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## MicrohaplotypesForTarget  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/MicrohaplotypesForTarget/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseMicrohaplotypesForTarget" aria-expanded="false" aria-controls="collapseExample">
+  Show MicrohaplotypesForTarget fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseMicrohaplotypesForTarget">
+  <div class="card card-body">
+### Required  
+*  mhaps_target_id (***type=integer***)  
+    *  the index for a target in the microhaplotypes_info list  
+*  haps (***type=[MicrohaplotypeForTarget](#microhaplotypefortarget)***)  
+    *  a list of the microhaplotypes detected for this target  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## PanelInfo  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/PanelInfo/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapsePanelInfo" aria-expanded="false" aria-controls="collapseExample">
+  Show PanelInfo fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapsePanelInfo">
+  <div class="card card-body">
+### Required  
+*  reactions (***type=[ReactionInfo](#reactioninfo)***)  
+    *  a list of 1 or more reactions that this panel contains, each reactions list the targets that were amplified in that reaction, e.g. pool1, pool2  
+*  panel_name (***type=string***)  
+    *  a name for the panel  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## ParasiteDensity  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/ParasiteDensity/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseParasiteDensity" aria-expanded="false" aria-controls="collapseExample">
+  Show ParasiteDensity fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseParasiteDensity">
+  <div class="card card-body">
+### Required  
+*  method (***type=string***)  
+    *  the method of how this density was obtained  
+*  density (***type=number***)  
+    *  the density in microliters  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## PmoGenerationMethod  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/PmoGenerationMethod/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapsePmoGenerationMethod" aria-expanded="false" aria-controls="collapseExample">
+  Show PmoGenerationMethod fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapsePmoGenerationMethod">
+  <div class="card card-body">
+### Required  
+*  program_version (***type=string***)  
+    *  the version of generation method, should be in the format of v[MAJOR].[MINOR].[PATCH]  
+*  program_name (***type=string***)  
+    *  the name of the program  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## PmoHeader  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/PmoHeader/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapsePmoHeader" aria-expanded="false" aria-controls="collapseExample">
+  Show PmoHeader fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapsePmoHeader">
+  <div class="card card-body">
+### Required  
+*  pmo_version (***type=string***)  
+    *  the version of the PMO file, should be in the format of v[MAJOR].[MINOR].[PATCH]  
+
+### Optional  
+*  creation_date (***type=string***)  
+    *  the date of when the PMO file was created or modified, should be YYYY-MM-DD  
+*  generation_method (***type=[PmoGenerationMethod](#pmogenerationmethod)***)  
+    *  the generation method to create this PMO   
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## PrimerInfo  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/PrimerInfo/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapsePrimerInfo" aria-expanded="false" aria-controls="collapseExample">
+  Show PrimerInfo fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapsePrimerInfo">
+  <div class="card card-body">
+### Required  
+*  seq (***type=string***)  
+    *  the DNA sequence  
+
+### Optional  
+*  location (***type=[GenomicLocation](#genomiclocation)***)  
+    *  what the intended genomic location of the primer is  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## ReactionInfo  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/ReactionInfo/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseReactionInfo" aria-expanded="false" aria-controls="collapseExample">
+  Show ReactionInfo fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseReactionInfo">
+  <div class="card card-body">
+### Required  
+*  panel_targets (***type=array***)  
+    *  a list of the target indexes in the target_info list  
+*  reaction_name (***type=string***)  
+    *  a name for this reaction  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## ReadCountsByStage  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/ReadCountsByStage/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseReadCountsByStage" aria-expanded="false" aria-controls="collapseExample">
+  Show ReadCountsByStage fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseReadCountsByStage">
+  <div class="card card-body">
+### Required  
+*  bioinformatics_run_id (***type=integer***)  
+    *  the index into bioinformatics_run_info list  
+*  read_counts_by_experimental_sample_by_stage (***type=[ReadCountsByStageForExperimentalSample](#readcountsbystageforexperimentalsample)***)  
+    *  a list by experiment_sample for the counts at each stage  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## ReadCountsByStageForExperimentalSample  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/ReadCountsByStageForExperimentalSample/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseReadCountsByStageForExperimentalSample" aria-expanded="false" aria-controls="collapseExample">
+  Show ReadCountsByStageForExperimentalSample fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseReadCountsByStageForExperimentalSample">
+  <div class="card card-body">
+### Required  
+*  experiment_sample_id (***type=integer***)  
+    *  the index into the experiment_info list  
+*  total_raw_count (***type=integer***)  
+    *  the raw counts off the sequencing machine that a sample began with  
+
+### Optional  
+*  read_counts_for_targets (***type=[ReadCountsByStageForTarget](#readcountsbystagefortarget)***)  
+    *  a list of counts by stage for a target  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## ReadCountsByStageForTarget  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/ReadCountsByStageForTarget/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseReadCountsByStageForTarget" aria-expanded="false" aria-controls="collapseExample">
+  Show ReadCountsByStageForTarget fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseReadCountsByStageForTarget">
+  <div class="card card-body">
+### Required  
+*  target_id (***type=integer***)  
+    *  the index into the target_info list  
+*  stages (***type=[StageReadCounts](#stagereadcounts)***)  
+    *  the read counts by each stage  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## RepresentativeMicrohaplotype  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotype/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseRepresentativeMicrohaplotype" aria-expanded="false" aria-controls="collapseExample">
+  Show RepresentativeMicrohaplotype fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseRepresentativeMicrohaplotype">
+  <div class="card card-body">
+### Required  
+*  seq (***type=string***)  
+    *  the DNA sequence  
+
+### Optional  
+*  alt_annotations (***type=array***)  
+    *  a list of additional annotations associated with this microhaplotype, e.g. wildtype, amino acid changes etc  
+*  masking (***type=[MaskingInfo](#maskinginfo)***)  
+    *  masking info for the sequence  
+*  microhaplotype_name (***type=string***)  
+    *  an optional name for this microhaplotype  
+*  pseudocigar (***type=string***)  
+    *  the pseudocigar of the haplotype  
+*  quality (***type=string***)  
+    *  the ansi fastq per base quality score for this sequence, this is optional  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## RepresentativeMicrohaplotypes  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotypes/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseRepresentativeMicrohaplotypes" aria-expanded="false" aria-controls="collapseExample">
+  Show RepresentativeMicrohaplotypes fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseRepresentativeMicrohaplotypes">
+  <div class="card card-body">
+### Required  
+*  targets (***type=[RepresentativeMicrohaplotypesForTarget](#representativemicrohaplotypesfortarget)***)  
+    *  a list of the microhaplotype for each targets   
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## RepresentativeMicrohaplotypesForTarget  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotypesForTarget/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseRepresentativeMicrohaplotypesForTarget" aria-expanded="false" aria-controls="collapseExample">
+  Show RepresentativeMicrohaplotypesForTarget fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseRepresentativeMicrohaplotypesForTarget">
+  <div class="card card-body">
+### Required  
+*  target_id (***type=integer***)  
+    *  the index into the target_info list  
+*  microhaplotypes (***type=[RepresentativeMicrohaplotype](#representativemicrohaplotype)***)  
+    *  a list of the microhaplotypes detected for a target   
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## SequencingInfo  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/SequencingInfo/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseSequencingInfo" aria-expanded="false" aria-controls="collapseExample">
+  Show SequencingInfo fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseSequencingInfo">
+  <div class="card card-body">
+### Required  
+*  sequencing_info_name (***type=string***)  
+    *  a name of for the sequencing done, e.g. batch1  
+*  seq_instrument (***type=string***)  
+    *  the sequencing instrument used to sequence the run, e.g. ILLUMINA, Illumina MiSeq  
+*  seq_date (***type=string***)  
+    *  the date of sequencing, should be YYYY-MM or YYYY-MM-DD  
+
+### Optional  
+*  lib_kit (***type=string***)  
+    *  Name, version, and applicable cell or cycle numbers for the kit used to prepare libraries and load cells or chips for sequencing. If possible, include a part number, e.g. MiSeq Reagent Kit v3 (150-cycle), MS-102-3001  
+*  lib_layout (***type=string***)  
+    *  Specify the configuration of reads, e.g. paired-end  
+*  lib_screen (***type=string***)  
+    *  Describe enrichment, screening, or normalization methods applied during amplification or library preparation, e.g. size selection 390bp, diluted to 1 ng DNA/sample  
+*  nucl_acid_amp (***type=string***)  
+    *  Link to a reference or kit that describes the enzymatic amplification of nucleic acids  
+*  nucl_acid_amp_date (***type=string***)  
+    *  the date of the nucleoacid amplification  
+*  nucl_acid_ext (***type=string***)  
+    *  Link to a reference or kit that describes the recovery of nucleic acids from the sample  
+*  nucl_acid_ext_date (***type=string***)  
+    *  the date of the nucleoacid extraction  
+*  pcr_cond (***type=string***)  
+    *  the method/conditions for PCR, List PCR cycles used to amplify the target  
+*  seq_center (***type=string***)  
+    *  Name of facility where sequencing was performed (lab, core facility, or company)  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
 
 ## SpecimenInfo  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/SpecimenInfo/>  
-
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseSpecimenInfo" aria-expanded="false" aria-controls="collapseExample">
+  Show SpecimenInfo fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseSpecimenInfo">
+  <div class="card card-body">
 ### Required  
-*  specimen_id (***type=string***)  
-    *  the name of the specimen of a individual  
+*  specimen_name (***type=string***)  
+    *  an identifier for the specimen  
 *  samp_taxon_id (***type=integer***)  
     *  the NCBI taxonomy number of the organism of interest  
 *  collection_date (***type=string***)  
@@ -1052,6 +887,8 @@ PrimerInfo ||--|o GenomicLocation : "location"
 ### Optional  
 *  alternate_identifiers (***type=array***)  
     *  a list of optional alternative names for the samples  
+*  date_of_birth (***type=string***)  
+    *  if specimen is from a person, the date of birth of that person  
 *  geo_admin1 (***type=string***)  
     *  geographical admin level 1, the secondary large demarcation of a nation (nation = admin level 0)  
 *  geo_admin2 (***type=string***)  
@@ -1060,12 +897,12 @@ PrimerInfo ||--|o GenomicLocation : "location"
     *  geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)  
 *  host_taxon_id (***type=integer***)  
     *  optional the NCBI taxonomy number of the host of the organism  
-*  individual_id (***type=string***)  
+*  individual_id (***type=integer***)  
     *  an identifier for the individual a specimen was collected from  
 *  lat_lon (***type=string***)  
     *  the latitude and longitude of the collection site of the specimen  
-*  parasite_density (***type=integer***)  
-    *  the parasite density in microliters  
+*  parasite_density_info (***type=[ParasiteDensity](#parasitedensity)***)  
+    *  one or more parasite densities in microliters for this specimen  
 *  plate_col (***type=integer***)  
     *  the column the specimen was in  
 *  plate_name (***type=string***)  
@@ -1074,24 +911,64 @@ PrimerInfo ||--|o GenomicLocation : "location"
     *  the row the specimen was in  
 *  sample_comments (***type=string***)  
     *  any additional comments about the sample  
+*  specimen_sex (***type=string***)  
+    *  if specimen is from a person, the sex listed for that person  
 
 ### Example  
 ```{json}  
-		{
-			"collection_country" : "Mozambique",
-			"collection_date" : "2018-06-07",
-			"collector" : "Greenhouse, Bryan",
-			"geo_admin3" : "Inhassoro",
-			"host_taxon_id" : 1758,
-			"lat_lon" : "-21.5535,35.1819",
-			"parasite_density" : 477719.34375,
-			"plate_col" : 12,
-			"plate_name" : "8",
-			"plate_row" : "C",
-			"project_name" : "MOZ2018",
-			"samp_collect_device" : "dried blood spot",
-			"samp_store_loc" : "UCSF Greenhouse Lab",
-			"samp_taxon_id" : 5833,
-			"specimen_id" : "8025874217"
-		},
+
 ```  
+  </div>
+</div><br>
+
+## StageReadCounts  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/StageReadCounts/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseStageReadCounts" aria-expanded="false" aria-controls="collapseExample">
+  Show StageReadCounts fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseStageReadCounts">
+  <div class="card card-body">
+### Required  
+*  read_count (***type=integer***)  
+    *  the read counts  
+*  stage (***type=string***)  
+    *  the stage of the pipeline, e.g. demultiplexed, denoised, etc  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## TargetInfo  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/TargetInfo/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseTargetInfo" aria-expanded="false" aria-controls="collapseExample">
+  Show TargetInfo fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseTargetInfo">
+  <div class="card card-body">
+### Required  
+*  target_name (***type=string***)  
+    *  an identifier for this target  
+*  forward_primers (***type=[PrimerInfo](#primerinfo)***)  
+    *  A list of forward primers associated with this target  
+*  reverse_primers (***type=[PrimerInfo](#primerinfo)***)  
+    *  A list of reverse primers associated with this target  
+
+### Optional  
+*  gene_name (***type=string***)  
+    *  an identifier of the gene, if any, is being covered with this targeted  
+*  insert_location (***type=[GenomicLocation](#genomiclocation)***)  
+    *  the intended genomic location of the insert of the amplicon (the location between the end of the forward primer and the beginning of the reverse primer)  
+*  target_attributes (***type=array***)  
+    *  a list of classification type for the primer target  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+{{< fa dna >}}

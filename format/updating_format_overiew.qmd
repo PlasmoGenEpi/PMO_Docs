@@ -1,0 +1,159 @@
+---
+title: Updating the FormatOverview document 
+# format: docx
+---
+
+```{r setup, echo=FALSE}
+source("../common.R")
+```
+
+
+output for regular document 
+
+```{r}
+
+json = rjson::fromJSON(file = "portable_microhaplotype_object.schema.json")
+
+
+outputFile = "generated_FormatExample_subsection_descriptions.txt"
+
+cat("", file = outputFile)
+
+for(subclass in names(json$`$defs`)){
+  
+  cat(paste0("\n## ", subclass, "  \n"), sep = "",file = outputFile, append = T)
+  cat(paste0("<https://plasmogenepi.github.io/portable-microhaplotype-object/", subclass, "/>  "), "\n", sep = "",file = outputFile, append = T)
+  
+  cat("\n### Required  ", "\n", sep = "",file = outputFile, append = T)
+  for(prop in json$`$defs`[[subclass]]$required){
+      if("$ref" %in% names(json$`$defs`[[subclass]]$properties[[prop]])){
+         type = gsub(".*\\/", "", json$`$defs`[[subclass]]$properties[[prop]]$`$ref`) 
+         cat(paste0("*  ", prop, " (***type=","[", type, "]","(#", tolower(type), ")" , "***)"), "  \n", sep = "",file = outputFile, append = T)
+      } else if("array" == json$`$defs`[[subclass]]$properties[[prop]]$type){
+        if("$ref" %in% names(json$`$defs`[[subclass]]$properties[[prop]]$items)){
+          type = gsub(".*\\/", "", json$`$defs`[[subclass]]$properties[[prop]]$items$`$ref`) 
+          cat(paste0("*  ", prop, " (***type=","[", type, "]","(#", tolower(type), ")" , "***)"), "  \n", sep = "",file = outputFile, append = T)
+        } else { 
+           cat(paste0("*  ", prop, " (***type=", json$`$defs`[[subclass]]$properties[[prop]]$type, "***)"), "  \n", sep = "",file = outputFile, append = T)
+        }
+      } else { 
+         cat(paste0("*  ", prop, " (***type=", json$`$defs`[[subclass]]$properties[[prop]]$type, "***)"), "  \n", sep = "",file = outputFile, append = T)
+      }
+      cat(paste0("    *  ", json$`$defs`[[subclass]]$properties[[prop]]$description), "  \n", sep = "",file = outputFile, append = T)
+  }
+  
+  optional = names(json$`$defs`[[subclass]]$properties)[names(json$`$defs`[[subclass]]$properties) %!in% json$`$defs`[[subclass]]$required]
+  if (length(optional) > 0) {
+    cat("\n### Optional  ", "\n", sep = "",file = outputFile, append = T)
+    for (prop in optional) {
+      if("$ref" %in% names(json$`$defs`[[subclass]]$properties[[prop]])){
+         type = gsub(".*\\/", "", json$`$defs`[[subclass]]$properties[[prop]]$`$ref`) 
+         cat(paste0("*  ", prop, " (***type=","[", type, "]","(#", tolower(type), ")" , "***)"), "  \n", sep = "",file = outputFile, append = T)
+      } else if("array" == json$`$defs`[[subclass]]$properties[[prop]]$type){
+        if("$ref" %in% names(json$`$defs`[[subclass]]$properties[[prop]]$items)){
+          type = gsub(".*\\/", "", json$`$defs`[[subclass]]$properties[[prop]]$items$`$ref`) 
+          cat(paste0("*  ", prop, " (***type=","[", type, "]","(#", tolower(type), ")" , "***)"), "  \n", sep = "",file = outputFile, append = T)
+        } else { 
+           cat(paste0("*  ", prop, " (***type=", json$`$defs`[[subclass]]$properties[[prop]]$type, "***)"), "  \n", sep = "",file = outputFile, append = T)
+        }
+      } else { 
+         cat(paste0("*  ", prop, " (***type=", json$`$defs`[[subclass]]$properties[[prop]]$type, "***)"), "  \n", sep = "",file = outputFile, append = T)
+      }
+      cat(paste0("    *  ", json$`$defs`[[subclass]]$properties[[prop]]$description), "  \n", sep = "",file = outputFile, append = T)
+    }
+  }
+  
+  cat("\n### Example  ", "\n" ,
+      "```{json}  ", "\n" , 
+      "", "\n" , 
+      "```  ", "\n" , 
+      sep = "",file = outputFile, append = T)
+  
+  
+
+
+
+
+  cat("\n", sep = "",file = outputFile, append = T)
+}
+
+
+
+```
+
+outputing with collapsible content 
+
+```{r}
+
+json = rjson::fromJSON(file = "portable_microhaplotype_object.schema.json")
+
+
+outputFile = "generated_FormatExample_subsection_descriptions_collapsible.txt"
+
+cat("", file = outputFile)
+
+for(subclass in names(json$`$defs`)){
+  
+  cat(paste0("\n## ", subclass, "  \n"), sep = "",file = outputFile, append = T)
+  cat(paste0("<https://plasmogenepi.github.io/portable-microhaplotype-object/", subclass, "/>  "), "\n", sep = "",file = outputFile, append = T)
+  cat(paste0("<a class = \"btn btn-light\" data-bs-toggle=\"collapse\" data-bs-target=\"#collapse", subclass, "\" aria-expanded=\"false\" aria-controls=\"collapseExample\">
+  Show ", subclass, " fields <i class=\"fa-solid fa-caret-right\"></i>
+</a>
+<div class=\"collapse\" id=\"collapse", subclass, "\">
+  <div class=\"card card-body\">"
+  ), sep = "",file = outputFile, append = T)
+
+    
+  cat("\n### Required  ", "\n", sep = "",file = outputFile, append = T)
+  for(prop in json$`$defs`[[subclass]]$required){
+      if("$ref" %in% names(json$`$defs`[[subclass]]$properties[[prop]])){
+         type = gsub(".*\\/", "", json$`$defs`[[subclass]]$properties[[prop]]$`$ref`) 
+         cat(paste0("*  ", prop, " (***type=","[", type, "]","(#", tolower(type), ")" , "***)"), "  \n", sep = "",file = outputFile, append = T)
+      } else if("array" == json$`$defs`[[subclass]]$properties[[prop]]$type){
+        if("$ref" %in% names(json$`$defs`[[subclass]]$properties[[prop]]$items)){
+          type = gsub(".*\\/", "", json$`$defs`[[subclass]]$properties[[prop]]$items$`$ref`) 
+          cat(paste0("*  ", prop, " (***type=","[", type, "]","(#", tolower(type), ")" , "***)"), "  \n", sep = "",file = outputFile, append = T)
+        } else { 
+           cat(paste0("*  ", prop, " (***type=", json$`$defs`[[subclass]]$properties[[prop]]$type, "***)"), "  \n", sep = "",file = outputFile, append = T)
+        }
+      } else { 
+         cat(paste0("*  ", prop, " (***type=", json$`$defs`[[subclass]]$properties[[prop]]$type, "***)"), "  \n", sep = "",file = outputFile, append = T)
+      }
+      cat(paste0("    *  ", json$`$defs`[[subclass]]$properties[[prop]]$description), "  \n", sep = "",file = outputFile, append = T)
+  }
+  
+  optional = names(json$`$defs`[[subclass]]$properties)[names(json$`$defs`[[subclass]]$properties) %!in% json$`$defs`[[subclass]]$required]
+  if (length(optional) > 0) {
+    cat("\n### Optional  ", "\n", sep = "",file = outputFile, append = T)
+    for (prop in optional) {
+      if("$ref" %in% names(json$`$defs`[[subclass]]$properties[[prop]])){
+         type = gsub(".*\\/", "", json$`$defs`[[subclass]]$properties[[prop]]$`$ref`) 
+         cat(paste0("*  ", prop, " (***type=","[", type, "]","(#", tolower(type), ")" , "***)"), "  \n", sep = "",file = outputFile, append = T)
+      } else if("array" == json$`$defs`[[subclass]]$properties[[prop]]$type){
+        if("$ref" %in% names(json$`$defs`[[subclass]]$properties[[prop]]$items)){
+          type = gsub(".*\\/", "", json$`$defs`[[subclass]]$properties[[prop]]$items$`$ref`) 
+          cat(paste0("*  ", prop, " (***type=","[", type, "]","(#", tolower(type), ")" , "***)"), "  \n", sep = "",file = outputFile, append = T)
+        } else { 
+           cat(paste0("*  ", prop, " (***type=", json$`$defs`[[subclass]]$properties[[prop]]$type, "***)"), "  \n", sep = "",file = outputFile, append = T)
+        }
+      } else { 
+         cat(paste0("*  ", prop, " (***type=", json$`$defs`[[subclass]]$properties[[prop]]$type, "***)"), "  \n", sep = "",file = outputFile, append = T)
+      }
+      cat(paste0("    *  ", json$`$defs`[[subclass]]$properties[[prop]]$description), "  \n", sep = "",file = outputFile, append = T)
+    }
+  }
+  cat("\n### Example  ", "\n" ,
+      "```{json}  ", "\n" , 
+      "", "\n" , 
+      "```  ", "\n" , 
+      sep = "",file = outputFile, append = T)
+  cat(paste0("  </div>
+</div><br>"
+  ), sep = "",file = outputFile, append = T)
+  cat("\n", sep = "",file = outputFile, append = T)
+}
+
+cat("{{< fa dna >}}", sep = "",file = outputFile, append = T)
+
+```
+

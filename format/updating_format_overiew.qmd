@@ -258,7 +258,7 @@ for(pmo_class in pmo_schema_json$`$defs`){
       if(type %in% names(type_colors)){
         bg = as.character(type_colors[type])
       }
-      cat(paste0("			<tr> <td bgcolor=\"", bg, "\">", type, "</td><td bgcolor=\"", list_or_single_value_colors[list_or_single_value], "\">", list_or_single_value, "</td> <td port=\"", non_required, "\" bgcolor=\"#F60239\">", non_required, "</td> </tr>\n"), file = outputFile, append = T)
+      cat(paste0("			<tr> <td bgcolor=\"", bg, "\">", type, "</td><td bgcolor=\"", list_or_single_value_colors[list_or_single_value], "\">", list_or_single_value, "</td> <td port=\"", non_required, "\" bgcolor=\"#00DCB5\">", non_required, "</td> </tr>\n"), file = outputFile, append = T)
     }
   }
   cat("		</table>>

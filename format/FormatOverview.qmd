@@ -32,7 +32,7 @@ A more informative overview can also be viewed here <https://drive.google.com/fi
 :::{.column-screen}
 
 ```{r, echo=FALSE, results="asis"}
-cat(readLines("portable_microhaplotype_object.schema.dot.svg"), sep = "\n")
+cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6), sep = "\n")
 ```
 <!-- ![](portable_microhaplotype_object.schema.dot.svg) -->
 

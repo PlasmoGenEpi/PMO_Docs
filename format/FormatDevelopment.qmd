@@ -57,13 +57,17 @@ SRA
 
 SRA Biosample attributes descriptions <https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/>
 
-MIMARKS.specimen.human-associated.6.0
-
+MIMARKS.specimen.human-associated.6.0  
 <https://submit.ncbi.nlm.nih.gov/biosample/template/?organism-organism_name=&organism-taxonomy_id=&package-0=MIMARKS.specimen&package-1=MIMARKS.specimen.human-associated.6.0&action=definition>  
 
-MIGS.eu.human-associated.6.0
-
+MIGS.eu.human-associated.6.0  
 <https://submit.ncbi.nlm.nih.gov/biosample/template/?organism-organism_name=&organism-taxonomy_id=&package-0=MIGS.eu&package-1=MIGS.eu.human-associated.6.0&action=definition>
+
+Microbe.1.0  
+<https://submit.ncbi.nlm.nih.gov/biosample/template/?organism-organism_name=&organism-taxonomy_id=&package-0=Microbe.1.0&action=definition>
+
+Pathogen.cl.1.0  
+<https://submit.ncbi.nlm.nih.gov/biosample/template/?organism-organism_name=&organism-taxonomy_id=&package-0=Pathogen&package-1=Pathogen.cl.1.0&action=definition> 
 
 Required fields 
 

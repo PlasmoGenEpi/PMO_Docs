@@ -5,6 +5,8 @@ project:
     - index.qmd
     - format/FormatOverview.qmd
     - format/FormatExample.qmd
+    - format/FormatOverviewForDevelopers.qmd
+    - format/DevelopmentOfFormat.qmd
     - Tools_Installation/pmotools-python_installation.qmd
     - pmotools-python-usages/pmotools-runner.qmd
     - pmotools-python-usages/extracting_allele_tables.qmd
@@ -24,8 +26,10 @@ website:
         text: Home
       - text: Format Info
         menu: 
+          - href: format/DevelopmentOfFormat.qmd
           - href: format/FormatOverview.qmd
           - href: format/FormatExample.qmd
+          - href: format/FormatOverviewForDevelopers.qmd
       - text: "Tools Installation"
         menu:
           - href: Tools_Installation/pmotools-python_installation.qmd

@@ -10,23 +10,17 @@ source("../common.R")
 
 # Goal  
 
-Creating fields with efforts to be consistent with [MIxS standards](https://genomicsstandardsconsortium.github.io/mixs/) 
+Creating fields with efforts to be consistent with [MIxS standards](https://genomicsstandardsconsortium.github.io/mixs/). These are the standards that the short read archive (SRA) use to validate metadata upon submission. This also helps to keep data standards to adhere to FAIR (Findable, Accessible, Interoperable, and Reusable). 
 
-Important aspects to keep in mind are creating an efficient, low-weight, and minimum amount of information about a run without losing any important data. We can build tools around this table to generate certain fields that are important but not necessary always to keep constantly stored in this base class (e.g. SNP/INDEL calls). Also since we are proposing to keep this data in a singular file in [JSON format](https://en.wikipedia.org/wiki/JSON) we are not limited to keeping data in a tabular format for organization; output generated from this file can certainly be a table but we don’t have to store things as a table, e.g. certain fields might be a single ID while other fields might be vectors/lists of data. What’s most important is that we agree on what fields are important and what they should store (and what values should be allowable or formatting, e.g. double/floats vs strings vs characters vs POSIX date vs URL etc)
+Format was developed in order to achieve an efficient/low-weight format that contains the minimum amount of information about a targeted amplicon analysis without losing any important data. Tools are generated around this table to generate certain fields that are important but not necessary to keep constantly stored in this base class (e.g. SNP/INDEL calls). To increase portability and to keep data internally consistent, format was desinged to be contained within a singular file in [JSON format](https://en.wikipedia.org/wiki/JSON) which removes the limitation of storing data only in a tabular format. Output generated from this file can be a table for downstream usage but storing in the flexible JSON format allows storage in non-redundnat organiation (e.g. storing an ID only once while storing other data in lists).
 
-Format is defined by utilizing [LinkML](https://linkml.io/linkml/) to generate a general data scheme which creates convenient outputs like [JSON Schema](https://json-schema.org/) for validation tools. 
+Format is defined by utilizing [LinkML](https://linkml.io/linkml/) to generate a general data scheme which creates various validation outputs like [JSON Schema](https://json-schema.org/) for validation tools. LinkML generates a website for viewing all fields defined in the format, <https://github.com/PlasmoGenEpi/portable-microhaplotype-object>. 
 
 Other notable users of LinkML/MIxS [National Microbiome Data Collaborative Schema](https://github.com/microbiomedata/nmdc-schema)
 
 # Overview   
 
-Below is an overview of the entire format currently in alpha development and is still under heavy development and optimization so structure and names are subject to undergo significant changes as development continues. Please send questions to [info@plasmogenepi.org](mailto:info@plasmogenepi.org)
-
-
-A more informative overview can also be viewed here <https://drive.google.com/file/d/193B1BBLagay_CYhJm4Nee7Fl4T4BFdL_/view?usp=sharing>
-
-<https://github.com/PlasmoGenEpi/portable-microhaplotype-object>
-
+Below is an overview of the entire format currently in  development which is under active development and optimization. Please send questions to [info@plasmogenepi.org](mailto:info@plasmogenepi.org)
 
 
 :::{.column-screen}
@@ -38,35 +32,36 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 :::
 
+
 ## PortableMicrohaplotypeObject  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/PortableMicrohaplotypeObject/>  
 
 ### Required  
-*  experiment_info (***type=[ExperimentInfo](#experimentinfo)***)  
+*  experiment_info (***type=[list of ExperimentInfo](#experimentinfo)***)  
     *  a list of experiments of all the seq/amp of the specimens within this project  
-*  specimen_info (***type=[SpecimenInfo](#specimeninfo)***)  
-    *  a list of specimens of all the samples within this project  
-*  sequencing_info (***type=[SequencingInfo](#sequencinginfo)***)  
+*  specimen_info (***type=[list of SpecimenInfo](#specimeninfo)***)  
+    *  a list of all the specimens within this project  
+*  sequencing_info (***type=[list of SequencingInfo](#sequencinginfo)***)  
     *  a list of sequencing info for this project  
-*  panel_info (***type=[PanelInfo](#panelinfo)***)  
+*  panel_info (***type=[list of PanelInfo](#panelinfo)***)  
     *  a list of info on the panels  
-*  target_info (***type=[TargetInfo](#targetinfo)***)  
+*  target_info (***type=[list of TargetInfo](#targetinfo)***)  
     *  a list of info on the targets  
-*  targeted_genomes (***type=[GenomeInfo](#genomeinfo)***)  
+*  targeted_genomes (***type=[list of GenomeInfo](#genomeinfo)***)  
     *  a list of genomes that the targets in TargetInfo refer to  
 *  microhaplotypes_info (***type=[RepresentativeMicrohaplotypes](#representativemicrohaplotypes)***)  
     *  a list of the information on the representative microhaplotypes  
-*  bioinformatics_methods_info (***type=[BioinformaticsMethodInfo](#bioinformaticsmethodinfo)***)  
+*  bioinformatics_methods_info (***type=[list of BioinformaticsMethodInfo](#bioinformaticsmethodinfo)***)  
     *  the bioinformatics pipeline/methods used to generated the amplicon analysis for this project  
-*  bioinformatics_run_info (***type=[BioinformaticsRunInfo](#bioinformaticsruninfo)***)  
+*  bioinformatics_run_info (***type=[list of BioinformaticsRunInfo](#bioinformaticsruninfo)***)  
     *  the runtime info for the bioinformatics pipeline used to generated the amplicon analysis for this project  
-*  microhaplotypes_detected (***type=[MicrohaplotypesDetected](#microhaplotypesdetected)***)  
+*  microhaplotypes_detected (***type=[list of MicrohaplotypesDetected](#microhaplotypesdetected)***)  
     *  the microhaplotypes detected in this projects  
 *  pmo_header (***type=[PmoHeader](#pmoheader)***)  
     *  the PMO information for this file including version etc  
 
 ### Optional  
-*  read_counts_by_stage (***type=[ReadCountsByStage](#readcountsbystage)***)  
+*  read_counts_by_stage (***type=[list of ReadCountsByStage](#readcountsbystage)***)  
     *  the read counts for different stages of the pipeline  
 
 ### Example  
@@ -89,7 +84,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  name of the program used for this portion of the pipeline  
 
 ### Optional  
-*  additional_argument (***type=array***)  
+*  additional_argument (***type=list of string***)  
     *  any additional arguments that differ from the default  
 *  program_description (***type=string***)  
     *  a short description of what this method does  
@@ -115,7 +110,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  the method used to de-noise and/or cluster the raw reads  
 
 ### Optional  
-*  additional_methods (***type=[BioMethod](#biomethod)***)  
+*  additional_methods (***type=[list of BioMethod](#biomethod)***)  
     *  any additional methods used to analyze the data  
 *  bioinformatics_method_name (***type=string***)  
     *  name of the collection of methods is called, e.g. pipeline   
@@ -171,12 +166,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 ### Optional  
 *  accession (***type=string***)  
     *  ERA/SRA accession number for the sample if it was submitted  
-*  plate_col (***type=integer***)  
-    *  the column the specimen was in  
-*  plate_name (***type=string***)  
-    *  a name of plate the specimen was in  
-*  plate_row (***type=string***)  
-    *  the row the specimen was in  
+*  extraction_plate_info (***type=[PlateInfo](#plateinfo)***)  
+    *  plate location of where experiment was extracted  
+*  sequencing_prep_plate_info (***type=[PlateInfo](#plateinfo)***)  
+    *  plate location of where experiment was prepared for sequencing   
 
 ### Example  
 ```{json}  
@@ -203,7 +196,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  a link to the where this genome file could be downloaded  
 
 ### Optional  
-*  chromosomes (***type=array***)  
+*  chromosomes (***type=list of string***)  
     *  a list of chromosomes found within this genome  
 *  gff_url (***type=string***)  
     *  a link to the where this genome's annotation file could be downloaded  
@@ -224,7 +217,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
   <div class="card card-body">
 ### Required  
 *  genome_id (***type=integer***)  
-    *  the index to the genome in the targeted_genomes list that this location refers to   
+    *  the index to the genome in the targeted_genomes list that this location refers to  
 *  chrom (***type=string***)  
     *  the chromosome name  
 *  start (***type=integer***)  
@@ -253,12 +246,12 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 <div class="collapse" id="collapseMarkerOfInterest">
   <div class="card card-body">
 ### Required  
-
-### Optional  
-*  associations (***type=array***)  
-    *  a list of associations with this marker, e.g. SP resistance, etc  
 *  marker_location (***type=[GenomicLocation](#genomiclocation)***)  
     *  the genomic location  
+
+### Optional  
+*  associations (***type=list of string***)  
+    *  a list of associations with this marker, e.g. SP resistance, etc  
 
 ### Example  
 ```{json}  
@@ -323,7 +316,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 ### Required  
 *  bioinformatics_run_id (***type=integer***)  
     *  the index into bioinformatics_run_info list  
-*  experiment_samples (***type=[MicrohaplotypesForSample](#microhaplotypesforsample)***)  
+*  experiment_samples (***type=[list of MicrohaplotypesForSample](#microhaplotypesforsample)***)  
     *  a list of the microhaplotypes detected for a sample by targets   
 
 ### Example  
@@ -343,7 +336,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 ### Required  
 *  experiment_sample_id (***type=integer***)  
     *  the index into the experiment_info list  
-*  target_results (***type=[MicrohaplotypesForTarget](#microhaplotypesfortarget)***)  
+*  target_results (***type=[list of MicrohaplotypesForTarget](#microhaplotypesfortarget)***)  
     *  a list of the microhaplotypes detected for a list of targets  
 
 ### Example  
@@ -363,7 +356,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 ### Required  
 *  mhaps_target_id (***type=integer***)  
     *  the index for a target in the microhaplotypes_info list  
-*  haps (***type=[MicrohaplotypeForTarget](#microhaplotypefortarget)***)  
+*  haps (***type=[list of MicrohaplotypeForTarget](#microhaplotypefortarget)***)  
     *  a list of the microhaplotypes detected for this target  
 
 ### Example  
@@ -381,7 +374,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 <div class="collapse" id="collapsePanelInfo">
   <div class="card card-body">
 ### Required  
-*  reactions (***type=[ReactionInfo](#reactioninfo)***)  
+*  reactions (***type=[list of ReactionInfo](#reactioninfo)***)  
     *  a list of 1 or more reactions that this panel contains, each reactions list the targets that were amplified in that reaction, e.g. pool1, pool2  
 *  panel_name (***type=string***)  
     *  a name for the panel  
@@ -405,6 +398,30 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  the method of how this density was obtained  
 *  density (***type=number***)  
     *  the density in microliters  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## PlateInfo  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/PlateInfo/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapsePlateInfo" aria-expanded="false" aria-controls="collapseExample">
+  Show PlateInfo fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapsePlateInfo">
+  <div class="card card-body">
+### Required  
+
+### Optional  
+*  plate_col (***type=integer***)  
+    *  the column the specimen was in  
+*  plate_name (***type=string***)  
+    *  a name of plate the specimen was in  
+*  plate_row (***type=string***)  
+    *  the row the specimen was in  
 
 ### Example  
 ```{json}  
@@ -457,6 +474,8 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
   </div>
 </div><br>
 
+
+
 ## PrimerInfo  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/PrimerInfo/>  
 <a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapsePrimerInfo" aria-expanded="false" aria-controls="collapseExample">
@@ -487,7 +506,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 <div class="collapse" id="collapseReactionInfo">
   <div class="card card-body">
 ### Required  
-*  panel_targets (***type=array***)  
+*  panel_targets (***type= list of integer***)  
     *  a list of the target indexes in the target_info list  
 *  reaction_name (***type=string***)  
     *  a name for this reaction  
@@ -509,7 +528,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 ### Required  
 *  bioinformatics_run_id (***type=integer***)  
     *  the index into bioinformatics_run_info list  
-*  read_counts_by_experimental_sample_by_stage (***type=[ReadCountsByStageForExperimentalSample](#readcountsbystageforexperimentalsample)***)  
+*  read_counts_by_experimental_sample_by_stage (***type=[list of ReadCountsByStageForExperimentalSample](#readcountsbystageforexperimentalsample)***)  
     *  a list by experiment_sample for the counts at each stage  
 
 ### Example  
@@ -533,7 +552,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  the raw counts off the sequencing machine that a sample began with  
 
 ### Optional  
-*  read_counts_for_targets (***type=[ReadCountsByStageForTarget](#readcountsbystagefortarget)***)  
+*  read_counts_for_targets (***type=[list of ReadCountsByStageForTarget](#readcountsbystagefortarget)***)  
     *  a list of counts by stage for a target  
 
 ### Example  
@@ -553,7 +572,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 ### Required  
 *  target_id (***type=integer***)  
     *  the index into the target_info list  
-*  stages (***type=[StageReadCounts](#stagereadcounts)***)  
+*  stages (***type=[list of StageReadCounts](#stagereadcounts)***)  
     *  the read counts by each stage  
 
 ### Example  
@@ -575,9 +594,9 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  the DNA sequence  
 
 ### Optional  
-*  alt_annotations (***type=array***)  
+*  alt_annotations (***type=list of string***)  
     *  a list of additional annotations associated with this microhaplotype, e.g. wildtype, amino acid changes etc  
-*  masking (***type=[MaskingInfo](#maskinginfo)***)  
+*  masking (***type=[list of MaskingInfo](#maskinginfo)***)  
     *  masking info for the sequence  
 *  microhaplotype_name (***type=string***)  
     *  an optional name for this microhaplotype  
@@ -601,7 +620,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 <div class="collapse" id="collapseRepresentativeMicrohaplotypes">
   <div class="card card-body">
 ### Required  
-*  targets (***type=[RepresentativeMicrohaplotypesForTarget](#representativemicrohaplotypesfortarget)***)  
+*  targets (***type=[list of RepresentativeMicrohaplotypesForTarget](#representativemicrohaplotypesfortarget)***)  
     *  a list of the microhaplotype for each targets   
 
 ### Example  
@@ -621,7 +640,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 ### Required  
 *  target_id (***type=integer***)  
     *  the index into the target_info list  
-*  microhaplotypes (***type=[RepresentativeMicrohaplotype](#representativemicrohaplotype)***)  
+*  microhaplotypes (***type=[list of RepresentativeMicrohaplotype](#representativemicrohaplotype)***)  
     *  a list of the microhaplotypes detected for a target   
 
 ### Example  
@@ -641,17 +660,25 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 ### Required  
 *  sequencing_info_name (***type=string***)  
     *  a name of for the sequencing done, e.g. batch1  
-*  seq_instrument (***type=string***)  
-    *  the sequencing instrument used to sequence the run, e.g. ILLUMINA, Illumina MiSeq  
+*  seq_platform (***type=string***)  
+    *  the sequencing technology used to sequence the run, e.g. ILLUMINA, NANOPORE, PACBIO  
+*  seq_instrument_model (***type=string***)  
+    *  the sequencing instrument model used to sequence the run, e.g. NextSeq 2000, MinION, Revio  
 *  seq_date (***type=string***)  
     *  the date of sequencing, should be YYYY-MM or YYYY-MM-DD  
+*  library_layout (***type=string***)  
+    *  Specify the configuration of reads, e.g. paired-end, single  
+*  library_strategy (***type=string***)  
+    *  what the nuceloacid sequencing/amplification strategy was (common names are AMPLICON, WGS)  
+*  library_source (***type=string***)  
+    *  Source of amplification material (common names GENOMIC, TRANSCRIPTOMIC)  
+*  library_selection (***type=string***)  
+    *  how amplification was done (common are PCR=Source material was selected by designed primers, RANDOM =Random selection by shearing or other method)  
 
 ### Optional  
-*  lib_kit (***type=string***)  
+*  library_kit (***type=string***)  
     *  Name, version, and applicable cell or cycle numbers for the kit used to prepare libraries and load cells or chips for sequencing. If possible, include a part number, e.g. MiSeq Reagent Kit v3 (150-cycle), MS-102-3001  
-*  lib_layout (***type=string***)  
-    *  Specify the configuration of reads, e.g. paired-end  
-*  lib_screen (***type=string***)  
+*  library_screen (***type=string***)  
     *  Describe enrichment, screening, or normalization methods applied during amplification or library preparation, e.g. size selection 390bp, diluted to 1 ng DNA/sample  
 *  nucl_acid_amp (***type=string***)  
     *  Link to a reference or kit that describes the enzymatic amplification of nucleic acids  
@@ -682,51 +709,59 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
   <div class="card card-body">
 ### Required  
 *  specimen_name (***type=string***)  
-    *  an identifier for the specimen  
-*  samp_taxon_id (***type=integer***)  
-    *  the NCBI taxonomy number of the organism of interest  
+    *  an identifier for the specimen, should be unique within this sample set  
+*  specimen_taxon_id (***type= list of integer***)  
+    *  the NCBI taxonomy number of the organism in specimen, can list multiple if a mixed sample  
+*  host_taxon_id (***type=integer***)  
+    *  the NCBI taxonomy number of the host that the specimen was collected from  
 *  collection_date (***type=string***)  
-    *  the date of the sample collection  
+    *  the date of the specimen collection, can be YYYY, YYYY-MM, or YYYY-MM-DD  
 *  collection_country (***type=string***)  
     *  the name of country collected in, would be the same as admin level 0  
-*  collector (***type=string***)  
-    *  the name of the primary person managing the specimen  
-*  samp_store_loc (***type=string***)  
-    *  the sample store site, address or facility name  
-*  samp_collect_device (***type=string***)  
-    *  the way the sample was collected, e.g. whole blood, dried blood spot, etc  
 *  project_name (***type=string***)  
-    *  a name of the project under which the sample is organized  
+    *  a name of the project under which the specimen is organized  
 
 ### Optional  
-*  alternate_identifiers (***type=array***)  
-    *  a list of optional alternative names for the samples  
-*  date_of_birth (***type=string***)  
-    *  if specimen is from a person, the date of birth of that person  
+*  alternate_identifiers (***type=list of string***)  
+    *  a list of optional alternative names for the specimens  
+*  collector_chief_scientist (***type=string***)  
+    *  can be collection of names separated by a semicolon if multiple people involved or can just be the name of the primary person managing the specimen  
+*  drug_usage (***type=list of string***)  
+    *  Any drug used by subject and the frequency of usage; can include multiple drugs used  
+*  env_broad_scale (***type=string***)  
+    *  the broad environment from which the specimen was collected, e.g. highlands, lowlands, mountainous region  
+*  env_local_scale (***type=string***)  
+    *  the local environment from which the specimen was collected, e.g. jungle, urban, rural  
+*  env_medium (***type=string***)  
+    *  the environment medium from which the specimen was collected from  
 *  geo_admin1 (***type=string***)  
     *  geographical admin level 1, the secondary large demarcation of a nation (nation = admin level 0)  
 *  geo_admin2 (***type=string***)  
     *  geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)  
 *  geo_admin3 (***type=string***)  
     *  geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)  
-*  host_taxon_id (***type=integer***)  
-    *  optional the NCBI taxonomy number of the host of the organism  
-*  individual_id (***type=integer***)  
+*  host_age (***type=number***)  
+    *  if specimen is from a person, the age in years of the person, can be float value so for 3 month old put 0.25  
+*  host_sex (***type=string***)  
+    *  if specimen is from a person, the sex listed for that person  
+*  host_subject_id (***type=integer***)  
     *  an identifier for the individual a specimen was collected from  
 *  lat_lon (***type=string***)  
     *  the latitude and longitude of the collection site of the specimen  
-*  parasite_density_info (***type=[ParasiteDensity](#parasitedensity)***)  
+*  parasite_density_info (***type=[list of ParasiteDensity](#parasitedensity)***)  
     *  one or more parasite densities in microliters for this specimen  
-*  plate_col (***type=integer***)  
-    *  the column the specimen was in  
-*  plate_name (***type=string***)  
-    *  a name of plate the specimen was in  
-*  plate_row (***type=string***)  
-    *  the row the specimen was in  
-*  sample_comments (***type=string***)  
-    *  any additional comments about the sample  
-*  specimen_sex (***type=string***)  
-    *  if specimen is from a person, the sex listed for that person  
+*  plate_info (***type=[PlateInfo](#plateinfo)***)  
+    *  plate location of where specimen is stored if stored in a plate   
+*  specimen_collect_device (***type=string***)  
+    *  the way the specimen was collected, e.g. whole blood, dried blood spot  
+*  specimen_comments (***type=list of string***)  
+    *  any additional comments about the specimen  
+*  specimen_store_loc (***type=string***)  
+    *  the specimen store site, address or facility name  
+*  specimen_type (***type=string***)  
+    *  what type of specimen this is, e.g. negative_control, positive_control, field_sample  
+*  travel_out_six_month (***type=list of string***)  
+    *  Specification of the countries travelled in the last six months; can include multiple travels  
 
 ### Example  
 ```{json}  
@@ -765,9 +800,9 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 ### Required  
 *  target_name (***type=string***)  
     *  an identifier for this target  
-*  forward_primers (***type=[PrimerInfo](#primerinfo)***)  
+*  forward_primers (***type=[list of PrimerInfo](#primerinfo)***)  
     *  A list of forward primers associated with this target  
-*  reverse_primers (***type=[PrimerInfo](#primerinfo)***)  
+*  reverse_primers (***type=[list of PrimerInfo](#primerinfo)***)  
     *  A list of reverse primers associated with this target  
 
 ### Optional  
@@ -775,7 +810,9 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  an identifier of the gene, if any, is being covered with this targeted  
 *  insert_location (***type=[GenomicLocation](#genomiclocation)***)  
     *  the intended genomic location of the insert of the amplicon (the location between the end of the forward primer and the beginning of the reverse primer)  
-*  target_attributes (***type=array***)  
+*  markers_of_interest (***type=[list of MarkerOfInterest](#markerofinterest)***)  
+    *  a list of covered markers of interest  
+*  target_attributes (***type=list of string***)  
     *  a list of classification type for the primer target  
 
 ### Example  

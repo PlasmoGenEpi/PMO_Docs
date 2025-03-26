@@ -103,7 +103,6 @@ for(subclass in names(json$`$defs`)){
   <div class=\"card card-body\">"
   ), sep = "",file = outputFile, append = T)
 
-    
   cat("\n### Required  ", "\n", sep = "",file = outputFile, append = T)
   for(prop in json$`$defs`[[subclass]]$required){
       if("$ref" %in% names(json$`$defs`[[subclass]]$properties[[prop]])){
@@ -112,9 +111,9 @@ for(subclass in names(json$`$defs`)){
       } else if("array" == json$`$defs`[[subclass]]$properties[[prop]]$type){
         if("$ref" %in% names(json$`$defs`[[subclass]]$properties[[prop]]$items)){
           type = gsub(".*\\/", "", json$`$defs`[[subclass]]$properties[[prop]]$items$`$ref`) 
-          cat(paste0("*  ", prop, " (***type=","[", type, "]","(#", tolower(type), ")" , "***)"), "  \n", sep = "",file = outputFile, append = T)
+          cat(paste0("*  ", prop, " (***type=","[list of ", type, "]","(#", tolower(type), ")" , "***)"), "  \n", sep = "",file = outputFile, append = T)
         } else { 
-           cat(paste0("*  ", prop, " (***type=", json$`$defs`[[subclass]]$properties[[prop]]$type, "***)"), "  \n", sep = "",file = outputFile, append = T)
+           cat(paste0("*  ", prop, " (***type= list of ", json$`$defs`[[subclass]]$properties[[prop]]$items$type[1], "***)"), "  \n", sep = "",file = outputFile, append = T)
         }
       } else { 
          cat(paste0("*  ", prop, " (***type=", json$`$defs`[[subclass]]$properties[[prop]]$type, "***)"), "  \n", sep = "",file = outputFile, append = T)
@@ -126,18 +125,18 @@ for(subclass in names(json$`$defs`)){
   if (length(optional) > 0) {
     cat("\n### Optional  ", "\n", sep = "",file = outputFile, append = T)
     for (prop in optional) {
-      if("$ref" %in% names(json$`$defs`[[subclass]]$properties[[prop]])){
-         type = gsub(".*\\/", "", json$`$defs`[[subclass]]$properties[[prop]]$`$ref`) 
+      if("anyOf" %in% names(json$`$defs`[[subclass]]$properties[[prop]]) && "$ref" %in% names(json$`$defs`[[subclass]]$properties[[prop]]$anyOf[[1]])){
+         type = gsub(".*\\/", "", json$`$defs`[[subclass]]$properties[[prop]]$anyOf[[1]]$`$ref`) 
          cat(paste0("*  ", prop, " (***type=","[", type, "]","(#", tolower(type), ")" , "***)"), "  \n", sep = "",file = outputFile, append = T)
-      } else if("array" == json$`$defs`[[subclass]]$properties[[prop]]$type){
+      } else if("array" == json$`$defs`[[subclass]]$properties[[prop]]$type[1]){
         if("$ref" %in% names(json$`$defs`[[subclass]]$properties[[prop]]$items)){
           type = gsub(".*\\/", "", json$`$defs`[[subclass]]$properties[[prop]]$items$`$ref`) 
-          cat(paste0("*  ", prop, " (***type=","[", type, "]","(#", tolower(type), ")" , "***)"), "  \n", sep = "",file = outputFile, append = T)
+          cat(paste0("*  ", prop, " (***type=","[", "list of ", type, "]","(#", tolower(type), ")" , "***)"), "  \n", sep = "",file = outputFile, append = T)
         } else { 
-           cat(paste0("*  ", prop, " (***type=", json$`$defs`[[subclass]]$properties[[prop]]$type, "***)"), "  \n", sep = "",file = outputFile, append = T)
+          cat(paste0("*  ", prop, " (***type=", "list of ", json$`$defs`[[subclass]]$properties[[prop]]$items$type[1], "***)"), "  \n", sep = "",file = outputFile, append = T)
         }
       } else { 
-         cat(paste0("*  ", prop, " (***type=", json$`$defs`[[subclass]]$properties[[prop]]$type, "***)"), "  \n", sep = "",file = outputFile, append = T)
+         cat(paste0("*  ", prop, " (***type=", json$`$defs`[[subclass]]$properties[[prop]]$type[1], "***)"), "  \n", sep = "",file = outputFile, append = T)
       }
       cat(paste0("    *  ", json$`$defs`[[subclass]]$properties[[prop]]$description), "  \n", sep = "",file = outputFile, append = T)
     }
@@ -153,7 +152,7 @@ for(subclass in names(json$`$defs`)){
   cat("\n", sep = "",file = outputFile, append = T)
 }
 
-cat("{{< fa dna >}}", sep = "",file = outputFile, append = T)
+cat("\n{{< fa dna >}}\n", sep = "",file = outputFile, append = T)
 
 ```
 
@@ -241,18 +240,18 @@ for(pmo_class in pmo_schema_json$`$defs`){
     for(non_required in non_required_props){
       type = NA
       list_or_single_value = NA
-      if("$ref" %in% names(pmo_class$properties[[non_required]])){
+      if("anyOf" %in% names(pmo_class$properties[[non_required]]) && "$ref" %in% names(pmo_class$properties[[non_required]]$anyOf[[1]])){
         list_or_single_value = "single"
-        type = gsub(".*\\/", "", pmo_class$properties[[non_required]]$`$ref`)
-      } else if (pmo_class$properties[[non_required]]$type == "array" && "$ref" %in% names(pmo_class$properties[[non_required]]$items)){
+        type = gsub(".*\\/", "", pmo_class$properties[[non_required]]$anyOf[[1]]$`$ref`)
+      } else if (pmo_class$properties[[non_required]]$type[1] == "array" && "$ref" %in% names(pmo_class$properties[[non_required]]$items)){
         list_or_single_value = "list"
         type = gsub(".*\\/", "", pmo_class$properties[[non_required]]$items$`$ref`)
-      } else if (pmo_class$properties[[non_required]]$type == "array" && "type" %in% names(pmo_class$properties[[non_required]]$items)){
+      } else if (pmo_class$properties[[non_required]]$type[1] == "array" && "type" %in% names(pmo_class$properties[[non_required]]$items)){
         list_or_single_value = "list"
-        type = pmo_class$properties[[non_required]]$items$type
+        type = pmo_class$properties[[non_required]]$items$type[1]
       } else if ("type" %in% names(pmo_class$properties[[non_required]])){
         list_or_single_value = "single"
-        type = pmo_class$properties[[non_required]]$type
+        type = pmo_class$properties[[non_required]]$type[1]
       }
       bg = "#FFCFE2"
       if(type %in% names(type_colors)){
@@ -273,13 +272,15 @@ for(pmo_class in pmo_schema_json$`$defs`){
     if("$ref" %in% names(pmo_class$properties[[prop]])){
       cat(paste0("	", pmo_class$title, "_NODE:", prop, " -> ", gsub(".*\\/", "", pmo_class$properties[[prop]]$`$ref`), "_NODE:", gsub(".*\\/", "", pmo_class$properties[[prop]]$`$ref`), "\n"),
           file = outputFile, append = T)
-    } else if (pmo_class$properties[[prop]]$type == "array" && "$ref" %in% names(pmo_class$properties[[prop]]$items)){
+    } else if("anyOf" %in% names(pmo_class$properties[[prop]]) && "$ref" %in% names(pmo_class$properties[[prop]]$anyOf[[1]])){
+      cat(paste0("	", pmo_class$title, "_NODE:", prop, " -> ", gsub(".*\\/", "", pmo_class$properties[[prop]]$anyOf[[1]]$`$ref`), "_NODE:", gsub(".*\\/", "", pmo_class$properties[[prop]]$anyOf[[1]]$`$ref`), "\n"),
+          file = outputFile, append = T)
+    } else if (pmo_class$properties[[prop]]$type[1] == "array" && "$ref" %in% names(pmo_class$properties[[prop]]$items)){
       cat(paste0("	", pmo_class$title, "_NODE:", prop, " -> ", gsub(".*\\/", "", pmo_class$properties[[prop]]$items$`$ref`), "_NODE:", gsub(".*\\/", "", pmo_class$properties[[prop]]$items$`$ref`), "\n"),
           file = outputFile, append = T)
     }
   }
 }
-
 
 cat("}\n",file = outputFile, append = T)
 ```

@@ -35,11 +35,11 @@ set_decompose <- function(vectorA, vectorB){
 
 The meta fields for the sample and sequencing are based on NCBI naming schemes especially from SRA submission portal for human-associated pathogen. Depending on which reporting standard is selected at the time of submission, these are derived and vlided via the the [MiXS standards](https://genomicsstandardsconsortium.github.io/mixs/) set by the [Genomics Standards Consortium (GSC)](https://www.gensc.org/)
 
-## Sample 
+## SRA Sample fields 
 
 When submitting sample meta data to SRA, you have to choose a reporting standard to validate your meta data against 
 
-![](submission_options.png)
+![](sra_standards/submission_options.png)
 
 There are 4 reporting standards that one might pick for targeted amplicon sequencing of a pathogen
 
@@ -53,8 +53,8 @@ MIGS.eu.human-associated.6.0 and MIMARKS.specimen.human-associated.6.0 have the 
 Determining difference between MIGS.eu.human-associated and MIMARKS.specimen.human-associated  
 
 ```{r}
-MIGS_eu_human_associated = readxl::read_excel("MIGS.eu.human-associated.6.0.xlsx", skip = 12)
-MIMARKS_specimen_human_associated = readxl::read_excel("MIMARKS.specimen.human-associated.6.0.xlsx", skip= 12)
+MIGS_eu_human_associated = readxl::read_excel("sra_standards/MIGS.eu.human-associated.6.0.xlsx", skip = 12)
+MIMARKS_specimen_human_associated = readxl::read_excel("sra_standards/MIMARKS.specimen.human-associated.6.0.xlsx", skip= 12)
 
 colname_compared = set_decompose(colnames(MIGS_eu_human_associated), colnames(MIMARKS_specimen_human_associated))
 
@@ -76,11 +76,11 @@ Example file for SRA submission, these are all posible fields with required fiel
 #| results: asis
 #| echo: false
 
-cat(createDownloadLink("MIGS.eu.human-associated.6.0.xlsx"))
+cat(createDownloadLink("sra_standards/MIGS.eu.human-associated.6.0.xlsx"))
 ```
 
 ```{r}
-MIGS_eu_human_associated = readxl::read_excel("MIGS.eu.human-associated.6.0.xlsx", skip = 12)
+MIGS_eu_human_associated = readxl::read_excel("sra_standards/MIGS.eu.human-associated.6.0.xlsx", skip = 12)
 create_dt(MIGS_eu_human_associated)
 ```
 
@@ -117,11 +117,11 @@ Example file for SRA submission, these are all posible fields with required fiel
 #| results: asis
 #| echo: false
 
-cat(createDownloadLink("MIMARKS.specimen.human-associated.6.0.xlsx"))
+cat(createDownloadLink("sra_standards/MIMARKS.specimen.human-associated.6.0.xlsx"))
 ```
 
 ```{r}
-MIGS_eu_human_associated = readxl::read_excel("MIMARKS.specimen.human-associated.6.0.xlsx", skip = 12)
+MIGS_eu_human_associated = readxl::read_excel("sra_standards/MIMARKS.specimen.human-associated.6.0.xlsx", skip = 12)
 create_dt(MIGS_eu_human_associated)
 ```
 
@@ -158,11 +158,11 @@ Example file for SRA submission, these are all posible fields with required fiel
 #| results: asis
 #| echo: false
 
-cat(createDownloadLink("Microbe.1.0.xlsx"))
+cat(createDownloadLink("sra_standards/Microbe.1.0.xlsx"))
 ```
 
 ```{r}
-Microbe = readxl::read_excel("Microbe.1.0.xlsx", skip = 12)
+Microbe = readxl::read_excel("sra_standards/Microbe.1.0.xlsx", skip = 12)
 create_dt(Microbe)
 ```
 
@@ -197,11 +197,11 @@ Example file for SRA submission, these are all posible fields with required fiel
 #| results: asis
 #| echo: false
 
-cat(createDownloadLink("Pathogen.cl.1.0.xlsx"))
+cat(createDownloadLink("sra_standards/Pathogen.cl.1.0.xlsx"))
 ```
 
 ```{r}
-Pathogen = readxl::read_excel("Pathogen.cl.1.0.xlsx", skip = 12)
+Pathogen = readxl::read_excel("sra_standards/Pathogen.cl.1.0.xlsx", skip = 12)
 create_dt(Pathogen)
 ```
 
@@ -226,15 +226,12 @@ One of the following (**none of these are technically a MixS standard but a MixS
 
 ### Additional details  
 
-Additonal fields not in GSC or SRA submission but are often found in downloads from SRAs. This is because the geo_loc_name can be country followed by several more details, these columns allow for listing only the country and continent  
+Additonal fields not in GSC or SRA submission but are often found in downloads from SRAs. This is because the geo_loc_name can be country followed by several more details, these columns allow for listing only the country and continent
 
 *  ***geo_loc_name_country***
 *  ***geo_loc_name_country_continent***
 
-? adding ***geo_loc_name_country_region*** 
-
-
-## Sequencing  
+## SRA Sequencing fields  
 
 Info about the sequencing of the samples above, details can be found below link:  
 SRA sequencing meta: <https://www.ncbi.nlm.nih.gov/sra/docs/submitportal/#6-sra-metadata>  
@@ -244,11 +241,11 @@ Example file for SRA submission
 #| results: asis
 #| echo: false
 
-cat(createDownloadLink("SRA_metadata.xlsx"))
+cat(createDownloadLink("sra_standards/SRA_metadata.xlsx"))
 ```
 
 ```{r}
-SRA_sequencing_metadata = readxl::read_excel("SRA_metadata.xlsx", sheet = 2)
+SRA_sequencing_metadata = readxl::read_excel("sra_standards/SRA_metadata.xlsx", sheet = 2)
 create_dt(SRA_sequencing_metadata)
 ```
 
@@ -267,43 +264,120 @@ Details about the requirments
 *  ***library_source*** - Source of amplification material (common names GENOMIC, TRANSCRIPTOMIC)
 *  ***library_selection*** - how amplification was done (common are PCR=Source material was selected by designed primers, RANDOM =Random selection by shearing or other method)
 *  ***library_layout*** (**MixS equivalent lib_layout**) - Specify whether to expect single, paired, or other configuration of reads  
-*  ***platform*** (**MixS equivalent seq_meth**) - Machine used to sequence data, should be one from <https://ontobee.org/ontology/OBI?iri=http://purl.obolibrary.org/obo/OBI_0400103>  
-*  ***instrument_model*** - The specific model of the machine above  
+*  ***platform*** (**MixS equivalent is part of seq_meth**) - Machine used to sequence data, should be one from <https://ontobee.org/ontology/OBI?iri=http://purl.obolibrary.org/obo/OBI_0400103>  
+*  ***instrument_model*** (**MixS equivalent is part of seq_meth**) - The specific model of the machine above  
 *  ***design_description*** - A short description of how sequencing was done, paragraph style
 *  filetype and filenames - the type of file and the names of the files associated with the sequencing  
 
 
-
-# GSC links  
-
-MIGS.eu  
-<https://genomicsstandardsconsortium.github.io/mixs/0010002/>
-
-MIGS.human-associated  
-<https://genomicsstandardsconsortium.github.io/mixs/0016003/>
-
-MIGS.eu.human-associated  
-<https://genomicsstandardsconsortium.github.io/mixs/0010002_0016003/> 
-
-MIMARKS.specimen  
-<https://genomicsstandardsconsortium.github.io/mixs/0010009/>
-
-MIMARKS.specimen.human-associated  
-<https://genomicsstandardsconsortium.github.io/mixs/0010009_0016003/> 
-
-
 ```{r, eval = F, echo = F}
-PRJNA1180199_SRR31271348_SraRunTable = readr::read_csv("examples_sra_download_info/PRJNA1180199_SRR31271348_SraRunTable.csv")
-PRJNA1180199_SRR31271447_SraRunTable = readr::read_csv("examples_sra_download_info/PRJNA1180199_SRR31271447_SraRunTable.csv")
+PRJNA1180199_SRR31271348_SraRunTable = readr::read_csv("sra_standards/examples_sra_download_info/PRJNA1180199_SRR31271348_SraRunTable.csv")
+PRJNA1180199_SRR31271447_SraRunTable = readr::read_csv("sra_standards/examples_sra_download_info/PRJNA1180199_SRR31271447_SraRunTable.csv")
 set_decompose(colnames(PRJNA1180199_SRR31271348_SraRunTable), colnames(PRJNA1180199_SRR31271447_SraRunTable))
 
 
-PRJNA1180199_allRunInfo = readr::read_tsv("examples_sra_download_info/PRJNA1180199_allRunInfo.tsv")
+PRJNA1180199_allRunInfo = readr::read_tsv("sra_standards/examples_sra_download_info/PRJNA1180199_allRunInfo.tsv")
 ```
 
 
 
 
+## GSC MiXS standards   
+
+### MIGS.eu    
+
+<https://genomicsstandardsconsortium.github.io/mixs/0010002/>
+```{r}
+MigsEu_v6.2.0_fields = readr::read_tsv("mixs_standards/MigsEu_v6.2.0_fields.txt") %>% 
+  arrange(fields)
+create_dt(MigsEu_v6.2.0_fields)
+MigsEu_v6.2.0_fields  = MigsEu_v6.2.0_fields%>% 
+  mutate(in_MigsEu_v6.2.0 = T)
+```
+
+### MIGS.human-associated  
+
+<https://genomicsstandardsconsortium.github.io/mixs/0016003/>
+```{r}
+HumanAssociated_v6.2.0_fields = readr::read_tsv("mixs_standards/HumanAssociated_v6.2.0_fields.txt") %>% 
+  arrange(fields)
+create_dt(HumanAssociated_v6.2.0_fields)
+HumanAssociated_v6.2.0_fields  = HumanAssociated_v6.2.0_fields%>% 
+  mutate(in_HumanAssociated_v6.2.0 = T)
+```
+
+### MIGS.eu.human-associated  
+
+<https://genomicsstandardsconsortium.github.io/mixs/0010002_0016003/> 
+
+### MIMARKS.specimen  
+
+<https://genomicsstandardsconsortium.github.io/mixs/0010009/>
+```{r}
+MimarksC_v6.2.0_fields = readr::read_tsv("mixs_standards/MimarksC_v6.2.0_fields.txt") %>% 
+  arrange(fields)
+create_dt(MimarksC_v6.2.0_fields)
+MimarksC_v6.2.0_fields  = MimarksC_v6.2.0_fields%>% 
+  mutate(in_MimarksC_v6.2.0 = T)
+```
+
+### MIMARKS.specimen.human-associated  
+
+<https://genomicsstandardsconsortium.github.io/mixs/0010009_0016003/> 
+
+
+### All fields 
+
+```{r}
+all_mixs_fields = MigsEu_v6.2.0_fields %>% 
+  full_join(MimarksC_v6.2.0_fields) %>% 
+  full_join(HumanAssociated_v6.2.0_fields) %>% 
+  arrange(fields) %>% 
+  mutate(in_both_MigsEu_MimarksC = in_MigsEu_v6.2.0  & in_MimarksC_v6.2.0)%>% 
+  mutate(in_all_three = in_MigsEu_v6.2.0  & in_MimarksC_v6.2.0 & in_HumanAssociated_v6.2.0)
+create_dt(all_mixs_fields)
+```
+
+
+## PMO Sample and sequencing fields 
+
+The fields choices for PMO took into consideration the Mixs standards, SRA standards, and from other similar amplicon standards (which are also based on Mixs standards), [Environmental System Science Data Infrastructure for a Virtual Ecosystem (ESS-DIVE)](https://github.com/ess-dive-workspace/essdive-amplicon/tree/main) and [National Microbiome Data Collaborative (NMDC)](https://github.com/microbiomedata/nmdc-schema?tab=readme-ov-file)
+
+The SRA takes two tables, one defining bio samples and one defining sequencing experiments done on those bio samples of which there could be multiple sequencing experiments. Therefore the decison was made to also create two seperate data sections for defining a biosample ([specimen_info](FormatOverview.qmd#specimeninfo)) and one defining experiments on those specimens ([experiment_info](FormatOverview.qmd#experimentinfo)), this allows the mirroring of SRA as well as allowing for storing replicates of a single specimen. A 3rd section was created to store redundant sequencing info ([sequencing_info](FormatOverview.qmd#sequencinginfo)).
+
+### specimen_info
+
+
+```{r, echo =F, eval=F}
+pmo_schema = rjson::fromJSON(file = "portable_microhaplotype_object.schema.json")
+cat(sort(pmo_schema$`$defs`$SpecimenInfo$required), sep = "\n")
+cat(sort(names(pmo_schema$`$defs`$SpecimenInfo$properties)[names(pmo_schema$`$defs`$SpecimenInfo$properties) %!in% pmo_schema$`$defs`$SpecimenInfo$required]), sep= "\n")
+
+```
+
+Comparing the specimen_info fields to the MIXS standard and SRA. Please see [specimen_info in FormatOverview](FormatOverview.qmd#specimeninfo) for short description of each pmo field and [above](#required-fields) for the SRA fields 
+
+```{r}
+create_dt(readr::read_tsv("specimen_info_field_comparison.tsv"))
+```
+
+### sequencing_info and experiment_info 
+
+```{r, echo =F, eval=F}
+pmo_schema = rjson::fromJSON(file = "portable_microhaplotype_object.schema.json")
+cat(sort(pmo_schema$`$defs`$ExperimentInfo$required), sep = "\n")
+cat(sort(names(pmo_schema$`$defs`$ExperimentInfo$properties)[names(pmo_schema$`$defs`$ExperimentInfo$properties) %!in% pmo_schema$`$defs`$ExperimentInfo$required]), sep= "\n")
+
+cat(sort(pmo_schema$`$defs`$SequencingInfo$required), sep = "\n")
+cat(sort(names(pmo_schema$`$defs`$SequencingInfo$properties)[names(pmo_schema$`$defs`$SequencingInfo$properties) %!in% pmo_schema$`$defs`$SequencingInfo$required]), sep= "\n")
+
+```
+
+Comparing the [sequencing_info](FormatOverview.qmd#sequencinginfo) and [experiment_info](FormatOverview.qmd#experimentinfo) fields to the Mixs standards and the data required for SRA submission [above](#required-fields-4) 
+
+```{r}
+create_dt(readr::read_tsv("experiment_and_sequencing_field_comparison.tsv"))
+```
 
 
 {{< fa dna >}}

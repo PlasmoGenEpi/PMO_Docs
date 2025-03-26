@@ -7,10 +7,13 @@
                 "additional_argument": {
                     "description": "any additional arguments that differ from the default",
                     "items": {
-                        "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
+                        "pattern": "^[A-z-._0-9{}\\(\\),\\/\\ ]+$",
                         "type": "string"
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "program": {
                     "description": "name of the program used for this portion of the pipeline",
@@ -20,7 +23,10 @@
                 "program_description": {
                     "description": "a short description of what this method does",
                     "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "program_version": {
                     "description": "the version of generation method, should be in the format of v[MAJOR].[MINOR].[PATCH]",
@@ -44,12 +50,18 @@
                     "items": {
                         "$ref": "#/$defs/BioMethod"
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "bioinformatics_method_name": {
                     "description": "name of the collection of methods is called, e.g. pipeline ",
                     "pattern": "^[A-z-._0-9 ]+$",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "demultiplexing_method": {
                     "$ref": "#/$defs/BioMethod",
@@ -79,7 +91,10 @@
                 "bioinformatics_run_name": {
                     "description": "a name to for this run",
                     "pattern": "^[A-z-._0-9 ]+$",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "run_date": {
                     "description": "the date when the run was done, should be YYYY-MM-DD",
@@ -101,37 +116,47 @@
                 "accession": {
                     "description": "ERA/SRA accession number for the sample if it was submitted",
                     "pattern": "^[A-z-._0-9]+$",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "experiment_sample_name": {
                     "description": "a unique identifier for this sequence/amplification run on a specimen_name",
                     "pattern": "^[A-z-._0-9 ]+$",
                     "type": "string"
                 },
+                "extraction_plate_info": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PlateInfo"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "plate location of where experiment was extracted"
+                },
                 "panel_id": {
                     "description": "the index into the panel_info list",
                     "pattern": "^[0-9]+$",
                     "type": "integer"
                 },
-                "plate_col": {
-                    "description": "the column the specimen was in",
-                    "pattern": "^[0-9]+$",
-                    "type": "integer"
-                },
-                "plate_name": {
-                    "description": "a name of plate the specimen was in",
-                    "pattern": "^[A-z-._0-9 ]+$",
-                    "type": "string"
-                },
-                "plate_row": {
-                    "description": "the row the specimen was in",
-                    "pattern": "^[A-z]$",
-                    "type": "string"
-                },
                 "sequencing_info_id": {
                     "description": "the index into the sequencing_info list",
                     "pattern": "^[0-9]+$",
                     "type": "integer"
+                },
+                "sequencing_prep_plate_info": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PlateInfo"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "plate location of where experiment was prepared for sequencing "
                 },
                 "specimen_id": {
                     "description": "the index into the specimen_info list",
@@ -158,7 +183,10 @@
                         "pattern": "^[A-z-._0-9]+$",
                         "type": "string"
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "genome_version": {
                     "description": "the genome version",
@@ -168,7 +196,10 @@
                 "gff_url": {
                     "description": "a link to the where this genome's annotation file could be downloaded",
                     "pattern": "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "name": {
                     "description": "name of the genome",
@@ -210,14 +241,17 @@
                     "type": "integer"
                 },
                 "genome_id": {
-                    "description": "the index to the genome in the targeted_genomes list that this location refers to ",
+                    "description": "the index to the genome in the targeted_genomes list that this location refers to",
                     "pattern": "^[0-9]+$",
                     "type": "integer"
                 },
                 "ref_seq": {
                     "description": "the reference sequence of this genomic location",
                     "pattern": "^[A-z-]+$",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "start": {
                     "description": "the start of the location, 0-based positioning",
@@ -227,7 +261,10 @@
                 "strand": {
                     "description": "which strand the location is, either + for plus strand or - for negative strand",
                     "pattern": "[+-]",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "required": [
@@ -249,13 +286,19 @@
                         "pattern": "^[A-z-._0-9]+$",
                         "type": "string"
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "marker_location": {
                     "$ref": "#/$defs/GenomicLocation",
                     "description": "the genomic location"
                 }
             },
+            "required": [
+                "marker_location"
+            ],
             "title": "MarkerOfInterest",
             "type": "object"
         },
@@ -299,7 +342,10 @@
                 },
                 "umis": {
                     "description": "the unique molecular identifier (umi) count associated with this microhaplotype",
-                    "type": "integer"
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 }
             },
             "required": [
@@ -411,6 +457,7 @@
             "properties": {
                 "density": {
                     "description": "the density in microliters",
+                    "minimum": 0,
                     "pattern": "^[-+]?\\\\d*\\\\.?\\\\d+(?:[eE][-+]?\\\\d+)?$",
                     "type": "number"
                 },
@@ -425,6 +472,38 @@
                 "density"
             ],
             "title": "ParasiteDensity",
+            "type": "object"
+        },
+        "PlateInfo": {
+            "additionalProperties": false,
+            "description": "Information about a plate location in a standard 96 well plate",
+            "properties": {
+                "plate_col": {
+                    "description": "the column the specimen was in",
+                    "pattern": "^[0-9]+$",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "plate_name": {
+                    "description": "a name of plate the specimen was in",
+                    "pattern": "^[A-z-._0-9 ]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "plate_row": {
+                    "description": "the row the specimen was in",
+                    "pattern": "^[A-z]$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "PlateInfo",
             "type": "object"
         },
         "PmoGenerationMethod": {
@@ -456,10 +535,20 @@
                 "creation_date": {
                     "description": "the date of when the PMO file was created or modified, should be YYYY-MM-DD",
                     "pattern": "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "generation_method": {
-                    "$ref": "#/$defs/PmoGenerationMethod",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PmoGenerationMethod"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "the generation method to create this PMO "
                 },
                 "pmo_version": {
@@ -526,7 +615,10 @@
                     "items": {
                         "$ref": "#/$defs/ReadCountsByStage"
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "sequencing_info": {
                     "description": "a list of sequencing info for this project",
@@ -536,7 +628,7 @@
                     "type": "array"
                 },
                 "specimen_info": {
-                    "description": "a list of specimens of all the samples within this project",
+                    "description": "a list of all the specimens within this project",
                     "items": {
                         "$ref": "#/$defs/SpecimenInfo"
                     },
@@ -578,7 +670,14 @@
             "description": "information on a primer sequence",
             "properties": {
                 "location": {
-                    "$ref": "#/$defs/GenomicLocation",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/GenomicLocation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "what the intended genomic location of the primer is"
                 },
                 "seq": {
@@ -655,7 +754,10 @@
                     "items": {
                         "$ref": "#/$defs/ReadCountsByStageForTarget"
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "total_raw_count": {
                     "description": "the raw counts off the sequencing machine that a sample began with",
@@ -703,29 +805,44 @@
                     "items": {
                         "type": "string"
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "masking": {
                     "description": "masking info for the sequence",
                     "items": {
                         "$ref": "#/$defs/MaskingInfo"
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "microhaplotype_name": {
                     "description": "an optional name for this microhaplotype",
                     "pattern": "^[A-z-._0-9]+$",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "pseudocigar": {
                     "description": "the pseudocigar of the haplotype",
                     "pattern": "^[A-z-._0-9]+$",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "quality": {
                     "description": "the ansi fastq per base quality score for this sequence, this is optional",
                     "pattern": "^[A-z-._0-9]+$",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "seq": {
                     "description": "the DNA sequence",
@@ -785,58 +902,102 @@
             "additionalProperties": false,
             "description": "Information on sequencing info",
             "properties": {
-                "lib_kit": {
+                "library_kit": {
                     "description": "Name, version, and applicable cell or cycle numbers for the kit used to prepare libraries and load cells or chips for sequencing. If possible, include a part number, e.g. MiSeq Reagent Kit v3 (150-cycle), MS-102-3001",
                     "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
-                "lib_layout": {
-                    "description": "Specify the configuration of reads, e.g. paired-end",
+                "library_layout": {
+                    "description": "Specify the configuration of reads, e.g. paired-end, single",
                     "pattern": "^[A-z-._0-9 ]+$",
                     "type": "string"
                 },
-                "lib_screen": {
+                "library_screen": {
                     "description": "Describe enrichment, screening, or normalization methods applied during amplification or library preparation, e.g. size selection 390bp, diluted to 1 ng DNA/sample",
                     "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "library_selection": {
+                    "description": "how amplification was done (common are PCR=Source material was selected by designed primers, RANDOM =Random selection by shearing or other method)",
+                    "pattern": "^[A-z-._0-9 ]+$",
+                    "type": "string"
+                },
+                "library_source": {
+                    "description": "Source of amplification material (common names GENOMIC, TRANSCRIPTOMIC)",
+                    "pattern": "^[A-z-._0-9 ]+$",
+                    "type": "string"
+                },
+                "library_strategy": {
+                    "description": "what the nuceloacid sequencing/amplification strategy was (common names are AMPLICON, WGS)",
+                    "pattern": "^[A-z-._0-9 ]+$",
                     "type": "string"
                 },
                 "nucl_acid_amp": {
                     "description": "Link to a reference or kit that describes the enzymatic amplification of nucleic acids",
                     "pattern": "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "nucl_acid_amp_date": {
                     "description": "the date of the nucleoacid amplification",
                     "pattern": "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "nucl_acid_ext": {
                     "description": "Link to a reference or kit that describes the recovery of nucleic acids from the sample",
                     "pattern": "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "nucl_acid_ext_date": {
                     "description": "the date of the nucleoacid extraction",
                     "pattern": "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "pcr_cond": {
                     "description": "the method/conditions for PCR, List PCR cycles used to amplify the target",
                     "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "seq_center": {
                     "description": "Name of facility where sequencing was performed (lab, core facility, or company)",
                     "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "seq_date": {
                     "description": "the date of sequencing, should be YYYY-MM or YYYY-MM-DD",
                     "pattern": "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?",
                     "type": "string"
                 },
-                "seq_instrument": {
-                    "description": "the sequencing instrument used to sequence the run, e.g. ILLUMINA, Illumina MiSeq",
+                "seq_instrument_model": {
+                    "description": "the sequencing instrument model used to sequence the run, e.g. NextSeq 2000, MinION, Revio",
+                    "pattern": "^[A-z-._0-9 ]+$",
+                    "type": "string"
+                },
+                "seq_platform": {
+                    "description": "the sequencing technology used to sequence the run, e.g. ILLUMINA, NANOPORE, PACBIO",
                     "pattern": "^[A-z-._0-9 ]+$",
                     "type": "string"
                 },
@@ -848,8 +1009,13 @@
             },
             "required": [
                 "sequencing_info_name",
-                "seq_instrument",
-                "seq_date"
+                "seq_platform",
+                "seq_instrument_model",
+                "seq_date",
+                "library_layout",
+                "library_strategy",
+                "library_source",
+                "library_selection"
             ],
             "title": "SequencingInfo",
             "type": "object"
@@ -859,129 +1025,219 @@
             "description": "Information on specimen info",
             "properties": {
                 "alternate_identifiers": {
-                    "description": "a list of optional alternative names for the samples",
+                    "description": "a list of optional alternative names for the specimens",
                     "items": {
                         "pattern": "^[A-z-._0-9 ]+$",
                         "type": "string"
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "collection_country": {
                     "description": "the name of country collected in, would be the same as admin level 0",
-                    "pattern": "^[A-z-._0-9 ]+$",
+                    "pattern": "^[A-Za-z0-9 ,._:'\u2013-]+$",
                     "type": "string"
                 },
                 "collection_date": {
-                    "description": "the date of the sample collection",
-                    "pattern": "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA",
+                    "description": "the date of the specimen collection, can be YYYY, YYYY-MM, or YYYY-MM-DD",
+                    "pattern": "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)",
                     "type": "string"
                 },
-                "collector": {
-                    "description": "the name of the primary person managing the specimen",
-                    "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
-                    "type": "string"
+                "collector_chief_scientist": {
+                    "description": "can be collection of names separated by a semicolon if multiple people involved or can just be the name of the primary person managing the specimen",
+                    "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
-                "date_of_birth": {
-                    "description": "if specimen is from a person, the date of birth of that person",
-                    "pattern": "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA",
-                    "type": "string"
+                "drug_usage": {
+                    "description": "Any drug used by subject and the frequency of usage; can include multiple drugs used",
+                    "items": {
+                        "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "env_broad_scale": {
+                    "description": "the broad environment from which the specimen was collected, e.g. highlands, lowlands, mountainous region",
+                    "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "env_local_scale": {
+                    "description": "the local environment from which the specimen was collected, e.g. jungle, urban, rural",
+                    "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "env_medium": {
+                    "description": "the environment medium from which the specimen was collected from",
+                    "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "geo_admin1": {
                     "description": "geographical admin level 1, the secondary large demarcation of a nation (nation = admin level 0)",
-                    "pattern": "^[A-z-._0-9 ]+$",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "geo_admin2": {
                     "description": "geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)",
-                    "pattern": "^[A-z-._0-9 ]+$",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "geo_admin3": {
                     "description": "geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "host_age": {
+                    "description": "if specimen is from a person, the age in years of the person, can be float value so for 3 month old put 0.25",
+                    "pattern": "^\\d*\\.?\\d+$",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "host_sex": {
+                    "description": "if specimen is from a person, the sex listed for that person",
                     "pattern": "^[A-z-._0-9 ]+$",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "host_subject_id": {
+                    "description": "an identifier for the individual a specimen was collected from",
+                    "pattern": "^[0-9]+$",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
                 "host_taxon_id": {
-                    "description": "optional the NCBI taxonomy number of the host of the organism",
-                    "pattern": "^[0-9]+$",
-                    "type": "integer"
-                },
-                "individual_id": {
-                    "description": "an identifier for the individual a specimen was collected from",
+                    "description": "the NCBI taxonomy number of the host that the specimen was collected from",
                     "pattern": "^[0-9]+$",
                     "type": "integer"
                 },
                 "lat_lon": {
                     "description": "the latitude and longitude of the collection site of the specimen",
                     "pattern": "^[-+]?\\d{1,2}(?:\\.\\d+)?,[-+]?\\d{1,3}(?:\\.\\d+)?$",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "parasite_density_info": {
                     "description": "one or more parasite densities in microliters for this specimen",
                     "items": {
                         "$ref": "#/$defs/ParasiteDensity"
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
-                "plate_col": {
-                    "description": "the column the specimen was in",
-                    "pattern": "^[0-9]+$",
-                    "type": "integer"
-                },
-                "plate_name": {
-                    "description": "a name of plate the specimen was in",
-                    "pattern": "^[A-z-._0-9 ]+$",
-                    "type": "string"
-                },
-                "plate_row": {
-                    "description": "the row the specimen was in",
-                    "pattern": "^[A-z]$",
-                    "type": "string"
+                "plate_info": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PlateInfo"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "plate location of where specimen is stored if stored in a plate "
                 },
                 "project_name": {
-                    "description": "a name of the project under which the sample is organized",
+                    "description": "a name of the project under which the specimen is organized",
                     "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
                     "type": "string"
                 },
-                "samp_collect_device": {
-                    "description": "the way the sample was collected, e.g. whole blood, dried blood spot, etc",
+                "specimen_collect_device": {
+                    "description": "the way the specimen was collected, e.g. whole blood, dried blood spot",
                     "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
-                "samp_store_loc": {
-                    "description": "the sample store site, address or facility name",
-                    "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
-                    "type": "string"
-                },
-                "samp_taxon_id": {
-                    "description": "the NCBI taxonomy number of the organism of interest",
-                    "pattern": "^[0-9]+$",
-                    "type": "integer"
-                },
-                "sample_comments": {
-                    "description": "any additional comments about the sample",
-                    "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
-                    "type": "string"
+                "specimen_comments": {
+                    "description": "any additional comments about the specimen",
+                    "items": {
+                        "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "specimen_name": {
-                    "description": "an identifier for the specimen",
+                    "description": "an identifier for the specimen, should be unique within this sample set",
                     "pattern": "^[A-z-._0-9 ]+$",
                     "type": "string"
                 },
-                "specimen_sex": {
-                    "description": "if specimen is from a person, the sex listed for that person",
-                    "pattern": "^[A-z-._0-9 ]+$",
-                    "type": "string"
+                "specimen_store_loc": {
+                    "description": "the specimen store site, address or facility name",
+                    "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "specimen_taxon_id": {
+                    "description": "the NCBI taxonomy number of the organism in specimen, can list multiple if a mixed sample",
+                    "items": {
+                        "pattern": "^[0-9]+$",
+                        "type": "integer"
+                    },
+                    "type": "array"
+                },
+                "specimen_type": {
+                    "description": "what type of specimen this is, e.g. negative_control, positive_control, field_sample",
+                    "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "travel_out_six_month": {
+                    "description": "Specification of the countries travelled in the last six months; can include multiple travels",
+                    "items": {
+                        "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 }
             },
             "required": [
                 "specimen_name",
-                "samp_taxon_id",
+                "specimen_taxon_id",
+                "host_taxon_id",
                 "collection_date",
                 "collection_country",
-                "collector",
-                "samp_store_loc",
-                "samp_collect_device",
                 "project_name"
             ],
             "title": "SpecimenInfo",
@@ -1023,11 +1279,31 @@
                 "gene_name": {
                     "description": "an identifier of the gene, if any, is being covered with this targeted",
                     "pattern": "^[A-z-._0-9]+$",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "insert_location": {
-                    "$ref": "#/$defs/GenomicLocation",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/GenomicLocation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "the intended genomic location of the insert of the amplicon (the location between the end of the forward primer and the beginning of the reverse primer)"
+                },
+                "markers_of_interest": {
+                    "description": "a list of covered markers of interest",
+                    "items": {
+                        "$ref": "#/$defs/MarkerOfInterest"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "reverse_primers": {
                     "description": "A list of reverse primers associated with this target",
@@ -1041,7 +1317,10 @@
                     "items": {
                         "type": "string"
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "target_name": {
                     "description": "an identifier for this target",
@@ -1112,7 +1391,10 @@
             "items": {
                 "$ref": "#/$defs/ReadCountsByStage"
             },
-            "type": "array"
+            "type": [
+                "array",
+                "null"
+            ]
         },
         "sequencing_info": {
             "description": "a list of sequencing info for this project",
@@ -1122,7 +1404,7 @@
             "type": "array"
         },
         "specimen_info": {
-            "description": "a list of specimens of all the samples within this project",
+            "description": "a list of all the specimens within this project",
             "items": {
                 "$ref": "#/$defs/SpecimenInfo"
             },

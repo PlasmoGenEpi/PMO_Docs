@@ -5,7 +5,7 @@ project:
     - index.qmd
     - format/FormatOverview.qmd
     - format/FormatExample.qmd
-    - format/FormatOverviewForDevelopers.qmd
+    - format/FormatOverviewAdvanced.qmd
     - format/DevelopmentOfFormat.qmd
     - Tools_Installation/pmotools-python_installation.qmd
     - pmotools-python-usages/pmotools-runner.qmd
@@ -29,7 +29,7 @@ website:
           - href: format/DevelopmentOfFormat.qmd
           - href: format/FormatOverview.qmd
           - href: format/FormatExample.qmd
-          - href: format/FormatOverviewForDevelopers.qmd
+          - href: format/FormatOverviewAdvanced.qmd
       - text: "Tools Installation"
         menu:
           - href: Tools_Installation/pmotools-python_installation.qmd
@@ -77,5 +77,6 @@ format:
     code-link: true
     bibliography: [references.bib]
     biblio-style: apalike
+    back-to-top-navigation: true
     
 editor: source

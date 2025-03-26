@@ -3,6 +3,20 @@ title: "Change Log"
 ---
 
 
+# 2025-03-26
+*  modified fields for SpecimenInfo and SequencingInfo to be more aligned to SRA and Mixs standards and for internal consistency
+    *  samp_collection_device -> specimen_collection_device 
+    *  sample_comments -> specimen_comments
+    *  samp_taxon_id -> specimen_taxon_id 
+        *  changed specimen_taxon_id from a single value to a list of values in case of mixed species 
+    *  added library_layout, library_strategy, library_source, library_selection (needed for SRA submission)
+    *  added several Mixs fields that may be of interest to the format as optional fields (travel_out_six_month, drug_usage)
+    *  added env_broad_scale, env_local_scale, env_medium as optinal fields (are required by SRA but can be 'not applicable' if missing so aded to PMO as optional)
+    *  added seq_platform and seq_instrument_model (both needed for SRA)
+*  added PlateInfo class to be used in several locations 
+*  added extraction_plate_info sequencing_prep_plate_info to ExperimentInfo as optional fields for storing this info 
+
+
 # 2025-03-15
 
 *  removed pmo_name

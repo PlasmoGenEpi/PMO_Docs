@@ -2,6 +2,27 @@
 title: "Change Log"
 ---
 
+# 2025-06
+
+*  proposed changes from PHAGE meeting
+    *  study design meta table 
+        *  adding collaborators names   
+    *  re-doing experiment_sample_name, crowd sourcing 
+        *  seq_run_[SOME_THING]
+    *  when having a measurement, having another field that has the units 
+    *  converting several PMOs 
+        *  MIPs vs MAD4HATTER data 
+
+
+# 2025-05
+
+*  Proposed changes
+    *  More compressed amplicon calling bioinformatics run info 
+    *  add passed_qc and failed_qc_reason fields to experiment_info
+    *  build around sample_meta data
+    *  
+
+
 
 # 2025-03-26
 *  modified fields for SpecimenInfo and SequencingInfo to be more aligned to SRA and Mixs standards and for internal consistency
@@ -10,7 +31,7 @@ title: "Change Log"
     *  samp_taxon_id -> specimen_taxon_id 
         *  changed specimen_taxon_id from a single value to a list of values in case of mixed species 
     *  added library_layout, library_strategy, library_source, library_selection (needed for SRA submission)
-    *  added several Mixs fields that may be of interest to the format as optional fields (travel_out_six_month, drug_usage)
+    *  added several Mixs fields that may be of interest to the format as optional fields (host_subject_id, travel_out_six_month, drug_usage)
     *  added env_broad_scale, env_local_scale, env_medium as optinal fields (are required by SRA but can be 'not applicable' if missing so aded to PMO as optional)
     *  added seq_platform and seq_instrument_model (both needed for SRA)
 *  added PlateInfo class to be used in several locations 

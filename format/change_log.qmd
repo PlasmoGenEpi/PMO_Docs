@@ -2,6 +2,27 @@
 title: "Change Log"
 ---
 
+# 2025-06 proposed changes
+
+*  Experiment info
+    *  sequencing_prep_plate_info -> library_prep_plate_info 
+    *  adding qpcr_parasite_density_info 
+*  specimeninfo
+    *  change plate_info to storage_plate_info
+    *  parasite_density_info -> microscopy_parasite_density_info
+*  adding unit field to any values ()  
+*  adding a table for study design 
+    *  adding list of contributors
+    *  BioProject_accession
+    *  study_name
+    *  study_description
+    *  study_type 
+    *  study_contributors
+    *  study_collector_chief_scientist 
+    look at BioProject info page that we could align with 
+
+
+
 # 2025-06
 
 *  proposed changes from PHAGE meeting
@@ -21,29 +42,6 @@ title: "Change Log"
     *  add passed_qc and failed_qc_reason fields to experiment_info
     *  build around sample_meta data
     *  
-
-
-
-proposed 
-
-*  Experiment info
-    *  sequencing_prep_plate_info -> library_prep_plate_info 
-    *  adding qpcr_parasite_density_info 
-*  specimeninfo
-    *  change plate_info to storage_plate_info
-    *  parasite_density_info -> microscopy_parasite_density_info
-*  adding unit field to any values ()
-
-*  adding a table for study design 
-    *  adding list of contributors
-    *  BioProject_accession
-    *  study_name
-    *  study_description
-    *  study_type 
-    *  study_contributors
-    *  study_collector_chief_scientist 
-    look at BioProject info page that we could align with 
-
 
 # 2025-03-26
 *  modified fields for SpecimenInfo and SequencingInfo to be more aligned to SRA and Mixs standards and for internal consistency

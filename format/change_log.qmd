@@ -2,25 +2,37 @@
 title: "Change Log"
 ---
 
-# 2025-06 proposed changes
+# 2025-07 proposed changes
 
-*  Experiment info
-    *  sequencing_prep_plate_info -> library_prep_plate_info 
-    *  adding qpcr_parasite_density_info 
-*  specimeninfo
-    *  change plate_info to storage_plate_info
-    *  parasite_density_info -> microscopy_parasite_density_info
-*  adding unit field to any values ()  
-*  adding a table for study design 
-    *  adding list of contributors
-    *  BioProject_accession
-    *  study_name
-    *  study_description
-    *  study_type 
-    *  study_contributors
-    *  study_collector_chief_scientist 
-    look at BioProject info page that we could align with 
-
+- [ ]  adding unit field to any values (or make it part of the description and make it a requirement that units also has to be the same)  
+- [ ]  ExperimentInfo
+    - [x]  sequencing_prep_plate_info -> library_prep_plate_info 
+    - [x]  removed extraction_plate_info, will keep this field more focused on sequencing information 
+    - [x]  adding qpcr_parasite_density_info 
+    - [ ]  renaming to seq_run_[SOMETHING], e.g. seq_run_specimen vs seq_run_sample
+- [x]  ParasiteDensity
+    - [x]  method -> density_method
+    - [x]  density -> parasite_density
+    - [x]  added date_measured as an optional field to indicate when the density was performed 
+    - [x]  added density_method_comments as optional field to list additional details on how the density was performed like primers used or microscopist who performed 
+- [x]  SpecimenInfo
+    - [x]  change plate_info to storage_plate_info
+    - [x]  parasite_density_info -> microscopy_parasite_density_info
+    - [x]  remove collector_chief_scientist
+    - [x]  rename project_name to project_id 
+- [x]  adding a table for study design project_info 
+    - [x]  project_name (required)
+    - [x]  project_description  (required)
+    - [x]  project_type  (required)
+    - [x]  project_contributors
+    - [x]  project_collector_chief_scientist (remove from SpecimenInfo)
+    - [x]  BioProject_accession
+    - look at BioProject info page that we could align with 
+- [x]  RepresentativeMicrohaplotypesForTarget
+    - [x]  add mhap_location
+        - optional field, if representative is a smaller location than the full original target info, if not present asssumes it is the full target location   
+- [x]  TargetInfo
+    - [x]  changed forward_primers and reverse_primers from a list to single value and changed names to forward_primer and reverse_primer
 
 
 # 2025-06

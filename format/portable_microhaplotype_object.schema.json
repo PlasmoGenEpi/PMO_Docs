@@ -126,28 +126,7 @@
                     "pattern": "^[A-z-._0-9 ]+$",
                     "type": "string"
                 },
-                "extraction_plate_info": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/PlateInfo"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "plate location of where experiment was extracted"
-                },
-                "panel_id": {
-                    "description": "the index into the panel_info list",
-                    "pattern": "^[0-9]+$",
-                    "type": "integer"
-                },
-                "sequencing_info_id": {
-                    "description": "the index into the sequencing_info list",
-                    "pattern": "^[0-9]+$",
-                    "type": "integer"
-                },
-                "sequencing_prep_plate_info": {
+                "library_prep_plate_info": {
                     "anyOf": [
                         {
                             "$ref": "#/$defs/PlateInfo"
@@ -157,6 +136,26 @@
                         }
                     ],
                     "description": "plate location of where experiment was prepared for sequencing "
+                },
+                "panel_id": {
+                    "description": "the index into the panel_info list",
+                    "pattern": "^[0-9]+$",
+                    "type": "integer"
+                },
+                "qpcr_parasite_density_info": {
+                    "description": "qpcr parasite density measurement ",
+                    "items": {
+                        "$ref": "#/$defs/ParasiteDensity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "sequencing_info_id": {
+                    "description": "the index into the sequencing_info list",
+                    "pattern": "^[0-9]+$",
+                    "type": "integer"
                 },
                 "specimen_id": {
                     "description": "the index into the specimen_info list",
@@ -455,21 +454,37 @@
             "additionalProperties": false,
             "description": "method and value of determined parasite density",
             "properties": {
-                "density": {
+                "date_measured": {
+                    "description": "the date the qpcr was performed, can be YYYY, YYYY-MM, or YYYY-MM-DD",
+                    "pattern": "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "density_method": {
+                    "description": "the method of how this density was obtained",
+                    "pattern": "^[A-z-._0-9 ]+$",
+                    "type": "string"
+                },
+                "density_method_comments": {
+                    "description": "additional comments about how the density was performed",
+                    "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "parasite_density": {
                     "description": "the density in microliters",
                     "minimum": 0,
                     "pattern": "^[-+]?\\\\d*\\\\.?\\\\d+(?:[eE][-+]?\\\\d+)?$",
                     "type": "number"
-                },
-                "method": {
-                    "description": "the method of how this density was obtained",
-                    "pattern": "^[A-z-._0-9 ]+$",
-                    "type": "string"
                 }
             },
             "required": [
-                "method",
-                "density"
+                "density_method",
+                "parasite_density"
             ],
             "title": "ParasiteDensity",
             "type": "object"
@@ -610,6 +625,13 @@
                     "$ref": "#/$defs/PmoHeader",
                     "description": "the PMO information for this file including version etc"
                 },
+                "project_info": {
+                    "description": "the information about the projects stored in this PMO",
+                    "items": {
+                        "$ref": "#/$defs/ProjectInfo"
+                    },
+                    "type": "array"
+                },
                 "read_counts_by_stage": {
                     "description": "the read counts for different stages of the pipeline",
                     "items": {
@@ -660,6 +682,7 @@
                 "bioinformatics_methods_info",
                 "bioinformatics_run_info",
                 "microhaplotypes_detected",
+                "project_info",
                 "pmo_header"
             ],
             "title": "PortableMicrohaplotypeObject",
@@ -690,6 +713,62 @@
                 "seq"
             ],
             "title": "PrimerInfo",
+            "type": "object"
+        },
+        "ProjectInfo": {
+            "additionalProperties": false,
+            "description": "Information on project info",
+            "properties": {
+                "BioProject_accession": {
+                    "description": "an SRA bioproject accession e.g. PRJNA33823",
+                    "pattern": "^[A-z-._0-9 ]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "project_collector_chief_scientist": {
+                    "description": "can be collection of names separated by a semicolon if multiple people involved or can just be the name of the primary person managing the specimen",
+                    "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "project_contributors": {
+                    "description": "a list of collaborators who contributed to this project",
+                    "items": {
+                        "pattern": "^[A-z-._0-9 ]+$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "project_description": {
+                    "description": "a short description of the project",
+                    "type": "string"
+                },
+                "project_name": {
+                    "description": "a name for the project, should be unique if multiple projects listed",
+                    "pattern": "^[A-z-._0-9 ]+$",
+                    "type": "string"
+                },
+                "project_type": {
+                    "description": "the type of project conducted, e.g. TES vs surveillance vs transmission",
+                    "pattern": "^[A-z-._0-9 ]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "project_name",
+                "project_description"
+            ],
+            "title": "ProjectInfo",
             "type": "object"
         },
         "ReactionInfo": {
@@ -878,8 +957,19 @@
             "additionalProperties": false,
             "description": "a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format",
             "properties": {
+                "mhap_location": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/GenomicLocation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "a genomic location that was analyzed for this target info, this allows listing location that may be different from the full target location (e.g 1 base in from the full) "
+                },
                 "microhaplotypes": {
-                    "description": "a list of the microhaplotypes detected for a target ",
+                    "description": "a list of the microhaplotypes detected for a target",
                     "items": {
                         "$ref": "#/$defs/RepresentativeMicrohaplotype"
                     },
@@ -1045,14 +1135,6 @@
                     "pattern": "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)",
                     "type": "string"
                 },
-                "collector_chief_scientist": {
-                    "description": "can be collection of names separated by a semicolon if multiple people involved or can just be the name of the primary person managing the specimen",
-                    "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "drug_usage": {
                     "description": "Any drug used by subject and the frequency of usage; can include multiple drugs used",
                     "items": {
@@ -1146,7 +1228,7 @@
                         "null"
                     ]
                 },
-                "parasite_density_info": {
+                "microscopy_parasite_density_info": {
                     "description": "one or more parasite densities in microliters for this specimen",
                     "items": {
                         "$ref": "#/$defs/ParasiteDensity"
@@ -1156,21 +1238,10 @@
                         "null"
                     ]
                 },
-                "plate_info": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/PlateInfo"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "plate location of where specimen is stored if stored in a plate "
-                },
-                "project_name": {
-                    "description": "a name of the project under which the specimen is organized",
-                    "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
-                    "type": "string"
+                "project_id": {
+                    "description": "the index into the project_info list",
+                    "pattern": "^[0-9]+$",
+                    "type": "integer"
                 },
                 "specimen_collect_device": {
                     "description": "the way the specimen was collected, e.g. whole blood, dried blood spot",
@@ -1220,6 +1291,17 @@
                         "null"
                     ]
                 },
+                "storage_plate_info": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PlateInfo"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "plate location of where specimen is stored if stored in a plate "
+                },
                 "travel_out_six_month": {
                     "description": "Specification of the countries travelled in the last six months; can include multiple travels",
                     "items": {
@@ -1238,7 +1320,7 @@
                 "host_taxon_id",
                 "collection_date",
                 "collection_country",
-                "project_name"
+                "project_id"
             ],
             "title": "SpecimenInfo",
             "type": "object"
@@ -1269,12 +1351,9 @@
             "additionalProperties": false,
             "description": "Information about a specific target within a genome",
             "properties": {
-                "forward_primers": {
-                    "description": "A list of forward primers associated with this target",
-                    "items": {
-                        "$ref": "#/$defs/PrimerInfo"
-                    },
-                    "type": "array"
+                "forward_primer": {
+                    "$ref": "#/$defs/PrimerInfo",
+                    "description": "the forward primer associated with this target"
                 },
                 "gene_name": {
                     "description": "an identifier of the gene, if any, is being covered with this targeted",
@@ -1305,12 +1384,9 @@
                         "null"
                     ]
                 },
-                "reverse_primers": {
-                    "description": "A list of reverse primers associated with this target",
-                    "items": {
-                        "$ref": "#/$defs/PrimerInfo"
-                    },
-                    "type": "array"
+                "reverse_primer": {
+                    "$ref": "#/$defs/PrimerInfo",
+                    "description": "the reverse primer associated with this target"
                 },
                 "target_attributes": {
                     "description": "a list of classification type for the primer target",
@@ -1330,8 +1406,8 @@
             },
             "required": [
                 "target_name",
-                "forward_primers",
-                "reverse_primers"
+                "forward_primer",
+                "reverse_primer"
             ],
             "title": "TargetInfo",
             "type": "object"
@@ -1386,6 +1462,13 @@
             "$ref": "#/$defs/PmoHeader",
             "description": "the PMO information for this file including version etc"
         },
+        "project_info": {
+            "description": "the information about the projects stored in this PMO",
+            "items": {
+                "$ref": "#/$defs/ProjectInfo"
+            },
+            "type": "array"
+        },
         "read_counts_by_stage": {
             "description": "the read counts for different stages of the pipeline",
             "items": {
@@ -1436,6 +1519,7 @@
         "bioinformatics_methods_info",
         "bioinformatics_run_info",
         "microhaplotypes_detected",
+        "project_info",
         "pmo_header"
     ],
     "title": "portable-microhaplotype-object",

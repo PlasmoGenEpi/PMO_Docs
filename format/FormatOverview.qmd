@@ -32,9 +32,9 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 :::
 
-
 ## PortableMicrohaplotypeObject  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/PortableMicrohaplotypeObject/>  
+
 
 ### Required  
 *  experiment_info (***type=[list of ExperimentInfo](#experimentinfo)***)  
@@ -57,6 +57,8 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  the runtime info for the bioinformatics pipeline used to generated the amplicon analysis for this project  
 *  microhaplotypes_detected (***type=[list of MicrohaplotypesDetected](#microhaplotypesdetected)***)  
     *  the microhaplotypes detected in this projects  
+*  project_info (***type=[list of ProjectInfo](#projectinfo)***)  
+    *  the information about the projects stored in this PMO  
 *  pmo_header (***type=[PmoHeader](#pmoheader)***)  
     *  the PMO information for this file including version etc  
 
@@ -68,7 +70,6 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 ```{json}  
 
 ```  
-
 
 ## BioMethod  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/BioMethod/>  
@@ -166,10 +167,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 ### Optional  
 *  accession (***type=string***)  
     *  ERA/SRA accession number for the sample if it was submitted  
-*  extraction_plate_info (***type=[PlateInfo](#plateinfo)***)  
-    *  plate location of where experiment was extracted  
-*  sequencing_prep_plate_info (***type=[PlateInfo](#plateinfo)***)  
+*  library_prep_plate_info (***type=[PlateInfo](#plateinfo)***)  
     *  plate location of where experiment was prepared for sequencing   
+*  qpcr_parasite_density_info (***type=[list of ParasiteDensity](#parasitedensity)***)  
+    *  qpcr parasite density measurement   
 
 ### Example  
 ```{json}  
@@ -394,10 +395,16 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 <div class="collapse" id="collapseParasiteDensity">
   <div class="card card-body">
 ### Required  
-*  method (***type=string***)  
+*  density_method (***type=string***)  
     *  the method of how this density was obtained  
-*  density (***type=number***)  
+*  parasite_density (***type=number***)  
     *  the density in microliters  
+
+### Optional  
+*  date_measured (***type=string***)  
+    *  the date the qpcr was performed, can be YYYY, YYYY-MM, or YYYY-MM-DD  
+*  density_method_comments (***type=string***)  
+    *  additional comments about how the density was performed  
 
 ### Example  
 ```{json}  
@@ -475,7 +482,6 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 </div><br>
 
 
-
 ## PrimerInfo  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/PrimerInfo/>  
 <a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapsePrimerInfo" aria-expanded="false" aria-controls="collapseExample">
@@ -490,6 +496,36 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 ### Optional  
 *  location (***type=[GenomicLocation](#genomiclocation)***)  
     *  what the intended genomic location of the primer is  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## ProjectInfo  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/ProjectInfo/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseProjectInfo" aria-expanded="false" aria-controls="collapseExample">
+  Show ProjectInfo fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseProjectInfo">
+  <div class="card card-body">
+### Required  
+*  project_name (***type=string***)  
+    *  a name for the project, should be unique if multiple projects listed  
+*  project_description (***type=string***)  
+    *  a short description of the project  
+
+### Optional  
+*  BioProject_accession (***type=string***)  
+    *  an SRA bioproject accession e.g. PRJNA33823  
+*  project_collector_chief_scientist (***type=string***)  
+    *  can be collection of names separated by a semicolon if multiple people involved or can just be the name of the primary person managing the specimen  
+*  project_contributors (***type=list of string***)  
+    *  a list of collaborators who contributed to this project  
+*  project_type (***type=string***)  
+    *  the type of project conducted, e.g. TES vs surveillance vs transmission  
 
 ### Example  
 ```{json}  
@@ -641,7 +677,11 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 *  target_id (***type=integer***)  
     *  the index into the target_info list  
 *  microhaplotypes (***type=[list of RepresentativeMicrohaplotype](#representativemicrohaplotype)***)  
-    *  a list of the microhaplotypes detected for a target   
+    *  a list of the microhaplotypes detected for a target  
+
+### Optional  
+*  mhap_location (***type=[GenomicLocation](#genomiclocation)***)  
+    *  a genomic location that was analyzed for this target info, this allows listing location that may be different from the full target location (e.g 1 base in from the full)   
 
 ### Example  
 ```{json}  
@@ -718,14 +758,12 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  the date of the specimen collection, can be YYYY, YYYY-MM, or YYYY-MM-DD  
 *  collection_country (***type=string***)  
     *  the name of country collected in, would be the same as admin level 0  
-*  project_name (***type=string***)  
-    *  a name of the project under which the specimen is organized  
+*  project_id (***type=integer***)  
+    *  the index into the project_info list  
 
 ### Optional  
 *  alternate_identifiers (***type=list of string***)  
     *  a list of optional alternative names for the specimens  
-*  collector_chief_scientist (***type=string***)  
-    *  can be collection of names separated by a semicolon if multiple people involved or can just be the name of the primary person managing the specimen  
 *  drug_usage (***type=list of string***)  
     *  Any drug used by subject and the frequency of usage; can include multiple drugs used  
 *  env_broad_scale (***type=string***)  
@@ -748,10 +786,8 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  an identifier for the individual a specimen was collected from  
 *  lat_lon (***type=string***)  
     *  the latitude and longitude of the collection site of the specimen  
-*  parasite_density_info (***type=[list of ParasiteDensity](#parasitedensity)***)  
+*  microscopy_parasite_density_info (***type=[list of ParasiteDensity](#parasitedensity)***)  
     *  one or more parasite densities in microliters for this specimen  
-*  plate_info (***type=[PlateInfo](#plateinfo)***)  
-    *  plate location of where specimen is stored if stored in a plate   
 *  specimen_collect_device (***type=string***)  
     *  the way the specimen was collected, e.g. whole blood, dried blood spot  
 *  specimen_comments (***type=list of string***)  
@@ -760,6 +796,8 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  the specimen store site, address or facility name  
 *  specimen_type (***type=string***)  
     *  what type of specimen this is, e.g. negative_control, positive_control, field_sample  
+*  storage_plate_info (***type=[PlateInfo](#plateinfo)***)  
+    *  plate location of where specimen is stored if stored in a plate   
 *  travel_out_six_month (***type=list of string***)  
     *  Specification of the countries travelled in the last six months; can include multiple travels  
 
@@ -800,10 +838,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 ### Required  
 *  target_name (***type=string***)  
     *  an identifier for this target  
-*  forward_primers (***type=[list of PrimerInfo](#primerinfo)***)  
-    *  A list of forward primers associated with this target  
-*  reverse_primers (***type=[list of PrimerInfo](#primerinfo)***)  
-    *  A list of reverse primers associated with this target  
+*  forward_primer (***type=[PrimerInfo](#primerinfo)***)  
+    *  the forward primer associated with this target  
+*  reverse_primer (***type=[PrimerInfo](#primerinfo)***)  
+    *  the reverse primer associated with this target  
 
 ### Optional  
 *  gene_name (***type=string***)  

@@ -57,6 +57,20 @@ website:
         menu: 
           - text: "References"
             href: References.qmd
+      - icon: github
+        menu:
+          - text: <span class='menuTitle'>Documentation</span>
+          - text: Documentation Source Code
+            href:  https://github.com/PlasmoGenEpi/PMO_Docs
+          - text: Comment or Report an issue for Documentation  
+            href:  https://github.com/PlasmoGenEpi/PMO_Docs/issues
+          - text: "------------"
+          - text: <span class='menuTitle'>pmotools-python</span>
+          - text: pmotools-python Source Code
+            href:  https://github.com/PlasmoGenEpi/pmotools-python/tree/develop
+          - text: Comment or Report an issue for pmotools-python  
+            href:  https://github.com/PlasmoGenEpi/pmotools-python/issues
+
 
 format:
   html:

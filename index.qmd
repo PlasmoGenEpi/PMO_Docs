@@ -34,7 +34,7 @@ A standardized format for microhaplotype data would facilitate data sharing, inc
 
 We propose a single, relational data structure using JSON as a portable file. This approach allows for design which is efficient, lightweight, and flexible, organizing metadata together with genetic data.
 
-See current alpha developmental of file [format here](#format/FormatOverview.qmd)
+See current alpha developmental of file [format here](format/FormatOverview.qmd)
 
 ## Goals of file format  
 

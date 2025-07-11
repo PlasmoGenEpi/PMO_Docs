@@ -32,9 +32,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 :::
 
+
+
 ## PortableMicrohaplotypeObject  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/PortableMicrohaplotypeObject/>  
-
 
 ### Required  
 *  experiment_info (***type=[list of ExperimentInfo](#experimentinfo)***)  
@@ -49,13 +50,13 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  a list of info on the targets  
 *  targeted_genomes (***type=[list of GenomeInfo](#genomeinfo)***)  
     *  a list of genomes that the targets in TargetInfo refer to  
-*  microhaplotypes_info (***type=[RepresentativeMicrohaplotypes](#representativemicrohaplotypes)***)  
+*  representative_microhaplotypes (***type=[RepresentativeMicrohaplotypes](#representativemicrohaplotypes)***)  
     *  a list of the information on the representative microhaplotypes  
 *  bioinformatics_methods_info (***type=[list of BioinformaticsMethodInfo](#bioinformaticsmethodinfo)***)  
     *  the bioinformatics pipeline/methods used to generated the amplicon analysis for this project  
 *  bioinformatics_run_info (***type=[list of BioinformaticsRunInfo](#bioinformaticsruninfo)***)  
     *  the runtime info for the bioinformatics pipeline used to generated the amplicon analysis for this project  
-*  microhaplotypes_detected (***type=[list of MicrohaplotypesDetected](#microhaplotypesdetected)***)  
+*  detected_microhaplotypes (***type=[list of DetectedMicrohaplotypes](#detectedmicrohaplotypes)***)  
     *  the microhaplotypes detected in this projects  
 *  project_info (***type=[list of ProjectInfo](#projectinfo)***)  
     *  the information about the projects stored in this PMO  
@@ -133,12 +134,72 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 ### Required  
 *  bioinformatics_methods_id (***type=integer***)  
     *  the index into the bioinformatics_methods_info list  
+*  bioinformatics_run_name (***type=string***)  
+    *  a name to for this run, needs to be unique to each run   
+
+### Optional  
 *  run_date (***type=string***)  
     *  the date when the run was done, should be YYYY-MM-DD  
 
-### Optional  
-*  bioinformatics_run_name (***type=string***)  
-    *  a name to for this run  
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## DetectedMicrohaplotypes  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/DetectedMicrohaplotypes/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseDetectedMicrohaplotypes" aria-expanded="false" aria-controls="collapseExample">
+  Show DetectedMicrohaplotypes fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseDetectedMicrohaplotypes">
+  <div class="card card-body">
+### Required  
+*  bioinformatics_run_id (***type=integer***)  
+    *  the index into bioinformatics_run_info list  
+*  experiment_samples (***type=[list of DetectedMicrohaplotypesForSample](#detectedmicrohaplotypesforsample)***)  
+    *  a list of the microhaplotypes detected for a sample by targets   
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## DetectedMicrohaplotypesForSample  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/DetectedMicrohaplotypesForSample/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseDetectedMicrohaplotypesForSample" aria-expanded="false" aria-controls="collapseExample">
+  Show DetectedMicrohaplotypesForSample fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseDetectedMicrohaplotypesForSample">
+  <div class="card card-body">
+### Required  
+*  experiment_sample_id (***type=integer***)  
+    *  the index into the experiment_info list  
+*  target_results (***type=[list of DetectedMicrohaplotypesForTarget](#detectedmicrohaplotypesfortarget)***)  
+    *  a list of the microhaplotypes detected for a list of targets  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
+## DetectedMicrohaplotypesForTarget  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/DetectedMicrohaplotypesForTarget/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseDetectedMicrohaplotypesForTarget" aria-expanded="false" aria-controls="collapseExample">
+  Show DetectedMicrohaplotypesForTarget fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseDetectedMicrohaplotypesForTarget">
+  <div class="card card-body">
+### Required  
+*  mhaps_target_id (***type=integer***)  
+    *  the index for a target in the representative_microhaplotypes list  
+*  mhaps (***type=[list of MicrohaplotypeForTarget](#microhaplotypefortarget)***)  
+    *  a list of the microhaplotypes detected for this target  
 
 ### Example  
 ```{json}  
@@ -227,6 +288,8 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  the end of the location, 0-based positioning  
 
 ### Optional  
+*  alt_seq (***type=string***)  
+    *  a possible alternative sequence of this genomic location  
 *  ref_seq (***type=string***)  
     *  the reference sequence of this genomic location  
 *  strand (***type=string***)  
@@ -292,73 +355,13 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
   <div class="card card-body">
 ### Required  
 *  mhap_id (***type=integer***)  
-    *  the index for a microhaplotype for a target in the microhaplotypes_info list, e.g. microhaplotypes_info[mhaps_target_id][mhap_id]  
+    *  the index for a microhaplotype for a target in the representative_microhaplotypes list, e.g. representative_microhaplotypes[mhaps_target_id][mhap_id]  
 *  reads (***type=integer***)  
     *  the read count associated with this microhaplotype  
 
 ### Optional  
 *  umis (***type=integer***)  
     *  the unique molecular identifier (umi) count associated with this microhaplotype  
-
-### Example  
-```{json}  
-
-```  
-  </div>
-</div><br>
-
-## MicrohaplotypesDetected  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/MicrohaplotypesDetected/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseMicrohaplotypesDetected" aria-expanded="false" aria-controls="collapseExample">
-  Show MicrohaplotypesDetected fields <i class="fa-solid fa-caret-right"></i>
-</a>
-<div class="collapse" id="collapseMicrohaplotypesDetected">
-  <div class="card card-body">
-### Required  
-*  bioinformatics_run_id (***type=integer***)  
-    *  the index into bioinformatics_run_info list  
-*  experiment_samples (***type=[list of MicrohaplotypesForSample](#microhaplotypesforsample)***)  
-    *  a list of the microhaplotypes detected for a sample by targets   
-
-### Example  
-```{json}  
-
-```  
-  </div>
-</div><br>
-
-## MicrohaplotypesForSample  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/MicrohaplotypesForSample/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseMicrohaplotypesForSample" aria-expanded="false" aria-controls="collapseExample">
-  Show MicrohaplotypesForSample fields <i class="fa-solid fa-caret-right"></i>
-</a>
-<div class="collapse" id="collapseMicrohaplotypesForSample">
-  <div class="card card-body">
-### Required  
-*  experiment_sample_id (***type=integer***)  
-    *  the index into the experiment_info list  
-*  target_results (***type=[list of MicrohaplotypesForTarget](#microhaplotypesfortarget)***)  
-    *  a list of the microhaplotypes detected for a list of targets  
-
-### Example  
-```{json}  
-
-```  
-  </div>
-</div><br>
-
-## MicrohaplotypesForTarget  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/MicrohaplotypesForTarget/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseMicrohaplotypesForTarget" aria-expanded="false" aria-controls="collapseExample">
-  Show MicrohaplotypesForTarget fields <i class="fa-solid fa-caret-right"></i>
-</a>
-<div class="collapse" id="collapseMicrohaplotypesForTarget">
-  <div class="card card-body">
-### Required  
-*  mhaps_target_id (***type=integer***)  
-    *  the index for a target in the microhaplotypes_info list  
-*  haps (***type=[list of MicrohaplotypeForTarget](#microhaplotypefortarget)***)  
-    *  a list of the microhaplotypes detected for this target  
 
 ### Example  
 ```{json}  
@@ -704,8 +707,6 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  the sequencing technology used to sequence the run, e.g. ILLUMINA, NANOPORE, PACBIO  
 *  seq_instrument_model (***type=string***)  
     *  the sequencing instrument model used to sequence the run, e.g. NextSeq 2000, MinION, Revio  
-*  seq_date (***type=string***)  
-    *  the date of sequencing, should be YYYY-MM or YYYY-MM-DD  
 *  library_layout (***type=string***)  
     *  Specify the configuration of reads, e.g. paired-end, single  
 *  library_strategy (***type=string***)  
@@ -732,6 +733,8 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  the method/conditions for PCR, List PCR cycles used to amplify the target  
 *  seq_center (***type=string***)  
     *  Name of facility where sequencing was performed (lab, core facility, or company)  
+*  seq_date (***type=string***)  
+    *  the date of sequencing, should be YYYY-MM or YYYY-MM-DD  
 
 ### Example  
 ```{json}  

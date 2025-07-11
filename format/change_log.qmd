@@ -2,7 +2,7 @@
 title: "Change Log"
 ---
 
-# 2025-07 proposed changes
+# 2025-07
 
 - [ ]  adding unit field to any values (or make it part of the description and make it a requirement that units also has to be the same)  
 - [ ]  ExperimentInfo
@@ -33,7 +33,20 @@ title: "Change Log"
         - optional field, if representative is a smaller location than the full original target info, if not present asssumes it is the full target location   
 - [x]  TargetInfo
     - [x]  changed forward_primers and reverse_primers from a list to single value and changed names to forward_primer and reverse_primer
-
+- [x] Class name changes
+    - [x] MicrohaplotypesDetected -> DetectedMicrohaplotypes  
+    - [x] MicrohaplotypesForSample -> DetectedMicrohaplotypesForSample
+    - [x] MicrohaplotypesForTarget -> DetectedMicrohaplotypesForTarget
+- [x] PortableMicrohaplotypeObject
+    - [x] microhaplotypes_detected -> detected_microhaplotypes
+    - [x] microhaplotypes_info -> representative_microhaplotypes
+- [x] MicrohaplotypesForTarget
+    - [x] haps -> mhaps  
+- [x] BioinformaticsRunInfo
+    - [x] make run_date optional
+    - [x] make bioinformatics_run_name required and unique
+- [x] SequencingInfo
+    - [x] make seq_date optional
 
 # 2025-06
 

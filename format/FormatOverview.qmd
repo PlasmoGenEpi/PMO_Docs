@@ -226,8 +226,8 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  a unique identifier for this sequence/amplification run on a specimen_name  
 
 ### Optional  
-*  accession (***type=string***)  
-    *  ERA/SRA accession number for the sample if it was submitted  
+*  run_accession (***type=string***)  
+    *  ERA/SRA run_accession number for the sample if it was submitted  
 *  library_prep_plate_info (***type=[PlateInfo](#plateinfo)***)  
     *  plate location of where experiment was prepared for sequencing   
 *  qpcr_parasite_density_info (***type=[list of ParasiteDensity](#parasitedensity)***)  

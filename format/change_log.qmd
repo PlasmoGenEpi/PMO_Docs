@@ -1,15 +1,19 @@
 ---
 title: "Change Log"
+embed-resources: true
 ---
 
 # 2025-07
 
-- [ ]  adding unit field to any values (or make it part of the description and make it a requirement that units also has to be the same)  
-- [ ]  ExperimentInfo
+- [x]  adding unit field to any values (or make it part of the description and make it a requirement that units also has to be the same) 
+    - [x] will make part of the standardization that fields like have to be in specific units (and that these units will be exported on export output functions)
+- [x]  ExperimentInfo
     - [x]  sequencing_prep_plate_info -> library_prep_plate_info 
     - [x]  removed extraction_plate_info, will keep this field more focused on sequencing information 
     - [x]  adding qpcr_parasite_density_info 
-    - [ ]  renaming to seq_run_[SOMETHING], e.g. seq_run_specimen vs seq_run_sample
+    - [x]  adding fastq_loc for location of fastqs associated with data
+    - [x]  renaming to seq_run_[SOMETHING], e.g. seq_run_specimen vs seq_run_sample
+        - [x] based on feedback settled on library_sample_id/name/info 
 - [x]  ParasiteDensity
     - [x]  method -> density_method
     - [x]  density -> parasite_density
@@ -19,7 +23,8 @@ title: "Change Log"
     - [x]  change plate_info to storage_plate_info
     - [x]  parasite_density_info -> microscopy_parasite_density_info
     - [x]  remove collector_chief_scientist
-    - [x]  rename project_name to project_id 
+    - [x]  rename project_name to project_id
+    - [x]  add specimen_accession, gravid (T or F for whether currently pregnancy), gravidity (numerical values), blood_meal (T of F)
 - [x]  adding a table for study design project_info 
     - [x]  project_name (required)
     - [x]  project_description  (required)
@@ -47,6 +52,17 @@ title: "Change Log"
     - [x] make bioinformatics_run_name required and unique
 - [x] SequencingInfo
     - [x] make seq_date optional
+- [x] make pseudocigar into a class Pseudocigar
+    - [x] fields: 
+        - [x] ref_loc (GenomicLocation) - reference that was aligned to 
+        - [x] pseudocigar - the pseudocigar itself 
+        - [x] pseudocigar_generation_description - description of how the pseudocigar was generated
+- [x] add to MaskingInfo masking_generation_description 
+- [x] GenomeInfo
+    - [x] taxon_id into a list
+- [x] BioMethod
+    - [x] add program_url 
+    
 
 # 2025-06
 

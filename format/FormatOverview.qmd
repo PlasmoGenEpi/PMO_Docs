@@ -32,14 +32,12 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 :::
 
-
-
 ## PortableMicrohaplotypeObject  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/PortableMicrohaplotypeObject/>  
 
 ### Required  
-*  experiment_info (***type=[list of ExperimentInfo](#experimentinfo)***)  
-    *  a list of experiments of all the seq/amp of the specimens within this project  
+*  library_info (***type=[list of LibrarySampleInfo](#librarysampleinfo)***)  
+    *  a list of librarys of all the seq/amp of the specimens within this project  
 *  specimen_info (***type=[list of SpecimenInfo](#specimeninfo)***)  
     *  a list of all the specimens within this project  
 *  sequencing_info (***type=[list of SequencingInfo](#sequencinginfo)***)  
@@ -72,6 +70,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ```  
 
+
 ## BioMethod  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/BioMethod/>  
 <a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseBioMethod" aria-expanded="false" aria-controls="collapseExample">
@@ -90,6 +89,8 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  any additional arguments that differ from the default  
 *  program_description (***type=string***)  
     *  a short description of what this method does  
+*  program_url (***type=string***)  
+    *  a url pointing to code base of a program, e.g. a github link  
 
 ### Example  
 ```{json}  
@@ -158,7 +159,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 ### Required  
 *  bioinformatics_run_id (***type=integer***)  
     *  the index into bioinformatics_run_info list  
-*  experiment_samples (***type=[list of DetectedMicrohaplotypesForSample](#detectedmicrohaplotypesforsample)***)  
+*  library_samples (***type=[list of DetectedMicrohaplotypesForSample](#detectedmicrohaplotypesforsample)***)  
     *  a list of the microhaplotypes detected for a sample by targets   
 
 ### Example  
@@ -176,8 +177,8 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 <div class="collapse" id="collapseDetectedMicrohaplotypesForSample">
   <div class="card card-body">
 ### Required  
-*  experiment_sample_id (***type=integer***)  
-    *  the index into the experiment_info list  
+*  library_sample_id (***type=integer***)  
+    *  the index into the library_info list  
 *  target_results (***type=[list of DetectedMicrohaplotypesForTarget](#detectedmicrohaplotypesfortarget)***)  
     *  a list of the microhaplotypes detected for a list of targets  
 
@@ -208,38 +209,6 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
   </div>
 </div><br>
 
-## ExperimentInfo  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/ExperimentInfo/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseExperimentInfo" aria-expanded="false" aria-controls="collapseExample">
-  Show ExperimentInfo fields <i class="fa-solid fa-caret-right"></i>
-</a>
-<div class="collapse" id="collapseExperimentInfo">
-  <div class="card card-body">
-### Required  
-*  sequencing_info_id (***type=integer***)  
-    *  the index into the sequencing_info list  
-*  specimen_id (***type=integer***)  
-    *  the index into the specimen_info list  
-*  panel_id (***type=integer***)  
-    *  the index into the panel_info list  
-*  experiment_sample_name (***type=string***)  
-    *  a unique identifier for this sequence/amplification run on a specimen_name  
-
-### Optional  
-*  run_accession (***type=string***)  
-    *  ERA/SRA run_accession number for the sample if it was submitted  
-*  library_prep_plate_info (***type=[PlateInfo](#plateinfo)***)  
-    *  plate location of where experiment was prepared for sequencing   
-*  qpcr_parasite_density_info (***type=[list of ParasiteDensity](#parasitedensity)***)  
-    *  qpcr parasite density measurement   
-
-### Example  
-```{json}  
-
-```  
-  </div>
-</div><br>
-
 ## GenomeInfo  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/GenomeInfo/>  
 <a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseGenomeInfo" aria-expanded="false" aria-controls="collapseExample">
@@ -252,8 +221,8 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  name of the genome  
 *  genome_version (***type=string***)  
     *  the genome version  
-*  taxon_id (***type=integer***)  
-    *  the NCBI taxonomy number  
+*  taxon_id (***type= list of integer***)  
+    *  the NCBI taxonomy number, can be a list of values  
 *  url (***type=string***)  
     *  a link to the where this genome file could be downloaded  
 
@@ -302,6 +271,40 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
   </div>
 </div><br>
 
+## LibrarySampleInfo  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/LibrarySampleInfo/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseLibrarySampleInfo" aria-expanded="false" aria-controls="collapseExample">
+  Show LibrarySampleInfo fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapseLibrarySampleInfo">
+  <div class="card card-body">
+### Required  
+*  sequencing_info_id (***type=integer***)  
+    *  the index into the sequencing_info list  
+*  specimen_id (***type=integer***)  
+    *  the index into the specimen_info list  
+*  panel_id (***type=integer***)  
+    *  the index into the panel_info list  
+*  library_sample_name (***type=string***)  
+    *  a unique identifier for this sequence/amplification run on a specimen_name  
+
+### Optional  
+*  fastqs_loc (***type=string***)  
+    *  the location (url or filename path) of the fastqs for a library run  
+*  library_prep_plate_info (***type=[PlateInfo](#plateinfo)***)  
+    *  plate location of where library was prepared for sequencing   
+*  qpcr_parasite_density_info (***type=[list of ParasiteDensity](#parasitedensity)***)  
+    *  qpcr parasite density measurement   
+*  run_accession (***type=string***)  
+    *  ERA/SRA run accession number for the sample if it was submitted  
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
 ## MarkerOfInterest  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/MarkerOfInterest/>  
 <a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseMarkerOfInterest" aria-expanded="false" aria-controls="collapseExample">
@@ -338,6 +341,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  the size of the masking  
 *  replacement_size (***type=integer***)  
     *  the size of replacement mask  
+
+### Optional  
+*  masking_generation_description (***type=string***)  
+    *  a description of how the masking information was generated   
 
 ### Example  
 ```{json}  
@@ -485,6 +492,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 </div><br>
 
 
+
 ## PrimerInfo  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/PrimerInfo/>  
 <a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapsePrimerInfo" aria-expanded="false" aria-controls="collapseExample">
@@ -537,6 +545,30 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
   </div>
 </div><br>
 
+## Pseudocigar  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/Pseudocigar/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapsePseudocigar" aria-expanded="false" aria-controls="collapseExample">
+  Show Pseudocigar fields <i class="fa-solid fa-caret-right"></i>
+</a>
+<div class="collapse" id="collapsePseudocigar">
+  <div class="card card-body">
+### Required  
+*  pseudocigar_seq (***type=string***)  
+    *  the pseudocigar itself  
+*  ref_loc (***type=[GenomicLocation](#genomiclocation)***)  
+    *  the genomic location the pseudocigar is in reference to  
+
+### Optional  
+*  pseudocigar_generation_description (***type=string***)  
+    *  a description of how the pseudocigar information was generated   
+
+### Example  
+```{json}  
+
+```  
+  </div>
+</div><br>
+
 ## ReactionInfo  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/ReactionInfo/>  
 <a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseReactionInfo" aria-expanded="false" aria-controls="collapseExample">
@@ -567,8 +599,8 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 ### Required  
 *  bioinformatics_run_id (***type=integer***)  
     *  the index into bioinformatics_run_info list  
-*  read_counts_by_experimental_sample_by_stage (***type=[list of ReadCountsByStageForExperimentalSample](#readcountsbystageforexperimentalsample)***)  
-    *  a list by experiment_sample for the counts at each stage  
+*  read_counts_by_library_sample_by_stage (***type=[list of ReadCountsByStageForLibrarySample](#readcountsbystageforlibrarysample)***)  
+    *  a list by library_sample for the counts at each stage  
 
 ### Example  
 ```{json}  
@@ -577,16 +609,16 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
   </div>
 </div><br>
 
-## ReadCountsByStageForExperimentalSample  
-<https://plasmogenepi.github.io/portable-microhaplotype-object/ReadCountsByStageForExperimentalSample/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseReadCountsByStageForExperimentalSample" aria-expanded="false" aria-controls="collapseExample">
-  Show ReadCountsByStageForExperimentalSample fields <i class="fa-solid fa-caret-right"></i>
+## ReadCountsByStageForLibrarySample  
+<https://plasmogenepi.github.io/portable-microhaplotype-object/ReadCountsByStageForLibrarySample/>  
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseReadCountsByStageForLibrarySample" aria-expanded="false" aria-controls="collapseExample">
+  Show ReadCountsByStageForLibrarySample fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseReadCountsByStageForExperimentalSample">
+<div class="collapse" id="collapseReadCountsByStageForLibrarySample">
   <div class="card card-body">
 ### Required  
-*  experiment_sample_id (***type=integer***)  
-    *  the index into the experiment_info list  
+*  library_sample_id (***type=integer***)  
+    *  the index into the library_info list  
 *  total_raw_count (***type=integer***)  
     *  the raw counts off the sequencing machine that a sample began with  
 
@@ -639,7 +671,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  masking info for the sequence  
 *  microhaplotype_name (***type=string***)  
     *  an optional name for this microhaplotype  
-*  pseudocigar (***type=string***)  
+*  pseudocigar (***type=[Pseudocigar](#pseudocigar)***)  
     *  the pseudocigar of the haplotype  
 *  quality (***type=string***)  
     *  the ansi fastq per base quality score for this sequence, this is optional  
@@ -767,6 +799,8 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 ### Optional  
 *  alternate_identifiers (***type=list of string***)  
     *  a list of optional alternative names for the specimens  
+*  blood_meal (***type=boolean***)  
+    *  whether host specimen has had a recent blood meal    
 *  drug_usage (***type=list of string***)  
     *  Any drug used by subject and the frequency of usage; can include multiple drugs used  
 *  env_broad_scale (***type=string***)  
@@ -781,6 +815,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)  
 *  geo_admin3 (***type=string***)  
     *  geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)  
+*  gravid (***type=boolean***)  
+    *  whether host specimen is currently pregnant  
+*  gravidity (***type=integer***)  
+    *  the gravidity of the specimen host (number of previous pregnancies)  
 *  host_age (***type=number***)  
     *  if specimen is from a person, the age in years of the person, can be float value so for 3 month old put 0.25  
 *  host_sex (***type=string***)  
@@ -791,6 +829,8 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  the latitude and longitude of the collection site of the specimen  
 *  microscopy_parasite_density_info (***type=[list of ParasiteDensity](#parasitedensity)***)  
     *  one or more parasite densities in microliters for this specimen  
+*  specimen_accession (***type=string***)  
+    *  if specimen is deposited in a database, what accession is it associated with  
 *  specimen_collect_device (***type=string***)  
     *  the way the specimen was collected, e.g. whole blood, dried blood spot  
 *  specimen_comments (***type=list of string***)  

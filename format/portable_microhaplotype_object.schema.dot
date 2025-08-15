@@ -136,6 +136,7 @@ digraph PMO {
 			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="panel_id" bgcolor="#008607">panel_id</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="library_sample_name" bgcolor="#008607">library_sample_name</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="experiment_accession" bgcolor="#00DCB5">experiment_accession</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="fastqs_loc" bgcolor="#00DCB5">fastqs_loc</td> </tr>
 			<tr> <td bgcolor="#FFCFE2">PlateInfo</td><td bgcolor="#7CFFFA">single</td> <td port="library_prep_plate_info" bgcolor="#00DCB5">library_prep_plate_info</td> </tr>
 			<tr> <td bgcolor="#FFCFE2">ParasiteDensity</td><td bgcolor="#FF71FD">list</td> <td port="qpcr_parasite_density_info" bgcolor="#00DCB5">qpcr_parasite_density_info</td> </tr>
@@ -194,7 +195,7 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="ParasiteDensity"><b>ParasiteDensity</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="density_method" bgcolor="#008607">density_method</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="parasite_density_method" bgcolor="#008607">parasite_density_method</td> </tr>
 			<tr> <td bgcolor="#003C86">number</td><td bgcolor="#7CFFFA">single</td> <td port="parasite_density" bgcolor="#008607">parasite_density</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="date_measured" bgcolor="#00DCB5">date_measured</td> </tr>
@@ -241,7 +242,7 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="PortableMicrohaplotypeObject"><b>PortableMicrohaplotypeObject</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#FFCFE2">LibrarySampleInfo</td><td bgcolor="#FF71FD">list</td> <td port="library_info" bgcolor="#008607">library_info</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">LibrarySampleInfo</td><td bgcolor="#FF71FD">list</td> <td port="library_sample_info" bgcolor="#008607">library_sample_info</td> </tr>
 			<tr> <td bgcolor="#FFCFE2">SpecimenInfo</td><td bgcolor="#FF71FD">list</td> <td port="specimen_info" bgcolor="#008607">specimen_info</td> </tr>
 			<tr> <td bgcolor="#FFCFE2">SequencingInfo</td><td bgcolor="#FF71FD">list</td> <td port="sequencing_info" bgcolor="#008607">sequencing_info</td> </tr>
 			<tr> <td bgcolor="#FFCFE2">PanelInfo</td><td bgcolor="#FF71FD">list</td> <td port="panel_info" bgcolor="#008607">panel_info</td> </tr>
@@ -426,7 +427,7 @@ digraph PMO {
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="host_sex" bgcolor="#00DCB5">host_sex</td> </tr>
 			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="host_subject_id" bgcolor="#00DCB5">host_subject_id</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="lat_lon" bgcolor="#00DCB5">lat_lon</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">ParasiteDensity</td><td bgcolor="#FF71FD">list</td> <td port="microscopy_parasite_density_info" bgcolor="#00DCB5">microscopy_parasite_density_info</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">ParasiteDensity</td><td bgcolor="#FF71FD">list</td> <td port="parasite_density_info" bgcolor="#00DCB5">parasite_density_info</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="specimen_accession" bgcolor="#00DCB5">specimen_accession</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="specimen_collect_device" bgcolor="#00DCB5">specimen_collect_device</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#FF71FD">list</td> <td port="specimen_comments" bgcolor="#00DCB5">specimen_comments</td> </tr>
@@ -477,7 +478,7 @@ digraph PMO {
 	PortableMicrohaplotypeObject_NODE:bioinformatics_methods_info -> BioinformaticsMethodInfo_NODE:BioinformaticsMethodInfo
 	PortableMicrohaplotypeObject_NODE:bioinformatics_run_info -> BioinformaticsRunInfo_NODE:BioinformaticsRunInfo
 	PortableMicrohaplotypeObject_NODE:detected_microhaplotypes -> DetectedMicrohaplotypes_NODE:DetectedMicrohaplotypes
-	PortableMicrohaplotypeObject_NODE:library_info -> LibrarySampleInfo_NODE:LibrarySampleInfo
+	PortableMicrohaplotypeObject_NODE:library_sample_info -> LibrarySampleInfo_NODE:LibrarySampleInfo
 	PortableMicrohaplotypeObject_NODE:panel_info -> PanelInfo_NODE:PanelInfo
 	PortableMicrohaplotypeObject_NODE:pmo_header -> PmoHeader_NODE:PmoHeader
 	PortableMicrohaplotypeObject_NODE:project_info -> ProjectInfo_NODE:ProjectInfo
@@ -497,7 +498,7 @@ digraph PMO {
 	RepresentativeMicrohaplotypes_NODE:targets -> RepresentativeMicrohaplotypesForTarget_NODE:RepresentativeMicrohaplotypesForTarget
 	RepresentativeMicrohaplotypesForTarget_NODE:mhap_location -> GenomicLocation_NODE:GenomicLocation
 	RepresentativeMicrohaplotypesForTarget_NODE:microhaplotypes -> RepresentativeMicrohaplotype_NODE:RepresentativeMicrohaplotype
-	SpecimenInfo_NODE:microscopy_parasite_density_info -> ParasiteDensity_NODE:ParasiteDensity
+	SpecimenInfo_NODE:parasite_density_info -> ParasiteDensity_NODE:ParasiteDensity
 	SpecimenInfo_NODE:storage_plate_info -> PlateInfo_NODE:PlateInfo
 	TargetInfo_NODE:forward_primer -> PrimerInfo_NODE:PrimerInfo
 	TargetInfo_NODE:insert_location -> GenomicLocation_NODE:GenomicLocation

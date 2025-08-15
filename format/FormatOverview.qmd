@@ -18,6 +18,20 @@ Format is defined by utilizing [LinkML](https://linkml.io/linkml/) to generate a
 
 Other notable users of LinkML/MIxS [National Microbiome Data Collaborative Schema](https://github.com/microbiomedata/nmdc-schema)
 
+# Format shcema 
+
+
+A jsonschema for the format 
+
+```{r}
+#| results: asis
+#| echo: false
+
+cat(createDownloadLink("portable_microhaplotype_object.schema.json"))
+
+```
+
+
 # Overview   
 
 Below is an overview of the entire format currently in  development which is under active development and optimization. Please send questions to [info@plasmogenepi.org](mailto:info@plasmogenepi.org)
@@ -32,12 +46,13 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 :::
 
+
 ## PortableMicrohaplotypeObject  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/PortableMicrohaplotypeObject/>  
 
 ### Required  
-*  library_info (***type=[list of LibrarySampleInfo](#librarysampleinfo)***)  
-    *  a list of librarys of all the seq/amp of the specimens within this project  
+*  library_sample_info (***type=[list of LibrarySampleInfo](#librarysampleinfo)***)  
+    *  a list of libraries of all the seq/amp of the specimens within this project  
 *  specimen_info (***type=[list of SpecimenInfo](#specimeninfo)***)  
     *  a list of all the specimens within this project  
 *  sequencing_info (***type=[list of SequencingInfo](#sequencinginfo)***)  
@@ -178,7 +193,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
   <div class="card card-body">
 ### Required  
 *  library_sample_id (***type=integer***)  
-    *  the index into the library_info list  
+    *  the index into the library_sample_info list  
 *  target_results (***type=[list of DetectedMicrohaplotypesForTarget](#detectedmicrohaplotypesfortarget)***)  
     *  a list of the microhaplotypes detected for a list of targets  
 
@@ -289,12 +304,14 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  a unique identifier for this sequence/amplification run on a specimen_name  
 
 ### Optional  
+*  experiment_accession (***type=string***)  
+    *  ERA/SRA experiment accession number for the sample if it was submitted  
 *  fastqs_loc (***type=string***)  
     *  the location (url or filename path) of the fastqs for a library run  
 *  library_prep_plate_info (***type=[PlateInfo](#plateinfo)***)  
     *  plate location of where library was prepared for sequencing   
 *  qpcr_parasite_density_info (***type=[list of ParasiteDensity](#parasitedensity)***)  
-    *  qpcr parasite density measurement   
+    *  qpcr parasite density measurement for this extracted sample  
 *  run_accession (***type=string***)  
     *  ERA/SRA run accession number for the sample if it was submitted  
 
@@ -405,7 +422,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 <div class="collapse" id="collapseParasiteDensity">
   <div class="card card-body">
 ### Required  
-*  density_method (***type=string***)  
+*  parasite_density_method (***type=string***)  
     *  the method of how this density was obtained  
 *  parasite_density (***type=number***)  
     *  the density in microliters  
@@ -618,7 +635,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
   <div class="card card-body">
 ### Required  
 *  library_sample_id (***type=integer***)  
-    *  the index into the library_info list  
+    *  the index into the library_sample_info list  
 *  total_raw_count (***type=integer***)  
     *  the raw counts off the sequencing machine that a sample began with  
 
@@ -827,7 +844,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  an identifier for the individual a specimen was collected from  
 *  lat_lon (***type=string***)  
     *  the latitude and longitude of the collection site of the specimen  
-*  microscopy_parasite_density_info (***type=[list of ParasiteDensity](#parasitedensity)***)  
+*  parasite_density_info (***type=[list of ParasiteDensity](#parasitedensity)***)  
     *  one or more parasite densities in microliters for this specimen  
 *  specimen_accession (***type=string***)  
     *  if specimen is deposited in a database, what accession is it associated with  

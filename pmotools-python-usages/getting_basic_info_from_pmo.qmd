@@ -213,26 +213,26 @@ pmotools-runner.py count_targets_per_sample --read_count_minimum 3000 --file ../
 
 ```
 
-## count_samples_per_target  
+## count_library_samples_per_target  
 
 
 Count up the number of experimental_sample_ids each target has. A read filter can be applied to see how many samples a taget would have if a filter was applied 
 
 
 ```{bash}
-pmotools-runner.py count_samples_per_target -h 
+pmotools-runner.py count_library_samples_per_target -h 
 ```
 
 
-The python code for `count_samples_per_target` script is below
+The python code for `count_library_samples_per_target` script is below
 
 ```{python}
 #| echo: true
 #| eval: false
 #| code-fold: true
 #| code-line-numbers: true
-#| filename: pmotools-python/scripts/extract_info_from_pmo/count_samples_per_target.py
-#| file: ../pmotools-python/scripts/extract_info_from_pmo/count_samples_per_target.py
+#| filename: pmotools-python/scripts/extract_info_from_pmo/count_library_samples_per_target.py
+#| file: ../pmotools-python/scripts/extract_info_from_pmo/count_library_samples_per_target.py
 ```
 
 
@@ -240,7 +240,7 @@ The python code for `count_samples_per_target` script is below
 ```{bash}
 cd example 
 
-pmotools-runner.py count_samples_per_target --file ../../format/moz2018_PMO.json.gz  | head
+pmotools-runner.py count_library_samples_per_target --file ../../format/moz2018_PMO.json.gz  | head
 
 ```
 
@@ -249,7 +249,7 @@ Apply a read count minimum filter (this a total read count summed for a target a
 ```{bash}
 cd example 
 
-pmotools-runner.py count_samples_per_target --read_count_minimum 3000 --file ../../format/moz2018_PMO.json.gz  | head
+pmotools-runner.py count_library_samples_per_target --read_count_minimum 3000 --file ../../format/moz2018_PMO.json.gz  | head
 
 ```
 

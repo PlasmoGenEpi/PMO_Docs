@@ -22,7 +22,7 @@ pmotools-runner.py combine_pmos --help
 ```
 
 
-The list of PMO files can be given comma separated to thier relative paths from where you run the script or in a file where each line is a different file to combine
+The list of PMO files can be given comma separated to their relative paths from where you run the script or in a file where each line is a different file to combine
 
 ```{bash, eval = F}
 cd example 

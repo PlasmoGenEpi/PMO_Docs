@@ -26,8 +26,6 @@ cd example
 wget https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz
 wget https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz
 
-
-
 ```
 
 
@@ -61,6 +59,13 @@ pmotools-runner.py extract_insert_of_panels --file ../../format/moz2018_PMO.json
 ```{bash}
 cd example 
 pmotools-runner.py extract_insert_of_panels --file ../../format/moz2018_PMO.json.gz --output moz2018_PMO_panel_insert_locs.bed --overwrite
+
+```
+
+Can add on the reference sequence if it's loaded in PMO, if it's not loaded will be blank column 
+```{bash}
+cd example 
+pmotools-runner.py extract_insert_of_panels --add_ref_seqs --file ../../format/moz2018_PMO.json.gz --output moz2018_PMO_panel_insert_locs.bed --overwrite
 
 ```
 

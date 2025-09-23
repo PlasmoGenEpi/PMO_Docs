@@ -7,18 +7,6 @@ source("../common.R")
 ```
 
 
-# Format overview 
-
-:::{.column-screen}
-
-```{r, echo=FALSE, results="asis"}
-cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6), sep = "\n")
-```
-<!-- ![](portable_microhaplotype_object.schema.dot.svg) -->
-
-:::
-
-
 # Python implementation 
 
 Linkml generates a datamodel file with all classes: <https://github.com/PlasmoGenEpi/portable-micorhaplotype-object/blob/main/src/plasmo_tar_amp_schema/datamodel/plasmo_tar_amp_schema.py>
@@ -29,7 +17,7 @@ Linkml generates a datamodel file with all classes: <https://github.com/PlasmoGe
 Started development of a tool called pmotools. Python implementation can be found here: <https://github.com/PlasmoGenEpi/pmotools-python/tree/develop>
 
 
-# Overview   
+# Format overview
 
 Below is an overview of the entire format currently in  development which is under active development and optimization. Please send questions to [info@plasmogenepi.org](mailto:info@plasmogenepi.org)
 

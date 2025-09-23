@@ -121,39 +121,73 @@ pmotools-runner.py count_specimen_meta --file ../../format/PathWeaverHeome1_PMO.
 
 ```
 
-## list_tar_amp_bioinformatics_info_ids 
 
+## list_library_sample_names_per_specimen_name
 
-This will simply list out all the analyses (all the `tar_amp_bioinformatics_info_id`s) stored within a PMO 
-
+Specimens can have multiple library sample names, so it might be helpful to list out all the library_names per specimens 
 
 ```{bash}
-pmotools-runner.py list_tar_amp_bioinformatics_info_ids -h 
+pmotools-runner.py list_library_sample_names_per_specimen_name -h 
 ```
 
 
-The python code for `list_tar_amp_bioinformatics_info_ids` script is below
+The python code for `list_library_sample_names_per_specimen_name` script is below
 
 ```{python}
 #| echo: true
 #| eval: false
 #| code-fold: true
 #| code-line-numbers: true
-#| filename: pmotools-python/scripts/extract_info_from_pmo/list_tar_amp_bioinformatics_info_ids.py
-#| file: ../pmotools-python/scripts/extract_info_from_pmo/list_tar_amp_bioinformatics_info_ids.py
+#| filename: pmotools-python/scripts/extract_info_from_pmo/list_library_sample_names_per_specimen_name.py
+#| file: ../pmotools-python/scripts/extract_info_from_pmo/list_library_sample_names_per_specimen_name.py
+```
+
+
+```{bash}
+cd example 
+pmotools-runner.py list_library_sample_names_per_specimen_name --file ../../format/moz2018_PMO.json.gz 
+
+```
+
+```{bash}
+cd example 
+pmotools-runner.py list_library_sample_names_per_specimen_name --file ../../format/moz2018_PMO.json.gz --overwrite --output library_samples_per_specimen_moz2018_PMO.tsv.gz 
+
+```
+
+## list_bioinformatics_run_names 
+
+
+This will simply list out all the analyses (all the `bioinformatics_run_names`s) stored within a PMO 
+
+
+```{bash}
+pmotools-runner.py list_bioinformatics_run_names -h 
+```
+
+
+The python code for `list_bioinformatics_run_names` script is below
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-line-numbers: true
+#| filename: pmotools-python/scripts/extract_info_from_pmo/list_bioinformatics_run_names.py
+#| file: ../pmotools-python/scripts/extract_info_from_pmo/list_bioinformatics_run_names.py
 ```
 
 
 
 ```{bash}
 cd example 
-pmotools-runner.py list_tar_amp_bioinformatics_info_ids --file ../../format/moz2018_PMO.json.gz  
+pmotools-runner.py list_bioinformatics_run_names --file ../../format/moz2018_PMO.json.gz  
 
 ```
 
 ```{bash}
 cd example 
-pmotools-runner.py list_tar_amp_bioinformatics_info_ids --file ../../format/PathWeaverHeome1_PMO.json.gz 
+pmotools-runner.py list_bioinformatics_run_names --file ../../format/PathWeaverHeome1_PMO.json.gz 
 
 ```
 
@@ -165,42 +199,42 @@ cd example
 
 pmotools-runner.py combine_pmos --pmo_files ../../format/moz2018_PMO.json.gz,../../format/PathWeaverHeome1_PMO.json.gz --output combined_Heome1_PMO.json.gz --overwrite
 
-pmotools-runner.py list_tar_amp_bioinformatics_info_ids --file combined_Heome1_PMO.json.gz 
+pmotools-runner.py list_bioinformatics_run_names --file combined_Heome1_PMO.json.gz 
 
 ```
 
 ```{bash, echo = F}
 cd example 
-pmotools-runner.py list_tar_amp_bioinformatics_info_ids --file combined_Heome1_PMO.json.gz 
+pmotools-runner.py list_bioinformatics_run_names --file combined_Heome1_PMO.json.gz 
 
 ```
 
 
 
-## count_targets_per_sample 
+## count_targets_per_library_sample 
 
-Count up the number targets each experimental_sample_id has. A read filter can be applied to see how targets would be kept if such a filter was applied 
+Count up the number targets each library_sample_id has. A read filter can be applied to see how targets would be kept if such a filter was applied 
 
 ```{bash}
-pmotools-runner.py count_targets_per_sample -h 
+pmotools-runner.py count_targets_per_library_sample -h 
 ```
 
 
-The python code for `count_targets_per_sample` script is below
+The python code for `count_targets_per_library_sample` script is below
 
 ```{python}
 #| echo: true
 #| eval: false
 #| code-fold: true
 #| code-line-numbers: true
-#| filename: pmotools-python/scripts/extract_info_from_pmo/count_targets_per_sample.py
-#| file: ../pmotools-python/scripts/extract_info_from_pmo/count_targets_per_sample.py
+#| filename: pmotools-python/scripts/extract_info_from_pmo/count_targets_per_library_sample.py
+#| file: ../pmotools-python/scripts/extract_info_from_pmo/count_targets_per_library_sample.py
 ```
 
 ```{bash}
 cd example 
 
-pmotools-runner.py count_targets_per_sample --file ../../format/moz2018_PMO.json.gz  | head
+pmotools-runner.py count_targets_per_library_sample --file ../../format/moz2018_PMO.json.gz  | head
 
 ```
 
@@ -209,14 +243,14 @@ Apply a read count minimum filter (this a total read count summed for a target a
 ```{bash}
 cd example 
 
-pmotools-runner.py count_targets_per_sample --read_count_minimum 3000 --file ../../format/moz2018_PMO.json.gz  | head
+pmotools-runner.py count_targets_per_library_sample --read_count_minimum 3000 --file ../../format/moz2018_PMO.json.gz  | head
 
 ```
 
 ## count_library_samples_per_target  
 
 
-Count up the number of experimental_sample_ids each target has. A read filter can be applied to see how many samples a taget would have if a filter was applied 
+Count up the number of library_sample_ids each target has. A read filter can be applied to see how many samples a taget would have if a filter was applied 
 
 
 ```{bash}

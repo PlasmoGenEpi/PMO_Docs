@@ -51,71 +51,71 @@ echo -e "t1\nt20\nt31" | pmotools-runner.py extract_pmo_with_select_targets --fi
 ```
 
 
-## Subsetting by specific specimen_ids 
+## Subsetting by specific specimen_names 
 
-You can subset to just to just select specimen_id, each specimen can have several experiments associated with it, by supplying the specimen_id all associated experiments will also be pulled 
+You can subset to just to just select specimen_name, each specimen can have several experiments associated with it, by supplying the specimen_name all associated experiments will also be pulled 
 
-Similar to above you can supply the specimen_ids either as comma separated values or in a plain text file where each line is a specimen_id
+Similar to above you can supply the specimen_names either as comma separated values or in a plain text file where each line is a specimen_name
 
 ```{bash}
-pmotools-runner.py extract_pmo_with_select_specimen_ids -h
+pmotools-runner.py extract_pmo_with_select_specimen_names -h
 ```
 
-The python code for `extract_pmo_with_select_specimen_ids` script is below
+The python code for `extract_pmo_with_select_specimen_names` script is below
 
 ```{python}
 #| echo: true
 #| eval: false
 #| code-fold: true
 #| code-line-numbers: true
-#| filename: pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_specimen_ids.py
-#| file: ../pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_specimen_ids.py
+#| filename: pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_specimen_names.py
+#| file: ../pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_specimen_names.py
 ```
 
 ```{bash}
 cd example 
 
-pmotools-runner.py extract_pmo_with_select_specimen_ids --specimen_ids 8025874217,8025875146,8034209589 --file ../../format/moz2018_PMO.json.gz --output 8025874217_8025875146_8034209589_moz2018_PMO.json.gz --overwrite
+pmotools-runner.py extract_pmo_with_select_specimen_names --specimen_names 8025874217,8025875146,8034209589 --file ../../format/moz2018_PMO.json.gz --output 8025874217_8025875146_8034209589_moz2018_PMO.json.gz --overwrite
 
-echo -e "8025874217\n8025875146\n8034209589" > select_specimen_ids.txt 
+echo -e "8025874217\n8025875146\n8034209589" > select_specimen_names.txt 
 
-pmotools-runner.py extract_pmo_with_select_specimen_ids --specimen_ids select_specimen_ids.txt --file ../../format/moz2018_PMO.json.gz --output 8025874217_8025875146_8034209589_moz2018_PMO.json.gz --overwrite
+pmotools-runner.py extract_pmo_with_select_specimen_names --specimen_names select_specimen_names.txt --file ../../format/moz2018_PMO.json.gz --output 8025874217_8025875146_8034209589_moz2018_PMO.json.gz --overwrite
 
-echo -e "8025874217\n8025875146\n8034209589" | pmotools-runner.py extract_pmo_with_select_specimen_ids --specimen_ids STDIN --file ../../format/moz2018_PMO.json.gz --output 8025874217_8025875146_8034209589_moz2018_PMO.json.gz --overwrite
+echo -e "8025874217\n8025875146\n8034209589" | pmotools-runner.py extract_pmo_with_select_specimen_names --specimen_names STDIN --file ../../format/moz2018_PMO.json.gz --output 8025874217_8025875146_8034209589_moz2018_PMO.json.gz --overwrite
 ```
 
-## Subsetting by specific experiment_sample_ids 
+## Subsetting by specific library_sample_names 
 
-If you want just specific experiment_sample_id you can supply those instead too  
+If you want just specific library_sample_name you can supply those instead too  
 
-Similar to above you can supply the experiment_sample_ids either as comma separated values or in a plain text file where each line is a experiment_sample_id or from standard in (STDIN)
+Similar to above you can supply the library_sample_names either as comma separated values or in a plain text file where each line is a library_sample_name or from standard in (STDIN)
 
 ```{bash}
-pmotools-runner.py extract_pmo_with_select_experiment_sample_ids -h
+pmotools-runner.py extract_pmo_with_select_library_sample_names -h
 ```
 
-The python code for `extract_pmo_with_select_experiment_sample_ids` script is below
+The python code for `extract_pmo_with_select_library_sample_names` script is below
 
 ```{python}
 #| echo: true
 #| eval: false
 #| code-fold: true
 #| code-line-numbers: true
-#| filename: pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_experiment_sample_ids.py
-#| file: ../pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_experiment_sample_ids.py
+#| filename: pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_library_sample_names.py
+#| file: ../pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_library_sample_names.py
 ```
 
 ```{bash}
 cd example 
 
-pmotools-runner.py extract_pmo_with_select_experiment_sample_ids --experiment_sample_ids 8025875029,8034209834,8034209115 --file ../../format/moz2018_PMO.json.gz --output 8025875029_8034209834_8034209115_moz2018_PMO.json.gz --overwrite
+pmotools-runner.py extract_pmo_with_select_library_sample_names --library_sample_names 8025875029,8034209834,8034209115 --file ../../format/moz2018_PMO.json.gz --output 8025875029_8034209834_8034209115_moz2018_PMO.json.gz --overwrite
 
-echo -e "8025875029\n8034209834\n8034209115" > select_experiment_sample_ids.txt 
+echo -e "8025875029\n8034209834\n8034209115" > select_library_sample_names.txt 
   
-pmotools-runner.py extract_pmo_with_select_experiment_sample_ids --experiment_sample_ids select_experiment_sample_ids.txt --file ../../format/moz2018_PMO.json.gz --output 8025875029_8034209834_8034209115_moz2018_PMO.json.gz --overwrite
+pmotools-runner.py extract_pmo_with_select_library_sample_names --library_sample_names select_library_sample_names.txt --file ../../format/moz2018_PMO.json.gz --output 8025875029_8034209834_8034209115_moz2018_PMO.json.gz --overwrite
 
 
-echo -e "8025875029\n8034209834\n8034209115" | pmotools-runner.py extract_pmo_with_select_experiment_sample_ids --experiment_sample_ids STDIN --file ../../format/moz2018_PMO.json.gz --output 8025875029_8034209834_8034209115_moz2018_PMO.json.gz --overwrite
+echo -e "8025875029\n8034209834\n8034209115" | pmotools-runner.py extract_pmo_with_select_library_sample_names --library_sample_names STDIN --file ../../format/moz2018_PMO.json.gz --output 8025875029_8034209834_8034209115_moz2018_PMO.json.gz --overwrite
 ```
 
 
@@ -262,7 +262,7 @@ The extraction methods also allow for STDOUT and STDIN piping for example
 ```{bash}
 cd example 
 
-echo -e "8025875029\n8034209834\n8034209115" | pmotools-runner.py extract_pmo_with_select_experiment_sample_ids --experiment_sample_ids STDIN --file ../../format/moz2018_PMO.json.gz --output STDOUT | pmotools-runner.py extract_pmo_with_select_targets --file STDIN --targets t1,t20,t31  --output t1_t20_t31_8025875029_8034209834_8034209115_moz2018_PMO.json.gz --overwrite
+echo -e "8025875029\n8034209834\n8034209115" | pmotools-runner.py extract_pmo_with_select_library_sample_names --library_sample_names STDIN --file ../../format/moz2018_PMO.json.gz --output STDOUT | pmotools-runner.py extract_pmo_with_select_targets --file STDIN --targets t1,t20,t31  --output t1_t20_t31_8025875029_8034209834_8034209115_moz2018_PMO.json.gz --overwrite
 
 ```
 
@@ -271,7 +271,7 @@ Can also pipe into other `pmotools-runner.py` functions like extracting allele t
 ```{bash}
 cd example 
 
-echo -e "8025875029\n8034209834\n8034209115" | pmotools-runner.py extract_pmo_with_select_experiment_sample_ids --experiment_sample_ids STDIN --file ../../format/moz2018_PMO.json.gz --output STDOUT | pmotools-runner.py extract_pmo_with_select_targets --file STDIN --targets t1,t20,t31  --output STDOUT | pmotools-runner.py extract_allele_table --file STDIN --bioid Mozambique2018-SeekDeep --output alleles_data_t1_t20_t31_8025875029_8034209834_8034209115_moz2018_PMO.tsv.gz --overwrite
+echo -e "8025875029\n8034209834\n8034209115" | pmotools-runner.py extract_pmo_with_select_library_sample_names --library_sample_names STDIN --file ../../format/moz2018_PMO.json.gz --output STDOUT | pmotools-runner.py extract_pmo_with_select_targets --file STDIN --targets t1,t20,t31  --output STDOUT | pmotools-runner.py extract_allele_table --file STDIN --output alleles_data_t1_t20_t31_8025875029_8034209834_8034209115_moz2018_PMO.tsv.gz --overwrite
 
 ```
 
@@ -281,7 +281,7 @@ Can pipe final output to STDOUT as well for further processing
 ```{bash}
 cd example 
 
-echo -e "8025875029\n8034209834\n8034209115" | pmotools-runner.py extract_pmo_with_select_experiment_sample_ids --experiment_sample_ids STDIN --file ../../format/moz2018_PMO.json.gz --output STDOUT | pmotools-runner.py extract_pmo_with_select_targets --file STDIN --targets t1,t20,t31  --output STDOUT | pmotools-runner.py extract_allele_table --file STDIN --bioid Mozambique2018-SeekDeep --output STDOUT  --specimen_info_meta_fields specimen_id,collection_country
+echo -e "8025875029\n8034209834\n8034209115" | pmotools-runner.py extract_pmo_with_select_library_sample_names --library_sample_names STDIN --file ../../format/moz2018_PMO.json.gz --output STDOUT | pmotools-runner.py extract_pmo_with_select_targets --file STDIN --targets t1,t20,t31  --output STDOUT | pmotools-runner.py extract_allele_table --file STDIN --output STDOUT  --specimen_info_meta_fields specimen_name,collection_country
 
 ```
 
@@ -290,7 +290,7 @@ filter to a read amount and then write allele table
 ```{bash}
 cd example 
 
-pmotools-runner.py extract_pmo_with_read_filter --read_count_minimum 1000 --file ../../format/moz2018_PMO.json.gz --output STDOUT | pmotools-runner.py extract_allele_table --file STDIN --bioid Mozambique2018-SeekDeep --output moz2018_PMO_minReadCount1000_allele_table.tsv.gz  --microhap_fields read_count --representative_haps_fields seq --default_base_col_names specimen_id,target_id,allele --overwrite
+pmotools-runner.py extract_pmo_with_read_filter --read_count_minimum 1000 --file ../../format/moz2018_PMO.json.gz --output STDOUT | pmotools-runner.py extract_allele_table --file STDIN --output moz2018_PMO_minReadCount1000_allele_table.tsv.gz  --microhap_fields reads --representative_haps_fields seq --default_base_col_names specimen_name,target_id,allele --overwrite
 
 ```
 

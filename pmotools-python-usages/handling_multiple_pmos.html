@@ -159,10 +159,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python-usages">
 <li class="dropdown-header"><span class="menuTitle">Command line interface</span></li>
         <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header"><span class="menuTitle">pmotools-runner.py</span></li>
+        <li class="dropdown-header"><span class="menuTitle">pmotools-python</span></li>
         <li>
-    <a class="dropdown-item" href="../pmotools-python-usages/pmotools-runner.html">
- <span class="dropdown-text">Command line interface to pmotools-python with pmotools-runner.py</span></a>
+    <a class="dropdown-item" href="../pmotools-python-usages/pmotools-python.html">
+ <span class="dropdown-text">Command line interface to pmotools-python with pmotools-python</span></a>
   </li>  
         <li class="dropdown-header"><span class="menuTitle">Extracting out of PMO</span></li>
         <li>
@@ -187,6 +187,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/handling_multiple_pmos.html">
  <span class="dropdown-text">Handling multiple PMOs pmotools-python</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Validating PMO files</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages/validating_pmos.html">
+ <span class="dropdown-text">Validating PMOs pmotools-python</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header"><span class="menuTitle">Python interface</span></li>
@@ -253,7 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
    
   <ul>
-<li><a href="#pmotools-runner.py-combine_pmos" id="toc-pmotools-runner.py-combine_pmos" class="nav-link active" data-scroll-target="#pmotools-runner.py-combine_pmos">pmotools-runner.py combine_pmos</a></li>
+<li><a href="#pmotools-python-combine_pmos" id="toc-pmotools-python-combine_pmos" class="nav-link active" data-scroll-target="#pmotools-python-combine_pmos">pmotools-python combine_pmos</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -272,15 +277,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="pmotools-runner.py-combine_pmos" class="level1"><h1>pmotools-runner.py combine_pmos</h1>
+</header><section id="pmotools-python-combine_pmos" class="level1"><h1>pmotools-python combine_pmos</h1>
 <p>Can download multiple PMOs here</p>
 <p><a href="https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz" class="uri">https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz</a></p>
 <p><a href="https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz" class="uri">https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz</a></p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> combine_pmos <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> combine_pmos <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>usage: pmotools-runner.py combine_pmos [-h] --pmo_files PMO_FILES --output
-                                       OUTPUT [--overwrite]
+<pre><code>usage: pmotools-python combine_pmos [-h] --pmo_files PMO_FILES --output OUTPUT
+                                    [--overwrite]
 
 options:
   -h, --help            show this help message and exit
@@ -291,7 +296,7 @@ options:
   --overwrite           If output file exists, overwrite it</code></pre>
 </div>
 </div>
-<p>The list of PMO files can be given comma separated to thier relative paths from where you run the script or in a file where each line is a different file to combine</p>
+<p>The list of PMO files can be given comma separated to their relative paths from where you run the script or in a file where each line is a different file to combine</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -299,60 +304,72 @@ options:
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> combine_pmos <span class="at">--pmo_files</span> moz2018_PMO.json.gz,PathWeaverHeome1_PMO.json.gz <span class="at">--output</span> combined_Heome1_PMO.json.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> combine_pmos <span class="at">--pmo_files</span> moz2018_PMO.json.gz,PathWeaverHeome1_PMO.json.gz <span class="at">--output</span> combined_Heome1_PMO.json.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>The python code for <code>combine_pmos</code> script is below</p>
 <div class="cell" data-layout-align="center">
 <div class="code-with-filename">
 <details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
-<pre><strong>pmotools-python/scripts/pmo_utils/combine_pmos.py</strong></pre>
+<pre><strong>pmotools-python/src/pmotools/scripts/pmo_utils/combine_pmos.py</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#!/usr/bin/env python3</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="im">import</span> gzip</span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="im">import</span> os, argparse, json</span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
-<span id="cb4-5"><a href="#cb4-5"></a></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb4-7"><a href="#cb4-7"></a></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="im">from</span> pmotools.pmo_utils.PMOWriter <span class="im">import</span> PMOWriter</span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="im">from</span> pmotools.pmo_utils.PMOReader <span class="im">import</span> PMOReader</span>
-<span id="cb4-11"><a href="#cb4-11"></a></span>
-<span id="cb4-12"><a href="#cb4-12"></a></span>
-<span id="cb4-13"><a href="#cb4-13"></a></span>
-<span id="cb4-14"><a href="#cb4-14"></a><span class="kw">def</span> parse_args_combine_pmos():</span>
-<span id="cb4-15"><a href="#cb4-15"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb4-16"><a href="#cb4-16"></a>    parser.add_argument(<span class="st">'--pmo_files'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'a list of PMO files to combine into 1 PMO file, must be from same amplicon panel'</span>)</span>
-<span id="cb4-17"><a href="#cb4-17"></a>    parser.add_argument(<span class="st">'--output'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'Output new combined PMO file'</span>)</span>
-<span id="cb4-18"><a href="#cb4-18"></a>    parser.add_argument(<span class="st">'--overwrite'</span>, action <span class="op">=</span> <span class="st">'store_true'</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'If output file exists, overwrite it'</span>)</span>
-<span id="cb4-19"><a href="#cb4-19"></a></span>
-<span id="cb4-20"><a href="#cb4-20"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb4-21"><a href="#cb4-21"></a></span>
-<span id="cb4-22"><a href="#cb4-22"></a><span class="kw">def</span> combine_pmos():</span>
-<span id="cb4-23"><a href="#cb4-23"></a>    args <span class="op">=</span> parse_args_combine_pmos()</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="im">import</span> argparse</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="im">from</span> pmotools.pmo_engine.pmo_writer <span class="im">import</span> PMOWriter</span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="im">from</span> pmotools.pmo_engine.pmo_reader <span class="im">import</span> PMOReader</span>
+<span id="cb4-8"><a href="#cb4-8"></a></span>
+<span id="cb4-9"><a href="#cb4-9"></a></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="kw">def</span> parse_args_combine_pmos():</span>
+<span id="cb4-11"><a href="#cb4-11"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
+<span id="cb4-12"><a href="#cb4-12"></a>    parser.add_argument(</span>
+<span id="cb4-13"><a href="#cb4-13"></a>        <span class="st">"--pmo_files"</span>,</span>
+<span id="cb4-14"><a href="#cb4-14"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb4-15"><a href="#cb4-15"></a>        required<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb4-16"><a href="#cb4-16"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"a list of PMO files to combine into 1 PMO file, must be from same amplicon panel"</span>,</span>
+<span id="cb4-17"><a href="#cb4-17"></a>    )</span>
+<span id="cb4-18"><a href="#cb4-18"></a>    parser.add_argument(</span>
+<span id="cb4-19"><a href="#cb4-19"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"Output new combined PMO file"</span></span>
+<span id="cb4-20"><a href="#cb4-20"></a>    )</span>
+<span id="cb4-21"><a href="#cb4-21"></a>    parser.add_argument(</span>
+<span id="cb4-22"><a href="#cb4-22"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb4-23"><a href="#cb4-23"></a>    )</span>
 <span id="cb4-24"><a href="#cb4-24"></a></span>
-<span id="cb4-25"><a href="#cb4-25"></a>    <span class="co"># set up output</span></span>
-<span id="cb4-26"><a href="#cb4-26"></a>    args.output <span class="op">=</span> PMOWriter.add_pmo_extension_as_needed(args.output, args.output.endswith(<span class="st">".gz"</span>))</span>
-<span id="cb4-27"><a href="#cb4-27"></a>    Utils.outputfile_check(args.output, args.overwrite)</span>
-<span id="cb4-28"><a href="#cb4-28"></a></span>
-<span id="cb4-29"><a href="#cb4-29"></a>    <span class="co"># check if at least 2 PMO files supplied</span></span>
-<span id="cb4-30"><a href="#cb4-30"></a>    pmo_files_list <span class="op">=</span> Utils.parse_delimited_input_or_file(args.pmo_files, <span class="st">","</span>)</span>
-<span id="cb4-31"><a href="#cb4-31"></a>    <span class="cf">if</span> <span class="bu">len</span>(pmo_files_list) <span class="op">&lt;</span> <span class="dv">2</span>:</span>
-<span id="cb4-32"><a href="#cb4-32"></a>        <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="st">"Only supplied "</span> <span class="op">+</span> <span class="bu">str</span>(<span class="bu">len</span>(pmo_files_list)) <span class="op">+</span> <span class="st">" but multiple PMO files were expected"</span>)</span>
-<span id="cb4-33"><a href="#cb4-33"></a></span>
-<span id="cb4-34"><a href="#cb4-34"></a>    <span class="co"># read in the PMOs</span></span>
-<span id="cb4-35"><a href="#cb4-35"></a>    pmos <span class="op">=</span> PMOReader.read_in_pmos(pmo_files_list)</span>
+<span id="cb4-25"><a href="#cb4-25"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb4-26"><a href="#cb4-26"></a></span>
+<span id="cb4-27"><a href="#cb4-27"></a></span>
+<span id="cb4-28"><a href="#cb4-28"></a><span class="kw">def</span> combine_pmos():</span>
+<span id="cb4-29"><a href="#cb4-29"></a>    args <span class="op">=</span> parse_args_combine_pmos()</span>
+<span id="cb4-30"><a href="#cb4-30"></a></span>
+<span id="cb4-31"><a href="#cb4-31"></a>    <span class="co"># set up output</span></span>
+<span id="cb4-32"><a href="#cb4-32"></a>    args.output <span class="op">=</span> PMOWriter.add_pmo_extension_as_needed(</span>
+<span id="cb4-33"><a href="#cb4-33"></a>        args.output, args.output.endswith(<span class="st">".gz"</span>)</span>
+<span id="cb4-34"><a href="#cb4-34"></a>    )</span>
+<span id="cb4-35"><a href="#cb4-35"></a>    Utils.outputfile_check(args.output, args.overwrite)</span>
 <span id="cb4-36"><a href="#cb4-36"></a></span>
-<span id="cb4-37"><a href="#cb4-37"></a>    <span class="co"># combine PMOs</span></span>
-<span id="cb4-38"><a href="#cb4-38"></a>    pmo_out <span class="op">=</span> PMOReader.combine_multiple_pmos(pmos)</span>
-<span id="cb4-39"><a href="#cb4-39"></a></span>
-<span id="cb4-40"><a href="#cb4-40"></a>    <span class="co"># write</span></span>
-<span id="cb4-41"><a href="#cb4-41"></a>    PMOWriter.write_out_pmo(pmo_out, args.output, args.overwrite)</span>
-<span id="cb4-42"><a href="#cb4-42"></a></span>
-<span id="cb4-43"><a href="#cb4-43"></a></span>
-<span id="cb4-44"><a href="#cb4-44"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb4-45"><a href="#cb4-45"></a>    combine_pmos()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-37"><a href="#cb4-37"></a>    <span class="co"># check if at least 2 PMO files supplied</span></span>
+<span id="cb4-38"><a href="#cb4-38"></a>    pmo_files_list <span class="op">=</span> Utils.parse_delimited_input_or_file(args.pmo_files, <span class="st">","</span>)</span>
+<span id="cb4-39"><a href="#cb4-39"></a>    <span class="cf">if</span> <span class="bu">len</span>(pmo_files_list) <span class="op">&lt;</span> <span class="dv">2</span>:</span>
+<span id="cb4-40"><a href="#cb4-40"></a>        <span class="cf">raise</span> <span class="pp">Exception</span>(</span>
+<span id="cb4-41"><a href="#cb4-41"></a>            <span class="st">"Only supplied "</span></span>
+<span id="cb4-42"><a href="#cb4-42"></a>            <span class="op">+</span> <span class="bu">str</span>(<span class="bu">len</span>(pmo_files_list))</span>
+<span id="cb4-43"><a href="#cb4-43"></a>            <span class="op">+</span> <span class="st">" but multiple PMO files were expected"</span></span>
+<span id="cb4-44"><a href="#cb4-44"></a>        )</span>
+<span id="cb4-45"><a href="#cb4-45"></a></span>
+<span id="cb4-46"><a href="#cb4-46"></a>    <span class="co"># read in the PMOs</span></span>
+<span id="cb4-47"><a href="#cb4-47"></a>    pmos <span class="op">=</span> PMOReader.read_in_pmos(pmo_files_list)</span>
+<span id="cb4-48"><a href="#cb4-48"></a></span>
+<span id="cb4-49"><a href="#cb4-49"></a>    <span class="co"># combine PMOs</span></span>
+<span id="cb4-50"><a href="#cb4-50"></a>    pmo_out <span class="op">=</span> PMOReader.combine_multiple_pmos(pmos)</span>
+<span id="cb4-51"><a href="#cb4-51"></a></span>
+<span id="cb4-52"><a href="#cb4-52"></a>    <span class="co"># write</span></span>
+<span id="cb4-53"><a href="#cb4-53"></a>    PMOWriter.write_out_pmo(pmo_out, args.output, args.overwrite)</span>
+<span id="cb4-54"><a href="#cb4-54"></a></span>
+<span id="cb4-55"><a href="#cb4-55"></a></span>
+<span id="cb4-56"><a href="#cb4-56"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb4-57"><a href="#cb4-57"></a>    combine_pmos()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -819,7 +836,7 @@ options:
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu"># pmotools-runner.py combine_pmos</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu"># pmotools-python combine_pmos</span></span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>Can download multiple PMOs here </span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
@@ -830,11 +847,11 @@ options:
 <span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> combine_pmos <span class="at">--help</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> combine_pmos <span class="at">--help</span></span>
 <span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>The list of PMO files can be given comma separated to thier relative paths from where you run the script or in a file where each line is a different file to combine</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>The list of PMO files can be given comma separated to their relative paths from where you run the script or in a file where each line is a different file to combine</span>
 <span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
 <span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
@@ -843,14 +860,14 @@ options:
 <span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz</span>
 <span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> combine_pmos <span class="at">--pmo_files</span> moz2018_PMO.json.gz,PathWeaverHeome1_PMO.json.gz <span class="at">--output</span> combined_Heome1_PMO.json.gz <span class="at">--overwrite</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> combine_pmos <span class="at">--pmo_files</span> moz2018_PMO.json.gz,PathWeaverHeome1_PMO.json.gz <span class="at">--output</span> combined_Heome1_PMO.json.gz <span class="at">--overwrite</span></span>
 <span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, echo = F, eval = T}</span></span>
 <span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> combine_pmos <span class="at">--pmo_files</span> ../../format/moz2018_PMO.json.gz,../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--output</span> combined_Heome1_PMO.json.gz <span class="at">--overwrite</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> combine_pmos <span class="at">--pmo_files</span> ../../format/moz2018_PMO.json.gz,../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--output</span> combined_Heome1_PMO.json.gz <span class="at">--overwrite</span></span>
 <span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`combine_pmos`</span> script is below</span>
@@ -860,8 +877,8 @@ options:
 <span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
 <span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
 <span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/scripts/pmo_utils/combine_pmos.py</span></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/scripts/pmo_utils/combine_pmos.py</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/src/pmotools/scripts/pmo_utils/combine_pmos.py</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/src/pmotools/scripts/pmo_utils/combine_pmos.py</span></span>
 <span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>

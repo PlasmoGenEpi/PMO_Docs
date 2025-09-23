@@ -159,10 +159,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python-usages">
 <li class="dropdown-header"><span class="menuTitle">Command line interface</span></li>
         <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header"><span class="menuTitle">pmotools-runner.py</span></li>
+        <li class="dropdown-header"><span class="menuTitle">pmotools-python</span></li>
         <li>
-    <a class="dropdown-item" href="../pmotools-python-usages/pmotools-runner.html">
- <span class="dropdown-text">Command line interface to pmotools-python with pmotools-runner.py</span></a>
+    <a class="dropdown-item" href="../pmotools-python-usages/pmotools-python.html">
+ <span class="dropdown-text">Command line interface to pmotools-python with pmotools-python</span></a>
   </li>  
         <li class="dropdown-header"><span class="menuTitle">Extracting out of PMO</span></li>
         <li>
@@ -187,6 +187,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/handling_multiple_pmos.html">
  <span class="dropdown-text">Handling multiple PMOs pmotools-python</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Validating PMO files</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages/validating_pmos.html">
+ <span class="dropdown-text">Validating PMOs pmotools-python</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header"><span class="menuTitle">Python interface</span></li>
@@ -257,8 +262,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <a href="#subsetting" id="toc-subsetting" class="nav-link active" data-scroll-target="#subsetting">Subsetting</a>
   <ul>
 <li><a href="#subsetting-by-specific-targets" id="toc-subsetting-by-specific-targets" class="nav-link" data-scroll-target="#subsetting-by-specific-targets">Subsetting by specific targets</a></li>
-  <li><a href="#subsetting-by-specific-specimen_ids" id="toc-subsetting-by-specific-specimen_ids" class="nav-link" data-scroll-target="#subsetting-by-specific-specimen_ids">Subsetting by specific specimen_ids</a></li>
-  <li><a href="#subsetting-by-specific-experiment_sample_ids" id="toc-subsetting-by-specific-experiment_sample_ids" class="nav-link" data-scroll-target="#subsetting-by-specific-experiment_sample_ids">Subsetting by specific experiment_sample_ids</a></li>
+  <li><a href="#subsetting-by-specific-specimen_names" id="toc-subsetting-by-specific-specimen_names" class="nav-link" data-scroll-target="#subsetting-by-specific-specimen_names">Subsetting by specific specimen_names</a></li>
+  <li><a href="#subsetting-by-specific-library_sample_names" id="toc-subsetting-by-specific-library_sample_names" class="nav-link" data-scroll-target="#subsetting-by-specific-library_sample_names">Subsetting by specific library_sample_names</a></li>
   <li><a href="#subsetting-by-samples-within-specific-metafields" id="toc-subsetting-by-samples-within-specific-metafields" class="nav-link" data-scroll-target="#subsetting-by-samples-within-specific-metafields">Subsetting by samples within specific metafields</a></li>
   <li><a href="#subsetting-by-a-read-filter-for-detected-microhaplotypes" id="toc-subsetting-by-a-read-filter-for-detected-microhaplotypes" class="nav-link" data-scroll-target="#subsetting-by-a-read-filter-for-detected-microhaplotypes">Subsetting by a read filter for detected microhaplotypes</a></li>
   <li><a href="#piping-together-extraction" id="toc-piping-together-extraction" class="nav-link" data-scroll-target="#piping-together-extraction">Piping together extraction</a></li>
@@ -285,15 +290,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header><section id="subsetting" class="level1"><h1>Subsetting</h1>
 <p>There may be some instances were you want to subset a much larger PMO file into a smaller PMO file to focus only one a set of samples and/or targets. There are several ways of doing this.</p>
 <section id="subsetting-by-specific-targets" class="level2"><h2 class="anchored" data-anchor-id="subsetting-by-specific-targets">Subsetting by specific targets</h2>
-<p>Can subset to only specific targets by using <code>pmotools-runner.py extract_pmo_with_select_targets</code></p>
+<p>Can subset to only specific targets by using <code>pmotools-python extract_pmo_with_select_targets</code></p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_select_targets <span class="at">-h</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">-h</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>usage: pmotools-runner.py extract_pmo_with_select_targets [-h] --file FILE
-                                                          --output OUTPUT
-                                                          [--overwrite]
-                                                          [--verbose]
-                                                          --targets TARGETS
+<pre><code>usage: pmotools-python extract_pmo_with_select_targets [-h] --file FILE
+                                                       --output OUTPUT
+                                                       [--overwrite]
+                                                       [--verbose] --targets
+                                                       TARGETS
 
 options:
   -h, --help         show this help message and exit
@@ -301,61 +306,73 @@ options:
   --output OUTPUT    Output json file path
   --overwrite        If output file exists, overwrite it
   --verbose          write out various messages about extraction
-  --targets TARGETS  Can either comma separated target_ids, or a plain text
-                     file where each line is a target_ids</code></pre>
+  --targets TARGETS  Can either comma separated target_namess, or a plain text
+                     file where each line is a target_namess</code></pre>
 </div>
 </div>
 <p>The python code for <code>extract_pmo_with_select_targets</code> script is below</p>
 <div class="cell" data-layout-align="center">
 <div class="code-with-filename">
 <details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
-<pre><strong>pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_targets.py</strong></pre>
+<pre><strong>pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_pmo_with_select_targets.py</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#!/usr/bin/env python3</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> os, argparse, json</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="im">import</span> sys</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
-<span id="cb3-5"><a href="#cb3-5"></a></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb3-7"><a href="#cb3-7"></a></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="im">from</span> pmotools.pmo_utils.PMOExtractor <span class="im">import</span> PMOExtractor</span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="im">from</span> pmotools.pmo_utils.PMOReader <span class="im">import</span> PMOReader</span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="im">from</span> pmotools.pmo_utils.PMOWriter <span class="im">import</span> PMOWriter</span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
-<span id="cb3-12"><a href="#cb3-12"></a></span>
-<span id="cb3-13"><a href="#cb3-13"></a></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="kw">def</span> parse_args_extract_pmo_with_select_targets():</span>
-<span id="cb3-15"><a href="#cb3-15"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb3-16"><a href="#cb3-16"></a>    parser.add_argument(<span class="st">'--file'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'PMO file'</span>)</span>
-<span id="cb3-17"><a href="#cb3-17"></a>    parser.add_argument(<span class="st">'--output'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'Output json file path'</span>)</span>
-<span id="cb3-18"><a href="#cb3-18"></a>    parser.add_argument(<span class="st">'--overwrite'</span>, action <span class="op">=</span> <span class="st">'store_true'</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'If output file exists, overwrite it'</span>)</span>
-<span id="cb3-19"><a href="#cb3-19"></a>    parser.add_argument(<span class="st">'--verbose'</span>, action <span class="op">=</span> <span class="st">'store_true'</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'write out various messages about extraction'</span>)</span>
-<span id="cb3-20"><a href="#cb3-20"></a>    parser.add_argument(<span class="st">'--targets'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'Can either comma separated target_ids, or a plain text file where each line is a target_ids'</span>)</span>
-<span id="cb3-21"><a href="#cb3-21"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb3-22"><a href="#cb3-22"></a></span>
-<span id="cb3-23"><a href="#cb3-23"></a><span class="kw">def</span> extract_pmo_with_select_targets():</span>
-<span id="cb3-24"><a href="#cb3-24"></a>    args <span class="op">=</span> parse_args_extract_pmo_with_select_targets()</span>
-<span id="cb3-25"><a href="#cb3-25"></a></span>
-<span id="cb3-26"><a href="#cb3-26"></a>    <span class="co"># check files</span></span>
-<span id="cb3-27"><a href="#cb3-27"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
-<span id="cb3-28"><a href="#cb3-28"></a></span>
-<span id="cb3-29"><a href="#cb3-29"></a>    <span class="co"># parse target ids</span></span>
-<span id="cb3-30"><a href="#cb3-30"></a>    all_target_ids <span class="op">=</span> Utils.parse_delimited_input_or_file(args.targets)</span>
-<span id="cb3-31"><a href="#cb3-31"></a></span>
-<span id="cb3-32"><a href="#cb3-32"></a>    <span class="co"># read in pmo</span></span>
-<span id="cb3-33"><a href="#cb3-33"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
-<span id="cb3-34"><a href="#cb3-34"></a></span>
-<span id="cb3-35"><a href="#cb3-35"></a>    <span class="co"># extract</span></span>
-<span id="cb3-36"><a href="#cb3-36"></a>    pmo_out <span class="op">=</span> PMOExtractor.extract_from_pmo_select_targets(pmo, all_target_ids)</span>
-<span id="cb3-37"><a href="#cb3-37"></a></span>
-<span id="cb3-38"><a href="#cb3-38"></a>    <span class="co"># write out the extracted</span></span>
-<span id="cb3-39"><a href="#cb3-39"></a>    args.output <span class="op">=</span> PMOWriter.add_pmo_extension_as_needed(args.output, args.<span class="bu">file</span>.endswith(<span class="st">'.gz'</span>) <span class="kw">or</span> args.output.endswith(<span class="st">".gz"</span>))</span>
-<span id="cb3-40"><a href="#cb3-40"></a>    PMOWriter.write_out_pmo(pmo_out, args.output, args.overwrite)</span>
-<span id="cb3-41"><a href="#cb3-41"></a></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> argparse</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="im">from</span> pmotools.pmo_engine.pmo_processor <span class="im">import</span> PMOProcessor</span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="im">from</span> pmotools.pmo_engine.pmo_reader <span class="im">import</span> PMOReader</span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="im">from</span> pmotools.pmo_engine.pmo_writer <span class="im">import</span> PMOWriter</span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
+<span id="cb3-9"><a href="#cb3-9"></a></span>
+<span id="cb3-10"><a href="#cb3-10"></a></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="kw">def</span> parse_args_extract_pmo_with_select_targets():</span>
+<span id="cb3-12"><a href="#cb3-12"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
+<span id="cb3-13"><a href="#cb3-13"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
+<span id="cb3-14"><a href="#cb3-14"></a>    parser.add_argument(</span>
+<span id="cb3-15"><a href="#cb3-15"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"Output json file path"</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a>    )</span>
+<span id="cb3-17"><a href="#cb3-17"></a>    parser.add_argument(</span>
+<span id="cb3-18"><a href="#cb3-18"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a>    )</span>
+<span id="cb3-20"><a href="#cb3-20"></a>    parser.add_argument(</span>
+<span id="cb3-21"><a href="#cb3-21"></a>        <span class="st">"--verbose"</span>,</span>
+<span id="cb3-22"><a href="#cb3-22"></a>        action<span class="op">=</span><span class="st">"store_true"</span>,</span>
+<span id="cb3-23"><a href="#cb3-23"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"write out various messages about extraction"</span>,</span>
+<span id="cb3-24"><a href="#cb3-24"></a>    )</span>
+<span id="cb3-25"><a href="#cb3-25"></a>    parser.add_argument(</span>
+<span id="cb3-26"><a href="#cb3-26"></a>        <span class="st">"--targets"</span>,</span>
+<span id="cb3-27"><a href="#cb3-27"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb3-28"><a href="#cb3-28"></a>        required<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb3-29"><a href="#cb3-29"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"Can either comma separated target_namess, or a plain text file where each line is a target_namess"</span>,</span>
+<span id="cb3-30"><a href="#cb3-30"></a>    )</span>
+<span id="cb3-31"><a href="#cb3-31"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb3-32"><a href="#cb3-32"></a></span>
+<span id="cb3-33"><a href="#cb3-33"></a></span>
+<span id="cb3-34"><a href="#cb3-34"></a><span class="kw">def</span> extract_pmo_with_select_targets():</span>
+<span id="cb3-35"><a href="#cb3-35"></a>    args <span class="op">=</span> parse_args_extract_pmo_with_select_targets()</span>
+<span id="cb3-36"><a href="#cb3-36"></a></span>
+<span id="cb3-37"><a href="#cb3-37"></a>    <span class="co"># check files</span></span>
+<span id="cb3-38"><a href="#cb3-38"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb3-39"><a href="#cb3-39"></a></span>
+<span id="cb3-40"><a href="#cb3-40"></a>    <span class="co"># parse target names</span></span>
+<span id="cb3-41"><a href="#cb3-41"></a>    all_target_names <span class="op">=</span> Utils.parse_delimited_input_or_file(args.targets)</span>
 <span id="cb3-42"><a href="#cb3-42"></a></span>
-<span id="cb3-43"><a href="#cb3-43"></a></span>
-<span id="cb3-44"><a href="#cb3-44"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb3-45"><a href="#cb3-45"></a>    extract_pmo_with_select_targets()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-43"><a href="#cb3-43"></a>    <span class="co"># read in pmo</span></span>
+<span id="cb3-44"><a href="#cb3-44"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb3-45"><a href="#cb3-45"></a></span>
+<span id="cb3-46"><a href="#cb3-46"></a>    <span class="co"># extract</span></span>
+<span id="cb3-47"><a href="#cb3-47"></a>    pmo_out <span class="op">=</span> PMOProcessor.filter_pmo_by_target_names(pmo, all_target_names)</span>
+<span id="cb3-48"><a href="#cb3-48"></a></span>
+<span id="cb3-49"><a href="#cb3-49"></a>    <span class="co"># write out the extracted</span></span>
+<span id="cb3-50"><a href="#cb3-50"></a>    args.output <span class="op">=</span> PMOWriter.add_pmo_extension_as_needed(</span>
+<span id="cb3-51"><a href="#cb3-51"></a>        args.output, args.<span class="bu">file</span>.endswith(<span class="st">".gz"</span>) <span class="kw">or</span> args.output.endswith(<span class="st">".gz"</span>)</span>
+<span id="cb3-52"><a href="#cb3-52"></a>    )</span>
+<span id="cb3-53"><a href="#cb3-53"></a>    PMOWriter.write_out_pmo(pmo_out, args.output, args.overwrite)</span>
+<span id="cb3-54"><a href="#cb3-54"></a></span>
+<span id="cb3-55"><a href="#cb3-55"></a></span>
+<span id="cb3-56"><a href="#cb3-56"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb3-57"><a href="#cb3-57"></a>    extract_pmo_with_select_targets()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -363,7 +380,7 @@ options:
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_select_targets <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> t1_t20_t31_moz2018_PMO.json.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> t1_t20_t31_moz2018_PMO.json.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>You can also provide a single column file where each line is a desired target</p>
@@ -371,20 +388,20 @@ options:
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"t1\nt20\nt31"</span> <span class="op">&gt;</span> select_targets.txt </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_select_targets <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--targets</span> select_targets.txt  <span class="at">--output</span> t1_t20_t31_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--targets</span> select_targets.txt  <span class="at">--output</span> t1_t20_t31_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"t1\nt20\nt31"</span> <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_pmo_with_select_targets <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--targets</span> STDIN <span class="at">--output</span> t1_t20_t31_moz2018_PMO.json.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"t1\nt20\nt31"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--targets</span> STDIN <span class="at">--output</span> t1_t20_t31_moz2018_PMO.json.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section><section id="subsetting-by-specific-specimen_ids" class="level2"><h2 class="anchored" data-anchor-id="subsetting-by-specific-specimen_ids">Subsetting by specific specimen_ids</h2>
-<p>You can subset to just to just select specimen_id, each specimen can have several experiments associated with it, by supplying the specimen_id all associated experiments will also be pulled</p>
-<p>Similar to above you can supply the specimen_ids either as comma separated values or in a plain text file where each line is a specimen_id</p>
+</section><section id="subsetting-by-specific-specimen_names" class="level2"><h2 class="anchored" data-anchor-id="subsetting-by-specific-specimen_names">Subsetting by specific specimen_names</h2>
+<p>You can subset to just to just select specimen_name, each specimen can have several experiments associated with it, by supplying the specimen_name all associated experiments will also be pulled</p>
+<p>Similar to above you can supply the specimen_names either as comma separated values or in a plain text file where each line is a specimen_name</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_select_specimen_ids <span class="at">-h</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_specimen_names <span class="at">-h</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>usage: pmotools-runner.py extract_pmo_with_select_specimen_ids
+<pre><code>usage: pmotools-python extract_pmo_with_select_specimen_names
        [-h] --file FILE --output OUTPUT [--overwrite] [--verbose]
-       --specimen_ids SPECIMEN_IDS
+       --specimen_names SPECIMEN_NAMES
 
 options:
   -h, --help            show this help message and exit
@@ -392,86 +409,98 @@ options:
   --output OUTPUT       Output json file path
   --overwrite           If output file exists, overwrite it
   --verbose             write out various messages about extraction
-  --specimen_ids SPECIMEN_IDS
-                        Can either comma separated specimen_ids, or a plain
-                        text file where each line is a specimen_id</code></pre>
+  --specimen_names SPECIMEN_NAMES
+                        Can either comma separated specimen_names, or a plain
+                        text file where each line is a specimen_name</code></pre>
 </div>
 </div>
-<p>The python code for <code>extract_pmo_with_select_specimen_ids</code> script is below</p>
+<p>The python code for <code>extract_pmo_with_select_specimen_names</code> script is below</p>
 <div class="cell" data-layout-align="center">
 <div class="code-with-filename">
 <details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
-<pre><strong>pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_specimen_ids.py</strong></pre>
+<pre><strong>pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_pmo_with_select_specimen_names.py</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">#!/usr/bin/env python3</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="im">import</span> os, argparse, json</span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="im">import</span> sys</span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
-<span id="cb8-5"><a href="#cb8-5"></a></span>
-<span id="cb8-6"><a href="#cb8-6"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb8-7"><a href="#cb8-7"></a></span>
-<span id="cb8-8"><a href="#cb8-8"></a><span class="im">from</span> pmotools.pmo_utils.PMOExtractor <span class="im">import</span> PMOExtractor</span>
-<span id="cb8-9"><a href="#cb8-9"></a><span class="im">from</span> pmotools.pmo_utils.PMOReader <span class="im">import</span> PMOReader</span>
-<span id="cb8-10"><a href="#cb8-10"></a><span class="im">from</span> pmotools.pmo_utils.PMOWriter <span class="im">import</span> PMOWriter</span>
-<span id="cb8-11"><a href="#cb8-11"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
-<span id="cb8-12"><a href="#cb8-12"></a></span>
-<span id="cb8-13"><a href="#cb8-13"></a></span>
-<span id="cb8-14"><a href="#cb8-14"></a><span class="kw">def</span> parse_args_extract_pmo_with_select_specimen_ids():</span>
-<span id="cb8-15"><a href="#cb8-15"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb8-16"><a href="#cb8-16"></a>    parser.add_argument(<span class="st">'--file'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'PMO file'</span>)</span>
-<span id="cb8-17"><a href="#cb8-17"></a>    parser.add_argument(<span class="st">'--output'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'Output json file path'</span>)</span>
-<span id="cb8-18"><a href="#cb8-18"></a>    parser.add_argument(<span class="st">'--overwrite'</span>, action <span class="op">=</span> <span class="st">'store_true'</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'If output file exists, overwrite it'</span>)</span>
-<span id="cb8-19"><a href="#cb8-19"></a>    parser.add_argument(<span class="st">'--verbose'</span>, action <span class="op">=</span> <span class="st">'store_true'</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'write out various messages about extraction'</span>)</span>
-<span id="cb8-20"><a href="#cb8-20"></a>    parser.add_argument(<span class="st">'--specimen_ids'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'Can either comma separated specimen_ids, or a plain text file where each line is a specimen_id'</span>)</span>
-<span id="cb8-21"><a href="#cb8-21"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb8-22"><a href="#cb8-22"></a></span>
-<span id="cb8-23"><a href="#cb8-23"></a><span class="kw">def</span> extract_pmo_with_select_specimen_ids():</span>
-<span id="cb8-24"><a href="#cb8-24"></a>    args <span class="op">=</span> parse_args_extract_pmo_with_select_specimen_ids()</span>
-<span id="cb8-25"><a href="#cb8-25"></a></span>
-<span id="cb8-26"><a href="#cb8-26"></a>    <span class="co"># check files</span></span>
-<span id="cb8-27"><a href="#cb8-27"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
-<span id="cb8-28"><a href="#cb8-28"></a></span>
-<span id="cb8-29"><a href="#cb8-29"></a>    <span class="co"># parse specimen ids</span></span>
-<span id="cb8-30"><a href="#cb8-30"></a>    all_specimen_ids <span class="op">=</span> Utils.parse_delimited_input_or_file(args.specimen_ids)</span>
-<span id="cb8-31"><a href="#cb8-31"></a></span>
-<span id="cb8-32"><a href="#cb8-32"></a>    <span class="co"># read in pmo</span></span>
-<span id="cb8-33"><a href="#cb8-33"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
-<span id="cb8-34"><a href="#cb8-34"></a></span>
-<span id="cb8-35"><a href="#cb8-35"></a>    <span class="co"># extract</span></span>
-<span id="cb8-36"><a href="#cb8-36"></a>    pmo_out <span class="op">=</span> PMOExtractor.extract_from_pmo_select_specimen_ids(pmo, all_specimen_ids)</span>
-<span id="cb8-37"><a href="#cb8-37"></a></span>
-<span id="cb8-38"><a href="#cb8-38"></a>    <span class="co"># write out the extracted</span></span>
-<span id="cb8-39"><a href="#cb8-39"></a>    args.output <span class="op">=</span> PMOWriter.add_pmo_extension_as_needed(args.output, args.<span class="bu">file</span>.endswith(<span class="st">'.gz'</span>) <span class="kw">or</span> args.output.endswith(<span class="st">".gz"</span>))</span>
-<span id="cb8-40"><a href="#cb8-40"></a>    PMOWriter.write_out_pmo(pmo_out, args.output, args.overwrite)</span>
-<span id="cb8-41"><a href="#cb8-41"></a></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="im">import</span> argparse</span>
+<span id="cb8-3"><a href="#cb8-3"></a></span>
+<span id="cb8-4"><a href="#cb8-4"></a></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="im">from</span> pmotools.pmo_engine.pmo_processor <span class="im">import</span> PMOProcessor</span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="im">from</span> pmotools.pmo_engine.pmo_reader <span class="im">import</span> PMOReader</span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="im">from</span> pmotools.pmo_engine.pmo_writer <span class="im">import</span> PMOWriter</span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
+<span id="cb8-9"><a href="#cb8-9"></a></span>
+<span id="cb8-10"><a href="#cb8-10"></a></span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="kw">def</span> parse_args_extract_pmo_with_select_specimen_names():</span>
+<span id="cb8-12"><a href="#cb8-12"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
+<span id="cb8-13"><a href="#cb8-13"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
+<span id="cb8-14"><a href="#cb8-14"></a>    parser.add_argument(</span>
+<span id="cb8-15"><a href="#cb8-15"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"Output json file path"</span></span>
+<span id="cb8-16"><a href="#cb8-16"></a>    )</span>
+<span id="cb8-17"><a href="#cb8-17"></a>    parser.add_argument(</span>
+<span id="cb8-18"><a href="#cb8-18"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb8-19"><a href="#cb8-19"></a>    )</span>
+<span id="cb8-20"><a href="#cb8-20"></a>    parser.add_argument(</span>
+<span id="cb8-21"><a href="#cb8-21"></a>        <span class="st">"--verbose"</span>,</span>
+<span id="cb8-22"><a href="#cb8-22"></a>        action<span class="op">=</span><span class="st">"store_true"</span>,</span>
+<span id="cb8-23"><a href="#cb8-23"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"write out various messages about extraction"</span>,</span>
+<span id="cb8-24"><a href="#cb8-24"></a>    )</span>
+<span id="cb8-25"><a href="#cb8-25"></a>    parser.add_argument(</span>
+<span id="cb8-26"><a href="#cb8-26"></a>        <span class="st">"--specimen_names"</span>,</span>
+<span id="cb8-27"><a href="#cb8-27"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb8-28"><a href="#cb8-28"></a>        required<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb8-29"><a href="#cb8-29"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"Can either comma separated specimen_names, or a plain text file where each line is a specimen_name"</span>,</span>
+<span id="cb8-30"><a href="#cb8-30"></a>    )</span>
+<span id="cb8-31"><a href="#cb8-31"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb8-32"><a href="#cb8-32"></a></span>
+<span id="cb8-33"><a href="#cb8-33"></a></span>
+<span id="cb8-34"><a href="#cb8-34"></a><span class="kw">def</span> extract_pmo_with_select_specimen_names():</span>
+<span id="cb8-35"><a href="#cb8-35"></a>    args <span class="op">=</span> parse_args_extract_pmo_with_select_specimen_names()</span>
+<span id="cb8-36"><a href="#cb8-36"></a></span>
+<span id="cb8-37"><a href="#cb8-37"></a>    <span class="co"># check files</span></span>
+<span id="cb8-38"><a href="#cb8-38"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb8-39"><a href="#cb8-39"></a></span>
+<span id="cb8-40"><a href="#cb8-40"></a>    <span class="co"># parse specimen names</span></span>
+<span id="cb8-41"><a href="#cb8-41"></a>    all_specimen_names <span class="op">=</span> Utils.parse_delimited_input_or_file(args.specimen_names)</span>
 <span id="cb8-42"><a href="#cb8-42"></a></span>
-<span id="cb8-43"><a href="#cb8-43"></a></span>
-<span id="cb8-44"><a href="#cb8-44"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb8-45"><a href="#cb8-45"></a>    extract_pmo_with_select_specimen_ids()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-43"><a href="#cb8-43"></a>    <span class="co"># read in pmo</span></span>
+<span id="cb8-44"><a href="#cb8-44"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb8-45"><a href="#cb8-45"></a></span>
+<span id="cb8-46"><a href="#cb8-46"></a>    <span class="co"># extract</span></span>
+<span id="cb8-47"><a href="#cb8-47"></a>    pmo_out <span class="op">=</span> PMOProcessor.filter_pmo_by_specimen_names(pmo, all_specimen_names)</span>
+<span id="cb8-48"><a href="#cb8-48"></a></span>
+<span id="cb8-49"><a href="#cb8-49"></a>    <span class="co"># write out the extracted</span></span>
+<span id="cb8-50"><a href="#cb8-50"></a>    args.output <span class="op">=</span> PMOWriter.add_pmo_extension_as_needed(</span>
+<span id="cb8-51"><a href="#cb8-51"></a>        args.output, args.<span class="bu">file</span>.endswith(<span class="st">".gz"</span>) <span class="kw">or</span> args.output.endswith(<span class="st">".gz"</span>)</span>
+<span id="cb8-52"><a href="#cb8-52"></a>    )</span>
+<span id="cb8-53"><a href="#cb8-53"></a>    PMOWriter.write_out_pmo(pmo_out, args.output, args.overwrite)</span>
+<span id="cb8-54"><a href="#cb8-54"></a></span>
+<span id="cb8-55"><a href="#cb8-55"></a></span>
+<span id="cb8-56"><a href="#cb8-56"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb8-57"><a href="#cb8-57"></a>    extract_pmo_with_select_specimen_names()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_select_specimen_ids <span class="at">--specimen_ids</span> 8025874217,8025875146,8034209589 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025874217_8025875146_8034209589_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_specimen_names <span class="at">--specimen_names</span> 8025874217,8025875146,8034209589 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025874217_8025875146_8034209589_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025874217\n8025875146\n8034209589"</span> <span class="op">&gt;</span> select_specimen_ids.txt </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025874217\n8025875146\n8034209589"</span> <span class="op">&gt;</span> select_specimen_names.txt </span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_select_specimen_ids <span class="at">--specimen_ids</span> select_specimen_ids.txt <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025874217_8025875146_8034209589_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_specimen_names <span class="at">--specimen_names</span> select_specimen_names.txt <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025874217_8025875146_8034209589_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025874217\n8025875146\n8034209589"</span> <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_pmo_with_select_specimen_ids <span class="at">--specimen_ids</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025874217_8025875146_8034209589_moz2018_PMO.json.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025874217\n8025875146\n8034209589"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_specimen_names <span class="at">--specimen_names</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025874217_8025875146_8034209589_moz2018_PMO.json.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section><section id="subsetting-by-specific-experiment_sample_ids" class="level2"><h2 class="anchored" data-anchor-id="subsetting-by-specific-experiment_sample_ids">Subsetting by specific experiment_sample_ids</h2>
-<p>If you want just specific experiment_sample_id you can supply those instead too</p>
-<p>Similar to above you can supply the experiment_sample_ids either as comma separated values or in a plain text file where each line is a experiment_sample_id or from standard in (STDIN)</p>
+</section><section id="subsetting-by-specific-library_sample_names" class="level2"><h2 class="anchored" data-anchor-id="subsetting-by-specific-library_sample_names">Subsetting by specific library_sample_names</h2>
+<p>If you want just specific library_sample_name you can supply those instead too</p>
+<p>Similar to above you can supply the library_sample_names either as comma separated values or in a plain text file where each line is a library_sample_name or from standard in (STDIN)</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_select_experiment_sample_ids <span class="at">-h</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">-h</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>usage: pmotools-runner.py extract_pmo_with_select_experiment_sample_ids
+<pre><code>usage: pmotools-python extract_pmo_with_select_library_sample_names
        [-h] --file FILE --output OUTPUT [--overwrite] [--verbose]
-       --experiment_sample_ids EXPERIMENT_SAMPLE_IDS
+       --library_sample_names LIBRARY_SAMPLE_NAMES
 
 options:
   -h, --help            show this help message and exit
@@ -479,90 +508,106 @@ options:
   --output OUTPUT       Output json file path
   --overwrite           If output file exists, overwrite it
   --verbose             write out various messages about extraction
-  --experiment_sample_ids EXPERIMENT_SAMPLE_IDS
-                        Can either comma separated experiment_sample_ids, or a
+  --library_sample_names LIBRARY_SAMPLE_NAMES
+                        Can either comma separated library_sample_names, or a
                         plain text file where each line is a
-                        experiment_sample_id</code></pre>
+                        library_sample_name</code></pre>
 </div>
 </div>
-<p>The python code for <code>extract_pmo_with_select_experiment_sample_ids</code> script is below</p>
+<p>The python code for <code>extract_pmo_with_select_library_sample_names</code> script is below</p>
 <div class="cell" data-layout-align="center">
 <div class="code-with-filename">
 <details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
-<pre><strong>pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_experiment_sample_ids.py</strong></pre>
+<pre><strong>pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_pmo_with_select_library_sample_names.py</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">#!/usr/bin/env python3</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="im">import</span> os, argparse, json</span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="im">import</span> sys</span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
-<span id="cb12-5"><a href="#cb12-5"></a></span>
-<span id="cb12-6"><a href="#cb12-6"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb12-7"><a href="#cb12-7"></a></span>
-<span id="cb12-8"><a href="#cb12-8"></a><span class="im">from</span> pmotools.pmo_utils.PMOExtractor <span class="im">import</span> PMOExtractor</span>
-<span id="cb12-9"><a href="#cb12-9"></a><span class="im">from</span> pmotools.pmo_utils.PMOReader <span class="im">import</span> PMOReader</span>
-<span id="cb12-10"><a href="#cb12-10"></a><span class="im">from</span> pmotools.pmo_utils.PMOWriter <span class="im">import</span> PMOWriter</span>
-<span id="cb12-11"><a href="#cb12-11"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
-<span id="cb12-12"><a href="#cb12-12"></a></span>
-<span id="cb12-13"><a href="#cb12-13"></a></span>
-<span id="cb12-14"><a href="#cb12-14"></a><span class="kw">def</span> parse_args_extract_pmo_with_select_experiment_sample_ids():</span>
-<span id="cb12-15"><a href="#cb12-15"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb12-16"><a href="#cb12-16"></a>    parser.add_argument(<span class="st">'--file'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'PMO file'</span>)</span>
-<span id="cb12-17"><a href="#cb12-17"></a>    parser.add_argument(<span class="st">'--output'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'Output json file path'</span>)</span>
-<span id="cb12-18"><a href="#cb12-18"></a>    parser.add_argument(<span class="st">'--overwrite'</span>, action <span class="op">=</span> <span class="st">'store_true'</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'If output file exists, overwrite it'</span>)</span>
-<span id="cb12-19"><a href="#cb12-19"></a>    parser.add_argument(<span class="st">'--verbose'</span>, action <span class="op">=</span> <span class="st">'store_true'</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'write out various messages about extraction'</span>)</span>
-<span id="cb12-20"><a href="#cb12-20"></a>    parser.add_argument(<span class="st">'--experiment_sample_ids'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'Can either comma separated experiment_sample_ids, or a plain text file where each line is a experiment_sample_id'</span>)</span>
-<span id="cb12-21"><a href="#cb12-21"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb12-22"><a href="#cb12-22"></a></span>
-<span id="cb12-23"><a href="#cb12-23"></a><span class="kw">def</span> extract_pmo_with_select_experiment_sample_ids():</span>
-<span id="cb12-24"><a href="#cb12-24"></a>    args <span class="op">=</span> parse_args_extract_pmo_with_select_experiment_sample_ids()</span>
-<span id="cb12-25"><a href="#cb12-25"></a></span>
-<span id="cb12-26"><a href="#cb12-26"></a>    <span class="co"># check files</span></span>
-<span id="cb12-27"><a href="#cb12-27"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
-<span id="cb12-28"><a href="#cb12-28"></a></span>
-<span id="cb12-29"><a href="#cb12-29"></a>    <span class="co"># parse specimen ids</span></span>
-<span id="cb12-30"><a href="#cb12-30"></a>    all_experiment_sample_ids <span class="op">=</span> Utils.parse_delimited_input_or_file(args.experiment_sample_ids)</span>
-<span id="cb12-31"><a href="#cb12-31"></a></span>
-<span id="cb12-32"><a href="#cb12-32"></a>    <span class="co"># read in pmo</span></span>
-<span id="cb12-33"><a href="#cb12-33"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
-<span id="cb12-34"><a href="#cb12-34"></a></span>
-<span id="cb12-35"><a href="#cb12-35"></a>    <span class="co"># extract</span></span>
-<span id="cb12-36"><a href="#cb12-36"></a>    pmo_out <span class="op">=</span> PMOExtractor.extract_from_pmo_select_experiment_sample_ids(pmo, all_experiment_sample_ids)</span>
-<span id="cb12-37"><a href="#cb12-37"></a></span>
-<span id="cb12-38"><a href="#cb12-38"></a>    <span class="co"># write out the extracted</span></span>
-<span id="cb12-39"><a href="#cb12-39"></a>    args.output <span class="op">=</span> PMOWriter.add_pmo_extension_as_needed(args.output, args.<span class="bu">file</span>.endswith(<span class="st">'.gz'</span>) <span class="kw">or</span> args.output.endswith(<span class="st">".gz"</span>))</span>
-<span id="cb12-40"><a href="#cb12-40"></a>    PMOWriter.write_out_pmo(pmo_out, args.output, args.overwrite)</span>
-<span id="cb12-41"><a href="#cb12-41"></a></span>
-<span id="cb12-42"><a href="#cb12-42"></a></span>
-<span id="cb12-43"><a href="#cb12-43"></a></span>
-<span id="cb12-44"><a href="#cb12-44"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb12-45"><a href="#cb12-45"></a>    extract_pmo_with_select_experiment_sample_ids()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="im">import</span> argparse</span>
+<span id="cb12-3"><a href="#cb12-3"></a></span>
+<span id="cb12-4"><a href="#cb12-4"></a></span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="im">from</span> pmotools.pmo_engine.pmo_processor <span class="im">import</span> PMOProcessor</span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="im">from</span> pmotools.pmo_engine.pmo_reader <span class="im">import</span> PMOReader</span>
+<span id="cb12-7"><a href="#cb12-7"></a><span class="im">from</span> pmotools.pmo_engine.pmo_writer <span class="im">import</span> PMOWriter</span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
+<span id="cb12-9"><a href="#cb12-9"></a></span>
+<span id="cb12-10"><a href="#cb12-10"></a></span>
+<span id="cb12-11"><a href="#cb12-11"></a><span class="kw">def</span> parse_args_extract_pmo_with_select_library_sample_names():</span>
+<span id="cb12-12"><a href="#cb12-12"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
+<span id="cb12-13"><a href="#cb12-13"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
+<span id="cb12-14"><a href="#cb12-14"></a>    parser.add_argument(</span>
+<span id="cb12-15"><a href="#cb12-15"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"Output json file path"</span></span>
+<span id="cb12-16"><a href="#cb12-16"></a>    )</span>
+<span id="cb12-17"><a href="#cb12-17"></a>    parser.add_argument(</span>
+<span id="cb12-18"><a href="#cb12-18"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb12-19"><a href="#cb12-19"></a>    )</span>
+<span id="cb12-20"><a href="#cb12-20"></a>    parser.add_argument(</span>
+<span id="cb12-21"><a href="#cb12-21"></a>        <span class="st">"--verbose"</span>,</span>
+<span id="cb12-22"><a href="#cb12-22"></a>        action<span class="op">=</span><span class="st">"store_true"</span>,</span>
+<span id="cb12-23"><a href="#cb12-23"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"write out various messages about extraction"</span>,</span>
+<span id="cb12-24"><a href="#cb12-24"></a>    )</span>
+<span id="cb12-25"><a href="#cb12-25"></a>    parser.add_argument(</span>
+<span id="cb12-26"><a href="#cb12-26"></a>        <span class="st">"--library_sample_names"</span>,</span>
+<span id="cb12-27"><a href="#cb12-27"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb12-28"><a href="#cb12-28"></a>        required<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb12-29"><a href="#cb12-29"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"Can either comma separated library_sample_names, or a plain text file where each line is a library_sample_name"</span>,</span>
+<span id="cb12-30"><a href="#cb12-30"></a>    )</span>
+<span id="cb12-31"><a href="#cb12-31"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb12-32"><a href="#cb12-32"></a></span>
+<span id="cb12-33"><a href="#cb12-33"></a></span>
+<span id="cb12-34"><a href="#cb12-34"></a><span class="kw">def</span> extract_pmo_with_select_library_sample_names():</span>
+<span id="cb12-35"><a href="#cb12-35"></a>    args <span class="op">=</span> parse_args_extract_pmo_with_select_library_sample_names()</span>
+<span id="cb12-36"><a href="#cb12-36"></a></span>
+<span id="cb12-37"><a href="#cb12-37"></a>    <span class="co"># check files</span></span>
+<span id="cb12-38"><a href="#cb12-38"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb12-39"><a href="#cb12-39"></a></span>
+<span id="cb12-40"><a href="#cb12-40"></a>    <span class="co"># parse specimen names</span></span>
+<span id="cb12-41"><a href="#cb12-41"></a>    all_library_sample_names <span class="op">=</span> <span class="bu">set</span>(</span>
+<span id="cb12-42"><a href="#cb12-42"></a>        Utils.parse_delimited_input_or_file(args.library_sample_names)</span>
+<span id="cb12-43"><a href="#cb12-43"></a>    )</span>
+<span id="cb12-44"><a href="#cb12-44"></a></span>
+<span id="cb12-45"><a href="#cb12-45"></a>    <span class="co"># read in pmo</span></span>
+<span id="cb12-46"><a href="#cb12-46"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb12-47"><a href="#cb12-47"></a></span>
+<span id="cb12-48"><a href="#cb12-48"></a>    <span class="co"># extract</span></span>
+<span id="cb12-49"><a href="#cb12-49"></a>    pmo_out <span class="op">=</span> PMOProcessor.filter_pmo_by_library_sample_names(</span>
+<span id="cb12-50"><a href="#cb12-50"></a>        pmo, all_library_sample_names</span>
+<span id="cb12-51"><a href="#cb12-51"></a>    )</span>
+<span id="cb12-52"><a href="#cb12-52"></a></span>
+<span id="cb12-53"><a href="#cb12-53"></a>    <span class="co"># write out the extracted</span></span>
+<span id="cb12-54"><a href="#cb12-54"></a>    args.output <span class="op">=</span> PMOWriter.add_pmo_extension_as_needed(</span>
+<span id="cb12-55"><a href="#cb12-55"></a>        args.output, args.<span class="bu">file</span>.endswith(<span class="st">".gz"</span>) <span class="kw">or</span> args.output.endswith(<span class="st">".gz"</span>)</span>
+<span id="cb12-56"><a href="#cb12-56"></a>    )</span>
+<span id="cb12-57"><a href="#cb12-57"></a>    PMOWriter.write_out_pmo(pmo_out, args.output, args.overwrite)</span>
+<span id="cb12-58"><a href="#cb12-58"></a></span>
+<span id="cb12-59"><a href="#cb12-59"></a></span>
+<span id="cb12-60"><a href="#cb12-60"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb12-61"><a href="#cb12-61"></a>    extract_pmo_with_select_library_sample_names()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_select_experiment_sample_ids <span class="at">--experiment_sample_ids</span> 8025875029,8034209834,8034209115 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025875029_8034209834_8034209115_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">--library_sample_names</span> 8025875029,8034209834,8034209115 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025875029_8034209834_8034209115_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="op">&gt;</span> select_experiment_sample_ids.txt </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="op">&gt;</span> select_library_sample_names.txt </span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_select_experiment_sample_ids <span class="at">--experiment_sample_ids</span> select_experiment_sample_ids.txt <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025875029_8034209834_8034209115_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">--library_sample_names</span> select_library_sample_names.txt <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025875029_8034209834_8034209115_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_pmo_with_select_experiment_sample_ids <span class="at">--experiment_sample_ids</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025875029_8034209834_8034209115_moz2018_PMO.json.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">--library_sample_names</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025875029_8034209834_8034209115_moz2018_PMO.json.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section><section id="subsetting-by-samples-within-specific-metafields" class="level2"><h2 class="anchored" data-anchor-id="subsetting-by-samples-within-specific-metafields">Subsetting by samples within specific metafields</h2>
 <p>If you want to get specific samples that match certain meta fields like specific collection_country or collection_date you can use ``</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_selected_meta <span class="at">-h</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta <span class="at">-h</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>usage: pmotools-runner.py extract_pmo_with_selected_meta [-h] --file FILE
-                                                         --output OUTPUT
-                                                         [--overwrite]
-                                                         [--verbose]
-                                                         --metaFieldsValues
-                                                         METAFIELDSVALUES
+<pre><code>usage: pmotools-python extract_pmo_with_selected_meta [-h] --file FILE
+                                                      --output OUTPUT
+                                                      [--overwrite]
+                                                      [--verbose]
+                                                      --metaFieldsValues
+                                                      METAFIELDSVALUES
 
 options:
   -h, --help            show this help message and exit
@@ -581,57 +626,76 @@ options:
 <div class="cell" data-layout-align="center">
 <div class="code-with-filename">
 <details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
-<pre><strong>pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_selected_meta.py</strong></pre>
+<pre><strong>pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_pmo_with_selected_meta.py</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co">#!/usr/bin/env python3</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="im">import</span> os, argparse, json</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="im">import</span> argparse</span>
 <span id="cb16-3"><a href="#cb16-3"></a><span class="im">import</span> sys</span>
-<span id="cb16-4"><a href="#cb16-4"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
+<span id="cb16-4"><a href="#cb16-4"></a></span>
 <span id="cb16-5"><a href="#cb16-5"></a></span>
-<span id="cb16-6"><a href="#cb16-6"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb16-7"><a href="#cb16-7"></a></span>
-<span id="cb16-8"><a href="#cb16-8"></a><span class="im">from</span> pmotools.pmo_utils.PMOExtractor <span class="im">import</span> PMOExtractor</span>
-<span id="cb16-9"><a href="#cb16-9"></a><span class="im">from</span> pmotools.pmo_utils.PMOReader <span class="im">import</span> PMOReader</span>
-<span id="cb16-10"><a href="#cb16-10"></a><span class="im">from</span> pmotools.pmo_utils.PMOWriter <span class="im">import</span> PMOWriter</span>
-<span id="cb16-11"><a href="#cb16-11"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
-<span id="cb16-12"><a href="#cb16-12"></a></span>
-<span id="cb16-13"><a href="#cb16-13"></a></span>
-<span id="cb16-14"><a href="#cb16-14"></a><span class="kw">def</span> parse_args_extract_pmo_with_selected_meta():</span>
-<span id="cb16-15"><a href="#cb16-15"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb16-16"><a href="#cb16-16"></a>    parser.add_argument(<span class="st">'--file'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'PMO file'</span>)</span>
-<span id="cb16-17"><a href="#cb16-17"></a>    parser.add_argument(<span class="st">'--output'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'Output json file path'</span>)</span>
-<span id="cb16-18"><a href="#cb16-18"></a>    parser.add_argument(<span class="st">'--overwrite'</span>, action <span class="op">=</span> <span class="st">'store_true'</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'If output file exists, overwrite it'</span>)</span>
-<span id="cb16-19"><a href="#cb16-19"></a>    parser.add_argument(<span class="st">'--verbose'</span>, action <span class="op">=</span> <span class="st">'store_true'</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'write out various messages about extraction'</span>)</span>
-<span id="cb16-20"><a href="#cb16-20"></a>    parser.add_argument(<span class="st">'--metaFieldsValues'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'Meta Fields to include, should either be a table with columns field, values (and optionally group) or supplied command line as field1=value1,value2,value3:field2=value1,value2'</span>)</span>
-<span id="cb16-21"><a href="#cb16-21"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb16-22"><a href="#cb16-22"></a></span>
-<span id="cb16-23"><a href="#cb16-23"></a><span class="kw">def</span> extract_pmo_with_selected_meta():</span>
-<span id="cb16-24"><a href="#cb16-24"></a>    args <span class="op">=</span> parse_args_extract_pmo_with_selected_meta()</span>
-<span id="cb16-25"><a href="#cb16-25"></a></span>
-<span id="cb16-26"><a href="#cb16-26"></a>    <span class="co"># check files</span></span>
-<span id="cb16-27"><a href="#cb16-27"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
-<span id="cb16-28"><a href="#cb16-28"></a></span>
-<span id="cb16-29"><a href="#cb16-29"></a>    <span class="co"># read in pmo</span></span>
-<span id="cb16-30"><a href="#cb16-30"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
-<span id="cb16-31"><a href="#cb16-31"></a></span>
-<span id="cb16-32"><a href="#cb16-32"></a>    <span class="co"># extract out of PMO</span></span>
-<span id="cb16-33"><a href="#cb16-33"></a>    pmo_out, group_counts <span class="op">=</span> PMOExtractor.extract_from_pmo_samples_with_meta_groupings(pmo, args.metaFieldsValues)</span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="im">from</span> pmotools.pmo_engine.pmo_processor <span class="im">import</span> PMOProcessor</span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="im">from</span> pmotools.pmo_engine.pmo_reader <span class="im">import</span> PMOReader</span>
+<span id="cb16-8"><a href="#cb16-8"></a><span class="im">from</span> pmotools.pmo_engine.pmo_writer <span class="im">import</span> PMOWriter</span>
+<span id="cb16-9"><a href="#cb16-9"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
+<span id="cb16-10"><a href="#cb16-10"></a></span>
+<span id="cb16-11"><a href="#cb16-11"></a></span>
+<span id="cb16-12"><a href="#cb16-12"></a><span class="kw">def</span> parse_args_extract_pmo_with_selected_meta():</span>
+<span id="cb16-13"><a href="#cb16-13"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
+<span id="cb16-14"><a href="#cb16-14"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
+<span id="cb16-15"><a href="#cb16-15"></a>    parser.add_argument(</span>
+<span id="cb16-16"><a href="#cb16-16"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"Output json file path"</span></span>
+<span id="cb16-17"><a href="#cb16-17"></a>    )</span>
+<span id="cb16-18"><a href="#cb16-18"></a>    parser.add_argument(</span>
+<span id="cb16-19"><a href="#cb16-19"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb16-20"><a href="#cb16-20"></a>    )</span>
+<span id="cb16-21"><a href="#cb16-21"></a>    parser.add_argument(</span>
+<span id="cb16-22"><a href="#cb16-22"></a>        <span class="st">"--verbose"</span>,</span>
+<span id="cb16-23"><a href="#cb16-23"></a>        action<span class="op">=</span><span class="st">"store_true"</span>,</span>
+<span id="cb16-24"><a href="#cb16-24"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"write out various messages about extraction"</span>,</span>
+<span id="cb16-25"><a href="#cb16-25"></a>    )</span>
+<span id="cb16-26"><a href="#cb16-26"></a>    parser.add_argument(</span>
+<span id="cb16-27"><a href="#cb16-27"></a>        <span class="st">"--metaFieldsValues"</span>,</span>
+<span id="cb16-28"><a href="#cb16-28"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb16-29"><a href="#cb16-29"></a>        required<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb16-30"><a href="#cb16-30"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"Meta Fields to include, should either be a table with columns field, values (and optionally group) or supplied command line as field1=value1,value2,value3:field2=value1,value2"</span>,</span>
+<span id="cb16-31"><a href="#cb16-31"></a>    )</span>
+<span id="cb16-32"><a href="#cb16-32"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb16-33"><a href="#cb16-33"></a></span>
 <span id="cb16-34"><a href="#cb16-34"></a></span>
-<span id="cb16-35"><a href="#cb16-35"></a>    <span class="co"># write out the extracted</span></span>
-<span id="cb16-36"><a href="#cb16-36"></a>    args.output <span class="op">=</span> PMOWriter.add_pmo_extension_as_needed(args.output, args.<span class="bu">file</span>.endswith(<span class="st">'.gz'</span>) <span class="kw">or</span> args.output.endswith(<span class="st">".gz"</span>))</span>
-<span id="cb16-37"><a href="#cb16-37"></a>    PMOWriter.write_out_pmo(pmo_out, args.output, args.overwrite)</span>
-<span id="cb16-38"><a href="#cb16-38"></a></span>
-<span id="cb16-39"><a href="#cb16-39"></a>    <span class="cf">if</span> args.verbose:</span>
-<span id="cb16-40"><a href="#cb16-40"></a>        sys.stdout.write(<span class="st">"Extracted the following number of specimens per group:"</span> <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb16-41"><a href="#cb16-41"></a>        group_counts.to_csv(sys.stdout, sep <span class="op">=</span> <span class="st">"</span><span class="ch">\t</span><span class="st">"</span>, index <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb16-42"><a href="#cb16-42"></a></span>
-<span id="cb16-43"><a href="#cb16-43"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb16-44"><a href="#cb16-44"></a>    extract_pmo_with_selected_meta()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-35"><a href="#cb16-35"></a><span class="kw">def</span> extract_pmo_with_selected_meta():</span>
+<span id="cb16-36"><a href="#cb16-36"></a>    args <span class="op">=</span> parse_args_extract_pmo_with_selected_meta()</span>
+<span id="cb16-37"><a href="#cb16-37"></a></span>
+<span id="cb16-38"><a href="#cb16-38"></a>    <span class="co"># check files</span></span>
+<span id="cb16-39"><a href="#cb16-39"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb16-40"><a href="#cb16-40"></a></span>
+<span id="cb16-41"><a href="#cb16-41"></a>    <span class="co"># read in pmo</span></span>
+<span id="cb16-42"><a href="#cb16-42"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb16-43"><a href="#cb16-43"></a></span>
+<span id="cb16-44"><a href="#cb16-44"></a>    <span class="co"># extract out of PMO</span></span>
+<span id="cb16-45"><a href="#cb16-45"></a>    pmo_out, group_counts <span class="op">=</span> PMOProcessor.extract_from_pmo_samples_with_meta_groupings(</span>
+<span id="cb16-46"><a href="#cb16-46"></a>        pmo, args.metaFieldsValues</span>
+<span id="cb16-47"><a href="#cb16-47"></a>    )</span>
+<span id="cb16-48"><a href="#cb16-48"></a></span>
+<span id="cb16-49"><a href="#cb16-49"></a>    <span class="co"># write out the extracted</span></span>
+<span id="cb16-50"><a href="#cb16-50"></a>    args.output <span class="op">=</span> PMOWriter.add_pmo_extension_as_needed(</span>
+<span id="cb16-51"><a href="#cb16-51"></a>        args.output, args.<span class="bu">file</span>.endswith(<span class="st">".gz"</span>) <span class="kw">or</span> args.output.endswith(<span class="st">".gz"</span>)</span>
+<span id="cb16-52"><a href="#cb16-52"></a>    )</span>
+<span id="cb16-53"><a href="#cb16-53"></a>    PMOWriter.write_out_pmo(pmo_out, args.output, args.overwrite)</span>
+<span id="cb16-54"><a href="#cb16-54"></a></span>
+<span id="cb16-55"><a href="#cb16-55"></a>    <span class="cf">if</span> args.verbose:</span>
+<span id="cb16-56"><a href="#cb16-56"></a>        sys.stdout.write(</span>
+<span id="cb16-57"><a href="#cb16-57"></a>            <span class="st">"Extracted the following number of specimens per group:"</span> <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb16-58"><a href="#cb16-58"></a>        )</span>
+<span id="cb16-59"><a href="#cb16-59"></a>        group_counts.to_csv(sys.stdout, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>, index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb16-60"><a href="#cb16-60"></a></span>
+<span id="cb16-61"><a href="#cb16-61"></a></span>
+<span id="cb16-62"><a href="#cb16-62"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb16-63"><a href="#cb16-63"></a>    extract_pmo_with_selected_meta()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
-<p><code>pmotools-runner.py extract_pmo_with_selected_meta</code> is written to allow the extraction on multiple intersecting meta field requirments that can be either supplied in a file or with delimited on the command line</p>
-<p>You may also want to know what current meta fields are present and how many samples in each. This can be done with <a href="../pmotools-python-usages/getting_basic_info_from_pmo.html#list_specimen_meta_fields"><code>pmotools-runner.py list_specimen_meta_fields</code></a> and <code>pmotools-runner.py count_specimen_meta</code></p>
+<p><code>pmotools-python extract_pmo_with_selected_meta</code> is written to allow the extraction on multiple intersecting meta field requirments that can be either supplied in a file or with delimited on the command line</p>
+<p>You may also want to know what current meta fields are present and how many samples in each. This can be done with <a href="../pmotools-python-usages/getting_basic_info_from_pmo.html#list_specimen_meta_fields"><code>pmotools-python list_specimen_meta_fields</code></a> and <code>pmotools-python count_specimen_meta</code></p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -639,60 +703,84 @@ options:
 </div>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> list_specimen_meta_fields <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_specimen_meta_fields <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>field   presentInSpecimensCount totalSpecimenCount
+<pre><code>field   present_in_specimens_count  total_specimen_count
 collection_country  19433   19433
 collection_date 19433   19433
-collector   19433   19433
 geo_admin3  19433   19433
-geo_continent   19433   19433
-geo_region  19433   19433
-geo_subRegion   19433   19433
 host_taxon_id   19433   19433
-project_name    19433   19433
-samp_collect_device 19433   19433
-samp_store_loc  19433   19433
-samp_taxon_id   19433   19433
-specimen_id 19433   19433</code></pre>
+project_id  19433   19433
+specimen_collect_device 19433   19433
+specimen_name   19433   19433
+specimen_store_loc  19433   19433
+specimen_taxon_id   19433   19433</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_specimen_meta <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz  <span class="at">--meta_fields</span> collection_country,collection_date <span class="kw">|</span> <span class="fu">head</span> <span class="at">-20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_specimen_meta <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz  <span class="at">--meta_fields</span> collection_country,collection_date <span class="kw">|</span> <span class="fu">head</span> <span class="at">-20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>collection_country  collection_date specimensCount  specimensFreq   totalSpecimenCount
+<pre><code>collection_country  collection_date specimens_count specimens_freq  total_specimen_count
 Bangladesh  2008    15  0.0007718828796377296   19433
 Bangladesh  2009    16  0.000823341738280245    19433
-Bangladesh  2012    51  0.002624401790768281    19433
-Bangladesh  2015    508 0.026141100190397778    19433
-Bangladesh  2016    816 0.041990428652292494    19433
-Bangladesh  2017    12  0.0006175063037101837   19433
-Benin   2014    41  0.002109813204343128    19433
-Benin   2016    117 0.006020686461174291    19433
-Brazil  1980    1   5.145885864251531e-05   19433
-Brazil  2016    13  0.000668965162352699    19433
-Brazil  2017    5   0.00025729429321257654  19433
-Brazil  NA  1   5.145885864251531e-05   19433
-Burkina Faso    2008    58  0.002984613801265888    19433
-Cambodia    1993    6   0.00030875315185509186  19433
-Cambodia    2007    26  0.001337930324705398    19433
-Cambodia    2008    50  0.0025729429321257654   19433
-Cambodia    2009    66  0.0033962846704060105   19433
-Cambodia    2010    182 0.009365512272937786    19433
-Cambodia    2011    441 0.02269335666134925 19433</code></pre>
+Bangladesh  2012    8   0.0004116708691401225   19433
+Bangladesh  2012-04-19  1   5.145885864251531e-05   19433
+Bangladesh  2012-06-05  2   0.00010291771728503062  19433
+Bangladesh  2012-06-13  1   5.145885864251531e-05   19433
+Bangladesh  2012-06-17  1   5.145885864251531e-05   19433
+Bangladesh  2012-07-17  1   5.145885864251531e-05   19433
+Bangladesh  2012-07-23  1   5.145885864251531e-05   19433
+Bangladesh  2012-07-25  1   5.145885864251531e-05   19433
+Bangladesh  2012-08-11  1   5.145885864251531e-05   19433
+Bangladesh  2012-08-27  1   5.145885864251531e-05   19433
+Bangladesh  2012-08-28  1   5.145885864251531e-05   19433
+Bangladesh  2012-09-10  1   5.145885864251531e-05   19433
+Bangladesh  2012-09-12  1   5.145885864251531e-05   19433
+Bangladesh  2012-09-17  1   5.145885864251531e-05   19433
+Bangladesh  2012-09-18  1   5.145885864251531e-05   19433
+Bangladesh  2012-09-19  1   5.145885864251531e-05   19433
+Bangladesh  2012-09-22  1   5.145885864251531e-05   19433
+Traceback (most recent call last):
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/bin/pmotools-python", line 7, in &lt;module&gt;
+    sys.exit(main())
+             ^^^^^^
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/pmotools-python/src/pmotools/cli.py", line 366, in main
+    handler()
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_specimen_meta.py", line 61, in count_specimen_meta
+    counts_df.to_csv(
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/util/_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/core/generic.py", line 3967, in to_csv
+    return DataFrameRenderer(formatter).to_csv(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/format.py", line 1014, in to_csv
+    csv_formatter.save()
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 270, in save
+    self._save()
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 275, in _save
+    self._save_body()
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 313, in _save_body
+    self._save_chunk(start_i, end_i)
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 324, in _save_chunk
+    libwriters.write_csv_rows(
+  File "writers.pyx", line 73, in pandas._libs.writers.write_csv_rows
+BrokenPipeError: [Errno 32] Broken pipe
+Exception ignored in: &lt;_io.TextIOWrapper name='&lt;stdout&gt;' mode='w' encoding='utf-8'&gt;
+BrokenPipeError: [Errno 32] Broken pipe</code></pre>
 </div>
 </div>
 <p>Extracting on matching 1 meta field, below will extract just the samples that have collection_country=Bangladesh</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh"</span> <span class="at">--output</span> Bangladesh_moz2018_PMO.json.gz   <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh"</span> <span class="at">--output</span> Bangladesh_moz2018_PMO.json.gz   <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>If you want to see how many samples were extracted can use <code>--verbose</code></p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh"</span> <span class="at">--output</span> Bangladesh_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh"</span> <span class="at">--output</span> Bangladesh_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>Extracted the following number of specimens per group:
 group   collection_country  count
@@ -703,7 +791,7 @@ group   collection_country  count
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh,Benin"</span> <span class="at">--output</span> Bangladesh_Benin_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh,Benin"</span> <span class="at">--output</span> Bangladesh_Benin_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>Extracted the following number of specimens per group:
 group   collection_country  count
@@ -714,7 +802,7 @@ group   collection_country  count
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh,Benin:collection_date=2016"</span> <span class="at">--output</span> Bangladesh_Benin_2016_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh,Benin:collection_date=2016"</span> <span class="at">--output</span> Bangladesh_Benin_2016_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>Extracted the following number of specimens per group:
 group   collection_country  collection_date count
@@ -725,7 +813,7 @@ group   collection_country  collection_date count
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh:collection_date=2015;collection_country=Benin:collection_date=2016"</span> <span class="at">--output</span> Bangladesh2015_Benin2016_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh:collection_date=2015;collection_country=Benin:collection_date=2016"</span> <span class="at">--output</span> Bangladesh2015_Benin2016_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>Extracted the following number of specimens per group:
 group   collection_country  collection_date count
@@ -744,7 +832,7 @@ group   collection_country  collection_date count
 <span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"Benin2016\tcollection_date\t2016"</span> <span class="op">&gt;&gt;</span> Bangladesh2015_Benin2016_extractionCriteria.tsv </span>
 <span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> Bangladesh2015_Benin2016_extractionCriteria.tsv <span class="at">--output</span> Bangladesh2015_Benin2016_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> Bangladesh2015_Benin2016_extractionCriteria.tsv <span class="at">--output</span> Bangladesh2015_Benin2016_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>Extracted the following number of specimens per group:
 group   collection_country  collection_date count
@@ -754,7 +842,7 @@ Benin2016   Benin   2016    117</code></pre>
 </div>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Mozambique:geo_admin3=Inhassoro;collection_country=Mozambique:geo_admin3=Mandlakazi,Namaacha"</span> <span class="at">--output</span> Mozambique_moz2018_PMO.json.gz  <span class="at">--verbose</span>  <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Mozambique:geo_admin3=Inhassoro;collection_country=Mozambique:geo_admin3=Mandlakazi,Namaacha"</span> <span class="at">--output</span> Mozambique_moz2018_PMO.json.gz  <span class="at">--verbose</span>  <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>Extracted the following number of specimens per group:
 group   collection_country  geo_admin3  count
@@ -764,13 +852,12 @@ group   collection_country  geo_admin3  count
 </div>
 </section><section id="subsetting-by-a-read-filter-for-detected-microhaplotypes" class="level2"><h2 class="anchored" data-anchor-id="subsetting-by-a-read-filter-for-detected-microhaplotypes">Subsetting by a read filter for detected microhaplotypes</h2>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_read_filter <span class="at">-h</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_read_filter <span class="at">-h</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>usage: pmotools-runner.py extract_pmo_with_read_filter [-h] --file FILE
-                                                       --output OUTPUT
-                                                       [--overwrite]
-                                                       --read_count_minimum
-                                                       READ_COUNT_MINIMUM
+<pre><code>usage: pmotools-python extract_pmo_with_read_filter [-h] --file FILE --output
+                                                    OUTPUT [--overwrite]
+                                                    --read_count_minimum
+                                                    READ_COUNT_MINIMUM
 
 options:
   -h, --help            show this help message and exit
@@ -786,54 +873,67 @@ options:
 <div class="cell" data-layout-align="center">
 <div class="code-with-filename">
 <details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
-<pre><strong>pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_read_filter.py</strong></pre>
+<pre><strong>pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_pmo_with_read_filter.py</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="co">#!/usr/bin/env python3</span></span>
-<span id="cb37-2"><a href="#cb37-2"></a><span class="im">import</span> os, argparse, json</span>
-<span id="cb37-3"><a href="#cb37-3"></a><span class="im">import</span> sys</span>
-<span id="cb37-4"><a href="#cb37-4"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
-<span id="cb37-5"><a href="#cb37-5"></a></span>
-<span id="cb37-6"><a href="#cb37-6"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb37-7"><a href="#cb37-7"></a></span>
-<span id="cb37-8"><a href="#cb37-8"></a><span class="im">from</span> pmotools.pmo_utils.PMOExtractor <span class="im">import</span> PMOExtractor</span>
-<span id="cb37-9"><a href="#cb37-9"></a><span class="im">from</span> pmotools.pmo_utils.PMOReader <span class="im">import</span> PMOReader</span>
-<span id="cb37-10"><a href="#cb37-10"></a><span class="im">from</span> pmotools.pmo_utils.PMOWriter <span class="im">import</span> PMOWriter</span>
-<span id="cb37-11"><a href="#cb37-11"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
-<span id="cb37-12"><a href="#cb37-12"></a></span>
-<span id="cb37-13"><a href="#cb37-13"></a></span>
-<span id="cb37-14"><a href="#cb37-14"></a><span class="kw">def</span> parse_args_extract_pmo_with_read_filter():</span>
-<span id="cb37-15"><a href="#cb37-15"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb37-16"><a href="#cb37-16"></a>    parser.add_argument(<span class="st">'--file'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'PMO file'</span>)</span>
-<span id="cb37-17"><a href="#cb37-17"></a>    parser.add_argument(<span class="st">'--output'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'Output json file path'</span>)</span>
-<span id="cb37-18"><a href="#cb37-18"></a>    parser.add_argument(<span class="st">'--overwrite'</span>, action <span class="op">=</span> <span class="st">'store_true'</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'If output file exists, overwrite it'</span>)</span>
-<span id="cb37-19"><a href="#cb37-19"></a>    parser.add_argument(<span class="st">'--read_count_minimum'</span>, default<span class="op">=</span><span class="fl">0.0</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">float</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'the minimum read count (inclusive) for detected haplotypes to be kept'</span>)</span>
-<span id="cb37-20"><a href="#cb37-20"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb37-21"><a href="#cb37-21"></a></span>
-<span id="cb37-22"><a href="#cb37-22"></a><span class="kw">def</span> extract_pmo_with_read_filter():</span>
-<span id="cb37-23"><a href="#cb37-23"></a>    args <span class="op">=</span> parse_args_extract_pmo_with_read_filter()</span>
-<span id="cb37-24"><a href="#cb37-24"></a></span>
-<span id="cb37-25"><a href="#cb37-25"></a>    <span class="co"># check files</span></span>
-<span id="cb37-26"><a href="#cb37-26"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
-<span id="cb37-27"><a href="#cb37-27"></a></span>
-<span id="cb37-28"><a href="#cb37-28"></a>    <span class="co"># read in pmo</span></span>
-<span id="cb37-29"><a href="#cb37-29"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
-<span id="cb37-30"><a href="#cb37-30"></a></span>
-<span id="cb37-31"><a href="#cb37-31"></a>    <span class="co"># extract</span></span>
-<span id="cb37-32"><a href="#cb37-32"></a>    pmo_out <span class="op">=</span> PMOExtractor.extract_from_pmo_with_read_filter(pmo, args.read_count_minimum)</span>
-<span id="cb37-33"><a href="#cb37-33"></a></span>
-<span id="cb37-34"><a href="#cb37-34"></a>    <span class="co"># write out the extracted</span></span>
-<span id="cb37-35"><a href="#cb37-35"></a>    args.output <span class="op">=</span> PMOWriter.add_pmo_extension_as_needed(args.output, args.<span class="bu">file</span>.endswith(<span class="st">'.gz'</span>) <span class="kw">or</span> args.output.endswith(<span class="st">".gz"</span>))</span>
-<span id="cb37-36"><a href="#cb37-36"></a>    PMOWriter.write_out_pmo(pmo_out, args.output, args.overwrite)</span>
-<span id="cb37-37"><a href="#cb37-37"></a></span>
-<span id="cb37-38"><a href="#cb37-38"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb37-39"><a href="#cb37-39"></a>    extract_pmo_with_read_filter()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="im">import</span> argparse</span>
+<span id="cb37-3"><a href="#cb37-3"></a></span>
+<span id="cb37-4"><a href="#cb37-4"></a></span>
+<span id="cb37-5"><a href="#cb37-5"></a><span class="im">from</span> pmotools.pmo_engine.pmo_processor <span class="im">import</span> PMOProcessor</span>
+<span id="cb37-6"><a href="#cb37-6"></a><span class="im">from</span> pmotools.pmo_engine.pmo_reader <span class="im">import</span> PMOReader</span>
+<span id="cb37-7"><a href="#cb37-7"></a><span class="im">from</span> pmotools.pmo_engine.pmo_writer <span class="im">import</span> PMOWriter</span>
+<span id="cb37-8"><a href="#cb37-8"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
+<span id="cb37-9"><a href="#cb37-9"></a></span>
+<span id="cb37-10"><a href="#cb37-10"></a></span>
+<span id="cb37-11"><a href="#cb37-11"></a><span class="kw">def</span> parse_args_extract_pmo_with_read_filter():</span>
+<span id="cb37-12"><a href="#cb37-12"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
+<span id="cb37-13"><a href="#cb37-13"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
+<span id="cb37-14"><a href="#cb37-14"></a>    parser.add_argument(</span>
+<span id="cb37-15"><a href="#cb37-15"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"Output json file path"</span></span>
+<span id="cb37-16"><a href="#cb37-16"></a>    )</span>
+<span id="cb37-17"><a href="#cb37-17"></a>    parser.add_argument(</span>
+<span id="cb37-18"><a href="#cb37-18"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb37-19"><a href="#cb37-19"></a>    )</span>
+<span id="cb37-20"><a href="#cb37-20"></a>    parser.add_argument(</span>
+<span id="cb37-21"><a href="#cb37-21"></a>        <span class="st">"--read_count_minimum"</span>,</span>
+<span id="cb37-22"><a href="#cb37-22"></a>        default<span class="op">=</span><span class="fl">0.0</span>,</span>
+<span id="cb37-23"><a href="#cb37-23"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">float</span>,</span>
+<span id="cb37-24"><a href="#cb37-24"></a>        required<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb37-25"><a href="#cb37-25"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the minimum read count (inclusive) for detected haplotypes to be kept"</span>,</span>
+<span id="cb37-26"><a href="#cb37-26"></a>    )</span>
+<span id="cb37-27"><a href="#cb37-27"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb37-28"><a href="#cb37-28"></a></span>
+<span id="cb37-29"><a href="#cb37-29"></a></span>
+<span id="cb37-30"><a href="#cb37-30"></a><span class="kw">def</span> extract_pmo_with_read_filter():</span>
+<span id="cb37-31"><a href="#cb37-31"></a>    args <span class="op">=</span> parse_args_extract_pmo_with_read_filter()</span>
+<span id="cb37-32"><a href="#cb37-32"></a></span>
+<span id="cb37-33"><a href="#cb37-33"></a>    <span class="co"># check files</span></span>
+<span id="cb37-34"><a href="#cb37-34"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb37-35"><a href="#cb37-35"></a></span>
+<span id="cb37-36"><a href="#cb37-36"></a>    <span class="co"># read in pmo</span></span>
+<span id="cb37-37"><a href="#cb37-37"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb37-38"><a href="#cb37-38"></a></span>
+<span id="cb37-39"><a href="#cb37-39"></a>    <span class="co"># extract</span></span>
+<span id="cb37-40"><a href="#cb37-40"></a>    pmo_out <span class="op">=</span> PMOProcessor.extract_from_pmo_with_read_filter(</span>
+<span id="cb37-41"><a href="#cb37-41"></a>        pmo, args.read_count_minimum</span>
+<span id="cb37-42"><a href="#cb37-42"></a>    )</span>
+<span id="cb37-43"><a href="#cb37-43"></a></span>
+<span id="cb37-44"><a href="#cb37-44"></a>    <span class="co"># write out the extracted</span></span>
+<span id="cb37-45"><a href="#cb37-45"></a>    args.output <span class="op">=</span> PMOWriter.add_pmo_extension_as_needed(</span>
+<span id="cb37-46"><a href="#cb37-46"></a>        args.output, args.<span class="bu">file</span>.endswith(<span class="st">".gz"</span>) <span class="kw">or</span> args.output.endswith(<span class="st">".gz"</span>)</span>
+<span id="cb37-47"><a href="#cb37-47"></a>    )</span>
+<span id="cb37-48"><a href="#cb37-48"></a>    PMOWriter.write_out_pmo(pmo_out, args.output, args.overwrite)</span>
+<span id="cb37-49"><a href="#cb37-49"></a></span>
+<span id="cb37-50"><a href="#cb37-50"></a></span>
+<span id="cb37-51"><a href="#cb37-51"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb37-52"><a href="#cb37-52"></a>    extract_pmo_with_read_filter()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_read_filter <span class="at">--read_count_minimum</span> 1000 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> moz2018_PMO_minReadCount1000.json.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_read_filter <span class="at">--read_count_minimum</span> 1000 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> moz2018_PMO_minReadCount1000.json.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section><section id="piping-together-extraction" class="level2"><h2 class="anchored" data-anchor-id="piping-together-extraction">Piping together extraction</h2>
@@ -841,47 +941,47 @@ options:
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_pmo_with_select_experiment_sample_ids <span class="at">--experiment_sample_ids</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_pmo_with_select_targets <span class="at">--file</span> STDIN <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> t1_t20_t31_8025875029_8034209834_8034209115_moz2018_PMO.json.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">--library_sample_names</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> STDIN <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> t1_t20_t31_8025875029_8034209834_8034209115_moz2018_PMO.json.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Can also pipe into other <code>pmotools-runner.py</code> functions like extracting allele tables</p>
+<p>Can also pipe into other <code>pmotools-python</code> functions like extracting allele tables</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_pmo_with_select_experiment_sample_ids <span class="at">--experiment_sample_ids</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_pmo_with_select_targets <span class="at">--file</span> STDIN <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_allele_table <span class="at">--file</span> STDIN <span class="at">--bioid</span> Mozambique2018-SeekDeep <span class="at">--output</span> alleles_data_t1_t20_t31_8025875029_8034209834_8034209115_moz2018_PMO.tsv.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">--library_sample_names</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> STDIN <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> STDIN <span class="at">--output</span> alleles_data_t1_t20_t31_8025875029_8034209834_8034209115_moz2018_PMO.tsv.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Can pipe final output to STDOUT as well for further processing</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_pmo_with_select_experiment_sample_ids <span class="at">--experiment_sample_ids</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_pmo_with_select_targets <span class="at">--file</span> STDIN <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_allele_table <span class="at">--file</span> STDIN <span class="at">--bioid</span> Mozambique2018-SeekDeep <span class="at">--output</span> STDOUT  <span class="at">--specimen_info_meta_fields</span> specimen_id,collection_country</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">--library_sample_names</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> STDIN <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> STDIN <span class="at">--output</span> STDOUT  <span class="at">--specimen_info_meta_fields</span> specimen_name,collection_country</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>sampleID    locus   allele  specimen_id collection_country
-8025875029  t1  t1.0    8025875029  Mozambique
-8025875029  t1  t1.1    8025875029  Mozambique
-8025875029  t20 t20.3   8025875029  Mozambique
-8025875029  t20 t20.5   8025875029  Mozambique
-8025875029  t20 t20.4   8025875029  Mozambique
-8025875029  t31 t31.1   8025875029  Mozambique
-8025875029  t31 t31.3   8025875029  Mozambique
-8034209115  t1  t1.2    8034209115  Mozambique
-8034209115  t20 t20.4   8034209115  Mozambique
-8034209115  t20 t20.1   8034209115  Mozambique
-8034209115  t31 t31.1   8034209115  Mozambique
-8034209115  t31 t31.3   8034209115  Mozambique
-8034209834  t1  t1.0    8034209834  Mozambique
-8034209834  t20 t20.1   8034209834  Mozambique
-8034209834  t20 t20.0   8034209834  Mozambique
-8034209834  t31 t31.2   8034209834  Mozambique
-8034209834  t31 t31.0   8034209834  Mozambique</code></pre>
+<pre><code>bioinformatics_run_name library_sample_name target_name mhap_id specimen_name   collection_country
+Mozambique2018-SeekDeep 8034209115  t31 1   8034209115  Mozambique
+Mozambique2018-SeekDeep 8034209115  t31 3   8034209115  Mozambique
+Mozambique2018-SeekDeep 8034209115  t20 4   8034209115  Mozambique
+Mozambique2018-SeekDeep 8034209115  t20 1   8034209115  Mozambique
+Mozambique2018-SeekDeep 8034209115  t1  2   8034209115  Mozambique
+Mozambique2018-SeekDeep 8025875029  t31 1   8025875029  Mozambique
+Mozambique2018-SeekDeep 8025875029  t31 3   8025875029  Mozambique
+Mozambique2018-SeekDeep 8025875029  t20 3   8025875029  Mozambique
+Mozambique2018-SeekDeep 8025875029  t20 5   8025875029  Mozambique
+Mozambique2018-SeekDeep 8025875029  t20 4   8025875029  Mozambique
+Mozambique2018-SeekDeep 8025875029  t1  0   8025875029  Mozambique
+Mozambique2018-SeekDeep 8025875029  t1  1   8025875029  Mozambique
+Mozambique2018-SeekDeep 8034209834  t31 2   8034209834  Mozambique
+Mozambique2018-SeekDeep 8034209834  t31 0   8034209834  Mozambique
+Mozambique2018-SeekDeep 8034209834  t20 1   8034209834  Mozambique
+Mozambique2018-SeekDeep 8034209834  t20 0   8034209834  Mozambique
+Mozambique2018-SeekDeep 8034209834  t1  0   8034209834  Mozambique</code></pre>
 </div>
 </div>
 <p>filter to a read amount and then write allele table</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_read_filter <span class="at">--read_count_minimum</span> 1000 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_allele_table <span class="at">--file</span> STDIN <span class="at">--bioid</span> Mozambique2018-SeekDeep <span class="at">--output</span> moz2018_PMO_minReadCount1000_allele_table.tsv.gz  <span class="at">--microhap_fields</span> read_count <span class="at">--representative_haps_fields</span> seq <span class="at">--default_base_col_names</span> specimen_id,target_id,allele <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_read_filter <span class="at">--read_count_minimum</span> 1000 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> STDIN <span class="at">--output</span> moz2018_PMO_minReadCount1000_allele_table.tsv.gz  <span class="at">--microhap_fields</span> reads <span class="at">--representative_haps_fields</span> seq <span class="at">--default_base_col_names</span> specimen_name,target_id,allele <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 
@@ -1353,10 +1453,10 @@ options:
 <span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## Subsetting by specific targets  </span></span>
 <span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>Can subset to only specific targets by using <span class="in">`pmotools-runner.py extract_pmo_with_select_targets`</span></span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>Can subset to only specific targets by using <span class="in">`pmotools-python extract_pmo_with_select_targets`</span></span>
 <span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_select_targets <span class="at">-h</span></span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">-h</span></span>
 <span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`extract_pmo_with_select_targets`</span> script is below</span>
@@ -1366,8 +1466,8 @@ options:
 <span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
 <span id="cb44-31"><a href="#cb44-31" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
 <span id="cb44-32"><a href="#cb44-32" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_targets.py</span></span>
-<span id="cb44-34"><a href="#cb44-34" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_targets.py</span></span>
+<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_pmo_with_select_targets.py</span></span>
+<span id="cb44-34"><a href="#cb44-34" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_pmo_with_select_targets.py</span></span>
 <span id="cb44-35"><a href="#cb44-35" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-36"><a href="#cb44-36" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-37"><a href="#cb44-37" aria-hidden="true" tabindex="-1"></a></span>
@@ -1376,7 +1476,7 @@ options:
 <span id="cb44-42"><a href="#cb44-42" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
 <span id="cb44-43"><a href="#cb44-43" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb44-44"><a href="#cb44-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-45"><a href="#cb44-45" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_select_targets <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> t1_t20_t31_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
+<span id="cb44-45"><a href="#cb44-45" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> t1_t20_t31_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
 <span id="cb44-46"><a href="#cb44-46" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-47"><a href="#cb44-47" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-48"><a href="#cb44-48" aria-hidden="true" tabindex="-1"></a>You can also provide a single column file where each line is a desired target </span>
@@ -1384,78 +1484,78 @@ options:
 <span id="cb44-52"><a href="#cb44-52" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb44-53"><a href="#cb44-53" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-54"><a href="#cb44-54" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"t1\nt20\nt31"</span> <span class="op">&gt;</span> select_targets.txt </span>
-<span id="cb44-55"><a href="#cb44-55" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_select_targets <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--targets</span> select_targets.txt  <span class="at">--output</span> t1_t20_t31_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
+<span id="cb44-55"><a href="#cb44-55" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--targets</span> select_targets.txt  <span class="at">--output</span> t1_t20_t31_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
 <span id="cb44-56"><a href="#cb44-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-57"><a href="#cb44-57" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"t1\nt20\nt31"</span> <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_pmo_with_select_targets <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--targets</span> STDIN <span class="at">--output</span> t1_t20_t31_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
+<span id="cb44-57"><a href="#cb44-57" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"t1\nt20\nt31"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--targets</span> STDIN <span class="at">--output</span> t1_t20_t31_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
 <span id="cb44-58"><a href="#cb44-58" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-59"><a href="#cb44-59" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-60"><a href="#cb44-60" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-61"><a href="#cb44-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-62"><a href="#cb44-62" aria-hidden="true" tabindex="-1"></a><span class="fu">## Subsetting by specific specimen_ids </span></span>
+<span id="cb44-62"><a href="#cb44-62" aria-hidden="true" tabindex="-1"></a><span class="fu">## Subsetting by specific specimen_names </span></span>
 <span id="cb44-63"><a href="#cb44-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-64"><a href="#cb44-64" aria-hidden="true" tabindex="-1"></a>You can subset to just to just select specimen_id, each specimen can have several experiments associated with it, by supplying the specimen_id all associated experiments will also be pulled </span>
+<span id="cb44-64"><a href="#cb44-64" aria-hidden="true" tabindex="-1"></a>You can subset to just to just select specimen_name, each specimen can have several experiments associated with it, by supplying the specimen_name all associated experiments will also be pulled </span>
 <span id="cb44-65"><a href="#cb44-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-66"><a href="#cb44-66" aria-hidden="true" tabindex="-1"></a>Similar to above you can supply the specimen_ids either as comma separated values or in a plain text file where each line is a specimen_id</span>
+<span id="cb44-66"><a href="#cb44-66" aria-hidden="true" tabindex="-1"></a>Similar to above you can supply the specimen_names either as comma separated values or in a plain text file where each line is a specimen_name</span>
 <span id="cb44-67"><a href="#cb44-67" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-70"><a href="#cb44-70" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb44-71"><a href="#cb44-71" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_select_specimen_ids <span class="at">-h</span></span>
+<span id="cb44-71"><a href="#cb44-71" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_specimen_names <span class="at">-h</span></span>
 <span id="cb44-72"><a href="#cb44-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-73"><a href="#cb44-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-74"><a href="#cb44-74" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`extract_pmo_with_select_specimen_ids`</span> script is below</span>
+<span id="cb44-74"><a href="#cb44-74" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`extract_pmo_with_select_specimen_names`</span> script is below</span>
 <span id="cb44-75"><a href="#cb44-75" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-78"><a href="#cb44-78" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
 <span id="cb44-79"><a href="#cb44-79" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
 <span id="cb44-80"><a href="#cb44-80" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
 <span id="cb44-81"><a href="#cb44-81" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
 <span id="cb44-82"><a href="#cb44-82" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb44-83"><a href="#cb44-83" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_specimen_ids.py</span></span>
-<span id="cb44-84"><a href="#cb44-84" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_specimen_ids.py</span></span>
+<span id="cb44-83"><a href="#cb44-83" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_pmo_with_select_specimen_names.py</span></span>
+<span id="cb44-84"><a href="#cb44-84" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_pmo_with_select_specimen_names.py</span></span>
 <span id="cb44-85"><a href="#cb44-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-86"><a href="#cb44-86" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-89"><a href="#cb44-89" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
 <span id="cb44-90"><a href="#cb44-90" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb44-91"><a href="#cb44-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-92"><a href="#cb44-92" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_select_specimen_ids <span class="at">--specimen_ids</span> 8025874217,8025875146,8034209589 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025874217_8025875146_8034209589_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
+<span id="cb44-92"><a href="#cb44-92" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_specimen_names <span class="at">--specimen_names</span> 8025874217,8025875146,8034209589 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025874217_8025875146_8034209589_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
 <span id="cb44-93"><a href="#cb44-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-94"><a href="#cb44-94" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025874217\n8025875146\n8034209589"</span> <span class="op">&gt;</span> select_specimen_ids.txt </span>
+<span id="cb44-94"><a href="#cb44-94" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025874217\n8025875146\n8034209589"</span> <span class="op">&gt;</span> select_specimen_names.txt </span>
 <span id="cb44-95"><a href="#cb44-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-96"><a href="#cb44-96" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_select_specimen_ids <span class="at">--specimen_ids</span> select_specimen_ids.txt <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025874217_8025875146_8034209589_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
+<span id="cb44-96"><a href="#cb44-96" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_specimen_names <span class="at">--specimen_names</span> select_specimen_names.txt <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025874217_8025875146_8034209589_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
 <span id="cb44-97"><a href="#cb44-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-98"><a href="#cb44-98" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025874217\n8025875146\n8034209589"</span> <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_pmo_with_select_specimen_ids <span class="at">--specimen_ids</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025874217_8025875146_8034209589_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
+<span id="cb44-98"><a href="#cb44-98" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025874217\n8025875146\n8034209589"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_specimen_names <span class="at">--specimen_names</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025874217_8025875146_8034209589_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
 <span id="cb44-99"><a href="#cb44-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-100"><a href="#cb44-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-101"><a href="#cb44-101" aria-hidden="true" tabindex="-1"></a><span class="fu">## Subsetting by specific experiment_sample_ids </span></span>
+<span id="cb44-101"><a href="#cb44-101" aria-hidden="true" tabindex="-1"></a><span class="fu">## Subsetting by specific library_sample_names </span></span>
 <span id="cb44-102"><a href="#cb44-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-103"><a href="#cb44-103" aria-hidden="true" tabindex="-1"></a>If you want just specific experiment_sample_id you can supply those instead too  </span>
+<span id="cb44-103"><a href="#cb44-103" aria-hidden="true" tabindex="-1"></a>If you want just specific library_sample_name you can supply those instead too  </span>
 <span id="cb44-104"><a href="#cb44-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-105"><a href="#cb44-105" aria-hidden="true" tabindex="-1"></a>Similar to above you can supply the experiment_sample_ids either as comma separated values or in a plain text file where each line is a experiment_sample_id or from standard in (STDIN)</span>
+<span id="cb44-105"><a href="#cb44-105" aria-hidden="true" tabindex="-1"></a>Similar to above you can supply the library_sample_names either as comma separated values or in a plain text file where each line is a library_sample_name or from standard in (STDIN)</span>
 <span id="cb44-106"><a href="#cb44-106" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-109"><a href="#cb44-109" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb44-110"><a href="#cb44-110" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_select_experiment_sample_ids <span class="at">-h</span></span>
+<span id="cb44-110"><a href="#cb44-110" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">-h</span></span>
 <span id="cb44-111"><a href="#cb44-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-112"><a href="#cb44-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-113"><a href="#cb44-113" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`extract_pmo_with_select_experiment_sample_ids`</span> script is below</span>
+<span id="cb44-113"><a href="#cb44-113" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`extract_pmo_with_select_library_sample_names`</span> script is below</span>
 <span id="cb44-114"><a href="#cb44-114" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-117"><a href="#cb44-117" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
 <span id="cb44-118"><a href="#cb44-118" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
 <span id="cb44-119"><a href="#cb44-119" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
 <span id="cb44-120"><a href="#cb44-120" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
 <span id="cb44-121"><a href="#cb44-121" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb44-122"><a href="#cb44-122" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_experiment_sample_ids.py</span></span>
-<span id="cb44-123"><a href="#cb44-123" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_select_experiment_sample_ids.py</span></span>
+<span id="cb44-122"><a href="#cb44-122" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_pmo_with_select_library_sample_names.py</span></span>
+<span id="cb44-123"><a href="#cb44-123" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_pmo_with_select_library_sample_names.py</span></span>
 <span id="cb44-124"><a href="#cb44-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-125"><a href="#cb44-125" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-128"><a href="#cb44-128" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
 <span id="cb44-129"><a href="#cb44-129" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb44-130"><a href="#cb44-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-131"><a href="#cb44-131" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_select_experiment_sample_ids <span class="at">--experiment_sample_ids</span> 8025875029,8034209834,8034209115 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025875029_8034209834_8034209115_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
+<span id="cb44-131"><a href="#cb44-131" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">--library_sample_names</span> 8025875029,8034209834,8034209115 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025875029_8034209834_8034209115_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
 <span id="cb44-132"><a href="#cb44-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-133"><a href="#cb44-133" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="op">&gt;</span> select_experiment_sample_ids.txt </span>
+<span id="cb44-133"><a href="#cb44-133" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="op">&gt;</span> select_library_sample_names.txt </span>
 <span id="cb44-134"><a href="#cb44-134" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb44-135"><a href="#cb44-135" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_select_experiment_sample_ids <span class="at">--experiment_sample_ids</span> select_experiment_sample_ids.txt <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025875029_8034209834_8034209115_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
+<span id="cb44-135"><a href="#cb44-135" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">--library_sample_names</span> select_library_sample_names.txt <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025875029_8034209834_8034209115_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
 <span id="cb44-136"><a href="#cb44-136" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-137"><a href="#cb44-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-138"><a href="#cb44-138" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_pmo_with_select_experiment_sample_ids <span class="at">--experiment_sample_ids</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025875029_8034209834_8034209115_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
+<span id="cb44-138"><a href="#cb44-138" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">--library_sample_names</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025875029_8034209834_8034209115_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
 <span id="cb44-139"><a href="#cb44-139" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-140"><a href="#cb44-140" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-141"><a href="#cb44-141" aria-hidden="true" tabindex="-1"></a></span>
@@ -1464,7 +1564,7 @@ options:
 <span id="cb44-144"><a href="#cb44-144" aria-hidden="true" tabindex="-1"></a>If you want to get specific samples that match certain meta fields like specific collection_country or collection_date you can use ``</span>
 <span id="cb44-145"><a href="#cb44-145" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-148"><a href="#cb44-148" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb44-149"><a href="#cb44-149" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_selected_meta <span class="at">-h</span> </span>
+<span id="cb44-149"><a href="#cb44-149" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta <span class="at">-h</span> </span>
 <span id="cb44-150"><a href="#cb44-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-151"><a href="#cb44-151" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-152"><a href="#cb44-152" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`extract_pmo_with_selected_meta`</span> script is below</span>
@@ -1474,13 +1574,13 @@ options:
 <span id="cb44-158"><a href="#cb44-158" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
 <span id="cb44-159"><a href="#cb44-159" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
 <span id="cb44-160"><a href="#cb44-160" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb44-161"><a href="#cb44-161" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_selected_meta.py</span></span>
-<span id="cb44-162"><a href="#cb44-162" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_selected_meta.py</span></span>
+<span id="cb44-161"><a href="#cb44-161" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_pmo_with_selected_meta.py</span></span>
+<span id="cb44-162"><a href="#cb44-162" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_pmo_with_selected_meta.py</span></span>
 <span id="cb44-163"><a href="#cb44-163" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-164"><a href="#cb44-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-165"><a href="#cb44-165" aria-hidden="true" tabindex="-1"></a><span class="in">`pmotools-runner.py extract_pmo_with_selected_meta`</span> is written to allow the extraction on multiple intersecting meta field requirments that can be either supplied in a file or with delimited on the command line </span>
+<span id="cb44-165"><a href="#cb44-165" aria-hidden="true" tabindex="-1"></a><span class="in">`pmotools-python extract_pmo_with_selected_meta`</span> is written to allow the extraction on multiple intersecting meta field requirments that can be either supplied in a file or with delimited on the command line </span>
 <span id="cb44-166"><a href="#cb44-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-167"><a href="#cb44-167" aria-hidden="true" tabindex="-1"></a>You may also want to know what current meta fields are present and how many samples in each. This can be done with <span class="co">[</span><span class="ot">`pmotools-runner.py list_specimen_meta_fields`</span><span class="co">](getting_basic_info_from_pmo.qmd#list_specimen_meta_fields)</span> and <span class="in">`pmotools-runner.py count_specimen_meta`</span></span>
+<span id="cb44-167"><a href="#cb44-167" aria-hidden="true" tabindex="-1"></a>You may also want to know what current meta fields are present and how many samples in each. This can be done with <span class="co">[</span><span class="ot">`pmotools-python list_specimen_meta_fields`</span><span class="co">](getting_basic_info_from_pmo.qmd#list_specimen_meta_fields)</span> and <span class="in">`pmotools-python count_specimen_meta`</span></span>
 <span id="cb44-168"><a href="#cb44-168" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-169"><a href="#cb44-169" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
 <span id="cb44-170"><a href="#cb44-170" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
@@ -1490,13 +1590,13 @@ options:
 <span id="cb44-174"><a href="#cb44-174" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-177"><a href="#cb44-177" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
 <span id="cb44-178"><a href="#cb44-178" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb44-179"><a href="#cb44-179" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> list_specimen_meta_fields <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz</span>
+<span id="cb44-179"><a href="#cb44-179" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_specimen_meta_fields <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz</span>
 <span id="cb44-180"><a href="#cb44-180" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-181"><a href="#cb44-181" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-182"><a href="#cb44-182" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-185"><a href="#cb44-185" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
 <span id="cb44-186"><a href="#cb44-186" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb44-187"><a href="#cb44-187" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_specimen_meta <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz  <span class="at">--meta_fields</span> collection_country,collection_date <span class="kw">|</span> <span class="fu">head</span> <span class="at">-20</span></span>
+<span id="cb44-187"><a href="#cb44-187" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_specimen_meta <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz  <span class="at">--meta_fields</span> collection_country,collection_date <span class="kw">|</span> <span class="fu">head</span> <span class="at">-20</span></span>
 <span id="cb44-188"><a href="#cb44-188" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-189"><a href="#cb44-189" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-190"><a href="#cb44-190" aria-hidden="true" tabindex="-1"></a></span>
@@ -1505,7 +1605,7 @@ options:
 <span id="cb44-193"><a href="#cb44-193" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-194"><a href="#cb44-194" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
 <span id="cb44-195"><a href="#cb44-195" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb44-196"><a href="#cb44-196" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh"</span> <span class="at">--output</span> Bangladesh_moz2018_PMO.json.gz   <span class="at">--overwrite</span></span>
+<span id="cb44-196"><a href="#cb44-196" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh"</span> <span class="at">--output</span> Bangladesh_moz2018_PMO.json.gz   <span class="at">--overwrite</span></span>
 <span id="cb44-197"><a href="#cb44-197" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-198"><a href="#cb44-198" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-199"><a href="#cb44-199" aria-hidden="true" tabindex="-1"></a></span>
@@ -1513,7 +1613,7 @@ options:
 <span id="cb44-201"><a href="#cb44-201" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-204"><a href="#cb44-204" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
 <span id="cb44-205"><a href="#cb44-205" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb44-206"><a href="#cb44-206" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh"</span> <span class="at">--output</span> Bangladesh_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span></span>
+<span id="cb44-206"><a href="#cb44-206" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh"</span> <span class="at">--output</span> Bangladesh_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span></span>
 <span id="cb44-207"><a href="#cb44-207" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-208"><a href="#cb44-208" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-209"><a href="#cb44-209" aria-hidden="true" tabindex="-1"></a></span>
@@ -1522,7 +1622,7 @@ options:
 <span id="cb44-214"><a href="#cb44-214" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
 <span id="cb44-215"><a href="#cb44-215" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb44-216"><a href="#cb44-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-217"><a href="#cb44-217" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh,Benin"</span> <span class="at">--output</span> Bangladesh_Benin_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span>
+<span id="cb44-217"><a href="#cb44-217" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh,Benin"</span> <span class="at">--output</span> Bangladesh_Benin_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span>
 <span id="cb44-218"><a href="#cb44-218" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-219"><a href="#cb44-219" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-220"><a href="#cb44-220" aria-hidden="true" tabindex="-1"></a></span>
@@ -1531,7 +1631,7 @@ options:
 <span id="cb44-225"><a href="#cb44-225" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
 <span id="cb44-226"><a href="#cb44-226" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb44-227"><a href="#cb44-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-228"><a href="#cb44-228" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh,Benin:collection_date=2016"</span> <span class="at">--output</span> Bangladesh_Benin_2016_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span>
+<span id="cb44-228"><a href="#cb44-228" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh,Benin:collection_date=2016"</span> <span class="at">--output</span> Bangladesh_Benin_2016_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span>
 <span id="cb44-229"><a href="#cb44-229" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-230"><a href="#cb44-230" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-231"><a href="#cb44-231" aria-hidden="true" tabindex="-1"></a></span>
@@ -1540,7 +1640,7 @@ options:
 <span id="cb44-236"><a href="#cb44-236" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
 <span id="cb44-237"><a href="#cb44-237" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb44-238"><a href="#cb44-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-239"><a href="#cb44-239" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh:collection_date=2015;collection_country=Benin:collection_date=2016"</span> <span class="at">--output</span> Bangladesh2015_Benin2016_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span>
+<span id="cb44-239"><a href="#cb44-239" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh:collection_date=2015;collection_country=Benin:collection_date=2016"</span> <span class="at">--output</span> Bangladesh2015_Benin2016_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span>
 <span id="cb44-240"><a href="#cb44-240" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-241"><a href="#cb44-241" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-242"><a href="#cb44-242" aria-hidden="true" tabindex="-1"></a></span>
@@ -1557,7 +1657,7 @@ options:
 <span id="cb44-255"><a href="#cb44-255" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"Benin2016\tcollection_date\t2016"</span> <span class="op">&gt;&gt;</span> Bangladesh2015_Benin2016_extractionCriteria.tsv </span>
 <span id="cb44-256"><a href="#cb44-256" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-257"><a href="#cb44-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-258"><a href="#cb44-258" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> Bangladesh2015_Benin2016_extractionCriteria.tsv <span class="at">--output</span> Bangladesh2015_Benin2016_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span>
+<span id="cb44-258"><a href="#cb44-258" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> Bangladesh2015_Benin2016_extractionCriteria.tsv <span class="at">--output</span> Bangladesh2015_Benin2016_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span>
 <span id="cb44-259"><a href="#cb44-259" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-260"><a href="#cb44-260" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-261"><a href="#cb44-261" aria-hidden="true" tabindex="-1"></a></span>
@@ -1565,7 +1665,7 @@ options:
 <span id="cb44-263"><a href="#cb44-263" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-266"><a href="#cb44-266" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
 <span id="cb44-267"><a href="#cb44-267" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb44-268"><a href="#cb44-268" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Mozambique:geo_admin3=Inhassoro;collection_country=Mozambique:geo_admin3=Mandlakazi,Namaacha"</span> <span class="at">--output</span> Mozambique_moz2018_PMO.json.gz  <span class="at">--verbose</span>  <span class="at">--overwrite</span></span>
+<span id="cb44-268"><a href="#cb44-268" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Mozambique:geo_admin3=Inhassoro;collection_country=Mozambique:geo_admin3=Mandlakazi,Namaacha"</span> <span class="at">--output</span> Mozambique_moz2018_PMO.json.gz  <span class="at">--verbose</span>  <span class="at">--overwrite</span></span>
 <span id="cb44-269"><a href="#cb44-269" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-270"><a href="#cb44-270" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-271"><a href="#cb44-271" aria-hidden="true" tabindex="-1"></a></span>
@@ -1575,7 +1675,7 @@ options:
 <span id="cb44-275"><a href="#cb44-275" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-276"><a href="#cb44-276" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-279"><a href="#cb44-279" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb44-280"><a href="#cb44-280" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_read_filter <span class="at">-h</span></span>
+<span id="cb44-280"><a href="#cb44-280" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_read_filter <span class="at">-h</span></span>
 <span id="cb44-281"><a href="#cb44-281" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-282"><a href="#cb44-282" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-283"><a href="#cb44-283" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`extract_pmo_with_read_filter`</span> script is below</span>
@@ -1585,14 +1685,14 @@ options:
 <span id="cb44-289"><a href="#cb44-289" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
 <span id="cb44-290"><a href="#cb44-290" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
 <span id="cb44-291"><a href="#cb44-291" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb44-292"><a href="#cb44-292" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_read_filter.py</span></span>
-<span id="cb44-293"><a href="#cb44-293" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/scripts/extractors_from_pmo/extract_pmo_with_read_filter.py</span></span>
+<span id="cb44-292"><a href="#cb44-292" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_pmo_with_read_filter.py</span></span>
+<span id="cb44-293"><a href="#cb44-293" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_pmo_with_read_filter.py</span></span>
 <span id="cb44-294"><a href="#cb44-294" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-295"><a href="#cb44-295" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-298"><a href="#cb44-298" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
 <span id="cb44-299"><a href="#cb44-299" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb44-300"><a href="#cb44-300" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-301"><a href="#cb44-301" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_read_filter <span class="at">--read_count_minimum</span> 1000 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> moz2018_PMO_minReadCount1000.json.gz <span class="at">--overwrite</span></span>
+<span id="cb44-301"><a href="#cb44-301" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_read_filter <span class="at">--read_count_minimum</span> 1000 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> moz2018_PMO_minReadCount1000.json.gz <span class="at">--overwrite</span></span>
 <span id="cb44-302"><a href="#cb44-302" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-303"><a href="#cb44-303" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-304"><a href="#cb44-304" aria-hidden="true" tabindex="-1"></a></span>
@@ -1602,16 +1702,16 @@ options:
 <span id="cb44-310"><a href="#cb44-310" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
 <span id="cb44-311"><a href="#cb44-311" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb44-312"><a href="#cb44-312" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-313"><a href="#cb44-313" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_pmo_with_select_experiment_sample_ids <span class="at">--experiment_sample_ids</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_pmo_with_select_targets <span class="at">--file</span> STDIN <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> t1_t20_t31_8025875029_8034209834_8034209115_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
+<span id="cb44-313"><a href="#cb44-313" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">--library_sample_names</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> STDIN <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> t1_t20_t31_8025875029_8034209834_8034209115_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
 <span id="cb44-314"><a href="#cb44-314" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-315"><a href="#cb44-315" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-316"><a href="#cb44-316" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-317"><a href="#cb44-317" aria-hidden="true" tabindex="-1"></a>Can also pipe into other <span class="in">`pmotools-runner.py`</span> functions like extracting allele tables </span>
+<span id="cb44-317"><a href="#cb44-317" aria-hidden="true" tabindex="-1"></a>Can also pipe into other <span class="in">`pmotools-python`</span> functions like extracting allele tables </span>
 <span id="cb44-318"><a href="#cb44-318" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-321"><a href="#cb44-321" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
 <span id="cb44-322"><a href="#cb44-322" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb44-323"><a href="#cb44-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-324"><a href="#cb44-324" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_pmo_with_select_experiment_sample_ids <span class="at">--experiment_sample_ids</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_pmo_with_select_targets <span class="at">--file</span> STDIN <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_allele_table <span class="at">--file</span> STDIN <span class="at">--bioid</span> Mozambique2018-SeekDeep <span class="at">--output</span> alleles_data_t1_t20_t31_8025875029_8034209834_8034209115_moz2018_PMO.tsv.gz <span class="at">--overwrite</span></span>
+<span id="cb44-324"><a href="#cb44-324" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">--library_sample_names</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> STDIN <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> STDIN <span class="at">--output</span> alleles_data_t1_t20_t31_8025875029_8034209834_8034209115_moz2018_PMO.tsv.gz <span class="at">--overwrite</span></span>
 <span id="cb44-325"><a href="#cb44-325" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-326"><a href="#cb44-326" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-327"><a href="#cb44-327" aria-hidden="true" tabindex="-1"></a></span>
@@ -1621,7 +1721,7 @@ options:
 <span id="cb44-333"><a href="#cb44-333" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
 <span id="cb44-334"><a href="#cb44-334" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb44-335"><a href="#cb44-335" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-336"><a href="#cb44-336" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_pmo_with_select_experiment_sample_ids <span class="at">--experiment_sample_ids</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_pmo_with_select_targets <span class="at">--file</span> STDIN <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_allele_table <span class="at">--file</span> STDIN <span class="at">--bioid</span> Mozambique2018-SeekDeep <span class="at">--output</span> STDOUT  <span class="at">--specimen_info_meta_fields</span> specimen_id,collection_country</span>
+<span id="cb44-336"><a href="#cb44-336" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">--library_sample_names</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> STDIN <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> STDIN <span class="at">--output</span> STDOUT  <span class="at">--specimen_info_meta_fields</span> specimen_name,collection_country</span>
 <span id="cb44-337"><a href="#cb44-337" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-338"><a href="#cb44-338" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-339"><a href="#cb44-339" aria-hidden="true" tabindex="-1"></a></span>
@@ -1630,7 +1730,7 @@ options:
 <span id="cb44-344"><a href="#cb44-344" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
 <span id="cb44-345"><a href="#cb44-345" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb44-346"><a href="#cb44-346" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-347"><a href="#cb44-347" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_pmo_with_read_filter <span class="at">--read_count_minimum</span> 1000 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-runner.py</span> extract_allele_table <span class="at">--file</span> STDIN <span class="at">--bioid</span> Mozambique2018-SeekDeep <span class="at">--output</span> moz2018_PMO_minReadCount1000_allele_table.tsv.gz  <span class="at">--microhap_fields</span> read_count <span class="at">--representative_haps_fields</span> seq <span class="at">--default_base_col_names</span> specimen_id,target_id,allele <span class="at">--overwrite</span></span>
+<span id="cb44-347"><a href="#cb44-347" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_read_filter <span class="at">--read_count_minimum</span> 1000 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> STDIN <span class="at">--output</span> moz2018_PMO_minReadCount1000_allele_table.tsv.gz  <span class="at">--microhap_fields</span> reads <span class="at">--representative_haps_fields</span> seq <span class="at">--default_base_col_names</span> specimen_name,target_id,allele <span class="at">--overwrite</span></span>
 <span id="cb44-348"><a href="#cb44-348" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-349"><a href="#cb44-349" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>

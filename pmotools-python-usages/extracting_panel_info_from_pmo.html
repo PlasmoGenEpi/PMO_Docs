@@ -159,10 +159,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python-usages">
 <li class="dropdown-header"><span class="menuTitle">Command line interface</span></li>
         <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header"><span class="menuTitle">pmotools-runner.py</span></li>
+        <li class="dropdown-header"><span class="menuTitle">pmotools-python</span></li>
         <li>
-    <a class="dropdown-item" href="../pmotools-python-usages/pmotools-runner.html">
- <span class="dropdown-text">Command line interface to pmotools-python with pmotools-runner.py</span></a>
+    <a class="dropdown-item" href="../pmotools-python-usages/pmotools-python.html">
+ <span class="dropdown-text">Command line interface to pmotools-python with pmotools-python</span></a>
   </li>  
         <li class="dropdown-header"><span class="menuTitle">Extracting out of PMO</span></li>
         <li>
@@ -187,6 +187,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/handling_multiple_pmos.html">
  <span class="dropdown-text">Handling multiple PMOs pmotools-python</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Validating PMO files</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages/validating_pmos.html">
+ <span class="dropdown-text">Validating PMOs pmotools-python</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header"><span class="menuTitle">Python interface</span></li>
@@ -275,42 +280,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header><p>Most of these basic panel info can be found underneath <code>extract_panel_info_from_pmo</code></p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
-<pre><code>pmotools v1.0.0 - A suite of tools for interacting with Portable Microhaplotype Object (pmo) file format
+<pre><code>pmotools-python v0.1.0 - A suite of tools for interacting with Portable Microhaplotype Object (PMO) file format
 
 Available functions organized by groups are
 convertors_to_json
     text_meta_to_json_meta - Convert text file meta to JSON Meta
-    excel_meta_to_json_meta - Convert excel file meta to JSON Meta
-    microhaplotype_table_to_json_file - Convert microhaplotype table to JSON Meta
-    terra_amp_output_to_json - Convert terra output table to JSON seq table
+    excel_meta_to_json_meta - Convert Excel file meta to JSON Meta
+    microhaplotype_table_to_json_file - Convert microhaplotype table to a JSON file
+    terra_amp_output_to_json - Convert Terra output to JSON sequence table
 
 extractors_from_pmo
-    extract_pmo_with_selected_meta - Extract from PMO samples and associated haplotypes with selected meta
-    extract_pmo_with_select_specimen_ids - Extract from PMO specific samples from the specimens table
-    extract_pmo_with_select_experiment_sample_ids - Extract from PMO specific experiment sample ids from the experiment_info table
-    extract_pmo_with_select_targets - Extract from PMO specific targets
-    extract_pmo_with_read_filter - Extract from PMO with a read filter
-    extract_allele_table - Extract allele tables which can be as used as input to such tools as dcifer or moire
+    extract_pmo_with_selected_meta - Extract samples + haplotypes using selected meta
+    extract_pmo_with_select_specimen_names - Extract specific samples from the specimens table
+    extract_pmo_with_select_library_sample_names - Extract experiment sample names from experiment_info table
+    extract_pmo_with_select_targets - Extract specific targets
+    extract_pmo_with_read_filter - Extract with a read filter
+    extract_allele_table - Extract allele tables for tools like dcifer or moire
+    extract_insert_of_panels - Extract inserts of panels from a PMO
+    extract_refseq_of_inserts_of_panels - Extract ref_seq of panel inserts from a PMO
 
 working_with_multiple_pmos
-    combine_pmos - Combine multiple pmos of the same panel into a single pmo
+    combine_pmos - Combine multiple PMOs of the same panel
 
 extract_basic_info_from_pmo
-    list_experiment_sample_ids_per_specimen_id - Each specimen_id can have multiple experiment_sample_ids, list out all in a PMO
-    list_specimen_meta_fields - List out the specimen meta fields in the specimen_info section
-    list_tar_amp_bioinformatics_info_ids - List out all the tar_amp_bioinformatics_info_ids in a PMO file
-    count_specimen_meta - Count the values of specific specimen meta fields in the specimen_info section
-    count_targets_per_sample - Count the number of targets per sample
-    count_samples_per_target - Count the number of samples per target
+    list_library_sample_names_per_specimen_name - List experiment_sample_ids per specimen_id
+    list_specimen_meta_fields - List specimen meta fields in the specimen_info section
+    list_bioinformatics_run_names - List all tar_amp_bioinformatics_info_ids in a PMO
+    count_specimen_meta - Count values of selected specimen meta fields
+    count_targets_per_library_sample - Count number of targets per sample
+    count_library_samples_per_target - Count number of samples per target
 
-extract_panel_info_from_pmo
-    extract_insert_of_panels - Extract the insert of panels from a PMO
-    extract_refseq_of_inserts_of_panels - Extract the ref_seq of panels from a PMO</code></pre>
+validation
+    validate_pmo - Validate a PMO file against a JSON Schema</code></pre>
 </div>
 </div>
 <p>Getting files for examples</p>
@@ -324,12 +330,11 @@ extract_panel_info_from_pmo
 <section id="extract-insert-locations-of-panels-from-pmo" class="level1"><h1>Extract insert locations of panels from PMO</h1>
 <p>This will extract the insert location of targets of the panel infos out of a PMO and write it out as a bed file</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_insert_of_panels <span class="at">-h</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_insert_of_panels <span class="at">-h</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>usage: pmotools-runner.py extract_insert_of_panels [-h] --file FILE
-                                                   [--output OUTPUT]
-                                                   [--overwrite]
-                                                   [--add_ref_seqs]
+<pre><code>usage: pmotools-python extract_insert_of_panels [-h] --file FILE
+                                                [--output OUTPUT]
+                                                [--overwrite] [--add_ref_seqs]
 
 options:
   -h, --help       show this help message and exit
@@ -343,179 +348,215 @@ options:
 <div class="cell" data-layout-align="center">
 <div class="code-with-filename">
 <details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
-<pre><strong>pmotools-python/scripts/extract_info_from_pmo/extract_insert_of_panels.py</strong></pre>
+<pre><strong>pmotools-python/src/pmotools/scripts/extract_info_from_pmo/extract_insert_of_panels.py</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">#!/usr/bin/env python3</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="im">import</span> os, argparse, json</span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="im">import</span> sys</span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
-<span id="cb6-5"><a href="#cb6-5"></a></span>
-<span id="cb6-6"><a href="#cb6-6"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb6-7"><a href="#cb6-7"></a></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="im">from</span> pmotools.pmo_utils.PMOExtractor <span class="im">import</span> PMOExtractor</span>
-<span id="cb6-9"><a href="#cb6-9"></a><span class="im">from</span> pmotools.pmo_utils.PMOReader <span class="im">import</span> PMOReader</span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
-<span id="cb6-11"><a href="#cb6-11"></a></span>
-<span id="cb6-12"><a href="#cb6-12"></a></span>
-<span id="cb6-13"><a href="#cb6-13"></a><span class="kw">def</span> parse_args_extract_insert_of_panels():</span>
-<span id="cb6-14"><a href="#cb6-14"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb6-15"><a href="#cb6-15"></a>    parser.add_argument(<span class="st">'--file'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'PMO file'</span>)</span>
-<span id="cb6-16"><a href="#cb6-16"></a>    parser.add_argument(<span class="st">'--output'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'output file'</span>)</span>
-<span id="cb6-17"><a href="#cb6-17"></a>    parser.add_argument(<span class="st">'--overwrite'</span>, action <span class="op">=</span> <span class="st">'store_true'</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'If output file exists, overwrite it'</span>)</span>
-<span id="cb6-18"><a href="#cb6-18"></a>    parser.add_argument(<span class="st">'--add_ref_seqs'</span>, action <span class="op">=</span> <span class="st">'store_true'</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'add ref seqs to the output as ref_seq'</span>)</span>
-<span id="cb6-19"><a href="#cb6-19"></a></span>
-<span id="cb6-20"><a href="#cb6-20"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb6-21"><a href="#cb6-21"></a></span>
-<span id="cb6-22"><a href="#cb6-22"></a><span class="kw">def</span> extract_insert_of_panels():</span>
-<span id="cb6-23"><a href="#cb6-23"></a>    args <span class="op">=</span> parse_args_extract_insert_of_panels()</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="im">import</span> argparse</span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="im">from</span> pmotools.pmo_engine.pmo_processor <span class="im">import</span> PMOProcessor</span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="im">from</span> pmotools.pmo_engine.pmo_reader <span class="im">import</span> PMOReader</span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
+<span id="cb6-8"><a href="#cb6-8"></a></span>
+<span id="cb6-9"><a href="#cb6-9"></a></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="kw">def</span> parse_args_extract_insert_of_panels():</span>
+<span id="cb6-11"><a href="#cb6-11"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
+<span id="cb6-12"><a href="#cb6-12"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13"></a>    parser.add_argument(</span>
+<span id="cb6-14"><a href="#cb6-14"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a>    )</span>
+<span id="cb6-16"><a href="#cb6-16"></a>    parser.add_argument(</span>
+<span id="cb6-17"><a href="#cb6-17"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb6-18"><a href="#cb6-18"></a>    )</span>
+<span id="cb6-19"><a href="#cb6-19"></a>    parser.add_argument(</span>
+<span id="cb6-20"><a href="#cb6-20"></a>        <span class="st">"--add_ref_seqs"</span>,</span>
+<span id="cb6-21"><a href="#cb6-21"></a>        action<span class="op">=</span><span class="st">"store_true"</span>,</span>
+<span id="cb6-22"><a href="#cb6-22"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"add ref seqs to the output as ref_seq"</span>,</span>
+<span id="cb6-23"><a href="#cb6-23"></a>    )</span>
 <span id="cb6-24"><a href="#cb6-24"></a></span>
-<span id="cb6-25"><a href="#cb6-25"></a>    <span class="co"># check files</span></span>
-<span id="cb6-26"><a href="#cb6-26"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb6-25"><a href="#cb6-25"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb6-26"><a href="#cb6-26"></a></span>
 <span id="cb6-27"><a href="#cb6-27"></a></span>
-<span id="cb6-28"><a href="#cb6-28"></a>    <span class="co"># read in PMO</span></span>
-<span id="cb6-29"><a href="#cb6-29"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb6-28"><a href="#cb6-28"></a><span class="kw">def</span> extract_insert_of_panels():</span>
+<span id="cb6-29"><a href="#cb6-29"></a>    args <span class="op">=</span> parse_args_extract_insert_of_panels()</span>
 <span id="cb6-30"><a href="#cb6-30"></a></span>
-<span id="cb6-31"><a href="#cb6-31"></a>    <span class="co"># get panel insert locations</span></span>
-<span id="cb6-32"><a href="#cb6-32"></a>    panel_bed_locs <span class="op">=</span> PMOExtractor.extract_panels_insert_bed_loc(pmo)</span>
+<span id="cb6-31"><a href="#cb6-31"></a>    <span class="co"># check files</span></span>
+<span id="cb6-32"><a href="#cb6-32"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
 <span id="cb6-33"><a href="#cb6-33"></a></span>
-<span id="cb6-34"><a href="#cb6-34"></a>    <span class="co"># write</span></span>
-<span id="cb6-35"><a href="#cb6-35"></a>    output_target <span class="op">=</span> sys.stdout <span class="cf">if</span> args.output <span class="op">==</span> <span class="st">"STDOUT"</span> <span class="cf">else</span> <span class="bu">open</span>(args.output, <span class="st">"w"</span>)</span>
-<span id="cb6-36"><a href="#cb6-36"></a>    <span class="cf">with</span> output_target <span class="im">as</span> f:</span>
-<span id="cb6-37"><a href="#cb6-37"></a>        f.write(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join([<span class="st">"#chrom"</span>, <span class="st">"start"</span>, <span class="st">"end"</span>, <span class="st">"target_id"</span>, <span class="st">"length"</span>, <span class="st">"strand"</span>, <span class="st">"extra_info"</span>]))</span>
-<span id="cb6-38"><a href="#cb6-38"></a>        <span class="cf">if</span> args.add_ref_seqs:</span>
-<span id="cb6-39"><a href="#cb6-39"></a>            f.write(<span class="st">"</span><span class="ch">\t</span><span class="st">ref_seq"</span>)</span>
-<span id="cb6-40"><a href="#cb6-40"></a>        f.write(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb6-41"><a href="#cb6-41"></a>        <span class="cf">for</span> panel_id, bed_locs <span class="kw">in</span> panel_bed_locs.items():</span>
-<span id="cb6-42"><a href="#cb6-42"></a>            <span class="cf">for</span> loc <span class="kw">in</span> bed_locs:</span>
-<span id="cb6-43"><a href="#cb6-43"></a>                f.write(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join([loc.chrom, <span class="bu">str</span>(loc.start), <span class="bu">str</span>(loc.end), loc.name, <span class="bu">str</span>(loc.score), loc.strand, loc.extra_info]))</span>
-<span id="cb6-44"><a href="#cb6-44"></a>                <span class="cf">if</span> args.add_ref_seqs:</span>
-<span id="cb6-45"><a href="#cb6-45"></a>                    f.write(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span> <span class="op">+</span> <span class="bu">str</span>(loc.ref_seq))</span>
-<span id="cb6-46"><a href="#cb6-46"></a>                f.write(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb6-47"><a href="#cb6-47"></a></span>
-<span id="cb6-48"><a href="#cb6-48"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb6-49"><a href="#cb6-49"></a>    extract_insert_of_panels()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-34"><a href="#cb6-34"></a>    <span class="co"># read in PMO</span></span>
+<span id="cb6-35"><a href="#cb6-35"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb6-36"><a href="#cb6-36"></a></span>
+<span id="cb6-37"><a href="#cb6-37"></a>    <span class="co"># get panel insert locations</span></span>
+<span id="cb6-38"><a href="#cb6-38"></a>    panel_bed_locs <span class="op">=</span> PMOProcessor.extract_panels_insert_bed_loc(pmo)</span>
+<span id="cb6-39"><a href="#cb6-39"></a></span>
+<span id="cb6-40"><a href="#cb6-40"></a>    <span class="co"># write</span></span>
+<span id="cb6-41"><a href="#cb6-41"></a>    <span class="cf">with</span> Utils.smart_open_write(args.output) <span class="im">as</span> f:</span>
+<span id="cb6-42"><a href="#cb6-42"></a>        f.write(</span>
+<span id="cb6-43"><a href="#cb6-43"></a>            <span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join(</span>
+<span id="cb6-44"><a href="#cb6-44"></a>                [</span>
+<span id="cb6-45"><a href="#cb6-45"></a>                    <span class="st">"#chrom"</span>,</span>
+<span id="cb6-46"><a href="#cb6-46"></a>                    <span class="st">"start"</span>,</span>
+<span id="cb6-47"><a href="#cb6-47"></a>                    <span class="st">"end"</span>,</span>
+<span id="cb6-48"><a href="#cb6-48"></a>                    <span class="st">"target_id"</span>,</span>
+<span id="cb6-49"><a href="#cb6-49"></a>                    <span class="st">"length"</span>,</span>
+<span id="cb6-50"><a href="#cb6-50"></a>                    <span class="st">"strand"</span>,</span>
+<span id="cb6-51"><a href="#cb6-51"></a>                    <span class="st">"extra_info"</span>,</span>
+<span id="cb6-52"><a href="#cb6-52"></a>                ]</span>
+<span id="cb6-53"><a href="#cb6-53"></a>            )</span>
+<span id="cb6-54"><a href="#cb6-54"></a>        )</span>
+<span id="cb6-55"><a href="#cb6-55"></a>        <span class="cf">if</span> args.add_ref_seqs:</span>
+<span id="cb6-56"><a href="#cb6-56"></a>            f.write(<span class="st">"</span><span class="ch">\t</span><span class="st">ref_seq"</span>)</span>
+<span id="cb6-57"><a href="#cb6-57"></a>        f.write(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb6-58"><a href="#cb6-58"></a>        <span class="cf">for</span> loc <span class="kw">in</span> panel_bed_locs:</span>
+<span id="cb6-59"><a href="#cb6-59"></a>            f.write(</span>
+<span id="cb6-60"><a href="#cb6-60"></a>                <span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join(</span>
+<span id="cb6-61"><a href="#cb6-61"></a>                    [</span>
+<span id="cb6-62"><a href="#cb6-62"></a>                        loc.chrom,</span>
+<span id="cb6-63"><a href="#cb6-63"></a>                        <span class="bu">str</span>(loc.start),</span>
+<span id="cb6-64"><a href="#cb6-64"></a>                        <span class="bu">str</span>(loc.end),</span>
+<span id="cb6-65"><a href="#cb6-65"></a>                        loc.name,</span>
+<span id="cb6-66"><a href="#cb6-66"></a>                        <span class="bu">str</span>(loc.score),</span>
+<span id="cb6-67"><a href="#cb6-67"></a>                        loc.strand,</span>
+<span id="cb6-68"><a href="#cb6-68"></a>                        loc.extra_info,</span>
+<span id="cb6-69"><a href="#cb6-69"></a>                    ]</span>
+<span id="cb6-70"><a href="#cb6-70"></a>                )</span>
+<span id="cb6-71"><a href="#cb6-71"></a>            )</span>
+<span id="cb6-72"><a href="#cb6-72"></a>            <span class="cf">if</span> args.add_ref_seqs:</span>
+<span id="cb6-73"><a href="#cb6-73"></a>                f.write(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span> <span class="op">+</span> <span class="bu">str</span>(loc.ref_seq))</span>
+<span id="cb6-74"><a href="#cb6-74"></a>            f.write(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb6-75"><a href="#cb6-75"></a></span>
+<span id="cb6-76"><a href="#cb6-76"></a></span>
+<span id="cb6-77"><a href="#cb6-77"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb6-78"><a href="#cb6-78"></a>    extract_insert_of_panels()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_insert_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_insert_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>#chrom  start   end target_id   length  strand  extra_info
-Pf3D7_01_v3 145449  145622  t1  173 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_02_v3 109807  109982  t10 175 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_14_v3 3214351 3214478 t100    127 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_02_v3 278165  278336  t11 171 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_02_v3 470492  470676  t12 184 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_02_v3 805822  805942  t13 120 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_03_v3 85440   85646   t14 206 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_03_v3 141963  142181  t15 218 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_03_v3 221363  221495  t16 132 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_03_v3 618396  618581  t17 185 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_03_v3 654002  654175  t18 173 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_03_v3 850816  850989  t19 173 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_01_v3 179903  180115  t2  212 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_04_v3 109912  110087  t20 175 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_04_v3 133491  133701  t21 210 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_04_v3 141778  141945  t22 167 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_04_v3 415653  415826  t23 173 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_04_v3 544718  544861  t24 143 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_04_v3 748230  748436  t25 206 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_04_v3 748533  748696  t26 163 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_04_v3 802525  802713  t27 188 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_04_v3 1037634 1037844 t28 210 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_04_v3 1100656 1100831 t29 175 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_01_v3 181557  181673  t3  116 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_04_v3 1102389 1102578 t30 189 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_04_v3 1113450 1113604 t31 154 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_04_v3 1128489 1128673 t32 184 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_05_v3 329378  329550  t33 172 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_05_v3 958059  958221  t34 162 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_05_v3 958389  958506  t35 117 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_05_v3 1042162 1042281 t36 119 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_05_v3 1309609 1309744 t37 135 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_06_v3 145343  145501  t38 158 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_06_v3 532195  532378  t39 183 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_01_v3 495971  496143  t4  172 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_07_v3 165235  165422  t40 187 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_07_v3 166035  166167  t41 132 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_07_v3 298886  299005  t42 119 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_07_v3 729975  730088  t43 113 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_07_v3 1149415 1149585 t44 170 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_07_v3 1358694 1358911 t45 217 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_08_v3 102326  102500  t46 174 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_08_v3 336468  336647  t47 179 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_08_v3 339168  339357  t48 189 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_08_v3 549993  550218  t49 225 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_01_v3 512199  512388  t5  189 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_08_v3 933023  933143  t50 120 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_08_v3 1269320 1269456 t51 136 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_08_v3 1344686 1344819 t52 133 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_08_v3 1362891 1363087 t53 196 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_09_v3 516928  517092  t54 164 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_09_v3 596133  596334  t55 201 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_09_v3 685601  685792  t56 191 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_09_v3 1178894 1179078 t57 184 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_09_v3 1406405 1406541 t58 136 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_09_v3 1437114 1437303 t59 189 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_01_v3 531682  531900  t6  218 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_10_v3 377095  377209  t60 114 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_10_v3 992371  992544  t61 173 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_10_v3 1386700 1386869 t62 169 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_10_v3 1399544 1399711 t63 167 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_10_v3 1436479 1436682 t64 203 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_11_v3 119486  119693  t65 207 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_11_v3 1009856 1010038 t66 182 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_11_v3 1018953 1019085 t67 132 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_11_v3 1376185 1376372 t68 187 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_11_v3 1552430 1552640 t69 210 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_01_v3 532690  532844  t7  154 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_11_v3 1750865 1751055 t70 190 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_11_v3 1816211 1816425 t71 214 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_12_v3 63166   63280   t72 114 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_12_v3 659891  660010  t73 119 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_12_v3 684088  684261  t74 173 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_12_v3 943258  943428  t75 170 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_12_v3 1237431 1237603 t76 172 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_12_v3 2050130 2050314 t77 184 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_13_v3 103659  103879  t78 220 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_13_v3 156566  156722  t79 156 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_01_v3 534215  534368  t8  153 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_13_v3 1150303 1150493 t80 190 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_13_v3 1419543 1419670 t81 127 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_13_v3 1725365 1725570 t82 205 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_13_v3 1876352 1876534 t83 182 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_13_v3 2114975 2115142 t84 167 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_13_v3 2124634 2124847 t85 213 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_13_v3 2479086 2479246 t86 160 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_13_v3 2481106 2481288 t87 182 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_13_v3 2669135 2669307 t88 172 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_14_v3 39953   40137   t89 184 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_01_v3 534941  535110  t9  169 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_14_v3 120215  120351  t90 136 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_14_v3 150105  150294  t91 189 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_14_v3 279663  279786  t92 123 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_14_v3 407379  407571  t93 192 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_14_v3 564208  564377  t94 169 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_14_v3 1038369 1038486 t95 117 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_14_v3 1956129 1956286 t96 157 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_14_v3 1992289 1992426 t97 137 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_14_v3 2524962 2525089 t98 127 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]
-Pf3D7_14_v3 3124642 3124842 t99 200 +   [genome_name_version=3D7_2020-09-01;panel_id=heomev1;]</code></pre>
+Pf3D7_01_v3 145449  145622  t1  173 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_01_v3 179903  180115  t2  212 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_01_v3 181557  181673  t3  116 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_01_v3 495971  496143  t4  172 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_01_v3 512199  512388  t5  189 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_01_v3 531682  531900  t6  218 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_01_v3 532690  532844  t7  154 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_01_v3 534215  534368  t8  153 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_01_v3 534941  535110  t9  169 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_02_v3 109807  109982  t10 175 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_02_v3 278165  278336  t11 171 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_02_v3 470492  470676  t12 184 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_02_v3 805822  805942  t13 120 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_03_v3 85440   85646   t14 206 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_03_v3 141963  142181  t15 218 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_03_v3 221363  221495  t16 132 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_03_v3 618396  618581  t17 185 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_03_v3 654002  654175  t18 173 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_03_v3 850816  850989  t19 173 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_04_v3 109912  110087  t20 175 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_04_v3 133491  133701  t21 210 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_04_v3 141778  141945  t22 167 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_04_v3 415653  415826  t23 173 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_04_v3 544718  544861  t24 143 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_04_v3 748230  748436  t25 206 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_04_v3 748533  748696  t26 163 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_04_v3 802525  802713  t27 188 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_04_v3 1037634 1037844 t28 210 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_04_v3 1100656 1100831 t29 175 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_04_v3 1102389 1102578 t30 189 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_04_v3 1113450 1113604 t31 154 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_04_v3 1128489 1128673 t32 184 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_05_v3 329378  329550  t33 172 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_05_v3 958059  958221  t34 162 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_05_v3 958389  958506  t35 117 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_05_v3 1042162 1042281 t36 119 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_05_v3 1309609 1309744 t37 135 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_06_v3 145343  145501  t38 158 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_06_v3 532195  532378  t39 183 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_07_v3 165235  165422  t40 187 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_07_v3 166035  166167  t41 132 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_07_v3 298886  299005  t42 119 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_07_v3 729975  730088  t43 113 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_07_v3 1149415 1149585 t44 170 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_07_v3 1358694 1358911 t45 217 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_08_v3 102326  102500  t46 174 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_08_v3 336468  336647  t47 179 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_08_v3 339168  339357  t48 189 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_08_v3 549993  550218  t49 225 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_08_v3 933023  933143  t50 120 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_08_v3 1269320 1269456 t51 136 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_08_v3 1344686 1344819 t52 133 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_08_v3 1362891 1363087 t53 196 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_09_v3 516928  517092  t54 164 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_09_v3 596133  596334  t55 201 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_09_v3 685601  685792  t56 191 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_09_v3 1178894 1179078 t57 184 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_09_v3 1406405 1406541 t58 136 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_09_v3 1437114 1437303 t59 189 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_10_v3 377095  377209  t60 114 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_10_v3 992371  992544  t61 173 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_10_v3 1386700 1386869 t62 169 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_10_v3 1399544 1399711 t63 167 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_10_v3 1436479 1436682 t64 203 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_11_v3 119486  119693  t65 207 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_11_v3 1009856 1010038 t66 182 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_11_v3 1018953 1019085 t67 132 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_11_v3 1376185 1376372 t68 187 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_11_v3 1552430 1552640 t69 210 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_11_v3 1750865 1751055 t70 190 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_11_v3 1816211 1816425 t71 214 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_12_v3 63166   63280   t72 114 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_12_v3 659891  660010  t73 119 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_12_v3 684088  684261  t74 173 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_12_v3 943258  943428  t75 170 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_12_v3 1237431 1237603 t76 172 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_12_v3 2050130 2050314 t77 184 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_13_v3 103659  103879  t78 220 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_13_v3 156566  156722  t79 156 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_13_v3 1150303 1150493 t80 190 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_13_v3 1419543 1419670 t81 127 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_13_v3 1725365 1725570 t82 205 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_13_v3 1876352 1876534 t83 182 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_13_v3 2114975 2115142 t84 167 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_13_v3 2124634 2124847 t85 213 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_13_v3 2479086 2479246 t86 160 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_13_v3 2481106 2481288 t87 182 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_13_v3 2669135 2669307 t88 172 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_14_v3 39953   40137   t89 184 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_14_v3 120215  120351  t90 136 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_14_v3 150105  150294  t91 189 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_14_v3 279663  279786  t92 123 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_14_v3 407379  407571  t93 192 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_14_v3 564208  564377  t94 169 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_14_v3 1038369 1038486 t95 117 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_14_v3 1956129 1956286 t96 157 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_14_v3 1992289 1992426 t97 137 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_14_v3 2524962 2525089 t98 127 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_14_v3 3124642 3124842 t99 200 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]
+Pf3D7_14_v3 3214351 3214478 t100    127 +   [genome_name_version=3D7_2020-09-01;panel=heomev1;reaction=full;]</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_insert_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> moz2018_PMO_panel_insert_locs.bed <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_insert_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> moz2018_PMO_panel_insert_locs.bed <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Can add on the reference sequence if it’s loaded in PMO, if it’s not loaded will be blank column</p>
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_insert_of_panels <span class="at">--add_ref_seqs</span> <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> moz2018_PMO_panel_insert_locs.bed <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section><section id="extract-ref-sequences-of-insert-locations-of-panels-from-pmo" class="level1"><h1>Extract ref sequences of insert locations of panels from PMO</h1>
 <p>This will extract the reference sequence of the insert location of the targets within the panel info out of a PMO and write it out as a table. The reference sequence is an optional field and so if no reference sequence is loaded then just blanks will be extracted</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_refseq_of_inserts_of_panels <span class="at">-h</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_refseq_of_inserts_of_panels <span class="at">-h</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>usage: pmotools-runner.py extract_refseq_of_inserts_of_panels
-       [-h] --file FILE [--output OUTPUT] [--overwrite]
+<pre><code>usage: pmotools-python extract_refseq_of_inserts_of_panels [-h] --file FILE
+                                                           [--output OUTPUT]
+                                                           [--overwrite]
 
 extract ref_seq of inserts of panels, but if no ref_seq is save in the PMO
 will just be blank
@@ -531,163 +572,164 @@ options:
 <div class="cell" data-layout-align="center">
 <div class="code-with-filename">
 <details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
-<pre><strong>pmotools-python/scripts/extract_info_from_pmo/extract_refseq_of_inserts_of_panels.py</strong></pre>
+<pre><strong>pmotools-python/src/pmotools/scripts/extract_info_from_pmo/extract_refseq_of_inserts_of_panels.py</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">#!/usr/bin/env python3</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="im">import</span> os, argparse, json</span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="im">import</span> sys</span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
-<span id="cb12-5"><a href="#cb12-5"></a></span>
-<span id="cb12-6"><a href="#cb12-6"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb12-7"><a href="#cb12-7"></a></span>
-<span id="cb12-8"><a href="#cb12-8"></a><span class="im">from</span> pmotools.pmo_utils.PMOExtractor <span class="im">import</span> PMOExtractor</span>
-<span id="cb12-9"><a href="#cb12-9"></a><span class="im">from</span> pmotools.pmo_utils.PMOReader <span class="im">import</span> PMOReader</span>
-<span id="cb12-10"><a href="#cb12-10"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
-<span id="cb12-11"><a href="#cb12-11"></a></span>
-<span id="cb12-12"><a href="#cb12-12"></a></span>
-<span id="cb12-13"><a href="#cb12-13"></a><span class="kw">def</span> parse_args_extract_refseq_of_inserts_of_panels():</span>
-<span id="cb12-14"><a href="#cb12-14"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb12-15"><a href="#cb12-15"></a>    parser.add_argument(<span class="st">'--file'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'PMO file'</span>)</span>
-<span id="cb12-16"><a href="#cb12-16"></a>    parser.add_argument(<span class="st">'--output'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'output file'</span>)</span>
-<span id="cb12-17"><a href="#cb12-17"></a>    parser.add_argument(<span class="st">'--overwrite'</span>, action <span class="op">=</span> <span class="st">'store_true'</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'If output file exists, overwrite it'</span>)</span>
-<span id="cb12-18"><a href="#cb12-18"></a>    parser.description <span class="op">=</span> <span class="st">"extract ref_seq of inserts of panels, but if no ref_seq is save in the PMO will just be blank"</span></span>
-<span id="cb12-19"><a href="#cb12-19"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb12-20"><a href="#cb12-20"></a></span>
-<span id="cb12-21"><a href="#cb12-21"></a><span class="kw">def</span> extract_refseq_of_inserts_of_panels():</span>
-<span id="cb12-22"><a href="#cb12-22"></a>    args <span class="op">=</span> parse_args_extract_refseq_of_inserts_of_panels()</span>
-<span id="cb12-23"><a href="#cb12-23"></a></span>
-<span id="cb12-24"><a href="#cb12-24"></a>    <span class="co"># check files</span></span>
-<span id="cb12-25"><a href="#cb12-25"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
-<span id="cb12-26"><a href="#cb12-26"></a></span>
-<span id="cb12-27"><a href="#cb12-27"></a>    <span class="co"># read in PMO</span></span>
-<span id="cb12-28"><a href="#cb12-28"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
-<span id="cb12-29"><a href="#cb12-29"></a></span>
-<span id="cb12-30"><a href="#cb12-30"></a>    <span class="co"># get panel insert locations</span></span>
-<span id="cb12-31"><a href="#cb12-31"></a>    panel_bed_locs <span class="op">=</span> PMOExtractor.extract_panels_insert_bed_loc(pmo)</span>
-<span id="cb12-32"><a href="#cb12-32"></a></span>
-<span id="cb12-33"><a href="#cb12-33"></a>    <span class="co"># write</span></span>
-<span id="cb12-34"><a href="#cb12-34"></a>    output_target <span class="op">=</span> sys.stdout <span class="cf">if</span> args.output <span class="op">==</span> <span class="st">"STDOUT"</span> <span class="cf">else</span> <span class="bu">open</span>(args.output, <span class="st">"w"</span>)</span>
-<span id="cb12-35"><a href="#cb12-35"></a>    <span class="cf">with</span> output_target <span class="im">as</span> f:</span>
-<span id="cb12-36"><a href="#cb12-36"></a>        f.write(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join([<span class="st">"panel_id"</span>, <span class="st">"target_id"</span>, <span class="st">"ref_seq"</span>]) <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb12-37"><a href="#cb12-37"></a>        <span class="cf">for</span> panel_id, bed_locs <span class="kw">in</span> panel_bed_locs.items():</span>
-<span id="cb12-38"><a href="#cb12-38"></a>            <span class="cf">for</span> loc <span class="kw">in</span> bed_locs:</span>
-<span id="cb12-39"><a href="#cb12-39"></a>                f.write(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join([<span class="bu">str</span>(panel_id), loc.name, loc.ref_seq]) <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb12-40"><a href="#cb12-40"></a></span>
-<span id="cb12-41"><a href="#cb12-41"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb12-42"><a href="#cb12-42"></a>    extract_refseq_of_inserts_of_panels()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="im">import</span> argparse</span>
+<span id="cb13-3"><a href="#cb13-3"></a></span>
+<span id="cb13-4"><a href="#cb13-4"></a></span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="im">from</span> pmotools.pmo_engine.pmo_processor <span class="im">import</span> PMOProcessor</span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="im">from</span> pmotools.pmo_engine.pmo_reader <span class="im">import</span> PMOReader</span>
+<span id="cb13-7"><a href="#cb13-7"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
+<span id="cb13-8"><a href="#cb13-8"></a></span>
+<span id="cb13-9"><a href="#cb13-9"></a></span>
+<span id="cb13-10"><a href="#cb13-10"></a><span class="kw">def</span> parse_args_extract_refseq_of_inserts_of_panels():</span>
+<span id="cb13-11"><a href="#cb13-11"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
+<span id="cb13-12"><a href="#cb13-12"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
+<span id="cb13-13"><a href="#cb13-13"></a>    parser.add_argument(</span>
+<span id="cb13-14"><a href="#cb13-14"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
+<span id="cb13-15"><a href="#cb13-15"></a>    )</span>
+<span id="cb13-16"><a href="#cb13-16"></a>    parser.add_argument(</span>
+<span id="cb13-17"><a href="#cb13-17"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb13-18"><a href="#cb13-18"></a>    )</span>
+<span id="cb13-19"><a href="#cb13-19"></a>    parser.description <span class="op">=</span> <span class="st">"extract ref_seq of inserts of panels, but if no ref_seq is save in the PMO will just be blank"</span></span>
+<span id="cb13-20"><a href="#cb13-20"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb13-21"><a href="#cb13-21"></a></span>
+<span id="cb13-22"><a href="#cb13-22"></a></span>
+<span id="cb13-23"><a href="#cb13-23"></a><span class="kw">def</span> extract_refseq_of_inserts_of_panels():</span>
+<span id="cb13-24"><a href="#cb13-24"></a>    args <span class="op">=</span> parse_args_extract_refseq_of_inserts_of_panels()</span>
+<span id="cb13-25"><a href="#cb13-25"></a></span>
+<span id="cb13-26"><a href="#cb13-26"></a>    <span class="co"># check files</span></span>
+<span id="cb13-27"><a href="#cb13-27"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb13-28"><a href="#cb13-28"></a></span>
+<span id="cb13-29"><a href="#cb13-29"></a>    <span class="co"># read in PMO</span></span>
+<span id="cb13-30"><a href="#cb13-30"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb13-31"><a href="#cb13-31"></a></span>
+<span id="cb13-32"><a href="#cb13-32"></a>    <span class="co"># get panel insert locations</span></span>
+<span id="cb13-33"><a href="#cb13-33"></a>    panel_bed_locs <span class="op">=</span> PMOProcessor.extract_panels_insert_bed_loc(pmo)</span>
+<span id="cb13-34"><a href="#cb13-34"></a></span>
+<span id="cb13-35"><a href="#cb13-35"></a>    <span class="co"># write</span></span>
+<span id="cb13-36"><a href="#cb13-36"></a>    <span class="cf">with</span> Utils.smart_open_write(args.output) <span class="im">as</span> f:</span>
+<span id="cb13-37"><a href="#cb13-37"></a>        f.write(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join([<span class="st">"target_id"</span>, <span class="st">"ref_seq"</span>]) <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb13-38"><a href="#cb13-38"></a>        <span class="cf">for</span> loc <span class="kw">in</span> panel_bed_locs:</span>
+<span id="cb13-39"><a href="#cb13-39"></a>            f.write(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join([loc.name, loc.ref_seq]) <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb13-40"><a href="#cb13-40"></a></span>
+<span id="cb13-41"><a href="#cb13-41"></a></span>
+<span id="cb13-42"><a href="#cb13-42"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb13-43"><a href="#cb13-43"></a>    extract_refseq_of_inserts_of_panels()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_refseq_of_inserts_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_refseq_of_inserts_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>panel_id    target_id   ref_seq
-heomev1 t1  
-heomev1 t10 
-heomev1 t100    
-heomev1 t11 
-heomev1 t12 
-heomev1 t13 
-heomev1 t14 
-heomev1 t15 
-heomev1 t16 
-heomev1 t17 
-heomev1 t18 
-heomev1 t19 
-heomev1 t2  
-heomev1 t20 
-heomev1 t21 
-heomev1 t22 
-heomev1 t23 
-heomev1 t24 
-heomev1 t25 
-heomev1 t26 
-heomev1 t27 
-heomev1 t28 
-heomev1 t29 
-heomev1 t3  
-heomev1 t30 
-heomev1 t31 
-heomev1 t32 
-heomev1 t33 
-heomev1 t34 
-heomev1 t35 
-heomev1 t36 
-heomev1 t37 
-heomev1 t38 
-heomev1 t39 
-heomev1 t4  
-heomev1 t40 
-heomev1 t41 
-heomev1 t42 
-heomev1 t43 
-heomev1 t44 
-heomev1 t45 
-heomev1 t46 
-heomev1 t47 
-heomev1 t48 
-heomev1 t49 
-heomev1 t5  
-heomev1 t50 
-heomev1 t51 
-heomev1 t52 
-heomev1 t53 
-heomev1 t54 
-heomev1 t55 
-heomev1 t56 
-heomev1 t57 
-heomev1 t58 
-heomev1 t59 
-heomev1 t6  
-heomev1 t60 
-heomev1 t61 
-heomev1 t62 
-heomev1 t63 
-heomev1 t64 
-heomev1 t65 
-heomev1 t66 
-heomev1 t67 
-heomev1 t68 
-heomev1 t69 
-heomev1 t7  
-heomev1 t70 
-heomev1 t71 
-heomev1 t72 
-heomev1 t73 
-heomev1 t74 
-heomev1 t75 
-heomev1 t76 
-heomev1 t77 
-heomev1 t78 
-heomev1 t79 
-heomev1 t8  
-heomev1 t80 
-heomev1 t81 
-heomev1 t82 
-heomev1 t83 
-heomev1 t84 
-heomev1 t85 
-heomev1 t86 
-heomev1 t87 
-heomev1 t88 
-heomev1 t89 
-heomev1 t9  
-heomev1 t90 
-heomev1 t91 
-heomev1 t92 
-heomev1 t93 
-heomev1 t94 
-heomev1 t95 
-heomev1 t96 
-heomev1 t97 
-heomev1 t98 
-heomev1 t99 </code></pre>
+<pre><code>target_id   ref_seq
+t1  AAACTTTTTTTATTTTTTTTGTCAATAGATAAATGATCAATATTTTCTATATTTAATCTATCAAGTATTTTTATATATCTATTATTTCTTTCTTCGATGGATAAATTATAAGAATCAATATCCTTTCTTTCATCAACAAACTTTTTTATTGTTAACTCCATTTTTTTATTTAA
+t2  CTTTCGATACAGGACATATAGATCATAATATAAACGAATATGAAAAACATTTTACAATTTTAAAAGAATCTTTTTTTCATAAGTCATTAAAATTTATGGATTATATATGGATTGTTATAATGAAACGAGAAAATAATACATTTTTAAATAGAATAAGAACTGAACAAGTCAAAAAATCGTTATTAATAACAGGTATTATAAACGAAAATATT
+t3  TTCATTCTTTTTTTAACGAAAACTATTCATCTCAAAAATATAAGATATTTTATATGACGAATGCCATTGTATTTTTTGTTACGTAAAACCTGACTTCTTCAAGGAAAACACATGCG
+t4  TGAAAGTAGCGAATACCCTGTAGAAATTGTTAGTAAACCTCTGGAATGGTTATTGTTTCATGATTTGACTAAGCCTGATGTTACTGCACTACCTGAAGAATTACCATTAACGAGCTATAAAGTAACACCTACTTCTATTAATGTATTGCATAAAGAGGGCCCCACTTTAAAA
+t5  TTAAATAAATTAAGTGAAGATGATTATGAAAAAAATTGTAGACATTTAAATTATTTAATAGATAATATAAGAGAATTATTTTTTAGTTCTAAAAATATTAGAATTCCTGATGTAGCTCGTAAATATTTGTGGGATAATCAAATTGAAGGAAATCTCAAAAAATTAATATCTTCAGAAACAAAATATAAA
+t6  AAAAGAAAGATGTTAAGAAAAAAAAGATCGATATGATAAATATATTACACATTCCTACAAATAATTATAGCATGCCAAATGAAAAAGATATAAACAGTTATGAATTTTTTGGATCTGAACCTATTGAATTATATGATGTAAAATCTAATAAGAATTGTGTTATAACTAGCCAATCTTATATTTGTATTGAAAACCCGCATGCTGCCATAGTATCCGAA
+t7  ACTTTCTTAATTCTATGAATGAAGAATATACGCATATTAATTTAAATAACTTTATACATAATAATAACCATGATAATGACGAAAATTATACATTAGATCAGGTGGAAGGATATCCTATGACTAGTTATCAAAATAATATATACAAGGATTTTTT
+t8  TGATAAAAAAAGAAAATGTAACAATCTACCTTGTGATTGTATCTTATGTAAAAAAAAGCACAATGTTTGTTATTGTAATATGTGTAAAAAGAAAGAAAAAAATATGAGAGAAGATTTATCGGTTGTAAAATATAATGAATATCCGATTAGTGT
+t9  AATACTCCGTCAGATATTCAAAATGAATGTATTTGTTCAAAAATAAATGAAGATAGAAATAATGATATGATAAACATATCTGAAATATATTATCGTTTCATTAAATTTATAACAATGATTGAAATATATTTGTGTGTAATAGAGGAAATTAAAAGGGAAGAATGGGAAA
+t10 AACTTATGTTCATGAGCTAATTTCCCACAAATACTCCATAACGAACTTTTCATTTTATTAAATTTATCTCTCAAAAGAGAATGACTATAATGCCATATTAAATACATATCTTTCCTTTCTAATTTTCCTGGTAATTCTATTATCATTCTTTCTAAATCTTCTTCTGTAACTTTTC
+t11 GGAATTTTCTTTTTTATGACTTTCTTCTCCTTGTTCAGAAGCTTCTTTTTCATCCTTTTTTTCTGCTGCGTCAGATAAATTGGGGGAAGCACTTGAAGATTCATTTCCTCCAGGAGTATTACTAGTACTTACTCCGTCCACATTTGGTTTTTCTTCCCCTAGAATTCTCAT
+t12 ATACACATAAGAAAAAAAAAATTTATTTATTCTTACAAAAAGAATATAAAAACAAAATTTTGGGATTTATAAATTTTTATAAACATATAACACACAAAATAAAAAAGAAACAAGAAAATGTTCATGATAAAATCACTTTTTTAAAATGTCTAAAGGAACTCTTTTTTGTCACACATACAAATAA
+t13 TTAATTATGAAGACAGTCTCACGACTTCATGTTATATTGATGAAAACAAATCCGATTCATCCTATGAAACTGAAGAAAATGTAAACTATAATAATAAAATGGGTAAACGCAAAAATTTAG
+t14 AACTTTTTAACACTATCATTATAATTATGTCTTTTATTTTCATATTTTTCTTTATAATAATTTATATCCTTTAATTTTTCTTTCATCAAATTTAACCATTTATCATTTAAATTCTCTTTTTCCACAGCTCCAGCATTTTTATTTATATCATCTACAACTACATCTTCCTTCACATAATTATTTATATAAAAATTATTATCATCTAA
+t15 AGCATTTATAACAAAATATCAGAAGATGGAAAAACCAAAAATAGCCTACTTAGCGATATATCTAAATTATTTAAAATTGTAAAAGAAAGCAAATTAATATTTGTAACTGGATTTTTATTAACAACCTTGTCAGCAATTGTCGATTCATACATTCCAATTTTTCTATCCAAAACGGTATCTTTTGTAATGGAAAGAAAAAAATTTACATTTCTTAAAAT
+t16 TTGAACTATTTACGACATTAAACACACTGGAACATTTTTCCATTTTACAAATTTTTTTTTCAATATCATTTGCATAATCTAATTCGTCTTTAGGTTTATTAGCAGAGCCAGGCTTTATTCTAACTTGAATAC
+t17 AAAAAGAGATTATAGAAGTGGAAAGAAGACATATATAATACAAGCTCTACAATATGCATTAACATATTATAGCAAACTTTCAAATAGAAAGGAAGCACCTAAAGTAACCATGTTATTTACAGATGGAAATGATTCCTATGAATCAGAAAAGGGATTACAGGATATTGCATTATTATATAGAAAAG
+t18 ATATTTTTATAATTTCCTTTCATCTTATTTTTTTCTTTATATTTTTTTTTTTCATATGTAAGATTTATATAATCACTTTCGCTTTTTCTAACCCTTTTGAACTTTTTAAATGTACTTCGTTCATTATTTCTAATTCTCGTAAACACAAGAATAAATATTTTGATATATCTTAT
+t19 TCATATTCGTTTCAGCGTTTATAGAGCGAATATTATCGATTATGTCTATATTCCCTAAAATATGTACATAATAATCTCCATTTAATAATGTTACTTTCTTAAGAATATTTTTGTATATGACATCAAAGATATTACGAGTTAACAATACATCTACATTTCCGTCTATTATATAT
+t20 AATATTTGTATATATTCTAGTAAACACTTTAGGTACACCTGCAAGTACCTCAACATCTGAATTATATAAATCTTTAGAAAAACAACTAATATCCTTACTCGATATATTTATTTTTATACCAAGAATAACAGCCATATAAACCAAAACTCTCTCAAATACATGTGATACAGGTAAA
+t21 TTAGATTTTTTCCCTCCAGCAGGTGCACTAACTTTAGGTGTTTTAAATCTAGATGTATGTGGAACCCCATCTTTATTTGGTTTACCTCTATTTAATCTTTTACCAGCAGTAGAAACTACATTCTCTCGATTATCATTACCTACTTCAGTCTTTACAATTGTAGGAGGTGTTTTAACATGATTATCCCCTCCATGAGGAGTAACCCTTAAA
+t22 CTTTCAAATTATATAAAGACAGAACTAAGAAATATAAACCTGCAAGAAATAAAAAACAATATAATAAAAATATTTAAAGAATTCAAATCTGCACACAAAGAAATTAAAAAAGAATCAGAACAAATTAATAAAGAATTTACCAAAATGGATGTCGTCATAAATCAATT
+t23 ATGCTAGTTTTGCTGCTCATGAAAATAAAAGCTACTCATATGAAAGTCGTACATATAAAATGTATCCACCTGAATTTAATACATTAATGTTAAAAGCAGATTATTTTATAAGAGATATAAATACACGAGGATTTAGAGAAGTAAATATGGATTCATGTAAATCATATACAAAT
+t24 ATATATTTTACATAATAACAATCCTTCATGTAATGATTATAATTTAAATAATCTTTCATTTAATATAAATAAATATATTAATGAAGAAAAAGGCAAAAATAAAAAAACAAATCAACATATATCAGAACAATTTTTATTTCCTA
+t25 GAAATGTAATTCCCTAGATATGAAATATTTTTGTGCAGTTACAACATATGTGAATGAATCAAAATATGAAAAATTGAAATATAAGAGATGTAAATATTTAAACAAAGAAACTGTGGATAATGTAAATGATATGCCTAATTCTAAAAAATTACAAAATGTTGTAGTTATGGGAAGAACAAGCTGGGAAAGCATTCCAAAAAAATTTA
+t26 AATAGTTTTACTTGGGAAATTAAATTACTATAAATGTTTTATTATAGGAGGTTCCGTTGTTTATCAAGAATTTTTAGAAAAGAAATTAATAAAAAAAATATATTTTACTAGAATAAATAGTACATATGAATGTGATGTATTTTTTCCAGAAATAAATGAAAAT
+t27 TAAATTATTATAGAAAGATAGAAGTTATTTTATATGAATGGTTATATTTTCATTATAATAATGTATATAACACCAAAGTAAAAAAACAAAAATTTATATTTACCCAACAAAAAAAAGACATATCAAAACATAACAAGTTATATCTTCAGTATGATCAAAATAAAAGAAACTCTGAAATAGAACATACA
+t28 ATCTTATAAAGTTAATGAAATAGCTCAACTTAATTTAACCATAGAAAGAGATTTAACAGATGATGCTGTGATTTTTGCACACTCACTTTATTTACCATTTGAAAAAGAAGAAATGTGGTGGATCGTTATCGGAATTAAAAAAATGAACTTACTTTTATCTATCAAAAAATTATCTTTATTGAAAAGTGTCAATAATATAAAAATTAATTT
+t29 AATGTTCTAAGATCTGATGGAAAAATATCTGATCAAGGTTCTCAGAAAAGTCCTCCTAAGGAACTTTCTAATAAACAAATGACTCCTGCTCAACGTAAGAATGTGCCACATTTTGTTGAAAGAAGAGGCTATGGAAATAGTCATGTTAGGGGTAACGCACTTAAAAAAATTAGTA
+t30 GAAGAAATAAATAAAATAATTTATACAAACGAATTTAATAATTATGAAGATAAAATATATGAAGATGTCAAATATATTAAAGAACAGGAAAATGAAATGTACTTGAGAGATGGAATTGAAGAGTTACATATGGATGAACCAAGTGGGGATGTATATTTTGATGATCAAGATGATTATATATTTTTAGAT
+t31 AAATCATCTAAGAATAAACTTTTTTGTTTAAACCATTTATTGAACATTTCACTTAAATGTGATTCAATTTTTTTTTCTGAGCTTTCCATAATTTGATTACAACTATTCAATTTGTTTGTATAAGTTTTAGGTCTTATTATTCTTTTACGTTTTA
+t32 ATTGAAAGAGTTAAAGGGAAAAATACAAAATTATTTAGATAATGATATTCAATTGAAAAATGGAAAACTCCTATATAAGGATACATGGGATAGAATTGTTTTGAAATTTTGTAGAACTGTAGCAATAGAAGAGGCAGAATACACTAGAAAATTTTATAGCTTAATTAATGATAAACATACAATT
+t33 ATTGTGATGTATATAAATTCCCTTCTTCTTTATGTACCACATTATAAGAACCACGAACATATTCTTTTAAAAATGTTAACTTACTTCCAACAAATATATAATCAAAACAAAATTTTTTATTGTCGAAATGTTCTCGTTCAACCCCATTCATATTTCGGATATCATTATTTAA
+t34 ATTTATATCATTTGTATGTGCTGTATTATCAGGAGGAACATTACCTTTTTTTATATCTGTGTTTGGTGTAATATTAAAGAACATGAATTTAGGTGATGATATTAATCCTATAATATTATCATTAGTATCTATAGGTTTAGTACAATTTATATTATCAATGAT
+t35 TACGAAATTTATAACAATTTTTACATATGCCAGTTCCTTTTTAGGTTTATATATTTGGTCATTAATAAAAAATGCACGTTTGACTTTATGTATTACTTGCGTTTTTCCGTTAATTTA
+t36 ATATTATTACGGTACCATTATATGATTCTTTAGGTCCTCAATCAAGTAGATTTATATTAGATCAAACACAGATGGAAACTATTGTATGTGACAAGACATGTGCTCGTAATTTATTTAAG
+t37 TAATGAAGAAAATATGTCTGACAGACCAAACAGTTTATCTCATGATAAGGATCAACACCTCGATGAAACACATAATGAACAATATGGATTATACGTAAAAGAAATGGAATCTAAAGTTGAAAAATTAGCTGAAAA
+t38 AATTTGAATAAAATTTATCATTCACAATATTATATTTTTGTTTCTTCTTTTTTCCCATAATATTATTATTTTGTTCACAATATATGTTCATGTGTCCCCTCTTTTTCTGTAAAATATTAAAATGTTTCTTACTATGCTTCTCTTCATTTTTAATAACA
+t39 AGAACAATTGCTAAACACCAAATTGGGTGAAACAAAAAACCACCTGAACAGAACCCCATTTATACCTGAATCGGTCATACGAGAAAGGAAATTACGCCAAGAAAAAGCTCAATCCACAAACAACATGTTCGATTCAACAAACGCAGATAGTATTACGTCCCCATGTGATCCAACGAATGCCAC
+t40 ATCATTATTATTATTATTATAATTATCATTGTTATTATTATTGTTGTTGTTGTTATTATTATTTCCTTTATTATTTAATATGCATTTTTTAATATCCATTTTATTATTTATCATATCAGTACTTTTATTTTTCTCCTTTTCGTTTATAGCTTTTTCCCTATGCACCCTGAATTTCCCATTTTTTTTT
+t41 CTTTTATTTGAACTTTTTTATTTTCTTCATTATCAATATAAAAACAACAATCTTTAAATTTATGAAATAACACCCAACTTAATGTATAAAATATAATTTCTATAAAATCAAAATTAATGTAATAACCTAATT
+t42 ACATTCAATATGGTTCTGAGCTTAAAGATGTTATCCTTATACATGTTTCTATTCTCATTCGTTATAACATCAATGACATATAAAACATATCGCTCAAATATTTTGTGAACAATATTATA
+t43 TTTTATGTGAAATTTTAAATAAAGAGAAATTGTTTGTGCACACATCTATTTTGGGATATATATCTAATCGTTTATGTTACGATATAAAAAAATATAGATGTTCATTATTGAAG
+t44 TAATATTTAATATTTTTGTTTAGGAAGTTTTCAAAATTGATGACATTGATAACCGTTTTTATTAAATCGCTTGGGTTGTTTGTGTGTTCCATTGTAGAAGACATAATTTTAAGAATGTGTTTTTGTGTTATTAAACAAAACTTTGTTACTATATGGAATCGTATGTTATA
+t45 AAGAATCTCAACTTTTGCTTAAAAAAAATGATAACAAATATAATTCTAAATTTTGTAATGATTTGAAGAATAGTTTTTTAGATTATGGACATCTTGCTATGGGAAATGATATGGATTTTGGAGGTTATTCAACTAAGGCAGAAAACAAAATTCAAGAAGTTTTTAAAGGGGCTCATGGGGAAATAAGTGAACATAAAATTAAAAATTTTAGAAAAAA
+t46 TTAATTTTCTCAAGTAACATATTTTTGTCTTGACTACTTTCATCTGTAAATGGAACGACTACTCTTTGCTTACCTGCAAAAAGGACAACTGACATATGAGCCTTATCCTTACTTACATTCGAATTAAAGACCATAGATTCTAAAAATGGTATAGTTCCTTTTAACCAATAATCC
+t47 TAAATTTACAGAAAAATTTAGATTTAATCATATGGCTAAAAAAGAATATAAAAGAAGGAGAAGCTTTAATTTCTGATATACCCACATCAAGTTTTTTAAGGTGTACTACAAATTATAAATTTGTATTGCATCCACAATATGAAGATAGTAACTTGAGAAAGAGGGTTCAAGATTATTAT
+t48 ATCATTACTATTCTTTATCCATATATATGTTGTTATATCAGTTGCACCTGAGGGTGGATTCAAACCTCTTGCTTGTATAATATATGCACGTACTACTAAATTACGTGTTAATCTATATTCTCTTACTAAATCATCACATTTCTTTATCATTTCTTTTTTTAAATACATTGTCTTTTCATCATACACATT
+t49 AACTAACAAATTATGATAATCTAGTTTATGATATAAAAAATTATTTAGAACAAAGATTAAATTTTCTTGTATTAAATGGAATACCTCGTTATAGGATACTATTTGATATTGGATTAGGATTTGCGAAGAAACATGATCAATCTATTAAACTCTTACAAAATATACATGTATATGATGAGTATCCACTTTTTATTGGATATTCAAGAAAAAGATTTATTGCCCATT
+t50 TTGGTTTTAATGAGGATGATTTAGATAAAGAGTTTTTTTTTGATTTGCCGTCGATTAGTGGTTTTTCAAGTAATGGTATGAAAAAATGTAATTTAAGAAATTTATTAAAAAGATTAGAAG
+t51 GCCTTAGCATTAATAACACTTATAGGAGGTATTTATATGACTAAAGGAAGAAAAAGTTCCATATGGCATAATTCAGAAATAAATGATACACTTTATGATGTTGTTCTTGAAACAGTGAATCAAGGAAATACAGATG
+t52 AAATATATCTTTTACTTTATCTGTAAGTTTCATGGAATCTATTATTTCATGTGCATATTTTATTTTTGCCTCGTTTATATATTTACCTGCTTTTAATTTACATAAACATTTTTCTATTAAGTTTTGATCATTT
+t53 CGTAAAAAAAAAGGGTTTTCCTAAAAAACCATCGGTTCATGGTTTTACACAGATGGTGTTTTTGCAGCTTACTAATATAGTCATGTATGCCCTTTGTTTTATGAGCCTTTCACAAATATATGCTTATTTCGAAAACGTGAATTTTTATATTATAAGCAATTTTCGTTTCCTTGAGAGATATTTTAATATATTCAAT
+t54 ATGTTTGTGTAATAAAGGATATTTCTATAATGTCAAGAAACAACAATGTGAAGAATGTCCCATAGGTTTTTATTGTCCAAAAATAAGCTCAAAAAATAATATAAAAAAACCTATCAAATGTCCTAAAAATTCCTCAAGTATAAAAAAAGGTATGTATATATCAA
+t55 ATTATTTTCGTTTTTTTTTATATTATCATTATAATTATATGTATTTACAAAGAATTTATTATTATTTGTTTCTTTATAATTATATTCATTTTCTTTATTACTTAAGGAATTTATATTTGATAAAACTTGTTGTCCTCTTTCTTCTTTGTTGATGTGAATATTTGAGAAAATAATAATAAATGTAATGACTAGGGCTATGTT
+t56 ACAAAGGAACAAGATAATTTTTTCCATTTTTATAAAAGTAATATATATGATATGGAAAATAGAACCTGTAATAATAATATATTACAATATTGTGTTATGAATAATAAATCATATTTATTTCATAATATATCATCCAAAAAAAATATATATATAAAAAAAAAGAATCATCAGTTTTCTTTATTCATATATTC
+t57 ACAAATTATCCTTAGCCCCAGATATGGTAAAGACATATCACTGTTATAAATTAGGAAAGCAAGCAGCTGAATTATTAGAATCTATCATTTTAAAGAAAAAGTTCGTAAGATTTAGAGTTACTGATGCTATTGATGTATATGATTTCTTTTATATAAAGAAAGTTTTATCCAGTCGTATTAAGAA
+t58 TAATTAATTTTAATGATGATGTTACTTTAGAAACACAATCCATGATAGCACACGGAGGGTCTTTGTCAGAAATAGAAGAAACTGGAGATTTATCTTCAGATGTTGATAGATTACATTCATCAATCGAAACTACTCC
+t59 CTAAAACCTGACAGCTTTGTACAGTTATATTTACCCAATTAGAATGTTCAAACATATTTAAGTGTTGCCATTCTTCAAATAATTTTTTTTCATATTCAGTTTTTGGTTGGTTTTTAAATTCTTTTGATACTGTACCTTCTGCGGATGGTATAGGGAAGTTAAAAATTTTATTACGTACTTTGTTTGATT
+t60 AACCAAAAAATGATACCTGTACGTTTTTCTCCAGGAGAAACAAAAAAATTAGAAAGGATTCTCAAAAAAGTAGACGACTTTTTCTGTGCCAATATTAAAGCTCAATATACTTGC
+t61 TTTTTAAAAAAAAAAATTATGATATAAAATCTTCAATTAATAAAAGATCTATCCAGTTCTTTAAAGACACTAATATAGATCATTATATAGCATATGAATATTATAAGGAGGACCGTACGGAATTTATATTAACTATTATGAATGAAAAAAATATTACTCATCAAGAAACTCAA
+t62 AGGGAACAGGTTAAATATATTGAAGACGTGGTTTGATAATCAGGTATTTCTTTAATTAAATATTCATGATATTGTTCGTTAGATACATAAATTAATTCGTCCTCCACATTTTGCTGTTCTGTTATAATTTGTGAAGAAGCTTGGTTTGTCTTATTTGGTAATTGCTCTT
+t63 AACATCAGAACATAGTAAAGATTTAAATAATAATGATTCAAAAAATGAATCTAGTGATATTATTTCAGTAAATAATAAATCAAATAAAGTACAAAATCATTTTGAATCATTATCAGATTTAGAATTACTTGAAAATTCCTCACAAGATAATTTAGACAAAGATACAA
+t64 CGAGAAGAAACACGTTTTATCTCATAATTCATATGAGAAAACTAAAAATAATGAAAATAATAAATTTTTCGATAAGGATAAAGAGTTAACGATGTCTAATGTAAAAAATGTGTCACAAACAAATTTCAAAAGTCTTTTAAGAAATCTTGGTGTTTCAGAGAATATATTCCTTAAAGAAAATAAATTAAATAAGGAAGGGAAAT
+t65 TTTCATCCAAGAGTAATTATGTTTTTCTTGTTGATATTTTGCTTTATACAAACGAGCAAGATACTTTTTATACGATTCATGCTCTTTAATTTTCTTTTCAAAAGTTTTGGTTATAATGTGTTCAAGTGATTGTAAAGTATTTTTCTTTAATTTTCTCCATATTAATCTACATGCGATTATAAGAATTCTATATTCTTTGATATTCCC
+t66 GAATTCTATCTATTTGTTTAATTGGTGTCCATGAATTTTTAGAGAAACACCACATATCAGCTAATAAGGAATTATTAACATCTAATCCTCCATGAATATATAAAAAATCATTAAAACTGAAAGAAGCATGCTTATATCTTGCACGTGGACAAATTTTATTTCCAATAAGTTCCCATTTCTTT
+t67 CTAGTGACTGTACATTTTTCATCTAATGTTCTATAGGATAAAGAATCTGAAGGACAATGCATATCATTACAAAAATAGCATGCACCTTTAAAATATAAATAAGAATGTCTTAACACAACAAAGGAATCAAAA
+t68 TTCTCATTCCTTTGAAAATATGAACTATTCAACTCATCAAGTTTTTCATATGTTATTTCATAACTGCCATCATCTGAATCCTCTTCATCACTACTACTTAAAGAATGCTCTTCTACAGTTATATCTTCATAATGATTATTTTTAGGAAAATATTCTTCAGATCTTTCTATAAATTCTGTTCCACTAC
+t69 AATATCGACAATTATAAAGAAAAAATAGAAAATTTTAATGAAAGATATTATGAAGATGATTTAAGTTTCTTAAACTTTCCAGGAACCATAACAAGTTATGATAAAAACCATCAAAGAGATAAAAGAAAAAACTGTTTTGAAGAATATCTAGACAATAATAATTATTTTATTGATAGTAATCTAAAGGAAGTTATAGAAAATAATATATAT
+t70 TTATTAAAAACAACAAATAAATTACCAAGGTCATGGAAAAAACTCTTGTTAAATCTATCCATTAGATTTCAAACAATACCTATAGGTGGTTCTATCGAAATCATATCAAAGGATGAGAAAAATATTTCTATGACACGATCCAGTGAATATAATGCAACAACATATGAGCATTACACATTTCCCAAATGGT
+t71 ATTGACTTCTCCGGGTTGGTTACATTATCATTACAACCAATATTATTAAGGTTAATACTATTTTTATCATTATTATTGTTGTTTTCATTTGTGTGGTTATATAATAACAATGATGTGTCGTCTATTGGATCATTTTGCACAAGGTCAATATCATTAGAATTATGTTTCATATTATTTGTATACATTTTTTTGTAATTATCATTTTTTCTTACTT
+t72 TATAATTTCACCTTTTGAATTACATATGTCTGTATTCAAAAATTTTATATCTCTACTCCATATATTTATCTTTACACCCAAAAACAAAGCAATGAAAAAAACAACCCTTTCATA
+t73 GGGTCGACTTTTGGTGGTTTAACATTTTCAGCTACGAGATTTTCGAATGATGGCAATCCTACTTTGATTAATTCCTTTAACATAGATTTTGCGTGTTTTTTTACTTCTGATTTGATATC
+t74 AATATCAAGATGGTAGTATTGTTTTAGATGTTAGTAGTACGAGAGATAAACTTTATGGAGAAGTTGAGTGGGAAGGATATAAATTTGAACTTGTGGATACAGGAGGTTTAGTTTTTGAACAAGAAAAGTTTTCAAAAGAAATAAAGGATCAAATTCTTATGGCTCTAAAAGAA
+t75 AATCAACTATAATTAAAAATAGTGGAATTATTGAAAACTTTGGAGATATTGATTATATCTTTACGGATAAAACAGGAACACTAACAGAAAATGTCATGGTGCTTAAAGTTATACATATAGGTTTTGATGTTATACATGCAGAAAATGAAAAAAATTCCATACAAGGTAAT
+t76 AGTATGAACACAAAACCGAAAGAGAGTTTAAAAAAAGATTCGATTTTAATGAAGGAAGAAATAACATAATAAATGTGTCAAATGTAAAGAAAACATGTAATATAGTTAAAAATGATTTAAAGGAATCTAACGAGATAAAAACTAATATAAACACAAGTTCTTATAATTTATA
+t77 TTTTAAACTTTGAATCTGTTCAATTAATAACACTTCATCATTGTCTTCGCCTTTTATAATATCTCCATGATTATGTGCTCCTCTAATTAAGGTATCACTAACCTGTTGTTCATCTGTCGCATGAGAACTAGTAGATATATCTGGTTTATTTTTTTTCTTTCTTTTTGTTATTTCTAATTTTTTT
+t78 AACTGATGTTAATGAAGGCCAAAATGGAAAACGTTTAACACAAGAAAAAACCCTAAAACAAATTCCTTCGACATCACCAAATAATTTAGAACAAAAATTACAACAAACACATATTTCTTCTTCCCAACAAAAACATTTAATAAAAACTACTCCTACTTCAGATTCAACTACAACTTCATCAAGCTCTTCTGTTCCTCTTACAAAACAATCCCCTCATTCT
+t79 TATAGAGTTATTATGTTCGAATTAATGACCAGATTATTTCGATTTTATACAAAACCAATAGACCTTATTATTACTATGAATACACACAGATATGACACACCTATATTGTTAAAACATTCAAACAGCTTACAACTTATCTTATCAAATCAACAAAAT
+t80 CTAAAAAAAGCAAACAAAAAGAAAAGAGAATGGAAGATTTAAGTATTGAGGAAAATTTGAAAGAGAAATTAATAAACCTAAATATTCAGAAACAGTATAGTGGTTTCCATATGAAAGAAATGGAGGAACAAAATATTCCTGAATTAAATATTCCACAACTTTCAGCTATTCATAATAGAGAAGATATGAA
+t81 CTGGTTTTTGTACTTCTTGTCCTTGTGTTGATATCTCTTGTTCATTTTTAGATTGAGTATCTGTTTCACTTTGTGCCTTTACCTTTGATAATACGTTTTTACCGAATAATCCTAAATTTTGGAATAA
+t82 CCCAATACAATAAATTCTACCATTTGACGTAACACCACAATTATTTCTTCTAGGTATATTTAAATTACTTGAAACATACCATACATCTCTTAAACGATCATACACCTCAGTTTCAAATAAAGCCTTATAATCATAGTTATTACCACCAAAAACGTATAAGAAATTATTCAATACAGCACTTCCAAAATAAGCTTTTTTGGTAGAC
+t83 TTATATTTTGGTTCAGACAAATGTACGTTACATGAAATATGTGCACTATCATCAACTAAAGAAATATCTAAACTATCTGTAAAAGTATGTTTAGAACTAACATTTGAAGAGAAGTTACATCCGTGTATGACTTTTTTTTCATATTTTGGTTTTAAAACTATTTTATAATTATTATTTTTAAA
+t84 ATCATTAAGTAAAAAATTTACGGTATCGACATTAACAGTGTAATAATTTCTTCCTAAATTTAAATGTTCTATATAATTCAAATTTAATACGGTATTTAACCTTTCTTCAAGTATTATCATTGCATTAATTTGAAACATAAGTAAAAAATTATTAGCACTTCTAAAAT
+t85 TAACATTTTTTTAACATCTTTACCTTTTTGACTTGGTTCTTTATCATAATTCTGTTGTTCTGCAGAATCAGCATTTACTTCAGTTTCTTCTTTATTTTGAAAAGTGTTTGATTCTACATGAGAATTGGAAGATGAACGTCTATGTTTTACTTCTGTATAACTAGTACGTTCTCCAGTATGATGAGCCTTATGGTTTACATCTTCAGTTTCTTC
+t86 TCTATGCTTTATCAAAACAAAGTAATCAAAATGTAATACATTATTCTTGTCGATCTATATGTGCTTTTACAAAAAACCCTAAGGGTTTAGAAGCGGTAAAGGATATCAAGGACTTTGCGAATATTATAAGTAAATCTGTTGGTGATTTGAGTAAAGAGAA
+t87 GCAACTTACTTTAGAAGCCATGAATTCGGCCGATGATCCATTGGAAGCATTTAAAAATACTTTATTAATATTTGATTTTAATTTATCTGAATTTGATAAGGATCCATATATAAATGGTGTGCATGATTTAGCATCTAATATAAAGGATTGTTTAAGAAAAGGAGGTCACAGTAAAATATATT
+t88 AAAAAAAATACATTTAAATCTATAATATTTGTAATAAATGATAAGAATATTAGTATTAATAGGGTACTACTATTTGTAAATACTTTTCTACATAATTTATCAATAGTAGGAAATATGATATTCTTTTTGTTTGGCTTTATTTTATCTGGGATTTTCCAATCATAAAGTTCGA
+t89 ACATAGAAATATGTGCGAAAATTGGGAAAAAAATAAATAACAGGAATTGTTATATAAATTGAATCAAGAATGGCACAAAGAAAATAATACTGGTGACTTTCACACTAGTGATATCACACACAATAGTGGTATTACATACAGTAGTGGTAACATACCTAGTGAAAGTAATAGTAGTTATATCCAA
+t90 CTTACAATGTTCTTCGCATTCGAAATTTTTTTCAGGATTACTTGAAAAGCCTTCTGGACAATTACAATATTCATATCCATGAGTATTCTTACAAACACCTTTTCCACAATTTAAAAAACATTTTTCTTCATTTAAA
+t91 ATAATAATAGTAATATAAAGAATTATTCAGCTGTAGATATATTCTCACCCAAAAAAACTGGAAAGGAATGTATTAAATGTCTCCCAGATAATTTTTGTGAATGCGAATGTAGTTGTAAAAATAAAACAGGTTTTTCAATGAAATATAGACATGCCAGTAAGGGATCTAAAGGATATAGTAAAAAAATGA
+t92 GAGTAATAGTGATTCATATAAGGTAAATTGTATTAATTTCTCTGAAGGATTTTGTTGCTGTCATCCAATAAATAATTTAGCACTATTATATGGAGAGTATCAACAAAATCAAGAATCAAAAAT
+t93 TCTCCTTCCTTTTCATTCTTTACTTTATTTCTATTAATACACAACTCTCCTTGAGTTAAGAGATTTACGATATTATCAATATTGTTTTCTTTCATATACTTCAACTTTTTACTATTCATTTTTAAAAGATAATTAACCAAGTTACTCATGTTTGTATTAGATGGTATGTTCCCAATTTTTTCGTCTTTTCTT
+t94 TTATTAAAACTTTTTTTTCTTTCTGTAAAGTTTGTACATTATGTTTTGATGAGTTTTGATTATCTTCATAAAACTTTATATATTTATAAAAATTATTTTGTATAAAATCATTTAATAAAGGTAACATAATCTTTTTAGCTTGATTCAATTCACTACATGAATGTATATT
+t95 CATACAATTAATAAAGCTCTACGATAAATTTCTTTTTTATTTGATTTAGAAAAAGGAGAAAACCATTGAAACTTTTTGGCTAGATATTTATGGTCTTTATCAAAAATATATTCTGAA
+t96 ATATATATAAAGTTAAACCTATAAATAATACACTACCTAATAAACTATTCTTATATTTAAAAATAAATATAATACATGTTATTAATCCTTCTATTGTTGCCGGAATAATATACATTAAAACAGAACTCATCAAATTATTAGCACTCTCGGTACCTCT
+t97 ATAAACACCAGTACCATTTTTTTCTGATAAATTAATATTTTTTTGTATAACATCATATTTATCCCTTTTCGTGGTAAGTGCAGTATCCTGTTTTATTATTATATTATCGAATTCATCATGGTGTATATTTCTTTCAT
+t98 AAATGAGGTATAATCATCCATTTCGTTGGGTCGATTTGATCTATTTTTAAGGTCCATATATTGAGATGAATCATTATGCATTTTATAATCATGAGGGATATTAGGTGCATGGTATTTAGGGTCTTTA
+t99 TATGGAAAAATGGAATATGAAGTATTAAGTGATGATAACATAGTGTATGAAAATATACAACATGATTTATTAAAAACAATAGAAGATGATGAAGAAATGTTAAAAGGAACTGAAAGGAAGGATAATATAGATATACTGAGGACTCCTGGAAGGGGAGAATATAATATGTGGTCTACTTCTGGACTAGGGTTCTATGAATT
+t100    ATCGTTTTGAATTGTTAGAATTTAAAATGACGGAGGATTGTTATACAAAAATGTGGTTTGATTTTATGAGTGATTTTGGAATAGCTACAATGAATGAAACCGAACATACTAGATCTTTTTATGGATT</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_refseq_of_inserts_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> moz2018_PMO_panel_ref_seqs.tsv <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_refseq_of_inserts_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> moz2018_PMO_panel_ref_seqs.tsv <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 
@@ -1144,106 +1186,111 @@ heomev1 t99 </code></pre>
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb16" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Getting panel info out of PMO using pmotools-python</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, echo=F}</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../common.R"</span>)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>Most of these basic panel info can be found underneath <span class="in">`extract_panel_info_from_pmo`</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, echo = F}</span></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> <span class="kw">|</span> <span class="fu">perl</span> <span class="at">-pe</span> <span class="st">'s/\e\[[0-9;]*m(?:\e\[K)?//g'</span></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>Getting files for examples </span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz</span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz</span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a><span class="fu"># Extract insert locations of panels from PMO </span></span>
-<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>This will extract the insert location of targets of the panel infos out of a PMO and write it out as a bed file </span>
-<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_insert_of_panels <span class="at">-h</span> </span>
-<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`extract_insert_of_panels`</span> script is below</span>
-<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/scripts/extract_info_from_pmo/extract_insert_of_panels.py</span></span>
-<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/scripts/extract_info_from_pmo/extract_insert_of_panels.py</span></span>
-<span id="cb16-57"><a href="#cb16-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-58"><a href="#cb16-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-61"><a href="#cb16-61" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb16-62"><a href="#cb16-62" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb16-63"><a href="#cb16-63" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_insert_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz</span>
-<span id="cb16-64"><a href="#cb16-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-65"><a href="#cb16-65" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-66"><a href="#cb16-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-69"><a href="#cb16-69" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb16-70"><a href="#cb16-70" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb16-71"><a href="#cb16-71" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_insert_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> moz2018_PMO_panel_insert_locs.bed <span class="at">--overwrite</span></span>
-<span id="cb16-72"><a href="#cb16-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-73"><a href="#cb16-73" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-74"><a href="#cb16-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-75"><a href="#cb16-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-76"><a href="#cb16-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-77"><a href="#cb16-77" aria-hidden="true" tabindex="-1"></a><span class="fu"># Extract ref sequences of insert locations of panels from PMO </span></span>
-<span id="cb16-78"><a href="#cb16-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-79"><a href="#cb16-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-80"><a href="#cb16-80" aria-hidden="true" tabindex="-1"></a>This will extract the reference sequence of the insert location of the targets within the panel info out of a PMO and write it out as a table. The reference sequence is an optional field and so if no reference sequence is loaded then just blanks will be extracted </span>
-<span id="cb16-81"><a href="#cb16-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-84"><a href="#cb16-84" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb16-85"><a href="#cb16-85" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_refseq_of_inserts_of_panels <span class="at">-h</span> </span>
-<span id="cb16-86"><a href="#cb16-86" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-87"><a href="#cb16-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-88"><a href="#cb16-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-89"><a href="#cb16-89" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`extract_refseq_of_inserts_of_panels`</span> script is below</span>
-<span id="cb16-90"><a href="#cb16-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-93"><a href="#cb16-93" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb16-94"><a href="#cb16-94" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb16-95"><a href="#cb16-95" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb16-96"><a href="#cb16-96" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb16-97"><a href="#cb16-97" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb16-98"><a href="#cb16-98" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/scripts/extract_info_from_pmo/extract_refseq_of_inserts_of_panels.py</span></span>
-<span id="cb16-99"><a href="#cb16-99" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/scripts/extract_info_from_pmo/extract_refseq_of_inserts_of_panels.py</span></span>
-<span id="cb16-100"><a href="#cb16-100" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-101"><a href="#cb16-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-104"><a href="#cb16-104" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb16-105"><a href="#cb16-105" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb16-106"><a href="#cb16-106" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_refseq_of_inserts_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz</span>
-<span id="cb16-107"><a href="#cb16-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-108"><a href="#cb16-108" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-109"><a href="#cb16-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-112"><a href="#cb16-112" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb16-113"><a href="#cb16-113" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb16-114"><a href="#cb16-114" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> extract_refseq_of_inserts_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> moz2018_PMO_panel_ref_seqs.tsv <span class="at">--overwrite</span></span>
-<span id="cb16-115"><a href="#cb16-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-116"><a href="#cb16-116" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb17" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Getting panel info out of PMO using pmotools-python</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, echo=F}</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../common.R"</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>Most of these basic panel info can be found underneath <span class="in">`extract_panel_info_from_pmo`</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, echo = F}</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> <span class="kw">|</span> <span class="fu">perl</span> <span class="at">-pe</span> <span class="st">'s/\e\[[0-9;]*m(?:\e\[K)?//g'</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>Getting files for examples </span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz</span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a><span class="fu"># Extract insert locations of panels from PMO </span></span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>This will extract the insert location of targets of the panel infos out of a PMO and write it out as a bed file </span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_insert_of_panels <span class="at">-h</span> </span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`extract_insert_of_panels`</span> script is below</span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/src/pmotools/scripts/extract_info_from_pmo/extract_insert_of_panels.py</span></span>
+<span id="cb17-54"><a href="#cb17-54" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/src/pmotools/scripts/extract_info_from_pmo/extract_insert_of_panels.py</span></span>
+<span id="cb17-55"><a href="#cb17-55" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-56"><a href="#cb17-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb17-60"><a href="#cb17-60" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb17-61"><a href="#cb17-61" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_insert_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz</span>
+<span id="cb17-62"><a href="#cb17-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-63"><a href="#cb17-63" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-64"><a href="#cb17-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-67"><a href="#cb17-67" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb17-68"><a href="#cb17-68" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb17-69"><a href="#cb17-69" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_insert_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> moz2018_PMO_panel_insert_locs.bed <span class="at">--overwrite</span></span>
+<span id="cb17-70"><a href="#cb17-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-71"><a href="#cb17-71" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-72"><a href="#cb17-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-73"><a href="#cb17-73" aria-hidden="true" tabindex="-1"></a>Can add on the reference sequence if it's loaded in PMO, if it's not loaded will be blank column </span>
+<span id="cb17-76"><a href="#cb17-76" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb17-77"><a href="#cb17-77" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb17-78"><a href="#cb17-78" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_insert_of_panels <span class="at">--add_ref_seqs</span> <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> moz2018_PMO_panel_insert_locs.bed <span class="at">--overwrite</span></span>
+<span id="cb17-79"><a href="#cb17-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-80"><a href="#cb17-80" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-81"><a href="#cb17-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-82"><a href="#cb17-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-83"><a href="#cb17-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-84"><a href="#cb17-84" aria-hidden="true" tabindex="-1"></a><span class="fu"># Extract ref sequences of insert locations of panels from PMO </span></span>
+<span id="cb17-85"><a href="#cb17-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-86"><a href="#cb17-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-87"><a href="#cb17-87" aria-hidden="true" tabindex="-1"></a>This will extract the reference sequence of the insert location of the targets within the panel info out of a PMO and write it out as a table. The reference sequence is an optional field and so if no reference sequence is loaded then just blanks will be extracted </span>
+<span id="cb17-88"><a href="#cb17-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-91"><a href="#cb17-91" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb17-92"><a href="#cb17-92" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_refseq_of_inserts_of_panels <span class="at">-h</span> </span>
+<span id="cb17-93"><a href="#cb17-93" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-94"><a href="#cb17-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-95"><a href="#cb17-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-96"><a href="#cb17-96" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`extract_refseq_of_inserts_of_panels`</span> script is below</span>
+<span id="cb17-97"><a href="#cb17-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-100"><a href="#cb17-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-101"><a href="#cb17-101" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb17-102"><a href="#cb17-102" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb17-103"><a href="#cb17-103" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb17-104"><a href="#cb17-104" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb17-105"><a href="#cb17-105" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/src/pmotools/scripts/extract_info_from_pmo/extract_refseq_of_inserts_of_panels.py</span></span>
+<span id="cb17-106"><a href="#cb17-106" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/src/pmotools/scripts/extract_info_from_pmo/extract_refseq_of_inserts_of_panels.py</span></span>
+<span id="cb17-107"><a href="#cb17-107" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-108"><a href="#cb17-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-111"><a href="#cb17-111" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb17-112"><a href="#cb17-112" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb17-113"><a href="#cb17-113" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_refseq_of_inserts_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz</span>
+<span id="cb17-114"><a href="#cb17-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-115"><a href="#cb17-115" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-116"><a href="#cb17-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-119"><a href="#cb17-119" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb17-120"><a href="#cb17-120" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb17-121"><a href="#cb17-121" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_refseq_of_inserts_of_panels <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> moz2018_PMO_panel_ref_seqs.tsv <span class="at">--overwrite</span></span>
+<span id="cb17-122"><a href="#cb17-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-123"><a href="#cb17-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

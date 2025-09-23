@@ -159,10 +159,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python-usages">
 <li class="dropdown-header"><span class="menuTitle">Command line interface</span></li>
         <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header"><span class="menuTitle">pmotools-runner.py</span></li>
+        <li class="dropdown-header"><span class="menuTitle">pmotools-python</span></li>
         <li>
-    <a class="dropdown-item" href="../pmotools-python-usages/pmotools-runner.html">
- <span class="dropdown-text">Command line interface to pmotools-python with pmotools-runner.py</span></a>
+    <a class="dropdown-item" href="../pmotools-python-usages/pmotools-python.html">
+ <span class="dropdown-text">Command line interface to pmotools-python with pmotools-python</span></a>
   </li>  
         <li class="dropdown-header"><span class="menuTitle">Extracting out of PMO</span></li>
         <li>
@@ -187,6 +187,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/handling_multiple_pmos.html">
  <span class="dropdown-text">Handling multiple PMOs pmotools-python</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Validating PMO files</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages/validating_pmos.html">
+ <span class="dropdown-text">Validating PMOs pmotools-python</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header"><span class="menuTitle">Python interface</span></li>
@@ -258,9 +263,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
 <li><a href="#list_specimen_meta_fields" id="toc-list_specimen_meta_fields" class="nav-link" data-scroll-target="#list_specimen_meta_fields">list_specimen_meta_fields</a></li>
   <li><a href="#count_specimen_meta" id="toc-count_specimen_meta" class="nav-link" data-scroll-target="#count_specimen_meta">count_specimen_meta</a></li>
-  <li><a href="#list_tar_amp_bioinformatics_info_ids" id="toc-list_tar_amp_bioinformatics_info_ids" class="nav-link" data-scroll-target="#list_tar_amp_bioinformatics_info_ids">list_tar_amp_bioinformatics_info_ids</a></li>
-  <li><a href="#count_targets_per_sample" id="toc-count_targets_per_sample" class="nav-link" data-scroll-target="#count_targets_per_sample">count_targets_per_sample</a></li>
-  <li><a href="#count_samples_per_target" id="toc-count_samples_per_target" class="nav-link" data-scroll-target="#count_samples_per_target">count_samples_per_target</a></li>
+  <li><a href="#list_library_sample_names_per_specimen_name" id="toc-list_library_sample_names_per_specimen_name" class="nav-link" data-scroll-target="#list_library_sample_names_per_specimen_name">list_library_sample_names_per_specimen_name</a></li>
+  <li><a href="#list_bioinformatics_run_names" id="toc-list_bioinformatics_run_names" class="nav-link" data-scroll-target="#list_bioinformatics_run_names">list_bioinformatics_run_names</a></li>
+  <li><a href="#count_targets_per_library_sample" id="toc-count_targets_per_library_sample" class="nav-link" data-scroll-target="#count_targets_per_library_sample">count_targets_per_library_sample</a></li>
+  <li><a href="#count_library_samples_per_target" id="toc-count_library_samples_per_target" class="nav-link" data-scroll-target="#count_library_samples_per_target">count_library_samples_per_target</a></li>
   </ul>
 </li>
   </ul></nav>
@@ -285,42 +291,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To get simple counts of number of targets with sample counts, samples with target counts, the counts of meta fields</p>
 <p>Most of these basic info extractor can be found underneath <code>extract_basic_info_from_pmo</code></p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
-<pre><code>pmotools v1.0.0 - A suite of tools for interacting with Portable Microhaplotype Object (pmo) file format
+<pre><code>pmotools-python v0.1.0 - A suite of tools for interacting with Portable Microhaplotype Object (PMO) file format
 
 Available functions organized by groups are
 convertors_to_json
     text_meta_to_json_meta - Convert text file meta to JSON Meta
-    excel_meta_to_json_meta - Convert excel file meta to JSON Meta
-    microhaplotype_table_to_json_file - Convert microhaplotype table to JSON Meta
-    terra_amp_output_to_json - Convert terra output table to JSON seq table
+    excel_meta_to_json_meta - Convert Excel file meta to JSON Meta
+    microhaplotype_table_to_json_file - Convert microhaplotype table to a JSON file
+    terra_amp_output_to_json - Convert Terra output to JSON sequence table
 
 extractors_from_pmo
-    extract_pmo_with_selected_meta - Extract from PMO samples and associated haplotypes with selected meta
-    extract_pmo_with_select_specimen_ids - Extract from PMO specific samples from the specimens table
-    extract_pmo_with_select_experiment_sample_ids - Extract from PMO specific experiment sample ids from the experiment_info table
-    extract_pmo_with_select_targets - Extract from PMO specific targets
-    extract_pmo_with_read_filter - Extract from PMO with a read filter
-    extract_allele_table - Extract allele tables which can be as used as input to such tools as dcifer or moire
+    extract_pmo_with_selected_meta - Extract samples + haplotypes using selected meta
+    extract_pmo_with_select_specimen_names - Extract specific samples from the specimens table
+    extract_pmo_with_select_library_sample_names - Extract experiment sample names from experiment_info table
+    extract_pmo_with_select_targets - Extract specific targets
+    extract_pmo_with_read_filter - Extract with a read filter
+    extract_allele_table - Extract allele tables for tools like dcifer or moire
+    extract_insert_of_panels - Extract inserts of panels from a PMO
+    extract_refseq_of_inserts_of_panels - Extract ref_seq of panel inserts from a PMO
 
 working_with_multiple_pmos
-    combine_pmos - Combine multiple pmos of the same panel into a single pmo
+    combine_pmos - Combine multiple PMOs of the same panel
 
 extract_basic_info_from_pmo
-    list_experiment_sample_ids_per_specimen_id - Each specimen_id can have multiple experiment_sample_ids, list out all in a PMO
-    list_specimen_meta_fields - List out the specimen meta fields in the specimen_info section
-    list_tar_amp_bioinformatics_info_ids - List out all the tar_amp_bioinformatics_info_ids in a PMO file
-    count_specimen_meta - Count the values of specific specimen meta fields in the specimen_info section
-    count_targets_per_sample - Count the number of targets per sample
-    count_samples_per_target - Count the number of samples per target
+    list_library_sample_names_per_specimen_name - List experiment_sample_ids per specimen_id
+    list_specimen_meta_fields - List specimen meta fields in the specimen_info section
+    list_bioinformatics_run_names - List all tar_amp_bioinformatics_info_ids in a PMO
+    count_specimen_meta - Count values of selected specimen meta fields
+    count_targets_per_library_sample - Count number of targets per sample
+    count_library_samples_per_target - Count number of samples per target
 
-extract_panel_info_from_pmo
-    extract_insert_of_panels - Extract the insert of panels from a PMO
-    extract_refseq_of_inserts_of_panels - Extract the ref_seq of panels from a PMO</code></pre>
+validation
+    validate_pmo - Validate a PMO file against a JSON Schema</code></pre>
 </div>
 </div>
 <p>Getting files for examples</p>
@@ -334,12 +341,11 @@ extract_panel_info_from_pmo
 <section id="list_specimen_meta_fields" class="level2"><h2 class="anchored" data-anchor-id="list_specimen_meta_fields">list_specimen_meta_fields</h2>
 <p>This will list all the meta fields within the <code>specimen_infos</code> section of a PMO file. Since not all meta fields are always present in all specimens, this will list the count of samples each field appears in and the number of total specimens</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> list_specimen_meta_fields <span class="at">-h</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_specimen_meta_fields <span class="at">-h</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>usage: pmotools-runner.py list_specimen_meta_fields [-h] --file FILE
-                                                    [--output OUTPUT]
-                                                    [--delim DELIM]
-                                                    [--overwrite]
+<pre><code>usage: pmotools-python list_specimen_meta_fields [-h] --file FILE
+                                                 [--output OUTPUT]
+                                                 [--delim DELIM] [--overwrite]
 
 options:
   -h, --help       show this help message and exit
@@ -354,87 +360,103 @@ options:
 <div class="cell" data-layout-align="center">
 <div class="code-with-filename">
 <details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
-<pre><strong>pmotools-python/scripts/extract_info_from_pmo/list_specimen_meta_fields.py</strong></pre>
+<pre><strong>pmotools-python/src/pmotools/scripts/extract_info_from_pmo/list_specimen_meta_fields.py</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">#!/usr/bin/env python3</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="im">import</span> os, argparse, json</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="im">import</span> argparse</span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="im">import</span> sys</span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
 <span id="cb6-5"><a href="#cb6-5"></a></span>
-<span id="cb6-6"><a href="#cb6-6"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb6-7"><a href="#cb6-7"></a></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="im">from</span> pmotools.pmo_utils.PMOExtractor <span class="im">import</span> PMOExtractor</span>
-<span id="cb6-9"><a href="#cb6-9"></a><span class="im">from</span> pmotools.pmo_utils.PMOReader <span class="im">import</span> PMOReader</span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
-<span id="cb6-11"><a href="#cb6-11"></a></span>
-<span id="cb6-12"><a href="#cb6-12"></a></span>
-<span id="cb6-13"><a href="#cb6-13"></a><span class="kw">def</span> parse_args_list_specimen_meta_fields():</span>
-<span id="cb6-14"><a href="#cb6-14"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb6-15"><a href="#cb6-15"></a>    parser.add_argument(<span class="st">'--file'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'PMO file'</span>)</span>
-<span id="cb6-16"><a href="#cb6-16"></a>    parser.add_argument(<span class="st">'--output'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'output file'</span>)</span>
-<span id="cb6-17"><a href="#cb6-17"></a>    parser.add_argument(<span class="st">'--delim'</span>, default<span class="op">=</span><span class="st">"tab"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'the delimiter of the output text file, examples input tab,comma but can also be the actual delimiter'</span>)</span>
-<span id="cb6-18"><a href="#cb6-18"></a>    parser.add_argument(<span class="st">'--overwrite'</span>, action <span class="op">=</span> <span class="st">'store_true'</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'If output file exists, overwrite it'</span>)</span>
-<span id="cb6-19"><a href="#cb6-19"></a></span>
-<span id="cb6-20"><a href="#cb6-20"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb6-21"><a href="#cb6-21"></a></span>
-<span id="cb6-22"><a href="#cb6-22"></a><span class="kw">def</span> list_specimen_meta_fields():</span>
-<span id="cb6-23"><a href="#cb6-23"></a>    args <span class="op">=</span> parse_args_list_specimen_meta_fields()</span>
-<span id="cb6-24"><a href="#cb6-24"></a></span>
-<span id="cb6-25"><a href="#cb6-25"></a>    <span class="co"># check files</span></span>
-<span id="cb6-26"><a href="#cb6-26"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(args.delim, gzip<span class="op">=</span>args.output.endswith(<span class="st">".gz"</span>))</span>
-<span id="cb6-27"><a href="#cb6-27"></a>    args.output <span class="op">=</span> args.output <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
-<span id="cb6-28"><a href="#cb6-28"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="im">from</span> pmotools.pmo_engine.pmo_processor <span class="im">import</span> PMOProcessor</span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="im">from</span> pmotools.pmo_engine.pmo_reader <span class="im">import</span> PMOReader</span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
+<span id="cb6-9"><a href="#cb6-9"></a></span>
+<span id="cb6-10"><a href="#cb6-10"></a></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="kw">def</span> parse_args_list_specimen_meta_fields():</span>
+<span id="cb6-12"><a href="#cb6-12"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
+<span id="cb6-13"><a href="#cb6-13"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
+<span id="cb6-14"><a href="#cb6-14"></a>    parser.add_argument(</span>
+<span id="cb6-15"><a href="#cb6-15"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a>    )</span>
+<span id="cb6-17"><a href="#cb6-17"></a>    parser.add_argument(</span>
+<span id="cb6-18"><a href="#cb6-18"></a>        <span class="st">"--delim"</span>,</span>
+<span id="cb6-19"><a href="#cb6-19"></a>        default<span class="op">=</span><span class="st">"tab"</span>,</span>
+<span id="cb6-20"><a href="#cb6-20"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb6-21"><a href="#cb6-21"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb6-22"><a href="#cb6-22"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the delimiter of the output text file, examples input tab,comma but can also be the actual delimiter"</span>,</span>
+<span id="cb6-23"><a href="#cb6-23"></a>    )</span>
+<span id="cb6-24"><a href="#cb6-24"></a>    parser.add_argument(</span>
+<span id="cb6-25"><a href="#cb6-25"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb6-26"><a href="#cb6-26"></a>    )</span>
+<span id="cb6-27"><a href="#cb6-27"></a></span>
+<span id="cb6-28"><a href="#cb6-28"></a>    <span class="cf">return</span> parser.parse_args()</span>
 <span id="cb6-29"><a href="#cb6-29"></a></span>
-<span id="cb6-30"><a href="#cb6-30"></a>    <span class="co"># read in PMO</span></span>
-<span id="cb6-31"><a href="#cb6-31"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
-<span id="cb6-32"><a href="#cb6-32"></a></span>
-<span id="cb6-33"><a href="#cb6-33"></a>    <span class="co"># count fields</span></span>
-<span id="cb6-34"><a href="#cb6-34"></a>    counts_df <span class="op">=</span> PMOExtractor.count_specimen_meta_fields(pmo)</span>
-<span id="cb6-35"><a href="#cb6-35"></a></span>
-<span id="cb6-36"><a href="#cb6-36"></a>    <span class="co"># output</span></span>
-<span id="cb6-37"><a href="#cb6-37"></a>    counts_df.to_csv(sys.stdout <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> args.output, sep <span class="op">=</span> output_delim, index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb6-38"><a href="#cb6-38"></a></span>
-<span id="cb6-39"><a href="#cb6-39"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb6-40"><a href="#cb6-40"></a>    list_specimen_meta_fields()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-30"><a href="#cb6-30"></a></span>
+<span id="cb6-31"><a href="#cb6-31"></a><span class="kw">def</span> list_specimen_meta_fields():</span>
+<span id="cb6-32"><a href="#cb6-32"></a>    args <span class="op">=</span> parse_args_list_specimen_meta_fields()</span>
+<span id="cb6-33"><a href="#cb6-33"></a></span>
+<span id="cb6-34"><a href="#cb6-34"></a>    <span class="co"># check files</span></span>
+<span id="cb6-35"><a href="#cb6-35"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(</span>
+<span id="cb6-36"><a href="#cb6-36"></a>        args.delim, gzip<span class="op">=</span>args.output.endswith(<span class="st">".gz"</span>)</span>
+<span id="cb6-37"><a href="#cb6-37"></a>    )</span>
+<span id="cb6-38"><a href="#cb6-38"></a>    args.output <span class="op">=</span> (</span>
+<span id="cb6-39"><a href="#cb6-39"></a>        args.output</span>
+<span id="cb6-40"><a href="#cb6-40"></a>        <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output</span>
+<span id="cb6-41"><a href="#cb6-41"></a>        <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
+<span id="cb6-42"><a href="#cb6-42"></a>    )</span>
+<span id="cb6-43"><a href="#cb6-43"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb6-44"><a href="#cb6-44"></a></span>
+<span id="cb6-45"><a href="#cb6-45"></a>    <span class="co"># read in PMO</span></span>
+<span id="cb6-46"><a href="#cb6-46"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb6-47"><a href="#cb6-47"></a></span>
+<span id="cb6-48"><a href="#cb6-48"></a>    <span class="co"># count fields</span></span>
+<span id="cb6-49"><a href="#cb6-49"></a>    counts_df <span class="op">=</span> PMOProcessor.count_specimen_per_meta_fields(pmo)</span>
+<span id="cb6-50"><a href="#cb6-50"></a></span>
+<span id="cb6-51"><a href="#cb6-51"></a>    <span class="co"># output</span></span>
+<span id="cb6-52"><a href="#cb6-52"></a>    counts_df.to_csv(</span>
+<span id="cb6-53"><a href="#cb6-53"></a>        sys.stdout <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> args.output,</span>
+<span id="cb6-54"><a href="#cb6-54"></a>        sep<span class="op">=</span>output_delim,</span>
+<span id="cb6-55"><a href="#cb6-55"></a>        index<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb6-56"><a href="#cb6-56"></a>    )</span>
+<span id="cb6-57"><a href="#cb6-57"></a></span>
+<span id="cb6-58"><a href="#cb6-58"></a></span>
+<span id="cb6-59"><a href="#cb6-59"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb6-60"><a href="#cb6-60"></a>    list_specimen_meta_fields()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> list_specimen_meta_fields <span class="at">--file</span> ../../format/moz2018_PMO.json.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_specimen_meta_fields <span class="at">--file</span> ../../format/moz2018_PMO.json.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>field   presentInSpecimensCount totalSpecimenCount
+<pre><code>field   present_in_specimens_count  total_specimen_count
 collection_country  124 124
 collection_date 124 124
-collector   124 124
 geo_admin3  124 124
 host_taxon_id   124 124
 lat_lon 124 124
-parasite_density    124 124
-plate_col   81  124
-plate_name  81  124
-plate_row   81  124
-project_name    124 124
-samp_collect_device 124 124
-samp_store_loc  124 124
-samp_taxon_id   124 124
-specimen_id 124 124</code></pre>
+parasite_density_info   123 124
+project_id  124 124
+specimen_collect_device 124 124
+specimen_name   124 124
+specimen_store_loc  124 124
+specimen_taxon_id   124 124
+storage_plate_info  81  124</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> list_specimen_meta_fields <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> spec_fields_moz2018_PMO.tsv <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_specimen_meta_fields <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> spec_fields_moz2018_PMO.tsv <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section><section id="count_specimen_meta" class="level2"><h2 class="anchored" data-anchor-id="count_specimen_meta">count_specimen_meta</h2>
 <p>This will list all the meta values (and the combinations) for the meta fields within the <code>specimen_infos</code> section of a PMO file.</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_specimen_meta <span class="at">-h</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_specimen_meta <span class="at">-h</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>usage: pmotools-runner.py count_specimen_meta [-h] --file FILE
-                                              [--output OUTPUT]
-                                              [--delim DELIM] [--overwrite]
-                                              --meta_fields META_FIELDS
+<pre><code>usage: pmotools-python count_specimen_meta [-h] --file FILE [--output OUTPUT]
+                                           [--delim DELIM] [--overwrite]
+                                           --meta_fields META_FIELDS
 
 options:
   -h, --help            show this help message and exit
@@ -453,76 +475,99 @@ options:
 <div class="cell" data-layout-align="center">
 <div class="code-with-filename">
 <details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
-<pre><strong>pmotools-python/scripts/extract_info_from_pmo/count_specimen_meta.py</strong></pre>
+<pre><strong>pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_specimen_meta.py</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">#!/usr/bin/env python3</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="im">import</span> os, argparse, json</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="im">import</span> argparse</span>
 <span id="cb12-3"><a href="#cb12-3"></a><span class="im">import</span> sys</span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
+<span id="cb12-4"><a href="#cb12-4"></a></span>
 <span id="cb12-5"><a href="#cb12-5"></a></span>
-<span id="cb12-6"><a href="#cb12-6"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb12-7"><a href="#cb12-7"></a></span>
-<span id="cb12-8"><a href="#cb12-8"></a><span class="im">from</span> pmotools.pmo_utils.PMOExtractor <span class="im">import</span> PMOExtractor</span>
-<span id="cb12-9"><a href="#cb12-9"></a><span class="im">from</span> pmotools.pmo_utils.PMOReader <span class="im">import</span> PMOReader</span>
-<span id="cb12-10"><a href="#cb12-10"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
-<span id="cb12-11"><a href="#cb12-11"></a></span>
-<span id="cb12-12"><a href="#cb12-12"></a></span>
-<span id="cb12-13"><a href="#cb12-13"></a><span class="kw">def</span> parse_args_count_specimen_meta():</span>
-<span id="cb12-14"><a href="#cb12-14"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb12-15"><a href="#cb12-15"></a>    parser.add_argument(<span class="st">'--file'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'PMO file'</span>)</span>
-<span id="cb12-16"><a href="#cb12-16"></a>    parser.add_argument(<span class="st">'--output'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'output file'</span>)</span>
-<span id="cb12-17"><a href="#cb12-17"></a>    parser.add_argument(<span class="st">'--delim'</span>, default<span class="op">=</span><span class="st">"tab"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'the delimiter of the output text file, examples input tab,comma but can also be the actual delimiter'</span>)</span>
-<span id="cb12-18"><a href="#cb12-18"></a>    parser.add_argument(<span class="st">'--overwrite'</span>, action<span class="op">=</span><span class="st">'store_true'</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'If output file exists, overwrite it'</span>)</span>
-<span id="cb12-19"><a href="#cb12-19"></a>    parser.add_argument(<span class="st">'--meta_fields'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'the fields to count the subfields of, can supply multiple separated by commas, e.g. --meta_fields collection_country,collection_date'</span>)</span>
-<span id="cb12-20"><a href="#cb12-20"></a></span>
-<span id="cb12-21"><a href="#cb12-21"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb12-22"><a href="#cb12-22"></a></span>
-<span id="cb12-23"><a href="#cb12-23"></a></span>
-<span id="cb12-24"><a href="#cb12-24"></a><span class="kw">def</span> count_specimen_meta():</span>
-<span id="cb12-25"><a href="#cb12-25"></a>    args <span class="op">=</span> parse_args_count_specimen_meta()</span>
-<span id="cb12-26"><a href="#cb12-26"></a></span>
-<span id="cb12-27"><a href="#cb12-27"></a>    <span class="co"># check files</span></span>
-<span id="cb12-28"><a href="#cb12-28"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(args.delim, gzip<span class="op">=</span>args.output.endswith(<span class="st">".gz"</span>))</span>
-<span id="cb12-29"><a href="#cb12-29"></a>    args.output <span class="op">=</span> args.output <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
-<span id="cb12-30"><a href="#cb12-30"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
-<span id="cb12-31"><a href="#cb12-31"></a></span>
-<span id="cb12-32"><a href="#cb12-32"></a>    <span class="co"># process the meta_fields argument</span></span>
-<span id="cb12-33"><a href="#cb12-33"></a>    meta_fields_toks <span class="op">=</span> args.meta_fields.split(<span class="st">','</span>)</span>
-<span id="cb12-34"><a href="#cb12-34"></a></span>
-<span id="cb12-35"><a href="#cb12-35"></a>    <span class="co"># read in PMO</span></span>
-<span id="cb12-36"><a href="#cb12-36"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
-<span id="cb12-37"><a href="#cb12-37"></a></span>
-<span id="cb12-38"><a href="#cb12-38"></a>    <span class="co"># count sub-fields</span></span>
-<span id="cb12-39"><a href="#cb12-39"></a>    counts_df <span class="op">=</span> PMOExtractor.count_specimen_meta_subfields(pmo, meta_fields_toks)</span>
-<span id="cb12-40"><a href="#cb12-40"></a></span>
-<span id="cb12-41"><a href="#cb12-41"></a>    <span class="co">#write out</span></span>
-<span id="cb12-42"><a href="#cb12-42"></a>    counts_df.to_csv(sys.stdout <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> args.output, sep <span class="op">=</span> output_delim, index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb12-43"><a href="#cb12-43"></a></span>
-<span id="cb12-44"><a href="#cb12-44"></a></span>
-<span id="cb12-45"><a href="#cb12-45"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb12-46"><a href="#cb12-46"></a>    count_specimen_meta()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="im">from</span> pmotools.pmo_engine.pmo_processor <span class="im">import</span> PMOProcessor</span>
+<span id="cb12-7"><a href="#cb12-7"></a><span class="im">from</span> pmotools.pmo_engine.pmo_reader <span class="im">import</span> PMOReader</span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
+<span id="cb12-9"><a href="#cb12-9"></a></span>
+<span id="cb12-10"><a href="#cb12-10"></a></span>
+<span id="cb12-11"><a href="#cb12-11"></a><span class="kw">def</span> parse_args_count_specimen_meta():</span>
+<span id="cb12-12"><a href="#cb12-12"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
+<span id="cb12-13"><a href="#cb12-13"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
+<span id="cb12-14"><a href="#cb12-14"></a>    parser.add_argument(</span>
+<span id="cb12-15"><a href="#cb12-15"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
+<span id="cb12-16"><a href="#cb12-16"></a>    )</span>
+<span id="cb12-17"><a href="#cb12-17"></a>    parser.add_argument(</span>
+<span id="cb12-18"><a href="#cb12-18"></a>        <span class="st">"--delim"</span>,</span>
+<span id="cb12-19"><a href="#cb12-19"></a>        default<span class="op">=</span><span class="st">"tab"</span>,</span>
+<span id="cb12-20"><a href="#cb12-20"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb12-21"><a href="#cb12-21"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb12-22"><a href="#cb12-22"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the delimiter of the output text file, examples input tab,comma but can also be the actual delimiter"</span>,</span>
+<span id="cb12-23"><a href="#cb12-23"></a>    )</span>
+<span id="cb12-24"><a href="#cb12-24"></a>    parser.add_argument(</span>
+<span id="cb12-25"><a href="#cb12-25"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb12-26"><a href="#cb12-26"></a>    )</span>
+<span id="cb12-27"><a href="#cb12-27"></a>    parser.add_argument(</span>
+<span id="cb12-28"><a href="#cb12-28"></a>        <span class="st">"--meta_fields"</span>,</span>
+<span id="cb12-29"><a href="#cb12-29"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb12-30"><a href="#cb12-30"></a>        required<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb12-31"><a href="#cb12-31"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the fields to count the subfields of, can supply multiple separated by commas, e.g. --meta_fields collection_country,collection_date"</span>,</span>
+<span id="cb12-32"><a href="#cb12-32"></a>    )</span>
+<span id="cb12-33"><a href="#cb12-33"></a></span>
+<span id="cb12-34"><a href="#cb12-34"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb12-35"><a href="#cb12-35"></a></span>
+<span id="cb12-36"><a href="#cb12-36"></a></span>
+<span id="cb12-37"><a href="#cb12-37"></a><span class="kw">def</span> count_specimen_meta():</span>
+<span id="cb12-38"><a href="#cb12-38"></a>    args <span class="op">=</span> parse_args_count_specimen_meta()</span>
+<span id="cb12-39"><a href="#cb12-39"></a></span>
+<span id="cb12-40"><a href="#cb12-40"></a>    <span class="co"># check files</span></span>
+<span id="cb12-41"><a href="#cb12-41"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(</span>
+<span id="cb12-42"><a href="#cb12-42"></a>        args.delim, gzip<span class="op">=</span>args.output.endswith(<span class="st">".gz"</span>)</span>
+<span id="cb12-43"><a href="#cb12-43"></a>    )</span>
+<span id="cb12-44"><a href="#cb12-44"></a>    args.output <span class="op">=</span> (</span>
+<span id="cb12-45"><a href="#cb12-45"></a>        args.output</span>
+<span id="cb12-46"><a href="#cb12-46"></a>        <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output</span>
+<span id="cb12-47"><a href="#cb12-47"></a>        <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
+<span id="cb12-48"><a href="#cb12-48"></a>    )</span>
+<span id="cb12-49"><a href="#cb12-49"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb12-50"><a href="#cb12-50"></a></span>
+<span id="cb12-51"><a href="#cb12-51"></a>    <span class="co"># process the meta_fields argument</span></span>
+<span id="cb12-52"><a href="#cb12-52"></a>    meta_fields_toks <span class="op">=</span> args.meta_fields.split(<span class="st">","</span>)</span>
+<span id="cb12-53"><a href="#cb12-53"></a></span>
+<span id="cb12-54"><a href="#cb12-54"></a>    <span class="co"># read in PMO</span></span>
+<span id="cb12-55"><a href="#cb12-55"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb12-56"><a href="#cb12-56"></a></span>
+<span id="cb12-57"><a href="#cb12-57"></a>    <span class="co"># count sub-fields</span></span>
+<span id="cb12-58"><a href="#cb12-58"></a>    counts_df <span class="op">=</span> PMOProcessor.count_specimen_by_field_value(pmo, meta_fields_toks)</span>
+<span id="cb12-59"><a href="#cb12-59"></a></span>
+<span id="cb12-60"><a href="#cb12-60"></a>    <span class="co"># write out</span></span>
+<span id="cb12-61"><a href="#cb12-61"></a>    counts_df.to_csv(</span>
+<span id="cb12-62"><a href="#cb12-62"></a>        sys.stdout <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> args.output,</span>
+<span id="cb12-63"><a href="#cb12-63"></a>        sep<span class="op">=</span>output_delim,</span>
+<span id="cb12-64"><a href="#cb12-64"></a>        index<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb12-65"><a href="#cb12-65"></a>    )</span>
+<span id="cb12-66"><a href="#cb12-66"></a></span>
+<span id="cb12-67"><a href="#cb12-67"></a></span>
+<span id="cb12-68"><a href="#cb12-68"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb12-69"><a href="#cb12-69"></a>    count_specimen_meta()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_specimen_meta <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--meta_fields</span> collection_country</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_specimen_meta <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--meta_fields</span> collection_country</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>collection_country  specimensCount  specimensFreq   totalSpecimenCount
+<pre><code>collection_country  specimens_count specimens_freq  total_specimen_count
 Mozambique  81  0.6532258064516129  124
 NA  43  0.3467741935483871  124</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_specimen_meta <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--meta_fields</span> collection_country <span class="at">--overwrite</span> <span class="at">--output</span> collection_country_count_moz2018_PMO.tsv.gz </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_specimen_meta <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--meta_fields</span> collection_country <span class="at">--overwrite</span> <span class="at">--output</span> collection_country_count_moz2018_PMO.tsv.gz </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_specimen_meta <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--meta_fields</span> collection_country,geo_admin3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_specimen_meta <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--meta_fields</span> collection_country,geo_admin3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>collection_country  geo_admin3  specimensCount  specimensFreq   totalSpecimenCount
+<pre><code>collection_country  geo_admin3  specimens_count specimens_freq  total_specimen_count
 Mozambique  Inhassoro   27  0.21774193548387097 124
 Mozambique  Mandlakazi  28  0.22580645161290322 124
 Mozambique  Namaacha    26  0.20967741935483872 124
@@ -531,27 +576,278 @@ NA  NA  43  0.3467741935483871  124</code></pre>
 </div>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_specimen_meta <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--meta_fields</span> collection_country,collection_date <span class="kw">|</span> <span class="fu">head</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_specimen_meta <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--meta_fields</span> collection_country,collection_date <span class="kw">|</span> <span class="fu">head</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>collection_country  collection_date specimensCount  specimensFreq   totalSpecimenCount
+<pre><code>collection_country  collection_date specimens_count specimens_freq  total_specimen_count
 Bangladesh  2008    15  0.0007718828796377296   19433
 Bangladesh  2009    16  0.000823341738280245    19433
-Bangladesh  2012    51  0.002624401790768281    19433
-Bangladesh  2015    508 0.026141100190397778    19433
-Bangladesh  2016    816 0.041990428652292494    19433
-Bangladesh  2017    12  0.0006175063037101837   19433
-Benin   2014    41  0.002109813204343128    19433
-Benin   2016    117 0.006020686461174291    19433
-Brazil  1980    1   5.145885864251531e-05   19433</code></pre>
+Bangladesh  2012    8   0.0004116708691401225   19433
+Bangladesh  2012-04-19  1   5.145885864251531e-05   19433
+Bangladesh  2012-06-05  2   0.00010291771728503062  19433
+Bangladesh  2012-06-13  1   5.145885864251531e-05   19433
+Bangladesh  2012-06-17  1   5.145885864251531e-05   19433
+Bangladesh  2012-07-17  1   5.145885864251531e-05   19433
+Bangladesh  2012-07-23  1   5.145885864251531e-05   19433
+Traceback (most recent call last):
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/bin/pmotools-python", line 7, in &lt;module&gt;
+    sys.exit(main())
+             ^^^^^^
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/pmotools-python/src/pmotools/cli.py", line 366, in main
+    handler()
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_specimen_meta.py", line 61, in count_specimen_meta
+    counts_df.to_csv(
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/util/_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/core/generic.py", line 3967, in to_csv
+    return DataFrameRenderer(formatter).to_csv(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/format.py", line 1014, in to_csv
+    csv_formatter.save()
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 270, in save
+    self._save()
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 275, in _save
+    self._save_body()
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 313, in _save_body
+    self._save_chunk(start_i, end_i)
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 324, in _save_chunk
+    libwriters.write_csv_rows(
+  File "writers.pyx", line 73, in pandas._libs.writers.write_csv_rows
+BrokenPipeError: [Errno 32] Broken pipe
+Exception ignored in: &lt;_io.TextIOWrapper name='&lt;stdout&gt;' mode='w' encoding='utf-8'&gt;
+BrokenPipeError: [Errno 32] Broken pipe</code></pre>
 </div>
 </div>
-</section><section id="list_tar_amp_bioinformatics_info_ids" class="level2"><h2 class="anchored" data-anchor-id="list_tar_amp_bioinformatics_info_ids">list_tar_amp_bioinformatics_info_ids</h2>
-<p>This will simply list out all the analyses (all the <code>tar_amp_bioinformatics_info_id</code>s) stored within a PMO</p>
+</section><section id="list_library_sample_names_per_specimen_name" class="level2"><h2 class="anchored" data-anchor-id="list_library_sample_names_per_specimen_name">list_library_sample_names_per_specimen_name</h2>
+<p>Specimens can have multiple library sample names, so it might be helpful to list out all the library_names per specimens</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> list_tar_amp_bioinformatics_info_ids <span class="at">-h</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_library_sample_names_per_specimen_name <span class="at">-h</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>usage: pmotools-runner.py list_tar_amp_bioinformatics_info_ids
-       [-h] --file FILE [--output OUTPUT] [--overwrite]
+<pre><code>usage: pmotools-python list_library_sample_names_per_specimen_name
+       [-h] --file FILE [--output OUTPUT] [--delim DELIM] [--overwrite]
+
+options:
+  -h, --help       show this help message and exit
+  --file FILE      PMO file
+  --output OUTPUT  output file
+  --delim DELIM    the delimiter of the output text file, examples input
+                   tab,comma but can also be the actual delimiter
+  --overwrite      If output file exists, overwrite it</code></pre>
+</div>
+</div>
+<p>The python code for <code>list_library_sample_names_per_specimen_name</code> script is below</p>
+<div class="cell" data-layout-align="center">
+<div class="code-with-filename">
+<details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
+<pre><strong>pmotools-python/src/pmotools/scripts/extract_info_from_pmo/list_library_sample_names_per_specimen_name.py</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="im">import</span> argparse</span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="im">import</span> sys</span>
+<span id="cb22-4"><a href="#cb22-4"></a></span>
+<span id="cb22-5"><a href="#cb22-5"></a></span>
+<span id="cb22-6"><a href="#cb22-6"></a><span class="im">from</span> pmotools.pmo_engine.pmo_processor <span class="im">import</span> PMOProcessor</span>
+<span id="cb22-7"><a href="#cb22-7"></a><span class="im">from</span> pmotools.pmo_engine.pmo_reader <span class="im">import</span> PMOReader</span>
+<span id="cb22-8"><a href="#cb22-8"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
+<span id="cb22-9"><a href="#cb22-9"></a></span>
+<span id="cb22-10"><a href="#cb22-10"></a></span>
+<span id="cb22-11"><a href="#cb22-11"></a><span class="kw">def</span> parse_args_list_library_sample_names_per_specimen_name():</span>
+<span id="cb22-12"><a href="#cb22-12"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
+<span id="cb22-13"><a href="#cb22-13"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
+<span id="cb22-14"><a href="#cb22-14"></a>    parser.add_argument(</span>
+<span id="cb22-15"><a href="#cb22-15"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
+<span id="cb22-16"><a href="#cb22-16"></a>    )</span>
+<span id="cb22-17"><a href="#cb22-17"></a>    parser.add_argument(</span>
+<span id="cb22-18"><a href="#cb22-18"></a>        <span class="st">"--delim"</span>,</span>
+<span id="cb22-19"><a href="#cb22-19"></a>        default<span class="op">=</span><span class="st">"tab"</span>,</span>
+<span id="cb22-20"><a href="#cb22-20"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb22-21"><a href="#cb22-21"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb22-22"><a href="#cb22-22"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the delimiter of the output text file, examples input tab,comma but can also be the actual delimiter"</span>,</span>
+<span id="cb22-23"><a href="#cb22-23"></a>    )</span>
+<span id="cb22-24"><a href="#cb22-24"></a>    parser.add_argument(</span>
+<span id="cb22-25"><a href="#cb22-25"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb22-26"><a href="#cb22-26"></a>    )</span>
+<span id="cb22-27"><a href="#cb22-27"></a></span>
+<span id="cb22-28"><a href="#cb22-28"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb22-29"><a href="#cb22-29"></a></span>
+<span id="cb22-30"><a href="#cb22-30"></a></span>
+<span id="cb22-31"><a href="#cb22-31"></a><span class="kw">def</span> list_library_sample_names_per_specimen_name():</span>
+<span id="cb22-32"><a href="#cb22-32"></a>    args <span class="op">=</span> parse_args_list_library_sample_names_per_specimen_name()</span>
+<span id="cb22-33"><a href="#cb22-33"></a></span>
+<span id="cb22-34"><a href="#cb22-34"></a>    <span class="co"># check files</span></span>
+<span id="cb22-35"><a href="#cb22-35"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(</span>
+<span id="cb22-36"><a href="#cb22-36"></a>        args.delim, gzip<span class="op">=</span>args.output.endswith(<span class="st">".gz"</span>)</span>
+<span id="cb22-37"><a href="#cb22-37"></a>    )</span>
+<span id="cb22-38"><a href="#cb22-38"></a>    args.output <span class="op">=</span> (</span>
+<span id="cb22-39"><a href="#cb22-39"></a>        args.output</span>
+<span id="cb22-40"><a href="#cb22-40"></a>        <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output</span>
+<span id="cb22-41"><a href="#cb22-41"></a>        <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
+<span id="cb22-42"><a href="#cb22-42"></a>    )</span>
+<span id="cb22-43"><a href="#cb22-43"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb22-44"><a href="#cb22-44"></a></span>
+<span id="cb22-45"><a href="#cb22-45"></a>    <span class="co"># read in PMO</span></span>
+<span id="cb22-46"><a href="#cb22-46"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb22-47"><a href="#cb22-47"></a></span>
+<span id="cb22-48"><a href="#cb22-48"></a>    <span class="co"># count fields</span></span>
+<span id="cb22-49"><a href="#cb22-49"></a>    info_df <span class="op">=</span> PMOProcessor.list_library_sample_names_per_specimen_name(pmo)</span>
+<span id="cb22-50"><a href="#cb22-50"></a></span>
+<span id="cb22-51"><a href="#cb22-51"></a>    <span class="co"># output</span></span>
+<span id="cb22-52"><a href="#cb22-52"></a>    info_df.to_csv(</span>
+<span id="cb22-53"><a href="#cb22-53"></a>        sys.stdout <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> args.output,</span>
+<span id="cb22-54"><a href="#cb22-54"></a>        sep<span class="op">=</span>output_delim,</span>
+<span id="cb22-55"><a href="#cb22-55"></a>        index<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb22-56"><a href="#cb22-56"></a>    )</span>
+<span id="cb22-57"><a href="#cb22-57"></a></span>
+<span id="cb22-58"><a href="#cb22-58"></a></span>
+<span id="cb22-59"><a href="#cb22-59"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb22-60"><a href="#cb22-60"></a>    list_library_sample_names_per_specimen_name()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_library_sample_names_per_specimen_name <span class="at">--file</span> ../../format/moz2018_PMO.json.gz </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>specimen_name   library_sample_name library_sample_count
+8025874217  8025874217  1
+8025874237  8025874237  1
+8025874250  8025874250  1
+8025874300  8025874300  1
+8025874321  8025874321  1
+8025874349  8025874349  1
+8025874366  8025874366  1
+8025874377  8025874377  1
+8025874411  8025874411  1
+8025874421  8025874421  1
+8025874463  8025874463  1
+8025874482  8025874482  1
+8025874507  8025874507  1
+8025874578  8025874578  1
+8025874627  8025874627  1
+8025874637  8025874637  1
+8025874665  8025874665  1
+8025874669  8025874669  1
+8025874714  8025874714  1
+8025874729  8025874729  1
+8025874809  8025874809  1
+8025874865  8025874865  1
+8025874899  8025874899  1
+8025874940  8025874940  1
+8034209589  8034209589  1
+8034209790  8034209790  1
+8034209228  8034209228  1
+8025874253  8025874253  1
+8025874261  8025874261  1
+8025874382  8025874382  1
+8025874457  8025874457  1
+8025874502  8025874502  1
+8025874526  8025874526  1
+8025874537  8025874537  1
+8025874586  8025874586  1
+8025874589  8025874589  1
+8025874636  8025874636  1
+8025874829  8025874829  1
+8025874849  8025874849  1
+8025874875  8025874875  1
+8025874975  8025874975  1
+8025874988  8025874988  1
+8025875052  8025875052  1
+8025875059  8025875059  1
+8025875140  8025875140  1
+8025875144  8025875144  1
+8025875145  8025875145  1
+8025875146  8025875146  1
+8025875166  8025875166  1
+8034209115  8034209115  1
+8034209281  8034209281  1
+8034209465  8034209465  1
+8034209834  8034209834  1
+8025874494  8025874494  1
+8025874536  8025874536  1
+8025874266  8025874266  1
+8025874271  8025874271  1
+8025874316  8025874316  1
+8025874330  8025874330  1
+8025874340  8025874340  1
+8025874357  8025874357  1
+8025874376  8025874376  1
+8025874380  8025874380  1
+8025874387  8025874387  1
+8025874419  8025874419  1
+8025874435  8025874435  1
+8025874447  8025874447  1
+8025874672  8025874672  1
+8025874706  8025874706  1
+8025874738  8025874738  1
+8025874928  8025874928  1
+8025874933  8025874933  1
+8025874973  8025874973  1
+8025875029  8025875029  1
+8025875042  8025875042  1
+8025875121  8025875121  1
+8025875170  8025875170  1
+8034209773  8034209773  1
+8034209803  8034209803  1
+8034209818  8034209818  1
+8025874297  8025874297  1
+8025874231  8025874231  1
+8025874234  8025874234  1
+8025874286  8025874286  1
+8025874343  8025874343  1
+8025874348  8025874348  1
+8025874352  8025874352  1
+8025874396  8025874396  1
+8025874405  8025874405  1
+8025874437  8025874437  1
+8025874452  8025874452  1
+8025874454  8025874454  1
+8025874484  8025874484  1
+8025874491  8025874491  1
+8025874499  8025874499  1
+8025874568  8025874568  1
+8025874585  8025874585  1
+8025874591  8025874591  1
+8025874613  8025874613  1
+8025874662  8025874662  1
+8025874675  8025874675  1
+8025874676  8025874676  1
+8025874701  8025874701  1
+8025874705  8025874705  1
+8025874720  8025874720  1
+8025874872  8025874872  1
+8025874877  8025874877  1
+8025874878  8025874878  1
+8025874879  8025874879  1
+8025874886  8025874886  1
+8025874888  8025874888  1
+8025874903  8025874903  1
+8025874931  8025874931  1
+8025874948  8025874948  1
+8025874956  8025874956  1
+8025875065  8025875065  1
+8025875112  8025875112  1
+8025875165  8025875165  1
+SS1-10K-C1  SS1-10K-C1  1
+SS2-10K-C1  SS2-10K-C1  1
+SS3-10K-C1  SS3-10K-C1  1
+SS4-10K-C1  SS4-10K-C1  1
+SS5-10K-C1  SS5-10K-C1  1
+8025875168  8025875168  1</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_library_sample_names_per_specimen_name <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--overwrite</span> <span class="at">--output</span> library_samples_per_specimen_moz2018_PMO.tsv.gz </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section><section id="list_bioinformatics_run_names" class="level2"><h2 class="anchored" data-anchor-id="list_bioinformatics_run_names">list_bioinformatics_run_names</h2>
+<p>This will simply list out all the analyses (all the <code>bioinformatics_run_names</code>s) stored within a PMO</p>
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_bioinformatics_run_names <span class="at">-h</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>usage: pmotools-python list_bioinformatics_run_names [-h] --file FILE
+                                                     [--output OUTPUT]
+                                                     [--overwrite]
 
 options:
   -h, --help       show this help message and exit
@@ -560,96 +856,97 @@ options:
   --overwrite      If output file exists, overwrite it</code></pre>
 </div>
 </div>
-<p>The python code for <code>list_tar_amp_bioinformatics_info_ids</code> script is below</p>
+<p>The python code for <code>list_bioinformatics_run_names</code> script is below</p>
 <div class="cell" data-layout-align="center">
 <div class="code-with-filename">
 <details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
-<pre><strong>pmotools-python/scripts/extract_info_from_pmo/list_tar_amp_bioinformatics_info_ids.py</strong></pre>
+<pre><strong>pmotools-python/src/pmotools/scripts/extract_info_from_pmo/list_bioinformatics_run_names.py</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="co">#!/usr/bin/env python3</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="im">import</span> os, argparse, json</span>
-<span id="cb22-3"><a href="#cb22-3"></a><span class="im">import</span> sys</span>
-<span id="cb22-4"><a href="#cb22-4"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
-<span id="cb22-5"><a href="#cb22-5"></a></span>
-<span id="cb22-6"><a href="#cb22-6"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb22-7"><a href="#cb22-7"></a></span>
-<span id="cb22-8"><a href="#cb22-8"></a><span class="im">from</span> pmotools.pmo_utils.PMOExtractor <span class="im">import</span> PMOExtractor</span>
-<span id="cb22-9"><a href="#cb22-9"></a><span class="im">from</span> pmotools.pmo_utils.PMOReader <span class="im">import</span> PMOReader</span>
-<span id="cb22-10"><a href="#cb22-10"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
-<span id="cb22-11"><a href="#cb22-11"></a></span>
-<span id="cb22-12"><a href="#cb22-12"></a></span>
-<span id="cb22-13"><a href="#cb22-13"></a><span class="kw">def</span> parse_args_list_tar_amp_bioinformatics_info_ids():</span>
-<span id="cb22-14"><a href="#cb22-14"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb22-15"><a href="#cb22-15"></a>    parser.add_argument(<span class="st">'--file'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'PMO file'</span>)</span>
-<span id="cb22-16"><a href="#cb22-16"></a>    parser.add_argument(<span class="st">'--output'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'output file'</span>)</span>
-<span id="cb22-17"><a href="#cb22-17"></a>    parser.add_argument(<span class="st">'--overwrite'</span>, action <span class="op">=</span> <span class="st">'store_true'</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'If output file exists, overwrite it'</span>)</span>
-<span id="cb22-18"><a href="#cb22-18"></a></span>
-<span id="cb22-19"><a href="#cb22-19"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb22-20"><a href="#cb22-20"></a></span>
-<span id="cb22-21"><a href="#cb22-21"></a><span class="kw">def</span> list_tar_amp_bioinformatics_info_ids():</span>
-<span id="cb22-22"><a href="#cb22-22"></a>    args <span class="op">=</span> parse_args_list_tar_amp_bioinformatics_info_ids()</span>
-<span id="cb22-23"><a href="#cb22-23"></a></span>
-<span id="cb22-24"><a href="#cb22-24"></a>    <span class="co"># check files</span></span>
-<span id="cb22-25"><a href="#cb22-25"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
-<span id="cb22-26"><a href="#cb22-26"></a></span>
-<span id="cb22-27"><a href="#cb22-27"></a>    <span class="co"># read in PMO</span></span>
-<span id="cb22-28"><a href="#cb22-28"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
-<span id="cb22-29"><a href="#cb22-29"></a></span>
-<span id="cb22-30"><a href="#cb22-30"></a>    <span class="co"># extract all taramp_bioinformatics_ids</span></span>
-<span id="cb22-31"><a href="#cb22-31"></a>    bioids <span class="op">=</span> pmo[<span class="st">"taramp_bioinformatics_infos"</span>].keys()</span>
-<span id="cb22-32"><a href="#cb22-32"></a></span>
-<span id="cb22-33"><a href="#cb22-33"></a>    <span class="co"># write</span></span>
-<span id="cb22-34"><a href="#cb22-34"></a>    output_target <span class="op">=</span> sys.stdout <span class="cf">if</span> args.output <span class="op">==</span> <span class="st">"STDOUT"</span> <span class="cf">else</span> <span class="bu">open</span>(args.output, <span class="st">"w"</span>)</span>
-<span id="cb22-35"><a href="#cb22-35"></a>    <span class="cf">with</span> output_target <span class="im">as</span> f:</span>
-<span id="cb22-36"><a href="#cb22-36"></a>        f.write(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(bioids) <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb22-37"><a href="#cb22-37"></a></span>
-<span id="cb22-38"><a href="#cb22-38"></a></span>
-<span id="cb22-39"><a href="#cb22-39"></a></span>
-<span id="cb22-40"><a href="#cb22-40"></a></span>
-<span id="cb22-41"><a href="#cb22-41"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb22-42"><a href="#cb22-42"></a>    list_tar_amp_bioinformatics_info_ids()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="im">import</span> argparse</span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="im">import</span> sys</span>
+<span id="cb28-4"><a href="#cb28-4"></a></span>
+<span id="cb28-5"><a href="#cb28-5"></a></span>
+<span id="cb28-6"><a href="#cb28-6"></a><span class="im">from</span> pmotools.pmo_engine.pmo_processor <span class="im">import</span> PMOProcessor</span>
+<span id="cb28-7"><a href="#cb28-7"></a><span class="im">from</span> pmotools.pmo_engine.pmo_reader <span class="im">import</span> PMOReader</span>
+<span id="cb28-8"><a href="#cb28-8"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
+<span id="cb28-9"><a href="#cb28-9"></a></span>
+<span id="cb28-10"><a href="#cb28-10"></a></span>
+<span id="cb28-11"><a href="#cb28-11"></a><span class="kw">def</span> parse_args_list_bioinformatics_run_names():</span>
+<span id="cb28-12"><a href="#cb28-12"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
+<span id="cb28-13"><a href="#cb28-13"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
+<span id="cb28-14"><a href="#cb28-14"></a>    parser.add_argument(</span>
+<span id="cb28-15"><a href="#cb28-15"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
+<span id="cb28-16"><a href="#cb28-16"></a>    )</span>
+<span id="cb28-17"><a href="#cb28-17"></a>    parser.add_argument(</span>
+<span id="cb28-18"><a href="#cb28-18"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb28-19"><a href="#cb28-19"></a>    )</span>
+<span id="cb28-20"><a href="#cb28-20"></a></span>
+<span id="cb28-21"><a href="#cb28-21"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb28-22"><a href="#cb28-22"></a></span>
+<span id="cb28-23"><a href="#cb28-23"></a></span>
+<span id="cb28-24"><a href="#cb28-24"></a><span class="kw">def</span> list_bioinformatics_run_names():</span>
+<span id="cb28-25"><a href="#cb28-25"></a>    args <span class="op">=</span> parse_args_list_bioinformatics_run_names()</span>
+<span id="cb28-26"><a href="#cb28-26"></a></span>
+<span id="cb28-27"><a href="#cb28-27"></a>    <span class="co"># check files</span></span>
+<span id="cb28-28"><a href="#cb28-28"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb28-29"><a href="#cb28-29"></a></span>
+<span id="cb28-30"><a href="#cb28-30"></a>    <span class="co"># read in PMO</span></span>
+<span id="cb28-31"><a href="#cb28-31"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb28-32"><a href="#cb28-32"></a></span>
+<span id="cb28-33"><a href="#cb28-33"></a>    <span class="co"># extract all bio run names</span></span>
+<span id="cb28-34"><a href="#cb28-34"></a>    bio_run_names <span class="op">=</span> PMOProcessor.get_bioinformatics_run_names(pmo)</span>
+<span id="cb28-35"><a href="#cb28-35"></a></span>
+<span id="cb28-36"><a href="#cb28-36"></a>    <span class="co"># write</span></span>
+<span id="cb28-37"><a href="#cb28-37"></a>    output_target <span class="op">=</span> sys.stdout <span class="cf">if</span> args.output <span class="op">==</span> <span class="st">"STDOUT"</span> <span class="cf">else</span> <span class="bu">open</span>(args.output, <span class="st">"w"</span>)</span>
+<span id="cb28-38"><a href="#cb28-38"></a>    <span class="cf">with</span> output_target <span class="im">as</span> f:</span>
+<span id="cb28-39"><a href="#cb28-39"></a>        f.write(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(bio_run_names) <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb28-40"><a href="#cb28-40"></a></span>
+<span id="cb28-41"><a href="#cb28-41"></a></span>
+<span id="cb28-42"><a href="#cb28-42"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb28-43"><a href="#cb28-43"></a>    list_bioinformatics_run_names()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> list_tar_amp_bioinformatics_info_ids <span class="at">--file</span> ../../format/moz2018_PMO.json.gz  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_bioinformatics_run_names <span class="at">--file</span> ../../format/moz2018_PMO.json.gz  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>Mozambique2018-SeekDeep</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> list_tar_amp_bioinformatics_info_ids <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_bioinformatics_run_names <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>PathWeaverHeome1</code></pre>
+<pre><code>PathWeaver-Heome1</code></pre>
 </div>
 </div>
 <p>This can be helpful after combining PMOs</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> combine_pmos <span class="at">--pmo_files</span> ../../format/moz2018_PMO.json.gz,../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--output</span> combined_Heome1_PMO.json.gz <span class="at">--overwrite</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> list_tar_amp_bioinformatics_info_ids <span class="at">--file</span> combined_Heome1_PMO.json.gz </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> combine_pmos <span class="at">--pmo_files</span> ../../format/moz2018_PMO.json.gz,../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--output</span> combined_Heome1_PMO.json.gz <span class="at">--overwrite</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_bioinformatics_run_names <span class="at">--file</span> combined_Heome1_PMO.json.gz </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre><code>Mozambique2018-SeekDeep
-PathWeaverHeome1</code></pre>
+PathWeaver-Heome1</code></pre>
 </div>
 </div>
-</section><section id="count_targets_per_sample" class="level2"><h2 class="anchored" data-anchor-id="count_targets_per_sample">count_targets_per_sample</h2>
-<p>Count up the number targets each experimental_sample_id has. A read filter can be applied to see how targets would be kept if such a filter was applied</p>
+</section><section id="count_targets_per_library_sample" class="level2"><h2 class="anchored" data-anchor-id="count_targets_per_library_sample">count_targets_per_library_sample</h2>
+<p>Count up the number targets each library_sample_id has. A read filter can be applied to see how targets would be kept if such a filter was applied</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_targets_per_sample <span class="at">-h</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_targets_per_library_sample <span class="at">-h</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>usage: pmotools-runner.py count_targets_per_sample [-h] --file FILE
-                                                   [--output OUTPUT]
-                                                   [--delim DELIM]
-                                                   [--overwrite]
-                                                   [--read_count_minimum READ_COUNT_MINIMUM]
+<pre><code>usage: pmotools-python count_targets_per_library_sample [-h] --file FILE
+                                                        [--output OUTPUT]
+                                                        [--delim DELIM]
+                                                        [--overwrite]
+                                                        [--read_count_minimum READ_COUNT_MINIMUM]
 
 options:
   -h, --help            show this help message and exit
@@ -663,103 +960,129 @@ options:
                         covered by sample</code></pre>
 </div>
 </div>
-<p>The python code for <code>count_targets_per_sample</code> script is below</p>
+<p>The python code for <code>count_targets_per_library_sample</code> script is below</p>
 <div class="cell" data-layout-align="center">
 <div class="code-with-filename">
 <details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
-<pre><strong>pmotools-python/scripts/extract_info_from_pmo/count_targets_per_sample.py</strong></pre>
+<pre><strong>pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_targets_per_library_sample.py</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="co">#!/usr/bin/env python3</span></span>
-<span id="cb31-2"><a href="#cb31-2"></a><span class="im">import</span> os, argparse, json</span>
-<span id="cb31-3"><a href="#cb31-3"></a><span class="im">import</span> sys</span>
-<span id="cb31-4"><a href="#cb31-4"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
-<span id="cb31-5"><a href="#cb31-5"></a></span>
-<span id="cb31-6"><a href="#cb31-6"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb31-7"><a href="#cb31-7"></a></span>
-<span id="cb31-8"><a href="#cb31-8"></a><span class="im">from</span> pmotools.pmo_utils.PMOExtractor <span class="im">import</span> PMOExtractor</span>
-<span id="cb31-9"><a href="#cb31-9"></a><span class="im">from</span> pmotools.pmo_utils.PMOReader <span class="im">import</span> PMOReader</span>
-<span id="cb31-10"><a href="#cb31-10"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
-<span id="cb31-11"><a href="#cb31-11"></a></span>
-<span id="cb31-12"><a href="#cb31-12"></a></span>
-<span id="cb31-13"><a href="#cb31-13"></a><span class="kw">def</span> parse_args_count_targets_per_sample():</span>
-<span id="cb31-14"><a href="#cb31-14"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb31-15"><a href="#cb31-15"></a>    parser.add_argument(<span class="st">'--file'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'PMO file'</span>)</span>
-<span id="cb31-16"><a href="#cb31-16"></a>    parser.add_argument(<span class="st">'--output'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'output file'</span>)</span>
-<span id="cb31-17"><a href="#cb31-17"></a>    parser.add_argument(<span class="st">'--delim'</span>, default<span class="op">=</span><span class="st">"tab"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'the delimiter of the output text file, examples input tab,comma but can also be the actual delimiter'</span>)</span>
-<span id="cb31-18"><a href="#cb31-18"></a>    parser.add_argument(<span class="st">'--overwrite'</span>, action<span class="op">=</span><span class="st">'store_true'</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'If output file exists, overwrite it'</span>)</span>
-<span id="cb31-19"><a href="#cb31-19"></a>    parser.add_argument(<span class="st">'--read_count_minimum'</span>, default<span class="op">=</span><span class="fl">0.0</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">float</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'the minimum read count (inclusive) to be counted as covered by sample'</span>)</span>
-<span id="cb31-20"><a href="#cb31-20"></a></span>
-<span id="cb31-21"><a href="#cb31-21"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb31-22"><a href="#cb31-22"></a></span>
-<span id="cb31-23"><a href="#cb31-23"></a></span>
-<span id="cb31-24"><a href="#cb31-24"></a><span class="kw">def</span> count_targets_per_sample():</span>
-<span id="cb31-25"><a href="#cb31-25"></a>    args <span class="op">=</span> parse_args_count_targets_per_sample()</span>
-<span id="cb31-26"><a href="#cb31-26"></a></span>
-<span id="cb31-27"><a href="#cb31-27"></a>    <span class="co"># check files</span></span>
-<span id="cb31-28"><a href="#cb31-28"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(args.delim, gzip<span class="op">=</span>args.output.endswith(<span class="st">".gz"</span>))</span>
-<span id="cb31-29"><a href="#cb31-29"></a>    args.output <span class="op">=</span> args.output <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
-<span id="cb31-30"><a href="#cb31-30"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
-<span id="cb31-31"><a href="#cb31-31"></a></span>
-<span id="cb31-32"><a href="#cb31-32"></a>    <span class="co"># read in PMO</span></span>
-<span id="cb31-33"><a href="#cb31-33"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
-<span id="cb31-34"><a href="#cb31-34"></a></span>
-<span id="cb31-35"><a href="#cb31-35"></a>    <span class="co"># count</span></span>
-<span id="cb31-36"><a href="#cb31-36"></a>    counts_df <span class="op">=</span> PMOExtractor.count_targets_per_sample(pmo, args.read_count_minimum)</span>
-<span id="cb31-37"><a href="#cb31-37"></a></span>
-<span id="cb31-38"><a href="#cb31-38"></a>    <span class="co">#write out</span></span>
-<span id="cb31-39"><a href="#cb31-39"></a>    counts_df.to_csv(sys.stdout <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> args.output, sep <span class="op">=</span> output_delim, index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb31-40"><a href="#cb31-40"></a></span>
-<span id="cb31-41"><a href="#cb31-41"></a></span>
-<span id="cb31-42"><a href="#cb31-42"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb31-43"><a href="#cb31-43"></a>    count_targets_per_sample()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="im">import</span> argparse</span>
+<span id="cb37-3"><a href="#cb37-3"></a><span class="im">import</span> sys</span>
+<span id="cb37-4"><a href="#cb37-4"></a></span>
+<span id="cb37-5"><a href="#cb37-5"></a></span>
+<span id="cb37-6"><a href="#cb37-6"></a><span class="im">from</span> pmotools.pmo_engine.pmo_processor <span class="im">import</span> PMOProcessor</span>
+<span id="cb37-7"><a href="#cb37-7"></a><span class="im">from</span> pmotools.pmo_engine.pmo_reader <span class="im">import</span> PMOReader</span>
+<span id="cb37-8"><a href="#cb37-8"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
+<span id="cb37-9"><a href="#cb37-9"></a></span>
+<span id="cb37-10"><a href="#cb37-10"></a></span>
+<span id="cb37-11"><a href="#cb37-11"></a><span class="kw">def</span> parse_args_count_targets_per_library_sample():</span>
+<span id="cb37-12"><a href="#cb37-12"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
+<span id="cb37-13"><a href="#cb37-13"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
+<span id="cb37-14"><a href="#cb37-14"></a>    parser.add_argument(</span>
+<span id="cb37-15"><a href="#cb37-15"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
+<span id="cb37-16"><a href="#cb37-16"></a>    )</span>
+<span id="cb37-17"><a href="#cb37-17"></a>    parser.add_argument(</span>
+<span id="cb37-18"><a href="#cb37-18"></a>        <span class="st">"--delim"</span>,</span>
+<span id="cb37-19"><a href="#cb37-19"></a>        default<span class="op">=</span><span class="st">"tab"</span>,</span>
+<span id="cb37-20"><a href="#cb37-20"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb37-21"><a href="#cb37-21"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb37-22"><a href="#cb37-22"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the delimiter of the output text file, examples input tab,comma but can also be the actual delimiter"</span>,</span>
+<span id="cb37-23"><a href="#cb37-23"></a>    )</span>
+<span id="cb37-24"><a href="#cb37-24"></a>    parser.add_argument(</span>
+<span id="cb37-25"><a href="#cb37-25"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb37-26"><a href="#cb37-26"></a>    )</span>
+<span id="cb37-27"><a href="#cb37-27"></a>    parser.add_argument(</span>
+<span id="cb37-28"><a href="#cb37-28"></a>        <span class="st">"--read_count_minimum"</span>,</span>
+<span id="cb37-29"><a href="#cb37-29"></a>        default<span class="op">=</span><span class="fl">0.0</span>,</span>
+<span id="cb37-30"><a href="#cb37-30"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">float</span>,</span>
+<span id="cb37-31"><a href="#cb37-31"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb37-32"><a href="#cb37-32"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the minimum read count (inclusive) to be counted as covered by sample"</span>,</span>
+<span id="cb37-33"><a href="#cb37-33"></a>    )</span>
+<span id="cb37-34"><a href="#cb37-34"></a></span>
+<span id="cb37-35"><a href="#cb37-35"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb37-36"><a href="#cb37-36"></a></span>
+<span id="cb37-37"><a href="#cb37-37"></a></span>
+<span id="cb37-38"><a href="#cb37-38"></a><span class="kw">def</span> count_targets_per_library_sample():</span>
+<span id="cb37-39"><a href="#cb37-39"></a>    args <span class="op">=</span> parse_args_count_targets_per_library_sample()</span>
+<span id="cb37-40"><a href="#cb37-40"></a></span>
+<span id="cb37-41"><a href="#cb37-41"></a>    <span class="co"># check files</span></span>
+<span id="cb37-42"><a href="#cb37-42"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(</span>
+<span id="cb37-43"><a href="#cb37-43"></a>        args.delim, gzip<span class="op">=</span>args.output.endswith(<span class="st">".gz"</span>)</span>
+<span id="cb37-44"><a href="#cb37-44"></a>    )</span>
+<span id="cb37-45"><a href="#cb37-45"></a>    args.output <span class="op">=</span> (</span>
+<span id="cb37-46"><a href="#cb37-46"></a>        args.output</span>
+<span id="cb37-47"><a href="#cb37-47"></a>        <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output</span>
+<span id="cb37-48"><a href="#cb37-48"></a>        <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
+<span id="cb37-49"><a href="#cb37-49"></a>    )</span>
+<span id="cb37-50"><a href="#cb37-50"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb37-51"><a href="#cb37-51"></a></span>
+<span id="cb37-52"><a href="#cb37-52"></a>    <span class="co"># read in PMO</span></span>
+<span id="cb37-53"><a href="#cb37-53"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb37-54"><a href="#cb37-54"></a></span>
+<span id="cb37-55"><a href="#cb37-55"></a>    <span class="co"># count</span></span>
+<span id="cb37-56"><a href="#cb37-56"></a>    counts_df <span class="op">=</span> PMOProcessor.count_targets_per_library_sample(</span>
+<span id="cb37-57"><a href="#cb37-57"></a>        pmo, args.read_count_minimum</span>
+<span id="cb37-58"><a href="#cb37-58"></a>    )</span>
+<span id="cb37-59"><a href="#cb37-59"></a></span>
+<span id="cb37-60"><a href="#cb37-60"></a>    <span class="co"># write out</span></span>
+<span id="cb37-61"><a href="#cb37-61"></a>    counts_df.to_csv(</span>
+<span id="cb37-62"><a href="#cb37-62"></a>        sys.stdout <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> args.output,</span>
+<span id="cb37-63"><a href="#cb37-63"></a>        sep<span class="op">=</span>output_delim,</span>
+<span id="cb37-64"><a href="#cb37-64"></a>        index<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb37-65"><a href="#cb37-65"></a>    )</span>
+<span id="cb37-66"><a href="#cb37-66"></a></span>
+<span id="cb37-67"><a href="#cb37-67"></a></span>
+<span id="cb37-68"><a href="#cb37-68"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb37-69"><a href="#cb37-69"></a>    count_targets_per_library_sample()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_targets_per_sample <span class="at">--file</span> ../../format/moz2018_PMO.json.gz  <span class="kw">|</span> <span class="fu">head</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_targets_per_library_sample <span class="at">--file</span> ../../format/moz2018_PMO.json.gz  <span class="kw">|</span> <span class="fu">head</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>tar_amp_bioinformatics_info_id  experiment_sample_id    target_number
-Mozambique2018-SeekDeep 8025874217  99
-Mozambique2018-SeekDeep 8025874231  99
-Mozambique2018-SeekDeep 8025874234  97
-Mozambique2018-SeekDeep 8025874237  99
-Mozambique2018-SeekDeep 8025874250  98
-Mozambique2018-SeekDeep 8025874253  99
-Mozambique2018-SeekDeep 8025874261  99
-Mozambique2018-SeekDeep 8025874266  85
-Mozambique2018-SeekDeep 8025874271  99</code></pre>
+<pre><code>bioinformatics_run_id   library_sample_name target_number
+0   8025875168  47
+0   8025874536  10
+0   8025874494  23
+0   8025874297  8
+0   SS4-10K-C1  99
+0   SS3-10K-C1  98
+0   SS2-10K-C1  98
+0   8034209818  99
+0   8034209790  98</code></pre>
 </div>
 </div>
 <p>Apply a read count minimum filter (this a total read count summed for a target and not on a haplotype level)</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_targets_per_sample <span class="at">--read_count_minimum</span> 3000 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz  <span class="kw">|</span> <span class="fu">head</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_targets_per_library_sample <span class="at">--read_count_minimum</span> 3000 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz  <span class="kw">|</span> <span class="fu">head</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>tar_amp_bioinformatics_info_id  experiment_sample_id    target_number
-Mozambique2018-SeekDeep 8025874217  99
-Mozambique2018-SeekDeep 8025874231  73
-Mozambique2018-SeekDeep 8025874234  93
-Mozambique2018-SeekDeep 8025874237  98
-Mozambique2018-SeekDeep 8025874250  68
-Mozambique2018-SeekDeep 8025874253  99
-Mozambique2018-SeekDeep 8025874261  98
-Mozambique2018-SeekDeep 8025874266  37
-Mozambique2018-SeekDeep 8025874271  98</code></pre>
+<pre><code>bioinformatics_run_id   library_sample_name target_number
+0   8025875168  0
+0   8025874536  0
+0   8025874494  0
+0   8025874297  0
+0   SS4-10K-C1  97
+0   SS3-10K-C1  96
+0   SS2-10K-C1  97
+0   8034209818  97
+0   8034209790  97</code></pre>
 </div>
 </div>
-</section><section id="count_samples_per_target" class="level2"><h2 class="anchored" data-anchor-id="count_samples_per_target">count_samples_per_target</h2>
-<p>Count up the number of experimental_sample_ids each target has. A read filter can be applied to see how many samples a taget would have if a filter was applied</p>
+</section><section id="count_library_samples_per_target" class="level2"><h2 class="anchored" data-anchor-id="count_library_samples_per_target">count_library_samples_per_target</h2>
+<p>Count up the number of library_sample_ids each target has. A read filter can be applied to see how many samples a taget would have if a filter was applied</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_samples_per_target <span class="at">-h</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_library_samples_per_target <span class="at">-h</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>usage: pmotools-runner.py count_samples_per_target [-h] --file FILE
-                                                   [--output OUTPUT]
-                                                   [--delim DELIM]
-                                                   [--overwrite]
-                                                   [--read_count_minimum READ_COUNT_MINIMUM]
+<pre><code>usage: pmotools-python count_library_samples_per_target [-h] --file FILE
+                                                        [--output OUTPUT]
+                                                        [--delim DELIM]
+                                                        [--overwrite]
+                                                        [--read_count_minimum READ_COUNT_MINIMUM]
 
 options:
   -h, --help            show this help message and exit
@@ -773,91 +1096,117 @@ options:
                         covered by sample</code></pre>
 </div>
 </div>
-<p>The python code for <code>count_samples_per_target</code> script is below</p>
+<p>The python code for <code>count_library_samples_per_target</code> script is below</p>
 <div class="cell" data-layout-align="center">
 <div class="code-with-filename">
 <details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
-<pre><strong>pmotools-python/scripts/extract_info_from_pmo/count_samples_per_target.py</strong></pre>
+<pre><strong>pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_library_samples_per_target.py</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="co">#!/usr/bin/env python3</span></span>
-<span id="cb38-2"><a href="#cb38-2"></a><span class="im">import</span> os, argparse, json</span>
-<span id="cb38-3"><a href="#cb38-3"></a><span class="im">import</span> sys</span>
-<span id="cb38-4"><a href="#cb38-4"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
-<span id="cb38-5"><a href="#cb38-5"></a></span>
-<span id="cb38-6"><a href="#cb38-6"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb38-7"><a href="#cb38-7"></a></span>
-<span id="cb38-8"><a href="#cb38-8"></a><span class="im">from</span> pmotools.pmo_utils.PMOExtractor <span class="im">import</span> PMOExtractor</span>
-<span id="cb38-9"><a href="#cb38-9"></a><span class="im">from</span> pmotools.pmo_utils.PMOReader <span class="im">import</span> PMOReader</span>
-<span id="cb38-10"><a href="#cb38-10"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
-<span id="cb38-11"><a href="#cb38-11"></a></span>
-<span id="cb38-12"><a href="#cb38-12"></a></span>
-<span id="cb38-13"><a href="#cb38-13"></a><span class="kw">def</span> parse_args_count_samples_per_target():</span>
-<span id="cb38-14"><a href="#cb38-14"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb38-15"><a href="#cb38-15"></a>    parser.add_argument(<span class="st">'--file'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'PMO file'</span>)</span>
-<span id="cb38-16"><a href="#cb38-16"></a>    parser.add_argument(<span class="st">'--output'</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'output file'</span>)</span>
-<span id="cb38-17"><a href="#cb38-17"></a>    parser.add_argument(<span class="st">'--delim'</span>, default<span class="op">=</span><span class="st">"tab"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'the delimiter of the output text file, examples input tab,comma but can also be the actual delimiter'</span>)</span>
-<span id="cb38-18"><a href="#cb38-18"></a>    parser.add_argument(<span class="st">'--overwrite'</span>, action<span class="op">=</span><span class="st">'store_true'</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'If output file exists, overwrite it'</span>)</span>
-<span id="cb38-19"><a href="#cb38-19"></a>    parser.add_argument(<span class="st">'--read_count_minimum'</span>, default<span class="op">=</span><span class="fl">0.0</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">float</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">'the minimum read count (inclusive) to be counted as covered by sample'</span>)</span>
-<span id="cb38-20"><a href="#cb38-20"></a></span>
-<span id="cb38-21"><a href="#cb38-21"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb38-22"><a href="#cb38-22"></a></span>
-<span id="cb38-23"><a href="#cb38-23"></a></span>
-<span id="cb38-24"><a href="#cb38-24"></a><span class="kw">def</span> count_samples_per_target():</span>
-<span id="cb38-25"><a href="#cb38-25"></a>    args <span class="op">=</span> parse_args_count_samples_per_target()</span>
-<span id="cb38-26"><a href="#cb38-26"></a></span>
-<span id="cb38-27"><a href="#cb38-27"></a>    <span class="co"># check files</span></span>
-<span id="cb38-28"><a href="#cb38-28"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(args.delim, gzip<span class="op">=</span>args.output.endswith(<span class="st">".gz"</span>))</span>
-<span id="cb38-29"><a href="#cb38-29"></a>    args.output <span class="op">=</span> args.output <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
-<span id="cb38-30"><a href="#cb38-30"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
-<span id="cb38-31"><a href="#cb38-31"></a></span>
-<span id="cb38-32"><a href="#cb38-32"></a>    <span class="co"># read in PMO</span></span>
-<span id="cb38-33"><a href="#cb38-33"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
-<span id="cb38-34"><a href="#cb38-34"></a></span>
-<span id="cb38-35"><a href="#cb38-35"></a>    <span class="co"># count</span></span>
-<span id="cb38-36"><a href="#cb38-36"></a>    counts_df <span class="op">=</span> PMOExtractor.count_samples_per_target(pmo, args.read_count_minimum)</span>
-<span id="cb38-37"><a href="#cb38-37"></a></span>
-<span id="cb38-38"><a href="#cb38-38"></a>    <span class="co">#write out</span></span>
-<span id="cb38-39"><a href="#cb38-39"></a>    counts_df.to_csv(sys.stdout <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> args.output, sep <span class="op">=</span> output_delim, index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb38-40"><a href="#cb38-40"></a></span>
-<span id="cb38-41"><a href="#cb38-41"></a></span>
-<span id="cb38-42"><a href="#cb38-42"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb38-43"><a href="#cb38-43"></a>    count_samples_per_target()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a><span class="im">import</span> argparse</span>
+<span id="cb44-3"><a href="#cb44-3"></a><span class="im">import</span> sys</span>
+<span id="cb44-4"><a href="#cb44-4"></a></span>
+<span id="cb44-5"><a href="#cb44-5"></a></span>
+<span id="cb44-6"><a href="#cb44-6"></a><span class="im">from</span> pmotools.pmo_engine.pmo_processor <span class="im">import</span> PMOProcessor</span>
+<span id="cb44-7"><a href="#cb44-7"></a><span class="im">from</span> pmotools.pmo_engine.pmo_reader <span class="im">import</span> PMOReader</span>
+<span id="cb44-8"><a href="#cb44-8"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
+<span id="cb44-9"><a href="#cb44-9"></a></span>
+<span id="cb44-10"><a href="#cb44-10"></a></span>
+<span id="cb44-11"><a href="#cb44-11"></a><span class="kw">def</span> parse_args_count_library_samples_per_target():</span>
+<span id="cb44-12"><a href="#cb44-12"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
+<span id="cb44-13"><a href="#cb44-13"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
+<span id="cb44-14"><a href="#cb44-14"></a>    parser.add_argument(</span>
+<span id="cb44-15"><a href="#cb44-15"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
+<span id="cb44-16"><a href="#cb44-16"></a>    )</span>
+<span id="cb44-17"><a href="#cb44-17"></a>    parser.add_argument(</span>
+<span id="cb44-18"><a href="#cb44-18"></a>        <span class="st">"--delim"</span>,</span>
+<span id="cb44-19"><a href="#cb44-19"></a>        default<span class="op">=</span><span class="st">"tab"</span>,</span>
+<span id="cb44-20"><a href="#cb44-20"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb44-21"><a href="#cb44-21"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb44-22"><a href="#cb44-22"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the delimiter of the output text file, examples input tab,comma but can also be the actual delimiter"</span>,</span>
+<span id="cb44-23"><a href="#cb44-23"></a>    )</span>
+<span id="cb44-24"><a href="#cb44-24"></a>    parser.add_argument(</span>
+<span id="cb44-25"><a href="#cb44-25"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb44-26"><a href="#cb44-26"></a>    )</span>
+<span id="cb44-27"><a href="#cb44-27"></a>    parser.add_argument(</span>
+<span id="cb44-28"><a href="#cb44-28"></a>        <span class="st">"--read_count_minimum"</span>,</span>
+<span id="cb44-29"><a href="#cb44-29"></a>        default<span class="op">=</span><span class="fl">0.0</span>,</span>
+<span id="cb44-30"><a href="#cb44-30"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">float</span>,</span>
+<span id="cb44-31"><a href="#cb44-31"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb44-32"><a href="#cb44-32"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the minimum read count (inclusive) to be counted as covered by sample"</span>,</span>
+<span id="cb44-33"><a href="#cb44-33"></a>    )</span>
+<span id="cb44-34"><a href="#cb44-34"></a></span>
+<span id="cb44-35"><a href="#cb44-35"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb44-36"><a href="#cb44-36"></a></span>
+<span id="cb44-37"><a href="#cb44-37"></a></span>
+<span id="cb44-38"><a href="#cb44-38"></a><span class="kw">def</span> count_library_samples_per_target():</span>
+<span id="cb44-39"><a href="#cb44-39"></a>    args <span class="op">=</span> parse_args_count_library_samples_per_target()</span>
+<span id="cb44-40"><a href="#cb44-40"></a></span>
+<span id="cb44-41"><a href="#cb44-41"></a>    <span class="co"># check files</span></span>
+<span id="cb44-42"><a href="#cb44-42"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(</span>
+<span id="cb44-43"><a href="#cb44-43"></a>        args.delim, gzip<span class="op">=</span>args.output.endswith(<span class="st">".gz"</span>)</span>
+<span id="cb44-44"><a href="#cb44-44"></a>    )</span>
+<span id="cb44-45"><a href="#cb44-45"></a>    args.output <span class="op">=</span> (</span>
+<span id="cb44-46"><a href="#cb44-46"></a>        args.output</span>
+<span id="cb44-47"><a href="#cb44-47"></a>        <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output</span>
+<span id="cb44-48"><a href="#cb44-48"></a>        <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
+<span id="cb44-49"><a href="#cb44-49"></a>    )</span>
+<span id="cb44-50"><a href="#cb44-50"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb44-51"><a href="#cb44-51"></a></span>
+<span id="cb44-52"><a href="#cb44-52"></a>    <span class="co"># read in PMO</span></span>
+<span id="cb44-53"><a href="#cb44-53"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb44-54"><a href="#cb44-54"></a></span>
+<span id="cb44-55"><a href="#cb44-55"></a>    <span class="co"># count</span></span>
+<span id="cb44-56"><a href="#cb44-56"></a>    counts_df <span class="op">=</span> PMOProcessor.count_library_samples_per_target(</span>
+<span id="cb44-57"><a href="#cb44-57"></a>        pmo, args.read_count_minimum</span>
+<span id="cb44-58"><a href="#cb44-58"></a>    )</span>
+<span id="cb44-59"><a href="#cb44-59"></a></span>
+<span id="cb44-60"><a href="#cb44-60"></a>    <span class="co"># write out</span></span>
+<span id="cb44-61"><a href="#cb44-61"></a>    counts_df.to_csv(</span>
+<span id="cb44-62"><a href="#cb44-62"></a>        sys.stdout <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> args.output,</span>
+<span id="cb44-63"><a href="#cb44-63"></a>        sep<span class="op">=</span>output_delim,</span>
+<span id="cb44-64"><a href="#cb44-64"></a>        index<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb44-65"><a href="#cb44-65"></a>    )</span>
+<span id="cb44-66"><a href="#cb44-66"></a></span>
+<span id="cb44-67"><a href="#cb44-67"></a></span>
+<span id="cb44-68"><a href="#cb44-68"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb44-69"><a href="#cb44-69"></a>    count_library_samples_per_target()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_samples_per_target <span class="at">--file</span> ../../format/moz2018_PMO.json.gz  <span class="kw">|</span> <span class="fu">head</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_library_samples_per_target <span class="at">--file</span> ../../format/moz2018_PMO.json.gz  <span class="kw">|</span> <span class="fu">head</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>tar_amp_bioinformatics_info_id  target_id   sample_number
-Mozambique2018-SeekDeep t1  119
-Mozambique2018-SeekDeep t10 117
-Mozambique2018-SeekDeep t100    124
-Mozambique2018-SeekDeep t11 120
-Mozambique2018-SeekDeep t12 119
-Mozambique2018-SeekDeep t13 124
-Mozambique2018-SeekDeep t14 118
-Mozambique2018-SeekDeep t15 119
-Mozambique2018-SeekDeep t16 121</code></pre>
+<pre><code>bioinformatics_run_id   target_name sample_count
+0   t1  119
+0   t10 117
+0   t100    124
+0   t11 120
+0   t12 119
+0   t13 124
+0   t14 118
+0   t15 119
+0   t16 121</code></pre>
 </div>
 </div>
 <p>Apply a read count minimum filter (this a total read count summed for a target and not on a haplotype level)</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_samples_per_target <span class="at">--read_count_minimum</span> 3000 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz  <span class="kw">|</span> <span class="fu">head</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_library_samples_per_target <span class="at">--read_count_minimum</span> 3000 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz  <span class="kw">|</span> <span class="fu">head</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>tar_amp_bioinformatics_info_id  target_id   sample_number
-Mozambique2018-SeekDeep t1  108
-Mozambique2018-SeekDeep t10 107
-Mozambique2018-SeekDeep t100    107
-Mozambique2018-SeekDeep t11 111
-Mozambique2018-SeekDeep t12 104
-Mozambique2018-SeekDeep t13 105
-Mozambique2018-SeekDeep t14 110
-Mozambique2018-SeekDeep t15 110
-Mozambique2018-SeekDeep t16 106</code></pre>
+<pre><code>bioinformatics_run_id   target_name sample_count
+0   t1  108
+0   t10 107
+0   t100    107
+0   t11 111
+0   t12 104
+0   t13 105
+0   t14 110
+0   t15 110
+0   t16 106</code></pre>
 </div>
 </div>
 
@@ -1314,261 +1663,295 @@ Mozambique2018-SeekDeep t16 106</code></pre>
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb43" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Getting basic info out of PMO using pmotools-python</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, echo=F}</span></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../common.R"</span>)</span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="fu"># Extract basic info counts from PMO </span></span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>To get simple counts of number of targets with sample counts, samples with target counts, the counts of meta fields </span>
-<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>Most of these basic info extractor can be found underneath <span class="in">`extract_basic_info_from_pmo`</span></span>
-<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
-<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span></span>
-<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, echo = F}</span></span>
-<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> <span class="kw">|</span> <span class="fu">perl</span> <span class="at">-pe</span> <span class="st">'s/\e\[[0-9;]*m(?:\e\[K)?//g'</span></span>
-<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a>Getting files for examples </span>
-<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
-<span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-31"><a href="#cb43-31" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz</span>
-<span id="cb43-32"><a href="#cb43-32" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz</span>
-<span id="cb43-33"><a href="#cb43-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-34"><a href="#cb43-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-35"><a href="#cb43-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-36"><a href="#cb43-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-37"><a href="#cb43-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-38"><a href="#cb43-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-39"><a href="#cb43-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-40"><a href="#cb43-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-41"><a href="#cb43-41" aria-hidden="true" tabindex="-1"></a><span class="fu">## list_specimen_meta_fields</span></span>
-<span id="cb43-42"><a href="#cb43-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-43"><a href="#cb43-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-44"><a href="#cb43-44" aria-hidden="true" tabindex="-1"></a>This will list all the meta fields within the <span class="in">`specimen_infos`</span> section of a PMO file. Since not all meta fields are always present in all specimens, this will list the count of samples each field appears in and the number of total specimens  </span>
-<span id="cb43-45"><a href="#cb43-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-48"><a href="#cb43-48" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb43-49"><a href="#cb43-49" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> list_specimen_meta_fields <span class="at">-h</span> </span>
-<span id="cb43-50"><a href="#cb43-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-51"><a href="#cb43-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-52"><a href="#cb43-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-53"><a href="#cb43-53" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`list_specimen_meta_fields`</span> script is below</span>
-<span id="cb43-54"><a href="#cb43-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-57"><a href="#cb43-57" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb43-58"><a href="#cb43-58" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb43-59"><a href="#cb43-59" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb43-60"><a href="#cb43-60" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb43-61"><a href="#cb43-61" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb43-62"><a href="#cb43-62" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/scripts/extract_info_from_pmo/list_specimen_meta_fields.py</span></span>
-<span id="cb43-63"><a href="#cb43-63" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/scripts/extract_info_from_pmo/list_specimen_meta_fields.py</span></span>
-<span id="cb43-64"><a href="#cb43-64" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-65"><a href="#cb43-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-68"><a href="#cb43-68" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb43-69"><a href="#cb43-69" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb43-70"><a href="#cb43-70" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> list_specimen_meta_fields <span class="at">--file</span> ../../format/moz2018_PMO.json.gz</span>
-<span id="cb43-71"><a href="#cb43-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-72"><a href="#cb43-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-73"><a href="#cb43-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-76"><a href="#cb43-76" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb43-77"><a href="#cb43-77" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb43-78"><a href="#cb43-78" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> list_specimen_meta_fields <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> spec_fields_moz2018_PMO.tsv <span class="at">--overwrite</span></span>
-<span id="cb43-79"><a href="#cb43-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-80"><a href="#cb43-80" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-81"><a href="#cb43-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-82"><a href="#cb43-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-83"><a href="#cb43-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-84"><a href="#cb43-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-85"><a href="#cb43-85" aria-hidden="true" tabindex="-1"></a><span class="fu">## count_specimen_meta</span></span>
-<span id="cb43-86"><a href="#cb43-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-87"><a href="#cb43-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-88"><a href="#cb43-88" aria-hidden="true" tabindex="-1"></a>This will list all the meta values (and the combinations) for the meta fields within the <span class="in">`specimen_infos`</span> section of a PMO file.</span>
-<span id="cb43-89"><a href="#cb43-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-90"><a href="#cb43-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-93"><a href="#cb43-93" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb43-94"><a href="#cb43-94" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_specimen_meta <span class="at">-h</span> </span>
-<span id="cb43-95"><a href="#cb43-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-96"><a href="#cb43-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-97"><a href="#cb43-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-98"><a href="#cb43-98" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`count_specimen_meta`</span> script is below</span>
-<span id="cb43-99"><a href="#cb43-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-102"><a href="#cb43-102" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb43-103"><a href="#cb43-103" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb43-104"><a href="#cb43-104" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb43-105"><a href="#cb43-105" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb43-106"><a href="#cb43-106" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb43-107"><a href="#cb43-107" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/scripts/extract_info_from_pmo/count_specimen_meta.py</span></span>
-<span id="cb43-108"><a href="#cb43-108" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/scripts/extract_info_from_pmo/count_specimen_meta.py</span></span>
-<span id="cb43-109"><a href="#cb43-109" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-110"><a href="#cb43-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-111"><a href="#cb43-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-114"><a href="#cb43-114" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb43-115"><a href="#cb43-115" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb43-116"><a href="#cb43-116" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_specimen_meta <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--meta_fields</span> collection_country</span>
-<span id="cb43-117"><a href="#cb43-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-118"><a href="#cb43-118" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-119"><a href="#cb43-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-122"><a href="#cb43-122" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb43-123"><a href="#cb43-123" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb43-124"><a href="#cb43-124" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_specimen_meta <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--meta_fields</span> collection_country <span class="at">--overwrite</span> <span class="at">--output</span> collection_country_count_moz2018_PMO.tsv.gz </span>
-<span id="cb43-125"><a href="#cb43-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-126"><a href="#cb43-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-127"><a href="#cb43-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-130"><a href="#cb43-130" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb43-131"><a href="#cb43-131" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb43-132"><a href="#cb43-132" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_specimen_meta <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--meta_fields</span> collection_country,geo_admin3</span>
-<span id="cb43-133"><a href="#cb43-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-134"><a href="#cb43-134" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-135"><a href="#cb43-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-138"><a href="#cb43-138" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb43-139"><a href="#cb43-139" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb43-140"><a href="#cb43-140" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_specimen_meta <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--meta_fields</span> collection_country,collection_date <span class="kw">|</span> <span class="fu">head</span></span>
-<span id="cb43-141"><a href="#cb43-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-142"><a href="#cb43-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-143"><a href="#cb43-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-144"><a href="#cb43-144" aria-hidden="true" tabindex="-1"></a><span class="fu">## list_tar_amp_bioinformatics_info_ids </span></span>
-<span id="cb43-145"><a href="#cb43-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-146"><a href="#cb43-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-147"><a href="#cb43-147" aria-hidden="true" tabindex="-1"></a>This will simply list out all the analyses (all the <span class="in">`tar_amp_bioinformatics_info_id`</span>s) stored within a PMO </span>
-<span id="cb43-148"><a href="#cb43-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-149"><a href="#cb43-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-152"><a href="#cb43-152" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb43-153"><a href="#cb43-153" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> list_tar_amp_bioinformatics_info_ids <span class="at">-h</span> </span>
-<span id="cb43-154"><a href="#cb43-154" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-155"><a href="#cb43-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-156"><a href="#cb43-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-157"><a href="#cb43-157" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`list_tar_amp_bioinformatics_info_ids`</span> script is below</span>
-<span id="cb43-158"><a href="#cb43-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-161"><a href="#cb43-161" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb43-162"><a href="#cb43-162" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb43-163"><a href="#cb43-163" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb43-164"><a href="#cb43-164" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb43-165"><a href="#cb43-165" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb43-166"><a href="#cb43-166" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/scripts/extract_info_from_pmo/list_tar_amp_bioinformatics_info_ids.py</span></span>
-<span id="cb43-167"><a href="#cb43-167" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/scripts/extract_info_from_pmo/list_tar_amp_bioinformatics_info_ids.py</span></span>
-<span id="cb43-168"><a href="#cb43-168" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-169"><a href="#cb43-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-170"><a href="#cb43-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-171"><a href="#cb43-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-174"><a href="#cb43-174" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb43-175"><a href="#cb43-175" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb43-176"><a href="#cb43-176" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> list_tar_amp_bioinformatics_info_ids <span class="at">--file</span> ../../format/moz2018_PMO.json.gz  </span>
-<span id="cb43-177"><a href="#cb43-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-178"><a href="#cb43-178" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-179"><a href="#cb43-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-182"><a href="#cb43-182" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb43-183"><a href="#cb43-183" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb43-184"><a href="#cb43-184" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> list_tar_amp_bioinformatics_info_ids <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz </span>
-<span id="cb43-185"><a href="#cb43-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-186"><a href="#cb43-186" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-187"><a href="#cb43-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-188"><a href="#cb43-188" aria-hidden="true" tabindex="-1"></a>This can be helpful after combining PMOs </span>
-<span id="cb43-189"><a href="#cb43-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-190"><a href="#cb43-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-191"><a href="#cb43-191" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
-<span id="cb43-192"><a href="#cb43-192" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb43-193"><a href="#cb43-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-194"><a href="#cb43-194" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> combine_pmos <span class="at">--pmo_files</span> ../../format/moz2018_PMO.json.gz,../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--output</span> combined_Heome1_PMO.json.gz <span class="at">--overwrite</span></span>
-<span id="cb43-195"><a href="#cb43-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-196"><a href="#cb43-196" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> list_tar_amp_bioinformatics_info_ids <span class="at">--file</span> combined_Heome1_PMO.json.gz </span>
-<span id="cb43-197"><a href="#cb43-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-198"><a href="#cb43-198" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-199"><a href="#cb43-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-200"><a href="#cb43-200" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, echo = F}</span></span>
-<span id="cb43-201"><a href="#cb43-201" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb43-202"><a href="#cb43-202" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> list_tar_amp_bioinformatics_info_ids <span class="at">--file</span> combined_Heome1_PMO.json.gz </span>
-<span id="cb43-203"><a href="#cb43-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-204"><a href="#cb43-204" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-205"><a href="#cb43-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-206"><a href="#cb43-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-207"><a href="#cb43-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-208"><a href="#cb43-208" aria-hidden="true" tabindex="-1"></a><span class="fu">## count_targets_per_sample </span></span>
-<span id="cb43-209"><a href="#cb43-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-210"><a href="#cb43-210" aria-hidden="true" tabindex="-1"></a>Count up the number targets each experimental_sample_id has. A read filter can be applied to see how targets would be kept if such a filter was applied </span>
-<span id="cb43-211"><a href="#cb43-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-214"><a href="#cb43-214" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb43-215"><a href="#cb43-215" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_targets_per_sample <span class="at">-h</span> </span>
-<span id="cb43-216"><a href="#cb43-216" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-217"><a href="#cb43-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-218"><a href="#cb43-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-219"><a href="#cb43-219" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`count_targets_per_sample`</span> script is below</span>
-<span id="cb43-220"><a href="#cb43-220" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-223"><a href="#cb43-223" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb43-224"><a href="#cb43-224" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb43-225"><a href="#cb43-225" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb43-226"><a href="#cb43-226" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb43-227"><a href="#cb43-227" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb43-228"><a href="#cb43-228" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/scripts/extract_info_from_pmo/count_targets_per_sample.py</span></span>
-<span id="cb43-229"><a href="#cb43-229" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/scripts/extract_info_from_pmo/count_targets_per_sample.py</span></span>
-<span id="cb43-230"><a href="#cb43-230" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-231"><a href="#cb43-231" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-234"><a href="#cb43-234" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb43-235"><a href="#cb43-235" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb43-236"><a href="#cb43-236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-237"><a href="#cb43-237" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_targets_per_sample <span class="at">--file</span> ../../format/moz2018_PMO.json.gz  <span class="kw">|</span> <span class="fu">head</span></span>
-<span id="cb43-238"><a href="#cb43-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-239"><a href="#cb43-239" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-240"><a href="#cb43-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-241"><a href="#cb43-241" aria-hidden="true" tabindex="-1"></a>Apply a read count minimum filter (this a total read count summed for a target and not on a haplotype level) </span>
-<span id="cb43-242"><a href="#cb43-242" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-245"><a href="#cb43-245" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb43-246"><a href="#cb43-246" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb43-247"><a href="#cb43-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-248"><a href="#cb43-248" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_targets_per_sample <span class="at">--read_count_minimum</span> 3000 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz  <span class="kw">|</span> <span class="fu">head</span></span>
-<span id="cb43-249"><a href="#cb43-249" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-250"><a href="#cb43-250" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-251"><a href="#cb43-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-252"><a href="#cb43-252" aria-hidden="true" tabindex="-1"></a><span class="fu">## count_samples_per_target  </span></span>
-<span id="cb43-253"><a href="#cb43-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-254"><a href="#cb43-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-255"><a href="#cb43-255" aria-hidden="true" tabindex="-1"></a>Count up the number of experimental_sample_ids each target has. A read filter can be applied to see how many samples a taget would have if a filter was applied </span>
-<span id="cb43-256"><a href="#cb43-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-257"><a href="#cb43-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-260"><a href="#cb43-260" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb43-261"><a href="#cb43-261" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_samples_per_target <span class="at">-h</span> </span>
-<span id="cb43-262"><a href="#cb43-262" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-263"><a href="#cb43-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-264"><a href="#cb43-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-265"><a href="#cb43-265" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`count_samples_per_target`</span> script is below</span>
-<span id="cb43-266"><a href="#cb43-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-269"><a href="#cb43-269" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb43-270"><a href="#cb43-270" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb43-271"><a href="#cb43-271" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb43-272"><a href="#cb43-272" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb43-273"><a href="#cb43-273" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb43-274"><a href="#cb43-274" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/scripts/extract_info_from_pmo/count_samples_per_target.py</span></span>
-<span id="cb43-275"><a href="#cb43-275" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/scripts/extract_info_from_pmo/count_samples_per_target.py</span></span>
-<span id="cb43-276"><a href="#cb43-276" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-277"><a href="#cb43-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-278"><a href="#cb43-278" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-279"><a href="#cb43-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-282"><a href="#cb43-282" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb43-283"><a href="#cb43-283" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb43-284"><a href="#cb43-284" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-285"><a href="#cb43-285" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_samples_per_target <span class="at">--file</span> ../../format/moz2018_PMO.json.gz  <span class="kw">|</span> <span class="fu">head</span></span>
-<span id="cb43-286"><a href="#cb43-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-287"><a href="#cb43-287" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-288"><a href="#cb43-288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-289"><a href="#cb43-289" aria-hidden="true" tabindex="-1"></a>Apply a read count minimum filter (this a total read count summed for a target and not on a haplotype level) </span>
-<span id="cb43-290"><a href="#cb43-290" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-293"><a href="#cb43-293" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb43-294"><a href="#cb43-294" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb43-295"><a href="#cb43-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-296"><a href="#cb43-296" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-runner.py</span> count_samples_per_target <span class="at">--read_count_minimum</span> 3000 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz  <span class="kw">|</span> <span class="fu">head</span></span>
-<span id="cb43-297"><a href="#cb43-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-298"><a href="#cb43-298" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-299"><a href="#cb43-299" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode" id="cb49" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Getting basic info out of PMO using pmotools-python</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, echo=F}</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../common.R"</span>)</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="fu"># Extract basic info counts from PMO </span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>To get simple counts of number of targets with sample counts, samples with target counts, the counts of meta fields </span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>Most of these basic info extractor can be found underneath <span class="in">`extract_basic_info_from_pmo`</span></span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span></span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-20"><a href="#cb49-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, echo = F}</span></span>
+<span id="cb49-21"><a href="#cb49-21" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> <span class="kw">|</span> <span class="fu">perl</span> <span class="at">-pe</span> <span class="st">'s/\e\[[0-9;]*m(?:\e\[K)?//g'</span></span>
+<span id="cb49-22"><a href="#cb49-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-23"><a href="#cb49-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-24"><a href="#cb49-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-25"><a href="#cb49-25" aria-hidden="true" tabindex="-1"></a>Getting files for examples </span>
+<span id="cb49-26"><a href="#cb49-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-27"><a href="#cb49-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-28"><a href="#cb49-28" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
+<span id="cb49-29"><a href="#cb49-29" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb49-30"><a href="#cb49-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-31"><a href="#cb49-31" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz</span>
+<span id="cb49-32"><a href="#cb49-32" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz</span>
+<span id="cb49-33"><a href="#cb49-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-34"><a href="#cb49-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-35"><a href="#cb49-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-36"><a href="#cb49-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-37"><a href="#cb49-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-38"><a href="#cb49-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-39"><a href="#cb49-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-40"><a href="#cb49-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-41"><a href="#cb49-41" aria-hidden="true" tabindex="-1"></a><span class="fu">## list_specimen_meta_fields</span></span>
+<span id="cb49-42"><a href="#cb49-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-43"><a href="#cb49-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-44"><a href="#cb49-44" aria-hidden="true" tabindex="-1"></a>This will list all the meta fields within the <span class="in">`specimen_infos`</span> section of a PMO file. Since not all meta fields are always present in all specimens, this will list the count of samples each field appears in and the number of total specimens  </span>
+<span id="cb49-45"><a href="#cb49-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-48"><a href="#cb49-48" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb49-49"><a href="#cb49-49" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_specimen_meta_fields <span class="at">-h</span> </span>
+<span id="cb49-50"><a href="#cb49-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-51"><a href="#cb49-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-52"><a href="#cb49-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-53"><a href="#cb49-53" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`list_specimen_meta_fields`</span> script is below</span>
+<span id="cb49-54"><a href="#cb49-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-57"><a href="#cb49-57" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb49-58"><a href="#cb49-58" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb49-59"><a href="#cb49-59" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb49-60"><a href="#cb49-60" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb49-61"><a href="#cb49-61" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb49-62"><a href="#cb49-62" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/src/pmotools/scripts/extract_info_from_pmo/list_specimen_meta_fields.py</span></span>
+<span id="cb49-63"><a href="#cb49-63" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/src/pmotools/scripts/extract_info_from_pmo/list_specimen_meta_fields.py</span></span>
+<span id="cb49-64"><a href="#cb49-64" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-65"><a href="#cb49-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-68"><a href="#cb49-68" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb49-69"><a href="#cb49-69" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb49-70"><a href="#cb49-70" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_specimen_meta_fields <span class="at">--file</span> ../../format/moz2018_PMO.json.gz</span>
+<span id="cb49-71"><a href="#cb49-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-72"><a href="#cb49-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-73"><a href="#cb49-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-76"><a href="#cb49-76" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb49-77"><a href="#cb49-77" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb49-78"><a href="#cb49-78" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_specimen_meta_fields <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> spec_fields_moz2018_PMO.tsv <span class="at">--overwrite</span></span>
+<span id="cb49-79"><a href="#cb49-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-80"><a href="#cb49-80" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-81"><a href="#cb49-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-82"><a href="#cb49-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-83"><a href="#cb49-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-84"><a href="#cb49-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-85"><a href="#cb49-85" aria-hidden="true" tabindex="-1"></a><span class="fu">## count_specimen_meta</span></span>
+<span id="cb49-86"><a href="#cb49-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-87"><a href="#cb49-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-88"><a href="#cb49-88" aria-hidden="true" tabindex="-1"></a>This will list all the meta values (and the combinations) for the meta fields within the <span class="in">`specimen_infos`</span> section of a PMO file.</span>
+<span id="cb49-89"><a href="#cb49-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-90"><a href="#cb49-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-93"><a href="#cb49-93" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb49-94"><a href="#cb49-94" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_specimen_meta <span class="at">-h</span> </span>
+<span id="cb49-95"><a href="#cb49-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-96"><a href="#cb49-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-97"><a href="#cb49-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-98"><a href="#cb49-98" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`count_specimen_meta`</span> script is below</span>
+<span id="cb49-99"><a href="#cb49-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-102"><a href="#cb49-102" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb49-103"><a href="#cb49-103" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb49-104"><a href="#cb49-104" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb49-105"><a href="#cb49-105" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb49-106"><a href="#cb49-106" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb49-107"><a href="#cb49-107" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_specimen_meta.py</span></span>
+<span id="cb49-108"><a href="#cb49-108" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_specimen_meta.py</span></span>
+<span id="cb49-109"><a href="#cb49-109" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-110"><a href="#cb49-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-111"><a href="#cb49-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-114"><a href="#cb49-114" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb49-115"><a href="#cb49-115" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb49-116"><a href="#cb49-116" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_specimen_meta <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--meta_fields</span> collection_country</span>
+<span id="cb49-117"><a href="#cb49-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-118"><a href="#cb49-118" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-119"><a href="#cb49-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-122"><a href="#cb49-122" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb49-123"><a href="#cb49-123" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb49-124"><a href="#cb49-124" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_specimen_meta <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--meta_fields</span> collection_country <span class="at">--overwrite</span> <span class="at">--output</span> collection_country_count_moz2018_PMO.tsv.gz </span>
+<span id="cb49-125"><a href="#cb49-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-126"><a href="#cb49-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-127"><a href="#cb49-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-130"><a href="#cb49-130" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb49-131"><a href="#cb49-131" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb49-132"><a href="#cb49-132" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_specimen_meta <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--meta_fields</span> collection_country,geo_admin3</span>
+<span id="cb49-133"><a href="#cb49-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-134"><a href="#cb49-134" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-135"><a href="#cb49-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-138"><a href="#cb49-138" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb49-139"><a href="#cb49-139" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb49-140"><a href="#cb49-140" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_specimen_meta <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--meta_fields</span> collection_country,collection_date <span class="kw">|</span> <span class="fu">head</span></span>
+<span id="cb49-141"><a href="#cb49-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-142"><a href="#cb49-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-143"><a href="#cb49-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-144"><a href="#cb49-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-145"><a href="#cb49-145" aria-hidden="true" tabindex="-1"></a><span class="fu">## list_library_sample_names_per_specimen_name</span></span>
+<span id="cb49-146"><a href="#cb49-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-147"><a href="#cb49-147" aria-hidden="true" tabindex="-1"></a>Specimens can have multiple library sample names, so it might be helpful to list out all the library_names per specimens </span>
+<span id="cb49-148"><a href="#cb49-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-151"><a href="#cb49-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb49-152"><a href="#cb49-152" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_library_sample_names_per_specimen_name <span class="at">-h</span> </span>
+<span id="cb49-153"><a href="#cb49-153" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-154"><a href="#cb49-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-155"><a href="#cb49-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-156"><a href="#cb49-156" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`list_library_sample_names_per_specimen_name`</span> script is below</span>
+<span id="cb49-157"><a href="#cb49-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-160"><a href="#cb49-160" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb49-161"><a href="#cb49-161" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb49-162"><a href="#cb49-162" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb49-163"><a href="#cb49-163" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb49-164"><a href="#cb49-164" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb49-165"><a href="#cb49-165" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/src/pmotools/scripts/extract_info_from_pmo/list_library_sample_names_per_specimen_name.py</span></span>
+<span id="cb49-166"><a href="#cb49-166" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/src/pmotools/scripts/extract_info_from_pmo/list_library_sample_names_per_specimen_name.py</span></span>
+<span id="cb49-167"><a href="#cb49-167" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-168"><a href="#cb49-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-169"><a href="#cb49-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-172"><a href="#cb49-172" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb49-173"><a href="#cb49-173" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb49-174"><a href="#cb49-174" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_library_sample_names_per_specimen_name <span class="at">--file</span> ../../format/moz2018_PMO.json.gz </span>
+<span id="cb49-175"><a href="#cb49-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-176"><a href="#cb49-176" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-177"><a href="#cb49-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-180"><a href="#cb49-180" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb49-181"><a href="#cb49-181" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb49-182"><a href="#cb49-182" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_library_sample_names_per_specimen_name <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--overwrite</span> <span class="at">--output</span> library_samples_per_specimen_moz2018_PMO.tsv.gz </span>
+<span id="cb49-183"><a href="#cb49-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-184"><a href="#cb49-184" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-185"><a href="#cb49-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-186"><a href="#cb49-186" aria-hidden="true" tabindex="-1"></a><span class="fu">## list_bioinformatics_run_names </span></span>
+<span id="cb49-187"><a href="#cb49-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-188"><a href="#cb49-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-189"><a href="#cb49-189" aria-hidden="true" tabindex="-1"></a>This will simply list out all the analyses (all the <span class="in">`bioinformatics_run_names`</span>s) stored within a PMO </span>
+<span id="cb49-190"><a href="#cb49-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-191"><a href="#cb49-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-194"><a href="#cb49-194" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb49-195"><a href="#cb49-195" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_bioinformatics_run_names <span class="at">-h</span> </span>
+<span id="cb49-196"><a href="#cb49-196" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-197"><a href="#cb49-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-198"><a href="#cb49-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-199"><a href="#cb49-199" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`list_bioinformatics_run_names`</span> script is below</span>
+<span id="cb49-200"><a href="#cb49-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-203"><a href="#cb49-203" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb49-204"><a href="#cb49-204" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb49-205"><a href="#cb49-205" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb49-206"><a href="#cb49-206" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb49-207"><a href="#cb49-207" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb49-208"><a href="#cb49-208" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/src/pmotools/scripts/extract_info_from_pmo/list_bioinformatics_run_names.py</span></span>
+<span id="cb49-209"><a href="#cb49-209" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/src/pmotools/scripts/extract_info_from_pmo/list_bioinformatics_run_names.py</span></span>
+<span id="cb49-210"><a href="#cb49-210" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-211"><a href="#cb49-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-212"><a href="#cb49-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-213"><a href="#cb49-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-216"><a href="#cb49-216" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb49-217"><a href="#cb49-217" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb49-218"><a href="#cb49-218" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_bioinformatics_run_names <span class="at">--file</span> ../../format/moz2018_PMO.json.gz  </span>
+<span id="cb49-219"><a href="#cb49-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-220"><a href="#cb49-220" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-221"><a href="#cb49-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-224"><a href="#cb49-224" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb49-225"><a href="#cb49-225" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb49-226"><a href="#cb49-226" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_bioinformatics_run_names <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz </span>
+<span id="cb49-227"><a href="#cb49-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-228"><a href="#cb49-228" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-229"><a href="#cb49-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-230"><a href="#cb49-230" aria-hidden="true" tabindex="-1"></a>This can be helpful after combining PMOs </span>
+<span id="cb49-231"><a href="#cb49-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-232"><a href="#cb49-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-233"><a href="#cb49-233" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
+<span id="cb49-234"><a href="#cb49-234" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb49-235"><a href="#cb49-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-236"><a href="#cb49-236" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> combine_pmos <span class="at">--pmo_files</span> ../../format/moz2018_PMO.json.gz,../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--output</span> combined_Heome1_PMO.json.gz <span class="at">--overwrite</span></span>
+<span id="cb49-237"><a href="#cb49-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-238"><a href="#cb49-238" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_bioinformatics_run_names <span class="at">--file</span> combined_Heome1_PMO.json.gz </span>
+<span id="cb49-239"><a href="#cb49-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-240"><a href="#cb49-240" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-241"><a href="#cb49-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-242"><a href="#cb49-242" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, echo = F}</span></span>
+<span id="cb49-243"><a href="#cb49-243" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb49-244"><a href="#cb49-244" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_bioinformatics_run_names <span class="at">--file</span> combined_Heome1_PMO.json.gz </span>
+<span id="cb49-245"><a href="#cb49-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-246"><a href="#cb49-246" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-247"><a href="#cb49-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-248"><a href="#cb49-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-249"><a href="#cb49-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-250"><a href="#cb49-250" aria-hidden="true" tabindex="-1"></a><span class="fu">## count_targets_per_library_sample </span></span>
+<span id="cb49-251"><a href="#cb49-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-252"><a href="#cb49-252" aria-hidden="true" tabindex="-1"></a>Count up the number targets each library_sample_id has. A read filter can be applied to see how targets would be kept if such a filter was applied </span>
+<span id="cb49-253"><a href="#cb49-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-256"><a href="#cb49-256" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb49-257"><a href="#cb49-257" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_targets_per_library_sample <span class="at">-h</span> </span>
+<span id="cb49-258"><a href="#cb49-258" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-259"><a href="#cb49-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-260"><a href="#cb49-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-261"><a href="#cb49-261" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`count_targets_per_library_sample`</span> script is below</span>
+<span id="cb49-262"><a href="#cb49-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-265"><a href="#cb49-265" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb49-266"><a href="#cb49-266" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb49-267"><a href="#cb49-267" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb49-268"><a href="#cb49-268" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb49-269"><a href="#cb49-269" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb49-270"><a href="#cb49-270" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_targets_per_library_sample.py</span></span>
+<span id="cb49-271"><a href="#cb49-271" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_targets_per_library_sample.py</span></span>
+<span id="cb49-272"><a href="#cb49-272" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-273"><a href="#cb49-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-276"><a href="#cb49-276" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb49-277"><a href="#cb49-277" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb49-278"><a href="#cb49-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-279"><a href="#cb49-279" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_targets_per_library_sample <span class="at">--file</span> ../../format/moz2018_PMO.json.gz  <span class="kw">|</span> <span class="fu">head</span></span>
+<span id="cb49-280"><a href="#cb49-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-281"><a href="#cb49-281" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-282"><a href="#cb49-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-283"><a href="#cb49-283" aria-hidden="true" tabindex="-1"></a>Apply a read count minimum filter (this a total read count summed for a target and not on a haplotype level) </span>
+<span id="cb49-284"><a href="#cb49-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-287"><a href="#cb49-287" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb49-288"><a href="#cb49-288" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb49-289"><a href="#cb49-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-290"><a href="#cb49-290" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_targets_per_library_sample <span class="at">--read_count_minimum</span> 3000 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz  <span class="kw">|</span> <span class="fu">head</span></span>
+<span id="cb49-291"><a href="#cb49-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-292"><a href="#cb49-292" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-293"><a href="#cb49-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-294"><a href="#cb49-294" aria-hidden="true" tabindex="-1"></a><span class="fu">## count_library_samples_per_target  </span></span>
+<span id="cb49-295"><a href="#cb49-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-296"><a href="#cb49-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-297"><a href="#cb49-297" aria-hidden="true" tabindex="-1"></a>Count up the number of library_sample_ids each target has. A read filter can be applied to see how many samples a taget would have if a filter was applied </span>
+<span id="cb49-298"><a href="#cb49-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-299"><a href="#cb49-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-302"><a href="#cb49-302" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb49-303"><a href="#cb49-303" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_library_samples_per_target <span class="at">-h</span> </span>
+<span id="cb49-304"><a href="#cb49-304" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-305"><a href="#cb49-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-306"><a href="#cb49-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-307"><a href="#cb49-307" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`count_library_samples_per_target`</span> script is below</span>
+<span id="cb49-308"><a href="#cb49-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-311"><a href="#cb49-311" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb49-312"><a href="#cb49-312" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb49-313"><a href="#cb49-313" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb49-314"><a href="#cb49-314" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb49-315"><a href="#cb49-315" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb49-316"><a href="#cb49-316" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_library_samples_per_target.py</span></span>
+<span id="cb49-317"><a href="#cb49-317" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_library_samples_per_target.py</span></span>
+<span id="cb49-318"><a href="#cb49-318" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-319"><a href="#cb49-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-320"><a href="#cb49-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-321"><a href="#cb49-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-324"><a href="#cb49-324" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb49-325"><a href="#cb49-325" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb49-326"><a href="#cb49-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-327"><a href="#cb49-327" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_library_samples_per_target <span class="at">--file</span> ../../format/moz2018_PMO.json.gz  <span class="kw">|</span> <span class="fu">head</span></span>
+<span id="cb49-328"><a href="#cb49-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-329"><a href="#cb49-329" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-330"><a href="#cb49-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-331"><a href="#cb49-331" aria-hidden="true" tabindex="-1"></a>Apply a read count minimum filter (this a total read count summed for a target and not on a haplotype level) </span>
+<span id="cb49-332"><a href="#cb49-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-335"><a href="#cb49-335" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb49-336"><a href="#cb49-336" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb49-337"><a href="#cb49-337" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-338"><a href="#cb49-338" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_library_samples_per_target <span class="at">--read_count_minimum</span> 3000 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz  <span class="kw">|</span> <span class="fu">head</span></span>
+<span id="cb49-339"><a href="#cb49-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-340"><a href="#cb49-340" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-341"><a href="#cb49-341" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

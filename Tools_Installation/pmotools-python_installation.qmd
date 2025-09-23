@@ -24,7 +24,7 @@ Downloading repo
 git clone git@github.com:PlasmoGenEpi/pmotools-python.git
 ```
 
-Currently (as 2024-10) majority of code is currently still in develop branch 
+Currently (as 2025-09) majority of code is currently still in develop branch 
 ```{bash, eval = F}
 cd pmotools-python
 git checkout develop
@@ -33,7 +33,7 @@ git checkout develop
 
 #### Setting up python environment 
 
-To set up environment that has all the python libraries install a env library is included and can be install/activated via conda or mamba 
+To set up a conda environment that has all the python libraries that would be needed by pmotools-python 
 
 ```{bash, eval = F}
 conda env create -f envs/pmotools-env.yml 
@@ -51,44 +51,47 @@ pip install -e .
 
 ```
 
-
-### Adding scripts to PATH 
-
-pmotools-python can be included in python scripts but also there is a command line interface that includes several utilities that uses the code base, this interface can be included by including the `scripts` directory in your PATH or by calling the script directory  
-
-```{bash, eval = F}
-# navigate to git directory
-cd pmotools-python
-
-##  add to path (must be done when within the git directory, or replace $(pwd) with the full path nmae to the git repo
-export PATH="$(pwd)/scripts:$PATH"
-```
-
 ### Adding autocompletion 
 
-To enable bash auto-completion for `pmotools-runner.py` script located in the scripts directory mentioned above, add the following to your `~/.bash_completion` and make sure it's being loaded as part of your .bashrc and/or ~/.bash_profile (on MacOS) or ~/.profile (on ubuntu)
+To enable bash auto-completion for `pmotools-python`, add the following to your `~/.bash_completion` and make sure it's being loaded as part of your .bashrc and/or ~/.bash_profile (on MacOS) or ~/.profile (on ubuntu)
 
 ```{bash, eval = F}
-_comp_pmotools_runner()
+_pmotools_python_complete()
 {
-    local cur prev opts base
+    local cur prev
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
-    if [[ $COMP_CWORD -lt 2 ]] ; then
-    	opts=$(for x in `${COMP_WORDS[0]} | grep "^\s.*-" | sed 's/ -.*//g' | tr -d '[:blank:]'`; do echo ${x} ; done )
-		COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
-    elif [[ ${cur} == -* ]]; then
-    	opts=$(for x in `${COMP_WORDS[0]} ${COMP_WORDS[1]} -h | grep " -" | sed "s/^. *-/-/g" | sed "s/   .*//g" | sed "s/, / /g"`; do echo ${x} ; done )
-		COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
-    else
-    	_filedir
+
+    # 1) Completing the command name (1st arg): list all commands
+    if [[ ${COMP_CWORD} -eq 1 ]]; then
+        # Our CLI prints machine-friendly list via --list-plain:
+        # "<command>\t<group>\t<help>"
+        local lines cmds
+        lines="$(${COMP_WORDS[0]} --list-plain 2>/dev/null)"
+        cmds="$(printf '%s\n' "${lines}" | awk -F'\t' '{print $1}')"
+        COMPREPLY=( $(compgen -W "${cmds}" -- "${cur}") )
+        return 0
     fi
-   return 0
+
+    # 2) Completing flags for a leaf command: scrape leaf -h
+    if [[ "${cur}" == -* ]]; then
+        local helps opts
+        helps="$(${COMP_WORDS[0]} ${COMP_WORDS[1]} -h 2>/dev/null)"
+        # Pull out flag tokens and split comma-separated forms
+        opts="$(printf '%s\n' "${helps}" \
+            | sed -n 's/^[[:space:]]\{0,\}\(-[-[:alnum:]][-[:alnum:]]*\)\(, *-[[:alnum:]][-[:alnum:]]*\)\{0,\}.*/\1/p' \
+            | sed 's/, / /g')"
+        COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+        return 0
+    fi
+
+    # 3) Otherwise, fall back to filename completion for positional args
+    COMPREPLY=( $(compgen -f -- "${cur}") )
+    return 0
 }
 
-
-complete -F _comp_pmotools_runner pmotools-runner.py
+complete -F _pmotools_python_complete pmotools-python
 
 ```
 

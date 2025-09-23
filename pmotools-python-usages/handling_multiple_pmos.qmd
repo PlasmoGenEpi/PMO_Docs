@@ -7,7 +7,7 @@ source("../common.R")
 ```
 
 
-# pmotools-runner.py combine_pmos
+# pmotools-python combine_pmos
 
 Can download multiple PMOs here 
 
@@ -18,7 +18,7 @@ Can download multiple PMOs here
 
 
 ```{bash}
-pmotools-runner.py combine_pmos --help
+pmotools-python combine_pmos --help
 ```
 
 
@@ -31,14 +31,14 @@ wget https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz
 wget https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz
 
 
-pmotools-runner.py combine_pmos --pmo_files moz2018_PMO.json.gz,PathWeaverHeome1_PMO.json.gz --output combined_Heome1_PMO.json.gz --overwrite
+pmotools-python combine_pmos --pmo_files moz2018_PMO.json.gz,PathWeaverHeome1_PMO.json.gz --output combined_Heome1_PMO.json.gz --overwrite
 ```
 
 
 ```{bash, echo = F, eval = T}
 cd example 
 
-pmotools-runner.py combine_pmos --pmo_files ../../format/moz2018_PMO.json.gz,../../format/PathWeaverHeome1_PMO.json.gz --output combined_Heome1_PMO.json.gz --overwrite
+pmotools-python combine_pmos --pmo_files ../../format/moz2018_PMO.json.gz,../../format/PathWeaverHeome1_PMO.json.gz --output combined_Heome1_PMO.json.gz --overwrite
 ```
 
 The python code for `combine_pmos` script is below
@@ -48,8 +48,8 @@ The python code for `combine_pmos` script is below
 #| eval: false
 #| code-fold: true
 #| code-line-numbers: true
-#| filename: pmotools-python/scripts/pmo_utils/combine_pmos.py
-#| file: ../pmotools-python/scripts/pmo_utils/combine_pmos.py
+#| filename: pmotools-python/src/pmotools/scripts/pmo_utils/combine_pmos.py
+#| file: ../pmotools-python/src/pmotools/scripts/pmo_utils/combine_pmos.py
 ```
 
 

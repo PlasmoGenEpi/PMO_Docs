@@ -8,7 +8,7 @@ project:
     - format/FormatOverviewAdvanced.qmd
     - format/DevelopmentOfFormat.qmd
     - Tools_Installation/pmotools-python_installation.qmd
-    - pmotools-python-usages/pmotools-runner.qmd
+    - pmotools-python-usages/pmotools-python.qmd
     - pmotools-python-usages/extracting_allele_tables.qmd
     - pmotools-python-usages/subsetting_from_PMO.qmd
     - pmotools-python-usages/handling_multiple_pmos.qmd
@@ -38,8 +38,8 @@ website:
         menu: 
           - text: <span class='menuTitle'>Command line interface</span>
           - text: "------------"
-          - text: <span class='menuTitle'>pmotools-runner.py</span>
-          - href: pmotools-python-usages/pmotools-runner.qmd
+          - text: <span class='menuTitle'>pmotools-python</span>
+          - href: pmotools-python-usages/pmotools-python.qmd
           - text: <span class='menuTitle'>Extracting out of PMO</span>
           - href: pmotools-python-usages/extracting_allele_tables.qmd
           - text: <span class='menuTitle'>Subset PMO</span>

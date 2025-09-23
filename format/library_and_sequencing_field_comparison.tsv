@@ -1,5 +1,5 @@
 experiment_info_fields	sequencing_info_fields	pmo_required	MIXS v6.2.0 MigsEu/HumanAssociated/MimarksC	SRA MigsEu/HumanAssociated/MimarksC	SRA_required
-experiment_sample_name		TRUE		library_id	TRUE
+library_sample_name		TRUE		library_id	TRUE
 				title	TRUE
 panel_id		TRUE			
 sequencing_info_id		TRUE			

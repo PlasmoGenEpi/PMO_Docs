@@ -14,11 +14,11 @@ To get simple counts of number of targets with sample counts, samples with targe
 Most of these basic info extractor can be found underneath `extract_basic_info_from_pmo`
 
 ```{bash, eval = F}
-pmotools-runner.py
+pmotools-python
 ```
 
 ```{bash, echo = F}
-pmotools-runner.py | perl -pe 's/\e\[[0-9;]*m(?:\e\[K)?//g'
+pmotools-python | perl -pe 's/\e\[[0-9;]*m(?:\e\[K)?//g'
 ```
 
 
@@ -44,7 +44,7 @@ wget https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz
 This will list all the meta fields within the `specimen_infos` section of a PMO file. Since not all meta fields are always present in all specimens, this will list the count of samples each field appears in and the number of total specimens  
 
 ```{bash}
-pmotools-runner.py list_specimen_meta_fields -h 
+pmotools-python list_specimen_meta_fields -h 
 ```
 
 
@@ -55,19 +55,19 @@ The python code for `list_specimen_meta_fields` script is below
 #| eval: false
 #| code-fold: true
 #| code-line-numbers: true
-#| filename: pmotools-python/scripts/extract_info_from_pmo/list_specimen_meta_fields.py
-#| file: ../pmotools-python/scripts/extract_info_from_pmo/list_specimen_meta_fields.py
+#| filename: pmotools-python/src/pmotools/scripts/extract_info_from_pmo/list_specimen_meta_fields.py
+#| file: ../pmotools-python/src/pmotools/scripts/extract_info_from_pmo/list_specimen_meta_fields.py
 ```
 
 ```{bash}
 cd example 
-pmotools-runner.py list_specimen_meta_fields --file ../../format/moz2018_PMO.json.gz
+pmotools-python list_specimen_meta_fields --file ../../format/moz2018_PMO.json.gz
 
 ```
 
 ```{bash}
 cd example 
-pmotools-runner.py list_specimen_meta_fields --file ../../format/moz2018_PMO.json.gz --output spec_fields_moz2018_PMO.tsv --overwrite
+pmotools-python list_specimen_meta_fields --file ../../format/moz2018_PMO.json.gz --output spec_fields_moz2018_PMO.tsv --overwrite
 
 ```
 
@@ -81,7 +81,7 @@ This will list all the meta values (and the combinations) for the meta fields wi
 
 
 ```{bash}
-pmotools-runner.py count_specimen_meta -h 
+pmotools-python count_specimen_meta -h 
 ```
 
 
@@ -92,32 +92,32 @@ The python code for `count_specimen_meta` script is below
 #| eval: false
 #| code-fold: true
 #| code-line-numbers: true
-#| filename: pmotools-python/scripts/extract_info_from_pmo/count_specimen_meta.py
-#| file: ../pmotools-python/scripts/extract_info_from_pmo/count_specimen_meta.py
+#| filename: pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_specimen_meta.py
+#| file: ../pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_specimen_meta.py
 ```
 
 
 ```{bash}
 cd example 
-pmotools-runner.py count_specimen_meta --file ../../format/moz2018_PMO.json.gz --meta_fields collection_country
+pmotools-python count_specimen_meta --file ../../format/moz2018_PMO.json.gz --meta_fields collection_country
 
 ```
 
 ```{bash}
 cd example 
-pmotools-runner.py count_specimen_meta --file ../../format/moz2018_PMO.json.gz --meta_fields collection_country --overwrite --output collection_country_count_moz2018_PMO.tsv.gz 
+pmotools-python count_specimen_meta --file ../../format/moz2018_PMO.json.gz --meta_fields collection_country --overwrite --output collection_country_count_moz2018_PMO.tsv.gz 
 
 ```
 
 ```{bash}
 cd example 
-pmotools-runner.py count_specimen_meta --file ../../format/moz2018_PMO.json.gz --meta_fields collection_country,geo_admin3
+pmotools-python count_specimen_meta --file ../../format/moz2018_PMO.json.gz --meta_fields collection_country,geo_admin3
 
 ```
 
 ```{bash}
 cd example 
-pmotools-runner.py count_specimen_meta --file ../../format/PathWeaverHeome1_PMO.json.gz --meta_fields collection_country,collection_date | head
+pmotools-python count_specimen_meta --file ../../format/PathWeaverHeome1_PMO.json.gz --meta_fields collection_country,collection_date | head
 
 ```
 
@@ -128,7 +128,7 @@ This will simply list out all the analyses (all the `tar_amp_bioinformatics_info
 
 
 ```{bash}
-pmotools-runner.py list_tar_amp_bioinformatics_info_ids -h 
+pmotools-python list_tar_amp_bioinformatics_info_ids -h 
 ```
 
 
@@ -139,21 +139,21 @@ The python code for `list_tar_amp_bioinformatics_info_ids` script is below
 #| eval: false
 #| code-fold: true
 #| code-line-numbers: true
-#| filename: pmotools-python/scripts/extract_info_from_pmo/list_tar_amp_bioinformatics_info_ids.py
-#| file: ../pmotools-python/scripts/extract_info_from_pmo/list_tar_amp_bioinformatics_info_ids.py
+#| filename: pmotools-python/src/pmotools/scripts/extract_info_from_pmo/list_tar_amp_bioinformatics_info_ids.py
+#| file: ../pmotools-python/src/pmotools/scripts/extract_info_from_pmo/list_tar_amp_bioinformatics_info_ids.py
 ```
 
 
 
 ```{bash}
 cd example 
-pmotools-runner.py list_tar_amp_bioinformatics_info_ids --file ../../format/moz2018_PMO.json.gz  
+pmotools-python list_tar_amp_bioinformatics_info_ids --file ../../format/moz2018_PMO.json.gz  
 
 ```
 
 ```{bash}
 cd example 
-pmotools-runner.py list_tar_amp_bioinformatics_info_ids --file ../../format/PathWeaverHeome1_PMO.json.gz 
+pmotools-python list_tar_amp_bioinformatics_info_ids --file ../../format/PathWeaverHeome1_PMO.json.gz 
 
 ```
 
@@ -163,15 +163,15 @@ This can be helpful after combining PMOs
 ```{bash, eval = F}
 cd example 
 
-pmotools-runner.py combine_pmos --pmo_files ../../format/moz2018_PMO.json.gz,../../format/PathWeaverHeome1_PMO.json.gz --output combined_Heome1_PMO.json.gz --overwrite
+pmotools-python combine_pmos --pmo_files ../../format/moz2018_PMO.json.gz,../../format/PathWeaverHeome1_PMO.json.gz --output combined_Heome1_PMO.json.gz --overwrite
 
-pmotools-runner.py list_tar_amp_bioinformatics_info_ids --file combined_Heome1_PMO.json.gz 
+pmotools-python list_tar_amp_bioinformatics_info_ids --file combined_Heome1_PMO.json.gz 
 
 ```
 
 ```{bash, echo = F}
 cd example 
-pmotools-runner.py list_tar_amp_bioinformatics_info_ids --file combined_Heome1_PMO.json.gz 
+pmotools-python list_tar_amp_bioinformatics_info_ids --file combined_Heome1_PMO.json.gz 
 
 ```
 
@@ -182,7 +182,7 @@ pmotools-runner.py list_tar_amp_bioinformatics_info_ids --file combined_Heome1_P
 Count up the number targets each experimental_sample_id has. A read filter can be applied to see how targets would be kept if such a filter was applied 
 
 ```{bash}
-pmotools-runner.py count_targets_per_sample -h 
+pmotools-python count_targets_per_sample -h 
 ```
 
 
@@ -193,14 +193,14 @@ The python code for `count_targets_per_sample` script is below
 #| eval: false
 #| code-fold: true
 #| code-line-numbers: true
-#| filename: pmotools-python/scripts/extract_info_from_pmo/count_targets_per_sample.py
-#| file: ../pmotools-python/scripts/extract_info_from_pmo/count_targets_per_sample.py
+#| filename: pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_targets_per_sample.py
+#| file: ../pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_targets_per_sample.py
 ```
 
 ```{bash}
 cd example 
 
-pmotools-runner.py count_targets_per_sample --file ../../format/moz2018_PMO.json.gz  | head
+pmotools-python count_targets_per_sample --file ../../format/moz2018_PMO.json.gz  | head
 
 ```
 
@@ -209,7 +209,7 @@ Apply a read count minimum filter (this a total read count summed for a target a
 ```{bash}
 cd example 
 
-pmotools-runner.py count_targets_per_sample --read_count_minimum 3000 --file ../../format/moz2018_PMO.json.gz  | head
+pmotools-python count_targets_per_sample --read_count_minimum 3000 --file ../../format/moz2018_PMO.json.gz  | head
 
 ```
 
@@ -220,7 +220,7 @@ Count up the number of experimental_sample_ids each target has. A read filter ca
 
 
 ```{bash}
-pmotools-runner.py count_library_samples_per_target -h 
+pmotools-python count_library_samples_per_target -h 
 ```
 
 
@@ -231,8 +231,8 @@ The python code for `count_library_samples_per_target` script is below
 #| eval: false
 #| code-fold: true
 #| code-line-numbers: true
-#| filename: pmotools-python/scripts/extract_info_from_pmo/count_library_samples_per_target.py
-#| file: ../pmotools-python/scripts/extract_info_from_pmo/count_library_samples_per_target.py
+#| filename: pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_library_samples_per_target.py
+#| file: ../pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_library_samples_per_target.py
 ```
 
 
@@ -240,7 +240,7 @@ The python code for `count_library_samples_per_target` script is below
 ```{bash}
 cd example 
 
-pmotools-runner.py count_library_samples_per_target --file ../../format/moz2018_PMO.json.gz  | head
+pmotools-python count_library_samples_per_target --file ../../format/moz2018_PMO.json.gz  | head
 
 ```
 
@@ -249,7 +249,7 @@ Apply a read count minimum filter (this a total read count summed for a target a
 ```{bash}
 cd example 
 
-pmotools-runner.py count_library_samples_per_target --read_count_minimum 3000 --file ../../format/moz2018_PMO.json.gz  | head
+pmotools-python count_library_samples_per_target --read_count_minimum 3000 --file ../../format/moz2018_PMO.json.gz  | head
 
 ```
 

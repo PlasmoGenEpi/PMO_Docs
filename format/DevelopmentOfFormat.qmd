@@ -12,22 +12,6 @@ $(document).ready(function() {
 
 ```{r setup, echo=FALSE}
 source("../common.R")
-
-#' Check sharing and unqiue values between two vectors
-#'
-#' @param vectorA the first vector
-#' @param vectorB the second vector
-#'
-#' @returns a list with 4 vectors, "only_in_vectorA" unique to vectorA, "only_in_vectorB" unique to vectorB, "shared_samples" shared between both vectorA and vectorB, "all" all values by combinng vectorA and vectorB 
-set_decompose <- function(vectorA, vectorB){
-  ret = list()
-  # Find unique and shared samples
-  ret[["only_in_vectorA"]] <- setdiff(vectorA, vectorB)  # Samples only in vectorA
-  ret[["only_in_vectorB"]] <- setdiff(vectorB, vectorA)  # Samples only in vectorB
-  ret[["shared_samples"]] <- intersect(vectorA, vectorB) # Samples shared between vectorA and vectorB
-  ret[["all"]] <- union(vectorA, vectorB) # All samples between vectorA and vectorB
-  return(ret)
-}
 ```
 
 
@@ -343,7 +327,7 @@ create_dt(all_mixs_fields)
 
 The fields choices for PMO took into consideration the Mixs standards, SRA standards, and from other similar amplicon standards (which are also based on Mixs standards), [Environmental System Science Data Infrastructure for a Virtual Ecosystem (ESS-DIVE)](https://github.com/ess-dive-workspace/essdive-amplicon/tree/main) and [National Microbiome Data Collaborative (NMDC)](https://github.com/microbiomedata/nmdc-schema?tab=readme-ov-file)
 
-The SRA takes two tables, one defining bio samples and one defining sequencing experiments done on those bio samples of which there could be multiple sequencing experiments. Therefore the decison was made to also create two seperate data sections for defining a biosample ([specimen_info](FormatOverview.qmd#specimeninfo)) and one defining experiments on those specimens ([experiment_info](FormatOverview.qmd#experimentinfo)), this allows the mirroring of SRA as well as allowing for storing replicates of a single specimen. A 3rd section was created to store redundant sequencing info ([sequencing_info](FormatOverview.qmd#sequencinginfo)).
+The SRA takes two tables, one defining bio samples and one defining sequencing experiment libraries done on those bio samples of which there could be multiple sequencing experiments. Therefore the decision was made to also create two separate data sections for defining a biosample ([specimen_info](FormatOverviewAdvanced.qmd#specimeninfo)) and one defining experiments on those specimens ([library_sample_info](FormatOverviewAdvanced.qmd#librarysampleinfo)), this allows the mirroring of SRA as well as allowing for storing replicates of a single specimen. A 3rd section was created to store redundant sequencing info ([sequencing_info](FormatOverviewAdvanced.qmd#sequencinginfo)).
 
 ### specimen_info
 
@@ -355,29 +339,55 @@ cat(sort(names(pmo_schema$`$defs`$SpecimenInfo$properties)[names(pmo_schema$`$de
 
 ```
 
-Comparing the specimen_info fields to the MIXS standard and SRA. Please see [specimen_info in FormatOverview](FormatOverview.qmd#specimeninfo) for short description of each pmo field and [above](#required-fields) for the SRA fields 
+Comparing the specimen_info fields to the MIXS standard and SRA. Please see [specimen_info in FormatOverview](FormatOverviewAdvanced.qmd#specimeninfo) for short description of each pmo field and [above](#required-fields) for the SRA fields 
 
 ```{r}
 create_dt(readr::read_tsv("specimen_info_field_comparison.tsv"))
 ```
 
-### sequencing_info and experiment_info 
+```{r, echo=FALSE, eval=FALSE}
+
+specimen_info_field_comparison = readr::read_tsv("specimen_info_field_comparison.tsv")
+
+specimen_info_field_comparison = specimen_info_field_comparison %>% 
+  mutate(only_in_pmo = is.na(`MIXS v6.2.0 MigsEu/HumanAssociated/MimarksC`)  &  is.na(`SRA MigsEu/HumanAssociated/MimarksC`)) 
+
+specimen_info_field_comparison %>% group_by(pmo_required, only_in_pmo) %>% count()%>% 
+  mutate(total_pmo = specimen_info_field_comparison %>% filter(!is.na(pmo_required)) %>% nrow())
+
+
+```
+
+### sequencing_info and library_sample_info 
 
 ```{r, echo =F, eval=F}
 pmo_schema = rjson::fromJSON(file = "portable_microhaplotype_object.schema.json")
-cat(sort(pmo_schema$`$defs`$ExperimentInfo$required), sep = "\n")
-cat(sort(names(pmo_schema$`$defs`$ExperimentInfo$properties)[names(pmo_schema$`$defs`$ExperimentInfo$properties) %!in% pmo_schema$`$defs`$ExperimentInfo$required]), sep= "\n")
+cat(sort(pmo_schema$`$defs`$LibrarySampleInfo$required), sep = "\n")
+cat(sort(names(pmo_schema$`$defs`$LibrarySampleInfo$properties)[names(pmo_schema$`$defs`$LibrarySampleInfo$properties) %!in% pmo_schema$`$defs`$LibrarySampleInfo$required]), sep= "\n")
 
 cat(sort(pmo_schema$`$defs`$SequencingInfo$required), sep = "\n")
 cat(sort(names(pmo_schema$`$defs`$SequencingInfo$properties)[names(pmo_schema$`$defs`$SequencingInfo$properties) %!in% pmo_schema$`$defs`$SequencingInfo$required]), sep= "\n")
 
 ```
 
-Comparing the [sequencing_info](FormatOverview.qmd#sequencinginfo) and [experiment_info](FormatOverview.qmd#experimentinfo) fields to the Mixs standards and the data required for SRA submission [above](#required-fields-4) 
+Comparing the [sequencing_info](FormatOverviewAdvanced.qmd#sequencinginfo) and [library_sample_info](FormatOverviewAdvanced.qmd#librarysampleinfo) fields to the Mixs standards and the data required for SRA submission [above](#required-fields-4) 
 
 ```{r}
-create_dt(readr::read_tsv("experiment_and_sequencing_field_comparison.tsv"))
+create_dt(readr::read_tsv("library_and_sequencing_field_comparison.tsv"))
 ```
 
+
+```{r, echo=FALSE, eval=FALSE}
+
+library_and_sequencing_field_comparison = readr::read_tsv("library_and_sequencing_field_comparison.tsv")
+
+library_and_sequencing_field_comparison = library_and_sequencing_field_comparison %>% 
+  mutate(only_in_pmo = is.na(`MIXS v6.2.0 MigsEu/HumanAssociated/MimarksC`)  &  is.na(`SRA MigsEu/HumanAssociated/MimarksC`)) 
+
+library_and_sequencing_field_comparison %>% group_by(pmo_required, only_in_pmo) %>% count() %>% 
+  mutate(total_pmo = library_and_sequencing_field_comparison %>% filter(!is.na(pmo_required)) %>% nrow())
+
+
+```
 
 {{< fa dna >}}

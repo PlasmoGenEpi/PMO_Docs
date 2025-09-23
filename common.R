@@ -205,3 +205,20 @@ writeFasta<-function(data, filename, openMode = "w"){
   close(fileConn)
 }
 
+
+#' Check sharing and unqiue values between two vectors
+#'
+#' @param vectorA the first vector
+#' @param vectorB the second vector
+#'
+#' @returns a list with 4 vectors, "only_in_vectorA" unique to vectorA, "only_in_vectorB" unique to vectorB, "shared_samples" shared between both vectorA and vectorB, "all" all values by combinng vectorA and vectorB 
+set_decompose <- function(vectorA, vectorB){
+  ret = list()
+  # Find unique and shared samples
+  ret[["only_in_vectorA"]] <- setdiff(vectorA, vectorB)  # Samples only in vectorA
+  ret[["only_in_vectorB"]] <- setdiff(vectorB, vectorA)  # Samples only in vectorB
+  ret[["shared_samples"]] <- intersect(vectorA, vectorB) # Samples shared between vectorA and vectorB
+  ret[["all"]] <- union(vectorA, vectorB) # All samples between vectorA and vectorB
+  return(ret)
+}
+

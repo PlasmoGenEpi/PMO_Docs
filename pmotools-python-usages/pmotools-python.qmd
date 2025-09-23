@@ -1,0 +1,21 @@
+---
+title: Command line interface to pmotools-python with pmotools-python
+---
+
+```{r setup, echo=F}
+source("../common.R")
+```
+
+
+See [installation instruction page](../Tools_Installation/pmotools-python_installation.qmd) for how to install `pmotools-python` which comes with a commandline interface called `pmotools-python` 
+
+
+```{bash, eval = F}
+pmotools-python
+```
+
+```{bash, echo = F}
+pmotools-python | perl -pe 's/\e\[[0-9;]*m(?:\e\[K)?//g'
+```
+
+

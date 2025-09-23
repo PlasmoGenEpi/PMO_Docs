@@ -7,7 +7,7 @@ source("../common.R")
 ```
 
 
-# pmotools-runner.py validate_pmo
+# pmotools-python validate_pmo
 
 Can download multiple PMOs here 
 
@@ -18,7 +18,7 @@ Can download multiple PMOs here
 
 
 ```{bash}
-pmotools-runner.py validate_pmo --help
+pmotools-python validate_pmo --help
 ```
 
 Use this validate a PMO file that follows the standard format, by default will use the schema that is within the pmotools-python directory 
@@ -29,14 +29,14 @@ cd example
 wget https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz
 
 
-pmotools-runner.py validate_pmo --pmo moz2018_PMO.json.gz
+pmotools-python validate_pmo --pmo moz2018_PMO.json.gz
 ```
 
 
 ```{bash, echo = F, eval = T}
 cd example 
 
-pmotools-runner.py validate_pmo --pmo ../../format/moz2018_PMO.json.gz
+pmotools-python validate_pmo --pmo ../../format/moz2018_PMO.json.gz
 ```
 
 Can also use specific jsonschema file 
@@ -48,14 +48,14 @@ wget https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz
 wget https://plasmogenepi.github.io/PMO_Docs/format/portable_microhaplotype_object.schema.json
 
 
-pmotools-runner.py validate_pmo --pmo moz2018_PMO.json.gz --jsonschema_file portable_microhaplotype_object.schema.json
+pmotools-python validate_pmo --pmo moz2018_PMO.json.gz --jsonschema_file portable_microhaplotype_object.schema.json
 ```
 
 
 ```{bash, echo = F, eval = T}
 cd example 
 
-pmotools-runner.py validate_pmo --pmo ../../format/moz2018_PMO.json.gz --jsonschema_file ../../format/portable_microhaplotype_object.schema.json
+pmotools-python validate_pmo --pmo ../../format/moz2018_PMO.json.gz --jsonschema_file ../../format/portable_microhaplotype_object.schema.json
 ```
 
 The python code for `validate_pmo` script is below
@@ -65,8 +65,8 @@ The python code for `validate_pmo` script is below
 #| eval: false
 #| code-fold: true
 #| code-line-numbers: true
-#| filename: pmotools-python/scripts/pmo_utils/validate_pmo.py
-#| file: ../pmotools-python/scripts/pmo_utils/validate_pmo.py
+#| filename: pmotools-python/src/pmotools/scripts/pmo_utils/validate_pmo.py
+#| file: ../pmotools-python/src/pmotools/scripts/pmo_utils/validate_pmo.py
 ```
 
 

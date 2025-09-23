@@ -136,6 +136,7 @@ digraph PMO {
 			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="panel_id" bgcolor="#008607">panel_id</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="library_sample_name" bgcolor="#008607">library_sample_name</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#FF71FD">list</td> <td port="alternate_identifiers" bgcolor="#00DCB5">alternate_identifiers</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="experiment_accession" bgcolor="#00DCB5">experiment_accession</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="fastqs_loc" bgcolor="#00DCB5">fastqs_loc</td> </tr>
 			<tr> <td bgcolor="#FFCFE2">PlateInfo</td><td bgcolor="#7CFFFA">single</td> <td port="library_prep_plate_info" bgcolor="#00DCB5">library_prep_plate_info</td> </tr>
@@ -285,6 +286,19 @@ digraph PMO {
 		</table>>
 		shape=plain		
 	]
+	ProteinVariant_NODE [ 
+		label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="3">
+			<tr> <td bgcolor="#FFCFE2" port="ProteinVariant"><b>ProteinVariant</b> </td> <td></td> <td></td> </tr>
+			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
+			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
+			<tr> <td bgcolor="#FFCFE2">GenomicLocation</td><td bgcolor="#7CFFFA">single</td> <td port="protein_location" bgcolor="#008607">protein_location</td> </tr>
+			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="alternative_gene_name" bgcolor="#00DCB5">alternative_gene_name</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">GenomicLocation</td><td bgcolor="#7CFFFA">single</td> <td port="codon_genomic_location" bgcolor="#00DCB5">codon_genomic_location</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="gene_name" bgcolor="#00DCB5">gene_name</td> </tr>
+		</table>>
+		shape=plain		
+	]
 	Pseudocigar_NODE [ 
 		label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="3">
 			<tr> <td bgcolor="#FFCFE2" port="Pseudocigar"><b>Pseudocigar</b> </td> <td></td> <td></td> </tr>
@@ -347,6 +361,8 @@ digraph PMO {
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="seq" bgcolor="#008607">seq</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#FF71FD">list</td> <td port="alt_annotations" bgcolor="#00DCB5">alt_annotations</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">ProteinVariant</td><td bgcolor="#FF71FD">list</td> <td port="associated_protein_variants" bgcolor="#00DCB5">associated_protein_variants</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">GenomicLocation</td><td bgcolor="#FF71FD">list</td> <td port="associated_seq_variants" bgcolor="#00DCB5">associated_seq_variants</td> </tr>
 			<tr> <td bgcolor="#FFCFE2">MaskingInfo</td><td bgcolor="#FF71FD">list</td> <td port="masking" bgcolor="#00DCB5">masking</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="microhaplotype_name" bgcolor="#00DCB5">microhaplotype_name</td> </tr>
 			<tr> <td bgcolor="#FFCFE2">Pseudocigar</td><td bgcolor="#7CFFFA">single</td> <td port="pseudocigar" bgcolor="#00DCB5">pseudocigar</td> </tr>
@@ -423,6 +439,7 @@ digraph PMO {
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="geo_admin3" bgcolor="#00DCB5">geo_admin3</td> </tr>
 			<tr> <td bgcolor="#FFCFE2">boolean</td><td bgcolor="#7CFFFA">single</td> <td port="gravid" bgcolor="#00DCB5">gravid</td> </tr>
 			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="gravidity" bgcolor="#00DCB5">gravidity</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">boolean</td><td bgcolor="#7CFFFA">single</td> <td port="has_travel_out_six_month" bgcolor="#00DCB5">has_travel_out_six_month</td> </tr>
 			<tr> <td bgcolor="#003C86">number</td><td bgcolor="#7CFFFA">single</td> <td port="host_age" bgcolor="#00DCB5">host_age</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="host_sex" bgcolor="#00DCB5">host_sex</td> </tr>
 			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="host_subject_id" bgcolor="#00DCB5">host_subject_id</td> </tr>
@@ -434,7 +451,8 @@ digraph PMO {
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="specimen_store_loc" bgcolor="#00DCB5">specimen_store_loc</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="specimen_type" bgcolor="#00DCB5">specimen_type</td> </tr>
 			<tr> <td bgcolor="#FFCFE2">PlateInfo</td><td bgcolor="#7CFFFA">single</td> <td port="storage_plate_info" bgcolor="#00DCB5">storage_plate_info</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#FF71FD">list</td> <td port="travel_out_six_month" bgcolor="#00DCB5">travel_out_six_month</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">TravelInfo</td><td bgcolor="#FF71FD">list</td> <td port="travel_out_six_month" bgcolor="#00DCB5">travel_out_six_month</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#FF71FD">list</td> <td port="treatment_status" bgcolor="#00DCB5">treatment_status</td> </tr>
 		</table>>
 		shape=plain		
 	]
@@ -464,6 +482,23 @@ digraph PMO {
 		</table>>
 		shape=plain		
 	]
+	TravelInfo_NODE [ 
+		label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="3">
+			<tr> <td bgcolor="#FFCFE2" port="TravelInfo"><b>TravelInfo</b> </td> <td></td> <td></td> </tr>
+			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
+			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="travel_country" bgcolor="#008607">travel_country</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="travel_start_date" bgcolor="#008607">travel_start_date</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="travel_end_date" bgcolor="#008607">travel_end_date</td> </tr>
+			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
+			<tr> <td bgcolor="#003C86">number</td><td bgcolor="#7CFFFA">single</td> <td port="bed_net_usage" bgcolor="#00DCB5">bed_net_usage</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="geo_admin1" bgcolor="#00DCB5">geo_admin1</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="geo_admin2" bgcolor="#00DCB5">geo_admin2</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="geo_admin3" bgcolor="#00DCB5">geo_admin3</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="lat_lon" bgcolor="#00DCB5">lat_lon</td> </tr>
+		</table>>
+		shape=plain		
+	]
 	BioinformaticsMethodInfo_NODE:additional_methods -> BioMethod_NODE:BioMethod
 	BioinformaticsMethodInfo_NODE:demultiplexing_method -> BioMethod_NODE:BioMethod
 	BioinformaticsMethodInfo_NODE:denoising_method -> BioMethod_NODE:BioMethod
@@ -489,10 +524,14 @@ digraph PMO {
 	PortableMicrohaplotypeObject_NODE:target_info -> TargetInfo_NODE:TargetInfo
 	PortableMicrohaplotypeObject_NODE:targeted_genomes -> GenomeInfo_NODE:GenomeInfo
 	PrimerInfo_NODE:location -> GenomicLocation_NODE:GenomicLocation
+	ProteinVariant_NODE:codon_genomic_location -> GenomicLocation_NODE:GenomicLocation
+	ProteinVariant_NODE:protein_location -> GenomicLocation_NODE:GenomicLocation
 	Pseudocigar_NODE:ref_loc -> GenomicLocation_NODE:GenomicLocation
 	ReadCountsByStage_NODE:read_counts_by_library_sample_by_stage -> ReadCountsByStageForLibrarySample_NODE:ReadCountsByStageForLibrarySample
 	ReadCountsByStageForLibrarySample_NODE:read_counts_for_targets -> ReadCountsByStageForTarget_NODE:ReadCountsByStageForTarget
 	ReadCountsByStageForTarget_NODE:stages -> StageReadCounts_NODE:StageReadCounts
+	RepresentativeMicrohaplotype_NODE:associated_protein_variants -> ProteinVariant_NODE:ProteinVariant
+	RepresentativeMicrohaplotype_NODE:associated_seq_variants -> GenomicLocation_NODE:GenomicLocation
 	RepresentativeMicrohaplotype_NODE:masking -> MaskingInfo_NODE:MaskingInfo
 	RepresentativeMicrohaplotype_NODE:pseudocigar -> Pseudocigar_NODE:Pseudocigar
 	RepresentativeMicrohaplotypes_NODE:targets -> RepresentativeMicrohaplotypesForTarget_NODE:RepresentativeMicrohaplotypesForTarget
@@ -500,6 +539,7 @@ digraph PMO {
 	RepresentativeMicrohaplotypesForTarget_NODE:microhaplotypes -> RepresentativeMicrohaplotype_NODE:RepresentativeMicrohaplotype
 	SpecimenInfo_NODE:parasite_density_info -> ParasiteDensity_NODE:ParasiteDensity
 	SpecimenInfo_NODE:storage_plate_info -> PlateInfo_NODE:PlateInfo
+	SpecimenInfo_NODE:travel_out_six_month -> TravelInfo_NODE:TravelInfo
 	TargetInfo_NODE:forward_primer -> PrimerInfo_NODE:PrimerInfo
 	TargetInfo_NODE:insert_location -> GenomicLocation_NODE:GenomicLocation
 	TargetInfo_NODE:markers_of_interest -> MarkerOfInterest_NODE:MarkerOfInterest

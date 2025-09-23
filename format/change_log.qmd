@@ -3,6 +3,17 @@ title: "Change Log"
 embed-resources: true
 ---
 
+# 2025-09  
+
+- [x] LibrarySample
+	- [x] add alternate_identifiers to LibrarySample
+- [x] RepresentativeMicrohaplotype
+	- [x] adding associated_protein_variants and associated_seq_variants 
+- [x] SpecimenInfo
+	- [x] add treatment status 
+	- [x] Adding traveler data class, saved as a list under SpecimenInfo
+	    - [x] has travel_country, travel_start_date, travel_end_date
+
 # 2025-07
 
 - [x]  adding unit field to any values (or make it part of the description and make it a requirement that units also has to be the same) 
@@ -143,4 +154,14 @@ embed-resources: true
       *  each list will have a target_id (index into the target infos) and then another list of microhaplotypes 
   *  microhaplotypes_detected
       *  made everything into lists rather than dictionary and changed identifiers to indexes 
+
+
+
+
+# To do From GEM meeting
+
+- [ ] adding header with info on each field 
+- [ ] random access ability  
+
+
 

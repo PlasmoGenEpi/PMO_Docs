@@ -8,11 +8,11 @@ source("../common.R")
 
 
 
-# pmotools-runner.py extract_allele_table
+# pmotools-python extract_allele_table
 
-To extract allele table information from a PMO the command line interactive script with `pmotools-runner.py extract_allele_table` can be used 
+To extract allele table information from a PMO the command line interactive script with `pmotools-python extract_allele_table` can be used 
 
-*  pmotools-runner.py extract_allele_table 
+*  pmotools-python extract_allele_table 
 
 *  **Required arguments**
     *  **\-\-file** - the PMO file to extract from 
@@ -33,7 +33,7 @@ You can also add to the table any values from the other portions of the PMO file
 Other optional arguments have to do with the ouput file over writing and delimiter being used, use `-h` to see all arguments 
 
 ```{bash}
-pmotools-runner.py extract_allele_table -h
+pmotools-python extract_allele_table -h
 
 ```
 
@@ -44,8 +44,8 @@ The python code for `extract_allele_table` script is below
 #| eval: false
 #| code-fold: true
 #| code-line-numbers: true
-#| filename: pmotools-python/scripts/extractors_from_pmo/extract_allele_table.py
-#| file: ../pmotools-python/scripts/extractors_from_pmo/extract_allele_table.py
+#| filename: pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_allele_table.py
+#| file: ../pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_allele_table.py
 ```
 
 
@@ -63,7 +63,7 @@ mkdir -p example
 cd example 
 
 # default 
-pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz --output extraction --overwrite
+pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output extraction --overwrite
 ```
 
 
@@ -71,7 +71,7 @@ pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz 
 cd example 
 
 # changing default column names  
-pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz --output extraction --overwrite --default_base_col_names sample,target,hapid
+pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output extraction --overwrite --default_base_col_names sample,target,hapid
 ```
 
 Changing the output file delimiter  
@@ -79,7 +79,7 @@ Changing the output file delimiter
 ```{bash}
 cd example 
 
-pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz --output extraction --overwrite --delim ,
+pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output extraction --overwrite --delim ,
 ```
 
 Adding on additional columns from the specimen_infos section 
@@ -88,7 +88,7 @@ Adding on additional columns from the specimen_infos section
 cd example 
 
 # adding other PMO fields 
-pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz --output STDOUT --specimen_info_meta_fields collection_country,collection_date | head  
+pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output STDOUT --specimen_info_meta_fields collection_country,collection_date | head  
 
 ```
 
@@ -96,7 +96,7 @@ pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz 
 cd example 
 
 # adding other PMO fields 
-pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz --output STDOUT --specimen_info_meta_fields collection_country,collection_date 2>/dev/null | head  
+pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output STDOUT --specimen_info_meta_fields collection_country,collection_date 2>/dev/null | head  
 
 ```
 
@@ -107,7 +107,7 @@ Can continue to add on more columns from other sections
 cd example 
 
 # adding other PMO fields including seq field 
-pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz --output STDOUT --specimen_info_meta_fields collection_country,collection_date --representative_haps_fields seq | head 
+pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output STDOUT --specimen_info_meta_fields collection_country,collection_date --representative_haps_fields seq | head 
 
 ```
 
@@ -115,7 +115,7 @@ pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz 
 cd example 
 
 # adding other PMO fields including seq field 
-pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz --output STDOUT --specimen_info_meta_fields collection_country,collection_date --representative_haps_fields seq 2>/dev/null | head 
+pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output STDOUT --specimen_info_meta_fields collection_country,collection_date --representative_haps_fields seq 2>/dev/null | head 
 
 ```
 
@@ -128,7 +128,7 @@ mkdir -p example
 cd example 
 
 # default table is all moire needs 
-pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz --output extraction --overwrite
+pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output extraction --overwrite
 
 ```
 
@@ -151,10 +151,10 @@ mkdir -p example
 cd example 
 
 # default 
-pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz --output extraction --overwrite --delim ,
+pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output extraction --overwrite --delim ,
 
 # dcifer can calculate allele frequencies if not provided or you can have extract_allele_table write them as well 
-pmotools-runner.py extract_allele_table --file ../../format/moz2018_PMO.json.gz --output extraction --overwrite --allele_freqs_output allele_freqs_extraction --delim ,
+pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output extraction --overwrite --allele_freqs_output allele_freqs_extraction --delim ,
 
 ```
 

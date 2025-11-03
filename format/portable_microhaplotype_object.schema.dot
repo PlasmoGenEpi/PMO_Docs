@@ -31,8 +31,8 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="BioMethod"><b>BioMethod</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="program_version" bgcolor="#008607">program_version</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="program" bgcolor="#008607">program</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="program_version" bgcolor="#F60239">program_version</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="program" bgcolor="#F60239">program</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#FF71FD">list</td> <td port="additional_argument" bgcolor="#00DCB5">additional_argument</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="program_description" bgcolor="#00DCB5">program_description</td> </tr>
@@ -45,11 +45,7 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="BioinformaticsMethodInfo"><b>BioinformaticsMethodInfo</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#FFCFE2">BioMethod</td><td bgcolor="#7CFFFA">single</td> <td port="demultiplexing_method" bgcolor="#008607">demultiplexing_method</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">BioMethod</td><td bgcolor="#7CFFFA">single</td> <td port="denoising_method" bgcolor="#008607">denoising_method</td> </tr>
-			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
-			<tr> <td bgcolor="#FFCFE2">BioMethod</td><td bgcolor="#FF71FD">list</td> <td port="additional_methods" bgcolor="#00DCB5">additional_methods</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="bioinformatics_method_name" bgcolor="#00DCB5">bioinformatics_method_name</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">BioMethod</td><td bgcolor="#FF71FD">list</td> <td port="methods" bgcolor="#F60239">methods</td> </tr>
 		</table>>
 		shape=plain		
 	]
@@ -58,8 +54,8 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="BioinformaticsRunInfo"><b>BioinformaticsRunInfo</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="bioinformatics_methods_id" bgcolor="#008607">bioinformatics_methods_id</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="bioinformatics_run_name" bgcolor="#008607">bioinformatics_run_name</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="bioinformatics_methods_id" bgcolor="#F60239">bioinformatics_methods_id</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="bioinformatics_run_name" bgcolor="#F60239">bioinformatics_run_name</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="run_date" bgcolor="#00DCB5">run_date</td> </tr>
 		</table>>
@@ -70,8 +66,8 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="DetectedMicrohaplotypes"><b>DetectedMicrohaplotypes</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="bioinformatics_run_id" bgcolor="#008607">bioinformatics_run_id</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">DetectedMicrohaplotypesForSample</td><td bgcolor="#FF71FD">list</td> <td port="library_samples" bgcolor="#008607">library_samples</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="bioinformatics_run_id" bgcolor="#F60239">bioinformatics_run_id</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">DetectedMicrohaplotypesForSample</td><td bgcolor="#FF71FD">list</td> <td port="library_samples" bgcolor="#F60239">library_samples</td> </tr>
 		</table>>
 		shape=plain		
 	]
@@ -80,8 +76,8 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="DetectedMicrohaplotypesForSample"><b>DetectedMicrohaplotypesForSample</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="library_sample_id" bgcolor="#008607">library_sample_id</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">DetectedMicrohaplotypesForTarget</td><td bgcolor="#FF71FD">list</td> <td port="target_results" bgcolor="#008607">target_results</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="library_sample_id" bgcolor="#F60239">library_sample_id</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">DetectedMicrohaplotypesForTarget</td><td bgcolor="#FF71FD">list</td> <td port="target_results" bgcolor="#F60239">target_results</td> </tr>
 		</table>>
 		shape=plain		
 	]
@@ -90,8 +86,8 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="DetectedMicrohaplotypesForTarget"><b>DetectedMicrohaplotypesForTarget</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="mhaps_target_id" bgcolor="#008607">mhaps_target_id</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">MicrohaplotypeForTarget</td><td bgcolor="#FF71FD">list</td> <td port="mhaps" bgcolor="#008607">mhaps</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="mhaps_target_id" bgcolor="#F60239">mhaps_target_id</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">MicrohaplotypeForTarget</td><td bgcolor="#FF71FD">list</td> <td port="mhaps" bgcolor="#F60239">mhaps</td> </tr>
 		</table>>
 		shape=plain		
 	]
@@ -100,10 +96,10 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="GenomeInfo"><b>GenomeInfo</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="name" bgcolor="#008607">name</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="genome_version" bgcolor="#008607">genome_version</td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#FF71FD">list</td> <td port="taxon_id" bgcolor="#008607">taxon_id</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="url" bgcolor="#008607">url</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="name" bgcolor="#F60239">name</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="genome_version" bgcolor="#F60239">genome_version</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#FF71FD">list</td> <td port="taxon_id" bgcolor="#F60239">taxon_id</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="url" bgcolor="#F60239">url</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#FF71FD">list</td> <td port="chromosomes" bgcolor="#00DCB5">chromosomes</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="gff_url" bgcolor="#00DCB5">gff_url</td> </tr>
@@ -115,10 +111,10 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="GenomicLocation"><b>GenomicLocation</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="genome_id" bgcolor="#008607">genome_id</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="chrom" bgcolor="#008607">chrom</td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="start" bgcolor="#008607">start</td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="end" bgcolor="#008607">end</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="genome_id" bgcolor="#F60239">genome_id</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="chrom" bgcolor="#F60239">chrom</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="start" bgcolor="#F60239">start</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="end" bgcolor="#F60239">end</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="alt_seq" bgcolor="#00DCB5">alt_seq</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="ref_seq" bgcolor="#00DCB5">ref_seq</td> </tr>
@@ -131,10 +127,10 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="LibrarySampleInfo"><b>LibrarySampleInfo</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="sequencing_info_id" bgcolor="#008607">sequencing_info_id</td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="specimen_id" bgcolor="#008607">specimen_id</td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="panel_id" bgcolor="#008607">panel_id</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="library_sample_name" bgcolor="#008607">library_sample_name</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="sequencing_info_id" bgcolor="#F60239">sequencing_info_id</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="specimen_id" bgcolor="#F60239">specimen_id</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="panel_id" bgcolor="#F60239">panel_id</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="library_sample_name" bgcolor="#F60239">library_sample_name</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#FF71FD">list</td> <td port="alternate_identifiers" bgcolor="#00DCB5">alternate_identifiers</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="experiment_accession" bgcolor="#00DCB5">experiment_accession</td> </tr>
@@ -150,7 +146,7 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="MarkerOfInterest"><b>MarkerOfInterest</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#FFCFE2">GenomicLocation</td><td bgcolor="#7CFFFA">single</td> <td port="marker_location" bgcolor="#008607">marker_location</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">GenomicLocation</td><td bgcolor="#7CFFFA">single</td> <td port="marker_location" bgcolor="#F60239">marker_location</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#FF71FD">list</td> <td port="associations" bgcolor="#00DCB5">associations</td> </tr>
 		</table>>
@@ -161,9 +157,9 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="MaskingInfo"><b>MaskingInfo</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="seq_start" bgcolor="#008607">seq_start</td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="seq_segment_size" bgcolor="#008607">seq_segment_size</td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="replacement_size" bgcolor="#008607">replacement_size</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="seq_start" bgcolor="#F60239">seq_start</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="seq_segment_size" bgcolor="#F60239">seq_segment_size</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="replacement_size" bgcolor="#F60239">replacement_size</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="masking_generation_description" bgcolor="#00DCB5">masking_generation_description</td> </tr>
 		</table>>
@@ -174,8 +170,8 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="MicrohaplotypeForTarget"><b>MicrohaplotypeForTarget</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="mhap_id" bgcolor="#008607">mhap_id</td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="reads" bgcolor="#008607">reads</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="mhap_id" bgcolor="#F60239">mhap_id</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="reads" bgcolor="#F60239">reads</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="umis" bgcolor="#00DCB5">umis</td> </tr>
 		</table>>
@@ -186,8 +182,8 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="PanelInfo"><b>PanelInfo</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#FFCFE2">ReactionInfo</td><td bgcolor="#FF71FD">list</td> <td port="reactions" bgcolor="#008607">reactions</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="panel_name" bgcolor="#008607">panel_name</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">ReactionInfo</td><td bgcolor="#FF71FD">list</td> <td port="reactions" bgcolor="#F60239">reactions</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="panel_name" bgcolor="#F60239">panel_name</td> </tr>
 		</table>>
 		shape=plain		
 	]
@@ -196,8 +192,8 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="ParasiteDensity"><b>ParasiteDensity</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="parasite_density_method" bgcolor="#008607">parasite_density_method</td> </tr>
-			<tr> <td bgcolor="#003C86">number</td><td bgcolor="#7CFFFA">single</td> <td port="parasite_density" bgcolor="#008607">parasite_density</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="parasite_density_method" bgcolor="#F60239">parasite_density_method</td> </tr>
+			<tr> <td bgcolor="#00E307">number</td><td bgcolor="#7CFFFA">single</td> <td port="parasite_density" bgcolor="#F60239">parasite_density</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="date_measured" bgcolor="#00DCB5">date_measured</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="density_method_comments" bgcolor="#00DCB5">density_method_comments</td> </tr>
@@ -221,8 +217,8 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="PmoGenerationMethod"><b>PmoGenerationMethod</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="program_version" bgcolor="#008607">program_version</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="program_name" bgcolor="#008607">program_name</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="program_version" bgcolor="#F60239">program_version</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="program_name" bgcolor="#F60239">program_name</td> </tr>
 		</table>>
 		shape=plain		
 	]
@@ -231,7 +227,7 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="PmoHeader"><b>PmoHeader</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="pmo_version" bgcolor="#008607">pmo_version</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="pmo_version" bgcolor="#F60239">pmo_version</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="creation_date" bgcolor="#00DCB5">creation_date</td> </tr>
 			<tr> <td bgcolor="#FFCFE2">PmoGenerationMethod</td><td bgcolor="#7CFFFA">single</td> <td port="generation_method" bgcolor="#00DCB5">generation_method</td> </tr>
@@ -243,18 +239,18 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="PortableMicrohaplotypeObject"><b>PortableMicrohaplotypeObject</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#FFCFE2">LibrarySampleInfo</td><td bgcolor="#FF71FD">list</td> <td port="library_sample_info" bgcolor="#008607">library_sample_info</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">SpecimenInfo</td><td bgcolor="#FF71FD">list</td> <td port="specimen_info" bgcolor="#008607">specimen_info</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">SequencingInfo</td><td bgcolor="#FF71FD">list</td> <td port="sequencing_info" bgcolor="#008607">sequencing_info</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">PanelInfo</td><td bgcolor="#FF71FD">list</td> <td port="panel_info" bgcolor="#008607">panel_info</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">TargetInfo</td><td bgcolor="#FF71FD">list</td> <td port="target_info" bgcolor="#008607">target_info</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">GenomeInfo</td><td bgcolor="#FF71FD">list</td> <td port="targeted_genomes" bgcolor="#008607">targeted_genomes</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">RepresentativeMicrohaplotypes</td><td bgcolor="#7CFFFA">single</td> <td port="representative_microhaplotypes" bgcolor="#008607">representative_microhaplotypes</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">BioinformaticsMethodInfo</td><td bgcolor="#FF71FD">list</td> <td port="bioinformatics_methods_info" bgcolor="#008607">bioinformatics_methods_info</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">BioinformaticsRunInfo</td><td bgcolor="#FF71FD">list</td> <td port="bioinformatics_run_info" bgcolor="#008607">bioinformatics_run_info</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">DetectedMicrohaplotypes</td><td bgcolor="#FF71FD">list</td> <td port="detected_microhaplotypes" bgcolor="#008607">detected_microhaplotypes</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">ProjectInfo</td><td bgcolor="#FF71FD">list</td> <td port="project_info" bgcolor="#008607">project_info</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">PmoHeader</td><td bgcolor="#7CFFFA">single</td> <td port="pmo_header" bgcolor="#008607">pmo_header</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">LibrarySampleInfo</td><td bgcolor="#FF71FD">list</td> <td port="library_sample_info" bgcolor="#F60239">library_sample_info</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">SpecimenInfo</td><td bgcolor="#FF71FD">list</td> <td port="specimen_info" bgcolor="#F60239">specimen_info</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">SequencingInfo</td><td bgcolor="#FF71FD">list</td> <td port="sequencing_info" bgcolor="#F60239">sequencing_info</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">PanelInfo</td><td bgcolor="#FF71FD">list</td> <td port="panel_info" bgcolor="#F60239">panel_info</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">TargetInfo</td><td bgcolor="#FF71FD">list</td> <td port="target_info" bgcolor="#F60239">target_info</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">GenomeInfo</td><td bgcolor="#FF71FD">list</td> <td port="targeted_genomes" bgcolor="#F60239">targeted_genomes</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">RepresentativeMicrohaplotypes</td><td bgcolor="#7CFFFA">single</td> <td port="representative_microhaplotypes" bgcolor="#F60239">representative_microhaplotypes</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">BioinformaticsMethodInfo</td><td bgcolor="#FF71FD">list</td> <td port="bioinformatics_methods_info" bgcolor="#F60239">bioinformatics_methods_info</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">BioinformaticsRunInfo</td><td bgcolor="#FF71FD">list</td> <td port="bioinformatics_run_info" bgcolor="#F60239">bioinformatics_run_info</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">DetectedMicrohaplotypes</td><td bgcolor="#FF71FD">list</td> <td port="detected_microhaplotypes" bgcolor="#F60239">detected_microhaplotypes</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">ProjectInfo</td><td bgcolor="#FF71FD">list</td> <td port="project_info" bgcolor="#F60239">project_info</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">PmoHeader</td><td bgcolor="#7CFFFA">single</td> <td port="pmo_header" bgcolor="#F60239">pmo_header</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#FFCFE2">ReadCountsByStage</td><td bgcolor="#FF71FD">list</td> <td port="read_counts_by_stage" bgcolor="#00DCB5">read_counts_by_stage</td> </tr>
 		</table>>
@@ -265,7 +261,7 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="PrimerInfo"><b>PrimerInfo</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="seq" bgcolor="#008607">seq</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="seq" bgcolor="#F60239">seq</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#FFCFE2">GenomicLocation</td><td bgcolor="#7CFFFA">single</td> <td port="location" bgcolor="#00DCB5">location</td> </tr>
 		</table>>
@@ -276,8 +272,8 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="ProjectInfo"><b>ProjectInfo</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="project_name" bgcolor="#008607">project_name</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="project_description" bgcolor="#008607">project_description</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="project_name" bgcolor="#F60239">project_name</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="project_description" bgcolor="#F60239">project_description</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="BioProject_accession" bgcolor="#00DCB5">BioProject_accession</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="project_collector_chief_scientist" bgcolor="#00DCB5">project_collector_chief_scientist</td> </tr>
@@ -291,7 +287,7 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="ProteinVariant"><b>ProteinVariant</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#FFCFE2">GenomicLocation</td><td bgcolor="#7CFFFA">single</td> <td port="protein_location" bgcolor="#008607">protein_location</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">GenomicLocation</td><td bgcolor="#7CFFFA">single</td> <td port="protein_location" bgcolor="#F60239">protein_location</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="alternative_gene_name" bgcolor="#00DCB5">alternative_gene_name</td> </tr>
 			<tr> <td bgcolor="#FFCFE2">GenomicLocation</td><td bgcolor="#7CFFFA">single</td> <td port="codon_genomic_location" bgcolor="#00DCB5">codon_genomic_location</td> </tr>
@@ -304,8 +300,8 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="Pseudocigar"><b>Pseudocigar</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="pseudocigar_seq" bgcolor="#008607">pseudocigar_seq</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">GenomicLocation</td><td bgcolor="#7CFFFA">single</td> <td port="ref_loc" bgcolor="#008607">ref_loc</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="pseudocigar_seq" bgcolor="#F60239">pseudocigar_seq</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">GenomicLocation</td><td bgcolor="#7CFFFA">single</td> <td port="ref_loc" bgcolor="#F60239">ref_loc</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="pseudocigar_generation_description" bgcolor="#00DCB5">pseudocigar_generation_description</td> </tr>
 		</table>>
@@ -316,8 +312,8 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="ReactionInfo"><b>ReactionInfo</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#FF71FD">list</td> <td port="panel_targets" bgcolor="#008607">panel_targets</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="reaction_name" bgcolor="#008607">reaction_name</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#FF71FD">list</td> <td port="panel_targets" bgcolor="#F60239">panel_targets</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="reaction_name" bgcolor="#F60239">reaction_name</td> </tr>
 		</table>>
 		shape=plain		
 	]
@@ -326,8 +322,8 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="ReadCountsByStage"><b>ReadCountsByStage</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="bioinformatics_run_id" bgcolor="#008607">bioinformatics_run_id</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">ReadCountsByStageForLibrarySample</td><td bgcolor="#FF71FD">list</td> <td port="read_counts_by_library_sample_by_stage" bgcolor="#008607">read_counts_by_library_sample_by_stage</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="bioinformatics_run_id" bgcolor="#F60239">bioinformatics_run_id</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">ReadCountsByStageForLibrarySample</td><td bgcolor="#FF71FD">list</td> <td port="read_counts_by_library_sample_by_stage" bgcolor="#F60239">read_counts_by_library_sample_by_stage</td> </tr>
 		</table>>
 		shape=plain		
 	]
@@ -336,8 +332,8 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="ReadCountsByStageForLibrarySample"><b>ReadCountsByStageForLibrarySample</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="library_sample_id" bgcolor="#008607">library_sample_id</td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="total_raw_count" bgcolor="#008607">total_raw_count</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="library_sample_id" bgcolor="#F60239">library_sample_id</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="total_raw_count" bgcolor="#F60239">total_raw_count</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#FFCFE2">ReadCountsByStageForTarget</td><td bgcolor="#FF71FD">list</td> <td port="read_counts_for_targets" bgcolor="#00DCB5">read_counts_for_targets</td> </tr>
 		</table>>
@@ -348,8 +344,8 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="ReadCountsByStageForTarget"><b>ReadCountsByStageForTarget</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="target_id" bgcolor="#008607">target_id</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">StageReadCounts</td><td bgcolor="#FF71FD">list</td> <td port="stages" bgcolor="#008607">stages</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="target_id" bgcolor="#F60239">target_id</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">StageReadCounts</td><td bgcolor="#FF71FD">list</td> <td port="stages" bgcolor="#F60239">stages</td> </tr>
 		</table>>
 		shape=plain		
 	]
@@ -358,7 +354,7 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="RepresentativeMicrohaplotype"><b>RepresentativeMicrohaplotype</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="seq" bgcolor="#008607">seq</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="seq" bgcolor="#F60239">seq</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#FF71FD">list</td> <td port="alt_annotations" bgcolor="#00DCB5">alt_annotations</td> </tr>
 			<tr> <td bgcolor="#FFCFE2">ProteinVariant</td><td bgcolor="#FF71FD">list</td> <td port="associated_protein_variants" bgcolor="#00DCB5">associated_protein_variants</td> </tr>
@@ -375,7 +371,7 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="RepresentativeMicrohaplotypes"><b>RepresentativeMicrohaplotypes</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#FFCFE2">RepresentativeMicrohaplotypesForTarget</td><td bgcolor="#FF71FD">list</td> <td port="targets" bgcolor="#008607">targets</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">RepresentativeMicrohaplotypesForTarget</td><td bgcolor="#FF71FD">list</td> <td port="targets" bgcolor="#F60239">targets</td> </tr>
 		</table>>
 		shape=plain		
 	]
@@ -384,8 +380,8 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="RepresentativeMicrohaplotypesForTarget"><b>RepresentativeMicrohaplotypesForTarget</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="target_id" bgcolor="#008607">target_id</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">RepresentativeMicrohaplotype</td><td bgcolor="#FF71FD">list</td> <td port="microhaplotypes" bgcolor="#008607">microhaplotypes</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="target_id" bgcolor="#F60239">target_id</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">RepresentativeMicrohaplotype</td><td bgcolor="#FF71FD">list</td> <td port="microhaplotypes" bgcolor="#F60239">microhaplotypes</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#FFCFE2">GenomicLocation</td><td bgcolor="#7CFFFA">single</td> <td port="mhap_location" bgcolor="#00DCB5">mhap_location</td> </tr>
 		</table>>
@@ -396,13 +392,13 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="SequencingInfo"><b>SequencingInfo</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="sequencing_info_name" bgcolor="#008607">sequencing_info_name</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="seq_platform" bgcolor="#008607">seq_platform</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="seq_instrument_model" bgcolor="#008607">seq_instrument_model</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="library_layout" bgcolor="#008607">library_layout</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="library_strategy" bgcolor="#008607">library_strategy</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="library_source" bgcolor="#008607">library_source</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="library_selection" bgcolor="#008607">library_selection</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="sequencing_info_name" bgcolor="#F60239">sequencing_info_name</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="seq_platform" bgcolor="#F60239">seq_platform</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="seq_instrument_model" bgcolor="#F60239">seq_instrument_model</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="library_layout" bgcolor="#F60239">library_layout</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="library_strategy" bgcolor="#F60239">library_strategy</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="library_source" bgcolor="#F60239">library_source</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="library_selection" bgcolor="#F60239">library_selection</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="library_kit" bgcolor="#00DCB5">library_kit</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="library_screen" bgcolor="#00DCB5">library_screen</td> </tr>
@@ -421,15 +417,15 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="SpecimenInfo"><b>SpecimenInfo</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="specimen_name" bgcolor="#008607">specimen_name</td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#FF71FD">list</td> <td port="specimen_taxon_id" bgcolor="#008607">specimen_taxon_id</td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="host_taxon_id" bgcolor="#008607">host_taxon_id</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="collection_date" bgcolor="#008607">collection_date</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="collection_country" bgcolor="#008607">collection_country</td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="project_id" bgcolor="#008607">project_id</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="specimen_name" bgcolor="#F60239">specimen_name</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#FF71FD">list</td> <td port="specimen_taxon_id" bgcolor="#F60239">specimen_taxon_id</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="host_taxon_id" bgcolor="#F60239">host_taxon_id</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="collection_date" bgcolor="#F60239">collection_date</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="collection_country" bgcolor="#F60239">collection_country</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="project_id" bgcolor="#F60239">project_id</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#FF71FD">list</td> <td port="alternate_identifiers" bgcolor="#00DCB5">alternate_identifiers</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">boolean</td><td bgcolor="#7CFFFA">single</td> <td port="blood_meal" bgcolor="#00DCB5">blood_meal</td> </tr>
+			<tr> <td bgcolor="#EF0096">boolean</td><td bgcolor="#7CFFFA">single</td> <td port="blood_meal" bgcolor="#00DCB5">blood_meal</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#FF71FD">list</td> <td port="drug_usage" bgcolor="#00DCB5">drug_usage</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="env_broad_scale" bgcolor="#00DCB5">env_broad_scale</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="env_local_scale" bgcolor="#00DCB5">env_local_scale</td> </tr>
@@ -437,10 +433,10 @@ digraph PMO {
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="geo_admin1" bgcolor="#00DCB5">geo_admin1</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="geo_admin2" bgcolor="#00DCB5">geo_admin2</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="geo_admin3" bgcolor="#00DCB5">geo_admin3</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">boolean</td><td bgcolor="#7CFFFA">single</td> <td port="gravid" bgcolor="#00DCB5">gravid</td> </tr>
+			<tr> <td bgcolor="#EF0096">boolean</td><td bgcolor="#7CFFFA">single</td> <td port="gravid" bgcolor="#00DCB5">gravid</td> </tr>
 			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="gravidity" bgcolor="#00DCB5">gravidity</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">boolean</td><td bgcolor="#7CFFFA">single</td> <td port="has_travel_out_six_month" bgcolor="#00DCB5">has_travel_out_six_month</td> </tr>
-			<tr> <td bgcolor="#003C86">number</td><td bgcolor="#7CFFFA">single</td> <td port="host_age" bgcolor="#00DCB5">host_age</td> </tr>
+			<tr> <td bgcolor="#EF0096">boolean</td><td bgcolor="#7CFFFA">single</td> <td port="has_travel_out_six_month" bgcolor="#00DCB5">has_travel_out_six_month</td> </tr>
+			<tr> <td bgcolor="#00E307">number</td><td bgcolor="#7CFFFA">single</td> <td port="host_age" bgcolor="#00DCB5">host_age</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="host_sex" bgcolor="#00DCB5">host_sex</td> </tr>
 			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="host_subject_id" bgcolor="#00DCB5">host_subject_id</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="lat_lon" bgcolor="#00DCB5">lat_lon</td> </tr>
@@ -461,8 +457,8 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="StageReadCounts"><b>StageReadCounts</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="read_count" bgcolor="#008607">read_count</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="stage" bgcolor="#008607">stage</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="reads" bgcolor="#F60239">reads</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="stage" bgcolor="#F60239">stage</td> </tr>
 		</table>>
 		shape=plain		
 	]
@@ -471,9 +467,9 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="TargetInfo"><b>TargetInfo</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="target_name" bgcolor="#008607">target_name</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">PrimerInfo</td><td bgcolor="#7CFFFA">single</td> <td port="forward_primer" bgcolor="#008607">forward_primer</td> </tr>
-			<tr> <td bgcolor="#FFCFE2">PrimerInfo</td><td bgcolor="#7CFFFA">single</td> <td port="reverse_primer" bgcolor="#008607">reverse_primer</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="target_name" bgcolor="#F60239">target_name</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">PrimerInfo</td><td bgcolor="#7CFFFA">single</td> <td port="forward_primer" bgcolor="#F60239">forward_primer</td> </tr>
+			<tr> <td bgcolor="#FFCFE2">PrimerInfo</td><td bgcolor="#7CFFFA">single</td> <td port="reverse_primer" bgcolor="#F60239">reverse_primer</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="gene_name" bgcolor="#00DCB5">gene_name</td> </tr>
 			<tr> <td bgcolor="#FFCFE2">GenomicLocation</td><td bgcolor="#7CFFFA">single</td> <td port="insert_location" bgcolor="#00DCB5">insert_location</td> </tr>
@@ -487,11 +483,11 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="TravelInfo"><b>TravelInfo</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="travel_country" bgcolor="#008607">travel_country</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="travel_start_date" bgcolor="#008607">travel_start_date</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="travel_end_date" bgcolor="#008607">travel_end_date</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="travel_country" bgcolor="#F60239">travel_country</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="travel_start_date" bgcolor="#F60239">travel_start_date</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="travel_end_date" bgcolor="#F60239">travel_end_date</td> </tr>
 			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
-			<tr> <td bgcolor="#003C86">number</td><td bgcolor="#7CFFFA">single</td> <td port="bed_net_usage" bgcolor="#00DCB5">bed_net_usage</td> </tr>
+			<tr> <td bgcolor="#00E307">number</td><td bgcolor="#7CFFFA">single</td> <td port="bed_net_usage" bgcolor="#00DCB5">bed_net_usage</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="geo_admin1" bgcolor="#00DCB5">geo_admin1</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="geo_admin2" bgcolor="#00DCB5">geo_admin2</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="geo_admin3" bgcolor="#00DCB5">geo_admin3</td> </tr>
@@ -499,9 +495,7 @@ digraph PMO {
 		</table>>
 		shape=plain		
 	]
-	BioinformaticsMethodInfo_NODE:additional_methods -> BioMethod_NODE:BioMethod
-	BioinformaticsMethodInfo_NODE:demultiplexing_method -> BioMethod_NODE:BioMethod
-	BioinformaticsMethodInfo_NODE:denoising_method -> BioMethod_NODE:BioMethod
+	BioinformaticsMethodInfo_NODE:methods -> BioMethod_NODE:BioMethod
 	DetectedMicrohaplotypes_NODE:library_samples -> DetectedMicrohaplotypesForSample_NODE:DetectedMicrohaplotypesForSample
 	DetectedMicrohaplotypesForSample_NODE:target_results -> DetectedMicrohaplotypesForTarget_NODE:DetectedMicrohaplotypesForTarget
 	DetectedMicrohaplotypesForTarget_NODE:mhaps -> MicrohaplotypeForTarget_NODE:MicrohaplotypeForTarget

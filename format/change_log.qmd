@@ -13,6 +13,11 @@ embed-resources: true
 	- [x] add treatment status 
 	- [x] Adding traveler data class, saved as a list under SpecimenInfo
 	    - [x] has travel_country, travel_start_date, travel_end_date
+- [x] BioinformaticsMethodInfo
+    - [x] change additional_methods to just methods
+    - [x] change bioinformatics_method_name to pipeline instead to give option to name methods collection if they all fall under a pipeline  
+- [x] StageReadCounts
+    - [x] update read_count to reads
 
 # 2025-07
 

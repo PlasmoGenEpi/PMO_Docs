@@ -98,10 +98,10 @@ for(subclass in names(json$`$defs`)){
   
   cat(paste0("\n## ", subclass, "  \n"), sep = "",file = outputFile, append = T)
   cat(paste0("<https://plasmogenepi.github.io/portable-microhaplotype-object/", subclass, "/>  "), "\n", sep = "",file = outputFile, append = T)
-  cat(paste0("<a class = \"btn btn-light\" data-bs-toggle=\"collapse\" data-bs-target=\"#collapse", subclass, "\" aria-expanded=\"false\" aria-controls=\"collapseExample\">
+  cat(paste0("<a class = \"btn btn-light\" data-bs-toggle=\"collapse\" data-bs-target=\"#collapse", subclass, "\" aria-expanded=\"true\" aria-controls=\"collapseExample\">
   Show ", subclass, " fields <i class=\"fa-solid fa-caret-right\"></i>
 </a>
-<div class=\"collapse\" id=\"collapse", subclass, "\">
+<div class=\"collapse show\" id=\"collapse", subclass, "\">
   <div class=\"card card-body\">"
   ), sep = "",file = outputFile, append = T)
 
@@ -199,7 +199,7 @@ cat("digraph PMO {
 colorPalette_15 = c("#F60239","#003C86","#EF0096","#9400E6","#009FFA","#008169","#68023F","#00DCB5","#FFCFE2","#FF71FD","#7CFFFA","#6A0213","#008607","#00E307","#FFDC3D")
 
 
-type_colors = c("integer" = "#009FFA", "number" = "#003C86", "string" = "#FFDC3D")
+type_colors = c("integer" = "#009FFA", "number" = "#00E307", "string" = "#FFDC3D", "boolean" = "#EF0096")
 list_or_single_value_colors = c("list" = "#FF71FD", "single" = "#7CFFFA")
 # add nodes 
 for(pmo_class in pmo_schema_json$`$defs`){
@@ -229,7 +229,7 @@ for(pmo_class in pmo_schema_json$`$defs`){
     if(type %in% names(type_colors)){
       bg = as.character(type_colors[type])
     }
-    cat(paste0("			<tr> <td bgcolor=\"", bg, "\">", type, "</td><td bgcolor=\"", list_or_single_value_colors[list_or_single_value], "\">", list_or_single_value, "</td> <td port=\"", required, "\" bgcolor=\"#008607\">", required, "</td> </tr>\n"),file = outputFile, append = T)
+    cat(paste0("			<tr> <td bgcolor=\"", bg, "\">", type, "</td><td bgcolor=\"", list_or_single_value_colors[list_or_single_value], "\">", list_or_single_value, "</td> <td port=\"", required, "\" bgcolor=\"#F60239\">", required, "</td> </tr>\n"),file = outputFile, append = T)
   }
   non_required_props = c()
   for(prop in names(pmo_class$properties)){
@@ -288,200 +288,3 @@ cat("}\n",file = outputFile, append = T)
 ```
 
 
-replacing the mermaid plot below 
-
-:::{.column-screen}
-
-```{mermaid, eval = F, echp = F}
-%%| fig-align: center 
-
-erDiagram
-PortableMicrohaplotypeObject {
-
-}
-ReadCountsByStage {
-    integer bioinformatics_run_id  
-}
-ReadCountsByStageForExperimentalSample {
-    integer experiment_sample_id  
-    integer total_raw_count  
-}
-ReadCountsByStageForTarget {
-    integer target_id  
-}
-StageReadCounts {
-    integer read_count  
-    string stage  
-}
-PmoHeader {
-    string pmo_version  
-    string creation_date  
-}
-PmoGenerationMethod {
-    string program_version  
-    string program_name  
-}
-MicrohaplotypesDetected {
-    integer bioinformatics_run_id  
-}
-MicrohaplotypesForSample {
-    integer experiment_sample_id  
-}
-MicrohaplotypesForTarget {
-    integer mhaps_target_id  
-}
-MicrohaplotypeForTarget {
-    integer mhap_id  
-    integer reads  
-    integer umis  
-}
-BioinformaticsRunInfo {
-    integer bioinformatics_methods_id  
-    string run_date  
-    string bioinformatics_run_name  
-}
-BioinformaticsMethodInfo {
-    string bioinformatics_method_name  
-}
-BioMethod {
-    string program_version  
-    string program  
-    string program_description  
-    stringList additional_argument  
-}
-RepresentativeMicrohaplotypes {
-
-}
-RepresentativeMicrohaplotypesForTarget {
-    integer target_id  
-}
-RepresentativeMicrohaplotype {
-    string seq  
-    string microhaplotype_name  
-    string quality  
-    string pseudocigar  
-    stringList alt_annotations  
-}
-MaskingInfo {
-    integer seq_start  
-    integer seq_segment_size  
-    integer replacement_size  
-}
-GenomeInfo {
-    string name  
-    string genome_version  
-    integer taxon_id  
-    string url  
-    stringList chromosomes  
-    string gff_url  
-}
-TargetInfo {
-    string target_name  
-    string gene_name  
-    stringList target_attributes  
-}
-PrimerInfo {
-    string seq  
-}
-GenomicLocation {
-    integer genome_id  
-    string chrom  
-    integer start  
-    integer end  
-    string strand  
-    string ref_seq  
-}
-PanelInfo {
-    string panel_name  
-}
-ReactionInfo {
-    integerList panel_targets  
-    string reaction_name  
-}
-SequencingInfo {
-    string sequencing_info_name  
-    string seq_instrument  
-    string seq_date  
-    string nucl_acid_ext  
-    string nucl_acid_amp  
-    string nucl_acid_ext_date  
-    string nucl_acid_amp_date  
-    string pcr_cond  
-    string lib_screen  
-    string lib_layout  
-    string lib_kit  
-    string seq_center  
-}
-SpecimenInfo {
-    string plate_name  
-    string plate_row  
-    integer plate_col  
-    string specimen_name  
-    integer samp_taxon_id  
-    integer individual_id  
-    integer host_taxon_id  
-    stringList alternate_identifiers  
-    string specimen_sex  
-    string collection_date  
-    string date_of_birth  
-    string collection_country  
-    string geo_admin1  
-    string geo_admin2  
-    string geo_admin3  
-    string lat_lon  
-    string collector  
-    string samp_store_loc  
-    string samp_collect_device  
-    string project_name  
-    string sample_comments  
-}
-ParasiteDensity {
-    string method  
-    double density  
-}
-ExperimentInfo {
-    integer sequencing_info_id  
-    string plate_name  
-    string plate_row  
-    integer plate_col  
-    integer specimen_id  
-    integer panel_id  
-    string accession  
-    string experiment_sample_name  
-}
-
-PortableMicrohaplotypeObject ||--}| ExperimentInfo : "experiment_info"
-PortableMicrohaplotypeObject ||--}| SpecimenInfo : "specimen_info"
-PortableMicrohaplotypeObject ||--}| SequencingInfo : "sequencing_info"
-PortableMicrohaplotypeObject ||--}| PanelInfo : "panel_info"
-PortableMicrohaplotypeObject ||--}| TargetInfo : "target_info"
-PortableMicrohaplotypeObject ||--}| GenomeInfo : "targeted_genomes"
-PortableMicrohaplotypeObject ||--|| RepresentativeMicrohaplotypes : "microhaplotypes_info"
-PortableMicrohaplotypeObject ||--}| BioinformaticsMethodInfo : "bioinformatics_methods_info"
-PortableMicrohaplotypeObject ||--}| BioinformaticsRunInfo : "bioinformatics_run_info"
-PortableMicrohaplotypeObject ||--}| MicrohaplotypesDetected : "microhaplotypes_detected"
-PortableMicrohaplotypeObject ||--|| PmoHeader : "pmo_header"
-PortableMicrohaplotypeObject ||--}o ReadCountsByStage : "read_counts_by_stage"
-ReadCountsByStage ||--}| ReadCountsByStageForExperimentalSample : "read_counts_by_experimental_sample_by_stage"
-ReadCountsByStageForExperimentalSample ||--}o ReadCountsByStageForTarget : "read_counts_for_targets"
-ReadCountsByStageForTarget ||--}| StageReadCounts : "stages"
-PmoHeader ||--|o PmoGenerationMethod : "generation_method"
-MicrohaplotypesDetected ||--}| MicrohaplotypesForSample : "experiment_samples"
-MicrohaplotypesForSample ||--}| MicrohaplotypesForTarget : "target_results"
-MicrohaplotypesForTarget ||--}| MicrohaplotypeForTarget : "haps"
-BioinformaticsMethodInfo ||--|| BioMethod : "demultiplexing_method"
-BioinformaticsMethodInfo ||--|| BioMethod : "denoising_method"
-BioinformaticsMethodInfo ||--}o BioMethod : "additional_methods"
-RepresentativeMicrohaplotypes ||--}| RepresentativeMicrohaplotypesForTarget : "targets"
-RepresentativeMicrohaplotypesForTarget ||--}| RepresentativeMicrohaplotype : "microhaplotypes"
-RepresentativeMicrohaplotype ||--}o MaskingInfo : "masking"
-TargetInfo ||--|o GenomicLocation : "insert_location"
-TargetInfo ||--}| PrimerInfo : "forward_primers"
-TargetInfo ||--}| PrimerInfo : "reverse_primers"
-PrimerInfo ||--|o GenomicLocation : "location"
-PanelInfo ||--}| ReactionInfo : "reactions"
-SpecimenInfo ||--}o ParasiteDensity : "parasite_density_info"
-
-```
-
-:::

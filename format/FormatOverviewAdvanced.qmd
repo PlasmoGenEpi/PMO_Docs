@@ -68,13 +68,12 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ```  
 
-
 ## BioMethod  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/BioMethod/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseBioMethod" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseBioMethod" aria-expanded="true" aria-controls="collapseExample">
   Show BioMethod fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseBioMethod">
+<div class="collapse show" id="collapseBioMethod">
   <div class="card card-body">
 ### Required  
 *  program_version (***type=string***)  
@@ -99,22 +98,18 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## BioinformaticsMethodInfo  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/BioinformaticsMethodInfo/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseBioinformaticsMethodInfo" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseBioinformaticsMethodInfo" aria-expanded="true" aria-controls="collapseExample">
   Show BioinformaticsMethodInfo fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseBioinformaticsMethodInfo">
+<div class="collapse show" id="collapseBioinformaticsMethodInfo">
   <div class="card card-body">
 ### Required  
-*  demultiplexing_method (***type=[BioMethod](#biomethod)***)  
-    *  the demultiplexing method used to separate raw reads from barcodes and primer targets  
-*  denoising_method (***type=[BioMethod](#biomethod)***)  
-    *  the method used to de-noise and/or cluster the raw reads  
+*  methods (***type=[list of BioMethod](#biomethod)***)  
+    *  methodology used to generate the amplicon data stored in this PMO, e.g. demultiplexing method, denosing method  
 
 ### Optional  
-*  additional_methods (***type=[list of BioMethod](#biomethod)***)  
-    *  any additional methods used to analyze the data  
-*  bioinformatics_method_name (***type=string***)  
-    *  name of the collection of methods is called, e.g. pipeline   
+*  pipeline (***type=[BioMethod](#biomethod)***)  
+    *  what the main method info for the collection of methods is called, e.g. a pipeline name   
 
 ### Example  
 ```{json}  
@@ -125,10 +120,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## BioinformaticsRunInfo  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/BioinformaticsRunInfo/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseBioinformaticsRunInfo" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseBioinformaticsRunInfo" aria-expanded="true" aria-controls="collapseExample">
   Show BioinformaticsRunInfo fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseBioinformaticsRunInfo">
+<div class="collapse show" id="collapseBioinformaticsRunInfo">
   <div class="card card-body">
 ### Required  
 *  bioinformatics_methods_id (***type=integer***)  
@@ -149,10 +144,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## DetectedMicrohaplotypes  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/DetectedMicrohaplotypes/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseDetectedMicrohaplotypes" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseDetectedMicrohaplotypes" aria-expanded="true" aria-controls="collapseExample">
   Show DetectedMicrohaplotypes fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseDetectedMicrohaplotypes">
+<div class="collapse show" id="collapseDetectedMicrohaplotypes">
   <div class="card card-body">
 ### Required  
 *  bioinformatics_run_id (***type=integer***)  
@@ -169,10 +164,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## DetectedMicrohaplotypesForSample  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/DetectedMicrohaplotypesForSample/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseDetectedMicrohaplotypesForSample" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseDetectedMicrohaplotypesForSample" aria-expanded="true" aria-controls="collapseExample">
   Show DetectedMicrohaplotypesForSample fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseDetectedMicrohaplotypesForSample">
+<div class="collapse show" id="collapseDetectedMicrohaplotypesForSample">
   <div class="card card-body">
 ### Required  
 *  library_sample_id (***type=integer***)  
@@ -189,10 +184,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## DetectedMicrohaplotypesForTarget  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/DetectedMicrohaplotypesForTarget/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseDetectedMicrohaplotypesForTarget" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseDetectedMicrohaplotypesForTarget" aria-expanded="true" aria-controls="collapseExample">
   Show DetectedMicrohaplotypesForTarget fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseDetectedMicrohaplotypesForTarget">
+<div class="collapse show" id="collapseDetectedMicrohaplotypesForTarget">
   <div class="card card-body">
 ### Required  
 *  mhaps_target_id (***type=integer***)  
@@ -209,10 +204,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## GenomeInfo  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/GenomeInfo/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseGenomeInfo" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseGenomeInfo" aria-expanded="true" aria-controls="collapseExample">
   Show GenomeInfo fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseGenomeInfo">
+<div class="collapse show" id="collapseGenomeInfo">
   <div class="card card-body">
 ### Required  
 *  name (***type=string***)  
@@ -239,10 +234,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## GenomicLocation  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/GenomicLocation/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseGenomicLocation" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseGenomicLocation" aria-expanded="true" aria-controls="collapseExample">
   Show GenomicLocation fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseGenomicLocation">
+<div class="collapse show" id="collapseGenomicLocation">
   <div class="card card-body">
 ### Required  
 *  genome_id (***type=integer***)  
@@ -271,10 +266,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## LibrarySampleInfo  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/LibrarySampleInfo/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseLibrarySampleInfo" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseLibrarySampleInfo" aria-expanded="true" aria-controls="collapseExample">
   Show LibrarySampleInfo fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseLibrarySampleInfo">
+<div class="collapse show" id="collapseLibrarySampleInfo">
   <div class="card card-body">
 ### Required  
 *  sequencing_info_id (***type=integer***)  
@@ -309,10 +304,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## MarkerOfInterest  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/MarkerOfInterest/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseMarkerOfInterest" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseMarkerOfInterest" aria-expanded="true" aria-controls="collapseExample">
   Show MarkerOfInterest fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseMarkerOfInterest">
+<div class="collapse show" id="collapseMarkerOfInterest">
   <div class="card card-body">
 ### Required  
 *  marker_location (***type=[GenomicLocation](#genomiclocation)***)  
@@ -331,10 +326,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## MaskingInfo  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/MaskingInfo/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseMaskingInfo" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseMaskingInfo" aria-expanded="true" aria-controls="collapseExample">
   Show MaskingInfo fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseMaskingInfo">
+<div class="collapse show" id="collapseMaskingInfo">
   <div class="card card-body">
 ### Required  
 *  seq_start (***type=integer***)  
@@ -357,10 +352,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## MicrohaplotypeForTarget  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/MicrohaplotypeForTarget/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseMicrohaplotypeForTarget" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseMicrohaplotypeForTarget" aria-expanded="true" aria-controls="collapseExample">
   Show MicrohaplotypeForTarget fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseMicrohaplotypeForTarget">
+<div class="collapse show" id="collapseMicrohaplotypeForTarget">
   <div class="card card-body">
 ### Required  
 *  mhap_id (***type=integer***)  
@@ -381,10 +376,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## PanelInfo  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/PanelInfo/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapsePanelInfo" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapsePanelInfo" aria-expanded="true" aria-controls="collapseExample">
   Show PanelInfo fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapsePanelInfo">
+<div class="collapse show" id="collapsePanelInfo">
   <div class="card card-body">
 ### Required  
 *  reactions (***type=[list of ReactionInfo](#reactioninfo)***)  
@@ -401,10 +396,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## ParasiteDensity  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/ParasiteDensity/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseParasiteDensity" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseParasiteDensity" aria-expanded="true" aria-controls="collapseExample">
   Show ParasiteDensity fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseParasiteDensity">
+<div class="collapse show" id="collapseParasiteDensity">
   <div class="card card-body">
 ### Required  
 *  parasite_density_method (***type=string***)  
@@ -427,10 +422,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## PlateInfo  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/PlateInfo/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapsePlateInfo" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapsePlateInfo" aria-expanded="true" aria-controls="collapseExample">
   Show PlateInfo fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapsePlateInfo">
+<div class="collapse show" id="collapsePlateInfo">
   <div class="card card-body">
 ### Required  
 
@@ -451,10 +446,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## PmoGenerationMethod  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/PmoGenerationMethod/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapsePmoGenerationMethod" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapsePmoGenerationMethod" aria-expanded="true" aria-controls="collapseExample">
   Show PmoGenerationMethod fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapsePmoGenerationMethod">
+<div class="collapse show" id="collapsePmoGenerationMethod">
   <div class="card card-body">
 ### Required  
 *  program_version (***type=string***)  
@@ -471,10 +466,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## PmoHeader  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/PmoHeader/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapsePmoHeader" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapsePmoHeader" aria-expanded="true" aria-controls="collapseExample">
   Show PmoHeader fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapsePmoHeader">
+<div class="collapse show" id="collapsePmoHeader">
   <div class="card card-body">
 ### Required  
 *  pmo_version (***type=string***)  
@@ -495,10 +490,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## PrimerInfo  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/PrimerInfo/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapsePrimerInfo" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapsePrimerInfo" aria-expanded="true" aria-controls="collapseExample">
   Show PrimerInfo fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapsePrimerInfo">
+<div class="collapse show" id="collapsePrimerInfo">
   <div class="card card-body">
 ### Required  
 *  seq (***type=string***)  
@@ -517,10 +512,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## ProjectInfo  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/ProjectInfo/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseProjectInfo" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseProjectInfo" aria-expanded="true" aria-controls="collapseExample">
   Show ProjectInfo fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseProjectInfo">
+<div class="collapse show" id="collapseProjectInfo">
   <div class="card card-body">
 ### Required  
 *  project_name (***type=string***)  
@@ -547,10 +542,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## ProteinVariant  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/ProteinVariant/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseProteinVariant" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseProteinVariant" aria-expanded="true" aria-controls="collapseExample">
   Show ProteinVariant fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseProteinVariant">
+<div class="collapse show" id="collapseProteinVariant">
   <div class="card card-body">
 ### Required  
 *  protein_location (***type=[GenomicLocation](#genomiclocation)***)  
@@ -573,10 +568,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## Pseudocigar  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/Pseudocigar/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapsePseudocigar" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapsePseudocigar" aria-expanded="true" aria-controls="collapseExample">
   Show Pseudocigar fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapsePseudocigar">
+<div class="collapse show" id="collapsePseudocigar">
   <div class="card card-body">
 ### Required  
 *  pseudocigar_seq (***type=string***)  
@@ -597,10 +592,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## ReactionInfo  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/ReactionInfo/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseReactionInfo" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseReactionInfo" aria-expanded="true" aria-controls="collapseExample">
   Show ReactionInfo fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseReactionInfo">
+<div class="collapse show" id="collapseReactionInfo">
   <div class="card card-body">
 ### Required  
 *  panel_targets (***type= list of integer***)  
@@ -617,10 +612,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## ReadCountsByStage  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/ReadCountsByStage/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseReadCountsByStage" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseReadCountsByStage" aria-expanded="true" aria-controls="collapseExample">
   Show ReadCountsByStage fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseReadCountsByStage">
+<div class="collapse show" id="collapseReadCountsByStage">
   <div class="card card-body">
 ### Required  
 *  bioinformatics_run_id (***type=integer***)  
@@ -637,10 +632,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## ReadCountsByStageForLibrarySample  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/ReadCountsByStageForLibrarySample/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseReadCountsByStageForLibrarySample" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseReadCountsByStageForLibrarySample" aria-expanded="true" aria-controls="collapseExample">
   Show ReadCountsByStageForLibrarySample fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseReadCountsByStageForLibrarySample">
+<div class="collapse show" id="collapseReadCountsByStageForLibrarySample">
   <div class="card card-body">
 ### Required  
 *  library_sample_id (***type=integer***)  
@@ -661,10 +656,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## ReadCountsByStageForTarget  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/ReadCountsByStageForTarget/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseReadCountsByStageForTarget" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseReadCountsByStageForTarget" aria-expanded="true" aria-controls="collapseExample">
   Show ReadCountsByStageForTarget fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseReadCountsByStageForTarget">
+<div class="collapse show" id="collapseReadCountsByStageForTarget">
   <div class="card card-body">
 ### Required  
 *  target_id (***type=integer***)  
@@ -681,10 +676,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## RepresentativeMicrohaplotype  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotype/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseRepresentativeMicrohaplotype" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseRepresentativeMicrohaplotype" aria-expanded="true" aria-controls="collapseExample">
   Show RepresentativeMicrohaplotype fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseRepresentativeMicrohaplotype">
+<div class="collapse show" id="collapseRepresentativeMicrohaplotype">
   <div class="card card-body">
 ### Required  
 *  seq (***type=string***)  
@@ -715,10 +710,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## RepresentativeMicrohaplotypes  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotypes/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseRepresentativeMicrohaplotypes" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseRepresentativeMicrohaplotypes" aria-expanded="true" aria-controls="collapseExample">
   Show RepresentativeMicrohaplotypes fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseRepresentativeMicrohaplotypes">
+<div class="collapse show" id="collapseRepresentativeMicrohaplotypes">
   <div class="card card-body">
 ### Required  
 *  targets (***type=[list of RepresentativeMicrohaplotypesForTarget](#representativemicrohaplotypesfortarget)***)  
@@ -733,10 +728,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## RepresentativeMicrohaplotypesForTarget  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotypesForTarget/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseRepresentativeMicrohaplotypesForTarget" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseRepresentativeMicrohaplotypesForTarget" aria-expanded="true" aria-controls="collapseExample">
   Show RepresentativeMicrohaplotypesForTarget fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseRepresentativeMicrohaplotypesForTarget">
+<div class="collapse show" id="collapseRepresentativeMicrohaplotypesForTarget">
   <div class="card card-body">
 ### Required  
 *  target_id (***type=integer***)  
@@ -757,10 +752,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## SequencingInfo  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/SequencingInfo/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseSequencingInfo" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseSequencingInfo" aria-expanded="true" aria-controls="collapseExample">
   Show SequencingInfo fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseSequencingInfo">
+<div class="collapse show" id="collapseSequencingInfo">
   <div class="card card-body">
 ### Required  
 *  sequencing_info_name (***type=string***)  
@@ -807,10 +802,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## SpecimenInfo  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/SpecimenInfo/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseSpecimenInfo" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseSpecimenInfo" aria-expanded="true" aria-controls="collapseExample">
   Show SpecimenInfo fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseSpecimenInfo">
+<div class="collapse show" id="collapseSpecimenInfo">
   <div class="card card-body">
 ### Required  
 *  specimen_name (***type=string***)  
@@ -887,14 +882,14 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## StageReadCounts  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/StageReadCounts/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseStageReadCounts" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseStageReadCounts" aria-expanded="true" aria-controls="collapseExample">
   Show StageReadCounts fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseStageReadCounts">
+<div class="collapse show" id="collapseStageReadCounts">
   <div class="card card-body">
 ### Required  
-*  read_count (***type=integer***)  
-    *  the read counts  
+*  reads (***type=integer***)  
+    *  the read counts for this stage  
 *  stage (***type=string***)  
     *  the stage of the pipeline, e.g. demultiplexed, denoised, etc  
 
@@ -907,10 +902,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## TargetInfo  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/TargetInfo/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseTargetInfo" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseTargetInfo" aria-expanded="true" aria-controls="collapseExample">
   Show TargetInfo fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseTargetInfo">
+<div class="collapse show" id="collapseTargetInfo">
   <div class="card card-body">
 ### Required  
 *  target_name (***type=string***)  
@@ -939,10 +934,10 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ## TravelInfo  
 <https://plasmogenepi.github.io/portable-microhaplotype-object/TravelInfo/>  
-<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseTravelInfo" aria-expanded="false" aria-controls="collapseExample">
+<a class = "btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseTravelInfo" aria-expanded="true" aria-controls="collapseExample">
   Show TravelInfo fields <i class="fa-solid fa-caret-right"></i>
 </a>
-<div class="collapse" id="collapseTravelInfo">
+<div class="collapse show" id="collapseTravelInfo">
   <div class="card card-body">
 ### Required  
 *  travel_country (***type=string***)  
@@ -972,9 +967,3 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 </div><br>
 
 {{< fa dna >}}
-
-
-
-
-
-

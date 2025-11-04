@@ -14,7 +14,16 @@ pmotools-python is a tool base for interacting with the PMO format file in pytho
 
 ## Installation 
 
-pmotools-python code can be found on github <https://github.com/PlasmoGenEpi/pmotools-python/tree/develop>
+pmotools-python code can be found on github <https://github.com/PlasmoGenEpi/pmotools-python/tree/develop> and is available via pypi 
+
+```{bash, eval = F}
+pip install pmotools 
+```
+
+
+### Development 
+
+To install the developmental version, you can download the code from github 
 
 ### Set up
 

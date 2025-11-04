@@ -15,3 +15,5 @@ PMO_Docs
 *.ipynb_checkpoints*
 env_test
 format/updating_format_overiew_files
+
+**/*.quarto_ipynb

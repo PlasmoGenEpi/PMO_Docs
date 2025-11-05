@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Portable Microhaplotype Object (PMO)</title>
 <style>
@@ -83,14 +83,15 @@ div.csl-indent {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2cd88b842f3556f70e7132508a5c4eca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-49a824ff064150fa59632921ab93e189.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-bdbe0bd219239b32af61c1af43738d3f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-6a2c4b793c0becaeb94cc5bf146c1484.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -124,6 +125,8 @@ div.csl-indent {
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Portable Microhaplotype Object (PMO)</span>
     </a>
@@ -278,38 +281,9 @@ div.csl-indent {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
    
   <ul>
-<li>
-<a href="#targeted-amplicon-analysis" id="toc-targeted-amplicon-analysis" class="nav-link active" data-scroll-target="#targeted-amplicon-analysis">Targeted Amplicon Analysis</a>
-  <ul>
-<li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#goals" id="toc-goals" class="nav-link" data-scroll-target="#goals">Goals</a></li>
-  <li><a href="#sources-of-data" id="toc-sources-of-data" class="nav-link" data-scroll-target="#sources-of-data">Sources of data</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#proposed-standards-for-targeted-amplicon-data-and-metadata" id="toc-proposed-standards-for-targeted-amplicon-data-and-metadata" class="nav-link" data-scroll-target="#proposed-standards-for-targeted-amplicon-data-and-metadata">Proposed standards for targeted amplicon data and metadata</a>
-  <ul>
-<li><a href="#goals-of-file-format" id="toc-goals-of-file-format" class="nav-link" data-scroll-target="#goals-of-file-format">Goals of file format</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#standards" id="toc-standards" class="nav-link" data-scroll-target="#standards">Standards</a>
-  <ul>
-<li><a href="#the-genomic-standards-consortium" id="toc-the-genomic-standards-consortium" class="nav-link" data-scroll-target="#the-genomic-standards-consortium">The Genomic Standards Consortium</a></li>
-  <li>
-<a href="#mixs" id="toc-mixs" class="nav-link" data-scroll-target="#mixs">MIxS</a>
-  <ul>
-<li>
-<a href="#microbial-specific" id="toc-microbial-specific" class="nav-link" data-scroll-target="#microbial-specific">Microbial specific</a>
-  <ul class="collapse">
-<li><a href="#ess-dive-amplicon-file-formating" id="toc-ess-dive-amplicon-file-formating" class="nav-link" data-scroll-target="#ess-dive-amplicon-file-formating">ESS-DIVE amplicon file formating</a></li>
-  <li><a href="#biom-amplicon-file-formatting" id="toc-biom-amplicon-file-formatting" class="nav-link" data-scroll-target="#biom-amplicon-file-formatting">biom amplicon file formatting</a></li>
-  </ul>
-</li>
-  </ul>
-</li>
-  </ul>
-</li>
+<li><a href="#why-targeted-sequencing-needs-a-data-standard" id="toc-why-targeted-sequencing-needs-a-data-standard" class="nav-link active" data-scroll-target="#why-targeted-sequencing-needs-a-data-standard">Why targeted sequencing needs a data standard</a></li>
+  <li><a href="#goals-of-the-pmo-data-standard" id="toc-goals-of-the-pmo-data-standard" class="nav-link" data-scroll-target="#goals-of-the-pmo-data-standard">Goals of the PMO data standard</a></li>
+  <li><a href="#our-approach-to-development" id="toc-our-approach-to-development" class="nav-link" data-scroll-target="#our-approach-to-development">Our approach to development</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -328,54 +302,24 @@ div.csl-indent {
   
 
 
-</header><p>Website describing Portable Microhaplotype Object development</p>
-<section id="targeted-amplicon-analysis" class="level1"><h1>Targeted Amplicon Analysis</h1>
-<section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Amplicon can be defined as a piece of DNA/RNA that has been amplified. When referring to amplicon data though we are referring to targeted amplicon data which is when a specific target of interest has been amplified by a set of primers and sequenced from a set of samples. Data from an amplicon can be referred to a microhaplotype (as opposed to a full haplotype which would be a full chromosome, a microhaplotype typical covers more than 1 variant and is approximately &lt;=300bp, which is it’s first definition<span class="citation" data-cites="Oldoni2019-kb">(<a href="#ref-Oldoni2019-kb" role="doc-biblioref">Oldoni, Kidd, and Podini 2019</a>)</span> but doesn’t have to meet those criteria precisely)</p>
-</section><section id="goals" class="level2"><h2 class="anchored" data-anchor-id="goals">Goals</h2>
-<p>Targeted amplicon sequencing has been a data analysis technique that has been well established and made most popular by microbiome analysis where a piece of 16S rRNA is amplified to help classify a microbiome mixture by defining taxon data and abundance. This technique has also gained in population within the malaria research community <span class="citation" data-cites="Tessema2022-fg">(<a href="#ref-Tessema2022-fg" role="doc-biblioref">Tessema et al. 2022</a>)</span>,<span class="citation" data-cites="LaVerriere2022-ya">(<a href="#ref-LaVerriere2022-ya" role="doc-biblioref">LaVerriere et al. 2022</a>)</span>,<span class="citation" data-cites="Jacob2021-ib">(<a href="#ref-Jacob2021-ib" role="doc-biblioref">Jacob et al. 2021</a>)</span>,<span class="citation" data-cites="Kattenberg_Johanna_Helena2023-jw">(<a href="#ref-Kattenberg_Johanna_Helena2023-jw" role="doc-biblioref">Kattenberg Johanna Helena et al. 2023</a>)</span>,<span class="citation" data-cites="Aranda-Diaz2025-yg">(<a href="#ref-Aranda-Diaz2025-yg" role="doc-biblioref">Aranda-Díaz et al. 2025</a>)</span>,<span class="citation" data-cites="Sadler2024-jw">(<a href="#ref-Sadler2024-jw" role="doc-biblioref">Sadler et al. 2024</a>)</span>.</p>
-<p>The goal of a developing a amplicon file format, especially with <em>Plasmodium</em> in mind, is easing the comparison between experimental runs within and across labs.</p>
-</section><section id="sources-of-data" class="level2"><h2 class="anchored" data-anchor-id="sources-of-data">Sources of data</h2>
-<p>Data can be generated by targeted amplicon sequencing experiments or by doing local assembly on WGS data.</p>
-</section></section><section id="proposed-standards-for-targeted-amplicon-data-and-metadata" class="level1"><h1>Proposed standards for targeted amplicon data and metadata</h1>
-<p>With generation of amplicon sequencing data for Plasmodium accelerating, there is a timely opportunity to create shared resources to disseminate, reuse, and analyze these data. However, there is currently no standard for lossless representation microhaplotypes derived from these approaches nor for associated laboratory, bioinformatic, and clinical metadata.</p>
-<p>A standardized format for microhaplotype data would facilitate data sharing, including development of appropriate repositories, along with transparency and reproducibility of analysis. Standardization at this central step in analysis would also allow for alignment of downstream tools, increasing incentives to develop robust, reusable software and allow cross-study analyses.</p>
-<p>We propose a single, relational data structure using JSON as a portable file. This approach allows for design which is efficient, lightweight, and flexible, organizing metadata together with genetic data.</p>
-<p>See current beta developmental of file <a href="./format/FormatOverview.html">format here</a></p>
-<section id="goals-of-file-format" class="level2"><h2 class="anchored" data-anchor-id="goals-of-file-format">Goals of file format</h2>
+</header><p>Multiplexed targeted sequencing is now widely used to generate data for the most informative genomic regions of organisms, but the lack of an appropriate data standard has hindered data sharing, reuse, and downstream analysis. Here, we provide details for an extensible standard and related convenience utilities to store lossless, compact representations of phased, processed target sequences (microhaplotypes) along with an efficient relational ontology in a portable JSON file.</p>
+<section id="why-targeted-sequencing-needs-a-data-standard" class="level2"><h2 class="anchored" data-anchor-id="why-targeted-sequencing-needs-a-data-standard">Why targeted sequencing needs a data standard</h2>
+<p><strong>Targeted amplicon sequencing</strong> is now established as a sensitive and efficient means of obtaining relevant information about a wide variety of organisms. Applications are broad and expanding, including microbiome analysis, pathogen identification, detection of antimicrobial resistance, and tracking the spread of viruses, bacteria, and eukaryotic pathogens.</p>
+<p>Many of these applications utilize the full sequences provided by individual reads because they contain multiple, phased variants (<strong>microhaplotypes</strong>)<span class="citation" data-cites="Oldoni2019-kb">(<a href="#ref-Oldoni2019-kb" role="doc-biblioref">Oldoni, Kidd, and Podini 2019</a>)</span> - information that is lost when decomposing these data into independent variants such as SNPs. This information is particularly valuable when sequencing samples containing organisms with more than one sequence per target, such as mixed bacterial samples, commonly polyclonal pathogens (e.g., Plasmodium) <span class="citation" data-cites="Tessema2022-fg">(<a href="#ref-Tessema2022-fg" role="doc-biblioref">Tessema et al. 2022</a>)</span>,<span class="citation" data-cites="LaVerriere2022-ya">(<a href="#ref-LaVerriere2022-ya" role="doc-biblioref">LaVerriere et al. 2022</a>)</span>,<span class="citation" data-cites="Jacob2021-ib">(<a href="#ref-Jacob2021-ib" role="doc-biblioref">Jacob et al. 2021</a>)</span>,<span class="citation" data-cites="Kattenberg_Johanna_Helena2023-jw">(<a href="#ref-Kattenberg_Johanna_Helena2023-jw" role="doc-biblioref">Kattenberg Johanna Helena et al. 2023</a>)</span>,<span class="citation" data-cites="Aranda-Diaz2025-yg">(<a href="#ref-Aranda-Diaz2025-yg" role="doc-biblioref">Aranda-Díaz et al. 2025</a>)</span>,<span class="citation" data-cites="Sadler2024-jw">(<a href="#ref-Sadler2024-jw" role="doc-biblioref">Sadler et al. 2024</a>)</span>, and diploid or polyploid organisms. Thus, data formats designed for small variants that do not preserve full sequences, such as the popular variant call format (VCF), are not well suited to store microhaplotype data.</p>
+</section><section id="goals-of-the-pmo-data-standard" class="level2"><h2 class="anchored" data-anchor-id="goals-of-the-pmo-data-standard">Goals of the PMO data standard</h2>
 <ul>
-<li>Help individual researchers / groups organize their data</li>
-<li>Format for sharing and reporting data to aid in standardization, transparency, and reproducibility</li>
-<li>Align downstream analysis tools so no need to reshape data differently for each application</li>
-<li>Make data publicly available for analysis</li>
-<li>Facilitate cross-study analysis and tools e.g.&nbsp;“next-malaria”</li>
-</ul></section></section><section id="standards" class="level1"><h1>Standards</h1>
-<p>Previous standards have been defined for genomic data and the goal of the file format is to abide by these standards to ease the use of the data format and to compliy with standardization.</p>
-<section id="the-genomic-standards-consortium" class="level2"><h2 class="anchored" data-anchor-id="the-genomic-standards-consortium">The Genomic Standards Consortium</h2>
-<p><a href="http://www.gensc.org/">The Genomic Standards Consortium</a></p>
-<blockquote class="blockquote">
-<p>The Genomic Standards Consortium (GSC) is an open-membership working body formed in September 2005. The aim of the GSC is making genomic data discoverable. The GSC enables genomic data integration, discovery and comparison through international community-driven standards.</p>
-</blockquote>
-<p>They are listed under the findability, accessibility, interoperability, and reusability (FAIR) sharing<br><a href="https://fairsharing.org/GSC" class="uri">https://fairsharing.org/GSC</a></p>
-</section><section id="mixs" class="level2"><h2 class="anchored" data-anchor-id="mixs">MIxS</h2>
-<p>GSC have developed several standards in order to try to standardized the way we describe genomics/sequencing data and have developed what is called “Minimum Information about any (X) Sequence” (MIxS) specification</p>
-<p><a href="https://github.com/GenomicsStandardsConsortium/mixs/" class="uri">https://github.com/GenomicsStandardsConsortium/mixs/</a></p>
-<blockquote class="blockquote">
-<p>Without specific guidelines, most genomic, metagenomic and marker gene sequences in databases are sparsely annotated with the information required to guide data integration, comparative studies and knowledge generation. Even with complex keyword searches, it is currently impossible to reliably retrieve sequences that have originated from certain environments or particular locations on Earth—for example, all sequences from ‘soil’ or ‘freshwater lakes’ in a certain region of the world. Because public databases of the International Nucleotide Sequence Database Collaboration (INSDC; comprising DNA Data Bank of Japan (DDBJ), the European Nucleotide Archive (EBI-ENA) and GenBank depend on author-submitted information to enrich the value of sequence data sets, we argue that the only way to change the current practice is to establish a standard of reporting that requires contextual data to be deposited at the time of sequence submission. The adoption of such a standard would elevate the quality, accessibility and utility of information that can be collected from INSDC or any other data repository.</p>
-</blockquote>
-<section id="microbial-specific" class="level3"><h3 class="anchored" data-anchor-id="microbial-specific">Microbial specific</h3>
-<p>Microbiome world has long had to deal with targeted amplicon analysis primarily on 16s RNA sub-unit and more recently on <a href="https://pubmlst.org/multilocus-sequence-typing">Multilocus sequence typing (MLST)</a></p>
-<section id="ess-dive-amplicon-file-formating" class="level4"><h4 class="anchored" data-anchor-id="ess-dive-amplicon-file-formating">ESS-DIVE amplicon file formating</h4>
-<p>As such they have already developed some standards on creating a generalized targeted amplicon file, standards set by Environmental System Science Data Infrastructure for a Virtual Ecosystem (ESS-DIVE), <a href="https://github.com/ess-dive-community" class="uri">https://github.com/ess-dive-community</a>, <a href="https://ess-dive.lbl.gov/" class="uri">https://ess-dive.lbl.gov/</a></p>
-<p>Their standards try to follow closely with Minimum Information about any Sequence (<a href="https://www.gensc.org/pages/standards-intro.html">MIxS</a>) standards and aim to accommodate the biom file format (mentioned below).</p>
-</section><section id="biom-amplicon-file-formatting" class="level4"><h4 class="anchored" data-anchor-id="biom-amplicon-file-formatting">biom amplicon file formatting</h4>
-<p>Other considerations are also the <a href="http://biom-format.org/index.html">biom format</a> which is written in <a href="https://www.hdfgroup.org/">HDF5</a> to help handle storing data in binary format, this is used by <a href="https://qiime2.org/">QIME</a> along with several other common bacterial genomics tools. This format can handle the storage of sample meta data along with amplicon data but is meant for storage of only 1 marker at time meaning it wouldn’t handle multiple markers without workarounds.</p>
+<li>Provide a <strong>structured and flexible framework</strong> to help individual researchers and groups to organize their data in a findable and accessible way.</li>
+<li>Create a standard for <strong>data sharing</strong>, including for repositories, academic reports, and public health entities, to aid in interoperability, transparency, and reproducibility</li>
+<li>Maximize <strong>data reuse</strong> by lowering the barriers for making data publicly available in a standardized format.</li>
+<li>Provide a consistent format to allow <strong>harmonization of downstream analysis tools</strong> across data sets and minimize the need for tedious and error-prone tasks such as data reshaping</li>
+</ul></section><section id="our-approach-to-development" class="level2"><h2 class="anchored" data-anchor-id="our-approach-to-development">Our approach to development</h2>
+<p>The microbiome community has created data standards for a single locus, including BIOM and ESS-DIVE. Here, we extend these standards to an arbitrary number of loci in a framework extensible to any type of targeted sequence data. The format is lossless, allowing recovery of full sequence data, while achieving data compression of ~6x and up to ~80x with additional compression using standard tools (e.g., gzip). Optional fields allow data generators with domain expertise to include additionally processed sequence data such as variants with masked domains, e.g.&nbsp;for highly error prone areas such as tandem repeats. Notably, the framework provides a robust relational ontology for sample, laboratory, and bioinformatic metadata in addition to sequence data, mitigating the common problem of partially or completely orphaned data. A full ontology has been built out for Plasmodium, leveraging existing fields where available, and the modular structure can be flexibly extended to other biological systems, including those containing multiple types of organisms. All data are encoded in a standard JSON file, enhancing portability and ease-of-interpretation. The end result is a design which is efficient, lightweight, and flexible, organizing metadata together with genetic data. Finally, we have created a set of convenience utilities to make it easy to create, manipulate, share, import, and export PMO files.</p>
 
 
 <!-- -->
 
 
-</section></section></section></section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Aranda-Diaz2025-yg" class="csl-entry" role="listitem">
 Aranda-Díaz, Andrés, Eric Neubauer Vickers, Kathryn Murie, Brian Palmer, Nicholas Hathaway, Inna Gerlovina, Simone Boene, et al. 2025. <span>“Sensitive and Modular Amplicon Sequencing of Plasmodium Falciparum Diversity and Resistance for Research and Public Health.”</span> <em>Sci. Rep.</em> 15 (March): 10737.
 </div>
@@ -448,13 +392,14 @@ Tessema, Sofonias K, Nicholas J Hathaway, Noam B Teyssier, Maxwell Murphy, Anna 
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -847,7 +792,7 @@ Tessema, Sofonias K, Nicholas J Hathaway, Noam B Teyssier, Maxwell Murphy, Anna 
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Portable Microhaplotype Object (PMO)"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -856,83 +801,27 @@ Tessema, Sofonias K, Nicholas J Hathaway, Noam B Teyssier, Maxwell Murphy, Anna 
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"common.R"</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Website describing Portable Microhaplotype Object development</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Multiplexed targeted sequencing is now widely used to generate data for the most informative genomic regions of organisms, but the lack of an appropriate data standard has hindered data sharing, reuse, and downstream analysis. Here, we provide details for an extensible standard and related convenience utilities to store lossless, compact representations of phased, processed target sequences (microhaplotypes) along with an efficient relational ontology in a portable JSON file.</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu"># Targeted Amplicon Analysis </span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction  </span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>Amplicon can be defined as a piece of DNA/RNA that has been amplified. When referring to amplicon data though we are referring to targeted amplicon data which is when a specific target of interest has been amplified by a set of primers and sequenced from a set of samples. Data from an amplicon can be referred to a microhaplotype (as opposed to a full haplotype which would be a full chromosome, a microhaplotype typical covers more than 1 variant and is approximately &lt;=300bp, which is it's first definition<span class="co">[</span><span class="ot">@Oldoni2019-kb</span><span class="co">]</span> but doesn't have to meet those criteria precisely)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Goals  </span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## Why targeted sequencing needs a data standard</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>**Targeted amplicon sequencing** is now established as a sensitive and efficient means of obtaining relevant information about a wide variety of organisms. Applications are broad and expanding, including microbiome analysis, pathogen identification, detection of antimicrobial resistance, and tracking the spread of viruses, bacteria, and eukaryotic pathogens. </span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Many of these applications utilize the full sequences provided by individual reads because they contain multiple, phased variants (**microhaplotypes**)<span class="co">[</span><span class="ot">@Oldoni2019-kb</span><span class="co">]</span> - information that is lost when decomposing these data into independent variants such as SNPs. This information is particularly valuable when sequencing samples containing organisms with more than one sequence per target, such as mixed bacterial samples, commonly polyclonal pathogens (e.g., Plasmodium) <span class="co">[</span><span class="ot">@Tessema2022-fg</span><span class="co">]</span>,<span class="co">[</span><span class="ot">@LaVerriere2022-ya</span><span class="co">]</span>,<span class="co">[</span><span class="ot">@Jacob2021-ib</span><span class="co">]</span>,<span class="co">[</span><span class="ot">@Kattenberg_Johanna_Helena2023-jw</span><span class="co">]</span>,<span class="co">[</span><span class="ot">@Aranda-Diaz2025-yg</span><span class="co">]</span>,<span class="co">[</span><span class="ot">@Sadler2024-jw</span><span class="co">]</span>, and diploid or polyploid organisms. Thus, data formats designed for small variants that do not preserve full sequences, such as the popular variant call format (VCF), are not well suited to store microhaplotype data. </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>Targeted amplicon sequencing has been a data analysis technique that has been well established and made most popular by microbiome analysis where a piece of 16S rRNA is amplified to help classify a microbiome mixture by defining taxon data and abundance. This technique has also gained in population within the malaria research community <span class="co">[</span><span class="ot">@Tessema2022-fg</span><span class="co">]</span>,<span class="co">[</span><span class="ot">@LaVerriere2022-ya</span><span class="co">]</span>,<span class="co">[</span><span class="ot">@Jacob2021-ib</span><span class="co">]</span>,<span class="co">[</span><span class="ot">@Kattenberg_Johanna_Helena2023-jw</span><span class="co">]</span>,<span class="co">[</span><span class="ot">@Aranda-Diaz2025-yg</span><span class="co">]</span>,<span class="co">[</span><span class="ot">@Sadler2024-jw</span><span class="co">]</span>. </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Goals of the PMO data standard  </span></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>The goal of a developing a amplicon file format, especially with _Plasmodium_ in mind, is easing the comparison between experimental runs within and across labs. </span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sources of data </span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>Provide a **structured and flexible framework** to help individual researchers and groups to organize their data in a findable and accessible way.</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>Create a standard for **data sharing**, including for repositories, academic reports, and public health entities, to aid in interoperability, transparency, and reproducibility</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>Maximize **data reuse** by lowering the barriers for making data publicly available in a standardized format. </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>Provide a consistent format to allow **harmonization of downstream analysis tools** across data sets and minimize the need for tedious and error-prone tasks such as data reshaping</span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>Data can be generated by targeted amplicon sequencing experiments or by doing local assembly on WGS data. </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Our approach to development  </span></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu"># Proposed standards for targeted amplicon data and metadata</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>With generation of amplicon sequencing data for Plasmodium accelerating, there is a timely opportunity to create shared resources to disseminate, reuse, and analyze these data. However, there is currently no standard for lossless representation microhaplotypes derived from these approaches nor for associated laboratory, bioinformatic, and clinical metadata.</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>A standardized format for microhaplotype data would facilitate data sharing, including development of appropriate repositories, along with transparency and reproducibility of analysis. Standardization at this central step in analysis would also allow for alignment of downstream tools, increasing incentives to develop robust, reusable software and allow cross-study analyses.</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>We propose a single, relational data structure using JSON as a portable file. This approach allows for design which is efficient, lightweight, and flexible, organizing metadata together with genetic data.</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>See current beta developmental of file <span class="co">[</span><span class="ot">format here</span><span class="co">](format/FormatOverview.qmd)</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## Goals of file format  </span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>Help individual researchers / groups organize their data</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>Format for sharing and reporting data to aid in standardization, transparency, and reproducibility</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>Align downstream analysis tools so no need to reshape data differently for each application</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>Make data publicly available for analysis</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>Facilitate cross-study analysis and tools e.g. "next-malaria"</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="fu"># Standards </span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>Previous standards have been defined for genomic data and the goal of the file format is to abide by these standards to ease the use of the data format and to compliy with standardization.  </span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Genomic Standards Consortium</span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">The Genomic Standards Consortium</span><span class="co">](http://www.gensc.org/)</span>  </span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;The Genomic Standards Consortium (GSC) is an open-membership working body formed in September 2005. The aim of the GSC is making genomic data discoverable. The GSC enables genomic data integration, discovery and comparison through international community-driven standards. </span></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>They are listed under the findability, accessibility, interoperability, and reusability (FAIR) sharing  </span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="ot">&lt;https://fairsharing.org/GSC&gt;</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="fu">## MIxS </span></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>GSC have developed several standards in order to try to standardized the way we describe genomics/sequencing data and have developed what is called "Minimum Information about any (X) Sequence" (MIxS) specification</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="ot">&lt;https://github.com/GenomicsStandardsConsortium/mixs/&gt;</span></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;Without specific guidelines, most genomic, metagenomic and marker gene sequences in databases are sparsely annotated with the information required to guide data integration, comparative studies and knowledge generation. Even with complex keyword searches, it is currently impossible to reliably retrieve sequences that have originated from certain environments or particular locations on Earth—for example, all sequences from ‘soil’ or ‘freshwater lakes’ in a certain region of the world. Because public databases of the International Nucleotide Sequence Database Collaboration (INSDC; comprising DNA Data Bank of Japan (DDBJ), the European Nucleotide Archive (EBI-ENA) and GenBank depend on author-submitted information to enrich the value of sequence data sets, we argue that the only way to change the current practice is to establish a standard of reporting that requires contextual data to be deposited at the time of sequence submission. The adoption of such a standard would elevate the quality, accessibility and utility of information that can be collected from INSDC or any other data repository.</span></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="fu">### Microbial specific  </span></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>Microbiome world has long had to deal with targeted amplicon analysis primarily on 16s RNA sub-unit and more recently on <span class="co">[</span><span class="ot">Multilocus sequence typing (MLST)</span><span class="co">](https://pubmlst.org/multilocus-sequence-typing)</span></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="fu">#### ESS-DIVE amplicon file formating  </span></span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>As such they have already developed some standards on creating a generalized targeted amplicon file, standards set by Environmental System Science Data Infrastructure for a Virtual Ecosystem (ESS-DIVE), <span class="ot">&lt;https://github.com/ess-dive-community&gt;</span>, <span class="ot">&lt;https://ess-dive.lbl.gov/&gt;</span></span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>Their standards try to follow closely with Minimum Information about any Sequence (<span class="co">[</span><span class="ot">MIxS</span><span class="co">](https://www.gensc.org/pages/standards-intro.html)</span>) standards and aim to accommodate the biom file format (mentioned below). </span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="fu">#### biom amplicon file formatting  </span></span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>Other considerations are also the <span class="co">[</span><span class="ot">biom format</span><span class="co">](http://biom-format.org/index.html)</span> which is written in <span class="co">[</span><span class="ot">HDF5</span><span class="co">](https://www.hdfgroup.org/)</span> to help handle storing data in binary format, this is used by <span class="co">[</span><span class="ot">QIME</span><span class="co">](https://qiime2.org/)</span> along with several other common bacterial genomics tools. This format can handle the storage of sample meta data along with amplicon data but is meant for storage of only 1 marker at time meaning it wouldn't handle multiple markers without workarounds. </span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>The microbiome community has created data standards for a single locus, including BIOM and ESS-DIVE. Here, we extend these standards to an arbitrary number of loci in a framework extensible to any type of targeted sequence data. The format is lossless, allowing recovery of full sequence data, while achieving data compression of ~6x and up to ~80x with additional compression using standard tools (e.g., gzip). Optional fields allow data generators with domain expertise to include additionally processed sequence data such as variants with masked domains, e.g. for highly error prone areas such as tandem repeats. Notably, the framework provides a robust relational ontology for sample, laboratory, and bioinformatic metadata in addition to sequence data, mitigating the common problem of partially or completely orphaned data. A full ontology has been built out for Plasmodium, leveraging existing fields where available, and the modular structure can be flexibly extended to other biological systems, including those containing multiple types of organisms. All data are encoded in a standard JSON file, enhancing portability and ease-of-interpretation. The end result is a design which is efficient, lightweight, and flexible, organizing metadata together with genetic data. Finally, we have created a set of convenience utilities to make it easy to create, manipulate, share, import, and export PMO files.</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

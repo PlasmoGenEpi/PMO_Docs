@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Extracting allele tables using pmotools-python – Portable Microhaplotype Object (PMO)</title>
 <style>
@@ -63,14 +63,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2cd88b842f3556f70e7132508a5c4eca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-49a824ff064150fa59632921ab93e189.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-bdbe0bd219239b32af61c1af43738d3f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-6a2c4b793c0becaeb94cc5bf146c1484.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -104,6 +105,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Portable Microhaplotype Object (PMO)</span>
     </a>
@@ -316,7 +319,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Other optional arguments have to do with the ouput file over writing and delimiter being used, use <code>-h</code> to see all arguments</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">-h</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">-h</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>usage: pmotools-python extract_allele_table [-h] --file FILE
                                             [--jsonschema JSONSCHEMA]
@@ -362,7 +365,7 @@ options:
 <details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
 <pre><strong>pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_allele_table.py</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#!/usr/bin/env python3</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="im">import</span> argparse</span>
 <span id="cb3-4"><a href="#cb3-4"></a><span class="im">import</span> json</span>
@@ -514,45 +517,45 @@ options:
 <span id="cb3-150"><a href="#cb3-150"></a></span>
 <span id="cb3-151"><a href="#cb3-151"></a></span>
 <span id="cb3-152"><a href="#cb3-152"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb3-153"><a href="#cb3-153"></a>    extract_for_allele_table()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-153"><a href="#cb3-153"></a>    extract_for_allele_table()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
 <p>Can download example PMOs here</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz </span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> example</span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> example</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># default </span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># changing default column names  </span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--default_base_col_names</span> sample,target,hapid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--default_base_col_names</span> sample,target,hapid</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Changing the output file delimiter</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--delim</span> ,</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--delim</span> ,</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Adding on additional columns from the specimen_infos section</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># adding other PMO fields </span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="at">--specimen_info_meta_fields</span> collection_country,collection_date <span class="kw">|</span> <span class="fu">head</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="at">--specimen_info_meta_fields</span> collection_country,collection_date <span class="kw">|</span> <span class="fu">head</span>  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="cell" data-layout-align="center">
@@ -571,10 +574,10 @@ Mozambique2018-SeekDeep 8025875168  t85 0   NA  NA</code></pre>
 </div>
 <p>Can continue to add on more columns from other sections</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># adding other PMO fields including seq field </span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="at">--specimen_info_meta_fields</span> collection_country,collection_date <span class="at">--representative_haps_fields</span> seq <span class="kw">|</span> <span class="fu">head</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="at">--specimen_info_meta_fields</span> collection_country,collection_date <span class="at">--representative_haps_fields</span> seq <span class="kw">|</span> <span class="fu">head</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="cell" data-layout-align="center">
@@ -594,37 +597,37 @@ Mozambique2018-SeekDeep 8025875168  t85 0   NA  NA  AACATTTTTTTAACATCTTTACCTTTTT
 <section id="creating-output-for-moire" class="level2"><h2 class="anchored" data-anchor-id="creating-output-for-moire">Creating output for MOIRE</h2>
 <p>MOIRE is a program that can be used to estimate COI and other population estimates from a population. See it’s <a href="https://github.com/EPPIcenter/moire">github</a> for full usage.</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> example</span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> example</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># default table is all moire needs </span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"example/extraction_allele_table.tsv"</span>, sep <span class="op">=</span> <span class="st">"\t"</span><span class="op">)</span></span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"example/extraction_allele_table.tsv"</span>, sep <span class="op">=</span> <span class="st">"\t"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">load_long_form_data</span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># With data in appropriate format, run MCMC as follows</span></span>
-<span><span class="va">mcmc_results</span> <span class="op">&lt;-</span> <span class="fu">moire</span><span class="fu">::</span><span class="fu">run_mcmc</span><span class="op">(</span><span class="va">data</span>, is_missing <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">is_missing</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">mcmc_results</span> <span class="op">&lt;-</span> <span class="fu">moire</span><span class="fu">::</span><span class="fu">run_mcmc</span><span class="op">(</span><span class="va">data</span>, is_missing <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">is_missing</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section><section id="creating-output-for-dcifer" class="level2"><h2 class="anchored" data-anchor-id="creating-output-for-dcifer">Creating output for dcifer</h2>
 <p>dcifer is a program that can estimate IBD even from mixed infections. See it’s <a href="https://github.com/EPPIcenter/dcifer">github</a> for full usage</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> example</span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> example</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># default </span></span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--delim</span> ,</span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># dcifer can calculate allele frequencies if not provided or you can have extract_allele_table write them as well </span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--allele_freqs_output</span> allele_freqs_extraction <span class="at">--delim</span> ,</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--allele_freqs_output</span> allele_freqs_extraction <span class="at">--delim</span> ,</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dsmp</span> <span class="op">&lt;-</span> <span class="fu">readDat</span><span class="op">(</span><span class="st">"example/extraction_allele_table.csv"</span>, svar <span class="op">=</span> <span class="st">"sampleID"</span>, lvar <span class="op">=</span> <span class="st">"locus"</span>, avar <span class="op">=</span> <span class="st">"allele"</span><span class="op">)</span></span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dsmp</span> <span class="op">&lt;-</span> <span class="fu">readDat</span><span class="op">(</span><span class="st">"example/extraction_allele_table.csv"</span>, svar <span class="op">=</span> <span class="st">"sampleID"</span>, lvar <span class="op">=</span> <span class="st">"locus"</span>, avar <span class="op">=</span> <span class="st">"allele"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">lrank</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
 <span><span class="va">coi</span>   <span class="op">&lt;-</span> <span class="fu">getCOI</span><span class="op">(</span><span class="va">dsmp</span>, lrank <span class="op">=</span> <span class="va">lrank</span><span class="op">)</span></span>
@@ -632,7 +635,7 @@ Mozambique2018-SeekDeep 8025875168  t85 0   NA  NA  AACATTTTTTTAACATCTTTACCTTTTT
 <span><span class="va">afreq</span> <span class="op">&lt;-</span> <span class="fu">calcAfreq</span><span class="op">(</span><span class="va">dsmp</span>, <span class="va">coi</span>, tol <span class="op">=</span> <span class="fl">1e-5</span><span class="op">)</span> </span>
 <span></span>
 <span><span class="va">dres0</span> <span class="op">&lt;-</span> <span class="fu">ibdDat</span><span class="op">(</span><span class="va">dsmp</span>, <span class="va">coi</span>, <span class="va">afreq</span>, pval <span class="op">=</span> <span class="cn">TRUE</span>, confint <span class="op">=</span> <span class="cn">TRUE</span>, rnull <span class="op">=</span> <span class="fl">0</span>, </span>
-<span>                alpha <span class="op">=</span> <span class="fl">0.05</span>, nr <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span>   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>                alpha <span class="op">=</span> <span class="fl">0.05</span>, nr <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span>   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 
@@ -690,13 +693,14 @@ Mozambique2018-SeekDeep 8025875168  t85 0   NA  NA  AACATTTTTTTAACATCTTTACCTTTTT
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -1089,7 +1093,7 @@ Mozambique2018-SeekDeep 8025875168  t85 0   NA  NA  AACATTTTTTTAACATCTTTACCTTTTT
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb16" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Extracting allele tables using pmotools-python</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1263,7 +1267,7 @@ Mozambique2018-SeekDeep 8025875168  t85 0   NA  NA  AACATTTTTTTAACATCTTTACCTTTTT
 <span id="cb16-184"><a href="#cb16-184" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-185"><a href="#cb16-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb16-186"><a href="#cb16-186" aria-hidden="true" tabindex="-1"></a></span>
-</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

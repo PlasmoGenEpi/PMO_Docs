@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Subsetting from a PMO using pmotools-python – Portable Microhaplotype Object (PMO)</title>
 <style>
@@ -63,14 +63,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2cd88b842f3556f70e7132508a5c4eca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-49a824ff064150fa59632921ab93e189.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-bdbe0bd219239b32af61c1af43738d3f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-6a2c4b793c0becaeb94cc5bf146c1484.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -104,6 +105,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Portable Microhaplotype Object (PMO)</span>
     </a>
@@ -292,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="subsetting-by-specific-targets" class="level2"><h2 class="anchored" data-anchor-id="subsetting-by-specific-targets">Subsetting by specific targets</h2>
 <p>Can subset to only specific targets by using <code>pmotools-python extract_pmo_with_select_targets</code></p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">-h</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">-h</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>usage: pmotools-python extract_pmo_with_select_targets [-h] --file FILE
                                                        --output OUTPUT
@@ -316,7 +319,7 @@ options:
 <details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
 <pre><strong>pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_pmo_with_select_targets.py</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#!/usr/bin/env python3</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> argparse</span>
 <span id="cb3-3"><a href="#cb3-3"></a></span>
 <span id="cb3-4"><a href="#cb3-4"></a></span>
@@ -372,32 +375,32 @@ options:
 <span id="cb3-54"><a href="#cb3-54"></a></span>
 <span id="cb3-55"><a href="#cb3-55"></a></span>
 <span id="cb3-56"><a href="#cb3-56"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb3-57"><a href="#cb3-57"></a>    extract_pmo_with_select_targets()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-57"><a href="#cb3-57"></a>    extract_pmo_with_select_targets()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
 <p>You can extract by supplies the desired targets with comma separated values on the command line</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> t1_t20_t31_moz2018_PMO.json.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> t1_t20_t31_moz2018_PMO.json.gz <span class="at">--overwrite</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>You can also provide a single column file where each line is a desired target</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"t1\nt20\nt31"</span> <span class="op">&gt;</span> select_targets.txt </span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--targets</span> select_targets.txt  <span class="at">--output</span> t1_t20_t31_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"t1\nt20\nt31"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--targets</span> STDIN <span class="at">--output</span> t1_t20_t31_moz2018_PMO.json.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"t1\nt20\nt31"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--targets</span> STDIN <span class="at">--output</span> t1_t20_t31_moz2018_PMO.json.gz <span class="at">--overwrite</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section><section id="subsetting-by-specific-specimen_names" class="level2"><h2 class="anchored" data-anchor-id="subsetting-by-specific-specimen_names">Subsetting by specific specimen_names</h2>
 <p>You can subset to just to just select specimen_name, each specimen can have several experiments associated with it, by supplying the specimen_name all associated experiments will also be pulled</p>
 <p>Similar to above you can supply the specimen_names either as comma separated values or in a plain text file where each line is a specimen_name</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_specimen_names <span class="at">-h</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_specimen_names <span class="at">-h</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>usage: pmotools-python extract_pmo_with_select_specimen_names
        [-h] --file FILE --output OUTPUT [--overwrite] [--verbose]
@@ -420,7 +423,7 @@ options:
 <details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
 <pre><strong>pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_pmo_with_select_specimen_names.py</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">#!/usr/bin/env python3</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="im">import</span> argparse</span>
 <span id="cb8-3"><a href="#cb8-3"></a></span>
 <span id="cb8-4"><a href="#cb8-4"></a></span>
@@ -476,12 +479,12 @@ options:
 <span id="cb8-54"><a href="#cb8-54"></a></span>
 <span id="cb8-55"><a href="#cb8-55"></a></span>
 <span id="cb8-56"><a href="#cb8-56"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb8-57"><a href="#cb8-57"></a>    extract_pmo_with_select_specimen_names()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-57"><a href="#cb8-57"></a>    extract_pmo_with_select_specimen_names()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_specimen_names <span class="at">--specimen_names</span> 8025874217,8025875146,8034209589 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025874217_8025875146_8034209589_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -489,14 +492,14 @@ options:
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_specimen_names <span class="at">--specimen_names</span> select_specimen_names.txt <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025874217_8025875146_8034209589_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025874217\n8025875146\n8034209589"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_specimen_names <span class="at">--specimen_names</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025874217_8025875146_8034209589_moz2018_PMO.json.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025874217\n8025875146\n8034209589"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_specimen_names <span class="at">--specimen_names</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025874217_8025875146_8034209589_moz2018_PMO.json.gz <span class="at">--overwrite</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section><section id="subsetting-by-specific-library_sample_names" class="level2"><h2 class="anchored" data-anchor-id="subsetting-by-specific-library_sample_names">Subsetting by specific library_sample_names</h2>
 <p>If you want just specific library_sample_name you can supply those instead too</p>
 <p>Similar to above you can supply the library_sample_names either as comma separated values or in a plain text file where each line is a library_sample_name or from standard in (STDIN)</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">-h</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">-h</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>usage: pmotools-python extract_pmo_with_select_library_sample_names
        [-h] --file FILE --output OUTPUT [--overwrite] [--verbose]
@@ -520,7 +523,7 @@ options:
 <details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
 <pre><strong>pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_pmo_with_select_library_sample_names.py</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">#!/usr/bin/env python3</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="im">import</span> argparse</span>
 <span id="cb12-3"><a href="#cb12-3"></a></span>
 <span id="cb12-4"><a href="#cb12-4"></a></span>
@@ -580,12 +583,12 @@ options:
 <span id="cb12-58"><a href="#cb12-58"></a></span>
 <span id="cb12-59"><a href="#cb12-59"></a></span>
 <span id="cb12-60"><a href="#cb12-60"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb12-61"><a href="#cb12-61"></a>    extract_pmo_with_select_library_sample_names()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-61"><a href="#cb12-61"></a>    extract_pmo_with_select_library_sample_names()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">--library_sample_names</span> 8025875029,8034209834,8034209115 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025875029_8034209834_8034209115_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -594,13 +597,13 @@ options:
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">--library_sample_names</span> select_library_sample_names.txt <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025875029_8034209834_8034209115_moz2018_PMO.json.gz <span class="at">--overwrite</span></span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">--library_sample_names</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025875029_8034209834_8034209115_moz2018_PMO.json.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">--library_sample_names</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> 8025875029_8034209834_8034209115_moz2018_PMO.json.gz <span class="at">--overwrite</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section><section id="subsetting-by-samples-within-specific-metafields" class="level2"><h2 class="anchored" data-anchor-id="subsetting-by-samples-within-specific-metafields">Subsetting by samples within specific metafields</h2>
 <p>If you want to get specific samples that match certain meta fields like specific collection_country or collection_date you can use ``</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta <span class="at">-h</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta <span class="at">-h</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>usage: pmotools-python extract_pmo_with_selected_meta [-h] --file FILE
                                                       --output OUTPUT
@@ -628,7 +631,7 @@ options:
 <details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
 <pre><strong>pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_pmo_with_selected_meta.py</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co">#!/usr/bin/env python3</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a><span class="im">import</span> argparse</span>
 <span id="cb16-3"><a href="#cb16-3"></a><span class="im">import</span> sys</span>
 <span id="cb16-4"><a href="#cb16-4"></a></span>
@@ -690,20 +693,20 @@ options:
 <span id="cb16-60"><a href="#cb16-60"></a></span>
 <span id="cb16-61"><a href="#cb16-61"></a></span>
 <span id="cb16-62"><a href="#cb16-62"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb16-63"><a href="#cb16-63"></a>    extract_pmo_with_selected_meta()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-63"><a href="#cb16-63"></a>    extract_pmo_with_selected_meta()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
 <p><code>pmotools-python extract_pmo_with_selected_meta</code> is written to allow the extraction on multiple intersecting meta field requirments that can be either supplied in a file or with delimited on the command line</p>
 <p>You may also want to know what current meta fields are present and how many samples in each. This can be done with <a href="../pmotools-python-usages/getting_basic_info_from_pmo.html#list_specimen_meta_fields"><code>pmotools-python list_specimen_meta_fields</code></a> and <code>pmotools-python count_specimen_meta</code></p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_specimen_meta_fields <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> list_specimen_meta_fields <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>field   present_in_specimens_count  total_specimen_count
 collection_country  19433   19433
@@ -718,8 +721,8 @@ specimen_taxon_id   19433   19433</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_specimen_meta <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz  <span class="at">--meta_fields</span> collection_country,collection_date <span class="kw">|</span> <span class="fu">head</span> <span class="at">-20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> count_specimen_meta <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz  <span class="at">--meta_fields</span> collection_country,collection_date <span class="kw">|</span> <span class="fu">head</span> <span class="at">-20</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>collection_country  collection_date specimens_count specimens_freq  total_specimen_count
 Bangladesh  2008    15  0.0007718828796377296   19433
@@ -742,28 +745,28 @@ Bangladesh  2012-09-18  1   5.145885864251531e-05   19433
 Bangladesh  2012-09-19  1   5.145885864251531e-05   19433
 Bangladesh  2012-09-22  1   5.145885864251531e-05   19433
 Traceback (most recent call last):
-  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/bin/pmotools-python", line 7, in &lt;module&gt;
+  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/PMO_Docs/env/bin/pmotools-python", line 8, in &lt;module&gt;
     sys.exit(main())
              ^^^^^^
-  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/pmotools-python/src/pmotools/cli.py", line 366, in main
+  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/PMO_Docs/pmotools-python/src/pmotools/cli.py", line 382, in main
     handler()
-  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_specimen_meta.py", line 61, in count_specimen_meta
+  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/PMO_Docs/pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_specimen_meta.py", line 61, in count_specimen_meta
     counts_df.to_csv(
-  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/util/_decorators.py", line 333, in wrapper
+  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/PMO_Docs/env/lib/python3.12/site-packages/pandas/util/_decorators.py", line 333, in wrapper
     return func(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/core/generic.py", line 3967, in to_csv
+  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/PMO_Docs/env/lib/python3.12/site-packages/pandas/core/generic.py", line 3967, in to_csv
     return DataFrameRenderer(formatter).to_csv(
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/format.py", line 1014, in to_csv
+  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/format.py", line 1014, in to_csv
     csv_formatter.save()
-  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 270, in save
+  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 270, in save
     self._save()
-  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 275, in _save
+  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 275, in _save
     self._save_body()
-  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 313, in _save_body
+  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 313, in _save_body
     self._save_chunk(start_i, end_i)
-  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 324, in _save_chunk
+  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 324, in _save_chunk
     libwriters.write_csv_rows(
   File "writers.pyx", line 73, in pandas._libs.writers.write_csv_rows
 BrokenPipeError: [Errno 32] Broken pipe
@@ -773,14 +776,14 @@ BrokenPipeError: [Errno 32] Broken pipe</code></pre>
 </div>
 <p>Extracting on matching 1 meta field, below will extract just the samples that have collection_country=Bangladesh</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh"</span> <span class="at">--output</span> Bangladesh_moz2018_PMO.json.gz   <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh"</span> <span class="at">--output</span> Bangladesh_moz2018_PMO.json.gz   <span class="at">--overwrite</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>If you want to see how many samples were extracted can use <code>--verbose</code></p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh"</span> <span class="at">--output</span> Bangladesh_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh"</span> <span class="at">--output</span> Bangladesh_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>Extracted the following number of specimens per group:
 group   collection_country  count
@@ -789,9 +792,9 @@ group   collection_country  count
 </div>
 <p>Collecting more than 1 matching field separate by comma, for example to extract both Bangladesh,Benin</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh,Benin"</span> <span class="at">--output</span> Bangladesh_Benin_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh,Benin"</span> <span class="at">--output</span> Bangladesh_Benin_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>Extracted the following number of specimens per group:
 group   collection_country  count
@@ -800,9 +803,9 @@ group   collection_country  count
 </div>
 <p>Can add more extraction criteria meta, for example to extract samples with collection_country of Bangladesh or Benin and with collection_date of 2016</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh,Benin:collection_date=2016"</span> <span class="at">--output</span> Bangladesh_Benin_2016_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh,Benin:collection_date=2016"</span> <span class="at">--output</span> Bangladesh_Benin_2016_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>Extracted the following number of specimens per group:
 group   collection_country  collection_date count
@@ -811,9 +814,9 @@ group   collection_country  collection_date count
 </div>
 <p>To get more specific you can group meta field extraction criteria , for example if you wanted samples from Bangladesh from year 2015 but wanted Benin from year 2016 you can separate by a ;</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh:collection_date=2015;collection_country=Benin:collection_date=2016"</span> <span class="at">--output</span> Bangladesh2015_Benin2016_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Bangladesh:collection_date=2015;collection_country=Benin:collection_date=2016"</span> <span class="at">--output</span> Bangladesh2015_Benin2016_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>Extracted the following number of specimens per group:
 group   collection_country  collection_date count
@@ -823,7 +826,7 @@ group   collection_country  collection_date count
 </div>
 <p>Rather than supplying with the command line a file can be created</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"group\tfield\tvalues"</span> <span class="op">&gt;</span> Bangladesh2015_Benin2016_extractionCriteria.tsv </span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"Bangladesh2015\tcollection_country\tBangladesh"</span> <span class="op">&gt;&gt;</span> Bangladesh2015_Benin2016_extractionCriteria.tsv </span>
@@ -832,7 +835,7 @@ group   collection_country  collection_date count
 <span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"Benin2016\tcollection_date\t2016"</span> <span class="op">&gt;&gt;</span> Bangladesh2015_Benin2016_extractionCriteria.tsv </span>
 <span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> Bangladesh2015_Benin2016_extractionCriteria.tsv <span class="at">--output</span> Bangladesh2015_Benin2016_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--metaFieldsValues</span> Bangladesh2015_Benin2016_extractionCriteria.tsv <span class="at">--output</span> Bangladesh2015_Benin2016_moz2018_PMO.json.gz   <span class="at">--overwrite</span> <span class="at">--verbose</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>Extracted the following number of specimens per group:
 group   collection_country  collection_date count
@@ -841,8 +844,8 @@ Benin2016   Benin   2016    117</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Mozambique:geo_admin3=Inhassoro;collection_country=Mozambique:geo_admin3=Mandlakazi,Namaacha"</span> <span class="at">--output</span> Mozambique_moz2018_PMO.json.gz  <span class="at">--verbose</span>  <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_selected_meta  <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--metaFieldsValues</span> <span class="st">"collection_country=Mozambique:geo_admin3=Inhassoro;collection_country=Mozambique:geo_admin3=Mandlakazi,Namaacha"</span> <span class="at">--output</span> Mozambique_moz2018_PMO.json.gz  <span class="at">--verbose</span>  <span class="at">--overwrite</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>Extracted the following number of specimens per group:
 group   collection_country  geo_admin3  count
@@ -852,7 +855,7 @@ group   collection_country  geo_admin3  count
 </div>
 </section><section id="subsetting-by-a-read-filter-for-detected-microhaplotypes" class="level2"><h2 class="anchored" data-anchor-id="subsetting-by-a-read-filter-for-detected-microhaplotypes">Subsetting by a read filter for detected microhaplotypes</h2>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_read_filter <span class="at">-h</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_read_filter <span class="at">-h</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>usage: pmotools-python extract_pmo_with_read_filter [-h] --file FILE --output
                                                     OUTPUT [--overwrite]
@@ -875,7 +878,7 @@ options:
 <details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
 <pre><strong>pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_pmo_with_read_filter.py</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="co">#!/usr/bin/env python3</span></span>
 <span id="cb37-2"><a href="#cb37-2"></a><span class="im">import</span> argparse</span>
 <span id="cb37-3"><a href="#cb37-3"></a></span>
 <span id="cb37-4"><a href="#cb37-4"></a></span>
@@ -926,36 +929,36 @@ options:
 <span id="cb37-49"><a href="#cb37-49"></a></span>
 <span id="cb37-50"><a href="#cb37-50"></a></span>
 <span id="cb37-51"><a href="#cb37-51"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb37-52"><a href="#cb37-52"></a>    extract_pmo_with_read_filter()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-52"><a href="#cb37-52"></a>    extract_pmo_with_read_filter()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_read_filter <span class="at">--read_count_minimum</span> 1000 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> moz2018_PMO_minReadCount1000.json.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_read_filter <span class="at">--read_count_minimum</span> 1000 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> moz2018_PMO_minReadCount1000.json.gz <span class="at">--overwrite</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section><section id="piping-together-extraction" class="level2"><h2 class="anchored" data-anchor-id="piping-together-extraction">Piping together extraction</h2>
 <p>The extraction methods also allow for STDOUT and STDIN piping for example</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">--library_sample_names</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> STDIN <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> t1_t20_t31_8025875029_8034209834_8034209115_moz2018_PMO.json.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">--library_sample_names</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> STDIN <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> t1_t20_t31_8025875029_8034209834_8034209115_moz2018_PMO.json.gz <span class="at">--overwrite</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Can also pipe into other <code>pmotools-python</code> functions like extracting allele tables</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">--library_sample_names</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> STDIN <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> STDIN <span class="at">--output</span> alleles_data_t1_t20_t31_8025875029_8034209834_8034209115_moz2018_PMO.tsv.gz <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">--library_sample_names</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> STDIN <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> STDIN <span class="at">--output</span> alleles_data_t1_t20_t31_8025875029_8034209834_8034209115_moz2018_PMO.tsv.gz <span class="at">--overwrite</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Can pipe final output to STDOUT as well for further processing</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">--library_sample_names</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> STDIN <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> STDIN <span class="at">--output</span> STDOUT  <span class="at">--specimen_info_meta_fields</span> specimen_name,collection_country</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"8025875029\n8034209834\n8034209115"</span> <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_library_sample_names <span class="at">--library_sample_names</span> STDIN <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_pmo_with_select_targets <span class="at">--file</span> STDIN <span class="at">--targets</span> t1,t20,t31  <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> STDIN <span class="at">--output</span> STDOUT  <span class="at">--specimen_info_meta_fields</span> specimen_name,collection_country</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>bioinformatics_run_name library_sample_name target_name mhap_id specimen_name   collection_country
 Mozambique2018-SeekDeep 8034209115  t31 1   8034209115  Mozambique
@@ -979,9 +982,9 @@ Mozambique2018-SeekDeep 8034209834  t1  0   8034209834  Mozambique</code></pre>
 </div>
 <p>filter to a read amount and then write allele table</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_read_filter <span class="at">--read_count_minimum</span> 1000 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> STDIN <span class="at">--output</span> moz2018_PMO_minReadCount1000_allele_table.tsv.gz  <span class="at">--microhap_fields</span> reads <span class="at">--representative_haps_fields</span> seq <span class="at">--default_base_col_names</span> specimen_name,target_id,allele <span class="at">--overwrite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_read_filter <span class="at">--read_count_minimum</span> 1000 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> STDIN <span class="at">--output</span> moz2018_PMO_minReadCount1000_allele_table.tsv.gz  <span class="at">--microhap_fields</span> reads <span class="at">--representative_haps_fields</span> seq <span class="at">--default_base_col_names</span> specimen_name,target_id,allele <span class="at">--overwrite</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 
@@ -1039,13 +1042,14 @@ Mozambique2018-SeekDeep 8034209834  t1  0   8034209834  Mozambique</code></pre>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -1438,7 +1442,7 @@ Mozambique2018-SeekDeep 8034209834  t1  0   8034209834  Mozambique</code></pre>
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb44" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Subsetting from a PMO using pmotools-python</span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1733,7 +1737,7 @@ Mozambique2018-SeekDeep 8034209834  t1  0   8034209834  Mozambique</code></pre>
 <span id="cb44-347"><a href="#cb44-347" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_pmo_with_read_filter <span class="at">--read_count_minimum</span> 1000 <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="kw">|</span> <span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> STDIN <span class="at">--output</span> moz2018_PMO_minReadCount1000_allele_table.tsv.gz  <span class="at">--microhap_fields</span> reads <span class="at">--representative_haps_fields</span> seq <span class="at">--default_base_col_names</span> specimen_name,target_id,allele <span class="at">--overwrite</span></span>
 <span id="cb44-348"><a href="#cb44-348" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-349"><a href="#cb44-349" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

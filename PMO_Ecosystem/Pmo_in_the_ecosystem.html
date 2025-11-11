@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Handling multiple PMOs pmotools-python – Portable Microhaplotype Object (PMO)</title>
+<title>PMO within a Data Analysis Ecosystem – Portable Microhaplotype Object (PMO)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -267,21 +267,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
-   
-  <ul>
-<li><a href="#pmotools-python-combine_pmos" id="toc-pmotools-python-combine_pmos" class="nav-link active" data-scroll-target="#pmotools-python-combine_pmos">pmotools-python combine_pmos</a></li>
-  </ul></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Handling multiple PMOs pmotools-python</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">PMO within a Data Analysis Ecosystem</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -290,107 +286,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="pmotools-python-combine_pmos" class="level1"><h1>pmotools-python combine_pmos</h1>
-<p>Can download multiple PMOs here</p>
-<p><a href="https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz" class="uri">https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz</a></p>
-<p><a href="https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz" class="uri">https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz</a></p>
-<div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> combine_pmos <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>usage: pmotools-python combine_pmos [-h] --pmo_files PMO_FILES --output OUTPUT
-                                    [--overwrite]
-
-options:
-  -h, --help            show this help message and exit
-  --pmo_files PMO_FILES
-                        a list of PMO files to combine into 1 PMO file, must
-                        be from same amplicon panel
-  --output OUTPUT       Output new combined PMO file
-  --overwrite           If output file exists, overwrite it</code></pre>
-</div>
-</div>
-<p>The list of PMO files can be given comma separated to their relative paths from where you run the script or in a file where each line is a different file to combine</p>
-<div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> combine_pmos <span class="at">--pmo_files</span> moz2018_PMO.json.gz,PathWeaverHeome1_PMO.json.gz <span class="at">--output</span> combined_Heome1_PMO.json.gz <span class="at">--overwrite</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-<p>The python code for <code>combine_pmos</code> script is below</p>
-<div class="cell" data-layout-align="center">
-<div class="code-with-filename">
-<details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
-<pre><strong>pmotools-python/src/pmotools/scripts/pmo_utils/combine_pmos.py</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#!/usr/bin/env python3</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="im">import</span> argparse</span>
-<span id="cb4-3"><a href="#cb4-3"></a></span>
-<span id="cb4-4"><a href="#cb4-4"></a></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="im">from</span> pmotools.pmo_engine.pmo_writer <span class="im">import</span> PMOWriter</span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="im">from</span> pmotools.pmo_engine.pmo_reader <span class="im">import</span> PMOReader</span>
-<span id="cb4-8"><a href="#cb4-8"></a></span>
-<span id="cb4-9"><a href="#cb4-9"></a></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="kw">def</span> parse_args_combine_pmos():</span>
-<span id="cb4-11"><a href="#cb4-11"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb4-12"><a href="#cb4-12"></a>    parser.add_argument(</span>
-<span id="cb4-13"><a href="#cb4-13"></a>        <span class="st">"--pmo_files"</span>,</span>
-<span id="cb4-14"><a href="#cb4-14"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb4-15"><a href="#cb4-15"></a>        required<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb4-16"><a href="#cb4-16"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"a list of PMO files to combine into 1 PMO file, must be from same amplicon panel"</span>,</span>
-<span id="cb4-17"><a href="#cb4-17"></a>    )</span>
-<span id="cb4-18"><a href="#cb4-18"></a>    parser.add_argument(</span>
-<span id="cb4-19"><a href="#cb4-19"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"Output new combined PMO file"</span></span>
-<span id="cb4-20"><a href="#cb4-20"></a>    )</span>
-<span id="cb4-21"><a href="#cb4-21"></a>    parser.add_argument(</span>
-<span id="cb4-22"><a href="#cb4-22"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
-<span id="cb4-23"><a href="#cb4-23"></a>    )</span>
-<span id="cb4-24"><a href="#cb4-24"></a></span>
-<span id="cb4-25"><a href="#cb4-25"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb4-26"><a href="#cb4-26"></a></span>
-<span id="cb4-27"><a href="#cb4-27"></a></span>
-<span id="cb4-28"><a href="#cb4-28"></a><span class="kw">def</span> combine_pmos():</span>
-<span id="cb4-29"><a href="#cb4-29"></a>    args <span class="op">=</span> parse_args_combine_pmos()</span>
-<span id="cb4-30"><a href="#cb4-30"></a></span>
-<span id="cb4-31"><a href="#cb4-31"></a>    <span class="co"># set up output</span></span>
-<span id="cb4-32"><a href="#cb4-32"></a>    args.output <span class="op">=</span> PMOWriter.add_pmo_extension_as_needed(</span>
-<span id="cb4-33"><a href="#cb4-33"></a>        args.output, args.output.endswith(<span class="st">".gz"</span>)</span>
-<span id="cb4-34"><a href="#cb4-34"></a>    )</span>
-<span id="cb4-35"><a href="#cb4-35"></a>    Utils.outputfile_check(args.output, args.overwrite)</span>
-<span id="cb4-36"><a href="#cb4-36"></a></span>
-<span id="cb4-37"><a href="#cb4-37"></a>    <span class="co"># check if at least 2 PMO files supplied</span></span>
-<span id="cb4-38"><a href="#cb4-38"></a>    pmo_files_list <span class="op">=</span> Utils.parse_delimited_input_or_file(args.pmo_files, <span class="st">","</span>)</span>
-<span id="cb4-39"><a href="#cb4-39"></a>    <span class="cf">if</span> <span class="bu">len</span>(pmo_files_list) <span class="op">&lt;</span> <span class="dv">2</span>:</span>
-<span id="cb4-40"><a href="#cb4-40"></a>        <span class="cf">raise</span> <span class="pp">Exception</span>(</span>
-<span id="cb4-41"><a href="#cb4-41"></a>            <span class="st">"Only supplied "</span></span>
-<span id="cb4-42"><a href="#cb4-42"></a>            <span class="op">+</span> <span class="bu">str</span>(<span class="bu">len</span>(pmo_files_list))</span>
-<span id="cb4-43"><a href="#cb4-43"></a>            <span class="op">+</span> <span class="st">" but multiple PMO files were expected"</span></span>
-<span id="cb4-44"><a href="#cb4-44"></a>        )</span>
-<span id="cb4-45"><a href="#cb4-45"></a></span>
-<span id="cb4-46"><a href="#cb4-46"></a>    <span class="co"># read in the PMOs</span></span>
-<span id="cb4-47"><a href="#cb4-47"></a>    pmos <span class="op">=</span> PMOReader.read_in_pmos(pmo_files_list)</span>
-<span id="cb4-48"><a href="#cb4-48"></a></span>
-<span id="cb4-49"><a href="#cb4-49"></a>    <span class="co"># combine PMOs</span></span>
-<span id="cb4-50"><a href="#cb4-50"></a>    pmo_out <span class="op">=</span> PMOReader.combine_multiple_pmos(pmos)</span>
-<span id="cb4-51"><a href="#cb4-51"></a></span>
-<span id="cb4-52"><a href="#cb4-52"></a>    <span class="co"># write</span></span>
-<span id="cb4-53"><a href="#cb4-53"></a>    PMOWriter.write_out_pmo(pmo_out, args.output, args.overwrite)</span>
-<span id="cb4-54"><a href="#cb4-54"></a></span>
-<span id="cb4-55"><a href="#cb4-55"></a></span>
-<span id="cb4-56"><a href="#cb4-56"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb4-57"><a href="#cb4-57"></a>    combine_pmos()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-</div>
+</header><p><img src="../images/datasharing.svg" class="img-fluid"></p>
+<p>PMO as a convergence point within the broader data ecosystem. This schematic outlines the flow of data in a typical workflow involving microhaplotype amplicon sequencing data. Green circles represent common stages for data sharing. Pink boxes indicate points at which information necessary for a PMO becomes available. (1) Raw sequencing data are generated, possibly from multiple sequencing runs at different points in time. FASTQ files for each sample represent a raw form of the data, with large files that are difficult to interpret without knowledge of the specific data-generating process or an appropriate allele-calling pipeline. At this stage, data are mostly shared with bioinformaticians and data repositories. (2) Bioinformatics pipelines often require data from different sequencing runs to be processed separately to isolate any batch effects. After alleles are called, it is common to merge microhaplotype data from different runs. Harmonizing sources of data into a PMO file at this point allows an ideal convergence point for downstream analyses within the group, with collaborators, or with the broader community depending on the extent of data sharing. (3) Simplified data, such as SNPs generated from microhaplotypes per sample or aggregated metrics such as allele frequency, can be easily derived from PMO. However, sharing data at this stage limits the scope of analyses that can be performed. (4) Interpreted results are shared e.g., through reports, manuscripts, and dashboards including maps, plots, and summary statistics. It is useful for information at this stage to include interpretation and simple representation. Though beyond the scope of this manuscript, establishing standards for downstream steps such as (3) and (4) may allow for integration of data and harmonization of analysis at additional stages of the workflow.</p>
 
 
 <!-- -->
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+
+</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -841,61 +744,19 @@ options:
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Handling multiple PMOs pmotools-python</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, echo=F}</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../common.R"</span>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu"># pmotools-python combine_pmos</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>Can download multiple PMOs here </span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="ot">&lt;https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz&gt;</span> </span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="ot">&lt;https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz&gt;</span> </span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> combine_pmos <span class="at">--help</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>The list of PMO files can be given comma separated to their relative paths from where you run the script or in a file where each line is a different file to combine</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> combine_pmos <span class="at">--pmo_files</span> moz2018_PMO.json.gz,PathWeaverHeome1_PMO.json.gz <span class="at">--output</span> combined_Heome1_PMO.json.gz <span class="at">--overwrite</span></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, echo = F, eval = T}</span></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> combine_pmos <span class="at">--pmo_files</span> ../../format/moz2018_PMO.json.gz,../../format/PathWeaverHeome1_PMO.json.gz <span class="at">--output</span> combined_Heome1_PMO.json.gz <span class="at">--overwrite</span></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`combine_pmos`</span> script is below</span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/src/pmotools/scripts/pmo_utils/combine_pmos.py</span></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/src/pmotools/scripts/pmo_utils/combine_pmos.py</span></span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a></span>
-</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "PMO within a Data Analysis Ecosystem"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, echo=F}</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../common.R"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="al">![](../images/datasharing.svg)</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>PMO as a convergence point within the broader data ecosystem. This schematic outlines the flow of data in a typical workflow involving microhaplotype amplicon sequencing data. Green circles represent common stages for data sharing. Pink boxes indicate points at which information necessary for a PMO becomes available. (1) Raw sequencing data are generated, possibly from multiple sequencing runs at different points in time. FASTQ files for each sample represent a raw form of the data, with large files that are difficult to interpret without knowledge of the specific data-generating process or an appropriate allele-calling pipeline. At this stage, data are mostly shared with bioinformaticians and data repositories. (2) Bioinformatics pipelines often require data from different sequencing runs to be processed separately to isolate any batch effects. After alleles are called, it is common to merge microhaplotype data from different runs. Harmonizing sources of data into a PMO file at this point allows an ideal convergence point for downstream analyses within the group, with collaborators, or with the broader community depending on the extent of data sharing. (3) Simplified data, such as SNPs generated from microhaplotypes per sample or aggregated metrics such as allele frequency, can be easily derived from PMO. However, sharing data at this stage limits the scope of analyses that can be performed. (4) Interpreted results are shared e.g., through reports, manuscripts, and dashboards including maps, plots, and summary statistics. It is useful for information at this stage to include interpretation and simple representation. Though beyond the scope of this manuscript, establishing standards for downstream steps such as (3) and (4) may allow for integration of data and harmonization of analysis at additional stages of the workflow.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

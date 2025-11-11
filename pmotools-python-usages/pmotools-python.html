@@ -126,14 +126,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Format Info</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-format-info">
-<li>
-    <a class="dropdown-item" href="../format/DevelopmentOfFormat.html">
- <span class="dropdown-text">Development of Format</span></a>
-  </li>  
+<li class="dropdown-header"><span class="menuTitle">Overview of Format</span></li>
+        <li><hr class="dropdown-divider"></li>
         <li>
     <a class="dropdown-item" href="../format/FormatOverview.html">
  <span class="dropdown-text">PMO fields overview</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../PMO_Ecosystem/Pmo_in_the_ecosystem.html">
+ <span class="dropdown-text">PMO within a Data Analysis Ecosystem</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">History of Format Development</span></li>
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../format/DevelopmentOfFormat.html">
+ <span class="dropdown-text">History of how PMO Format was derived</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Overview of Format For Bioinformaticians</span></li>
+        <li><hr class="dropdown-divider"></li>
         <li>
     <a class="dropdown-item" href="../format/FormatExample.html">
  <span class="dropdown-text">PMO Examples</span></a>
@@ -281,42 +291,76 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output cell-output-stdout">
-<pre><code>pmotools-python v1.0.0 - A suite of tools for interacting with Portable Microhaplotype Object (PMO) file format
-
-Available functions organized by groups are
-convertors_to_json
-    text_meta_to_json_meta - Convert text file meta to JSON Meta
-    excel_meta_to_json_meta - Convert Excel file meta to JSON Meta
-    microhaplotype_table_to_json_file - Convert microhaplotype table to a JSON file
-    terra_amp_output_to_json - Convert Terra output to JSON sequence table
-
-extractors_from_pmo
-    extract_pmo_with_selected_meta - Extract samples + haplotypes using selected meta
-    extract_pmo_with_select_specimen_names - Extract specific samples from the specimens table
-    extract_pmo_with_select_library_sample_names - Extract experiment sample names from experiment_info table
-    extract_pmo_with_select_targets - Extract specific targets
-    extract_pmo_with_read_filter - Extract with a read filter
-    extract_allele_table - Extract allele tables for tools like dcifer or moire
-    extract_insert_of_panels - Extract inserts of panels from a PMO
-    extract_refseq_of_inserts_of_panels - Extract ref_seq of panel inserts from a PMO
-
-working_with_multiple_pmos
-    combine_pmos - Combine multiple PMOs of the same panel
-
-extract_basic_info_from_pmo
-    list_library_sample_names_per_specimen_name - List experiment_sample_ids per specimen_id
-    list_specimen_meta_fields - List specimen meta fields in the specimen_info section
-    list_bioinformatics_run_names - List all tar_amp_bioinformatics_info_ids in a PMO
-    count_specimen_meta - Count values of selected specimen meta fields
-    count_targets_per_library_sample - Count number of targets per sample
-    count_library_samples_per_target - Count number of samples per target
-
-validation
-    validate_pmo - Validate a PMO file against a JSON Schema</code></pre>
-</div>
-</div>
+<ul>
+<li>
+<strong>extractors_from_pmo</strong>
+<ul>
+<li>ways to extract specific portions of a PMO
+<ul>
+<li>
+<a href="../pmotools-python-usages/subsetting_from_PMO.html#subsetting-by-samples-within-specific-metafields">extract_pmo_with_selected_meta</a> - Extract samples + haplotypes using selected meta</li>
+<li>
+<a href="../pmotools-python-usages/subsetting_from_PMO.html#subsetting-by-specific-specimen_names">extract_pmo_with_select_specimen_names</a> - Extract specific samples from the specimens table</li>
+<li>
+<a href="../pmotools-python-usages/subsetting_from_PMO.html#subsetting-by-specific-library_sample_names">extract_pmo_with_select_library_sample_names</a> - Extract experiment sample names from experiment_info table</li>
+<li>
+<a href="../pmotools-python-usages/subsetting_from_PMO.html#subsetting-by-specific-targets">extract_pmo_with_select_targets</a> - Extract specific targets</li>
+<li>
+<a href="../pmotools-python-usages/subsetting_from_PMO.html#subsetting-by-samples-within-specific-metafields">extract_pmo_with_read_filter</a> - Extract with a read filter</li>
+<li>
+<a href="../pmotools-python-usages/extracting_allele_tables.html#pmotools-python-extract_allele_table">extract_allele_table</a> - Extract allele tables for tools like dcifer or moire</li>
+<li>
+<a href="../pmotools-python-usages/extracting_panel_info_from_pmo.html#extract-insert-locations-of-panels-from-pmo">extract_insert_of_panels</a> - Extract inserts of panels from a PMO</li>
+<li>
+<a href="../pmotools-python-usages/extracting_panel_info_from_pmo.html#extract-ref-sequences-of-insert-locations-of-panels-from-pmo">extract_refseq_of_inserts_of_panels</a> - Extract ref_seq of panel inserts from a PMO</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<strong>working_with_multiple_pmos</strong>
+<ul>
+<li>How to work with multiple PMOs
+<ul>
+<li>
+<a href="../pmotools-python-usages/handling_multiple_pmos.html#pmotools-python-combine_pmos">combine_pmos</a> - Combine multiple PMOs of the same panel</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<strong>extract_basic_info_from_pmo</strong>
+<ul>
+<li>Getting some basic infomartion about your data stored in a PMO
+<ul>
+<li>
+<a href="../pmotools-python-usages/getting_basic_info_from_pmo.html#list_specimen_meta_fields">list_library_sample_names_per_specimen_name</a> - List experiment_sample_ids per specimen_id</li>
+<li>
+<a href="../pmotools-python-usages/getting_basic_info_from_pmo.html#list_specimen_meta_fields">list_specimen_meta_fields</a> - List specimen meta fields in the specimen_info section</li>
+<li>
+<a href="../pmotools-python-usages/getting_basic_info_from_pmo.html#list_bioinformatics_run_names">list_bioinformatics_run_names</a> - List all tar_amp_bioinformatics_info_ids in a PMO</li>
+<li>
+<a href="../pmotools-python-usages/getting_basic_info_from_pmo.html#list_specimen_meta_fields">count_specimen_meta</a> - Count values of selected specimen meta fields</li>
+<li>
+<a href="../pmotools-python-usages/getting_basic_info_from_pmo.html#count_targets_per_library_sample">count_targets_per_library_sample</a> - Count number of targets per sample</li>
+<li>
+<a href="../pmotools-python-usages/getting_basic_info_from_pmo.html#count_targets_per_library_sample">count_library_samples_per_target</a> - Count number of samples per target</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<strong>validation</strong>
+<ul>
+<li>Function for validating PMOs against a schema to ensure it meets the standards of the file
+<ul>
+<li>
+<a href="../pmotools-python-usages/validating_pmos.html#pmotools-python-validate_pmo">validate_pmo</a> - Validate a PMO file against a JSON Schema</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
 
 <!-- -->
@@ -773,26 +817,53 @@ validation
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Command line interface to pmotools-python with pmotools-python</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, echo=F}</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../common.R"</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>See <span class="co">[</span><span class="ot">installation instruction page</span><span class="co">](../Tools_Installation/pmotools-python_installation.qmd)</span> for how to install <span class="in">`pmotools-python`</span> which comes with a commandline interface called <span class="in">`pmotools-python`</span> </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, echo = F}</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> <span class="kw">|</span> <span class="fu">perl</span> <span class="at">-pe</span> <span class="st">'s/\e\[[0-9;]*m(?:\e\[K)?//g'</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Command line interface to pmotools-python with pmotools-python</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, echo=F}</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../common.R"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>See <span class="co">[</span><span class="ot">installation instruction page</span><span class="co">](../Tools_Installation/pmotools-python_installation.qmd)</span> for how to install <span class="in">`pmotools-python`</span> which comes with a commandline interface called <span class="in">`pmotools-python`</span> </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, echo = F, eval = F}</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> <span class="kw">|</span> <span class="fu">perl</span> <span class="at">-pe</span> <span class="st">'s/\e\[[0-9;]*m(?:\e\[K)?//g'</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>**extractors_from_pmo**    </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="ss">    *  </span>ways to extract specific portions of a PMO  </span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="ss">        *  </span><span class="co">[</span><span class="ot">extract_pmo_with_selected_meta</span><span class="co">](subsetting_from_PMO.qmd#subsetting-by-samples-within-specific-metafields)</span> - Extract samples + haplotypes using selected meta</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="ss">        *  </span><span class="co">[</span><span class="ot">extract_pmo_with_select_specimen_names</span><span class="co">](subsetting_from_PMO.qmd#subsetting-by-specific-specimen_names)</span> - Extract specific samples from the specimens table</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="ss">        *  </span><span class="co">[</span><span class="ot">extract_pmo_with_select_library_sample_names</span><span class="co">](subsetting_from_PMO.qmd#subsetting-by-specific-library_sample_names)</span> - Extract experiment sample names from experiment_info table</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="ss">        *  </span><span class="co">[</span><span class="ot">extract_pmo_with_select_targets</span><span class="co">](subsetting_from_PMO.qmd#subsetting-by-specific-targets)</span> - Extract specific targets</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="ss">        *  </span><span class="co">[</span><span class="ot">extract_pmo_with_read_filter</span><span class="co">](subsetting_from_PMO.qmd#subsetting-by-samples-within-specific-metafields)</span> - Extract with a read filter</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="ss">        *  </span><span class="co">[</span><span class="ot">extract_allele_table</span><span class="co">](extracting_allele_tables.qmd#pmotools-python-extract_allele_table)</span> - Extract allele tables for tools like dcifer or moire</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="ss">        *  </span><span class="co">[</span><span class="ot">extract_insert_of_panels</span><span class="co">](extracting_panel_info_from_pmo.qmd#extract-insert-locations-of-panels-from-pmo)</span> - Extract inserts of panels from a PMO</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="ss">        *  </span><span class="co">[</span><span class="ot">extract_refseq_of_inserts_of_panels</span><span class="co">](extracting_panel_info_from_pmo.qmd#extract-ref-sequences-of-insert-locations-of-panels-from-pmo)</span> - Extract ref_seq of panel inserts from a PMO</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>**working_with_multiple_pmos**</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="ss">    *  </span>How to work with multiple PMOs </span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="ss">        *  </span><span class="co">[</span><span class="ot">combine_pmos</span><span class="co">](handling_multiple_pmos.qmd#pmotools-python-combine_pmos)</span> - Combine multiple PMOs of the same panel</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>**extract_basic_info_from_pmo** </span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="ss">    *  </span>Getting some basic infomartion about your data stored in a PMO </span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="ss">        *  </span><span class="co">[</span><span class="ot">list_library_sample_names_per_specimen_name</span><span class="co">](getting_basic_info_from_pmo.qmd#list_specimen_meta_fields)</span> - List experiment_sample_ids per specimen_id</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="ss">        *  </span><span class="co">[</span><span class="ot">list_specimen_meta_fields</span><span class="co">](getting_basic_info_from_pmo.qmd#list_specimen_meta_fields)</span> - List specimen meta fields in the specimen_info section</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="ss">        *  </span><span class="co">[</span><span class="ot">list_bioinformatics_run_names</span><span class="co">](getting_basic_info_from_pmo.qmd#list_bioinformatics_run_names)</span> - List all tar_amp_bioinformatics_info_ids in a PMO</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="ss">        *  </span><span class="co">[</span><span class="ot">count_specimen_meta</span><span class="co">](getting_basic_info_from_pmo.qmd#list_specimen_meta_fields)</span> - Count values of selected specimen meta fields</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="ss">        *  </span><span class="co">[</span><span class="ot">count_targets_per_library_sample</span><span class="co">](getting_basic_info_from_pmo.qmd#count_targets_per_library_sample)</span> - Count number of targets per sample</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="ss">        *  </span><span class="co">[</span><span class="ot">count_library_samples_per_target</span><span class="co">](getting_basic_info_from_pmo.qmd#count_targets_per_library_sample)</span> - Count number of samples per target</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>**validation**</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="ss">    *  </span>Function for validating PMOs against a schema to ensure it meets the standards of the file </span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="ss">        *  </span><span class="co">[</span><span class="ot">validate_pmo</span><span class="co">](validating_pmos.qmd#pmotools-python-validate_pmo)</span> - Validate a PMO file against a JSON Schema</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

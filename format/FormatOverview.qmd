@@ -32,7 +32,7 @@ cat(createDownloadLink("portable_microhaplotype_object.schema.json"))
 
 # Top Level Schematic
 
-![](PMO_schematic.png)
+![](../images/high_level_tables.svg)
 (A) Schematic of the top-level tables within PMO. Green boxes indicate tables that will commonly be reused across datasets. Pink dashed boxes highlight tables that are input collectively into pmotools-python or the PMO app via a single input table. (B) Illustration comparing current approaches to microhaplotype storage with storage within PMO. Current storage solutions often rely on long-form microhaplotype storage, with repeated listing of full nucleotide sequences, as shown on the left of panel B. In contrast, PMO replaces this with two efficiently linked tables, eliminating redundancy, as shown on the right of panel B.
 
 

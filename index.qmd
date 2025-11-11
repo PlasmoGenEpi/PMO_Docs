@@ -9,6 +9,7 @@ source("common.R")
 
 Multiplexed targeted sequencing is now widely used to generate data for the most informative genomic regions of organisms, but the lack of an appropriate data standard has hindered data sharing, reuse, and downstream analysis. Here, we provide details for an extensible standard and related convenience utilities to store lossless, compact representations of phased, processed target sequences (microhaplotypes) along with an efficient relational ontology in a portable JSON file.
 
+![](images/high_level_tables_a.svg)
 
 ## Why targeted sequencing needs a data standard
 
@@ -27,5 +28,35 @@ Many of these applications utilize the full sequences provided by individual rea
 ## Our approach to development  
 
 The microbiome community has created data standards for a single locus, including BIOM and ESS-DIVE. Here, we extend these standards to an arbitrary number of loci in a framework extensible to any type of targeted sequence data. The format is lossless, allowing recovery of full sequence data, while achieving data compression of ~6x and up to ~80x with additional compression using standard tools (e.g., gzip). Optional fields allow data generators with domain expertise to include additionally processed sequence data such as variants with masked domains, e.g. for highly error prone areas such as tandem repeats. Notably, the framework provides a robust relational ontology for sample, laboratory, and bioinformatic metadata in addition to sequence data, mitigating the common problem of partially or completely orphaned data. A full ontology has been built out for Plasmodium, leveraging existing fields where available, and the modular structure can be flexibly extended to other biological systems, including those containing multiple types of organisms. All data are encoded in a standard JSON file, enhancing portability and ease-of-interpretation. The end result is a design which is efficient, lightweight, and flexible, organizing metadata together with genetic data. Finally, we have created a set of convenience utilities to make it easy to create, manipulate, share, import, and export PMO files.
+
+Please see [here](format/DevelopmentOfFormat.qmd) for a detailed breakdown of how the fields chosen relate to other standards
+
+## How PMO fits into the data generation and analysis ecosystem
+
+PMO serves as a convergence point within the broader data ecosystem between sample collection/allele calling and various downstream analyses. Please see [here](PMO_Ecosystem/Pmo_in_the_ecosystem.qmd) for more details
+
+
+## More details on PMO structure and ontology
+
+Please see this [page](format/FormatOverview.qmd) for details on the internal structure of a PMO and its naming schema. 
+
+
+## Convenience utilities for PMO 
+
+For building a PMO from sample meta and allele called data, please see [pmo-app](https://plasmogenepi.github.io/pmotool-app-web/), an interactive builder of PMO, on the first time opening this page it may take some time to load. The app runs locally but in the browser but no data is uploaded anywhere and stays private on your computer. 
+
+See this [page](pmotools-python-usages/pmotools-python.qmd) for instructions on the python commandline client implementation of interacting with PMOs with examples of the python code used and how to run some pre-built scripts on the command line.  
+
+
+## Building a community of PMO users and tools
+
+The development of the PMO format would not be possible without the community engagement and feedback that we have received and we want to continue to incorporate feedback while we maintain the format. Please reach out to [info@plasmogenepi.org](mailto:info@plasmogenepi.org) with any general questions or feedback. 
+
+If you have questions on the documentation of the format, you can use the github issues page to ask questions, post suggestions for both the documentation and format: <https://github.com/PlasmoGenEpi/PMO_Docs/issues> 
+
+If you have questions on the python implementation of interacting with the format, you can use github issues page here: <https://github.com/PlasmoGenEpi/pmotools-python/issues>
+
+
+
 
 

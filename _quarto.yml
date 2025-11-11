@@ -7,6 +7,7 @@ project:
     - format/FormatExample.qmd
     - format/FormatOverviewAdvanced.qmd
     - format/DevelopmentOfFormat.qmd
+    - PMO_Ecosystem/Pmo_in_the_ecosystem.qmd
     - Tools_Installation/pmotools-python_installation.qmd
     - pmotools-python-usages/pmotools-python.qmd
     - pmotools-python-usages/extracting_allele_tables.qmd
@@ -27,8 +28,15 @@ website:
         text: Home
       - text: Format Info
         menu: 
-          - href: format/DevelopmentOfFormat.qmd
+          - text: <span class='menuTitle'>Overview of Format</span>
+          - text: "------------"
           - href: format/FormatOverview.qmd
+          - href: PMO_Ecosystem/Pmo_in_the_ecosystem.qmd
+          - text: <span class='menuTitle'>History of Format Development</span>
+          - text: "------------"
+          - href: format/DevelopmentOfFormat.qmd
+          - text: <span class='menuTitle'>Overview of Format For Bioinformaticians</span>
+          - text: "------------"
           - href: format/FormatExample.qmd
           - href: format/FormatOverviewAdvanced.qmd
       - text: "Tools Installation"

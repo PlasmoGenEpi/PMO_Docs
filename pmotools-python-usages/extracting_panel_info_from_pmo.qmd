@@ -46,8 +46,8 @@ The python code for `extract_insert_of_panels` script is below
 #| eval: false
 #| code-fold: true
 #| code-line-numbers: true
-#| filename: pmotools-python/src/pmotools/scripts/extract_info_from_pmo/extract_insert_of_panels.py
-#| file: ../pmotools-python/src/pmotools/scripts/extract_info_from_pmo/extract_insert_of_panels.py
+#| filename: pmotools-python/src/pmotools/scripts/pmo_to_tables/extract_insert_of_panels.py
+#| file: ../pmotools-python/src/pmotools/scripts/pmo_to_tables/extract_insert_of_panels.py
 ```
 
 ```{bash}
@@ -88,8 +88,8 @@ The python code for `extract_refseq_of_inserts_of_panels` script is below
 #| eval: false
 #| code-fold: true
 #| code-line-numbers: true
-#| filename: pmotools-python/src/pmotools/scripts/extract_info_from_pmo/extract_refseq_of_inserts_of_panels.py
-#| file: ../pmotools-python/src/pmotools/scripts/extract_info_from_pmo/extract_refseq_of_inserts_of_panels.py
+#| filename: pmotools-python/src/pmotools/scripts/pmo_to_tables/extract_refseq_of_inserts_of_panels.py
+#| file: ../pmotools-python/src/pmotools/scripts/pmo_to_tables/extract_refseq_of_inserts_of_panels.py
 ```
 
 ```{bash}

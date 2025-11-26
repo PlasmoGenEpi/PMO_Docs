@@ -17,7 +17,7 @@ project:
     - pmotools-python-usages/getting_basic_info_from_pmo.qmd
     - pmotools-python-usages/extracting_panel_info_from_pmo.qmd
     - pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.ipynb
-    - pmotools-python-usages-notebooks/build_pmo.ipynb
+    - pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.ipynb
     - References.qmd
 
 website:
@@ -44,6 +44,13 @@ website:
           - href: Tools_Installation/pmotools-python_installation.qmd
       - text: "pmotools-python usages"
         menu: 
+          - text: "------------"
+          - text: <span class='menuTitle'>Python interface</span>
+          - text: <span class='menuTitle'>Building a PMO</span>
+          - href: pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.ipynb
+            text: "Example of how to build a PMO"
+          - text: <span class='menuTitle'>Interacting with a PMO file</span>
+          - href: pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.ipynb
           - text: <span class='menuTitle'>Command line interface</span>
           - text: "------------"
           - text: <span class='menuTitle'>pmotools-python</span>
@@ -59,10 +66,6 @@ website:
           - href: pmotools-python-usages/handling_multiple_pmos.qmd
           - text: <span class='menuTitle'>Validating PMO files</span>
           - href: pmotools-python-usages/validating_pmos.qmd
-          - text: "------------"
-          - text: <span class='menuTitle'>Python interface</span>
-          - href: pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.ipynb
-          - href: pmotools-python-usages-notebooks/build_pmo.ipynb
     right: 
       - text: "Resources"
         menu: 

@@ -44,8 +44,8 @@ The python code for `extract_allele_table` script is below
 #| eval: false
 #| code-fold: true
 #| code-line-numbers: true
-#| filename: pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_allele_table.py
-#| file: ../pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_allele_table.py
+#| filename: pmotools-python/src/pmotools/scripts/pmo_to_tables/extract_allele_table.py
+#| file: ../pmotools-python/src/pmotools/scripts/pmo_to_tables/extract_allele_table.py
 ```
 
 

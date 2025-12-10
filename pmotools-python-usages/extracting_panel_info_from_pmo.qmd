@@ -1,0 +1,105 @@
+---
+title: Getting panel info out of PMO using pmotools-python
+---
+
+```{r setup, echo=F}
+source("../common.R")
+```
+
+Most of these basic panel info can be found underneath `extract_panel_info_from_pmo`
+
+```{bash, eval = F}
+pmotools-python
+```
+
+```{bash, echo = F}
+pmotools-python | perl -pe 's/\e\[[0-9;]*m(?:\e\[K)?//g'
+```
+
+
+Getting files for examples 
+
+
+```{bash, eval = F}
+cd example 
+
+wget https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz
+wget https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz
+
+```
+
+
+
+# Extract insert locations of panels from PMO 
+
+This will extract the insert location of targets of the panel infos out of a PMO and write it out as a bed file 
+
+```{bash}
+pmotools-python extract_insert_of_panels -h 
+```
+
+
+The python code for `extract_insert_of_panels` script is below
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-line-numbers: true
+#| filename: pmotools-python/src/pmotools/scripts/pmo_to_tables/extract_insert_of_panels.py
+#| file: ../pmotools-python/src/pmotools/scripts/pmo_to_tables/extract_insert_of_panels.py
+```
+
+```{bash}
+cd example 
+pmotools-python extract_insert_of_panels --file ../../format/moz2018_PMO.json.gz
+
+```
+
+```{bash}
+cd example 
+pmotools-python extract_insert_of_panels --file ../../format/moz2018_PMO.json.gz --output moz2018_PMO_panel_insert_locs.bed --overwrite
+
+```
+
+Can add on the reference sequence if it's loaded in PMO, if it's not loaded will be blank column 
+```{bash}
+cd example 
+pmotools-python extract_insert_of_panels --add_ref_seqs --file ../../format/moz2018_PMO.json.gz --output moz2018_PMO_panel_insert_locs.bed --overwrite
+
+```
+
+
+
+# Extract ref sequences of insert locations of panels from PMO 
+
+
+This will extract the reference sequence of the insert location of the targets within the panel info out of a PMO and write it out as a table. The reference sequence is an optional field and so if no reference sequence is loaded then just blanks will be extracted 
+
+```{bash}
+pmotools-python extract_refseq_of_inserts_of_panels -h 
+```
+
+
+The python code for `extract_refseq_of_inserts_of_panels` script is below
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-line-numbers: true
+#| filename: pmotools-python/src/pmotools/scripts/pmo_to_tables/extract_refseq_of_inserts_of_panels.py
+#| file: ../pmotools-python/src/pmotools/scripts/pmo_to_tables/extract_refseq_of_inserts_of_panels.py
+```
+
+```{bash}
+cd example 
+pmotools-python extract_refseq_of_inserts_of_panels --file ../../format/moz2018_PMO.json.gz
+
+```
+
+```{bash}
+cd example 
+pmotools-python extract_refseq_of_inserts_of_panels --file ../../format/moz2018_PMO.json.gz --output moz2018_PMO_panel_ref_seqs.tsv --overwrite
+
+```

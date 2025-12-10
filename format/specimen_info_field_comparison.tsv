@@ -1,0 +1,28 @@
+specimen_info_field	pmo_required	MIXS v6.2.0 MigsEu/HumanAssociated/MimarksC	SRA MigsEu/HumanAssociated/MimarksC	SRA_required
+specimen_name	TRUE	samp_name	samp_name	TRUE
+specimen_taxon_id	TRUE	samp_taxon_id	organism (but scientific name, not taxon ID)	TRUE
+collection_country	TRUE	geo_loc_name (plus geo_admin levels if present)	geo_loc_name (plus geo_admin levels if present)	TRUE
+collection_date	TRUE	collection_date	collection_date	TRUE
+host_taxon_id	TRUE	specific_host	host (but scientific name, not taxon ID)	TRUE
+		isol_growth_condt	isol_growth_condt	TRUE
+project_name	TRUE	project_name		
+env_broad_scale	FALSE	env_broad_scale	env_broad_scale	TRUE
+env_local_scale	FALSE	env_local_scale	env_local_scale	TRUE
+env_medium	FALSE	env_medium	env_medium	TRUE
+lat_lon	FALSE	lat_lon	lat_lon	TRUE
+alternate_identifiers	FALSE			
+collector_chief_scientist	FALSE			
+drug_usage	FALSE	drug_usage	drug_usage	FALSE
+geo_admin1	FALSE			
+geo_admin2	FALSE			
+geo_admin3	FALSE			
+host_age	FALSE	host_age	host_age	FALSE
+host_sex	FALSE	host_sex	host_sex	FALSE
+host_subject_id	FALSE	host_subject_id	host_subject_id	FALSE
+parasite_density_info	FALSE			
+plate_info	FALSE			
+specimen_type	FALSE			
+specimen_collect_device	FALSE	samp_collect_device	samp_collect_device	FALSE
+specimen_comments	FALSE		description	FALSE
+specimen_store_loc	FALSE	samp_store_loc	samp_store_loc	FALSE
+travel_out_six_month	FALSE	travel_out_six_month	travel_out_six_month	FALSE

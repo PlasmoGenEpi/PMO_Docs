@@ -1,0 +1,25 @@
+experiment_info_fields	sequencing_info_fields	pmo_required	MIXS v6.2.0 MigsEu/HumanAssociated/MimarksC	SRA MigsEu/HumanAssociated/MimarksC	SRA_required
+library_sample_name		TRUE		library_id	TRUE
+				title	TRUE
+panel_id		TRUE			
+sequencing_info_id		TRUE			
+specimen_id		TRUE	sample_name	sample_name	TRUE
+accession		FALSE			
+extraction_plate_info		FALSE			
+sequencing_prep_plate_info		FALSE			
+	seq_date	TRUE			
+	seq_platform	TRUE	seq_meth (combo of seq_platform, seq_instrument_model)	platform	TRUE
+	seq_instrument_model	TRUE	seq_meth (combo of seq_platform, seq_instrument_model)	instrument_model	TRUE
+	sequencing_info_name	TRUE			
+	library_layout	TRUE	lib_layout	library_layout	TRUE
+	library_strategy	TRUE		library_strategy	TRUE
+	library_source	TRUE		library_source	TRUE
+	library_selection	TRUE		library_selection	TRUE
+	library_kit	FALSE	lib_kit	design_description (a combination of lib_kit, lib_screen, pcr_cond, nucl_acid_amp, nucl_acid_ext)	TRUE
+	library_screen	FALSE	lib_screen		
+	nucl_acid_amp	FALSE	nucl_acid_amp		
+	nucl_acid_amp_date	FALSE			
+	nucl_acid_ext	FALSE	nucl_acid_ext		
+	nucl_acid_ext_date	FALSE			
+	pcr_cond	FALSE	pcr_cond		
+	seq_center	FALSE			

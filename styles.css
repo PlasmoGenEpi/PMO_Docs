@@ -19,3 +19,22 @@
 .titleColoring {
   color: #30659B;
 }
+
+.cell-output code {
+  white-space: pre-wrap;
+  border: 1px solid grey;
+  padding: 1em;
+}
+
+.btn {
+  margin: 5px;
+  border-radius: 12px;
+}
+
+code {
+  color: #8be9fd;
+}
+
+
+
+

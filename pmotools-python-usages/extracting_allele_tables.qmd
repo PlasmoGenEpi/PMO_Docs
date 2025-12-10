@@ -1,0 +1,175 @@
+---
+title: Extracting allele tables using pmotools-python
+---
+
+```{r setup, echo=F}
+source("../common.R")
+```
+
+
+
+# pmotools-python extract_allele_table
+
+To extract allele table information from a PMO the command line interactive script with `pmotools-python extract_allele_table` can be used 
+
+*  pmotools-python extract_allele_table 
+
+*  **Required arguments**
+    *  **\-\-file** - the PMO file to extract from 
+    *  **\-\-output** - the output stub of the files to be created 
+
+*  **Optional arguments** 
+
+By default only 3 fields are extracted by this extractor, 1) sampleID (library_sample_sample_name), 2) locus (target_name), and 3) allele (microhaplotype_id) with those default column names. This can be controlled by **\-\-default_base_col_names** and if you supply 3 comma separated values you can change the default header. 
+
+You can also add to the table any values from the other portions of the PMO file by using the following arguments 
+
+*  adding fields arguments 
+    *  **\-\-specimen_info_meta_fields** - Meta Fields if any to include from the specimen table 
+    *  **\-\-library_sample_info_meta_fields** - Meta Fields if any to include from the library_sample table 
+    *  **\-\-microhap_fields** - additional optional fields from the detected microhaplotype object to include 
+    *  **\-\-representative_haps_fields** - additional optional fields from the detected representative object to include 
+
+Other optional arguments have to do with the ouput file over writing and delimiter being used, use `-h` to see all arguments 
+
+```{bash}
+pmotools-python extract_allele_table -h
+
+```
+
+The python code for `extract_allele_table` script is below
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-line-numbers: true
+#| filename: pmotools-python/src/pmotools/scripts/pmo_to_tables/extract_allele_table.py
+#| file: ../pmotools-python/src/pmotools/scripts/pmo_to_tables/extract_allele_table.py
+```
+
+
+Can download example PMOs here 
+
+```{bash, eval = F}
+wget https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz 
+
+wget https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz
+```
+
+
+```{bash}
+mkdir -p example
+cd example 
+
+# default 
+pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output extraction --overwrite
+```
+
+
+```{bash}
+cd example 
+
+# changing default column names  
+pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output extraction --overwrite --default_base_col_names sample,target,hapid
+```
+
+Changing the output file delimiter  
+
+```{bash}
+cd example 
+
+pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output extraction --overwrite --delim ,
+```
+
+Adding on additional columns from the specimen_infos section 
+
+```{bash, eval = F}
+cd example 
+
+# adding other PMO fields 
+pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output STDOUT --specimen_info_meta_fields collection_country,collection_date | head  
+
+```
+
+```{bash, echo = F}
+cd example 
+
+# adding other PMO fields 
+pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output STDOUT --specimen_info_meta_fields collection_country,collection_date 2>/dev/null | head  
+
+```
+
+
+Can continue to add on more columns from other sections 
+
+```{bash, eval = F}
+cd example 
+
+# adding other PMO fields including seq field 
+pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output STDOUT --specimen_info_meta_fields collection_country,collection_date --representative_haps_fields seq | head 
+
+```
+
+```{bash, echo = F}
+cd example 
+
+# adding other PMO fields including seq field 
+pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output STDOUT --specimen_info_meta_fields collection_country,collection_date --representative_haps_fields seq 2>/dev/null | head 
+
+```
+
+## Creating output for MOIRE 
+
+MOIRE is a program that can be used to estimate COI and other population estimates from a population. See it's [github](https://github.com/EPPIcenter/moire) for full usage. 
+
+```{bash, eval = F}
+mkdir -p example
+cd example 
+
+# default table is all moire needs 
+pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output extraction --overwrite
+
+```
+
+```{r, eval = F}
+df <- read.csv("example/extraction_allele_table.tsv", sep = "\t")
+
+data <- load_long_form_data(df)
+
+# With data in appropriate format, run MCMC as follows
+mcmc_results <- moire::run_mcmc(data, is_missing = data$is_missing)
+```
+
+
+## Creating output for dcifer 
+
+dcifer is a program that can estimate IBD even from mixed infections. See it's [github](https://github.com/EPPIcenter/dcifer) for full usage
+
+```{bash}
+mkdir -p example
+cd example 
+
+# default 
+pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output extraction --overwrite --delim ,
+
+# dcifer can calculate allele frequencies if not provided or you can have extract_allele_table write them as well 
+pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output extraction --overwrite --allele_freqs_output allele_freqs_extraction --delim ,
+
+```
+
+```{r, eval = F}
+dsmp <- readDat("example/extraction_allele_table.csv", svar = "sampleID", lvar = "locus", avar = "allele")
+
+lrank <- 2
+coi   <- getCOI(dsmp, lrank = lrank)
+
+afreq <- calcAfreq(dsmp, coi, tol = 1e-5) 
+
+dres0 <- ibdDat(dsmp, coi, afreq, pval = TRUE, confint = TRUE, rnull = 0, 
+                alpha = 0.05, nr = 1e3)   
+
+
+```
+
+

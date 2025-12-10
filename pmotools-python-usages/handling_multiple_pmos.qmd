@@ -1,0 +1,55 @@
+---
+title: Handling multiple PMOs pmotools-python
+---
+
+```{r setup, echo=F}
+source("../common.R")
+```
+
+
+# pmotools-python combine_pmos
+
+Can download multiple PMOs here 
+
+<https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz> 
+
+<https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz> 
+
+
+
+```{bash}
+pmotools-python combine_pmos --help
+```
+
+
+The list of PMO files can be given comma separated to their relative paths from where you run the script or in a file where each line is a different file to combine
+
+```{bash, eval = F}
+cd example 
+
+wget https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz
+wget https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz
+
+
+pmotools-python combine_pmos --pmo_files moz2018_PMO.json.gz,PathWeaverHeome1_PMO.json.gz --output combined_Heome1_PMO.json.gz --overwrite
+```
+
+
+```{bash, echo = F, eval = T}
+cd example 
+
+pmotools-python combine_pmos --pmo_files ../../format/moz2018_PMO.json.gz,../../format/PathWeaverHeome1_PMO.json.gz --output combined_Heome1_PMO.json.gz --overwrite
+```
+
+The python code for `combine_pmos` script is below
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-line-numbers: true
+#| filename: pmotools-python/src/pmotools/scripts/pmo_utils/combine_pmos.py
+#| file: ../pmotools-python/src/pmotools/scripts/pmo_utils/combine_pmos.py
+```
+
+

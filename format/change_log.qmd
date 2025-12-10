@@ -1,0 +1,172 @@
+---
+title: "Change Log"
+embed-resources: true
+---
+
+# 2025-09  
+
+- [x] LibrarySample
+	- [x] add alternate_identifiers to LibrarySample
+- [x] RepresentativeMicrohaplotype
+	- [x] adding associated_protein_variants and associated_seq_variants 
+- [x] SpecimenInfo
+	- [x] add treatment status 
+	- [x] Adding traveler data class, saved as a list under SpecimenInfo
+	    - [x] has travel_country, travel_start_date, travel_end_date
+- [x] BioinformaticsMethodInfo
+    - [x] change additional_methods to just methods
+    - [x] change bioinformatics_method_name to pipeline instead to give option to name methods collection if they all fall under a pipeline  
+- [x] StageReadCounts
+    - [x] update read_count to reads
+
+# 2025-07
+
+- [x]  adding unit field to any values (or make it part of the description and make it a requirement that units also has to be the same) 
+    - [x] will make part of the standardization that fields like have to be in specific units (and that these units will be exported on export output functions)
+- [x]  ExperimentInfo
+    - [x]  sequencing_prep_plate_info -> library_prep_plate_info 
+    - [x]  removed extraction_plate_info, will keep this field more focused on sequencing information 
+    - [x]  adding qpcr_parasite_density_info 
+    - [x]  adding fastq_loc for location of fastqs associated with data
+    - [x]  renaming to seq_run_[SOMETHING], e.g. seq_run_specimen vs seq_run_sample
+        - [x] based on feedback settled on library_sample_id/name/info 
+- [x]  ParasiteDensity
+    - [x]  method -> density_method
+    - [x]  density -> parasite_density
+    - [x]  added date_measured as an optional field to indicate when the density was performed 
+    - [x]  added density_method_comments as optional field to list additional details on how the density was performed like primers used or microscopist who performed 
+- [x]  SpecimenInfo
+    - [x]  change plate_info to storage_plate_info
+    - [x]  parasite_density_info -> microscopy_parasite_density_info
+    - [x]  remove collector_chief_scientist
+    - [x]  rename project_name to project_id
+    - [x]  add specimen_accession, gravid (T or F for whether currently pregnancy), gravidity (numerical values), blood_meal (T of F)
+- [x]  adding a table for study design project_info 
+    - [x]  project_name (required)
+    - [x]  project_description  (required)
+    - [x]  project_type  (required)
+    - [x]  project_contributors
+    - [x]  project_collector_chief_scientist (remove from SpecimenInfo)
+    - [x]  BioProject_accession
+    - look at BioProject info page that we could align with 
+- [x]  RepresentativeMicrohaplotypesForTarget
+    - [x]  add mhap_location
+        - optional field, if representative is a smaller location than the full original target info, if not present asssumes it is the full target location   
+- [x]  TargetInfo
+    - [x]  changed forward_primers and reverse_primers from a list to single value and changed names to forward_primer and reverse_primer
+- [x] Class name changes
+    - [x] MicrohaplotypesDetected -> DetectedMicrohaplotypes  
+    - [x] MicrohaplotypesForSample -> DetectedMicrohaplotypesForSample
+    - [x] MicrohaplotypesForTarget -> DetectedMicrohaplotypesForTarget
+- [x] PortableMicrohaplotypeObject
+    - [x] microhaplotypes_detected -> detected_microhaplotypes
+    - [x] microhaplotypes_info -> representative_microhaplotypes
+- [x] MicrohaplotypesForTarget
+    - [x] haps -> mhaps  
+- [x] BioinformaticsRunInfo
+    - [x] make run_date optional
+    - [x] make bioinformatics_run_name required and unique
+- [x] SequencingInfo
+    - [x] make seq_date optional
+- [x] make pseudocigar into a class Pseudocigar
+    - [x] fields: 
+        - [x] ref_loc (GenomicLocation) - reference that was aligned to 
+        - [x] pseudocigar - the pseudocigar itself 
+        - [x] pseudocigar_generation_description - description of how the pseudocigar was generated
+- [x] add to MaskingInfo masking_generation_description 
+- [x] GenomeInfo
+    - [x] taxon_id into a list
+- [x] BioMethod
+    - [x] add program_url 
+    
+
+# 2025-06
+
+*  proposed changes from PHAGE meeting
+    *  study design meta table 
+        *  adding collaborators names   
+    *  re-doing experiment_sample_name, crowd sourcing 
+        *  seq_run_[SOME_THING]
+    *  when having a measurement, having another field that has the units 
+    *  converting several PMOs 
+        *  MIPs vs MAD4HATTER data 
+
+
+# 2025-05
+
+*  Proposed changes
+    *  More compressed amplicon calling bioinformatics run info 
+    *  add passed_qc and failed_qc_reason fields to experiment_info
+    *  build around sample_meta data
+    *  
+
+# 2025-03-26
+*  modified fields for SpecimenInfo and SequencingInfo to be more aligned to SRA and Mixs standards and for internal consistency
+    *  samp_collection_device -> specimen_collection_device 
+    *  sample_comments -> specimen_comments
+    *  samp_taxon_id -> specimen_taxon_id 
+        *  changed specimen_taxon_id from a single value to a list of values in case of mixed species 
+    *  added library_layout, library_strategy, library_source, library_selection (needed for SRA submission)
+    *  added several Mixs fields that may be of interest to the format as optional fields (host_subject_id, travel_out_six_month, drug_usage)
+    *  added env_broad_scale, env_local_scale, env_medium as optinal fields (are required by SRA but can be 'not applicable' if missing so aded to PMO as optional)
+    *  added seq_platform and seq_instrument_model (both needed for SRA)
+*  added PlateInfo class to be used in several locations 
+*  added extraction_plate_info sequencing_prep_plate_info to ExperimentInfo as optional fields for storing this info 
+
+
+# 2025-03-15
+
+*  removed pmo_name
+*  major change to the organization of indexes and names
+    *  _id will be the integer index into tables 
+    *  _name will be a character name identifier for a class 
+    *  adding sequencing_info_name, specimen_name, experimental_sample_name, microhaplotype_name to their respective classes 
+*  adding pmo_header
+    *  info on the PMO file .e.g version etc 
+    *  several new classes, including PmoGenerationMethod
+*  adding read_counts_by_stage
+    *  read counts by each stage 
+    *  this led to the creation of several classes to hold this info
+*  adding bioinformatics_run_info
+    *  info on the pipeline run 
+    *  new class of BioinformaticsRunInfo to run info about a run
+*  modified BioinformaticsMethoInfo
+    *  purpose -> program_description 
+*  renaming 
+    *  representative_microhaplotype_sequences -> microhaplotype_info
+    *  experiment_infos ->  experiment_info
+    *  specimen_infos -> specimen_info
+    *  sequenceing_infos -> sequenceing_info
+    *  taramp_bioinformatics_infos -> bioinformatics_methods_info
+    *  removed any mention of taramp
+*  adding target_info
+    *  a list of the targets in this file to be referred to by panel_info (see below) instead of listed underneath each panel, this allows for the listing of targets that may be shared across panels/reactions 
+    *  added class for MarkerOfInterest to list different markers for each target covers e.g. drug_resistance 
+*  updating panel_info
+    *  modified to be a list of reactions which will have the collection of targets 
+    *  added ReactionInfo, listing the reaction targets 
+*  modified panel_info/target_info to remove targeted_genome, moved the genome info to the genomic location class instead
+*  adding a list of TargetedGenomes 
+    *  this list will then be indexed into to list which genomes are being targeted
+*  made a large number of the sequencing_info fields optional
+*  to list multiple parasite densities for a specimen added a ParasiteDensity class
+    *  has method and density
+    *  optional list of densities under SpecimenInfo
+*  added project name for specimens 
+*  a reorganization of microhaplotypes_detected and microhaplotypes_info
+  *  microhaplotypes_info
+      *  is now a list rather than a dictionary of targets
+      *  each list will have a target_id (index into the target infos) and then another list of microhaplotypes 
+  *  microhaplotypes_detected
+      *  made everything into lists rather than dictionary and changed identifiers to indexes 
+
+
+
+
+# To do From GEM meeting
+
+- [ ] adding header with info on each field 
+- [ ] random access ability  
+
+
+

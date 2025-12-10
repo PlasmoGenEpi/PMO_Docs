@@ -1,0 +1,13 @@
+---
+title: "PMO within a Data Analysis Ecosystem"
+---
+
+
+```{r setup, echo=F}
+source("../common.R")
+```
+
+
+![](../images/datasharing.svg)
+
+PMO as a convergence point within the broader data ecosystem. This schematic outlines the flow of data in a typical workflow involving microhaplotype amplicon sequencing data. Green circles represent common stages for data sharing. Pink boxes indicate points at which information necessary for a PMO becomes available. (1) Raw sequencing data are generated, possibly from multiple sequencing runs at different points in time. FASTQ files for each sample represent a raw form of the data, with large files that are difficult to interpret without knowledge of the specific data-generating process or an appropriate allele-calling pipeline. At this stage, data are mostly shared with bioinformaticians and data repositories. (2) Bioinformatics pipelines often require data from different sequencing runs to be processed separately to isolate any batch effects. After alleles are called, it is common to merge microhaplotype data from different runs. Harmonizing sources of data into a PMO file at this point allows an ideal convergence point for downstream analyses within the group, with collaborators, or with the broader community depending on the extent of data sharing. (3) Simplified data, such as SNPs generated from microhaplotypes per sample or aggregated metrics such as allele frequency, can be easily derived from PMO. However, sharing data at this stage limits the scope of analyses that can be performed. (4) Interpreted results are shared e.g., through reports, manuscripts, and dashboards including maps, plots, and summary statistics. It is useful for information at this stage to include interpretation and simple representation. Though beyond the scope of this manuscript, establishing standards for downstream steps such as (3) and (4) may allow for integration of data and harmonization of analysis at additional stages of the workflow.

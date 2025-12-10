@@ -1,0 +1,48 @@
+---
+title: Command line interface to pmotools-python with pmotools-python
+---
+
+```{r setup, echo=F}
+source("../common.R")
+```
+
+
+See [installation instruction page](../Tools_Installation/pmotools-python_installation.qmd) for how to install `pmotools-python` which comes with a commandline interface called `pmotools-python` 
+
+
+```{bash, eval = F}
+pmotools-python
+```
+
+```{bash, echo = F, eval = F}
+pmotools-python | perl -pe 's/\e\[[0-9;]*m(?:\e\[K)?//g'
+```
+
+
+
+*  **extractors_from_pmo**    
+    *  ways to extract specific portions of a PMO  
+        *  [extract_pmo_with_selected_meta](subsetting_from_PMO.qmd#subsetting-by-samples-within-specific-metafields) - Extract samples + haplotypes using selected meta
+        *  [extract_pmo_with_select_specimen_names](subsetting_from_PMO.qmd#subsetting-by-specific-specimen_names) - Extract specific samples from the specimens table
+        *  [extract_pmo_with_select_library_sample_names](subsetting_from_PMO.qmd#subsetting-by-specific-library_sample_names) - Extract experiment sample names from experiment_info table
+        *  [extract_pmo_with_select_targets](subsetting_from_PMO.qmd#subsetting-by-specific-targets) - Extract specific targets
+        *  [extract_pmo_with_read_filter](subsetting_from_PMO.qmd#subsetting-by-samples-within-specific-metafields) - Extract with a read filter
+        *  [extract_allele_table](extracting_allele_tables.qmd#pmotools-python-extract_allele_table) - Extract allele tables for tools like dcifer or moire
+        *  [extract_insert_of_panels](extracting_panel_info_from_pmo.qmd#extract-insert-locations-of-panels-from-pmo) - Extract inserts of panels from a PMO
+        *  [extract_refseq_of_inserts_of_panels](extracting_panel_info_from_pmo.qmd#extract-ref-sequences-of-insert-locations-of-panels-from-pmo) - Extract ref_seq of panel inserts from a PMO
+*  **working_with_multiple_pmos**
+    *  How to work with multiple PMOs 
+        *  [combine_pmos](handling_multiple_pmos.qmd#pmotools-python-combine_pmos) - Combine multiple PMOs of the same panel
+*  **extract_basic_info_from_pmo** 
+    *  Getting some basic infomartion about your data stored in a PMO 
+        *  [list_library_sample_names_per_specimen_name](getting_basic_info_from_pmo.qmd#list_specimen_meta_fields) - List experiment_sample_ids per specimen_id
+        *  [list_specimen_meta_fields](getting_basic_info_from_pmo.qmd#list_specimen_meta_fields) - List specimen meta fields in the specimen_info section
+        *  [list_bioinformatics_run_names](getting_basic_info_from_pmo.qmd#list_bioinformatics_run_names) - List all tar_amp_bioinformatics_info_ids in a PMO
+        *  [count_specimen_meta](getting_basic_info_from_pmo.qmd#list_specimen_meta_fields) - Count values of selected specimen meta fields
+        *  [count_targets_per_library_sample](getting_basic_info_from_pmo.qmd#count_targets_per_library_sample) - Count number of targets per sample
+        *  [count_library_samples_per_target](getting_basic_info_from_pmo.qmd#count_targets_per_library_sample) - Count number of samples per target
+*  **validation**
+    *  Function for validating PMOs against a schema to ensure it meets the standards of the file 
+        *  [validate_pmo](validating_pmos.qmd#pmotools-python-validate_pmo) - Validate a PMO file against a JSON Schema
+
+

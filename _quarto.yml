@@ -1,9 +1,23 @@
 project:
   type: website
-  output-dir: Portable_Microhaplotype_Object_Tools
+  output-dir: PMO_Docs
   render: 
     - index.qmd
-    # - Tools_Installation/pmotools-python_installation.qmd
+    - format/FormatOverview.qmd
+    - format/FormatExample.qmd
+    - format/FormatOverviewAdvanced.qmd
+    - format/DevelopmentOfFormat.qmd
+    - PMO_Ecosystem/Pmo_in_the_ecosystem.qmd
+    - Tools_Installation/pmotools-python_installation.qmd
+    - pmotools-python-usages/pmotools-python.qmd
+    - pmotools-python-usages/extracting_allele_tables.qmd
+    - pmotools-python-usages/subsetting_from_PMO.qmd
+    - pmotools-python-usages/handling_multiple_pmos.qmd
+    - pmotools-python-usages/validating_pmos.qmd
+    - pmotools-python-usages/getting_basic_info_from_pmo.qmd
+    - pmotools-python-usages/extracting_panel_info_from_pmo.qmd
+    - pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.ipynb
+    - pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.ipynb
     - References.qmd
 
 website:
@@ -12,18 +26,69 @@ website:
     left:
       - href: index.qmd
         text: Home
-      # - text: "Tools Installation"
-        # menu:
-          # - href: Tools_Installation/pmotools-python_installation.qmd
+      - text: Format Info
+        menu: 
+          - text: <span class='menuTitle'>Overview of Format</span>
+          - text: "------------"
+          - href: format/FormatOverview.qmd
+          - href: PMO_Ecosystem/Pmo_in_the_ecosystem.qmd
+          - text: <span class='menuTitle'>History of Format Development</span>
+          - text: "------------"
+          - href: format/DevelopmentOfFormat.qmd
+          - text: <span class='menuTitle'>Overview of Format For Bioinformaticians</span>
+          - text: "------------"
+          - href: format/FormatExample.qmd
+          - href: format/FormatOverviewAdvanced.qmd
+      - text: "Tools Installation"
+        menu:
+          - href: Tools_Installation/pmotools-python_installation.qmd
+      - text: "pmotools-python usages"
+        menu: 
+          - text: "------------"
+          - text: <span class='menuTitle'>Python interface</span>
+          - text: <span class='menuTitle'>Building a PMO</span>
+          - href: pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.ipynb
+            text: "Example of how to build a PMO"
+          - text: <span class='menuTitle'>Interacting with a PMO file</span>
+          - href: pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.ipynb
+          - text: <span class='menuTitle'>Command line interface</span>
+          - text: "------------"
+          - text: <span class='menuTitle'>pmotools-python</span>
+          - href: pmotools-python-usages/pmotools-python.qmd
+          - text: <span class='menuTitle'>Extracting out of PMO</span>
+          - href: pmotools-python-usages/extracting_allele_tables.qmd
+          - text: <span class='menuTitle'>Subset PMO</span>
+          - href: pmotools-python-usages/subsetting_from_PMO.qmd
+          - text: <span class='menuTitle'>Getting sub info from PMO</span>
+          - href: pmotools-python-usages/getting_basic_info_from_pmo.qmd
+          - href: pmotools-python-usages/extracting_panel_info_from_pmo.qmd
+          - text: <span class='menuTitle'>Handling Multiple PMOs</span>
+          - href: pmotools-python-usages/handling_multiple_pmos.qmd
+          - text: <span class='menuTitle'>Validating PMO files</span>
+          - href: pmotools-python-usages/validating_pmos.qmd
     right: 
       - text: "Resources"
         menu: 
           - text: "References"
             href: References.qmd
+      - icon: github
+        menu:
+          - text: <span class='menuTitle'>Documentation</span>
+          - text: Documentation Source Code
+            href:  https://github.com/PlasmoGenEpi/PMO_Docs
+          - text: Comment or Report an issue for Documentation  
+            href:  https://github.com/PlasmoGenEpi/PMO_Docs/issues
+          - text: "------------"
+          - text: <span class='menuTitle'>pmotools-python</span>
+          - text: pmotools-python Source Code
+            href:  https://github.com/PlasmoGenEpi/pmotools-python/tree/develop
+          - text: Comment or Report an issue for pmotools-python  
+            href:  https://github.com/PlasmoGenEpi/pmotools-python/issues
+
 
 format:
   html:
-    theme: journal
+    theme: cosmo
     css: styles.css
     fig-height: 10
     fig-width: 15
@@ -40,5 +105,6 @@ format:
     code-link: true
     bibliography: [references.bib]
     biblio-style: apalike
+    back-to-top-navigation: true
     
 editor: source

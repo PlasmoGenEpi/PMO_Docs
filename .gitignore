@@ -6,3 +6,14 @@
 Portable_Microhaplotype_Object_Tools
 
 /.quarto/
+env
+
+/env/
+pmotools-python-usages/example/*
+PMO_Docs
+
+*.ipynb_checkpoints*
+env_test
+format/updating_format_overiew_files
+
+**/*.quarto_ipynb

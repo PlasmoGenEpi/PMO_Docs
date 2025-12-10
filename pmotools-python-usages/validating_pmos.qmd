@@ -1,0 +1,72 @@
+---
+title: Validating PMOs pmotools-python
+---
+
+```{r setup, echo=F}
+source("../common.R")
+```
+
+
+# pmotools-python validate_pmo
+
+Can download multiple PMOs here 
+
+<https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz> 
+
+<https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz> 
+
+
+
+```{bash}
+pmotools-python validate_pmo --help
+```
+
+Use this validate a PMO file that follows the standard format, by default will use the schema that is within the pmotools-python directory 
+
+```{bash, eval = F}
+cd example 
+
+wget https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz
+
+
+pmotools-python validate_pmo --pmo moz2018_PMO.json.gz
+```
+
+
+```{bash, echo = F, eval = T}
+cd example 
+
+pmotools-python validate_pmo --pmo ../../format/moz2018_PMO.json.gz
+```
+
+Can also use specific jsonschema file 
+
+```{bash, eval = F}
+cd example 
+
+wget https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz
+wget https://plasmogenepi.github.io/PMO_Docs/format/portable_microhaplotype_object.schema.json
+
+
+pmotools-python validate_pmo --pmo moz2018_PMO.json.gz --jsonschema_file portable_microhaplotype_object.schema.json
+```
+
+
+```{bash, echo = F, eval = T}
+cd example 
+
+pmotools-python validate_pmo --pmo ../../format/moz2018_PMO.json.gz --jsonschema_file ../../format/portable_microhaplotype_object.schema.json
+```
+
+The python code for `validate_pmo` script is below
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-line-numbers: true
+#| filename: pmotools-python/src/pmotools/scripts/pmo_utils/validate_pmo.py
+#| file: ../pmotools-python/src/pmotools/scripts/pmo_utils/validate_pmo.py
+```
+
+

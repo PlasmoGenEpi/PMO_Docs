@@ -20,6 +20,8 @@ pmotools-python code can be found on github <https://github.com/PlasmoGenEpi/pmo
 pip install pmotools 
 ```
 
+To see an example of how to build, go to [dataset1_pmo_generation](../pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.ipynb)
+
 
 ### Development 
 

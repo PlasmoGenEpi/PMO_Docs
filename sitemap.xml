@@ -2,70 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://PlasmoGenEpi.github.io/PMO_Docs/References.html</loc>
-    <lastmod>2024-10-30T06:24:22.343Z</lastmod>
+    <lastmod>2024-12-05T00:31:33.923Z</lastmod>
   </url>
   <url>
     <loc>https://PlasmoGenEpi.github.io/PMO_Docs/pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.html</loc>
-    <lastmod>2025-03-26T18:55:56.188Z</lastmod>
+    <lastmod>2024-12-05T00:31:53.525Z</lastmod>
   </url>
   <url>
     <loc>https://PlasmoGenEpi.github.io/PMO_Docs/pmotools-python-usages/getting_basic_info_from_pmo.html</loc>
-    <lastmod>2025-11-05T17:48:03.021Z</lastmod>
+    <lastmod>2025-09-23T05:50:21.863Z</lastmod>
   </url>
   <url>
     <loc>https://PlasmoGenEpi.github.io/PMO_Docs/pmotools-python-usages/handling_multiple_pmos.html</loc>
-    <lastmod>2025-11-05T17:48:03.021Z</lastmod>
+    <lastmod>2025-09-23T05:50:21.864Z</lastmod>
   </url>
   <url>
     <loc>https://PlasmoGenEpi.github.io/PMO_Docs/pmotools-python-usages/extracting_allele_tables.html</loc>
-    <lastmod>2025-11-05T17:48:03.020Z</lastmod>
+    <lastmod>2025-12-03T04:34:50.685Z</lastmod>
   </url>
   <url>
     <loc>https://PlasmoGenEpi.github.io/PMO_Docs/Tools_Installation/pmotools-python_installation.html</loc>
-    <lastmod>2025-11-05T17:48:02.971Z</lastmod>
+    <lastmod>2025-12-10T18:47:12.183Z</lastmod>
   </url>
   <url>
     <loc>https://PlasmoGenEpi.github.io/PMO_Docs/format/DevelopmentOfFormat.html</loc>
-    <lastmod>2025-11-11T19:13:10.247Z</lastmod>
+    <lastmod>2025-12-03T04:34:50.615Z</lastmod>
   </url>
   <url>
     <loc>https://PlasmoGenEpi.github.io/PMO_Docs/format/FormatExample.html</loc>
-    <lastmod>2025-11-05T17:48:02.975Z</lastmod>
+    <lastmod>2025-09-23T05:50:21.815Z</lastmod>
   </url>
   <url>
     <loc>https://PlasmoGenEpi.github.io/PMO_Docs/index.html</loc>
-    <lastmod>2025-11-11T19:13:10.257Z</lastmod>
+    <lastmod>2025-12-03T04:34:50.661Z</lastmod>
   </url>
   <url>
     <loc>https://PlasmoGenEpi.github.io/PMO_Docs/format/FormatOverview.html</loc>
-    <lastmod>2025-11-11T19:13:10.248Z</lastmod>
+    <lastmod>2025-12-03T04:34:50.616Z</lastmod>
   </url>
   <url>
     <loc>https://PlasmoGenEpi.github.io/PMO_Docs/format/FormatOverviewAdvanced.html</loc>
-    <lastmod>2025-11-05T17:48:02.977Z</lastmod>
+    <lastmod>2025-12-03T04:34:50.616Z</lastmod>
   </url>
   <url>
     <loc>https://PlasmoGenEpi.github.io/PMO_Docs/PMO_Ecosystem/Pmo_in_the_ecosystem.html</loc>
-    <lastmod>2025-11-11T19:13:10.247Z</lastmod>
+    <lastmod>2025-12-03T04:34:50.615Z</lastmod>
   </url>
   <url>
     <loc>https://PlasmoGenEpi.github.io/PMO_Docs/pmotools-python-usages/pmotools-python.html</loc>
-    <lastmod>2025-11-11T19:13:10.258Z</lastmod>
+    <lastmod>2025-12-03T04:34:50.685Z</lastmod>
   </url>
   <url>
     <loc>https://PlasmoGenEpi.github.io/PMO_Docs/pmotools-python-usages/subsetting_from_PMO.html</loc>
-    <lastmod>2025-11-05T17:48:03.025Z</lastmod>
+    <lastmod>2025-09-23T05:50:21.864Z</lastmod>
   </url>
   <url>
     <loc>https://PlasmoGenEpi.github.io/PMO_Docs/pmotools-python-usages/validating_pmos.html</loc>
-    <lastmod>2025-11-05T17:48:03.025Z</lastmod>
+    <lastmod>2025-09-23T05:50:21.865Z</lastmod>
   </url>
   <url>
     <loc>https://PlasmoGenEpi.github.io/PMO_Docs/pmotools-python-usages/extracting_panel_info_from_pmo.html</loc>
-    <lastmod>2025-11-05T17:48:03.020Z</lastmod>
+    <lastmod>2025-12-03T04:34:50.685Z</lastmod>
   </url>
   <url>
-    <loc>https://PlasmoGenEpi.github.io/PMO_Docs/pmotools-python-usages-notebooks/build_pmo.html</loc>
-    <lastmod>2025-03-26T18:55:56.164Z</lastmod>
+    <loc>https://PlasmoGenEpi.github.io/PMO_Docs/pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.html</loc>
+    <lastmod>2025-12-10T19:06:56.661Z</lastmod>
   </url>
 </urlset>

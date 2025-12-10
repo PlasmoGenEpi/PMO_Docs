@@ -170,7 +170,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">pmotools-python usages</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python-usages">
-<li class="dropdown-header"><span class="menuTitle">Command line interface</span></li>
+<li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header"><span class="menuTitle">Python interface</span></li>
+        <li class="dropdown-header"><span class="menuTitle">Building a PMO</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.html">
+ <span class="dropdown-text">Example of how to build a PMO</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Interacting with a PMO file</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.html">
+ <span class="dropdown-text">Getting basic info out of a PMO</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Command line interface</span></li>
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header"><span class="menuTitle">pmotools-python</span></li>
         <li>
@@ -205,16 +217,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/validating_pmos.html">
  <span class="dropdown-text">Validating PMOs pmotools-python</span></a>
-  </li>  
-        <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header"><span class="menuTitle">Python interface</span></li>
-        <li>
-    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.html">
- <span class="dropdown-text">Getting basic info out of a PMO</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/build_pmo.html">
- <span class="dropdown-text">Creating a PMO File</span></a>
   </li>  
     </ul>
 </li>
@@ -309,7 +311,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
-<pre><code>pmotools-python v0.1.0 - A suite of tools for interacting with Portable Microhaplotype Object (PMO) file format
+<pre><code>pmotools-python v1.0.0 - A suite of tools for interacting with Portable Microhaplotype Object (PMO) file format
 
 Available functions organized by groups are
 convertors_to_json
@@ -324,9 +326,6 @@ extractors_from_pmo
     extract_pmo_with_select_library_sample_names - Extract experiment sample names from experiment_info table
     extract_pmo_with_select_targets - Extract specific targets
     extract_pmo_with_read_filter - Extract with a read filter
-    extract_allele_table - Extract allele tables for tools like dcifer or moire
-    extract_insert_of_panels - Extract inserts of panels from a PMO
-    extract_refseq_of_inserts_of_panels - Extract ref_seq of panel inserts from a PMO
 
 working_with_multiple_pmos
     combine_pmos - Combine multiple PMOs of the same panel
@@ -340,7 +339,19 @@ extract_basic_info_from_pmo
     count_library_samples_per_target - Count number of samples per target
 
 validation
-    validate_pmo - Validate a PMO file against a JSON Schema</code></pre>
+    validate_pmo - Validate a PMO file against a JSON Schema
+
+pmo_to_table
+    export_specimen_meta_table - export the specimen meta table from a PMO file
+    export_library_sample_meta_table - export the library_sample meta table from a PMO file
+    export_project_info_meta_table - export the project_info meta table from a PMO file
+    export_sequencing_info_meta_table - export the sequencing_info meta table from a PMO file
+    export_specimen_travel_meta_table - export the specimen travel_info meta table from a PMO file
+    export_target_info_meta_table - export the target info meta table from a PMO file
+    export_panel_info_meta_table - export the panel info meta table from a PMO file
+    extract_allele_table - Extract allele tables for tools like dcifer or moire
+    extract_insert_of_panels - Extract inserts of panels from a PMO
+    extract_refseq_of_inserts_of_panels - Extract ref_seq of panel inserts from a PMO</code></pre>
 </div>
 </div>
 <p>Getting files for examples</p>
@@ -602,28 +613,28 @@ Bangladesh  2012-06-17  1   5.145885864251531e-05   19433
 Bangladesh  2012-07-17  1   5.145885864251531e-05   19433
 Bangladesh  2012-07-23  1   5.145885864251531e-05   19433
 Traceback (most recent call last):
-  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/PMO_Docs/env/bin/pmotools-python", line 8, in &lt;module&gt;
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/bin/pmotools-python", line 7, in &lt;module&gt;
     sys.exit(main())
              ^^^^^^
-  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/PMO_Docs/pmotools-python/src/pmotools/cli.py", line 382, in main
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/pmotools-python/src/pmotools/cli.py", line 435, in main
     handler()
-  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/PMO_Docs/pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_specimen_meta.py", line 61, in count_specimen_meta
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_specimen_meta.py", line 61, in count_specimen_meta
     counts_df.to_csv(
-  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/PMO_Docs/env/lib/python3.12/site-packages/pandas/util/_decorators.py", line 333, in wrapper
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/util/_decorators.py", line 333, in wrapper
     return func(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/PMO_Docs/env/lib/python3.12/site-packages/pandas/core/generic.py", line 3967, in to_csv
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/core/generic.py", line 3967, in to_csv
     return DataFrameRenderer(formatter).to_csv(
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/format.py", line 1014, in to_csv
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/format.py", line 1014, in to_csv
     csv_formatter.save()
-  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 270, in save
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 270, in save
     self._save()
-  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 275, in _save
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 275, in _save
     self._save_body()
-  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 313, in _save_body
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 313, in _save_body
     self._save_chunk(start_i, end_i)
-  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 324, in _save_chunk
+  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 324, in _save_chunk
     libwriters.write_csv_rows(
   File "writers.pyx", line 73, in pandas._libs.writers.write_csv_rows
 BrokenPipeError: [Errno 32] Broken pipe
@@ -659,7 +670,7 @@ options:
 <span id="cb22-3"><a href="#cb22-3"></a><span class="im">import</span> sys</span>
 <span id="cb22-4"><a href="#cb22-4"></a></span>
 <span id="cb22-5"><a href="#cb22-5"></a></span>
-<span id="cb22-6"><a href="#cb22-6"></a><span class="im">from</span> pmotools.pmo_engine.pmo_processor <span class="im">import</span> PMOProcessor</span>
+<span id="cb22-6"><a href="#cb22-6"></a><span class="im">from</span> pmotools.pmo_engine.pmo_exporter <span class="im">import</span> PMOExporter</span>
 <span id="cb22-7"><a href="#cb22-7"></a><span class="im">from</span> pmotools.pmo_engine.pmo_reader <span class="im">import</span> PMOReader</span>
 <span id="cb22-8"><a href="#cb22-8"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
 <span id="cb22-9"><a href="#cb22-9"></a></span>
@@ -702,7 +713,7 @@ options:
 <span id="cb22-46"><a href="#cb22-46"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
 <span id="cb22-47"><a href="#cb22-47"></a></span>
 <span id="cb22-48"><a href="#cb22-48"></a>    <span class="co"># count fields</span></span>
-<span id="cb22-49"><a href="#cb22-49"></a>    info_df <span class="op">=</span> PMOProcessor.list_library_sample_names_per_specimen_name(pmo)</span>
+<span id="cb22-49"><a href="#cb22-49"></a>    info_df <span class="op">=</span> PMOExporter.list_library_sample_names_per_specimen_name(pmo)</span>
 <span id="cb22-50"><a href="#cb22-50"></a></span>
 <span id="cb22-51"><a href="#cb22-51"></a>    <span class="co"># output</span></span>
 <span id="cb22-52"><a href="#cb22-52"></a>    info_df.to_csv(</span>

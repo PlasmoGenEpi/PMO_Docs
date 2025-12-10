@@ -170,7 +170,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">pmotools-python usages</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python-usages">
-<li class="dropdown-header"><span class="menuTitle">Command line interface</span></li>
+<li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header"><span class="menuTitle">Python interface</span></li>
+        <li class="dropdown-header"><span class="menuTitle">Building a PMO</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.html">
+ <span class="dropdown-text">Example of how to build a PMO</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Interacting with a PMO file</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.html">
+ <span class="dropdown-text">Getting basic info out of a PMO</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Command line interface</span></li>
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header"><span class="menuTitle">pmotools-python</span></li>
         <li>
@@ -205,16 +217,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/validating_pmos.html">
  <span class="dropdown-text">Validating PMOs pmotools-python</span></a>
-  </li>  
-        <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header"><span class="menuTitle">Python interface</span></li>
-        <li>
-    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.html">
- <span class="dropdown-text">Getting basic info out of a PMO</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/build_pmo.html">
- <span class="dropdown-text">Creating a PMO File</span></a>
   </li>  
     </ul>
 </li>
@@ -373,7 +375,7 @@ options:
 <div class="cell" data-layout-align="center">
 <div class="code-with-filename">
 <details class="code-fold"><summary>Code</summary><div class="code-with-filename-file">
-<pre><strong>pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_allele_table.py</strong></pre>
+<pre><strong>pmotools-python/src/pmotools/scripts/pmo_to_tables/extract_allele_table.py</strong></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#!/usr/bin/env python3</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a></span>
@@ -385,149 +387,151 @@ options:
 <span id="cb3-8"><a href="#cb3-8"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
 <span id="cb3-9"><a href="#cb3-9"></a><span class="im">from</span> pmotools.pmo_engine.pmo_checker <span class="im">import</span> PMOChecker</span>
 <span id="cb3-10"><a href="#cb3-10"></a><span class="im">from</span> pmotools.pmo_engine.pmo_processor <span class="im">import</span> PMOProcessor</span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="im">from</span> pmotools <span class="im">import</span> __version__ <span class="im">as</span> __pmotools_version__</span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="im">from</span> pmotools.pmo_engine.pmo_exporter <span class="im">import</span> PMOExporter</span>
 <span id="cb3-12"><a href="#cb3-12"></a></span>
-<span id="cb3-13"><a href="#cb3-13"></a></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="kw">def</span> parse_args_extract_for_allele_table():</span>
-<span id="cb3-15"><a href="#cb3-15"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb3-16"><a href="#cb3-16"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
-<span id="cb3-17"><a href="#cb3-17"></a>    parser.add_argument(</span>
-<span id="cb3-18"><a href="#cb3-18"></a>        <span class="st">"--jsonschema"</span>,</span>
-<span id="cb3-19"><a href="#cb3-19"></a>        default<span class="op">=</span>os.path.join(</span>
-<span id="cb3-20"><a href="#cb3-20"></a>            os.path.dirname(</span>
-<span id="cb3-21"><a href="#cb3-21"></a>                os.path.dirname(os.path.dirname(os.path.abspath(<span class="va">__file__</span>)))</span>
-<span id="cb3-22"><a href="#cb3-22"></a>            ),</span>
-<span id="cb3-23"><a href="#cb3-23"></a>            <span class="st">"schemas/"</span>,</span>
-<span id="cb3-24"><a href="#cb3-24"></a>            <span class="ss">f"portable_microhaplotype_object_v</span><span class="sc">{</span>__pmotools_version__<span class="sc">}</span><span class="ss">.schema.json"</span>,</span>
-<span id="cb3-25"><a href="#cb3-25"></a>        ),</span>
-<span id="cb3-26"><a href="#cb3-26"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb3-27"><a href="#cb3-27"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb3-28"><a href="#cb3-28"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the jsonschema to check the PMO against"</span>,</span>
-<span id="cb3-29"><a href="#cb3-29"></a>    )</span>
-<span id="cb3-30"><a href="#cb3-30"></a></span>
-<span id="cb3-31"><a href="#cb3-31"></a>    parser.add_argument(</span>
-<span id="cb3-32"><a href="#cb3-32"></a>        <span class="st">"--delim"</span>,</span>
-<span id="cb3-33"><a href="#cb3-33"></a>        default<span class="op">=</span><span class="st">"tab"</span>,</span>
-<span id="cb3-34"><a href="#cb3-34"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb3-35"><a href="#cb3-35"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb3-36"><a href="#cb3-36"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the delimiter of the input text file, examples tab,comma"</span>,</span>
-<span id="cb3-37"><a href="#cb3-37"></a>    )</span>
-<span id="cb3-38"><a href="#cb3-38"></a>    parser.add_argument(</span>
-<span id="cb3-39"><a href="#cb3-39"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"Output allele table file name path"</span></span>
-<span id="cb3-40"><a href="#cb3-40"></a>    )</span>
-<span id="cb3-41"><a href="#cb3-41"></a>    parser.add_argument(</span>
-<span id="cb3-42"><a href="#cb3-42"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
-<span id="cb3-43"><a href="#cb3-43"></a>    )</span>
-<span id="cb3-44"><a href="#cb3-44"></a>    parser.add_argument(</span>
-<span id="cb3-45"><a href="#cb3-45"></a>        <span class="st">"--allele_freqs_output"</span>,</span>
-<span id="cb3-46"><a href="#cb3-46"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb3-47"><a href="#cb3-47"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"if also writing out allele frequencies, write to this file"</span>,</span>
-<span id="cb3-48"><a href="#cb3-48"></a>    )</span>
-<span id="cb3-49"><a href="#cb3-49"></a></span>
-<span id="cb3-50"><a href="#cb3-50"></a>    parser.add_argument(</span>
-<span id="cb3-51"><a href="#cb3-51"></a>        <span class="st">"--specimen_info_meta_fields"</span>,</span>
-<span id="cb3-52"><a href="#cb3-52"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb3-53"><a href="#cb3-53"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb3-54"><a href="#cb3-54"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"Meta Fields if any to include from the specimen table"</span>,</span>
-<span id="cb3-55"><a href="#cb3-55"></a>    )</span>
-<span id="cb3-56"><a href="#cb3-56"></a>    parser.add_argument(</span>
-<span id="cb3-57"><a href="#cb3-57"></a>        <span class="st">"--library_sample_info_meta_fields"</span>,</span>
-<span id="cb3-58"><a href="#cb3-58"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb3-59"><a href="#cb3-59"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb3-60"><a href="#cb3-60"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"Meta Fields if any to include from the library sample table"</span>,</span>
-<span id="cb3-61"><a href="#cb3-61"></a>    )</span>
-<span id="cb3-62"><a href="#cb3-62"></a>    parser.add_argument(</span>
-<span id="cb3-63"><a href="#cb3-63"></a>        <span class="st">"--microhap_fields"</span>,</span>
-<span id="cb3-64"><a href="#cb3-64"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb3-65"><a href="#cb3-65"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb3-66"><a href="#cb3-66"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"additional optional fields from the detected microhaplotype object to include"</span>,</span>
-<span id="cb3-67"><a href="#cb3-67"></a>    )</span>
-<span id="cb3-68"><a href="#cb3-68"></a>    parser.add_argument(</span>
-<span id="cb3-69"><a href="#cb3-69"></a>        <span class="st">"--representative_haps_fields"</span>,</span>
-<span id="cb3-70"><a href="#cb3-70"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb3-71"><a href="#cb3-71"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb3-72"><a href="#cb3-72"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"additional optional fields from the detected representative object to include"</span>,</span>
-<span id="cb3-73"><a href="#cb3-73"></a>    )</span>
-<span id="cb3-74"><a href="#cb3-74"></a>    parser.add_argument(</span>
-<span id="cb3-75"><a href="#cb3-75"></a>        <span class="st">"--default_base_col_names"</span>,</span>
-<span id="cb3-76"><a href="#cb3-76"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb3-77"><a href="#cb3-77"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb3-78"><a href="#cb3-78"></a>        default<span class="op">=</span><span class="st">"library_sample_name,target_name,mhap_id"</span>,</span>
-<span id="cb3-79"><a href="#cb3-79"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"default base column names, must be length 3"</span>,</span>
-<span id="cb3-80"><a href="#cb3-80"></a>    )</span>
-<span id="cb3-81"><a href="#cb3-81"></a></span>
-<span id="cb3-82"><a href="#cb3-82"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="im">from</span> pmotools <span class="im">import</span> __version__ <span class="im">as</span> __pmotools_version__</span>
+<span id="cb3-14"><a href="#cb3-14"></a></span>
+<span id="cb3-15"><a href="#cb3-15"></a></span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="kw">def</span> parse_args_extract_for_allele_table():</span>
+<span id="cb3-17"><a href="#cb3-17"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
+<span id="cb3-18"><a href="#cb3-18"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
+<span id="cb3-19"><a href="#cb3-19"></a>    parser.add_argument(</span>
+<span id="cb3-20"><a href="#cb3-20"></a>        <span class="st">"--jsonschema"</span>,</span>
+<span id="cb3-21"><a href="#cb3-21"></a>        default<span class="op">=</span>os.path.join(</span>
+<span id="cb3-22"><a href="#cb3-22"></a>            os.path.dirname(</span>
+<span id="cb3-23"><a href="#cb3-23"></a>                os.path.dirname(os.path.dirname(os.path.abspath(<span class="va">__file__</span>)))</span>
+<span id="cb3-24"><a href="#cb3-24"></a>            ),</span>
+<span id="cb3-25"><a href="#cb3-25"></a>            <span class="st">"schemas/"</span>,</span>
+<span id="cb3-26"><a href="#cb3-26"></a>            <span class="ss">f"portable_microhaplotype_object_v</span><span class="sc">{</span>__pmotools_version__<span class="sc">}</span><span class="ss">.schema.json"</span>,</span>
+<span id="cb3-27"><a href="#cb3-27"></a>        ),</span>
+<span id="cb3-28"><a href="#cb3-28"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb3-29"><a href="#cb3-29"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb3-30"><a href="#cb3-30"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the jsonschema to check the PMO against"</span>,</span>
+<span id="cb3-31"><a href="#cb3-31"></a>    )</span>
+<span id="cb3-32"><a href="#cb3-32"></a></span>
+<span id="cb3-33"><a href="#cb3-33"></a>    parser.add_argument(</span>
+<span id="cb3-34"><a href="#cb3-34"></a>        <span class="st">"--delim"</span>,</span>
+<span id="cb3-35"><a href="#cb3-35"></a>        default<span class="op">=</span><span class="st">"tab"</span>,</span>
+<span id="cb3-36"><a href="#cb3-36"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb3-37"><a href="#cb3-37"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb3-38"><a href="#cb3-38"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the delimiter of the input text file, examples tab,comma"</span>,</span>
+<span id="cb3-39"><a href="#cb3-39"></a>    )</span>
+<span id="cb3-40"><a href="#cb3-40"></a>    parser.add_argument(</span>
+<span id="cb3-41"><a href="#cb3-41"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"Output allele table file name path"</span></span>
+<span id="cb3-42"><a href="#cb3-42"></a>    )</span>
+<span id="cb3-43"><a href="#cb3-43"></a>    parser.add_argument(</span>
+<span id="cb3-44"><a href="#cb3-44"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb3-45"><a href="#cb3-45"></a>    )</span>
+<span id="cb3-46"><a href="#cb3-46"></a>    parser.add_argument(</span>
+<span id="cb3-47"><a href="#cb3-47"></a>        <span class="st">"--allele_freqs_output"</span>,</span>
+<span id="cb3-48"><a href="#cb3-48"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb3-49"><a href="#cb3-49"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"if also writing out allele frequencies, write to this file"</span>,</span>
+<span id="cb3-50"><a href="#cb3-50"></a>    )</span>
+<span id="cb3-51"><a href="#cb3-51"></a></span>
+<span id="cb3-52"><a href="#cb3-52"></a>    parser.add_argument(</span>
+<span id="cb3-53"><a href="#cb3-53"></a>        <span class="st">"--specimen_info_meta_fields"</span>,</span>
+<span id="cb3-54"><a href="#cb3-54"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb3-55"><a href="#cb3-55"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb3-56"><a href="#cb3-56"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"Meta Fields if any to include from the specimen table"</span>,</span>
+<span id="cb3-57"><a href="#cb3-57"></a>    )</span>
+<span id="cb3-58"><a href="#cb3-58"></a>    parser.add_argument(</span>
+<span id="cb3-59"><a href="#cb3-59"></a>        <span class="st">"--library_sample_info_meta_fields"</span>,</span>
+<span id="cb3-60"><a href="#cb3-60"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb3-61"><a href="#cb3-61"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb3-62"><a href="#cb3-62"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"Meta Fields if any to include from the library sample table"</span>,</span>
+<span id="cb3-63"><a href="#cb3-63"></a>    )</span>
+<span id="cb3-64"><a href="#cb3-64"></a>    parser.add_argument(</span>
+<span id="cb3-65"><a href="#cb3-65"></a>        <span class="st">"--microhap_fields"</span>,</span>
+<span id="cb3-66"><a href="#cb3-66"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb3-67"><a href="#cb3-67"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb3-68"><a href="#cb3-68"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"additional optional fields from the detected microhaplotype object to include"</span>,</span>
+<span id="cb3-69"><a href="#cb3-69"></a>    )</span>
+<span id="cb3-70"><a href="#cb3-70"></a>    parser.add_argument(</span>
+<span id="cb3-71"><a href="#cb3-71"></a>        <span class="st">"--representative_haps_fields"</span>,</span>
+<span id="cb3-72"><a href="#cb3-72"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb3-73"><a href="#cb3-73"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb3-74"><a href="#cb3-74"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"additional optional fields from the detected representative object to include"</span>,</span>
+<span id="cb3-75"><a href="#cb3-75"></a>    )</span>
+<span id="cb3-76"><a href="#cb3-76"></a>    parser.add_argument(</span>
+<span id="cb3-77"><a href="#cb3-77"></a>        <span class="st">"--default_base_col_names"</span>,</span>
+<span id="cb3-78"><a href="#cb3-78"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb3-79"><a href="#cb3-79"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb3-80"><a href="#cb3-80"></a>        default<span class="op">=</span><span class="st">"library_sample_name,target_name,mhap_id"</span>,</span>
+<span id="cb3-81"><a href="#cb3-81"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"default base column names, must be length 3"</span>,</span>
+<span id="cb3-82"><a href="#cb3-82"></a>    )</span>
 <span id="cb3-83"><a href="#cb3-83"></a></span>
-<span id="cb3-84"><a href="#cb3-84"></a></span>
-<span id="cb3-85"><a href="#cb3-85"></a><span class="kw">def</span> extract_for_allele_table():</span>
-<span id="cb3-86"><a href="#cb3-86"></a>    args <span class="op">=</span> parse_args_extract_for_allele_table()</span>
-<span id="cb3-87"><a href="#cb3-87"></a>    compressed_output <span class="op">=</span> (</span>
-<span id="cb3-88"><a href="#cb3-88"></a>        <span class="st">"."</span> <span class="kw">not</span> <span class="kw">in</span> args.output <span class="kw">and</span> args.<span class="bu">file</span>.endswith(<span class="st">".gz"</span>)</span>
-<span id="cb3-89"><a href="#cb3-89"></a>    ) <span class="kw">or</span> args.output.endswith(<span class="st">".gz"</span>)</span>
-<span id="cb3-90"><a href="#cb3-90"></a></span>
-<span id="cb3-91"><a href="#cb3-91"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(</span>
-<span id="cb3-92"><a href="#cb3-92"></a>        args.delim, gzip<span class="op">=</span>compressed_output</span>
-<span id="cb3-93"><a href="#cb3-93"></a>    )</span>
-<span id="cb3-94"><a href="#cb3-94"></a></span>
-<span id="cb3-95"><a href="#cb3-95"></a>    allele_per_sample_table_out_fnp <span class="op">=</span> (</span>
-<span id="cb3-96"><a href="#cb3-96"></a>        args.output</span>
-<span id="cb3-97"><a href="#cb3-97"></a>        <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output</span>
-<span id="cb3-98"><a href="#cb3-98"></a>        <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
-<span id="cb3-99"><a href="#cb3-99"></a>    )</span>
-<span id="cb3-100"><a href="#cb3-100"></a>    Utils.inputOutputFileCheck(</span>
-<span id="cb3-101"><a href="#cb3-101"></a>        args.<span class="bu">file</span>, allele_per_sample_table_out_fnp, args.overwrite</span>
-<span id="cb3-102"><a href="#cb3-102"></a>    )</span>
-<span id="cb3-103"><a href="#cb3-103"></a></span>
-<span id="cb3-104"><a href="#cb3-104"></a>    allele_freq_output <span class="op">=</span> <span class="st">""</span></span>
-<span id="cb3-105"><a href="#cb3-105"></a>    <span class="cf">if</span> args.allele_freqs_output <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb3-106"><a href="#cb3-106"></a>        allele_freq_output <span class="op">=</span> Utils.appendStrAsNeeded(</span>
-<span id="cb3-107"><a href="#cb3-107"></a>            args.allele_freqs_output, output_extension</span>
-<span id="cb3-108"><a href="#cb3-108"></a>        )</span>
-<span id="cb3-109"><a href="#cb3-109"></a>        Utils.inputOutputFileCheck(args.<span class="bu">file</span>, allele_freq_output, args.overwrite)</span>
-<span id="cb3-110"><a href="#cb3-110"></a></span>
-<span id="cb3-111"><a href="#cb3-111"></a>    pmodata <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
-<span id="cb3-112"><a href="#cb3-112"></a>    <span class="cf">with</span> <span class="bu">open</span>(args.jsonschema, <span class="st">"r"</span>) <span class="im">as</span> f:</span>
-<span id="cb3-113"><a href="#cb3-113"></a>        schema_dict <span class="op">=</span> json.load(f)</span>
-<span id="cb3-114"><a href="#cb3-114"></a>        checker <span class="op">=</span> PMOChecker(schema_dict)</span>
-<span id="cb3-115"><a href="#cb3-115"></a>        <span class="co"># make sure PMO is valid</span></span>
-<span id="cb3-116"><a href="#cb3-116"></a>        checker.validate_pmo_json(pmodata)</span>
-<span id="cb3-117"><a href="#cb3-117"></a></span>
-<span id="cb3-118"><a href="#cb3-118"></a>    <span class="cf">if</span> args.specimen_info_meta_fields <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb3-119"><a href="#cb3-119"></a>        args.specimen_info_meta_fields <span class="op">=</span> Utils.parse_delimited_input_or_file(</span>
-<span id="cb3-120"><a href="#cb3-120"></a>            args.specimen_info_meta_fields, <span class="st">","</span></span>
-<span id="cb3-121"><a href="#cb3-121"></a>        )</span>
-<span id="cb3-122"><a href="#cb3-122"></a>    <span class="cf">if</span> args.microhap_fields <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb3-123"><a href="#cb3-123"></a>        args.microhap_fields <span class="op">=</span> Utils.parse_delimited_input_or_file(</span>
-<span id="cb3-124"><a href="#cb3-124"></a>            args.microhap_fields, <span class="st">","</span></span>
-<span id="cb3-125"><a href="#cb3-125"></a>        )</span>
-<span id="cb3-126"><a href="#cb3-126"></a>    <span class="cf">if</span> args.library_sample_info_meta_fields <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb3-127"><a href="#cb3-127"></a>        args.library_sample_info_meta_fields <span class="op">=</span> Utils.parse_delimited_input_or_file(</span>
-<span id="cb3-128"><a href="#cb3-128"></a>            args.library_sample_info_meta_fields, <span class="st">","</span></span>
-<span id="cb3-129"><a href="#cb3-129"></a>        )</span>
-<span id="cb3-130"><a href="#cb3-130"></a>    <span class="cf">if</span> args.representative_haps_fields <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb3-131"><a href="#cb3-131"></a>        args.representative_haps_fields <span class="op">=</span> Utils.parse_delimited_input_or_file(</span>
-<span id="cb3-132"><a href="#cb3-132"></a>            args.representative_haps_fields, <span class="st">","</span></span>
-<span id="cb3-133"><a href="#cb3-133"></a>        )</span>
-<span id="cb3-134"><a href="#cb3-134"></a></span>
-<span id="cb3-135"><a href="#cb3-135"></a>    allele_table <span class="op">=</span> PMOProcessor.extract_alleles_per_sample_table(</span>
-<span id="cb3-136"><a href="#cb3-136"></a>        pmodata,</span>
-<span id="cb3-137"><a href="#cb3-137"></a>        additional_specimen_info_fields<span class="op">=</span>args.specimen_info_meta_fields,</span>
-<span id="cb3-138"><a href="#cb3-138"></a>        additional_library_sample_info_fields<span class="op">=</span>args.library_sample_info_meta_fields,</span>
-<span id="cb3-139"><a href="#cb3-139"></a>        additional_microhap_fields<span class="op">=</span>args.microhap_fields,</span>
-<span id="cb3-140"><a href="#cb3-140"></a>        additional_representative_info_fields<span class="op">=</span>args.representative_haps_fields,</span>
-<span id="cb3-141"><a href="#cb3-141"></a>        default_base_col_names<span class="op">=</span>args.default_base_col_names.split(<span class="st">","</span>),</span>
-<span id="cb3-142"><a href="#cb3-142"></a>    )</span>
-<span id="cb3-143"><a href="#cb3-143"></a>    <span class="cf">with</span> Utils.smart_open_write(allele_per_sample_table_out_fnp) <span class="im">as</span> f:</span>
-<span id="cb3-144"><a href="#cb3-144"></a>        allele_table.to_csv(f, sep<span class="op">=</span>output_delim, index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb3-145"><a href="#cb3-145"></a></span>
-<span id="cb3-146"><a href="#cb3-146"></a>    <span class="cf">if</span> args.allele_freqs_output <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb3-147"><a href="#cb3-147"></a>        allele_freqs <span class="op">=</span> PMOProcessor.extract_allele_counts_freq_from_pmo(pmodata)</span>
-<span id="cb3-148"><a href="#cb3-148"></a>        <span class="cf">with</span> Utils.smart_open_write(allele_freq_output) <span class="im">as</span> f:</span>
-<span id="cb3-149"><a href="#cb3-149"></a>            allele_freqs.to_csv(f, sep<span class="op">=</span>output_delim, index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb3-150"><a href="#cb3-150"></a></span>
-<span id="cb3-151"><a href="#cb3-151"></a></span>
-<span id="cb3-152"><a href="#cb3-152"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb3-153"><a href="#cb3-153"></a>    extract_for_allele_table()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-84"><a href="#cb3-84"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb3-85"><a href="#cb3-85"></a></span>
+<span id="cb3-86"><a href="#cb3-86"></a></span>
+<span id="cb3-87"><a href="#cb3-87"></a><span class="kw">def</span> extract_for_allele_table():</span>
+<span id="cb3-88"><a href="#cb3-88"></a>    args <span class="op">=</span> parse_args_extract_for_allele_table()</span>
+<span id="cb3-89"><a href="#cb3-89"></a>    compressed_output <span class="op">=</span> (</span>
+<span id="cb3-90"><a href="#cb3-90"></a>        <span class="st">"."</span> <span class="kw">not</span> <span class="kw">in</span> args.output <span class="kw">and</span> args.<span class="bu">file</span>.endswith(<span class="st">".gz"</span>)</span>
+<span id="cb3-91"><a href="#cb3-91"></a>    ) <span class="kw">or</span> args.output.endswith(<span class="st">".gz"</span>)</span>
+<span id="cb3-92"><a href="#cb3-92"></a></span>
+<span id="cb3-93"><a href="#cb3-93"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(</span>
+<span id="cb3-94"><a href="#cb3-94"></a>        args.delim, gzip<span class="op">=</span>compressed_output</span>
+<span id="cb3-95"><a href="#cb3-95"></a>    )</span>
+<span id="cb3-96"><a href="#cb3-96"></a></span>
+<span id="cb3-97"><a href="#cb3-97"></a>    allele_per_sample_table_out_fnp <span class="op">=</span> (</span>
+<span id="cb3-98"><a href="#cb3-98"></a>        args.output</span>
+<span id="cb3-99"><a href="#cb3-99"></a>        <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output</span>
+<span id="cb3-100"><a href="#cb3-100"></a>        <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
+<span id="cb3-101"><a href="#cb3-101"></a>    )</span>
+<span id="cb3-102"><a href="#cb3-102"></a>    Utils.inputOutputFileCheck(</span>
+<span id="cb3-103"><a href="#cb3-103"></a>        args.<span class="bu">file</span>, allele_per_sample_table_out_fnp, args.overwrite</span>
+<span id="cb3-104"><a href="#cb3-104"></a>    )</span>
+<span id="cb3-105"><a href="#cb3-105"></a></span>
+<span id="cb3-106"><a href="#cb3-106"></a>    allele_freq_output <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb3-107"><a href="#cb3-107"></a>    <span class="cf">if</span> args.allele_freqs_output <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb3-108"><a href="#cb3-108"></a>        allele_freq_output <span class="op">=</span> Utils.appendStrAsNeeded(</span>
+<span id="cb3-109"><a href="#cb3-109"></a>            args.allele_freqs_output, output_extension</span>
+<span id="cb3-110"><a href="#cb3-110"></a>        )</span>
+<span id="cb3-111"><a href="#cb3-111"></a>        Utils.inputOutputFileCheck(args.<span class="bu">file</span>, allele_freq_output, args.overwrite)</span>
+<span id="cb3-112"><a href="#cb3-112"></a></span>
+<span id="cb3-113"><a href="#cb3-113"></a>    pmodata <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb3-114"><a href="#cb3-114"></a>    <span class="cf">with</span> <span class="bu">open</span>(args.jsonschema, <span class="st">"r"</span>) <span class="im">as</span> f:</span>
+<span id="cb3-115"><a href="#cb3-115"></a>        schema_dict <span class="op">=</span> json.load(f)</span>
+<span id="cb3-116"><a href="#cb3-116"></a>        checker <span class="op">=</span> PMOChecker(schema_dict)</span>
+<span id="cb3-117"><a href="#cb3-117"></a>        <span class="co"># make sure PMO is valid</span></span>
+<span id="cb3-118"><a href="#cb3-118"></a>        checker.validate_pmo_json(pmodata)</span>
+<span id="cb3-119"><a href="#cb3-119"></a></span>
+<span id="cb3-120"><a href="#cb3-120"></a>    <span class="cf">if</span> args.specimen_info_meta_fields <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb3-121"><a href="#cb3-121"></a>        args.specimen_info_meta_fields <span class="op">=</span> Utils.parse_delimited_input_or_file(</span>
+<span id="cb3-122"><a href="#cb3-122"></a>            args.specimen_info_meta_fields, <span class="st">","</span></span>
+<span id="cb3-123"><a href="#cb3-123"></a>        )</span>
+<span id="cb3-124"><a href="#cb3-124"></a>    <span class="cf">if</span> args.microhap_fields <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb3-125"><a href="#cb3-125"></a>        args.microhap_fields <span class="op">=</span> Utils.parse_delimited_input_or_file(</span>
+<span id="cb3-126"><a href="#cb3-126"></a>            args.microhap_fields, <span class="st">","</span></span>
+<span id="cb3-127"><a href="#cb3-127"></a>        )</span>
+<span id="cb3-128"><a href="#cb3-128"></a>    <span class="cf">if</span> args.library_sample_info_meta_fields <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb3-129"><a href="#cb3-129"></a>        args.library_sample_info_meta_fields <span class="op">=</span> Utils.parse_delimited_input_or_file(</span>
+<span id="cb3-130"><a href="#cb3-130"></a>            args.library_sample_info_meta_fields, <span class="st">","</span></span>
+<span id="cb3-131"><a href="#cb3-131"></a>        )</span>
+<span id="cb3-132"><a href="#cb3-132"></a>    <span class="cf">if</span> args.representative_haps_fields <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb3-133"><a href="#cb3-133"></a>        args.representative_haps_fields <span class="op">=</span> Utils.parse_delimited_input_or_file(</span>
+<span id="cb3-134"><a href="#cb3-134"></a>            args.representative_haps_fields, <span class="st">","</span></span>
+<span id="cb3-135"><a href="#cb3-135"></a>        )</span>
+<span id="cb3-136"><a href="#cb3-136"></a></span>
+<span id="cb3-137"><a href="#cb3-137"></a>    allele_table <span class="op">=</span> PMOExporter.extract_alleles_per_sample_table(</span>
+<span id="cb3-138"><a href="#cb3-138"></a>        pmodata,</span>
+<span id="cb3-139"><a href="#cb3-139"></a>        additional_specimen_info_fields<span class="op">=</span>args.specimen_info_meta_fields,</span>
+<span id="cb3-140"><a href="#cb3-140"></a>        additional_library_sample_info_fields<span class="op">=</span>args.library_sample_info_meta_fields,</span>
+<span id="cb3-141"><a href="#cb3-141"></a>        additional_microhap_fields<span class="op">=</span>args.microhap_fields,</span>
+<span id="cb3-142"><a href="#cb3-142"></a>        additional_representative_info_fields<span class="op">=</span>args.representative_haps_fields,</span>
+<span id="cb3-143"><a href="#cb3-143"></a>        default_base_col_names<span class="op">=</span>args.default_base_col_names.split(<span class="st">","</span>),</span>
+<span id="cb3-144"><a href="#cb3-144"></a>    )</span>
+<span id="cb3-145"><a href="#cb3-145"></a>    <span class="cf">with</span> Utils.smart_open_write(allele_per_sample_table_out_fnp) <span class="im">as</span> f:</span>
+<span id="cb3-146"><a href="#cb3-146"></a>        allele_table.to_csv(f, sep<span class="op">=</span>output_delim, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb3-147"><a href="#cb3-147"></a></span>
+<span id="cb3-148"><a href="#cb3-148"></a>    <span class="cf">if</span> args.allele_freqs_output <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb3-149"><a href="#cb3-149"></a>        allele_freqs <span class="op">=</span> PMOProcessor.extract_allele_counts_freq_from_pmo(pmodata)</span>
+<span id="cb3-150"><a href="#cb3-150"></a>        <span class="cf">with</span> Utils.smart_open_write(allele_freq_output) <span class="im">as</span> f:</span>
+<span id="cb3-151"><a href="#cb3-151"></a>            allele_freqs.to_csv(f, sep<span class="op">=</span>output_delim, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb3-152"><a href="#cb3-152"></a></span>
+<span id="cb3-153"><a href="#cb3-153"></a></span>
+<span id="cb3-154"><a href="#cb3-154"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb3-155"><a href="#cb3-155"></a>    extract_for_allele_table()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -1149,8 +1153,8 @@ Mozambique2018-SeekDeep 8025875168  t85 0   NA  NA  AACATTTTTTTAACATCTTTACCTTTTT
 <span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
 <span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
 <span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_allele_table.py</span></span>
-<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/src/pmotools/scripts/extractors_from_pmo/extract_allele_table.py</span></span>
+<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/src/pmotools/scripts/pmo_to_tables/extract_allele_table.py</span></span>
+<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/src/pmotools/scripts/pmo_to_tables/extract_allele_table.py</span></span>
 <span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a></span>

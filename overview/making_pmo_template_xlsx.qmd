@@ -1,0 +1,277 @@
+---
+title: "making_pmo_template_xlsx"
+format: html
+---
+
+```{r}
+# install.packages("openxlsx")
+library(openxlsx)
+library(rjson)
+library(tidyr)
+library(dplyr)
+library(readr)
+```
+
+
+Read in format 
+```{r}
+json = rjson::fromJSON(file = "../format/portable_microhaplotype_object.schema.json")
+
+```
+
+```{r}
+# Create header styles 
+style_required <- createStyle(
+  textDecoration = "bold",
+  fgFill         = "#C6EFCE",   # green highlight
+  fontColour     = "#276221",   # dark green text
+  border         = "Bottom",
+  halign         = "center"
+)
+
+style_optional <- createStyle(
+  textDecoration = "bold",
+  fgFill         = "#FCE4D6",   # orange highlight
+  fontColour     = "#833C00",   # dark orange text
+  border         = "Bottom",
+  halign         = "center"
+)
+```
+
+
+```{r}
+
+add_sheet<-function(json_schema_for_class, workbook, sheet_name, excluded_properties = c("")){
+  # --- Empty data frame ---
+  current_all_fields = names(json_schema_for_class$properties)
+  current_all_fields = current_all_fields[!(current_all_fields %in% excluded_properties)]
+  current_required_fields = json_schema_for_class$required
+  current_required_fields = current_required_fields[!(current_required_fields %in% excluded_properties)]
+  current_optional_fields = current_all_fields[!(current_all_fields %in% current_required_fields)]
+  
+  # --- Build ordered column names: required first, then optional ---
+  current_ordered_cols <- c(current_required_fields, current_optional_fields)
+  
+  # --- Create empty data frame with all columns as character type ---
+  current_df_template <- as.data.frame(
+    setNames(
+      rep(list(character(0)), length(current_ordered_cols)),
+      current_ordered_cols
+    )
+  )
+  
+  # add to the workbook 
+  addWorksheet(workbook, sheet_name)
+  writeData(workbook, sheet_name, current_df_template, startRow = 1, startCol = 1)
+  
+  # Apply header styles per column 
+  for (col_name in current_required_fields) {
+    col_idx <- which(names(current_df_template) == col_name)
+    addStyle(workbook, sheet_name, style = style_required, rows = 1, cols = col_idx)
+  }
+  
+  for (col_name in current_optional_fields) {
+    col_idx <- which(names(current_df_template) == col_name)
+    addStyle(workbook, sheet_name, style = style_optional, rows = 1, cols = col_idx)
+  }
+  
+  setColWidths(workbook, sheet_name, cols = 1:ncol(current_df_template), widths = "auto")
+  
+  # Add hover comments to headers
+  col_comments <- list()
+  for(col in current_all_fields){
+    col_comments[[col]] = json_schema_for_class$properties[[col]]$description
+  }
+  
+  for (col_name in names(col_comments)) {
+    col_idx <- which(names(current_df_template) == col_name)
+    writeComment(
+      workbook, sheet_name,
+      col     = col_idx,
+      row     = 1,
+      comment = createComment(
+        comment    = col_comments[[col_name]],
+        author     = "",          # leave blank or set e.g. "Data Team"
+        # width      = 3,           # comment box width  (in cells)
+        # height     = 2,           # comment box height (in cells)
+        visible    = FALSE        # FALSE = only shows on hover
+      )
+    )
+  }
+}
+```
+
+```{r}
+wb <- createWorkbook()
+add_sheet(json$`$defs`$ProjectInfo, wb, "ProjectInfo")
+add_sheet(json$`$defs`$SpecimenInfo, wb, "SpecimenInfo")
+add_sheet(json$`$defs`$TravelInfo, wb, "SpecimenInfo-TravelInfo")
+add_sheet(json$`$defs`$ParasiteDensity, wb, "SpecimenInfo-ParasiteDensity")
+add_sheet(json$`$defs`$PlateInfo, wb, "SpecimenInfo-PlateInfo")
+add_sheet(json$`$defs`$SequencingInfo, wb, "SequencingInfo")
+add_sheet(json$`$defs`$LibrarySampleInfo, wb, "LibrarySampleInfo", c("sequencing_info_id", "specimen_id", "panel_id"))
+add_sheet(json$`$defs`$GenomeInfo, wb, "GenomeInfo")
+add_sheet(json$`$defs`$TargetInfo, wb, "TargetInfo")
+add_sheet(json$`$defs`$BioMethod, wb, "BioMethod")
+add_sheet(json$`$defs`$BioinformaticsRunInfo, wb, "BioinformaticsRunInfo", c("bioinformatics_methods_id"))
+add_sheet(json$`$defs`$RepresentativeMicrohaplotype, wb, "RepresentativeMicrohaplotype")
+saveWorkbook(wb, "PMO_template.xlsx", overwrite = TRUE)
+```
+
+
+```{r, eval = F}
+wb <- createWorkbook()
+
+
+# --- Empty project data frame ---
+project_info_all_fields = names(json$`$defs`$ProjectInfo$properties)
+project_info_required_fields = json$`$defs`$ProjectInfo$required
+project_info_optional_fields = project_info_all_fields[!(project_info_all_fields %in% project_info_required_fields)]
+
+# --- Build ordered column names: required first, then optional ---
+project_info_ordered_cols <- c(project_info_required_fields, project_info_optional_fields)
+
+# --- Create empty data frame with all columns as character type ---
+project_info_df_template <- as.data.frame(
+  setNames(
+    rep(list(character(0)), length(project_info_ordered_cols)),
+    project_info_ordered_cols
+  )
+)
+
+# add to the WB 
+addWorksheet(wb, "ProjectInfo")
+writeData(wb, "ProjectInfo", project_info_df_template, startRow = 1, startCol = 1)
+
+# Apply header styles per column 
+for (col_name in project_info_required_fields) {
+  col_idx <- which(names(project_info_df_template) == col_name)
+  addStyle(wb, "ProjectInfo", style = style_required, rows = 1, cols = col_idx)
+}
+
+for (col_name in project_info_optional_fields) {
+  col_idx <- which(names(project_info_df_template) == col_name)
+  addStyle(wb, "ProjectInfo", style = style_optional, rows = 1, cols = col_idx)
+}
+
+setColWidths(wb, "ProjectInfo", cols = 1:ncol(project_info_df_template), widths = "auto")
+
+# Add hover comments to headers
+col_comments <- list()
+for(col in project_info_all_fields){
+  col_comments[[col]] = json$`$defs`$ProjectInfo$properties[[col]]$description
+}
+
+for (col_name in names(col_comments)) {
+  col_idx <- which(names(project_info_df_template) == col_name)
+  writeComment(
+    wb, "ProjectInfo",
+    col     = col_idx,
+    row     = 1,
+    comment = createComment(
+      comment    = col_comments[[col_name]],
+      author     = "",          # leave blank or set e.g. "Data Team"
+      # width      = 3,           # comment box width  (in cells)
+      # height     = 2,           # comment box height (in cells)
+      visible    = FALSE        # FALSE = only shows on hover
+    )
+  )
+}
+
+
+saveWorkbook(wb, "template.xlsx", overwrite = TRUE)
+```
+
+
+
+```{r, eval = F}
+# install.packages("openxlsx")
+library(openxlsx)
+
+# --- Empty template data frame ---
+df_template <- data.frame(
+  host_subject_id   = integer(0),
+  collection_date   = as.Date(character(0)),
+  sample_type       = character(0),
+  amount            = numeric(0),
+  notes             = character(0)
+)
+
+wb <- createWorkbook()
+addWorksheet(wb, "Template")
+writeData(wb, "Template", df_template, startRow = 1, startCol = 1)
+
+# ── 1. Define which columns are required vs optional ──────────────────────────
+required_cols <- c("host_subject_id", "collection_date", "sample_type")
+optional_cols <- c("amount", "notes")
+
+# ── 2. Create header styles ───────────────────────────────────────────────────
+style_required <- createStyle(
+  textDecoration = "bold",
+  fgFill         = "#C6EFCE",   # green highlight
+  fontColour     = "#276221",   # dark green text
+  border         = "Bottom",
+  halign         = "center"
+)
+
+style_optional <- createStyle(
+  textDecoration = "bold",
+  fgFill         = "#FCE4D6",   # orange highlight
+  fontColour     = "#833C00",   # dark orange text
+  border         = "Bottom",
+  halign         = "center"
+)
+
+# ── 3. Apply header styles per column ────────────────────────────────────────
+for (col_name in required_cols) {
+  col_idx <- which(names(df_template) == col_name)
+  addStyle(wb, "Template", style = style_required, rows = 1, cols = col_idx)
+}
+
+for (col_name in optional_cols) {
+  col_idx <- which(names(df_template) == col_name)
+  addStyle(wb, "Template", style = style_optional, rows = 1, cols = col_idx)
+}
+
+# ── 4. Apply data row formats ─────────────────────────────────────────────────
+col_formats <- list(
+  collection_date = "YYYY-MM-DD",
+  amount          = "$#,##0.00",
+  host_subject_id = "0"
+)
+
+for (col_name in names(col_formats)) {
+  col_idx <- which(names(df_template) == col_name)
+  style   <- createStyle(numFmt = col_formats[[col_name]])
+  addStyle(wb, "Template", style = style, rows = 2:1000, cols = col_idx, gridExpand = TRUE)
+}
+
+# ── 5. Add hover comments to headers ─────────────────────────────────────────
+col_comments <- list(
+  host_subject_id = "An identifier for the individual/person/patient a specimen was collected from.",
+  collection_date = "The date the specimen was collected. Format: YYYY-MM-DD.",
+  sample_type     = "The type of biological sample collected (e.g. blood, saliva, swab).",
+  amount          = "Optional. The quantity of sample collected in millilitres (mL).",
+  notes           = "Optional. Any additional observations or remarks about the sample."
+)
+
+for (col_name in names(col_comments)) {
+  col_idx <- which(names(df_template) == col_name)
+  writeComment(
+    wb, "Template",
+    col     = col_idx,
+    row     = 1,
+    comment = createComment(
+      comment    = col_comments[[col_name]],
+      author     = "",          # leave blank or set e.g. "Data Team"
+      width      = 3,           # comment box width  (in cells)
+      height     = 2,           # comment box height (in cells)
+      visible    = FALSE        # FALSE = only shows on hover
+    )
+  )
+}
+
+saveWorkbook(wb, "example_template.xlsx", overwrite = TRUE)
+```
+
+

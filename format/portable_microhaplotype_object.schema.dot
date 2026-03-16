@@ -205,10 +205,9 @@ digraph PMO {
 			<tr> <td bgcolor="#FFCFE2" port="PlateInfo"><b>PlateInfo</b> </td> <td></td> <td></td> </tr>
 			<tr> <td><b>type</b></td><td><b>list<br/>or<br/>single value</b></td><td ><b>fields</b></td> </tr>
 			<tr> <td></td><td></td><td ><b>required</b></td> </tr>
-			<tr> <td></td><td></td> <td><b>optional</b></td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="plate_col" bgcolor="#00DCB5">plate_col</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="plate_name" bgcolor="#00DCB5">plate_name</td> </tr>
-			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="plate_row" bgcolor="#00DCB5">plate_row</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="plate_name" bgcolor="#F60239">plate_name</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="plate_row" bgcolor="#F60239">plate_row</td> </tr>
+			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="plate_col" bgcolor="#F60239">plate_col</td> </tr>
 		</table>>
 		shape=plain		
 	]
@@ -438,7 +437,7 @@ digraph PMO {
 			<tr> <td bgcolor="#EF0096">boolean</td><td bgcolor="#7CFFFA">single</td> <td port="has_travel_out_six_month" bgcolor="#00DCB5">has_travel_out_six_month</td> </tr>
 			<tr> <td bgcolor="#00E307">number</td><td bgcolor="#7CFFFA">single</td> <td port="host_age" bgcolor="#00DCB5">host_age</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="host_sex" bgcolor="#00DCB5">host_sex</td> </tr>
-			<tr> <td bgcolor="#009FFA">integer</td><td bgcolor="#7CFFFA">single</td> <td port="host_subject_id" bgcolor="#00DCB5">host_subject_id</td> </tr>
+			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="host_subject_name" bgcolor="#00DCB5">host_subject_name</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="lat_lon" bgcolor="#00DCB5">lat_lon</td> </tr>
 			<tr> <td bgcolor="#FFCFE2">ParasiteDensity</td><td bgcolor="#FF71FD">list</td> <td port="parasite_density_info" bgcolor="#00DCB5">parasite_density_info</td> </tr>
 			<tr> <td bgcolor="#FFDC3D">string</td><td bgcolor="#7CFFFA">single</td> <td port="specimen_accession" bgcolor="#00DCB5">specimen_accession</td> </tr>

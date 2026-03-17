@@ -1,0 +1,346 @@
+
+
+```{r}
+source("pmo_r6.R")
+
+tictoc::tic()
+pmo <- PortableMicrohaplotypeObject$from_file("moz2018_PMO.json.gz")
+tictoc::toc()
+print(lobstr::obj_size(pmo))
+
+pmo$to_file("test.json.gz")
+
+```
+
+
+```{r}
+source("pmo_r6.R")
+
+tictoc::tic(msg = "big_read")
+big_pmo <- PortableMicrohaplotypeObject$from_file("PathWeaverHeome1_PMO.json.gz")
+tictoc::toc()
+print(lobstr::obj_size(big_pmo))
+tictoc::tic(msg = "big_write")
+big_pmo$to_file("big_test.json.gz")
+tictoc::toc()
+```
+
+
+```{r}
+specimen_info_to_tibble <- function(pmo_data, meta_fields) {
+  stopifnot(is.list(pmo_data$specimen_info))
+  stopifnot(is.character(meta_fields))
+
+  get_field <- function(x, field) {
+    val <- tryCatch(x[[field]], error = function(e) NULL)
+    if (is.null(val) || length(val) == 0) {
+      return(NA)
+    }
+    if (length(val) > 1) {
+      return(paste(val, collapse = ";"))
+    }
+    val
+  }
+  rows <- lapply(pmo_data$specimen_info, function(x) {
+    out <- list(specimen_name = get_field(x, "specimen_name"))
+    for (fld in meta_fields) {
+      out[[fld]] <- get_field(x, fld)
+    }
+    tibble::as_tibble(out)
+  })
+  dplyr::bind_rows(rows)
+}
+library_sample_name_to_specimen_name_key <- function (pmo_data, add_host_subject_name = FALSE){
+  # first pass: count rows
+  n_rows = length(pmo_data$library_sample_info)
+  library_sample_name <- character(n_rows)
+  specimen_name <- character(n_rows)
+  
+  if(add_host_subject_name){
+    host_subject_name <- character(n_rows)
+    i <- 1L
+    for(lib_samp in pmo_data$library_sample_info){
+      library_sample_name[i] = lib_samp$library_sample_name
+      specimen_name[i] = pmo_data$specimen_info[[lib_samp$specimen_id]]$specimen_name
+      host_subject_name[i] = ifelse(is.null(pmo_data$specimen_info[[lib_samp$specimen_id]]$host_subject_name), NA_character_, pmo_data$specimen_info[[lib_samp$specimen_id]]$host_subject_name)
+      i = i + 1
+    }
+    out_tib = tibble(
+      library_sample_name = library_sample_name, 
+      specimen_name = specimen_name, 
+      host_subject_name = host_subject_name
+    )
+  } else {
+    i <- 1L
+    for(lib_samp in pmo_data$library_sample_info){
+      library_sample_name[i] = lib_samp$library_sample_name
+      specimen_name[i] = pmo_data$specimen_info[[lib_samp$specimen_id]]$specimen_name
+      i = i + 1
+    }
+    out_tib = tibble(
+      library_sample_name = library_sample_name, 
+      specimen_name = specimen_name
+      )
+  }
+  return(out_tib)
+}
+generate_allele_table <- function(pmo_data){
+  # first pass: count rows
+  n_rows <- 0L
+  for (lib_samp in pmo_data$detected_microhaplotypes[[1]]$library_samples) {
+    for (target in lib_samp$target_results) {
+      n_rows <- n_rows + length(target$mhaps)
+    }
+  }
+  
+  # preallocate
+  library_sample_name <- character(n_rows)
+  target_name <- character(n_rows)
+  seq <- character(n_rows)
+  reads <- numeric(n_rows)
+  
+  # second pass: fill
+  i <- 1L
+  for (lib_samp in pmo_data$detected_microhaplotypes[[1]]$library_samples) {
+    lib_name <- pmo_data$library_sample_info[[lib_samp$library_sample_id]]$library_sample_name
+  
+    for (target in lib_samp$target_results) {
+      rep_target <- pmo_data$representative_microhaplotypes$targets[[target$mhaps_target_id]]
+      tgt_name <- pmo_data$target_info[[rep_target$target_id]]$target_name
+  
+      for (hap in target$mhaps) {
+        library_sample_name[[i]] <- lib_name
+        target_name[[i]] <- tgt_name
+        seq[[i]] <- rep_target$microhaplotypes[[hap$mhap_id]]$seq
+        reads[[i]] <- hap$reads
+        i <- i + 1L
+      }
+    }
+  }
+  mhaps_table <- tibble(
+    library_sample_name = library_sample_name,
+    target_name = target_name,
+    seq = seq,
+    reads = reads
+  )
+  return(mhaps_table)
+}
+
+
+generate_pmo_header <- function(version = "v1.0.0"){
+  PmoHeader$new(pmo_version = version, 
+                creation_date = as.character(today()))
+}
+```
+
+
+```{r}
+library(tibble)
+specimen_tbl <- specimen_info_to_tibble(pmo, c("collection_country", "collection_date"))
+print(specimen_tbl)
+```
+
+```{r}
+tictoc::tic()
+allele_data = generate_allele_table(pmo) %>% 
+  left_join(library_sample_name_to_specimen_name(pmo)) %>% 
+  left_join(specimen_tbl)
+tictoc::toc()
+
+```
+
+
+
+panel_info, specimen_info, allele_data 
+
+```{r}
+# source("pmo.txt")
+primers = readr::read_tsv("/Users/nick/Downloads/amp_clustering/primerInfo/primers.tsv")
+allele_data = readr::read_tsv("/Users/nick/Downloads/amp_clustering/finalResults/allele_data.tsv.gz")
+
+primers_unique <- primers %>%
+  distinct(target, Fwd_primer, Rev_primer) %>%
+  arrange(target)
+
+target_names <- primers_unique$target
+
+target_infos <- unname(Map(
+  function(tar, fwd, rev) {
+    TargetInfo$new(
+      target_name = tar,
+      forward_primer = PrimerInfo$new(seq = fwd),
+      reverse_primer = PrimerInfo$new(seq = rev)
+    )
+  },
+  primers_unique$target,
+  primers_unique$Fwd_primer,
+  primers_unique$Rev_primer
+))
+target_name_idx <- setNames(seq_along(target_names), target_names)
+
+
+#-----------------------------
+# 2. Restrict allele_data to targets present in TargetInfo
+#-----------------------------
+allele_data_filt <- allele_data %>%
+  filter(target_name %in% target_names)
+
+#-----------------------------
+# 3. Build representative microhaplotypes
+#-----------------------------
+allele_data_rep <- allele_data_filt %>%
+  count(target_name, seq, name = "n") %>%
+  arrange(target_name, desc(n))
+
+seqs_by_target <- split(allele_data_rep$seq, allele_data_rep$target_name)
+
+rep_targets <- unname(Map(
+  function(tar_name, seqs) {
+    RepresentativeMicrohaplotypesForTarget$new(
+      target_id = unname(target_name_idx[[tar_name]]),
+      microhaplotypes = lapply(
+        seqs,
+        function(s) RepresentativeMicrohaplotype$new(seq = s)
+      )
+    )
+  },
+  names(seqs_by_target),
+  unname(seqs_by_target)
+))
+
+rep_micros <- RepresentativeMicrohaplotypes$new(targets = rep_targets)
+
+tar_name_to_rep_mhap_tar_id = integer(length(rep_micros$targets))
+names(tar_name_to_rep_mhap_tar_id) = ""
+
+tar_name_seq_to_mhap_id = list()
+for(mhap_id in seq_along(rep_micros$targets)){
+  tar_name_to_rep_mhap_tar_id[mhap_id] = mhap_id
+  names(tar_name_to_rep_mhap_tar_id)[mhap_id] = names(target_name_idx)[rep_micros$targets[[mhap_id]]$target_id]
+  mhap_ids = seq_along(rep_micros$targets[[mhap_id]]$microhaplotypes)
+  names(mhap_ids) = unlist(lapply(rep_micros$targets[[mhap_id]]$microhaplotypes, function(rep_mic) { rep_mic$seq})) 
+  tar_name_seq_to_mhap_id[[names(target_name_idx)[rep_micros$targets[[mhap_id]]$target_id]]] = mhap_ids
+}
+
+
+
+
+default_panel_info = PanelInfo$new(panel_name = "panel", reactions = list(ReactionInfo$new(reaction_name = "full", panel_targets = unname(target_name_idx))))
+
+# sample meta 
+## create mostly empty specimen_info and library_sample_names 
+
+specimen_info = lapply(unique(allele_data$library_sample_name), function(s_name) SpecimenInfo$new(specimen_name = s_name, project_id = 1))
+specimen_name_idx = seq_along(unique(allele_data$library_sample_name))
+names(specimen_name_idx) = unique(allele_data$library_sample_name)
+
+library_sample_info <- unname(Map(
+  function(s_name, s_name_idx) {
+    LibrarySampleInfo$new(library_sample_name = s_name, specimen_id = s_name_idx, panel_id = 1, sequencing_info_id = 1)
+  },
+  names(specimen_name_idx),
+  unname(specimen_name_idx)
+))
+
+allele_data_filt_sample_split = split(allele_data_filt, allele_data_filt$library_sample_name)
+
+detected_micros = list(DetectedMicrohaplotypes$new(
+  bioinformatics_run_id = 1, 
+  library_samples = unname(Map(function(lib_samp_name, full_sample_data){
+    # print(class(full_sample_data))
+    allele_data_filt_sample_split_tar_split = split(full_sample_data, full_sample_data$target_name)
+    DetectedMicrohaplotypesForSample$new(
+      library_sample_id = unname(specimen_name_idx[lib_samp_name]), 
+      target_results = unname(Map(function(tar_name, seq_data){ 
+      DetectedMicrohaplotypesForTarget$new(mhaps_target_id = unname(tar_name_to_rep_mhap_tar_id[tar_name]), 
+                                           mhaps = unname(Map( function(seq, input_reads){ MicrohaplotypeForTarget$new(reads = input_reads, mhap_id = unname(tar_name_seq_to_mhap_id[[tar_name]][seq]) )}, 
+                                                               seq_data$seq, 
+                                                               seq_data$reads)))}, 
+      names(allele_data_filt_sample_split_tar_split), 
+      allele_data_filt_sample_split_tar_split))
+    )
+  }, 
+                               names(allele_data_filt_sample_split), 
+                               allele_data_filt_sample_split))
+))
+
+for(lib_samp_name in names(allele_data_filt_sample_split)){
+  allele_data_filt_sample_split_tar_split = split(allele_data_filt_sample_split[[lib_samp_name]], allele_data_filt_sample_split[[lib_samp_name]]$target_name)
+  DetectedMicrohaplotypesForSample$new(
+    library_sample_id = unname(specimen_name_idx[lib_samp_name]), 
+    target_results = unname(Map(function(tar_name, seq_data){ 
+    DetectedMicrohaplotypesForTarget$new(mhaps_target_id = unname(tar_name_to_rep_mhap_tar_id[tar_name]), 
+                                         mhaps = unname(Map( function(seq, input_reads){ MicrohaplotypeForTarget$new(reads = input_reads, mhap_id = unnametar_name_seq_to_mhap_id[tar_name][seq])}, 
+                                                             seq_data[[tar_name]]$seq, 
+                                                             seq_data[[tar_name]]$reads)))}, 
+    names(allele_data_filt_sample_split_tar_split), 
+    allele_data_filt_sample_split_tar_split))
+  )
+}
+
+
+pending_pmo = PortableMicrohaplotypeObject$new(target_info = target_infos,
+                                               panel_info = list(default_panel_info),
+                                               targeted_genomes = list(GenomeInfo$new()),
+                                               project_info = list(ProjectInfo$new()),
+                                               representative_microhaplotypes = rep_micros, 
+                                               pmo_header = generate_pmo_header(), 
+                                               specimen_info = specimen_info, 
+                                               library_sample_info = library_sample_info,
+                                               sequencing_info = list(SequencingInfo$new()), 
+                                               bioinformatics_methods_info = list(BioinformaticsMethodInfo$new(methods = list(BioMethod$new()))), 
+                                               bioinformatics_run_info = list(BioinformaticsRunInfo$new(bioinformatics_methods_id = 1)), 
+                                               detected_microhaplotypes = detected_micros
+                                               )
+
+
+pending_pmo$to_file("pending_pmo.json.gz", pretty = T)
+
+test = generate_allele_table(pending_pmo)
+
+test_combined = bind_rows(allele_data, test)
+test_combined %>% distinct()
+
+```
+
+
+```{r}
+allele_data_rep <- allele_data %>%
+  count(target_name, seq, name = "n") %>%
+  arrange(target_name, desc(n)) %>%
+  group_by(target_name) %>%
+  mutate(row_id = row_number()) %>%
+  ungroup()
+
+target_names <- sort(unique(c(primers$target, allele_data_rep$target_name)))
+target_name_idx <- setNames(seq_along(target_names), target_names)
+
+
+
+allele_data_rep_split <- split(allele_data_rep, allele_data_rep$target_name)
+
+target_objs <- lapply(names(allele_data_rep_split), function(tar_name) {
+  dat <- allele_data_rep_split[[tar_name]]
+
+  mhap_objs <- lapply(dat$seq, function(s) {
+    RepresentativeMicrohaplotype$new(seq = s)
+  })
+
+  RepresentativeMicrohaplotypesForTarget$new(
+    target_id = unname(target_name_idx[[tar_name]]),
+    microhaplotypes = mhap_objs
+  )
+})
+
+rep_micros <- RepresentativeMicrohaplotypes$new(targets = target_objs)
+
+
+```
+
+
+
+
+
+
+
+

@@ -103,19 +103,36 @@ add_sheet<-function(json_schema_for_class, workbook, sheet_name, excluded_proper
 
 ```{r}
 wb <- createWorkbook()
-add_sheet(json$`$defs`$ProjectInfo, wb, "ProjectInfo")
-add_sheet(json$`$defs`$SpecimenInfo, wb, "SpecimenInfo")
+add_sheet(json$`$defs`$RepresentativeMicrohaplotype, wb, "RepresentativeMicrohaplotype")
+add_sheet(json$`$defs`$MicrohaplotypeForTarget, wb, "MicrohaplotypeForTarget")
+add_sheet(json$`$defs`$TargetInfo, wb, "TargetInfo")
+add_sheet(json$`$defs`$PanelInfo, wb, "PanelInfo")
+add_sheet(json$`$defs`$GenomicLocation, wb, "GenomicLocation")
+add_sheet(json$`$defs`$GenomeInfo, wb, "GenomeInfo")
+add_sheet(json$`$defs`$SpecimenInfo, wb, "SpecimenInfo", c("project_id"))
 add_sheet(json$`$defs`$TravelInfo, wb, "SpecimenInfo-TravelInfo")
 add_sheet(json$`$defs`$ParasiteDensity, wb, "SpecimenInfo-ParasiteDensity")
 add_sheet(json$`$defs`$PlateInfo, wb, "SpecimenInfo-PlateInfo")
+add_sheet(json$`$defs`$ProjectInfo, wb, "ProjectInfo")
 add_sheet(json$`$defs`$SequencingInfo, wb, "SequencingInfo")
 add_sheet(json$`$defs`$LibrarySampleInfo, wb, "LibrarySampleInfo", c("sequencing_info_id", "specimen_id", "panel_id"))
-add_sheet(json$`$defs`$GenomeInfo, wb, "GenomeInfo")
-add_sheet(json$`$defs`$TargetInfo, wb, "TargetInfo")
 add_sheet(json$`$defs`$BioMethod, wb, "BioMethod")
 add_sheet(json$`$defs`$BioinformaticsRunInfo, wb, "BioinformaticsRunInfo", c("bioinformatics_methods_id"))
+add_sheet(json$`$defs`$ReactionInfo, wb, "ReactionInfo")
+
+saveWorkbook(wb, "PMO_full_template.xlsx", overwrite = TRUE)
+```
+
+
+```{r}
+wb <- createWorkbook()
+add_sheet(json$`$defs`$SpecimenInfo, wb, "SpecimenInfo")
+add_sheet(json$`$defs`$LibrarySampleInfo, wb, "LibrarySampleInfo", c("sequencing_info_id", "specimen_id", "panel_id"))
+add_sheet(json$`$defs`$TargetInfo, wb, "TargetInfo")
+add_sheet(json$`$defs`$PanelInfo, wb, "PanelInfo")
+
 add_sheet(json$`$defs`$RepresentativeMicrohaplotype, wb, "RepresentativeMicrohaplotype")
-saveWorkbook(wb, "PMO_template.xlsx", overwrite = TRUE)
+saveWorkbook(wb, "PMO_smaller_template.xlsx", overwrite = TRUE)
 ```
 
 

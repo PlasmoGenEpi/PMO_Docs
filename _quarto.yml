@@ -18,6 +18,8 @@ project:
     - pmotools-python-usages/extracting_panel_info_from_pmo.qmd
     - pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.ipynb
     - pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.ipynb
+    - pmotools-python-usages-notebooks/building_a_minimum_pmo/Create_minimal_pmo.ipynb
+    - pmotools-python-usages-notebooks/building_a_minimum_pmo/Update_meta_in_a_minimal_pmo.ipynb
     - References.qmd
 
 website:
@@ -49,6 +51,9 @@ website:
           - text: <span class='menuTitle'>Building a PMO</span>
           - href: pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.ipynb
             text: "Example of how to build a PMO"
+          - text: <span class='menuTitle'>Building a PMO with minimum required fields</span>
+          - href: pmotools-python-usages-notebooks/building_a_minimum_pmo/Create_minimal_pmo.ipynb
+            text: "Example of the minimum amount of info needed to build a PMO"
           - text: <span class='menuTitle'>Interacting with a PMO file</span>
           - href: pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.ipynb
           - text: <span class='menuTitle'>Command line interface</span>

@@ -14,9 +14,14 @@ Multiplexed targeted sequencing is now widely used to generate data for the most
 
 ## Quick Start
 
-[{{< fa download >}} Download Excel PMO Template](overview/PMO_building_template.xlsx){.btn .btn-primary download="PMO_building_template.xlsx"}
+To get started, you can use the PMO App to build a PMO or use the pmotools-python package to build a PMO. We recommend using the PMO App if you don't have any programming/ Python experience and the pmotools-python package for more advanced usage.
 
 [{{< fa laptop >}} PMO App documentation](pmotools-app-usage/pmotools-app.qmd){.btn .btn-secondary}
+[{{< fa laptop >}} pmotools-python documentation](pmotools-python-usages/general_info.qmd){.btn .btn-secondary}
+
+If you are new to building a PMO, the template below can be a useful starting point.
+
+[{{< fa download >}} Download Excel PMO Template](overview/PMO_building_template.xlsx){.btn .btn-primary download="PMO_building_template.xlsx"}
 
 ## Motivation
 

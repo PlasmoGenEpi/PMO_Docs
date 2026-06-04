@@ -12,8 +12,6 @@ packagesUsed = c(
   'knitr',
   'rmarkdown',
   "fastmatch",
-  "rwantshue",
-  "ComplexHeatmap",
   "ggthemes", 
   "here", 
   "reticulate"
@@ -27,7 +25,6 @@ suppressMessages(lapply(packagesUsed, require, character.only = TRUE))
 is.notna <- function(x) {
   return(!is.na(x))
 }
-scheme <- iwanthue(seed = 42, force_init = TRUE) 
 
 
 # ggplot themes 

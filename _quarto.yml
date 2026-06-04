@@ -8,6 +8,8 @@ project:
     - format/FormatOverviewAdvanced.qmd
     - format/DevelopmentOfFormat.qmd
     - PMO_Ecosystem/Pmo_in_the_ecosystem.qmd
+    - pmotools-app-usage/pmotools-app.qmd
+    - pmotools-python-usages/general_info.qmd
     - Tools_Installation/pmotools-python_installation.qmd
     - pmotools-python-usages/pmotools-python.qmd
     - pmotools-python-usages/extracting_allele_tables.qmd
@@ -41,38 +43,38 @@ website:
           - text: "------------"
           - href: format/FormatExample.qmd
           - href: format/FormatOverviewAdvanced.qmd
-      - text: "Tools Installation"
+      - text: PMO App 
+        href: pmotools-app-usage/pmotools-app.qmd
+      - text: pmotools-python
         menu:
+          - href: pmotools-python-usages/general_info.qmd
+            text: "Overview"
           - href: Tools_Installation/pmotools-python_installation.qmd
-      - text: "pmotools-python usages"
-        menu: 
-          - text: "------------"
-          - text: <span class='menuTitle'>Python interface</span>
-          - text: <span class='menuTitle'>Building a PMO</span>
-          - href: pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.ipynb
-            text: "Example of how to build a PMO"
-          - text: <span class='menuTitle'>Building a PMO with minimum required fields</span>
+            text: "Installation"
+          - text: <span class='menuTitle'>Python Interface Tutorials</span>
           - href: pmotools-python-usages-notebooks/building_a_minimum_pmo/Create_minimal_pmo.ipynb
-            text: "Example of the minimum amount of info needed to build a PMO"
+            text: "Building a PMO with minimum required fields"
+          - href: pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.ipynb
+            text: "Building a PMO including optional sections and fields"
           - href: pmotools-python-usages-notebooks/building_a_minimum_pmo/Update_meta_in_a_minimal_pmo.ipynb
             text: "Updating the Specimen Meta Information in a minimum PMO"
-          - text: <span class='menuTitle'>Interacting with a PMO file</span>
           - href: pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.ipynb
-          - text: <span class='menuTitle'>Command line interface</span>
-          - text: "------------"
-          - text: <span class='menuTitle'>pmotools-python</span>
+            text: "Getting basic information from a PMO file"
+          - text: <span class='menuTitle'>Command line Interface Tutorials</span>
           - href: pmotools-python-usages/pmotools-python.qmd
-          - text: <span class='menuTitle'>Extracting out of PMO</span>
+            text: "Command line interface guide"
           - href: pmotools-python-usages/extracting_allele_tables.qmd
-          - text: <span class='menuTitle'>Subset PMO</span>
+            text: "Extracting allele tables from a PMO"
           - href: pmotools-python-usages/subsetting_from_PMO.qmd
-          - text: <span class='menuTitle'>Getting sub info from PMO</span>
+            text: "Subsetting a PMO"
           - href: pmotools-python-usages/getting_basic_info_from_pmo.qmd
+            text: "Getting basic information from a PMO"
           - href: pmotools-python-usages/extracting_panel_info_from_pmo.qmd
-          - text: <span class='menuTitle'>Handling Multiple PMOs</span>
+            text: "Extracting panel info from PMO"
           - href: pmotools-python-usages/handling_multiple_pmos.qmd
-          - text: <span class='menuTitle'>Validating PMO files</span>
+            text: "Handling Multiple PMOs"
           - href: pmotools-python-usages/validating_pmos.qmd
+            text: "Validating PMO files"
     right: 
       - text: "Resources"
         menu: 

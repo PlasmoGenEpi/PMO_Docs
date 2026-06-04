@@ -41,6 +41,8 @@ website:
           - text: "------------"
           - href: format/FormatExample.qmd
           - href: format/FormatOverviewAdvanced.qmd
+      - text: PMO App 
+        href: pmotools-app-usage/pmotools-app.qmd
       - text: "Tools Installation"
         menu:
           - href: Tools_Installation/pmotools-python_installation.qmd

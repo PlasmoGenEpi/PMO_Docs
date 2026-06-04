@@ -1,0 +1,63 @@
+---
+title: PMO App
+---
+
+The PMO App allows you to create a PMO file without writing any code.
+
+<a href="https://pmotools.app/" class="btn btn-primary" target="_blank"><i class="bi bi-box-arrow-up-right me-1"></i>Access the app</a>
+
+::: {.callout-note appearance="simple"}
+The app may take up to a minute to load the first time you open it. Please be patient while it initializes.
+:::
+
+## Getting Started
+
+The PMO App runs entirely in your web browser and does not require any additional software installation.
+The app guides you through the process of building a PMO by uploading information in tabular formats (for example, CSV or Excel files). As you progress, you can add both required and optional PMO sections. Once all information has been provided, the app allows you to:
+
+* Merge all sections into a single PMO file
+* Validate the PMO against the ontology requirements
+* Download the completed PMO
+
+## Smart Field Matching
+
+To simplify data harmonization, the app automatically performs field matching between your uploaded data and the PMO ontology.
+Because different institutions often use different field names for the same information, the app identifies likely matches and maps them to standardized PMO fields. You can review all assignments and, if necessary, update them using simple drop-down menus.
+This significantly reduces the manual effort required to standardize metadata across datasets.
+
+## Reusable Components
+
+Many PMO sections contain information that is reused across multiple projects. The app allows you to save these sections and reuse them in future PMOs. For example, panel information can be created once and quickly imported into future datasets, saving time and ensuring consistency.
+
+## Technical Details
+
+The PMO App is built using Streamlit.
+
+* Source code: [GitHub repository](https://github.com/PlasmoGenEpi/pmotools-app)
+* Deployment instructions: available in the repository README
+
+The hosted version linked above is deployed using stlite, which enables the application to run entirely in the browser.
+
+* stlite deployment repository: [GitHub repository](https://github.com/PlasmoGenEpi/pmotool-app-web)
+
+## Future Development
+
+We are actively developing the PMO App and welcome feedback and contributions from the community.
+One of our key goals is to expand the app beyond PMO creation to support working with existing PMOs. Planned features include:
+Merging multiple PMOs into a single file
+Filtering PMOs based on selected criteria
+Generating summary reports and visualizations
+These features will make it easier to manage, review, and reuse PMOs throughout the data lifecycle.
+
+## Contributing
+
+We welcome contributions of all kinds, including feature requests, bug reports, documentation improvements, and code contributions.
+If you are interested in helping shape the future of the PMO App, please feel free to:
+
+* Reach out to the development team
+* Open an issue to discuss ideas or report bugs
+* Submit a pull request to the GitHub repository
+
+Community feedback and contributions are invaluable in helping us build tools that meet the needs of researchers and data providers.
+
+

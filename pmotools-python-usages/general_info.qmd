@@ -22,4 +22,4 @@ Not comfortable with Python or the command line? You can build and validate a PM
 ## Getting started
 
 To get started, install the pmotools-python package.
-[{{< fa download >}} Installation instructions](../Tools_Installation/pmotools-python_installation.qmd){.btn .btn-primary}
+[{{< fa arrow-up-right-from-square >}} Installation instructions](../Tools_Installation/pmotools-python_installation.qmd){.btn .btn-primary}

@@ -71,21 +71,6 @@ colorPalette_15 = c("#F60239","#003C86","#EF0096","#9400E6","#009FFA","#008169",
 palettes <- ggthemes_data[["tableau"]][["color-palettes"]][["regular"]]
 
 
-createColorListFromDf <- function(df, colorPalette = colorPalette_12, iwanthudSeed = rnorm(1) * 100){
-  colorList = list()
-  for (dfColname in colnames(df)) {
-    levels = sort(unique(df[[dfColname]]))
-    scheme <- iwanthue(seed = iwanthudSeed, force_init = TRUE)
-    if (length(levels) <= length(colorPalette_12)) {
-      levelsCols = colorPalette_12[1:length(levels)]
-    } else{
-      levelsCols = scheme$hex(length(levels))
-    }
-    names(levelsCols) = levels
-    colorList[[dfColname]] = levelsCols
-  }
-  return(colorList)
-}
 
 # quarto utils 
 create_dt <- function(x) {
@@ -183,7 +168,7 @@ genColorsForValues <- function(values) {
   } else if (length(uniqValues) <= 15) {
     outColors = colorPalette_15[1:length(uniqValues)]
   } else{
-    outColors = scheme$hex(length(uniqValues))
+    outColors = hcl.colors(length(uniqValues))
   }
   names(outColors) = uniqValues
   return (outColors)

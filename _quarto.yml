@@ -51,6 +51,8 @@ website:
             text: "Overview"
           - href: Tools_Installation/pmotools-python_installation.qmd
             text: "Installation"
+          - text: "Manual"
+            href: https://plasmogenepi.github.io/pmotools-python/index.html
           - text: <span class='menuTitle'>Python Interface Tutorials</span>
           - href: pmotools-python-usages-notebooks/building_a_minimum_pmo/Create_minimal_pmo.ipynb
             text: "Building a PMO with minimum required fields"

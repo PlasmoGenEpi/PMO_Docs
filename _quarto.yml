@@ -9,6 +9,7 @@ project:
     - format/DevelopmentOfFormat.qmd
     - PMO_Ecosystem/Pmo_in_the_ecosystem.qmd
     - pmotools-app-usage/pmotools-app.qmd
+    - pmotools-python-usages/general_info.qmd
     - Tools_Installation/pmotools-python_installation.qmd
     - pmotools-python-usages/pmotools-python.qmd
     - pmotools-python-usages/extracting_allele_tables.qmd
@@ -46,6 +47,8 @@ website:
         href: pmotools-app-usage/pmotools-app.qmd
       - text: pmotools-python
         menu:
+          - href: pmotools-python-usages/general_info.qmd
+            text: "Overview"
           - href: Tools_Installation/pmotools-python_installation.qmd
             text: "Installation"
           - text: <span class='menuTitle'>Python Interface Tutorials</span>

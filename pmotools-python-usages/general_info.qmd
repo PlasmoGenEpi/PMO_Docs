@@ -1,0 +1,25 @@
+---
+title: Getting started with pmotools-python
+---
+
+```{r setup, echo=F}
+source("../common.R")
+```
+
+**pmotools-python** is the Python toolkit for working with [Portable Microhaplotype Object (PMO)](../index.qmd) files.
+
+## What pmotools-python provides
+
+pmotools-python supports the PMO adoption in two complementary ways:
+
+- **Python library** - Building or updating PMOs in pipelines, notebooks, or custom scripts
+- **Command-line interface** - Quick inspection, validation, subsetting, and export without writing Python
+
+::: {.callout-note appearance="simple"}
+Not comfortable with Python or the command line? You can build and validate a PMO in your browser with the [PMO App](../pmotools-app-usage/pmotools-app.qmd)—no installation required.
+:::
+
+## Getting started
+
+To get started, install the pmotools-python package.
+[{{< fa download >}} Installation instructions](../Tools_Installation/pmotools-python_installation.qmd){.btn .btn-primary}

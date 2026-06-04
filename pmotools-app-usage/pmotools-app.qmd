@@ -2,6 +2,10 @@
 title: PMO App
 ---
 
+```{r setup, echo=F}
+source("../common.R")
+```
+
 The PMO App allows you to create a PMO file without writing any code.
 
 <a href="https://pmotools.app/" class="btn btn-primary" target="_blank"><i class="bi bi-box-arrow-up-right me-1"></i>Access the app</a>

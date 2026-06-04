@@ -14,9 +14,9 @@ Multiplexed targeted sequencing is now widely used to generate data for the most
 
 ## Quick Start
 
-
 [{{< fa download >}} Download Excel PMO Template](overview/PMO_building_template.xlsx){.btn .btn-primary download="PMO_building_template.xlsx"}
 
+[{{< fa laptop >}} PMO App documentation](pmotools-app-usage/pmotools-app.qmd){.btn .btn-secondary}
 
 ## Motivation
 

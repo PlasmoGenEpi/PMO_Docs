@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Getting basic info out of a PMO – Portable Microhaplotype Object (PMO)</title>
+<title>Updating a PMO with new metadata – Portable Microhaplotype Object (PMO)</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -61,24 +61,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../images/pmo_logo_mini.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-51c09c167a706ef208dabe9d498949d7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d3f04e06c4dac2d35cbd8a0ed1255062.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/pmo_logo_mini.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-51c09c167a706ef208dabe9d498949d7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-d3f04e06c4dac2d35cbd8a0ed1255062.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -107,9 +107,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -120,8 +123,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="index.qmd" class="navbar-brand navbar-brand-logo">
-    <img src="../images/PMO_logo.png" alt="Portable Microhaplotype Object (PMO)" class="navbar-logo light-content">
-    <img src="../images/PMO_logo.png" alt="Portable Microhaplotype Object (PMO)" class="navbar-logo dark-content">
+    <img src="../../images/PMO_logo.png" alt="Portable Microhaplotype Object (PMO)" class="navbar-logo light-content">
+    <img src="../../images/PMO_logo.png" alt="Portable Microhaplotype Object (PMO)" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="index.qmd">
     <span class="navbar-title">Portable Microhaplotype Object (PMO)</span>
@@ -134,7 +137,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -145,33 +148,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="dropdown-header"><span class="menuTitle">Overview of Format</span></li>
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="../format/FormatOverview.html">
+    <a class="dropdown-item" href="../../format/FormatOverview.html">
  <span class="dropdown-text">PMO fields overview</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../PMO_Ecosystem/Pmo_in_the_ecosystem.html">
+    <a class="dropdown-item" href="../../PMO_Ecosystem/Pmo_in_the_ecosystem.html">
  <span class="dropdown-text">PMO within a Data Analysis Ecosystem</span></a>
   </li>  
         <li class="dropdown-header"><span class="menuTitle">History of Format Development</span></li>
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="../format/DevelopmentOfFormat.html">
+    <a class="dropdown-item" href="../../format/DevelopmentOfFormat.html">
  <span class="dropdown-text">History of how PMO Format was derived</span></a>
   </li>  
         <li class="dropdown-header"><span class="menuTitle">Overview of Format For Bioinformaticians</span></li>
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="../format/FormatExample.html">
+    <a class="dropdown-item" href="../../format/FormatExample.html">
  <span class="dropdown-text">PMO Examples</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../format/FormatOverviewAdvanced.html">
+    <a class="dropdown-item" href="../../format/FormatOverviewAdvanced.html">
  <span class="dropdown-text">Format Overview For Developers</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../pmotools-app-usage/pmotools-app.html"> 
+    <a class="nav-link" href="../../pmotools-app-usage/pmotools-app.html"> 
 <span class="menu-text">PMO App</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -180,11 +183,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python">    
         <li>
-    <a class="dropdown-item" href="../pmotools-python-usages/general_info.html">
+    <a class="dropdown-item" href="../../pmotools-python-usages/general_info.html">
  <span class="dropdown-text">Overview</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../Tools_Installation/pmotools-python_installation.html">
+    <a class="dropdown-item" href="../../Tools_Installation/pmotools-python_installation.html">
  <span class="dropdown-text">Installation</span></a>
   </li>  
         <li>
@@ -193,48 +196,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li class="dropdown-header"><span class="menuTitle">Python Interface Tutorials</span></li>
         <li>
-    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_minimum_pmo/Create_minimal_pmo.html">
+    <a class="dropdown-item" href="../../pmotools-python-usages-notebooks/building_a_minimum_pmo/Create_minimal_pmo.html">
  <span class="dropdown-text">Building a PMO with minimum required fields</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_minimum_pmo/Update_meta_in_a_minimal_pmo.html">
+    <a class="dropdown-item" href="../../pmotools-python-usages-notebooks/building_a_minimum_pmo/Update_meta_in_a_minimal_pmo.html">
  <span class="dropdown-text">Updating the Specimen Meta Information in a minimum PMO</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.html">
+    <a class="dropdown-item" href="../../pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.html">
  <span class="dropdown-text">Building a PMO including optional sections and fields</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.html">
+    <a class="dropdown-item" href="../../pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.html">
  <span class="dropdown-text">Getting basic information from a PMO file</span></a>
   </li>  
         <li class="dropdown-header"><span class="menuTitle">Command line Interface Tutorials</span></li>
         <li>
-    <a class="dropdown-item" href="../pmotools-python-usages/pmotools-python.html">
+    <a class="dropdown-item" href="../../pmotools-python-usages/pmotools-python.html">
  <span class="dropdown-text">Command line interface guide</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../pmotools-python-usages/extracting_allele_tables.html">
+    <a class="dropdown-item" href="../../pmotools-python-usages/extracting_allele_tables.html">
  <span class="dropdown-text">Extracting allele tables from a PMO</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../pmotools-python-usages/subsetting_from_PMO.html">
+    <a class="dropdown-item" href="../../pmotools-python-usages/subsetting_from_PMO.html">
  <span class="dropdown-text">Subsetting a PMO</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../pmotools-python-usages/getting_basic_info_from_pmo.html">
+    <a class="dropdown-item" href="../../pmotools-python-usages/getting_basic_info_from_pmo.html">
  <span class="dropdown-text">Getting basic information from a PMO</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../pmotools-python-usages/extracting_panel_info_from_pmo.html">
+    <a class="dropdown-item" href="../../pmotools-python-usages/extracting_panel_info_from_pmo.html">
  <span class="dropdown-text">Extracting panel info from PMO</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../pmotools-python-usages/handling_multiple_pmos.html">
+    <a class="dropdown-item" href="../../pmotools-python-usages/handling_multiple_pmos.html">
  <span class="dropdown-text">Handling Multiple PMOs</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../pmotools-python-usages/validating_pmos.html">
+    <a class="dropdown-item" href="../../pmotools-python-usages/validating_pmos.html">
  <span class="dropdown-text">Validating PMO files</span></a>
   </li>  
     </ul>
@@ -247,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-resources">    
         <li>
-    <a class="dropdown-item" href="../References.html">
+    <a class="dropdown-item" href="../../References.html">
  <span class="dropdown-text">References</span></a>
   </li>  
     </ul>
@@ -296,8 +299,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#getting-sample-counts-per-target" id="toc-getting-sample-counts-per-target" class="nav-link active" data-scroll-target="#getting-sample-counts-per-target">Getting sample counts per target</a></li>
-  <li><a href="#getting-target-counts-per-sample" id="toc-getting-target-counts-per-sample" class="nav-link" data-scroll-target="#getting-target-counts-per-sample">Getting target counts per sample</a></li>
+  <li><a href="#read-in-data" id="toc-read-in-data" class="nav-link active" data-scroll-target="#read-in-data">Read in data</a>
+  <ul>
+  <li><a href="#adding-in-specimen-meta-information" id="toc-adding-in-specimen-meta-information" class="nav-link" data-scroll-target="#adding-in-specimen-meta-information">Adding in specimen meta information</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -306,7 +311,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Getting basic info out of a PMO</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Updating a PMO with new metadata</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
 </div>
 
 
@@ -323,73 +328,222 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="55c17cb9-6140-4969-8538-c692c3af299d" class="cell" data-execution_count="1">
+<p>In this tutorial we will read a PMO we previously created and update it with extra metadata. This example uses data downloaded from the SRA associated with the following study:</p>
+<p>Furstenau, T. N., Whealy, R., Timm, S., Roberts, A., Maltinsky, S., Wells, S. J., Drake, K., Ross, A., Bolduc, C., Pearson, T., &amp; Fofanov, V. Y. (2025). <em>High-throughput targeted amplicon screening tool for characterizing intrahost diversity in</em> Staphylococcus aureus <em>directly from sample</em>. Microbial Genomics, 11(6). https://doi.org/10.1099/mgen.0.001427</p>
+<div id="74aecb63-8c9d-46e6-88c5-5f3fe3d24754" class="cell" data-execution_count="16">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pmotools.pmo_utils.PMOExtractor <span class="im">import</span> PMOExtractor</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pmotools.pmo_utils.PMOReader <span class="im">import</span> PMOReader</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>pmo <span class="op">=</span> PMOReader.read_in_pmo(<span class="st">"../format/moz2018_PMO.json.gz"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pmotools.pmo_engine.pmo_writer <span class="im">import</span> <span class="op">*</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pmotools.pmo_engine.pmo_reader <span class="im">import</span> PMOReader</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pmotools.pmo_builder.metatable_to_pmo <span class="im">import</span> specimen_info_table_to_pmo</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pmotools.pmo_builder.pmo_updater <span class="im">import</span> PMOUpdater</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<section id="getting-sample-counts-per-target" class="level2">
-<h2 class="anchored" data-anchor-id="getting-sample-counts-per-target">Getting sample counts per target</h2>
-<div id="18498680-f4e9-4bbc-ad88-0498adc53f36" class="cell" data-execution_count="5">
+<section id="read-in-data" class="level2">
+<h2 class="anchored" data-anchor-id="read-in-data">Read in data</h2>
+<p>First we read in a PMO that we previously created on the <a href="../../pmotools-python-usages-notebooks/building_a_minimum_pmo/Create_minimal_pmo.html">Create minimal pmo</a> page.</p>
+<div id="a49ad8b5-f1ee-4ac9-9ffb-bc45fd3c7cbe" class="cell" data-execution_count="24">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get counts of the samples per target</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>counts_df <span class="op">=</span> PMOExtractor.count_samples_per_target(pmo)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(counts_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>staph_aureus_pmo <span class="op">=</span> PMOReader.read_in_pmo(<span class="st">"minimum_Furstenau2025_new_names_PMO.json.gz"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>   tar_amp_bioinformatics_info_id target_id sample_number
-0         Mozambique2018-SeekDeep        t1           119
-0         Mozambique2018-SeekDeep       t10           117
-0         Mozambique2018-SeekDeep      t100           124
-0         Mozambique2018-SeekDeep       t11           120
-0         Mozambique2018-SeekDeep       t12           119
-..                            ...       ...           ...
-0         Mozambique2018-SeekDeep       t96           119
-0         Mozambique2018-SeekDeep       t97           122
-0         Mozambique2018-SeekDeep       t98           122
-0         Mozambique2018-SeekDeep       t99           120
-0         Mozambique2018-SeekDeep       t76            32
+</div>
+<section id="adding-in-specimen-meta-information" class="level3">
+<h3 class="anchored" data-anchor-id="adding-in-specimen-meta-information">Adding in specimen meta information</h3>
+<p>Right now the specimen_info is simply the specimen_name, but we can add additional metadata. For example, if we just look at the first sample we can see it only has the specimen_name field completed</p>
+<div id="46e22f92-4714-4b96-91bc-f28821221b8d" class="cell" data-execution_count="25">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>staph_aureus_pmo[<span class="st">"specimen_info"</span>][<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>{'specimen_name': '85b498-Wk16-Nasal'}</code></pre>
+</div>
+</div>
+<p>First we load the metadata from SRA. There are several columns in the SRA/ENA metadata but for now we use as example the geographic location <code>country</code> and the date of collection <code>collection_date</code>.</p>
+<div id="2887e895-86c4-42da-a317-32a48603f347" class="cell" data-execution_count="26">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sra_info <span class="op">=</span> pd.read_csv(<span class="st">"sra_info_table.tsv"</span>, sep <span class="op">=</span> <span class="st">'</span><span class="ch">\t</span><span class="st">'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sra_meta_of_interest <span class="op">=</span> sra_info[[<span class="st">'sample_alias'</span>, <span class="st">'country'</span>, <span class="st">'collection_date'</span>]].drop_duplicates()</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>sra_meta_of_interest.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<div>
 
-[100 rows x 3 columns]</code></pre>
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sample_alias</th>
+<th data-quarto-table-cell-role="th">country</th>
+<th data-quarto-table-cell-role="th">collection_date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2b2068n1</td>
+<td>USA: Arizona</td>
+<td>2019</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2a4023n1</td>
+<td>USA: Arizona</td>
+<td>2019</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">3</th>
+<td>2b4022n1</td>
+<td>USA: Arizona</td>
+<td>2019</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>2b3034n1</td>
+<td>USA: Arizona</td>
+<td>2019</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">9</th>
+<td>2b2048n1</td>
+<td>USA: Arizona</td>
+<td>2019</td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
+</div>
+<p>We will want a field for country and state separately, so we will create new columns by splitting the existing country column on “:”</p>
+<div id="b19866a9-6431-4e7f-b5fa-b90d5fdcdd78" class="cell" data-execution_count="27">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sra_meta_of_interest[[<span class="st">'country_only'</span>, <span class="st">'state'</span>]] <span class="op">=</span> sra_meta_of_interest[<span class="st">'country'</span>].<span class="bu">str</span>.split(<span class="st">':'</span>, expand<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>sra_meta_of_interest.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sample_alias</th>
+<th data-quarto-table-cell-role="th">country</th>
+<th data-quarto-table-cell-role="th">collection_date</th>
+<th data-quarto-table-cell-role="th">country_only</th>
+<th data-quarto-table-cell-role="th">state</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2b2068n1</td>
+<td>USA: Arizona</td>
+<td>2019</td>
+<td>USA</td>
+<td>Arizona</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2a4023n1</td>
+<td>USA: Arizona</td>
+<td>2019</td>
+<td>USA</td>
+<td>Arizona</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">3</th>
+<td>2b4022n1</td>
+<td>USA: Arizona</td>
+<td>2019</td>
+<td>USA</td>
+<td>Arizona</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>2b3034n1</td>
+<td>USA: Arizona</td>
+<td>2019</td>
+<td>USA</td>
+<td>Arizona</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">9</th>
+<td>2b2048n1</td>
+<td>USA: Arizona</td>
+<td>2019</td>
+<td>USA</td>
+<td>Arizona</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Now build the specimen metadata section of PMO using specimen_info_table_to_pmo</p>
+<div id="221ad598-24a9-4f93-ad59-7d19fcdfdd30" class="cell" data-execution_count="28">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pmo_spec_info <span class="op">=</span> specimen_info_table_to_pmo(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                            sra_meta_of_interest, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                            specimen_name_col<span class="op">=</span><span class="st">'sample_alias'</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                            collection_date_col<span class="op">=</span><span class="st">'collection_date'</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                            collection_country_col<span class="op">=</span><span class="st">'country_only'</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                            geo_admin1_col<span class="op">=</span><span class="st">'state'</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                           )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Now merge this information into our PMO data using <code>PMOUpdater.merge_dicts_by_key</code></p>
+<div id="ab916426-5655-4653-bd81-fe8d2ef3e01a" class="cell" data-execution_count="29">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pmotools.pmo_builder.pmo_updater <span class="im">import</span> PMOUpdater</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>staph_aureus_pmo[<span class="st">"specimen_info"</span>] <span class="op">=</span> PMOUpdater.merge_dicts_by_key(</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    staph_aureus_pmo[<span class="st">"specimen_info"</span>],</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    pmo_spec_info, </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    key_field<span class="op">=</span><span class="st">"specimen_name"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Now we can see the specimen_info has metadata (we just show the first specimen in this example)</p>
+<div id="558d0186-f453-4c78-a4bc-d687cf23dea6" class="cell" data-execution_count="30">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>staph_aureus_pmo[<span class="st">"specimen_info"</span>][<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>{'specimen_name': '85b498-Wk16-Nasal',
+ 'collection_date': '2022-02-07',
+ 'collection_country': 'USA',
+ 'geo_admin1': ' Phoenix'}</code></pre>
+</div>
+</div>
+<p>Now let’s write our PMO to a file</p>
+<div id="8188988c-7fd4-49dc-bbfb-f70008de1adf" class="cell" data-execution_count="31">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pmowriter <span class="op">=</span> PMOWriter()</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>pmowriter.write_out_pmo(staph_aureus_pmo, <span class="st">"minimum_Furstenau2025_PMO_with_spec_meta.json.gz"</span>, overwrite<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>We can validate the file using the command line functionality in pmotools</p>
+<div id="3ede315f-60ac-4bf1-96f2-f837c77e2e6f" class="cell" data-execution_count="32">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pmotools<span class="op">-</span>python validate_pmo <span class="op">--</span>pmo minimum_Furstenau2025_PMO_with_spec_meta.json.gz <span class="op">--</span>jsonschema_version <span class="fl">1.1.0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+
+
 </section>
-<section id="getting-target-counts-per-sample" class="level2">
-<h2 class="anchored" data-anchor-id="getting-target-counts-per-sample">Getting target counts per sample</h2>
-<div id="877186fd-72d5-4dc8-8f28-6e4c8727b0ee" class="cell" data-execution_count="3">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get counts of the samples per target</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>target_counts_df <span class="op">=</span> PMOExtractor.count_targets_per_sample(pmo)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(target_counts_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>   tar_amp_bioinformatics_info_id experiment_sample_id target_number
-0         Mozambique2018-SeekDeep           8025874217            99
-0         Mozambique2018-SeekDeep           8025874231            99
-0         Mozambique2018-SeekDeep           8025874234            97
-0         Mozambique2018-SeekDeep           8025874237            99
-0         Mozambique2018-SeekDeep           8025874250            98
-..                            ...                  ...           ...
-0         Mozambique2018-SeekDeep           SS1-10K-C1            98
-0         Mozambique2018-SeekDeep           SS2-10K-C1            98
-0         Mozambique2018-SeekDeep           SS3-10K-C1            98
-0         Mozambique2018-SeekDeep           SS4-10K-C1            99
-0         Mozambique2018-SeekDeep           SS5-10K-C1            97
-
-[124 rows x 3 columns]</code></pre>
-</div>
-</div>
-
-
 </section>
 
 </main> <!-- /main -->
@@ -862,5 +1016,5 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

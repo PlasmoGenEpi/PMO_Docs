@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta charset="UTF-8">
+<meta name="generator" content="quarto-1.9.36">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Getting panel info out of PMO using pmotools-python – Portable Microhaplotype Object (PMO)</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -61,17 +63,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../images/pmo_logo_mini.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-49a824ff064150fa59632921ab93e189.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-51c09c167a706ef208dabe9d498949d7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6a2c4b793c0becaeb94cc5bf146c1484.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-d3f04e06c4dac2d35cbd8a0ed1255062.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -105,9 +107,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
-    <a class="navbar-brand" href="../index.html">
+    <a href="index.qmd" class="navbar-brand navbar-brand-logo">
+    <img src="../images/PMO_logo.png" alt="Portable Microhaplotype Object (PMO)" class="navbar-logo light-content"><img src="../images/PMO_logo.png" alt="Portable Microhaplotype Object (PMO)" class="navbar-logo dark-content"></a>
+    <a class="navbar-brand" href="index.qmd">
     <span class="navbar-title">Portable Microhaplotype Object (PMO)</span>
     </a>
   </div>
@@ -154,69 +156,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
 </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tools-installation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Tools Installation</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-tools-installation">
-<li>
-    <a class="dropdown-item" href="../Tools_Installation/pmotools-python_installation.html">
- <span class="dropdown-text">pmotools-python installation</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../pmotools-app-usage/pmotools-app.html"> 
+<span class="menu-text">PMO App</span></a>
   </li>  
-    </ul>
-</li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pmotools-python-usages" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">pmotools-python usages</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pmotools-python" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">pmotools-python</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python-usages">
-<li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header"><span class="menuTitle">Python interface</span></li>
-        <li class="dropdown-header"><span class="menuTitle">Building a PMO</span></li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python">
+<li>
+    <a class="dropdown-item" href="../pmotools-python-usages/general_info.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Tools_Installation/pmotools-python_installation.html">
+ <span class="dropdown-text">Installation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://plasmogenepi.github.io/pmotools-python/index.html">
+ <span class="dropdown-text">Manual</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Python Interface Tutorials</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_minimum_pmo/Create_minimal_pmo.html">
+ <span class="dropdown-text">Building a PMO with minimum required fields</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_minimum_pmo/Update_meta_in_a_minimal_pmo.html">
+ <span class="dropdown-text">Updating the Specimen Meta Information in a minimum PMO</span></a>
+  </li>  
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.html">
- <span class="dropdown-text">Example of how to build a PMO</span></a>
+ <span class="dropdown-text">Building a PMO including optional sections and fields</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Interacting with a PMO file</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.html">
- <span class="dropdown-text">Getting basic info out of a PMO</span></a>
+ <span class="dropdown-text">Getting basic information from a PMO file</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Command line interface</span></li>
-        <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header"><span class="menuTitle">pmotools-python</span></li>
+        <li class="dropdown-header"><span class="menuTitle">Command line Interface Tutorials</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/pmotools-python.html">
- <span class="dropdown-text">Command line interface to pmotools-python with pmotools-python</span></a>
+ <span class="dropdown-text">Command line interface guide</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Extracting out of PMO</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/extracting_allele_tables.html">
- <span class="dropdown-text">Extracting allele tables using pmotools-python</span></a>
+ <span class="dropdown-text">Extracting allele tables from a PMO</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Subset PMO</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/subsetting_from_PMO.html">
- <span class="dropdown-text">Subsetting from a PMO using pmotools-python</span></a>
+ <span class="dropdown-text">Subsetting a PMO</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Getting sub info from PMO</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/getting_basic_info_from_pmo.html">
- <span class="dropdown-text">Getting basic info out of PMO using pmotools-python</span></a>
+ <span class="dropdown-text">Getting basic information from a PMO</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/extracting_panel_info_from_pmo.html">
- <span class="dropdown-text">Getting panel info out of PMO using pmotools-python</span></a>
+ <span class="dropdown-text">Extracting panel info from PMO</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Handling Multiple PMOs</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/handling_multiple_pmos.html">
- <span class="dropdown-text">Handling multiple PMOs pmotools-python</span></a>
+ <span class="dropdown-text">Handling Multiple PMOs</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Validating PMO files</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/validating_pmos.html">
- <span class="dropdown-text">Validating PMOs pmotools-python</span></a>
+ <span class="dropdown-text">Validating PMO files</span></a>
   </li>  
     </ul>
 </li>
@@ -300,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
-<pre><code>pmotools-python v1.0.0 - A suite of tools for interacting with Portable Microhaplotype Object (PMO) file format
+<pre><code>pmotools-python v1.1.0 - A suite of tools for interacting with Portable Microhaplotype Object (PMO) file format
 
 Available functions organized by groups are
 convertors_to_json
@@ -312,7 +317,7 @@ convertors_to_json
 extractors_from_pmo
     extract_pmo_with_selected_meta - Extract samples + haplotypes using selected meta
     extract_pmo_with_select_specimen_names - Extract specific samples from the specimens table
-    extract_pmo_with_select_library_sample_names - Extract experiment sample names from experiment_info table
+    extract_pmo_with_select_library_sample_names - Extract library sample names from library_sample_info table
     extract_pmo_with_select_targets - Extract specific targets
     extract_pmo_with_read_filter - Extract with a read filter
 
@@ -320,9 +325,9 @@ working_with_multiple_pmos
     combine_pmos - Combine multiple PMOs of the same panel
 
 extract_basic_info_from_pmo
-    list_library_sample_names_per_specimen_name - List experiment_sample_ids per specimen_id
+    list_library_sample_names_per_specimen_name - List library_sample_names per specimen_name
     list_specimen_meta_fields - List specimen meta fields in the specimen_info section
-    list_bioinformatics_run_names - List all tar_amp_bioinformatics_info_ids in a PMO
+    list_bioinformatics_run_names - List all tar_amp_bioinformatics_info_names in a PMO
     count_specimen_meta - Count values of selected specimen meta fields
     count_targets_per_library_sample - Count number of targets per sample
     count_library_samples_per_target - Count number of samples per target
@@ -331,13 +336,17 @@ validation
     validate_pmo - Validate a PMO file against a JSON Schema
 
 pmo_to_table
+    export_pmo_into_xlsx - export all parts of a PMO into a .xlsx file
     export_specimen_meta_table - export the specimen meta table from a PMO file
     export_library_sample_meta_table - export the library_sample meta table from a PMO file
     export_project_info_meta_table - export the project_info meta table from a PMO file
     export_sequencing_info_meta_table - export the sequencing_info meta table from a PMO file
     export_specimen_travel_meta_table - export the specimen travel_info meta table from a PMO file
+    export_targeted_genomes_meta_table - export the targeted genomes info meta table from a PMO file
     export_target_info_meta_table - export the target info meta table from a PMO file
     export_panel_info_meta_table - export the panel info meta table from a PMO file
+    export_bioinformatics_run_info_meta_table - export the bioinformatics_run_info meta table from a PMO file
+    export_bioinformatics_methods_info_meta_table - export the bioinformatics_methods_info meta table from a PMO file
     extract_allele_table - Extract allele tables for tools like dcifer or moire
     extract_insert_of_panels - Extract inserts of panels from a PMO
     extract_refseq_of_inserts_of_panels - Extract ref_seq of panel inserts from a PMO</code></pre>
@@ -359,6 +368,8 @@ pmo_to_table
 <pre><code>usage: pmotools-python extract_insert_of_panels [-h] --file FILE
                                                 [--output OUTPUT]
                                                 [--overwrite] [--add_ref_seqs]
+
+Extract inserts of panels from a PMO
 
 options:
   -h, --help       show this help message and exit
@@ -382,75 +393,82 @@ options:
 <span id="cb6-6"><a href="#cb6-6"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
 <span id="cb6-7"><a href="#cb6-7"></a></span>
 <span id="cb6-8"><a href="#cb6-8"></a></span>
-<span id="cb6-9"><a href="#cb6-9"></a><span class="kw">def</span> parse_args_extract_insert_of_panels():</span>
-<span id="cb6-10"><a href="#cb6-10"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb6-11"><a href="#cb6-11"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
-<span id="cb6-12"><a href="#cb6-12"></a>    parser.add_argument(</span>
-<span id="cb6-13"><a href="#cb6-13"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
-<span id="cb6-14"><a href="#cb6-14"></a>    )</span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="kw">def</span> get_parser_extract_insert_of_panels() <span class="op">-&gt;</span> argparse.ArgumentParser:</span>
+<span id="cb6-10"><a href="#cb6-10"></a>    parser <span class="op">=</span> argparse.ArgumentParser(</span>
+<span id="cb6-11"><a href="#cb6-11"></a>        prog<span class="op">=</span><span class="st">"pmotools-python extract_insert_of_panels"</span>,</span>
+<span id="cb6-12"><a href="#cb6-12"></a>        description<span class="op">=</span><span class="st">"Extract inserts of panels from a PMO"</span>,</span>
+<span id="cb6-13"><a href="#cb6-13"></a>    )</span>
+<span id="cb6-14"><a href="#cb6-14"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
 <span id="cb6-15"><a href="#cb6-15"></a>    parser.add_argument(</span>
-<span id="cb6-16"><a href="#cb6-16"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
 <span id="cb6-17"><a href="#cb6-17"></a>    )</span>
 <span id="cb6-18"><a href="#cb6-18"></a>    parser.add_argument(</span>
-<span id="cb6-19"><a href="#cb6-19"></a>        <span class="st">"--add_ref_seqs"</span>,</span>
-<span id="cb6-20"><a href="#cb6-20"></a>        action<span class="op">=</span><span class="st">"store_true"</span>,</span>
-<span id="cb6-21"><a href="#cb6-21"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"add ref seqs to the output as ref_seq"</span>,</span>
-<span id="cb6-22"><a href="#cb6-22"></a>    )</span>
-<span id="cb6-23"><a href="#cb6-23"></a></span>
-<span id="cb6-24"><a href="#cb6-24"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb6-25"><a href="#cb6-25"></a></span>
-<span id="cb6-26"><a href="#cb6-26"></a></span>
-<span id="cb6-27"><a href="#cb6-27"></a><span class="kw">def</span> extract_insert_of_panels():</span>
-<span id="cb6-28"><a href="#cb6-28"></a>    args <span class="op">=</span> parse_args_extract_insert_of_panels()</span>
-<span id="cb6-29"><a href="#cb6-29"></a></span>
-<span id="cb6-30"><a href="#cb6-30"></a>    <span class="co"># check files</span></span>
-<span id="cb6-31"><a href="#cb6-31"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb6-19"><a href="#cb6-19"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb6-20"><a href="#cb6-20"></a>    )</span>
+<span id="cb6-21"><a href="#cb6-21"></a>    parser.add_argument(</span>
+<span id="cb6-22"><a href="#cb6-22"></a>        <span class="st">"--add_ref_seqs"</span>,</span>
+<span id="cb6-23"><a href="#cb6-23"></a>        action<span class="op">=</span><span class="st">"store_true"</span>,</span>
+<span id="cb6-24"><a href="#cb6-24"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"add ref seqs to the output as ref_seq"</span>,</span>
+<span id="cb6-25"><a href="#cb6-25"></a>    )</span>
+<span id="cb6-26"><a href="#cb6-26"></a>    <span class="cf">return</span> parser</span>
+<span id="cb6-27"><a href="#cb6-27"></a></span>
+<span id="cb6-28"><a href="#cb6-28"></a></span>
+<span id="cb6-29"><a href="#cb6-29"></a><span class="kw">def</span> parse_args_extract_insert_of_panels():</span>
+<span id="cb6-30"><a href="#cb6-30"></a>    parser <span class="op">=</span> get_parser_extract_insert_of_panels()</span>
+<span id="cb6-31"><a href="#cb6-31"></a>    <span class="cf">return</span> parser.parse_args()</span>
 <span id="cb6-32"><a href="#cb6-32"></a></span>
-<span id="cb6-33"><a href="#cb6-33"></a>    <span class="co"># read in PMO</span></span>
-<span id="cb6-34"><a href="#cb6-34"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
-<span id="cb6-35"><a href="#cb6-35"></a></span>
-<span id="cb6-36"><a href="#cb6-36"></a>    <span class="co"># get panel insert locations</span></span>
-<span id="cb6-37"><a href="#cb6-37"></a>    panel_bed_locs <span class="op">=</span> PMOExporter.extract_panels_insert_bed_loc(pmo)</span>
-<span id="cb6-38"><a href="#cb6-38"></a></span>
-<span id="cb6-39"><a href="#cb6-39"></a>    <span class="co"># write</span></span>
-<span id="cb6-40"><a href="#cb6-40"></a>    <span class="cf">with</span> Utils.smart_open_write(args.output) <span class="im">as</span> f:</span>
-<span id="cb6-41"><a href="#cb6-41"></a>        f.write(</span>
-<span id="cb6-42"><a href="#cb6-42"></a>            <span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join(</span>
-<span id="cb6-43"><a href="#cb6-43"></a>                [</span>
-<span id="cb6-44"><a href="#cb6-44"></a>                    <span class="st">"#chrom"</span>,</span>
-<span id="cb6-45"><a href="#cb6-45"></a>                    <span class="st">"start"</span>,</span>
-<span id="cb6-46"><a href="#cb6-46"></a>                    <span class="st">"end"</span>,</span>
-<span id="cb6-47"><a href="#cb6-47"></a>                    <span class="st">"target_id"</span>,</span>
-<span id="cb6-48"><a href="#cb6-48"></a>                    <span class="st">"length"</span>,</span>
-<span id="cb6-49"><a href="#cb6-49"></a>                    <span class="st">"strand"</span>,</span>
-<span id="cb6-50"><a href="#cb6-50"></a>                    <span class="st">"extra_info"</span>,</span>
-<span id="cb6-51"><a href="#cb6-51"></a>                ]</span>
-<span id="cb6-52"><a href="#cb6-52"></a>            )</span>
-<span id="cb6-53"><a href="#cb6-53"></a>        )</span>
-<span id="cb6-54"><a href="#cb6-54"></a>        <span class="cf">if</span> args.add_ref_seqs:</span>
-<span id="cb6-55"><a href="#cb6-55"></a>            f.write(<span class="st">"</span><span class="ch">\t</span><span class="st">ref_seq"</span>)</span>
-<span id="cb6-56"><a href="#cb6-56"></a>        f.write(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb6-57"><a href="#cb6-57"></a>        <span class="cf">for</span> loc <span class="kw">in</span> panel_bed_locs:</span>
-<span id="cb6-58"><a href="#cb6-58"></a>            f.write(</span>
-<span id="cb6-59"><a href="#cb6-59"></a>                <span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join(</span>
-<span id="cb6-60"><a href="#cb6-60"></a>                    [</span>
-<span id="cb6-61"><a href="#cb6-61"></a>                        loc.chrom,</span>
-<span id="cb6-62"><a href="#cb6-62"></a>                        <span class="bu">str</span>(loc.start),</span>
-<span id="cb6-63"><a href="#cb6-63"></a>                        <span class="bu">str</span>(loc.end),</span>
-<span id="cb6-64"><a href="#cb6-64"></a>                        loc.name,</span>
-<span id="cb6-65"><a href="#cb6-65"></a>                        <span class="bu">str</span>(loc.score),</span>
-<span id="cb6-66"><a href="#cb6-66"></a>                        loc.strand,</span>
-<span id="cb6-67"><a href="#cb6-67"></a>                        loc.extra_info,</span>
-<span id="cb6-68"><a href="#cb6-68"></a>                    ]</span>
-<span id="cb6-69"><a href="#cb6-69"></a>                )</span>
-<span id="cb6-70"><a href="#cb6-70"></a>            )</span>
-<span id="cb6-71"><a href="#cb6-71"></a>            <span class="cf">if</span> args.add_ref_seqs:</span>
-<span id="cb6-72"><a href="#cb6-72"></a>                f.write(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span> <span class="op">+</span> <span class="bu">str</span>(loc.ref_seq))</span>
-<span id="cb6-73"><a href="#cb6-73"></a>            f.write(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb6-74"><a href="#cb6-74"></a></span>
-<span id="cb6-75"><a href="#cb6-75"></a></span>
-<span id="cb6-76"><a href="#cb6-76"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb6-77"><a href="#cb6-77"></a>    extract_insert_of_panels()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-33"><a href="#cb6-33"></a></span>
+<span id="cb6-34"><a href="#cb6-34"></a><span class="kw">def</span> extract_insert_of_panels():</span>
+<span id="cb6-35"><a href="#cb6-35"></a>    args <span class="op">=</span> parse_args_extract_insert_of_panels()</span>
+<span id="cb6-36"><a href="#cb6-36"></a></span>
+<span id="cb6-37"><a href="#cb6-37"></a>    <span class="co"># check files</span></span>
+<span id="cb6-38"><a href="#cb6-38"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb6-39"><a href="#cb6-39"></a></span>
+<span id="cb6-40"><a href="#cb6-40"></a>    <span class="co"># read in PMO</span></span>
+<span id="cb6-41"><a href="#cb6-41"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb6-42"><a href="#cb6-42"></a></span>
+<span id="cb6-43"><a href="#cb6-43"></a>    <span class="co"># get panel insert locations</span></span>
+<span id="cb6-44"><a href="#cb6-44"></a>    panel_bed_locs <span class="op">=</span> PMOExporter.extract_panels_insert_bed_loc(pmo)</span>
+<span id="cb6-45"><a href="#cb6-45"></a></span>
+<span id="cb6-46"><a href="#cb6-46"></a>    <span class="co"># write</span></span>
+<span id="cb6-47"><a href="#cb6-47"></a>    <span class="cf">with</span> Utils.smart_open_write(args.output) <span class="im">as</span> f:</span>
+<span id="cb6-48"><a href="#cb6-48"></a>        f.write(</span>
+<span id="cb6-49"><a href="#cb6-49"></a>            <span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join(</span>
+<span id="cb6-50"><a href="#cb6-50"></a>                [</span>
+<span id="cb6-51"><a href="#cb6-51"></a>                    <span class="st">"#chrom"</span>,</span>
+<span id="cb6-52"><a href="#cb6-52"></a>                    <span class="st">"start"</span>,</span>
+<span id="cb6-53"><a href="#cb6-53"></a>                    <span class="st">"end"</span>,</span>
+<span id="cb6-54"><a href="#cb6-54"></a>                    <span class="st">"target_id"</span>,</span>
+<span id="cb6-55"><a href="#cb6-55"></a>                    <span class="st">"length"</span>,</span>
+<span id="cb6-56"><a href="#cb6-56"></a>                    <span class="st">"strand"</span>,</span>
+<span id="cb6-57"><a href="#cb6-57"></a>                    <span class="st">"extra_info"</span>,</span>
+<span id="cb6-58"><a href="#cb6-58"></a>                ]</span>
+<span id="cb6-59"><a href="#cb6-59"></a>            )</span>
+<span id="cb6-60"><a href="#cb6-60"></a>        )</span>
+<span id="cb6-61"><a href="#cb6-61"></a>        <span class="cf">if</span> args.add_ref_seqs:</span>
+<span id="cb6-62"><a href="#cb6-62"></a>            f.write(<span class="st">"</span><span class="ch">\t</span><span class="st">ref_seq"</span>)</span>
+<span id="cb6-63"><a href="#cb6-63"></a>        f.write(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb6-64"><a href="#cb6-64"></a>        <span class="cf">for</span> loc <span class="kw">in</span> panel_bed_locs:</span>
+<span id="cb6-65"><a href="#cb6-65"></a>            f.write(</span>
+<span id="cb6-66"><a href="#cb6-66"></a>                <span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join(</span>
+<span id="cb6-67"><a href="#cb6-67"></a>                    [</span>
+<span id="cb6-68"><a href="#cb6-68"></a>                        loc.chrom,</span>
+<span id="cb6-69"><a href="#cb6-69"></a>                        <span class="bu">str</span>(loc.start),</span>
+<span id="cb6-70"><a href="#cb6-70"></a>                        <span class="bu">str</span>(loc.end),</span>
+<span id="cb6-71"><a href="#cb6-71"></a>                        loc.name,</span>
+<span id="cb6-72"><a href="#cb6-72"></a>                        <span class="bu">str</span>(loc.score),</span>
+<span id="cb6-73"><a href="#cb6-73"></a>                        loc.strand,</span>
+<span id="cb6-74"><a href="#cb6-74"></a>                        loc.extra_info,</span>
+<span id="cb6-75"><a href="#cb6-75"></a>                    ]</span>
+<span id="cb6-76"><a href="#cb6-76"></a>                )</span>
+<span id="cb6-77"><a href="#cb6-77"></a>            )</span>
+<span id="cb6-78"><a href="#cb6-78"></a>            <span class="cf">if</span> args.add_ref_seqs:</span>
+<span id="cb6-79"><a href="#cb6-79"></a>                f.write(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span> <span class="op">+</span> <span class="bu">str</span>(loc.ref_seq))</span>
+<span id="cb6-80"><a href="#cb6-80"></a>            f.write(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb6-81"><a href="#cb6-81"></a></span>
+<span id="cb6-82"><a href="#cb6-82"></a></span>
+<span id="cb6-83"><a href="#cb6-83"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb6-84"><a href="#cb6-84"></a>    extract_insert_of_panels()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -581,7 +599,7 @@ Pf3D7_14_v3 3214351 3214478 t100    127 +   [genome_name_version=3D7_2020-09-01;
                                                            [--output OUTPUT]
                                                            [--overwrite]
 
-extract ref_seq of inserts of panels, but if no ref_seq is save in the PMO
+extract ref_seq of inserts of panels, but if no ref_seq is saved in the PMO
 will just be blank
 
 options:
@@ -605,40 +623,50 @@ options:
 <span id="cb13-6"><a href="#cb13-6"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
 <span id="cb13-7"><a href="#cb13-7"></a></span>
 <span id="cb13-8"><a href="#cb13-8"></a></span>
-<span id="cb13-9"><a href="#cb13-9"></a><span class="kw">def</span> parse_args_extract_refseq_of_inserts_of_panels():</span>
-<span id="cb13-10"><a href="#cb13-10"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb13-11"><a href="#cb13-11"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
-<span id="cb13-12"><a href="#cb13-12"></a>    parser.add_argument(</span>
-<span id="cb13-13"><a href="#cb13-13"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
-<span id="cb13-14"><a href="#cb13-14"></a>    )</span>
-<span id="cb13-15"><a href="#cb13-15"></a>    parser.add_argument(</span>
-<span id="cb13-16"><a href="#cb13-16"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
-<span id="cb13-17"><a href="#cb13-17"></a>    )</span>
-<span id="cb13-18"><a href="#cb13-18"></a>    parser.description <span class="op">=</span> <span class="st">"extract ref_seq of inserts of panels, but if no ref_seq is save in the PMO will just be blank"</span></span>
-<span id="cb13-19"><a href="#cb13-19"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb13-20"><a href="#cb13-20"></a></span>
-<span id="cb13-21"><a href="#cb13-21"></a></span>
-<span id="cb13-22"><a href="#cb13-22"></a><span class="kw">def</span> extract_refseq_of_inserts_of_panels():</span>
-<span id="cb13-23"><a href="#cb13-23"></a>    args <span class="op">=</span> parse_args_extract_refseq_of_inserts_of_panels()</span>
-<span id="cb13-24"><a href="#cb13-24"></a></span>
-<span id="cb13-25"><a href="#cb13-25"></a>    <span class="co"># check files</span></span>
-<span id="cb13-26"><a href="#cb13-26"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
-<span id="cb13-27"><a href="#cb13-27"></a></span>
-<span id="cb13-28"><a href="#cb13-28"></a>    <span class="co"># read in PMO</span></span>
-<span id="cb13-29"><a href="#cb13-29"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb13-9"><a href="#cb13-9"></a><span class="kw">def</span> get_parser_extract_refseq_of_inserts_of_panels() <span class="op">-&gt;</span> argparse.ArgumentParser:</span>
+<span id="cb13-10"><a href="#cb13-10"></a>    parser <span class="op">=</span> argparse.ArgumentParser(</span>
+<span id="cb13-11"><a href="#cb13-11"></a>        prog<span class="op">=</span><span class="st">"pmotools-python extract_refseq_of_inserts_of_panels"</span>,</span>
+<span id="cb13-12"><a href="#cb13-12"></a>        description<span class="op">=</span>(</span>
+<span id="cb13-13"><a href="#cb13-13"></a>            <span class="st">"extract ref_seq of inserts of panels, but if no ref_seq is saved "</span></span>
+<span id="cb13-14"><a href="#cb13-14"></a>            <span class="st">"in the PMO will just be blank"</span></span>
+<span id="cb13-15"><a href="#cb13-15"></a>        ),</span>
+<span id="cb13-16"><a href="#cb13-16"></a>    )</span>
+<span id="cb13-17"><a href="#cb13-17"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
+<span id="cb13-18"><a href="#cb13-18"></a>    parser.add_argument(</span>
+<span id="cb13-19"><a href="#cb13-19"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
+<span id="cb13-20"><a href="#cb13-20"></a>    )</span>
+<span id="cb13-21"><a href="#cb13-21"></a>    parser.add_argument(</span>
+<span id="cb13-22"><a href="#cb13-22"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb13-23"><a href="#cb13-23"></a>    )</span>
+<span id="cb13-24"><a href="#cb13-24"></a>    <span class="cf">return</span> parser</span>
+<span id="cb13-25"><a href="#cb13-25"></a></span>
+<span id="cb13-26"><a href="#cb13-26"></a></span>
+<span id="cb13-27"><a href="#cb13-27"></a><span class="kw">def</span> parse_args_extract_refseq_of_inserts_of_panels():</span>
+<span id="cb13-28"><a href="#cb13-28"></a>    parser <span class="op">=</span> get_parser_extract_refseq_of_inserts_of_panels()</span>
+<span id="cb13-29"><a href="#cb13-29"></a>    <span class="cf">return</span> parser.parse_args()</span>
 <span id="cb13-30"><a href="#cb13-30"></a></span>
-<span id="cb13-31"><a href="#cb13-31"></a>    <span class="co"># get panel insert locations</span></span>
-<span id="cb13-32"><a href="#cb13-32"></a>    panel_bed_locs <span class="op">=</span> PMOExporter.extract_panels_insert_bed_loc(pmo)</span>
-<span id="cb13-33"><a href="#cb13-33"></a></span>
-<span id="cb13-34"><a href="#cb13-34"></a>    <span class="co"># write</span></span>
-<span id="cb13-35"><a href="#cb13-35"></a>    <span class="cf">with</span> Utils.smart_open_write(args.output) <span class="im">as</span> f:</span>
-<span id="cb13-36"><a href="#cb13-36"></a>        f.write(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join([<span class="st">"target_id"</span>, <span class="st">"ref_seq"</span>]) <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb13-37"><a href="#cb13-37"></a>        <span class="cf">for</span> loc <span class="kw">in</span> panel_bed_locs:</span>
-<span id="cb13-38"><a href="#cb13-38"></a>            f.write(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join([loc.name, loc.ref_seq]) <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb13-39"><a href="#cb13-39"></a></span>
+<span id="cb13-31"><a href="#cb13-31"></a></span>
+<span id="cb13-32"><a href="#cb13-32"></a><span class="kw">def</span> extract_refseq_of_inserts_of_panels():</span>
+<span id="cb13-33"><a href="#cb13-33"></a>    args <span class="op">=</span> parse_args_extract_refseq_of_inserts_of_panels()</span>
+<span id="cb13-34"><a href="#cb13-34"></a></span>
+<span id="cb13-35"><a href="#cb13-35"></a>    <span class="co"># check files</span></span>
+<span id="cb13-36"><a href="#cb13-36"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb13-37"><a href="#cb13-37"></a></span>
+<span id="cb13-38"><a href="#cb13-38"></a>    <span class="co"># read in PMO</span></span>
+<span id="cb13-39"><a href="#cb13-39"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
 <span id="cb13-40"><a href="#cb13-40"></a></span>
-<span id="cb13-41"><a href="#cb13-41"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb13-42"><a href="#cb13-42"></a>    extract_refseq_of_inserts_of_panels()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-41"><a href="#cb13-41"></a>    <span class="co"># get panel insert locations</span></span>
+<span id="cb13-42"><a href="#cb13-42"></a>    panel_bed_locs <span class="op">=</span> PMOExporter.extract_panels_insert_bed_loc(pmo)</span>
+<span id="cb13-43"><a href="#cb13-43"></a></span>
+<span id="cb13-44"><a href="#cb13-44"></a>    <span class="co"># write</span></span>
+<span id="cb13-45"><a href="#cb13-45"></a>    <span class="cf">with</span> Utils.smart_open_write(args.output) <span class="im">as</span> f:</span>
+<span id="cb13-46"><a href="#cb13-46"></a>        f.write(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join([<span class="st">"target_id"</span>, <span class="st">"ref_seq"</span>]) <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb13-47"><a href="#cb13-47"></a>        <span class="cf">for</span> loc <span class="kw">in</span> panel_bed_locs:</span>
+<span id="cb13-48"><a href="#cb13-48"></a>            f.write(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join([loc.name, loc.ref_seq]) <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb13-49"><a href="#cb13-49"></a></span>
+<span id="cb13-50"><a href="#cb13-50"></a></span>
+<span id="cb13-51"><a href="#cb13-51"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb13-52"><a href="#cb13-52"></a>    extract_refseq_of_inserts_of_panels()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -1317,7 +1345,18 @@ t100    ATCGTTTTGAATTGTTAGAATTTAAAATGACGGAGGATTGTTATACAAAAATGTGGTTTGATTTTATGAGTG
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>A <a href="https://plasmogenepi.org">PlasmoGenEpi</a> project <br><a href="https://plasmogenepi.org" class="footer-logo-link" aria-label="PlasmoGenEpi"></a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 <script src="../site_libs/quarto-html/zenscroll-min.js"></script>

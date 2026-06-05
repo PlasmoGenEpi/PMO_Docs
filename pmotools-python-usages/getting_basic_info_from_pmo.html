@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta charset="UTF-8">
+<meta name="generator" content="quarto-1.9.36">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Getting basic info out of PMO using pmotools-python – Portable Microhaplotype Object (PMO)</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -61,17 +63,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../images/pmo_logo_mini.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-49a824ff064150fa59632921ab93e189.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-51c09c167a706ef208dabe9d498949d7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6a2c4b793c0becaeb94cc5bf146c1484.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-d3f04e06c4dac2d35cbd8a0ed1255062.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -105,9 +107,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
-    <a class="navbar-brand" href="../index.html">
+    <a href="index.qmd" class="navbar-brand navbar-brand-logo">
+    <img src="../images/PMO_logo.png" alt="Portable Microhaplotype Object (PMO)" class="navbar-logo light-content"><img src="../images/PMO_logo.png" alt="Portable Microhaplotype Object (PMO)" class="navbar-logo dark-content"></a>
+    <a class="navbar-brand" href="index.qmd">
     <span class="navbar-title">Portable Microhaplotype Object (PMO)</span>
     </a>
   </div>
@@ -154,69 +156,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
 </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tools-installation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Tools Installation</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-tools-installation">
-<li>
-    <a class="dropdown-item" href="../Tools_Installation/pmotools-python_installation.html">
- <span class="dropdown-text">pmotools-python installation</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../pmotools-app-usage/pmotools-app.html"> 
+<span class="menu-text">PMO App</span></a>
   </li>  
-    </ul>
-</li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pmotools-python-usages" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">pmotools-python usages</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pmotools-python" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">pmotools-python</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python-usages">
-<li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header"><span class="menuTitle">Python interface</span></li>
-        <li class="dropdown-header"><span class="menuTitle">Building a PMO</span></li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python">
+<li>
+    <a class="dropdown-item" href="../pmotools-python-usages/general_info.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Tools_Installation/pmotools-python_installation.html">
+ <span class="dropdown-text">Installation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://plasmogenepi.github.io/pmotools-python/index.html">
+ <span class="dropdown-text">Manual</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Python Interface Tutorials</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_minimum_pmo/Create_minimal_pmo.html">
+ <span class="dropdown-text">Building a PMO with minimum required fields</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_minimum_pmo/Update_meta_in_a_minimal_pmo.html">
+ <span class="dropdown-text">Updating the Specimen Meta Information in a minimum PMO</span></a>
+  </li>  
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.html">
- <span class="dropdown-text">Example of how to build a PMO</span></a>
+ <span class="dropdown-text">Building a PMO including optional sections and fields</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Interacting with a PMO file</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.html">
- <span class="dropdown-text">Getting basic info out of a PMO</span></a>
+ <span class="dropdown-text">Getting basic information from a PMO file</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Command line interface</span></li>
-        <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header"><span class="menuTitle">pmotools-python</span></li>
+        <li class="dropdown-header"><span class="menuTitle">Command line Interface Tutorials</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/pmotools-python.html">
- <span class="dropdown-text">Command line interface to pmotools-python with pmotools-python</span></a>
+ <span class="dropdown-text">Command line interface guide</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Extracting out of PMO</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/extracting_allele_tables.html">
- <span class="dropdown-text">Extracting allele tables using pmotools-python</span></a>
+ <span class="dropdown-text">Extracting allele tables from a PMO</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Subset PMO</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/subsetting_from_PMO.html">
- <span class="dropdown-text">Subsetting from a PMO using pmotools-python</span></a>
+ <span class="dropdown-text">Subsetting a PMO</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Getting sub info from PMO</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/getting_basic_info_from_pmo.html">
- <span class="dropdown-text">Getting basic info out of PMO using pmotools-python</span></a>
+ <span class="dropdown-text">Getting basic information from a PMO</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/extracting_panel_info_from_pmo.html">
- <span class="dropdown-text">Getting panel info out of PMO using pmotools-python</span></a>
+ <span class="dropdown-text">Extracting panel info from PMO</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Handling Multiple PMOs</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/handling_multiple_pmos.html">
- <span class="dropdown-text">Handling multiple PMOs pmotools-python</span></a>
+ <span class="dropdown-text">Handling Multiple PMOs</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Validating PMO files</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/validating_pmos.html">
- <span class="dropdown-text">Validating PMOs pmotools-python</span></a>
+ <span class="dropdown-text">Validating PMO files</span></a>
   </li>  
     </ul>
 </li>
@@ -311,7 +316,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
-<pre><code>pmotools-python v1.0.0 - A suite of tools for interacting with Portable Microhaplotype Object (PMO) file format
+<pre><code>pmotools-python v1.1.0 - A suite of tools for interacting with Portable Microhaplotype Object (PMO) file format
 
 Available functions organized by groups are
 convertors_to_json
@@ -323,7 +328,7 @@ convertors_to_json
 extractors_from_pmo
     extract_pmo_with_selected_meta - Extract samples + haplotypes using selected meta
     extract_pmo_with_select_specimen_names - Extract specific samples from the specimens table
-    extract_pmo_with_select_library_sample_names - Extract experiment sample names from experiment_info table
+    extract_pmo_with_select_library_sample_names - Extract library sample names from library_sample_info table
     extract_pmo_with_select_targets - Extract specific targets
     extract_pmo_with_read_filter - Extract with a read filter
 
@@ -331,9 +336,9 @@ working_with_multiple_pmos
     combine_pmos - Combine multiple PMOs of the same panel
 
 extract_basic_info_from_pmo
-    list_library_sample_names_per_specimen_name - List experiment_sample_ids per specimen_id
+    list_library_sample_names_per_specimen_name - List library_sample_names per specimen_name
     list_specimen_meta_fields - List specimen meta fields in the specimen_info section
-    list_bioinformatics_run_names - List all tar_amp_bioinformatics_info_ids in a PMO
+    list_bioinformatics_run_names - List all tar_amp_bioinformatics_info_names in a PMO
     count_specimen_meta - Count values of selected specimen meta fields
     count_targets_per_library_sample - Count number of targets per sample
     count_library_samples_per_target - Count number of samples per target
@@ -342,13 +347,17 @@ validation
     validate_pmo - Validate a PMO file against a JSON Schema
 
 pmo_to_table
+    export_pmo_into_xlsx - export all parts of a PMO into a .xlsx file
     export_specimen_meta_table - export the specimen meta table from a PMO file
     export_library_sample_meta_table - export the library_sample meta table from a PMO file
     export_project_info_meta_table - export the project_info meta table from a PMO file
     export_sequencing_info_meta_table - export the sequencing_info meta table from a PMO file
     export_specimen_travel_meta_table - export the specimen travel_info meta table from a PMO file
+    export_targeted_genomes_meta_table - export the targeted genomes info meta table from a PMO file
     export_target_info_meta_table - export the target info meta table from a PMO file
     export_panel_info_meta_table - export the panel info meta table from a PMO file
+    export_bioinformatics_run_info_meta_table - export the bioinformatics_run_info meta table from a PMO file
+    export_bioinformatics_methods_info_meta_table - export the bioinformatics_methods_info meta table from a PMO file
     extract_allele_table - Extract allele tables for tools like dcifer or moire
     extract_insert_of_panels - Extract inserts of panels from a PMO
     extract_refseq_of_inserts_of_panels - Extract ref_seq of panel inserts from a PMO</code></pre>
@@ -370,6 +379,8 @@ pmo_to_table
 <pre><code>usage: pmotools-python list_specimen_meta_fields [-h] --file FILE
                                                  [--output OUTPUT]
                                                  [--delim DELIM] [--overwrite]
+
+List specimen meta fields in the specimen_info section
 
 options:
   -h, --help       show this help message and exit
@@ -396,56 +407,63 @@ options:
 <span id="cb6-8"><a href="#cb6-8"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
 <span id="cb6-9"><a href="#cb6-9"></a></span>
 <span id="cb6-10"><a href="#cb6-10"></a></span>
-<span id="cb6-11"><a href="#cb6-11"></a><span class="kw">def</span> parse_args_list_specimen_meta_fields():</span>
-<span id="cb6-12"><a href="#cb6-12"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb6-13"><a href="#cb6-13"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
-<span id="cb6-14"><a href="#cb6-14"></a>    parser.add_argument(</span>
-<span id="cb6-15"><a href="#cb6-15"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
-<span id="cb6-16"><a href="#cb6-16"></a>    )</span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="kw">def</span> get_parser_list_specimen_meta_fields() <span class="op">-&gt;</span> argparse.ArgumentParser:</span>
+<span id="cb6-12"><a href="#cb6-12"></a>    parser <span class="op">=</span> argparse.ArgumentParser(</span>
+<span id="cb6-13"><a href="#cb6-13"></a>        prog<span class="op">=</span><span class="st">"pmotools-python list_specimen_meta_fields"</span>,</span>
+<span id="cb6-14"><a href="#cb6-14"></a>        description<span class="op">=</span><span class="st">"List specimen meta fields in the specimen_info section"</span>,</span>
+<span id="cb6-15"><a href="#cb6-15"></a>    )</span>
+<span id="cb6-16"><a href="#cb6-16"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
 <span id="cb6-17"><a href="#cb6-17"></a>    parser.add_argument(</span>
-<span id="cb6-18"><a href="#cb6-18"></a>        <span class="st">"--delim"</span>,</span>
-<span id="cb6-19"><a href="#cb6-19"></a>        default<span class="op">=</span><span class="st">"tab"</span>,</span>
-<span id="cb6-20"><a href="#cb6-20"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb6-21"><a href="#cb6-21"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb6-22"><a href="#cb6-22"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the delimiter of the output text file, examples input tab,comma but can also be the actual delimiter"</span>,</span>
-<span id="cb6-23"><a href="#cb6-23"></a>    )</span>
-<span id="cb6-24"><a href="#cb6-24"></a>    parser.add_argument(</span>
-<span id="cb6-25"><a href="#cb6-25"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb6-18"><a href="#cb6-18"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
+<span id="cb6-19"><a href="#cb6-19"></a>    )</span>
+<span id="cb6-20"><a href="#cb6-20"></a>    parser.add_argument(</span>
+<span id="cb6-21"><a href="#cb6-21"></a>        <span class="st">"--delim"</span>,</span>
+<span id="cb6-22"><a href="#cb6-22"></a>        default<span class="op">=</span><span class="st">"tab"</span>,</span>
+<span id="cb6-23"><a href="#cb6-23"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb6-24"><a href="#cb6-24"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb6-25"><a href="#cb6-25"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the delimiter of the output text file, examples input tab,comma but can also be the actual delimiter"</span>,</span>
 <span id="cb6-26"><a href="#cb6-26"></a>    )</span>
-<span id="cb6-27"><a href="#cb6-27"></a></span>
-<span id="cb6-28"><a href="#cb6-28"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb6-29"><a href="#cb6-29"></a></span>
-<span id="cb6-30"><a href="#cb6-30"></a></span>
-<span id="cb6-31"><a href="#cb6-31"></a><span class="kw">def</span> list_specimen_meta_fields():</span>
-<span id="cb6-32"><a href="#cb6-32"></a>    args <span class="op">=</span> parse_args_list_specimen_meta_fields()</span>
-<span id="cb6-33"><a href="#cb6-33"></a></span>
-<span id="cb6-34"><a href="#cb6-34"></a>    <span class="co"># check files</span></span>
-<span id="cb6-35"><a href="#cb6-35"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(</span>
-<span id="cb6-36"><a href="#cb6-36"></a>        args.delim, gzip<span class="op">=</span>args.output.endswith(<span class="st">".gz"</span>)</span>
-<span id="cb6-37"><a href="#cb6-37"></a>    )</span>
-<span id="cb6-38"><a href="#cb6-38"></a>    args.output <span class="op">=</span> (</span>
-<span id="cb6-39"><a href="#cb6-39"></a>        args.output</span>
-<span id="cb6-40"><a href="#cb6-40"></a>        <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output</span>
-<span id="cb6-41"><a href="#cb6-41"></a>        <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
-<span id="cb6-42"><a href="#cb6-42"></a>    )</span>
-<span id="cb6-43"><a href="#cb6-43"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
-<span id="cb6-44"><a href="#cb6-44"></a></span>
-<span id="cb6-45"><a href="#cb6-45"></a>    <span class="co"># read in PMO</span></span>
-<span id="cb6-46"><a href="#cb6-46"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
-<span id="cb6-47"><a href="#cb6-47"></a></span>
-<span id="cb6-48"><a href="#cb6-48"></a>    <span class="co"># count fields</span></span>
-<span id="cb6-49"><a href="#cb6-49"></a>    counts_df <span class="op">=</span> PMOProcessor.count_specimen_per_meta_fields(pmo)</span>
-<span id="cb6-50"><a href="#cb6-50"></a></span>
-<span id="cb6-51"><a href="#cb6-51"></a>    <span class="co"># output</span></span>
-<span id="cb6-52"><a href="#cb6-52"></a>    counts_df.to_csv(</span>
-<span id="cb6-53"><a href="#cb6-53"></a>        sys.stdout <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> args.output,</span>
-<span id="cb6-54"><a href="#cb6-54"></a>        sep<span class="op">=</span>output_delim,</span>
-<span id="cb6-55"><a href="#cb6-55"></a>        index<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb6-56"><a href="#cb6-56"></a>    )</span>
+<span id="cb6-27"><a href="#cb6-27"></a>    parser.add_argument(</span>
+<span id="cb6-28"><a href="#cb6-28"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb6-29"><a href="#cb6-29"></a>    )</span>
+<span id="cb6-30"><a href="#cb6-30"></a>    <span class="cf">return</span> parser</span>
+<span id="cb6-31"><a href="#cb6-31"></a></span>
+<span id="cb6-32"><a href="#cb6-32"></a></span>
+<span id="cb6-33"><a href="#cb6-33"></a><span class="kw">def</span> parse_args_list_specimen_meta_fields():</span>
+<span id="cb6-34"><a href="#cb6-34"></a>    parser <span class="op">=</span> get_parser_list_specimen_meta_fields()</span>
+<span id="cb6-35"><a href="#cb6-35"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb6-36"><a href="#cb6-36"></a></span>
+<span id="cb6-37"><a href="#cb6-37"></a></span>
+<span id="cb6-38"><a href="#cb6-38"></a><span class="kw">def</span> list_specimen_meta_fields():</span>
+<span id="cb6-39"><a href="#cb6-39"></a>    args <span class="op">=</span> parse_args_list_specimen_meta_fields()</span>
+<span id="cb6-40"><a href="#cb6-40"></a></span>
+<span id="cb6-41"><a href="#cb6-41"></a>    <span class="co"># check files</span></span>
+<span id="cb6-42"><a href="#cb6-42"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(</span>
+<span id="cb6-43"><a href="#cb6-43"></a>        args.delim, gzip<span class="op">=</span>args.output.endswith(<span class="st">".gz"</span>)</span>
+<span id="cb6-44"><a href="#cb6-44"></a>    )</span>
+<span id="cb6-45"><a href="#cb6-45"></a>    args.output <span class="op">=</span> (</span>
+<span id="cb6-46"><a href="#cb6-46"></a>        args.output</span>
+<span id="cb6-47"><a href="#cb6-47"></a>        <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output</span>
+<span id="cb6-48"><a href="#cb6-48"></a>        <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
+<span id="cb6-49"><a href="#cb6-49"></a>    )</span>
+<span id="cb6-50"><a href="#cb6-50"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb6-51"><a href="#cb6-51"></a></span>
+<span id="cb6-52"><a href="#cb6-52"></a>    <span class="co"># read in PMO</span></span>
+<span id="cb6-53"><a href="#cb6-53"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb6-54"><a href="#cb6-54"></a></span>
+<span id="cb6-55"><a href="#cb6-55"></a>    <span class="co"># count fields</span></span>
+<span id="cb6-56"><a href="#cb6-56"></a>    counts_df <span class="op">=</span> PMOProcessor.count_specimen_per_meta_fields(pmo)</span>
 <span id="cb6-57"><a href="#cb6-57"></a></span>
-<span id="cb6-58"><a href="#cb6-58"></a></span>
-<span id="cb6-59"><a href="#cb6-59"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb6-60"><a href="#cb6-60"></a>    list_specimen_meta_fields()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-58"><a href="#cb6-58"></a>    <span class="co"># output</span></span>
+<span id="cb6-59"><a href="#cb6-59"></a>    counts_df.to_csv(</span>
+<span id="cb6-60"><a href="#cb6-60"></a>        sys.stdout <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> args.output,</span>
+<span id="cb6-61"><a href="#cb6-61"></a>        sep<span class="op">=</span>output_delim,</span>
+<span id="cb6-62"><a href="#cb6-62"></a>        index<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb6-63"><a href="#cb6-63"></a>    )</span>
+<span id="cb6-64"><a href="#cb6-64"></a></span>
+<span id="cb6-65"><a href="#cb6-65"></a></span>
+<span id="cb6-66"><a href="#cb6-66"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb6-67"><a href="#cb6-67"></a>    list_specimen_meta_fields()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -482,6 +500,8 @@ storage_plate_info  81  124</code></pre>
                                            [--delim DELIM] [--overwrite]
                                            --meta_fields META_FIELDS
 
+Count values of selected specimen meta fields
+
 options:
   -h, --help            show this help message and exit
   --file FILE           PMO file
@@ -511,65 +531,72 @@ options:
 <span id="cb12-8"><a href="#cb12-8"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
 <span id="cb12-9"><a href="#cb12-9"></a></span>
 <span id="cb12-10"><a href="#cb12-10"></a></span>
-<span id="cb12-11"><a href="#cb12-11"></a><span class="kw">def</span> parse_args_count_specimen_meta():</span>
-<span id="cb12-12"><a href="#cb12-12"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb12-13"><a href="#cb12-13"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
-<span id="cb12-14"><a href="#cb12-14"></a>    parser.add_argument(</span>
-<span id="cb12-15"><a href="#cb12-15"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
-<span id="cb12-16"><a href="#cb12-16"></a>    )</span>
+<span id="cb12-11"><a href="#cb12-11"></a><span class="kw">def</span> get_parser_count_specimen_meta() <span class="op">-&gt;</span> argparse.ArgumentParser:</span>
+<span id="cb12-12"><a href="#cb12-12"></a>    parser <span class="op">=</span> argparse.ArgumentParser(</span>
+<span id="cb12-13"><a href="#cb12-13"></a>        prog<span class="op">=</span><span class="st">"pmotools-python count_specimen_meta"</span>,</span>
+<span id="cb12-14"><a href="#cb12-14"></a>        description<span class="op">=</span><span class="st">"Count values of selected specimen meta fields"</span>,</span>
+<span id="cb12-15"><a href="#cb12-15"></a>    )</span>
+<span id="cb12-16"><a href="#cb12-16"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
 <span id="cb12-17"><a href="#cb12-17"></a>    parser.add_argument(</span>
-<span id="cb12-18"><a href="#cb12-18"></a>        <span class="st">"--delim"</span>,</span>
-<span id="cb12-19"><a href="#cb12-19"></a>        default<span class="op">=</span><span class="st">"tab"</span>,</span>
-<span id="cb12-20"><a href="#cb12-20"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb12-21"><a href="#cb12-21"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb12-22"><a href="#cb12-22"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the delimiter of the output text file, examples input tab,comma but can also be the actual delimiter"</span>,</span>
-<span id="cb12-23"><a href="#cb12-23"></a>    )</span>
-<span id="cb12-24"><a href="#cb12-24"></a>    parser.add_argument(</span>
-<span id="cb12-25"><a href="#cb12-25"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb12-18"><a href="#cb12-18"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
+<span id="cb12-19"><a href="#cb12-19"></a>    )</span>
+<span id="cb12-20"><a href="#cb12-20"></a>    parser.add_argument(</span>
+<span id="cb12-21"><a href="#cb12-21"></a>        <span class="st">"--delim"</span>,</span>
+<span id="cb12-22"><a href="#cb12-22"></a>        default<span class="op">=</span><span class="st">"tab"</span>,</span>
+<span id="cb12-23"><a href="#cb12-23"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb12-24"><a href="#cb12-24"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb12-25"><a href="#cb12-25"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the delimiter of the output text file, examples input tab,comma but can also be the actual delimiter"</span>,</span>
 <span id="cb12-26"><a href="#cb12-26"></a>    )</span>
 <span id="cb12-27"><a href="#cb12-27"></a>    parser.add_argument(</span>
-<span id="cb12-28"><a href="#cb12-28"></a>        <span class="st">"--meta_fields"</span>,</span>
-<span id="cb12-29"><a href="#cb12-29"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb12-30"><a href="#cb12-30"></a>        required<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb12-31"><a href="#cb12-31"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the fields to count the subfields of, can supply multiple separated by commas, e.g. --meta_fields collection_country,collection_date"</span>,</span>
-<span id="cb12-32"><a href="#cb12-32"></a>    )</span>
-<span id="cb12-33"><a href="#cb12-33"></a></span>
-<span id="cb12-34"><a href="#cb12-34"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb12-35"><a href="#cb12-35"></a></span>
-<span id="cb12-36"><a href="#cb12-36"></a></span>
-<span id="cb12-37"><a href="#cb12-37"></a><span class="kw">def</span> count_specimen_meta():</span>
-<span id="cb12-38"><a href="#cb12-38"></a>    args <span class="op">=</span> parse_args_count_specimen_meta()</span>
-<span id="cb12-39"><a href="#cb12-39"></a></span>
-<span id="cb12-40"><a href="#cb12-40"></a>    <span class="co"># check files</span></span>
-<span id="cb12-41"><a href="#cb12-41"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(</span>
-<span id="cb12-42"><a href="#cb12-42"></a>        args.delim, gzip<span class="op">=</span>args.output.endswith(<span class="st">".gz"</span>)</span>
-<span id="cb12-43"><a href="#cb12-43"></a>    )</span>
-<span id="cb12-44"><a href="#cb12-44"></a>    args.output <span class="op">=</span> (</span>
-<span id="cb12-45"><a href="#cb12-45"></a>        args.output</span>
-<span id="cb12-46"><a href="#cb12-46"></a>        <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output</span>
-<span id="cb12-47"><a href="#cb12-47"></a>        <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
-<span id="cb12-48"><a href="#cb12-48"></a>    )</span>
-<span id="cb12-49"><a href="#cb12-49"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
-<span id="cb12-50"><a href="#cb12-50"></a></span>
-<span id="cb12-51"><a href="#cb12-51"></a>    <span class="co"># process the meta_fields argument</span></span>
-<span id="cb12-52"><a href="#cb12-52"></a>    meta_fields_toks <span class="op">=</span> args.meta_fields.split(<span class="st">","</span>)</span>
-<span id="cb12-53"><a href="#cb12-53"></a></span>
-<span id="cb12-54"><a href="#cb12-54"></a>    <span class="co"># read in PMO</span></span>
-<span id="cb12-55"><a href="#cb12-55"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
-<span id="cb12-56"><a href="#cb12-56"></a></span>
-<span id="cb12-57"><a href="#cb12-57"></a>    <span class="co"># count sub-fields</span></span>
-<span id="cb12-58"><a href="#cb12-58"></a>    counts_df <span class="op">=</span> PMOProcessor.count_specimen_by_field_value(pmo, meta_fields_toks)</span>
-<span id="cb12-59"><a href="#cb12-59"></a></span>
-<span id="cb12-60"><a href="#cb12-60"></a>    <span class="co"># write out</span></span>
-<span id="cb12-61"><a href="#cb12-61"></a>    counts_df.to_csv(</span>
-<span id="cb12-62"><a href="#cb12-62"></a>        sys.stdout <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> args.output,</span>
-<span id="cb12-63"><a href="#cb12-63"></a>        sep<span class="op">=</span>output_delim,</span>
-<span id="cb12-64"><a href="#cb12-64"></a>        index<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb12-65"><a href="#cb12-65"></a>    )</span>
+<span id="cb12-28"><a href="#cb12-28"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb12-29"><a href="#cb12-29"></a>    )</span>
+<span id="cb12-30"><a href="#cb12-30"></a>    parser.add_argument(</span>
+<span id="cb12-31"><a href="#cb12-31"></a>        <span class="st">"--meta_fields"</span>,</span>
+<span id="cb12-32"><a href="#cb12-32"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb12-33"><a href="#cb12-33"></a>        required<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb12-34"><a href="#cb12-34"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the fields to count the subfields of, can supply multiple separated by commas, e.g. --meta_fields collection_country,collection_date"</span>,</span>
+<span id="cb12-35"><a href="#cb12-35"></a>    )</span>
+<span id="cb12-36"><a href="#cb12-36"></a>    <span class="cf">return</span> parser</span>
+<span id="cb12-37"><a href="#cb12-37"></a></span>
+<span id="cb12-38"><a href="#cb12-38"></a></span>
+<span id="cb12-39"><a href="#cb12-39"></a><span class="kw">def</span> parse_args_count_specimen_meta():</span>
+<span id="cb12-40"><a href="#cb12-40"></a>    parser <span class="op">=</span> get_parser_count_specimen_meta()</span>
+<span id="cb12-41"><a href="#cb12-41"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb12-42"><a href="#cb12-42"></a></span>
+<span id="cb12-43"><a href="#cb12-43"></a></span>
+<span id="cb12-44"><a href="#cb12-44"></a><span class="kw">def</span> count_specimen_meta():</span>
+<span id="cb12-45"><a href="#cb12-45"></a>    args <span class="op">=</span> parse_args_count_specimen_meta()</span>
+<span id="cb12-46"><a href="#cb12-46"></a></span>
+<span id="cb12-47"><a href="#cb12-47"></a>    <span class="co"># check files</span></span>
+<span id="cb12-48"><a href="#cb12-48"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(</span>
+<span id="cb12-49"><a href="#cb12-49"></a>        args.delim, gzip<span class="op">=</span>args.output.endswith(<span class="st">".gz"</span>)</span>
+<span id="cb12-50"><a href="#cb12-50"></a>    )</span>
+<span id="cb12-51"><a href="#cb12-51"></a>    args.output <span class="op">=</span> (</span>
+<span id="cb12-52"><a href="#cb12-52"></a>        args.output</span>
+<span id="cb12-53"><a href="#cb12-53"></a>        <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output</span>
+<span id="cb12-54"><a href="#cb12-54"></a>        <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
+<span id="cb12-55"><a href="#cb12-55"></a>    )</span>
+<span id="cb12-56"><a href="#cb12-56"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb12-57"><a href="#cb12-57"></a></span>
+<span id="cb12-58"><a href="#cb12-58"></a>    <span class="co"># process the meta_fields argument</span></span>
+<span id="cb12-59"><a href="#cb12-59"></a>    meta_fields_toks <span class="op">=</span> args.meta_fields.split(<span class="st">","</span>)</span>
+<span id="cb12-60"><a href="#cb12-60"></a></span>
+<span id="cb12-61"><a href="#cb12-61"></a>    <span class="co"># read in PMO</span></span>
+<span id="cb12-62"><a href="#cb12-62"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb12-63"><a href="#cb12-63"></a></span>
+<span id="cb12-64"><a href="#cb12-64"></a>    <span class="co"># count sub-fields</span></span>
+<span id="cb12-65"><a href="#cb12-65"></a>    counts_df <span class="op">=</span> PMOProcessor.count_specimen_by_field_value(pmo, meta_fields_toks)</span>
 <span id="cb12-66"><a href="#cb12-66"></a></span>
-<span id="cb12-67"><a href="#cb12-67"></a></span>
-<span id="cb12-68"><a href="#cb12-68"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb12-69"><a href="#cb12-69"></a>    count_specimen_meta()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-67"><a href="#cb12-67"></a>    <span class="co"># write out</span></span>
+<span id="cb12-68"><a href="#cb12-68"></a>    counts_df.to_csv(</span>
+<span id="cb12-69"><a href="#cb12-69"></a>        sys.stdout <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> args.output,</span>
+<span id="cb12-70"><a href="#cb12-70"></a>        sep<span class="op">=</span>output_delim,</span>
+<span id="cb12-71"><a href="#cb12-71"></a>        index<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb12-72"><a href="#cb12-72"></a>    )</span>
+<span id="cb12-73"><a href="#cb12-73"></a></span>
+<span id="cb12-74"><a href="#cb12-74"></a></span>
+<span id="cb12-75"><a href="#cb12-75"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb12-76"><a href="#cb12-76"></a>    count_specimen_meta()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -613,28 +640,28 @@ Bangladesh  2012-06-17  1   5.145885864251531e-05   19433
 Bangladesh  2012-07-17  1   5.145885864251531e-05   19433
 Bangladesh  2012-07-23  1   5.145885864251531e-05   19433
 Traceback (most recent call last):
-  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/bin/pmotools-python", line 7, in &lt;module&gt;
+  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/deploy_PMO_Docs/env/bin/pmotools-python", line 6, in &lt;module&gt;
     sys.exit(main())
              ^^^^^^
-  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/pmotools-python/src/pmotools/cli.py", line 435, in main
+  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/deploy_PMO_Docs/pmotools-python/src/pmotools/cli.py", line 463, in main
     handler()
-  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_specimen_meta.py", line 61, in count_specimen_meta
+  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/deploy_PMO_Docs/pmotools-python/src/pmotools/scripts/extract_info_from_pmo/count_specimen_meta.py", line 68, in count_specimen_meta
     counts_df.to_csv(
-  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/util/_decorators.py", line 333, in wrapper
+  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/deploy_PMO_Docs/env/lib/python3.12/site-packages/pandas/util/_decorators.py", line 333, in wrapper
     return func(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/core/generic.py", line 3967, in to_csv
+  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/deploy_PMO_Docs/env/lib/python3.12/site-packages/pandas/core/generic.py", line 3967, in to_csv
     return DataFrameRenderer(formatter).to_csv(
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/format.py", line 1014, in to_csv
+  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/deploy_PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/format.py", line 1014, in to_csv
     csv_formatter.save()
-  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 270, in save
+  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/deploy_PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 270, in save
     self._save()
-  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 275, in _save
+  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/deploy_PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 275, in _save
     self._save_body()
-  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 313, in _save_body
+  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/deploy_PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 313, in _save_body
     self._save_chunk(start_i, end_i)
-  File "/Users/nick/projects/plasmodium/falciparum/PMO_Docs/PMO_Docs_deployment/PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 324, in _save_chunk
+  File "/Users/nicholashathaway/projects/plasmodium/falciparum/PMO_Docs_for_deploying/deploy_PMO_Docs/env/lib/python3.12/site-packages/pandas/io/formats/csvs.py", line 324, in _save_chunk
     libwriters.write_csv_rows(
   File "writers.pyx", line 73, in pandas._libs.writers.write_csv_rows
 BrokenPipeError: [Errno 32] Broken pipe
@@ -649,6 +676,8 @@ BrokenPipeError: [Errno 32] Broken pipe</code></pre>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>usage: pmotools-python list_library_sample_names_per_specimen_name
        [-h] --file FILE [--output OUTPUT] [--delim DELIM] [--overwrite]
+
+List library_sample_names per specimen_name
 
 options:
   -h, --help       show this help message and exit
@@ -675,56 +704,63 @@ options:
 <span id="cb22-8"><a href="#cb22-8"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
 <span id="cb22-9"><a href="#cb22-9"></a></span>
 <span id="cb22-10"><a href="#cb22-10"></a></span>
-<span id="cb22-11"><a href="#cb22-11"></a><span class="kw">def</span> parse_args_list_library_sample_names_per_specimen_name():</span>
-<span id="cb22-12"><a href="#cb22-12"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb22-13"><a href="#cb22-13"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
-<span id="cb22-14"><a href="#cb22-14"></a>    parser.add_argument(</span>
-<span id="cb22-15"><a href="#cb22-15"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
-<span id="cb22-16"><a href="#cb22-16"></a>    )</span>
+<span id="cb22-11"><a href="#cb22-11"></a><span class="kw">def</span> get_parser_list_library_sample_names_per_specimen_name() <span class="op">-&gt;</span> argparse.ArgumentParser:</span>
+<span id="cb22-12"><a href="#cb22-12"></a>    parser <span class="op">=</span> argparse.ArgumentParser(</span>
+<span id="cb22-13"><a href="#cb22-13"></a>        prog<span class="op">=</span><span class="st">"pmotools-python list_library_sample_names_per_specimen_name"</span>,</span>
+<span id="cb22-14"><a href="#cb22-14"></a>        description<span class="op">=</span><span class="st">"List library_sample_names per specimen_name"</span>,</span>
+<span id="cb22-15"><a href="#cb22-15"></a>    )</span>
+<span id="cb22-16"><a href="#cb22-16"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
 <span id="cb22-17"><a href="#cb22-17"></a>    parser.add_argument(</span>
-<span id="cb22-18"><a href="#cb22-18"></a>        <span class="st">"--delim"</span>,</span>
-<span id="cb22-19"><a href="#cb22-19"></a>        default<span class="op">=</span><span class="st">"tab"</span>,</span>
-<span id="cb22-20"><a href="#cb22-20"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb22-21"><a href="#cb22-21"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb22-22"><a href="#cb22-22"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the delimiter of the output text file, examples input tab,comma but can also be the actual delimiter"</span>,</span>
-<span id="cb22-23"><a href="#cb22-23"></a>    )</span>
-<span id="cb22-24"><a href="#cb22-24"></a>    parser.add_argument(</span>
-<span id="cb22-25"><a href="#cb22-25"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb22-18"><a href="#cb22-18"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
+<span id="cb22-19"><a href="#cb22-19"></a>    )</span>
+<span id="cb22-20"><a href="#cb22-20"></a>    parser.add_argument(</span>
+<span id="cb22-21"><a href="#cb22-21"></a>        <span class="st">"--delim"</span>,</span>
+<span id="cb22-22"><a href="#cb22-22"></a>        default<span class="op">=</span><span class="st">"tab"</span>,</span>
+<span id="cb22-23"><a href="#cb22-23"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb22-24"><a href="#cb22-24"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb22-25"><a href="#cb22-25"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the delimiter of the output text file, examples input tab,comma but can also be the actual delimiter"</span>,</span>
 <span id="cb22-26"><a href="#cb22-26"></a>    )</span>
-<span id="cb22-27"><a href="#cb22-27"></a></span>
-<span id="cb22-28"><a href="#cb22-28"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb22-29"><a href="#cb22-29"></a></span>
-<span id="cb22-30"><a href="#cb22-30"></a></span>
-<span id="cb22-31"><a href="#cb22-31"></a><span class="kw">def</span> list_library_sample_names_per_specimen_name():</span>
-<span id="cb22-32"><a href="#cb22-32"></a>    args <span class="op">=</span> parse_args_list_library_sample_names_per_specimen_name()</span>
-<span id="cb22-33"><a href="#cb22-33"></a></span>
-<span id="cb22-34"><a href="#cb22-34"></a>    <span class="co"># check files</span></span>
-<span id="cb22-35"><a href="#cb22-35"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(</span>
-<span id="cb22-36"><a href="#cb22-36"></a>        args.delim, gzip<span class="op">=</span>args.output.endswith(<span class="st">".gz"</span>)</span>
-<span id="cb22-37"><a href="#cb22-37"></a>    )</span>
-<span id="cb22-38"><a href="#cb22-38"></a>    args.output <span class="op">=</span> (</span>
-<span id="cb22-39"><a href="#cb22-39"></a>        args.output</span>
-<span id="cb22-40"><a href="#cb22-40"></a>        <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output</span>
-<span id="cb22-41"><a href="#cb22-41"></a>        <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
-<span id="cb22-42"><a href="#cb22-42"></a>    )</span>
-<span id="cb22-43"><a href="#cb22-43"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
-<span id="cb22-44"><a href="#cb22-44"></a></span>
-<span id="cb22-45"><a href="#cb22-45"></a>    <span class="co"># read in PMO</span></span>
-<span id="cb22-46"><a href="#cb22-46"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
-<span id="cb22-47"><a href="#cb22-47"></a></span>
-<span id="cb22-48"><a href="#cb22-48"></a>    <span class="co"># count fields</span></span>
-<span id="cb22-49"><a href="#cb22-49"></a>    info_df <span class="op">=</span> PMOExporter.list_library_sample_names_per_specimen_name(pmo)</span>
-<span id="cb22-50"><a href="#cb22-50"></a></span>
-<span id="cb22-51"><a href="#cb22-51"></a>    <span class="co"># output</span></span>
-<span id="cb22-52"><a href="#cb22-52"></a>    info_df.to_csv(</span>
-<span id="cb22-53"><a href="#cb22-53"></a>        sys.stdout <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> args.output,</span>
-<span id="cb22-54"><a href="#cb22-54"></a>        sep<span class="op">=</span>output_delim,</span>
-<span id="cb22-55"><a href="#cb22-55"></a>        index<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb22-56"><a href="#cb22-56"></a>    )</span>
+<span id="cb22-27"><a href="#cb22-27"></a>    parser.add_argument(</span>
+<span id="cb22-28"><a href="#cb22-28"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb22-29"><a href="#cb22-29"></a>    )</span>
+<span id="cb22-30"><a href="#cb22-30"></a>    <span class="cf">return</span> parser</span>
+<span id="cb22-31"><a href="#cb22-31"></a></span>
+<span id="cb22-32"><a href="#cb22-32"></a></span>
+<span id="cb22-33"><a href="#cb22-33"></a><span class="kw">def</span> parse_args_list_library_sample_names_per_specimen_name():</span>
+<span id="cb22-34"><a href="#cb22-34"></a>    parser <span class="op">=</span> get_parser_list_library_sample_names_per_specimen_name()</span>
+<span id="cb22-35"><a href="#cb22-35"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb22-36"><a href="#cb22-36"></a></span>
+<span id="cb22-37"><a href="#cb22-37"></a></span>
+<span id="cb22-38"><a href="#cb22-38"></a><span class="kw">def</span> list_library_sample_names_per_specimen_name():</span>
+<span id="cb22-39"><a href="#cb22-39"></a>    args <span class="op">=</span> parse_args_list_library_sample_names_per_specimen_name()</span>
+<span id="cb22-40"><a href="#cb22-40"></a></span>
+<span id="cb22-41"><a href="#cb22-41"></a>    <span class="co"># check files</span></span>
+<span id="cb22-42"><a href="#cb22-42"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(</span>
+<span id="cb22-43"><a href="#cb22-43"></a>        args.delim, gzip<span class="op">=</span>args.output.endswith(<span class="st">".gz"</span>)</span>
+<span id="cb22-44"><a href="#cb22-44"></a>    )</span>
+<span id="cb22-45"><a href="#cb22-45"></a>    args.output <span class="op">=</span> (</span>
+<span id="cb22-46"><a href="#cb22-46"></a>        args.output</span>
+<span id="cb22-47"><a href="#cb22-47"></a>        <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output</span>
+<span id="cb22-48"><a href="#cb22-48"></a>        <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
+<span id="cb22-49"><a href="#cb22-49"></a>    )</span>
+<span id="cb22-50"><a href="#cb22-50"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb22-51"><a href="#cb22-51"></a></span>
+<span id="cb22-52"><a href="#cb22-52"></a>    <span class="co"># read in PMO</span></span>
+<span id="cb22-53"><a href="#cb22-53"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb22-54"><a href="#cb22-54"></a></span>
+<span id="cb22-55"><a href="#cb22-55"></a>    <span class="co"># count fields</span></span>
+<span id="cb22-56"><a href="#cb22-56"></a>    info_df <span class="op">=</span> PMOExporter.list_library_sample_names_per_specimen_name(pmo)</span>
 <span id="cb22-57"><a href="#cb22-57"></a></span>
-<span id="cb22-58"><a href="#cb22-58"></a></span>
-<span id="cb22-59"><a href="#cb22-59"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb22-60"><a href="#cb22-60"></a>    list_library_sample_names_per_specimen_name()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb22-58"><a href="#cb22-58"></a>    <span class="co"># output</span></span>
+<span id="cb22-59"><a href="#cb22-59"></a>    info_df.to_csv(</span>
+<span id="cb22-60"><a href="#cb22-60"></a>        sys.stdout <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> args.output,</span>
+<span id="cb22-61"><a href="#cb22-61"></a>        sep<span class="op">=</span>output_delim,</span>
+<span id="cb22-62"><a href="#cb22-62"></a>        index<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb22-63"><a href="#cb22-63"></a>    )</span>
+<span id="cb22-64"><a href="#cb22-64"></a></span>
+<span id="cb22-65"><a href="#cb22-65"></a></span>
+<span id="cb22-66"><a href="#cb22-66"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb22-67"><a href="#cb22-67"></a>    list_library_sample_names_per_specimen_name()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -873,6 +909,8 @@ SS5-10K-C1  SS5-10K-C1  1
                                                      [--output OUTPUT]
                                                      [--overwrite]
 
+List all bioinformatics_run_names in a PMO
+
 options:
   -h, --help       show this help message and exit
   --file FILE      PMO file
@@ -896,39 +934,46 @@ options:
 <span id="cb28-8"><a href="#cb28-8"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
 <span id="cb28-9"><a href="#cb28-9"></a></span>
 <span id="cb28-10"><a href="#cb28-10"></a></span>
-<span id="cb28-11"><a href="#cb28-11"></a><span class="kw">def</span> parse_args_list_bioinformatics_run_names():</span>
-<span id="cb28-12"><a href="#cb28-12"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb28-13"><a href="#cb28-13"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
-<span id="cb28-14"><a href="#cb28-14"></a>    parser.add_argument(</span>
-<span id="cb28-15"><a href="#cb28-15"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
-<span id="cb28-16"><a href="#cb28-16"></a>    )</span>
+<span id="cb28-11"><a href="#cb28-11"></a><span class="kw">def</span> get_parser_list_bioinformatics_run_names() <span class="op">-&gt;</span> argparse.ArgumentParser:</span>
+<span id="cb28-12"><a href="#cb28-12"></a>    parser <span class="op">=</span> argparse.ArgumentParser(</span>
+<span id="cb28-13"><a href="#cb28-13"></a>        prog<span class="op">=</span><span class="st">"pmotools-python list_bioinformatics_run_names"</span>,</span>
+<span id="cb28-14"><a href="#cb28-14"></a>        description<span class="op">=</span><span class="st">"List all bioinformatics_run_names in a PMO"</span>,</span>
+<span id="cb28-15"><a href="#cb28-15"></a>    )</span>
+<span id="cb28-16"><a href="#cb28-16"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
 <span id="cb28-17"><a href="#cb28-17"></a>    parser.add_argument(</span>
-<span id="cb28-18"><a href="#cb28-18"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb28-18"><a href="#cb28-18"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
 <span id="cb28-19"><a href="#cb28-19"></a>    )</span>
-<span id="cb28-20"><a href="#cb28-20"></a></span>
-<span id="cb28-21"><a href="#cb28-21"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb28-22"><a href="#cb28-22"></a></span>
-<span id="cb28-23"><a href="#cb28-23"></a></span>
-<span id="cb28-24"><a href="#cb28-24"></a><span class="kw">def</span> list_bioinformatics_run_names():</span>
-<span id="cb28-25"><a href="#cb28-25"></a>    args <span class="op">=</span> parse_args_list_bioinformatics_run_names()</span>
-<span id="cb28-26"><a href="#cb28-26"></a></span>
-<span id="cb28-27"><a href="#cb28-27"></a>    <span class="co"># check files</span></span>
-<span id="cb28-28"><a href="#cb28-28"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb28-20"><a href="#cb28-20"></a>    parser.add_argument(</span>
+<span id="cb28-21"><a href="#cb28-21"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb28-22"><a href="#cb28-22"></a>    )</span>
+<span id="cb28-23"><a href="#cb28-23"></a>    <span class="cf">return</span> parser</span>
+<span id="cb28-24"><a href="#cb28-24"></a></span>
+<span id="cb28-25"><a href="#cb28-25"></a></span>
+<span id="cb28-26"><a href="#cb28-26"></a><span class="kw">def</span> parse_args_list_bioinformatics_run_names():</span>
+<span id="cb28-27"><a href="#cb28-27"></a>    parser <span class="op">=</span> get_parser_list_bioinformatics_run_names()</span>
+<span id="cb28-28"><a href="#cb28-28"></a>    <span class="cf">return</span> parser.parse_args()</span>
 <span id="cb28-29"><a href="#cb28-29"></a></span>
-<span id="cb28-30"><a href="#cb28-30"></a>    <span class="co"># read in PMO</span></span>
-<span id="cb28-31"><a href="#cb28-31"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
-<span id="cb28-32"><a href="#cb28-32"></a></span>
-<span id="cb28-33"><a href="#cb28-33"></a>    <span class="co"># extract all bio run names</span></span>
-<span id="cb28-34"><a href="#cb28-34"></a>    bio_run_names <span class="op">=</span> PMOProcessor.get_bioinformatics_run_names(pmo)</span>
-<span id="cb28-35"><a href="#cb28-35"></a></span>
-<span id="cb28-36"><a href="#cb28-36"></a>    <span class="co"># write</span></span>
-<span id="cb28-37"><a href="#cb28-37"></a>    output_target <span class="op">=</span> sys.stdout <span class="cf">if</span> args.output <span class="op">==</span> <span class="st">"STDOUT"</span> <span class="cf">else</span> <span class="bu">open</span>(args.output, <span class="st">"w"</span>)</span>
-<span id="cb28-38"><a href="#cb28-38"></a>    <span class="cf">with</span> output_target <span class="im">as</span> f:</span>
-<span id="cb28-39"><a href="#cb28-39"></a>        f.write(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(bio_run_names) <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb28-40"><a href="#cb28-40"></a></span>
-<span id="cb28-41"><a href="#cb28-41"></a></span>
-<span id="cb28-42"><a href="#cb28-42"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb28-43"><a href="#cb28-43"></a>    list_bioinformatics_run_names()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb28-30"><a href="#cb28-30"></a></span>
+<span id="cb28-31"><a href="#cb28-31"></a><span class="kw">def</span> list_bioinformatics_run_names():</span>
+<span id="cb28-32"><a href="#cb28-32"></a>    args <span class="op">=</span> parse_args_list_bioinformatics_run_names()</span>
+<span id="cb28-33"><a href="#cb28-33"></a></span>
+<span id="cb28-34"><a href="#cb28-34"></a>    <span class="co"># check files</span></span>
+<span id="cb28-35"><a href="#cb28-35"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb28-36"><a href="#cb28-36"></a></span>
+<span id="cb28-37"><a href="#cb28-37"></a>    <span class="co"># read in PMO</span></span>
+<span id="cb28-38"><a href="#cb28-38"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb28-39"><a href="#cb28-39"></a></span>
+<span id="cb28-40"><a href="#cb28-40"></a>    <span class="co"># extract all bio run names</span></span>
+<span id="cb28-41"><a href="#cb28-41"></a>    bio_run_names <span class="op">=</span> PMOProcessor.get_bioinformatics_run_names(pmo)</span>
+<span id="cb28-42"><a href="#cb28-42"></a></span>
+<span id="cb28-43"><a href="#cb28-43"></a>    <span class="co"># write</span></span>
+<span id="cb28-44"><a href="#cb28-44"></a>    output_target <span class="op">=</span> sys.stdout <span class="cf">if</span> args.output <span class="op">==</span> <span class="st">"STDOUT"</span> <span class="cf">else</span> <span class="bu">open</span>(args.output, <span class="st">"w"</span>)</span>
+<span id="cb28-45"><a href="#cb28-45"></a>    <span class="cf">with</span> output_target <span class="im">as</span> f:</span>
+<span id="cb28-46"><a href="#cb28-46"></a>        f.write(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(bio_run_names) <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb28-47"><a href="#cb28-47"></a></span>
+<span id="cb28-48"><a href="#cb28-48"></a></span>
+<span id="cb28-49"><a href="#cb28-49"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb28-50"><a href="#cb28-50"></a>    list_bioinformatics_run_names()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -972,6 +1017,8 @@ PathWeaver-Heome1</code></pre>
                                                         [--overwrite]
                                                         [--read_count_minimum READ_COUNT_MINIMUM]
 
+Count number of targets per sample
+
 options:
   -h, --help            show this help message and exit
   --file FILE           PMO file
@@ -1000,65 +1047,72 @@ options:
 <span id="cb37-8"><a href="#cb37-8"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
 <span id="cb37-9"><a href="#cb37-9"></a></span>
 <span id="cb37-10"><a href="#cb37-10"></a></span>
-<span id="cb37-11"><a href="#cb37-11"></a><span class="kw">def</span> parse_args_count_targets_per_library_sample():</span>
-<span id="cb37-12"><a href="#cb37-12"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb37-13"><a href="#cb37-13"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
-<span id="cb37-14"><a href="#cb37-14"></a>    parser.add_argument(</span>
-<span id="cb37-15"><a href="#cb37-15"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
-<span id="cb37-16"><a href="#cb37-16"></a>    )</span>
+<span id="cb37-11"><a href="#cb37-11"></a><span class="kw">def</span> get_parser_count_targets_per_library_sample() <span class="op">-&gt;</span> argparse.ArgumentParser:</span>
+<span id="cb37-12"><a href="#cb37-12"></a>    parser <span class="op">=</span> argparse.ArgumentParser(</span>
+<span id="cb37-13"><a href="#cb37-13"></a>        prog<span class="op">=</span><span class="st">"pmotools-python count_targets_per_library_sample"</span>,</span>
+<span id="cb37-14"><a href="#cb37-14"></a>        description<span class="op">=</span><span class="st">"Count number of targets per sample"</span>,</span>
+<span id="cb37-15"><a href="#cb37-15"></a>    )</span>
+<span id="cb37-16"><a href="#cb37-16"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
 <span id="cb37-17"><a href="#cb37-17"></a>    parser.add_argument(</span>
-<span id="cb37-18"><a href="#cb37-18"></a>        <span class="st">"--delim"</span>,</span>
-<span id="cb37-19"><a href="#cb37-19"></a>        default<span class="op">=</span><span class="st">"tab"</span>,</span>
-<span id="cb37-20"><a href="#cb37-20"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb37-21"><a href="#cb37-21"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb37-22"><a href="#cb37-22"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the delimiter of the output text file, examples input tab,comma but can also be the actual delimiter"</span>,</span>
-<span id="cb37-23"><a href="#cb37-23"></a>    )</span>
-<span id="cb37-24"><a href="#cb37-24"></a>    parser.add_argument(</span>
-<span id="cb37-25"><a href="#cb37-25"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb37-18"><a href="#cb37-18"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
+<span id="cb37-19"><a href="#cb37-19"></a>    )</span>
+<span id="cb37-20"><a href="#cb37-20"></a>    parser.add_argument(</span>
+<span id="cb37-21"><a href="#cb37-21"></a>        <span class="st">"--delim"</span>,</span>
+<span id="cb37-22"><a href="#cb37-22"></a>        default<span class="op">=</span><span class="st">"tab"</span>,</span>
+<span id="cb37-23"><a href="#cb37-23"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb37-24"><a href="#cb37-24"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb37-25"><a href="#cb37-25"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the delimiter of the output text file, examples input tab,comma but can also be the actual delimiter"</span>,</span>
 <span id="cb37-26"><a href="#cb37-26"></a>    )</span>
 <span id="cb37-27"><a href="#cb37-27"></a>    parser.add_argument(</span>
-<span id="cb37-28"><a href="#cb37-28"></a>        <span class="st">"--read_count_minimum"</span>,</span>
-<span id="cb37-29"><a href="#cb37-29"></a>        default<span class="op">=</span><span class="fl">0.0</span>,</span>
-<span id="cb37-30"><a href="#cb37-30"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">float</span>,</span>
-<span id="cb37-31"><a href="#cb37-31"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb37-32"><a href="#cb37-32"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the minimum read count (inclusive) to be counted as covered by sample"</span>,</span>
-<span id="cb37-33"><a href="#cb37-33"></a>    )</span>
-<span id="cb37-34"><a href="#cb37-34"></a></span>
-<span id="cb37-35"><a href="#cb37-35"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb37-36"><a href="#cb37-36"></a></span>
-<span id="cb37-37"><a href="#cb37-37"></a></span>
-<span id="cb37-38"><a href="#cb37-38"></a><span class="kw">def</span> count_targets_per_library_sample():</span>
-<span id="cb37-39"><a href="#cb37-39"></a>    args <span class="op">=</span> parse_args_count_targets_per_library_sample()</span>
-<span id="cb37-40"><a href="#cb37-40"></a></span>
-<span id="cb37-41"><a href="#cb37-41"></a>    <span class="co"># check files</span></span>
-<span id="cb37-42"><a href="#cb37-42"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(</span>
-<span id="cb37-43"><a href="#cb37-43"></a>        args.delim, gzip<span class="op">=</span>args.output.endswith(<span class="st">".gz"</span>)</span>
-<span id="cb37-44"><a href="#cb37-44"></a>    )</span>
-<span id="cb37-45"><a href="#cb37-45"></a>    args.output <span class="op">=</span> (</span>
-<span id="cb37-46"><a href="#cb37-46"></a>        args.output</span>
-<span id="cb37-47"><a href="#cb37-47"></a>        <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output</span>
-<span id="cb37-48"><a href="#cb37-48"></a>        <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
-<span id="cb37-49"><a href="#cb37-49"></a>    )</span>
-<span id="cb37-50"><a href="#cb37-50"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
-<span id="cb37-51"><a href="#cb37-51"></a></span>
-<span id="cb37-52"><a href="#cb37-52"></a>    <span class="co"># read in PMO</span></span>
-<span id="cb37-53"><a href="#cb37-53"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
-<span id="cb37-54"><a href="#cb37-54"></a></span>
-<span id="cb37-55"><a href="#cb37-55"></a>    <span class="co"># count</span></span>
-<span id="cb37-56"><a href="#cb37-56"></a>    counts_df <span class="op">=</span> PMOProcessor.count_targets_per_library_sample(</span>
-<span id="cb37-57"><a href="#cb37-57"></a>        pmo, args.read_count_minimum</span>
-<span id="cb37-58"><a href="#cb37-58"></a>    )</span>
-<span id="cb37-59"><a href="#cb37-59"></a></span>
-<span id="cb37-60"><a href="#cb37-60"></a>    <span class="co"># write out</span></span>
-<span id="cb37-61"><a href="#cb37-61"></a>    counts_df.to_csv(</span>
-<span id="cb37-62"><a href="#cb37-62"></a>        sys.stdout <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> args.output,</span>
-<span id="cb37-63"><a href="#cb37-63"></a>        sep<span class="op">=</span>output_delim,</span>
-<span id="cb37-64"><a href="#cb37-64"></a>        index<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb37-28"><a href="#cb37-28"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb37-29"><a href="#cb37-29"></a>    )</span>
+<span id="cb37-30"><a href="#cb37-30"></a>    parser.add_argument(</span>
+<span id="cb37-31"><a href="#cb37-31"></a>        <span class="st">"--read_count_minimum"</span>,</span>
+<span id="cb37-32"><a href="#cb37-32"></a>        default<span class="op">=</span><span class="fl">0.0</span>,</span>
+<span id="cb37-33"><a href="#cb37-33"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">float</span>,</span>
+<span id="cb37-34"><a href="#cb37-34"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb37-35"><a href="#cb37-35"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the minimum read count (inclusive) to be counted as covered by sample"</span>,</span>
+<span id="cb37-36"><a href="#cb37-36"></a>    )</span>
+<span id="cb37-37"><a href="#cb37-37"></a>    <span class="cf">return</span> parser</span>
+<span id="cb37-38"><a href="#cb37-38"></a></span>
+<span id="cb37-39"><a href="#cb37-39"></a></span>
+<span id="cb37-40"><a href="#cb37-40"></a><span class="kw">def</span> parse_args_count_targets_per_library_sample():</span>
+<span id="cb37-41"><a href="#cb37-41"></a>    parser <span class="op">=</span> get_parser_count_targets_per_library_sample()</span>
+<span id="cb37-42"><a href="#cb37-42"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb37-43"><a href="#cb37-43"></a></span>
+<span id="cb37-44"><a href="#cb37-44"></a></span>
+<span id="cb37-45"><a href="#cb37-45"></a><span class="kw">def</span> count_targets_per_library_sample():</span>
+<span id="cb37-46"><a href="#cb37-46"></a>    args <span class="op">=</span> parse_args_count_targets_per_library_sample()</span>
+<span id="cb37-47"><a href="#cb37-47"></a></span>
+<span id="cb37-48"><a href="#cb37-48"></a>    <span class="co"># check files</span></span>
+<span id="cb37-49"><a href="#cb37-49"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(</span>
+<span id="cb37-50"><a href="#cb37-50"></a>        args.delim, gzip<span class="op">=</span>args.output.endswith(<span class="st">".gz"</span>)</span>
+<span id="cb37-51"><a href="#cb37-51"></a>    )</span>
+<span id="cb37-52"><a href="#cb37-52"></a>    args.output <span class="op">=</span> (</span>
+<span id="cb37-53"><a href="#cb37-53"></a>        args.output</span>
+<span id="cb37-54"><a href="#cb37-54"></a>        <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output</span>
+<span id="cb37-55"><a href="#cb37-55"></a>        <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
+<span id="cb37-56"><a href="#cb37-56"></a>    )</span>
+<span id="cb37-57"><a href="#cb37-57"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb37-58"><a href="#cb37-58"></a></span>
+<span id="cb37-59"><a href="#cb37-59"></a>    <span class="co"># read in PMO</span></span>
+<span id="cb37-60"><a href="#cb37-60"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb37-61"><a href="#cb37-61"></a></span>
+<span id="cb37-62"><a href="#cb37-62"></a>    <span class="co"># count</span></span>
+<span id="cb37-63"><a href="#cb37-63"></a>    counts_df <span class="op">=</span> PMOProcessor.count_targets_per_library_sample(</span>
+<span id="cb37-64"><a href="#cb37-64"></a>        pmo, args.read_count_minimum</span>
 <span id="cb37-65"><a href="#cb37-65"></a>    )</span>
 <span id="cb37-66"><a href="#cb37-66"></a></span>
-<span id="cb37-67"><a href="#cb37-67"></a></span>
-<span id="cb37-68"><a href="#cb37-68"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb37-69"><a href="#cb37-69"></a>    count_targets_per_library_sample()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb37-67"><a href="#cb37-67"></a>    <span class="co"># write out</span></span>
+<span id="cb37-68"><a href="#cb37-68"></a>    counts_df.to_csv(</span>
+<span id="cb37-69"><a href="#cb37-69"></a>        sys.stdout <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> args.output,</span>
+<span id="cb37-70"><a href="#cb37-70"></a>        sep<span class="op">=</span>output_delim,</span>
+<span id="cb37-71"><a href="#cb37-71"></a>        index<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb37-72"><a href="#cb37-72"></a>    )</span>
+<span id="cb37-73"><a href="#cb37-73"></a></span>
+<span id="cb37-74"><a href="#cb37-74"></a></span>
+<span id="cb37-75"><a href="#cb37-75"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb37-76"><a href="#cb37-76"></a>    count_targets_per_library_sample()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -1108,6 +1162,8 @@ options:
                                                         [--overwrite]
                                                         [--read_count_minimum READ_COUNT_MINIMUM]
 
+Count number of samples per target
+
 options:
   -h, --help            show this help message and exit
   --file FILE           PMO file
@@ -1136,65 +1192,72 @@ options:
 <span id="cb44-8"><a href="#cb44-8"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
 <span id="cb44-9"><a href="#cb44-9"></a></span>
 <span id="cb44-10"><a href="#cb44-10"></a></span>
-<span id="cb44-11"><a href="#cb44-11"></a><span class="kw">def</span> parse_args_count_library_samples_per_target():</span>
-<span id="cb44-12"><a href="#cb44-12"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb44-13"><a href="#cb44-13"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
-<span id="cb44-14"><a href="#cb44-14"></a>    parser.add_argument(</span>
-<span id="cb44-15"><a href="#cb44-15"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
-<span id="cb44-16"><a href="#cb44-16"></a>    )</span>
+<span id="cb44-11"><a href="#cb44-11"></a><span class="kw">def</span> get_parser_count_library_samples_per_target() <span class="op">-&gt;</span> argparse.ArgumentParser:</span>
+<span id="cb44-12"><a href="#cb44-12"></a>    parser <span class="op">=</span> argparse.ArgumentParser(</span>
+<span id="cb44-13"><a href="#cb44-13"></a>        prog<span class="op">=</span><span class="st">"pmotools-python count_library_samples_per_target"</span>,</span>
+<span id="cb44-14"><a href="#cb44-14"></a>        description<span class="op">=</span><span class="st">"Count number of samples per target"</span>,</span>
+<span id="cb44-15"><a href="#cb44-15"></a>    )</span>
+<span id="cb44-16"><a href="#cb44-16"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
 <span id="cb44-17"><a href="#cb44-17"></a>    parser.add_argument(</span>
-<span id="cb44-18"><a href="#cb44-18"></a>        <span class="st">"--delim"</span>,</span>
-<span id="cb44-19"><a href="#cb44-19"></a>        default<span class="op">=</span><span class="st">"tab"</span>,</span>
-<span id="cb44-20"><a href="#cb44-20"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb44-21"><a href="#cb44-21"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb44-22"><a href="#cb44-22"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the delimiter of the output text file, examples input tab,comma but can also be the actual delimiter"</span>,</span>
-<span id="cb44-23"><a href="#cb44-23"></a>    )</span>
-<span id="cb44-24"><a href="#cb44-24"></a>    parser.add_argument(</span>
-<span id="cb44-25"><a href="#cb44-25"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb44-18"><a href="#cb44-18"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">"STDOUT"</span>, required<span class="op">=</span><span class="va">False</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"output file"</span></span>
+<span id="cb44-19"><a href="#cb44-19"></a>    )</span>
+<span id="cb44-20"><a href="#cb44-20"></a>    parser.add_argument(</span>
+<span id="cb44-21"><a href="#cb44-21"></a>        <span class="st">"--delim"</span>,</span>
+<span id="cb44-22"><a href="#cb44-22"></a>        default<span class="op">=</span><span class="st">"tab"</span>,</span>
+<span id="cb44-23"><a href="#cb44-23"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb44-24"><a href="#cb44-24"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb44-25"><a href="#cb44-25"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the delimiter of the output text file, examples input tab,comma but can also be the actual delimiter"</span>,</span>
 <span id="cb44-26"><a href="#cb44-26"></a>    )</span>
 <span id="cb44-27"><a href="#cb44-27"></a>    parser.add_argument(</span>
-<span id="cb44-28"><a href="#cb44-28"></a>        <span class="st">"--read_count_minimum"</span>,</span>
-<span id="cb44-29"><a href="#cb44-29"></a>        default<span class="op">=</span><span class="fl">0.0</span>,</span>
-<span id="cb44-30"><a href="#cb44-30"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">float</span>,</span>
-<span id="cb44-31"><a href="#cb44-31"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb44-32"><a href="#cb44-32"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the minimum read count (inclusive) to be counted as covered by sample"</span>,</span>
-<span id="cb44-33"><a href="#cb44-33"></a>    )</span>
-<span id="cb44-34"><a href="#cb44-34"></a></span>
-<span id="cb44-35"><a href="#cb44-35"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb44-36"><a href="#cb44-36"></a></span>
-<span id="cb44-37"><a href="#cb44-37"></a></span>
-<span id="cb44-38"><a href="#cb44-38"></a><span class="kw">def</span> count_library_samples_per_target():</span>
-<span id="cb44-39"><a href="#cb44-39"></a>    args <span class="op">=</span> parse_args_count_library_samples_per_target()</span>
-<span id="cb44-40"><a href="#cb44-40"></a></span>
-<span id="cb44-41"><a href="#cb44-41"></a>    <span class="co"># check files</span></span>
-<span id="cb44-42"><a href="#cb44-42"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(</span>
-<span id="cb44-43"><a href="#cb44-43"></a>        args.delim, gzip<span class="op">=</span>args.output.endswith(<span class="st">".gz"</span>)</span>
-<span id="cb44-44"><a href="#cb44-44"></a>    )</span>
-<span id="cb44-45"><a href="#cb44-45"></a>    args.output <span class="op">=</span> (</span>
-<span id="cb44-46"><a href="#cb44-46"></a>        args.output</span>
-<span id="cb44-47"><a href="#cb44-47"></a>        <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output</span>
-<span id="cb44-48"><a href="#cb44-48"></a>        <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
-<span id="cb44-49"><a href="#cb44-49"></a>    )</span>
-<span id="cb44-50"><a href="#cb44-50"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
-<span id="cb44-51"><a href="#cb44-51"></a></span>
-<span id="cb44-52"><a href="#cb44-52"></a>    <span class="co"># read in PMO</span></span>
-<span id="cb44-53"><a href="#cb44-53"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
-<span id="cb44-54"><a href="#cb44-54"></a></span>
-<span id="cb44-55"><a href="#cb44-55"></a>    <span class="co"># count</span></span>
-<span id="cb44-56"><a href="#cb44-56"></a>    counts_df <span class="op">=</span> PMOProcessor.count_library_samples_per_target(</span>
-<span id="cb44-57"><a href="#cb44-57"></a>        pmo, args.read_count_minimum</span>
-<span id="cb44-58"><a href="#cb44-58"></a>    )</span>
-<span id="cb44-59"><a href="#cb44-59"></a></span>
-<span id="cb44-60"><a href="#cb44-60"></a>    <span class="co"># write out</span></span>
-<span id="cb44-61"><a href="#cb44-61"></a>    counts_df.to_csv(</span>
-<span id="cb44-62"><a href="#cb44-62"></a>        sys.stdout <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> args.output,</span>
-<span id="cb44-63"><a href="#cb44-63"></a>        sep<span class="op">=</span>output_delim,</span>
-<span id="cb44-64"><a href="#cb44-64"></a>        index<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb44-28"><a href="#cb44-28"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb44-29"><a href="#cb44-29"></a>    )</span>
+<span id="cb44-30"><a href="#cb44-30"></a>    parser.add_argument(</span>
+<span id="cb44-31"><a href="#cb44-31"></a>        <span class="st">"--read_count_minimum"</span>,</span>
+<span id="cb44-32"><a href="#cb44-32"></a>        default<span class="op">=</span><span class="fl">0.0</span>,</span>
+<span id="cb44-33"><a href="#cb44-33"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">float</span>,</span>
+<span id="cb44-34"><a href="#cb44-34"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb44-35"><a href="#cb44-35"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the minimum read count (inclusive) to be counted as covered by sample"</span>,</span>
+<span id="cb44-36"><a href="#cb44-36"></a>    )</span>
+<span id="cb44-37"><a href="#cb44-37"></a>    <span class="cf">return</span> parser</span>
+<span id="cb44-38"><a href="#cb44-38"></a></span>
+<span id="cb44-39"><a href="#cb44-39"></a></span>
+<span id="cb44-40"><a href="#cb44-40"></a><span class="kw">def</span> parse_args_count_library_samples_per_target():</span>
+<span id="cb44-41"><a href="#cb44-41"></a>    parser <span class="op">=</span> get_parser_count_library_samples_per_target()</span>
+<span id="cb44-42"><a href="#cb44-42"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb44-43"><a href="#cb44-43"></a></span>
+<span id="cb44-44"><a href="#cb44-44"></a></span>
+<span id="cb44-45"><a href="#cb44-45"></a><span class="kw">def</span> count_library_samples_per_target():</span>
+<span id="cb44-46"><a href="#cb44-46"></a>    args <span class="op">=</span> parse_args_count_library_samples_per_target()</span>
+<span id="cb44-47"><a href="#cb44-47"></a></span>
+<span id="cb44-48"><a href="#cb44-48"></a>    <span class="co"># check files</span></span>
+<span id="cb44-49"><a href="#cb44-49"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(</span>
+<span id="cb44-50"><a href="#cb44-50"></a>        args.delim, gzip<span class="op">=</span>args.output.endswith(<span class="st">".gz"</span>)</span>
+<span id="cb44-51"><a href="#cb44-51"></a>    )</span>
+<span id="cb44-52"><a href="#cb44-52"></a>    args.output <span class="op">=</span> (</span>
+<span id="cb44-53"><a href="#cb44-53"></a>        args.output</span>
+<span id="cb44-54"><a href="#cb44-54"></a>        <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output</span>
+<span id="cb44-55"><a href="#cb44-55"></a>        <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
+<span id="cb44-56"><a href="#cb44-56"></a>    )</span>
+<span id="cb44-57"><a href="#cb44-57"></a>    Utils.inputOutputFileCheck(args.<span class="bu">file</span>, args.output, args.overwrite)</span>
+<span id="cb44-58"><a href="#cb44-58"></a></span>
+<span id="cb44-59"><a href="#cb44-59"></a>    <span class="co"># read in PMO</span></span>
+<span id="cb44-60"><a href="#cb44-60"></a>    pmo <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb44-61"><a href="#cb44-61"></a></span>
+<span id="cb44-62"><a href="#cb44-62"></a>    <span class="co"># count</span></span>
+<span id="cb44-63"><a href="#cb44-63"></a>    counts_df <span class="op">=</span> PMOProcessor.count_library_samples_per_target(</span>
+<span id="cb44-64"><a href="#cb44-64"></a>        pmo, args.read_count_minimum</span>
 <span id="cb44-65"><a href="#cb44-65"></a>    )</span>
 <span id="cb44-66"><a href="#cb44-66"></a></span>
-<span id="cb44-67"><a href="#cb44-67"></a></span>
-<span id="cb44-68"><a href="#cb44-68"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb44-69"><a href="#cb44-69"></a>    count_library_samples_per_target()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb44-67"><a href="#cb44-67"></a>    <span class="co"># write out</span></span>
+<span id="cb44-68"><a href="#cb44-68"></a>    counts_df.to_csv(</span>
+<span id="cb44-69"><a href="#cb44-69"></a>        sys.stdout <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output <span class="cf">else</span> args.output,</span>
+<span id="cb44-70"><a href="#cb44-70"></a>        sep<span class="op">=</span>output_delim,</span>
+<span id="cb44-71"><a href="#cb44-71"></a>        index<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb44-72"><a href="#cb44-72"></a>    )</span>
+<span id="cb44-73"><a href="#cb44-73"></a></span>
+<span id="cb44-74"><a href="#cb44-74"></a></span>
+<span id="cb44-75"><a href="#cb44-75"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb44-76"><a href="#cb44-76"></a>    count_library_samples_per_target()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -1980,7 +2043,18 @@ options:
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>A <a href="https://plasmogenepi.org">PlasmoGenEpi</a> project <br><a href="https://plasmogenepi.org" class="footer-logo-link" aria-label="PlasmoGenEpi"></a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 <script src="../site_libs/quarto-html/zenscroll-min.js"></script>

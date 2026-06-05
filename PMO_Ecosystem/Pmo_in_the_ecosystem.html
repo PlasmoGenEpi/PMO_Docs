@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta charset="UTF-8">
+<meta name="generator" content="quarto-1.9.36">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>PMO within a Data Analysis Ecosystem – Portable Microhaplotype Object (PMO)</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -61,17 +63,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../images/pmo_logo_mini.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-49a824ff064150fa59632921ab93e189.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-51c09c167a706ef208dabe9d498949d7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6a2c4b793c0becaeb94cc5bf146c1484.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-d3f04e06c4dac2d35cbd8a0ed1255062.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -105,9 +107,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
-    <a class="navbar-brand" href="../index.html">
+    <a href="index.qmd" class="navbar-brand navbar-brand-logo">
+    <img src="../images/PMO_logo.png" alt="Portable Microhaplotype Object (PMO)" class="navbar-logo light-content"><img src="../images/PMO_logo.png" alt="Portable Microhaplotype Object (PMO)" class="navbar-logo dark-content"></a>
+    <a class="navbar-brand" href="index.qmd">
     <span class="navbar-title">Portable Microhaplotype Object (PMO)</span>
     </a>
   </div>
@@ -154,69 +156,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
 </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tools-installation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Tools Installation</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-tools-installation">
-<li>
-    <a class="dropdown-item" href="../Tools_Installation/pmotools-python_installation.html">
- <span class="dropdown-text">pmotools-python installation</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../pmotools-app-usage/pmotools-app.html"> 
+<span class="menu-text">PMO App</span></a>
   </li>  
-    </ul>
-</li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pmotools-python-usages" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">pmotools-python usages</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pmotools-python" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">pmotools-python</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python-usages">
-<li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header"><span class="menuTitle">Python interface</span></li>
-        <li class="dropdown-header"><span class="menuTitle">Building a PMO</span></li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python">
+<li>
+    <a class="dropdown-item" href="../pmotools-python-usages/general_info.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Tools_Installation/pmotools-python_installation.html">
+ <span class="dropdown-text">Installation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://plasmogenepi.github.io/pmotools-python/index.html">
+ <span class="dropdown-text">Manual</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Python Interface Tutorials</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_minimum_pmo/Create_minimal_pmo.html">
+ <span class="dropdown-text">Building a PMO with minimum required fields</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_minimum_pmo/Update_meta_in_a_minimal_pmo.html">
+ <span class="dropdown-text">Updating the Specimen Meta Information in a minimum PMO</span></a>
+  </li>  
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.html">
- <span class="dropdown-text">Example of how to build a PMO</span></a>
+ <span class="dropdown-text">Building a PMO including optional sections and fields</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Interacting with a PMO file</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.html">
- <span class="dropdown-text">Getting basic info out of a PMO</span></a>
+ <span class="dropdown-text">Getting basic information from a PMO file</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Command line interface</span></li>
-        <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header"><span class="menuTitle">pmotools-python</span></li>
+        <li class="dropdown-header"><span class="menuTitle">Command line Interface Tutorials</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/pmotools-python.html">
- <span class="dropdown-text">Command line interface to pmotools-python with pmotools-python</span></a>
+ <span class="dropdown-text">Command line interface guide</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Extracting out of PMO</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/extracting_allele_tables.html">
- <span class="dropdown-text">Extracting allele tables using pmotools-python</span></a>
+ <span class="dropdown-text">Extracting allele tables from a PMO</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Subset PMO</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/subsetting_from_PMO.html">
- <span class="dropdown-text">Subsetting from a PMO using pmotools-python</span></a>
+ <span class="dropdown-text">Subsetting a PMO</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Getting sub info from PMO</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/getting_basic_info_from_pmo.html">
- <span class="dropdown-text">Getting basic info out of PMO using pmotools-python</span></a>
+ <span class="dropdown-text">Getting basic information from a PMO</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/extracting_panel_info_from_pmo.html">
- <span class="dropdown-text">Getting panel info out of PMO using pmotools-python</span></a>
+ <span class="dropdown-text">Extracting panel info from PMO</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Handling Multiple PMOs</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/handling_multiple_pmos.html">
- <span class="dropdown-text">Handling multiple PMOs pmotools-python</span></a>
+ <span class="dropdown-text">Handling Multiple PMOs</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Validating PMO files</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/validating_pmos.html">
- <span class="dropdown-text">Validating PMOs pmotools-python</span></a>
+ <span class="dropdown-text">Validating PMO files</span></a>
   </li>  
     </ul>
 </li>
@@ -269,17 +274,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
+   
+  <ul>
+<li><a href="#tools-currently-using-pmo" id="toc-tools-currently-using-pmo" class="nav-link active" data-scroll-target="#tools-currently-using-pmo">Tools currently using PMO</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">PMO within a Data Analysis Ecosystem</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -290,12 +299,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header><p><img src="../images/datasharing.svg" class="img-fluid"></p>
 <p>PMO as a convergence point within the broader data ecosystem. This schematic outlines the flow of data in a typical workflow involving microhaplotype amplicon sequencing data. Green circles represent common stages for data sharing. Pink boxes indicate points at which information necessary for a PMO becomes available. (1) Raw sequencing data are generated, possibly from multiple sequencing runs at different points in time. FASTQ files for each sample represent a raw form of the data, with large files that are difficult to interpret without knowledge of the specific data-generating process or an appropriate allele-calling pipeline. At this stage, data are mostly shared with bioinformaticians and data repositories. (2) Bioinformatics pipelines often require data from different sequencing runs to be processed separately to isolate any batch effects. After alleles are called, it is common to merge microhaplotype data from different runs. Harmonizing sources of data into a PMO file at this point allows an ideal convergence point for downstream analyses within the group, with collaborators, or with the broader community depending on the extent of data sharing. (3) Simplified data, such as SNPs generated from microhaplotypes per sample or aggregated metrics such as allele frequency, can be easily derived from PMO. However, sharing data at this stage limits the scope of analyses that can be performed. (4) Interpreted results are shared e.g., through reports, manuscripts, and dashboards including maps, plots, and summary statistics. It is useful for information at this stage to include interpretation and simple representation. Though beyond the scope of this manuscript, establishing standards for downstream steps such as (3) and (4) may allow for integration of data and harmonization of analysis at additional stages of the workflow.</p>
+<section id="tools-currently-using-pmo" class="level2"><h2 class="anchored" data-anchor-id="tools-currently-using-pmo">Tools currently using PMO</h2>
+<p><a href="https://github.com/PlasmoGenEpi/plasmodiumdrugres">plasmodiumdrugres</a> is a bioinformatics pipeline for analyzing drug resistance markers from microhaplotype data. It translates variants into amino acid changes at drug resistance loci and estimates allele frequencies and prevalences at both single-locus and multi-locus levels</p>
 
 
 <!-- -->
 
-
-</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -758,10 +768,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="al">![](../images/datasharing.svg)</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>PMO as a convergence point within the broader data ecosystem. This schematic outlines the flow of data in a typical workflow involving microhaplotype amplicon sequencing data. Green circles represent common stages for data sharing. Pink boxes indicate points at which information necessary for a PMO becomes available. (1) Raw sequencing data are generated, possibly from multiple sequencing runs at different points in time. FASTQ files for each sample represent a raw form of the data, with large files that are difficult to interpret without knowledge of the specific data-generating process or an appropriate allele-calling pipeline. At this stage, data are mostly shared with bioinformaticians and data repositories. (2) Bioinformatics pipelines often require data from different sequencing runs to be processed separately to isolate any batch effects. After alleles are called, it is common to merge microhaplotype data from different runs. Harmonizing sources of data into a PMO file at this point allows an ideal convergence point for downstream analyses within the group, with collaborators, or with the broader community depending on the extent of data sharing. (3) Simplified data, such as SNPs generated from microhaplotypes per sample or aggregated metrics such as allele frequency, can be easily derived from PMO. However, sharing data at this stage limits the scope of analyses that can be performed. (4) Interpreted results are shared e.g., through reports, manuscripts, and dashboards including maps, plots, and summary statistics. It is useful for information at this stage to include interpretation and simple representation. Though beyond the scope of this manuscript, establishing standards for downstream steps such as (3) and (4) may allow for integration of data and harmonization of analysis at additional stages of the workflow.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>PMO as a convergence point within the broader data ecosystem. This schematic outlines the flow of data in a typical workflow involving microhaplotype amplicon sequencing data. Green circles represent common stages for data sharing. Pink boxes indicate points at which information necessary for a PMO becomes available. (1) Raw sequencing data are generated, possibly from multiple sequencing runs at different points in time. FASTQ files for each sample represent a raw form of the data, with large files that are difficult to interpret without knowledge of the specific data-generating process or an appropriate allele-calling pipeline. At this stage, data are mostly shared with bioinformaticians and data repositories. (2) Bioinformatics pipelines often require data from different sequencing runs to be processed separately to isolate any batch effects. After alleles are called, it is common to merge microhaplotype data from different runs. Harmonizing sources of data into a PMO file at this point allows an ideal convergence point for downstream analyses within the group, with collaborators, or with the broader community depending on the extent of data sharing. (3) Simplified data, such as SNPs generated from microhaplotypes per sample or aggregated metrics such as allele frequency, can be easily derived from PMO. However, sharing data at this stage limits the scope of analyses that can be performed. (4) Interpreted results are shared e.g., through reports, manuscripts, and dashboards including maps, plots, and summary statistics. It is useful for information at this stage to include interpretation and simple representation. Though beyond the scope of this manuscript, establishing standards for downstream steps such as (3) and (4) may allow for integration of data and harmonization of analysis at additional stages of the workflow.</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tools currently using PMO </span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">plasmodiumdrugres</span><span class="co">](https://github.com/PlasmoGenEpi/plasmodiumdrugres)</span> is a bioinformatics pipeline for analyzing drug resistance markers from microhaplotype data. It translates variants into amino acid changes at drug resistance loci and estimates allele frequencies and prevalences at both single-locus and multi-locus levels</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>A <a href="https://plasmogenepi.org">PlasmoGenEpi</a> project <br><a href="https://plasmogenepi.org" class="footer-logo-link" aria-label="PlasmoGenEpi"></a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 <script src="../site_libs/quarto-html/zenscroll-min.js"></script>

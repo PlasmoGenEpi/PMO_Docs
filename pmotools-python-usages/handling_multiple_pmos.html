@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta charset="UTF-8">
+<meta name="generator" content="quarto-1.9.36">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Handling multiple PMOs pmotools-python – Portable Microhaplotype Object (PMO)</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -61,17 +63,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../images/pmo_logo_mini.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-49a824ff064150fa59632921ab93e189.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-51c09c167a706ef208dabe9d498949d7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6a2c4b793c0becaeb94cc5bf146c1484.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-d3f04e06c4dac2d35cbd8a0ed1255062.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -105,9 +107,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
-    <a class="navbar-brand" href="../index.html">
+    <a href="index.qmd" class="navbar-brand navbar-brand-logo">
+    <img src="../images/PMO_logo.png" alt="Portable Microhaplotype Object (PMO)" class="navbar-logo light-content"><img src="../images/PMO_logo.png" alt="Portable Microhaplotype Object (PMO)" class="navbar-logo dark-content"></a>
+    <a class="navbar-brand" href="index.qmd">
     <span class="navbar-title">Portable Microhaplotype Object (PMO)</span>
     </a>
   </div>
@@ -154,69 +156,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
 </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tools-installation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Tools Installation</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-tools-installation">
-<li>
-    <a class="dropdown-item" href="../Tools_Installation/pmotools-python_installation.html">
- <span class="dropdown-text">pmotools-python installation</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../pmotools-app-usage/pmotools-app.html"> 
+<span class="menu-text">PMO App</span></a>
   </li>  
-    </ul>
-</li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pmotools-python-usages" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">pmotools-python usages</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pmotools-python" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">pmotools-python</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python-usages">
-<li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header"><span class="menuTitle">Python interface</span></li>
-        <li class="dropdown-header"><span class="menuTitle">Building a PMO</span></li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python">
+<li>
+    <a class="dropdown-item" href="../pmotools-python-usages/general_info.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Tools_Installation/pmotools-python_installation.html">
+ <span class="dropdown-text">Installation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://plasmogenepi.github.io/pmotools-python/index.html">
+ <span class="dropdown-text">Manual</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Python Interface Tutorials</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_minimum_pmo/Create_minimal_pmo.html">
+ <span class="dropdown-text">Building a PMO with minimum required fields</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_minimum_pmo/Update_meta_in_a_minimal_pmo.html">
+ <span class="dropdown-text">Updating the Specimen Meta Information in a minimum PMO</span></a>
+  </li>  
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.html">
- <span class="dropdown-text">Example of how to build a PMO</span></a>
+ <span class="dropdown-text">Building a PMO including optional sections and fields</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Interacting with a PMO file</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.html">
- <span class="dropdown-text">Getting basic info out of a PMO</span></a>
+ <span class="dropdown-text">Getting basic information from a PMO file</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Command line interface</span></li>
-        <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header"><span class="menuTitle">pmotools-python</span></li>
+        <li class="dropdown-header"><span class="menuTitle">Command line Interface Tutorials</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/pmotools-python.html">
- <span class="dropdown-text">Command line interface to pmotools-python with pmotools-python</span></a>
+ <span class="dropdown-text">Command line interface guide</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Extracting out of PMO</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/extracting_allele_tables.html">
- <span class="dropdown-text">Extracting allele tables using pmotools-python</span></a>
+ <span class="dropdown-text">Extracting allele tables from a PMO</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Subset PMO</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/subsetting_from_PMO.html">
- <span class="dropdown-text">Subsetting from a PMO using pmotools-python</span></a>
+ <span class="dropdown-text">Subsetting a PMO</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Getting sub info from PMO</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/getting_basic_info_from_pmo.html">
- <span class="dropdown-text">Getting basic info out of PMO using pmotools-python</span></a>
+ <span class="dropdown-text">Getting basic information from a PMO</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/extracting_panel_info_from_pmo.html">
- <span class="dropdown-text">Getting panel info out of PMO using pmotools-python</span></a>
+ <span class="dropdown-text">Extracting panel info from PMO</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Handling Multiple PMOs</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/handling_multiple_pmos.html">
- <span class="dropdown-text">Handling multiple PMOs pmotools-python</span></a>
+ <span class="dropdown-text">Handling Multiple PMOs</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Validating PMO files</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/validating_pmos.html">
- <span class="dropdown-text">Validating PMOs pmotools-python</span></a>
+ <span class="dropdown-text">Validating PMO files</span></a>
   </li>  
     </ul>
 </li>
@@ -302,6 +307,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>usage: pmotools-python combine_pmos [-h] --pmo_files PMO_FILES --output OUTPUT
                                     [--overwrite]
 
+Combine multiple PMOs of the same panel
+
 options:
   -h, --help            show this help message and exit
   --pmo_files PMO_FILES
@@ -337,54 +344,61 @@ options:
 <span id="cb4-7"><a href="#cb4-7"></a><span class="im">from</span> pmotools.pmo_engine.pmo_reader <span class="im">import</span> PMOReader</span>
 <span id="cb4-8"><a href="#cb4-8"></a></span>
 <span id="cb4-9"><a href="#cb4-9"></a></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="kw">def</span> parse_args_combine_pmos():</span>
-<span id="cb4-11"><a href="#cb4-11"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb4-12"><a href="#cb4-12"></a>    parser.add_argument(</span>
-<span id="cb4-13"><a href="#cb4-13"></a>        <span class="st">"--pmo_files"</span>,</span>
-<span id="cb4-14"><a href="#cb4-14"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb4-15"><a href="#cb4-15"></a>        required<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb4-16"><a href="#cb4-16"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"a list of PMO files to combine into 1 PMO file, must be from same amplicon panel"</span>,</span>
-<span id="cb4-17"><a href="#cb4-17"></a>    )</span>
-<span id="cb4-18"><a href="#cb4-18"></a>    parser.add_argument(</span>
-<span id="cb4-19"><a href="#cb4-19"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"Output new combined PMO file"</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="kw">def</span> get_parser_combine_pmos() <span class="op">-&gt;</span> argparse.ArgumentParser:</span>
+<span id="cb4-11"><a href="#cb4-11"></a>    parser <span class="op">=</span> argparse.ArgumentParser(</span>
+<span id="cb4-12"><a href="#cb4-12"></a>        prog<span class="op">=</span><span class="st">"pmotools-python combine_pmos"</span>,</span>
+<span id="cb4-13"><a href="#cb4-13"></a>        description<span class="op">=</span><span class="st">"Combine multiple PMOs of the same panel"</span>,</span>
+<span id="cb4-14"><a href="#cb4-14"></a>    )</span>
+<span id="cb4-15"><a href="#cb4-15"></a>    parser.add_argument(</span>
+<span id="cb4-16"><a href="#cb4-16"></a>        <span class="st">"--pmo_files"</span>,</span>
+<span id="cb4-17"><a href="#cb4-17"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb4-18"><a href="#cb4-18"></a>        required<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb4-19"><a href="#cb4-19"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"a list of PMO files to combine into 1 PMO file, must be from same amplicon panel"</span>,</span>
 <span id="cb4-20"><a href="#cb4-20"></a>    )</span>
 <span id="cb4-21"><a href="#cb4-21"></a>    parser.add_argument(</span>
-<span id="cb4-22"><a href="#cb4-22"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb4-22"><a href="#cb4-22"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"Output new combined PMO file"</span></span>
 <span id="cb4-23"><a href="#cb4-23"></a>    )</span>
-<span id="cb4-24"><a href="#cb4-24"></a></span>
-<span id="cb4-25"><a href="#cb4-25"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb4-26"><a href="#cb4-26"></a></span>
-<span id="cb4-27"><a href="#cb4-27"></a></span>
-<span id="cb4-28"><a href="#cb4-28"></a><span class="kw">def</span> combine_pmos():</span>
-<span id="cb4-29"><a href="#cb4-29"></a>    args <span class="op">=</span> parse_args_combine_pmos()</span>
-<span id="cb4-30"><a href="#cb4-30"></a></span>
-<span id="cb4-31"><a href="#cb4-31"></a>    <span class="co"># set up output</span></span>
-<span id="cb4-32"><a href="#cb4-32"></a>    args.output <span class="op">=</span> PMOWriter.add_pmo_extension_as_needed(</span>
-<span id="cb4-33"><a href="#cb4-33"></a>        args.output, args.output.endswith(<span class="st">".gz"</span>)</span>
-<span id="cb4-34"><a href="#cb4-34"></a>    )</span>
-<span id="cb4-35"><a href="#cb4-35"></a>    Utils.outputfile_check(args.output, args.overwrite)</span>
-<span id="cb4-36"><a href="#cb4-36"></a></span>
-<span id="cb4-37"><a href="#cb4-37"></a>    <span class="co"># check if at least 2 PMO files supplied</span></span>
-<span id="cb4-38"><a href="#cb4-38"></a>    pmo_files_list <span class="op">=</span> Utils.parse_delimited_input_or_file(args.pmo_files, <span class="st">","</span>)</span>
-<span id="cb4-39"><a href="#cb4-39"></a>    <span class="cf">if</span> <span class="bu">len</span>(pmo_files_list) <span class="op">&lt;</span> <span class="dv">2</span>:</span>
-<span id="cb4-40"><a href="#cb4-40"></a>        <span class="cf">raise</span> <span class="pp">Exception</span>(</span>
-<span id="cb4-41"><a href="#cb4-41"></a>            <span class="st">"Only supplied "</span></span>
-<span id="cb4-42"><a href="#cb4-42"></a>            <span class="op">+</span> <span class="bu">str</span>(<span class="bu">len</span>(pmo_files_list))</span>
-<span id="cb4-43"><a href="#cb4-43"></a>            <span class="op">+</span> <span class="st">" but multiple PMO files were expected"</span></span>
-<span id="cb4-44"><a href="#cb4-44"></a>        )</span>
-<span id="cb4-45"><a href="#cb4-45"></a></span>
-<span id="cb4-46"><a href="#cb4-46"></a>    <span class="co"># read in the PMOs</span></span>
-<span id="cb4-47"><a href="#cb4-47"></a>    pmos <span class="op">=</span> PMOReader.read_in_pmos(pmo_files_list)</span>
-<span id="cb4-48"><a href="#cb4-48"></a></span>
-<span id="cb4-49"><a href="#cb4-49"></a>    <span class="co"># combine PMOs</span></span>
-<span id="cb4-50"><a href="#cb4-50"></a>    pmo_out <span class="op">=</span> PMOReader.combine_multiple_pmos(pmos)</span>
-<span id="cb4-51"><a href="#cb4-51"></a></span>
-<span id="cb4-52"><a href="#cb4-52"></a>    <span class="co"># write</span></span>
-<span id="cb4-53"><a href="#cb4-53"></a>    PMOWriter.write_out_pmo(pmo_out, args.output, args.overwrite)</span>
-<span id="cb4-54"><a href="#cb4-54"></a></span>
+<span id="cb4-24"><a href="#cb4-24"></a>    parser.add_argument(</span>
+<span id="cb4-25"><a href="#cb4-25"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
+<span id="cb4-26"><a href="#cb4-26"></a>    )</span>
+<span id="cb4-27"><a href="#cb4-27"></a>    <span class="cf">return</span> parser</span>
+<span id="cb4-28"><a href="#cb4-28"></a></span>
+<span id="cb4-29"><a href="#cb4-29"></a></span>
+<span id="cb4-30"><a href="#cb4-30"></a><span class="kw">def</span> parse_args_combine_pmos():</span>
+<span id="cb4-31"><a href="#cb4-31"></a>    parser <span class="op">=</span> get_parser_combine_pmos()</span>
+<span id="cb4-32"><a href="#cb4-32"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb4-33"><a href="#cb4-33"></a></span>
+<span id="cb4-34"><a href="#cb4-34"></a></span>
+<span id="cb4-35"><a href="#cb4-35"></a><span class="kw">def</span> combine_pmos():</span>
+<span id="cb4-36"><a href="#cb4-36"></a>    args <span class="op">=</span> parse_args_combine_pmos()</span>
+<span id="cb4-37"><a href="#cb4-37"></a></span>
+<span id="cb4-38"><a href="#cb4-38"></a>    <span class="co"># set up output</span></span>
+<span id="cb4-39"><a href="#cb4-39"></a>    args.output <span class="op">=</span> PMOWriter.add_pmo_extension_as_needed(</span>
+<span id="cb4-40"><a href="#cb4-40"></a>        args.output, args.output.endswith(<span class="st">".gz"</span>)</span>
+<span id="cb4-41"><a href="#cb4-41"></a>    )</span>
+<span id="cb4-42"><a href="#cb4-42"></a>    Utils.outputfile_check(args.output, args.overwrite)</span>
+<span id="cb4-43"><a href="#cb4-43"></a></span>
+<span id="cb4-44"><a href="#cb4-44"></a>    <span class="co"># check if at least 2 PMO files supplied</span></span>
+<span id="cb4-45"><a href="#cb4-45"></a>    pmo_files_list <span class="op">=</span> Utils.parse_delimited_input_or_file(args.pmo_files, <span class="st">","</span>)</span>
+<span id="cb4-46"><a href="#cb4-46"></a>    <span class="cf">if</span> <span class="bu">len</span>(pmo_files_list) <span class="op">&lt;</span> <span class="dv">2</span>:</span>
+<span id="cb4-47"><a href="#cb4-47"></a>        <span class="cf">raise</span> <span class="pp">Exception</span>(</span>
+<span id="cb4-48"><a href="#cb4-48"></a>            <span class="st">"Only supplied "</span></span>
+<span id="cb4-49"><a href="#cb4-49"></a>            <span class="op">+</span> <span class="bu">str</span>(<span class="bu">len</span>(pmo_files_list))</span>
+<span id="cb4-50"><a href="#cb4-50"></a>            <span class="op">+</span> <span class="st">" but multiple PMO files were expected"</span></span>
+<span id="cb4-51"><a href="#cb4-51"></a>        )</span>
+<span id="cb4-52"><a href="#cb4-52"></a></span>
+<span id="cb4-53"><a href="#cb4-53"></a>    <span class="co"># read in the PMOs</span></span>
+<span id="cb4-54"><a href="#cb4-54"></a>    pmos <span class="op">=</span> PMOReader.read_in_pmos(pmo_files_list)</span>
 <span id="cb4-55"><a href="#cb4-55"></a></span>
-<span id="cb4-56"><a href="#cb4-56"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb4-57"><a href="#cb4-57"></a>    combine_pmos()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-56"><a href="#cb4-56"></a>    <span class="co"># combine PMOs</span></span>
+<span id="cb4-57"><a href="#cb4-57"></a>    pmo_out <span class="op">=</span> PMOReader.combine_multiple_pmos(pmos)</span>
+<span id="cb4-58"><a href="#cb4-58"></a></span>
+<span id="cb4-59"><a href="#cb4-59"></a>    <span class="co"># write</span></span>
+<span id="cb4-60"><a href="#cb4-60"></a>    PMOWriter.write_out_pmo(pmo_out, args.output, args.overwrite)</span>
+<span id="cb4-61"><a href="#cb4-61"></a></span>
+<span id="cb4-62"><a href="#cb4-62"></a></span>
+<span id="cb4-63"><a href="#cb4-63"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb4-64"><a href="#cb4-64"></a>    combine_pmos()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -900,7 +914,18 @@ options:
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>A <a href="https://plasmogenepi.org">PlasmoGenEpi</a> project <br><a href="https://plasmogenepi.org" class="footer-logo-link" aria-label="PlasmoGenEpi"></a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 <script src="../site_libs/quarto-html/zenscroll-min.js"></script>

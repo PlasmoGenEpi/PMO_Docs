@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta charset="UTF-8">
+<meta name="generator" content="quarto-1.9.36">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>PMO fields overview – Portable Microhaplotype Object (PMO)</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -61,17 +63,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../images/pmo_logo_mini.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-49a824ff064150fa59632921ab93e189.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-51c09c167a706ef208dabe9d498949d7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6a2c4b793c0becaeb94cc5bf146c1484.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-d3f04e06c4dac2d35cbd8a0ed1255062.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -98,24 +100,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script><style>html{ scroll-behavior: smooth; }</style>
-<link href="../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<link href="../site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
 <script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="../site_libs/datatables-binding-0.33/datatables.js"></script><script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<script src="../site_libs/datatables-binding-0.34.0/datatables.js"></script><script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
 <script src="../site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script><script src="../site_libs/jszip-1.13.6/jszip.min.js"></script><script src="../site_libs/pdfmake-1.13.6/pdfmake.js"></script><script src="../site_libs/pdfmake-1.13.6/vfs_fonts.js"></script><link href="../site_libs/dt-ext-buttons-1.13.6/css/buttons.dataTables.min.css" rel="stylesheet">
 <script src="../site_libs/dt-ext-buttons-1.13.6/js/dataTables.buttons.min.js"></script><script src="../site_libs/dt-ext-buttons-1.13.6/js/buttons.html5.min.js"></script><script src="../site_libs/dt-ext-buttons-1.13.6/js/buttons.colVis.min.js"></script><script src="../site_libs/dt-ext-buttons-1.13.6/js/buttons.print.min.js"></script><link href="../site_libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
 <script src="../site_libs/nouislider-7.0.10/jquery.nouislider.min.js"></script><link href="../site_libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
-<script src="../site_libs/selectize-0.12.0/selectize.min.js"></script><link href="../site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
-<script src="../site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script><link rel="stylesheet" href="../styles.css">
+<script src="../site_libs/selectize-0.12.0/selectize.min.js"></script><link href="../site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="../site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script><link rel="stylesheet" href="../styles.css">
 </head>
 <body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
-    <a class="navbar-brand" href="../index.html">
+    <a href="index.qmd" class="navbar-brand navbar-brand-logo">
+    <img src="../images/PMO_logo.png" alt="Portable Microhaplotype Object (PMO)" class="navbar-logo light-content"><img src="../images/PMO_logo.png" alt="Portable Microhaplotype Object (PMO)" class="navbar-logo dark-content"></a>
+    <a class="navbar-brand" href="index.qmd">
     <span class="navbar-title">Portable Microhaplotype Object (PMO)</span>
     </a>
   </div>
@@ -162,69 +164,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
 </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tools-installation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Tools Installation</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-tools-installation">
-<li>
-    <a class="dropdown-item" href="../Tools_Installation/pmotools-python_installation.html">
- <span class="dropdown-text">pmotools-python installation</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../pmotools-app-usage/pmotools-app.html"> 
+<span class="menu-text">PMO App</span></a>
   </li>  
-    </ul>
-</li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pmotools-python-usages" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">pmotools-python usages</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pmotools-python" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">pmotools-python</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python-usages">
-<li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header"><span class="menuTitle">Python interface</span></li>
-        <li class="dropdown-header"><span class="menuTitle">Building a PMO</span></li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python">
+<li>
+    <a class="dropdown-item" href="../pmotools-python-usages/general_info.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Tools_Installation/pmotools-python_installation.html">
+ <span class="dropdown-text">Installation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://plasmogenepi.github.io/pmotools-python/index.html">
+ <span class="dropdown-text">Manual</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Python Interface Tutorials</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_minimum_pmo/Create_minimal_pmo.html">
+ <span class="dropdown-text">Building a PMO with minimum required fields</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_minimum_pmo/Update_meta_in_a_minimal_pmo.html">
+ <span class="dropdown-text">Updating the Specimen Meta Information in a minimum PMO</span></a>
+  </li>  
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.html">
- <span class="dropdown-text">Example of how to build a PMO</span></a>
+ <span class="dropdown-text">Building a PMO including optional sections and fields</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Interacting with a PMO file</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.html">
- <span class="dropdown-text">Getting basic info out of a PMO</span></a>
+ <span class="dropdown-text">Getting basic information from a PMO file</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Command line interface</span></li>
-        <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header"><span class="menuTitle">pmotools-python</span></li>
+        <li class="dropdown-header"><span class="menuTitle">Command line Interface Tutorials</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/pmotools-python.html">
- <span class="dropdown-text">Command line interface to pmotools-python with pmotools-python</span></a>
+ <span class="dropdown-text">Command line interface guide</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Extracting out of PMO</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/extracting_allele_tables.html">
- <span class="dropdown-text">Extracting allele tables using pmotools-python</span></a>
+ <span class="dropdown-text">Extracting allele tables from a PMO</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Subset PMO</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/subsetting_from_PMO.html">
- <span class="dropdown-text">Subsetting from a PMO using pmotools-python</span></a>
+ <span class="dropdown-text">Subsetting a PMO</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Getting sub info from PMO</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/getting_basic_info_from_pmo.html">
- <span class="dropdown-text">Getting basic info out of PMO using pmotools-python</span></a>
+ <span class="dropdown-text">Getting basic information from a PMO</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/extracting_panel_info_from_pmo.html">
- <span class="dropdown-text">Getting panel info out of PMO using pmotools-python</span></a>
+ <span class="dropdown-text">Extracting panel info from PMO</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Handling Multiple PMOs</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/handling_multiple_pmos.html">
- <span class="dropdown-text">Handling multiple PMOs pmotools-python</span></a>
+ <span class="dropdown-text">Handling Multiple PMOs</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Validating PMO files</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/validating_pmos.html">
- <span class="dropdown-text">Validating PMOs pmotools-python</span></a>
+ <span class="dropdown-text">Validating PMO files</span></a>
   </li>  
     </ul>
 </li>
@@ -314,12 +319,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="../format/portable_microhaplotype_object.schema.json" class="downloadLink btn btn-info">portable_microhaplotype_object.schema.json</a></p>
 </div>
 </section><section id="top-level-schematic" class="level1"><h1>Top Level Schematic</h1>
-<p><img src="../images/high_level_tables.svg" class="img-fluid"> (A) Schematic of the top-level tables within PMO. Green boxes indicate tables that will commonly be reused across datasets. Pink dashed boxes highlight tables that are input collectively into pmotools-python or the PMO app via a single input table. (B) Illustration comparing current approaches to microhaplotype storage with storage within PMO. Current storage solutions often rely on long-form microhaplotype storage, with repeated listing of full nucleotide sequences, as shown on the left of panel B. In contrast, PMO replaces this with two efficiently linked tables, eliminating redundancy, as shown on the right of panel B.</p>
+<p><img src="../images/high_level_schema_and_allele_table.png" class="img-fluid"> (A) Schematic of the top-level tables within PMO. Green and light pink boxes highlight required and optional tables respectively. Boxes with a blue border indicate tables that will commonly be reused across datasets. Pink dashed boxes highlight tables that are input collectively into pmotools-python or the PMO app via a single input table. *Tables specimen_info and library_sample_info require only an identifier, with additional information about the samples being optional. These identifiers can optionally be autogenerated through pmotools/pmo-app. (B) Illustration comparing current approaches to microhaplotype storage with storage within PMO. Current storage solutions often rely on long-form microhaplotype storage, with repeated listing of full nucleotide sequences, as shown on the left of panel B. In contrast, PMO replaces this with two efficiently linked tables, eliminating redundancy, as shown on the right of panel B.</p>
 </section><section id="table-describing-fields" class="level1"><h1>Table describing fields</h1>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-a4016ce27affec7c2385" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-a4016ce27affec7c2385">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["Buttons"],"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13"],["pmo_header","project_info","specimen_info","targeted_genomes","target_info","panel_info","sequencing_info","library_sample_info","bioinformatics_method_info","bioinformatics_run_info","representative_microhaplotypes","detected_microhaplotypes","read_counts_by_stage"],["PMO-related information for this file.","Information about the project(s) stored in this PMO.","Details on the individual specimen collected.","Details on the genomes that targets refer to.","Details of individual targets that make up panel(s) within PMO.","The collection of targets, optionally grouped by reaction, that were amplified and sequenced.","Details of the assay for the batch of samples sequenced together.","Details of the assay(s) performed on an individual specimen to go from the specimen taken from the patient to the sequencing data.","Details of the bioinformatics pipeline/methods used to generate the microhaplotypes.","Runtime information for the batches processed by a bioinformatics method.","Information on all of the microhaplotypes found within the population/ samples included in the PMO.","For each library_sample, the microhaplotypes that were detected in that sample.","The read counts per sample at different stages within the bioinformatics method/ pipeline."],["pmo_version, creation_date","project_name, project_description, project_contributors","specimen_taxon_id, collection_date, collection_country, host_age, host_sex, specimen_collect_device","genome_version, taxon_id, url","Forward_primer_seq, reverse_primer_seq, insert_location, markers_of_interest","panel_name, target_id","seq_platform, seq_instrument_model, seq_date","library_sample_name, library_prep_plate_info, run_accession","demultiplexing_method, denoising_method, additional_methods All methods include;  program_version, program","bioinformatics_run_name, run_date","seq, pseudocigar","mhap_id, reads","stage, read_count"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>PMO table name<\/th>\n      <th>Description<\/th>\n      <th>Example fields<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Blfrtip","buttons":["copy","csv","excel","pdf","print"],"lengthMenu":[[10,25,50,-1],["10","25","50","All"]],"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"PMO table name","targets":1},{"name":"Description","targets":2},{"name":"Example fields","targets":3}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-76ca6ffada5f68feefd0" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-76ca6ffada5f68feefd0">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["Buttons"],"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13"],["pmo_header","project_info","specimen_info","targeted_genomes","target_info","panel_info","sequencing_info","library_sample_info","bioinformatics_method_info","bioinformatics_run_info","representative_microhaplotypes","detected_microhaplotypes","read_counts_by_stage"],["PMO-related information for this file.","Information about the project(s) stored in this PMO.","Details on the individual specimen collected.","Details on the genomes that targets refer to.","Details of individual targets that make up panel(s) within PMO.","The collection of targets, optionally grouped by reaction, that were amplified and sequenced.","Details of the assay for the batch of samples sequenced together.","Details of the assay(s) performed on an individual specimen to go from the specimen taken from the patient to the sequencing data.","Details of the bioinformatics pipeline/methods used to generate the microhaplotypes.","Runtime information for the batches processed by a bioinformatics method.","Information on all of the microhaplotypes found within the population/ samples included in the PMO.","For each library_sample, the microhaplotypes that were detected in that sample.","The read counts per sample at different stages within the bioinformatics method/ pipeline."],["pmo_version, creation_date","project_name, project_description, project_contributors","specimen_taxon_id, collection_date, collection_country, host_age, host_sex, specimen_collect_device","genome_version, taxon_id, url","Forward_primer_seq, reverse_primer_seq, insert_location, markers_of_interest","panel_name, target_id","seq_platform, seq_instrument_model, seq_date","library_sample_name, library_prep_plate_info, run_accession","demultiplexing_method, denoising_method, additional_methods All methods include;  program_version, program","bioinformatics_run_name, run_date","seq, pseudocigar","mhap_id, reads","stage, read_count"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>PMO table name<\/th>\n      <th>Description<\/th>\n      <th>Example fields<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Blfrtip","buttons":["copy","csv","excel","pdf","print"],"lengthMenu":[[10,25,50,-1],["10","25","50","All"]],"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"PMO table name","targets":1},{"name":"Description","targets":2},{"name":"Example fields","targets":3}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
@@ -786,47 +791,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../common.R"</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu"># The design goal behind PMO  </span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>The format was created while attempting to stay consistent with previous standards like <span class="co">[</span><span class="ot">MIxS standards</span><span class="co">](https://genomicsstandardsconsortium.github.io/mixs/)</span>. These are the standards that the short read archive (SRA) use to validate metadata upon submission. This also helps to keep data standards to adhere to FAIR (Findable, Accessible, Interoperable, and Reusable). </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>The format was developed in order to achieve an efficient/low-weight format that contains the minimum amount of information about a targeted amplicon analysis without losing any important data. Tools are generated around this table to generate certain fields that are important but not necessary to keep constantly stored in this base class (e.g. aggreated SNP/INDEL calls, aggregated allele frequencies). To increase portability and to keep data internally consistent, format was designed to be contained within a singular file in <span class="co">[</span><span class="ot">JSON format</span><span class="co">](https://en.wikipedia.org/wiki/JSON)</span> which removes the limitation of storing data only in a tabular format. Though output generated from this file can still be a table for downstream usage in other tools but by storing in the flexible JSON format this allows storage in non-redundant organization (e.g. storing the sequennce only once while storing other data in lists).</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Format is defined by utilizing <span class="co">[</span><span class="ot">LinkML</span><span class="co">](https://linkml.io/linkml/)</span> to generate a general data scheme which creates various validation outputs like <span class="co">[</span><span class="ot">JSON Schema</span><span class="co">](https://json-schema.org/)</span> for validation tools. LinkML generates a website for viewing all fields defined in the format, <span class="ot">&lt;https://github.com/PlasmoGenEpi/portable-microhaplotype-object&gt;</span>. </span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>Other notable users of LinkML/MIxS <span class="co">[</span><span class="ot">National Microbiome Data Collaborative Schema</span><span class="co">](https://github.com/microbiomedata/nmdc-schema)</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu"># Format shcema </span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>A json-schema for the format </span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: asis</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">createDownloadLink</span>(<span class="st">"portable_microhaplotype_object.schema.json"</span>))</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="fu"># Top Level Schematic</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="al">![](../images/high_level_tables.svg)</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>(A) Schematic of the top-level tables within PMO. Green boxes indicate tables that will commonly be reused across datasets. Pink dashed boxes highlight tables that are input collectively into pmotools-python or the PMO app via a single input table. (B) Illustration comparing current approaches to microhaplotype storage with storage within PMO. Current storage solutions often rely on long-form microhaplotype storage, with repeated listing of full nucleotide sequences, as shown on the left of panel B. In contrast, PMO replaces this with two efficiently linked tables, eliminating redundancy, as shown on the right of panel B.</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu"># The design goal behind PMO  </span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>The format was created while attempting to stay consistent with previous standards like <span class="co">[</span><span class="ot">MIxS standards</span><span class="co">](https://genomicsstandardsconsortium.github.io/mixs/)</span>. These are the standards that the short read archive (SRA) use to validate metadata upon submission. This also helps to keep data standards to adhere to FAIR (Findable, Accessible, Interoperable, and Reusable). </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>The format was developed in order to achieve an efficient/low-weight format that contains the minimum amount of information about a targeted amplicon analysis without losing any important data. Tools are generated around this table to generate certain fields that are important but not necessary to keep constantly stored in this base class (e.g. aggreated SNP/INDEL calls, aggregated allele frequencies). To increase portability and to keep data internally consistent, format was designed to be contained within a singular file in <span class="co">[</span><span class="ot">JSON format</span><span class="co">](https://en.wikipedia.org/wiki/JSON)</span> which removes the limitation of storing data only in a tabular format. Though output generated from this file can still be a table for downstream usage in other tools but by storing in the flexible JSON format this allows storage in non-redundant organization (e.g. storing the sequennce only once while storing other data in lists).</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>Format is defined by utilizing <span class="co">[</span><span class="ot">LinkML</span><span class="co">](https://linkml.io/linkml/)</span> to generate a general data scheme which creates various validation outputs like <span class="co">[</span><span class="ot">JSON Schema</span><span class="co">](https://json-schema.org/)</span> for validation tools. LinkML generates a website for viewing all fields defined in the format, <span class="ot">&lt;https://github.com/PlasmoGenEpi/portable-microhaplotype-object&gt;</span>. </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>Other notable users of LinkML/MIxS <span class="co">[</span><span class="ot">National Microbiome Data Collaborative Schema</span><span class="co">](https://github.com/microbiomedata/nmdc-schema)</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu"># Format shcema </span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>A json-schema for the format </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: asis</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">createDownloadLink</span>(<span class="st">"portable_microhaplotype_object.schema.json"</span>))</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu"># Top Level Schematic</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="al">![](../images/high_level_schema_and_allele_table.png)</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>(A) Schematic of the top-level tables within PMO. Green and light pink boxes highlight required and optional tables respectively. Boxes with a blue border indicate tables that will commonly be reused across datasets. Pink dashed boxes highlight tables that are input collectively into pmotools-python or the PMO app via a single input table. *Tables specimen_info and library_sample_info require only an identifier, with additional information about the samples being optional. These identifiers can optionally be autogenerated through pmotools/pmo-app. (B) Illustration comparing current approaches to microhaplotype storage with storage within PMO. Current storage solutions often rely on long-form microhaplotype storage, with repeated listing of full nucleotide sequences, as shown on the left of panel B. In contrast, PMO replaces this with two efficiently linked tables, eliminating redundancy, as shown on the right of panel B.</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu"># Table describing fields</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo = F}</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>format_overview_table_descp <span class="ot">=</span> readr<span class="sc">::</span><span class="fu">read_tsv</span>(<span class="st">"format_overview_table_descp.tsv"</span>)</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="fu">create_dt</span>(format_overview_table_descp)</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="fu"># Table describing fields</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo = F}</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>format_overview_table_descp <span class="ot">=</span> readr<span class="sc">::</span><span class="fu">read_tsv</span>(<span class="st">"format_overview_table_descp.tsv"</span>)</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="fu">create_dt</span>(format_overview_table_descp)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>A <a href="https://plasmogenepi.org">PlasmoGenEpi</a> project <br><a href="https://plasmogenepi.org" class="footer-logo-link" aria-label="PlasmoGenEpi"></a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 <script src="../site_libs/quarto-html/zenscroll-min.js"></script>

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta charset="UTF-8">
+<meta name="generator" content="quarto-1.9.36">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Extracting allele tables using pmotools-python – Portable Microhaplotype Object (PMO)</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -61,17 +63,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../images/pmo_logo_mini.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-49a824ff064150fa59632921ab93e189.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-51c09c167a706ef208dabe9d498949d7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6a2c4b793c0becaeb94cc5bf146c1484.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-d3f04e06c4dac2d35cbd8a0ed1255062.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -105,9 +107,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
-    <a class="navbar-brand" href="../index.html">
+    <a href="index.qmd" class="navbar-brand navbar-brand-logo">
+    <img src="../images/PMO_logo.png" alt="Portable Microhaplotype Object (PMO)" class="navbar-logo light-content"><img src="../images/PMO_logo.png" alt="Portable Microhaplotype Object (PMO)" class="navbar-logo dark-content"></a>
+    <a class="navbar-brand" href="index.qmd">
     <span class="navbar-title">Portable Microhaplotype Object (PMO)</span>
     </a>
   </div>
@@ -154,69 +156,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
 </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tools-installation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Tools Installation</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-tools-installation">
-<li>
-    <a class="dropdown-item" href="../Tools_Installation/pmotools-python_installation.html">
- <span class="dropdown-text">pmotools-python installation</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../pmotools-app-usage/pmotools-app.html"> 
+<span class="menu-text">PMO App</span></a>
   </li>  
-    </ul>
-</li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pmotools-python-usages" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">pmotools-python usages</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pmotools-python" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">pmotools-python</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python-usages">
-<li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header"><span class="menuTitle">Python interface</span></li>
-        <li class="dropdown-header"><span class="menuTitle">Building a PMO</span></li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python">
+<li>
+    <a class="dropdown-item" href="../pmotools-python-usages/general_info.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Tools_Installation/pmotools-python_installation.html">
+ <span class="dropdown-text">Installation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://plasmogenepi.github.io/pmotools-python/index.html">
+ <span class="dropdown-text">Manual</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Python Interface Tutorials</span></li>
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_minimum_pmo/Create_minimal_pmo.html">
+ <span class="dropdown-text">Building a PMO with minimum required fields</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_minimum_pmo/Update_meta_in_a_minimal_pmo.html">
+ <span class="dropdown-text">Updating the Specimen Meta Information in a minimum PMO</span></a>
+  </li>  
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.html">
- <span class="dropdown-text">Example of how to build a PMO</span></a>
+ <span class="dropdown-text">Building a PMO including optional sections and fields</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Interacting with a PMO file</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.html">
- <span class="dropdown-text">Getting basic info out of a PMO</span></a>
+ <span class="dropdown-text">Getting basic information from a PMO file</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Command line interface</span></li>
-        <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header"><span class="menuTitle">pmotools-python</span></li>
+        <li class="dropdown-header"><span class="menuTitle">Command line Interface Tutorials</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/pmotools-python.html">
- <span class="dropdown-text">Command line interface to pmotools-python with pmotools-python</span></a>
+ <span class="dropdown-text">Command line interface guide</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Extracting out of PMO</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/extracting_allele_tables.html">
- <span class="dropdown-text">Extracting allele tables using pmotools-python</span></a>
+ <span class="dropdown-text">Extracting allele tables from a PMO</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Subset PMO</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/subsetting_from_PMO.html">
- <span class="dropdown-text">Subsetting from a PMO using pmotools-python</span></a>
+ <span class="dropdown-text">Subsetting a PMO</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Getting sub info from PMO</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/getting_basic_info_from_pmo.html">
- <span class="dropdown-text">Getting basic info out of PMO using pmotools-python</span></a>
+ <span class="dropdown-text">Getting basic information from a PMO</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/extracting_panel_info_from_pmo.html">
- <span class="dropdown-text">Getting panel info out of PMO using pmotools-python</span></a>
+ <span class="dropdown-text">Extracting panel info from PMO</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Handling Multiple PMOs</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/handling_multiple_pmos.html">
- <span class="dropdown-text">Handling multiple PMOs pmotools-python</span></a>
+ <span class="dropdown-text">Handling Multiple PMOs</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Validating PMO files</span></li>
         <li>
     <a class="dropdown-item" href="../pmotools-python-usages/validating_pmos.html">
- <span class="dropdown-text">Validating PMOs pmotools-python</span></a>
+ <span class="dropdown-text">Validating PMO files</span></a>
   </li>  
     </ul>
 </li>
@@ -336,13 +341,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>usage: pmotools-python extract_allele_table [-h] --file FILE
                                             [--jsonschema JSONSCHEMA]
                                             [--delim DELIM] --output OUTPUT
-                                            [--overwrite]
+                                            [--overwrite] [--skip_validation]
                                             [--allele_freqs_output ALLELE_FREQS_OUTPUT]
                                             [--specimen_info_meta_fields SPECIMEN_INFO_META_FIELDS]
                                             [--library_sample_info_meta_fields LIBRARY_SAMPLE_INFO_META_FIELDS]
                                             [--microhap_fields MICROHAP_FIELDS]
                                             [--representative_haps_fields REPRESENTATIVE_HAPS_FIELDS]
                                             [--default_base_col_names DEFAULT_BASE_COL_NAMES]
+
+Extract allele tables for tools like dcifer or moire
 
 options:
   -h, --help            show this help message and exit
@@ -353,6 +360,7 @@ options:
                         tab,comma
   --output OUTPUT       Output allele table file name path
   --overwrite           If output file exists, overwrite it
+  --skip_validation     skip validation of PMO
   --allele_freqs_output ALLELE_FREQS_OUTPUT
                         if also writing out allele frequencies, write to this
                         file
@@ -368,7 +376,15 @@ options:
                         additional optional fields from the detected
                         representative object to include
   --default_base_col_names DEFAULT_BASE_COL_NAMES
-                        default base column names, must be length 3</code></pre>
+                        default base column names, must be length 3
+
+    Examples:
+      pmotools-python extract_allele_table --file input.pmo --output output.tsv
+      pmotools-python extract_allele_table --file input.pmo.gz --output output.tsv --delim comma
+      pmotools-python extract_allele_table --file input.pmo --output output.tsv --allele_freqs_output freqs.tsv --overwrite
+      pmotools-python extract_allele_table --file input.pmo --output output.tsv --microhap_fields reads,mhap_id
+      pmotools-python extract_allele_table --file input.pmo --output output.tsv --specimen_info_meta_fields collection_date,collection_country
+    </code></pre>
 </div>
 </div>
 <p>The python code for <code>extract_allele_table</code> script is below</p>
@@ -382,156 +398,176 @@ options:
 <span id="cb3-3"><a href="#cb3-3"></a><span class="im">import</span> argparse</span>
 <span id="cb3-4"><a href="#cb3-4"></a><span class="im">import</span> json</span>
 <span id="cb3-5"><a href="#cb3-5"></a><span class="im">import</span> os</span>
-<span id="cb3-6"><a href="#cb3-6"></a></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="im">from</span> pmotools.pmo_engine.pmo_reader <span class="im">import</span> PMOReader</span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="im">from</span> pmotools.pmo_engine.pmo_checker <span class="im">import</span> PMOChecker</span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="im">from</span> pmotools.pmo_engine.pmo_processor <span class="im">import</span> PMOProcessor</span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="im">from</span> pmotools.pmo_engine.pmo_exporter <span class="im">import</span> PMOExporter</span>
-<span id="cb3-12"><a href="#cb3-12"></a></span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="im">from</span> pmotools <span class="im">import</span> __version__ <span class="im">as</span> __pmotools_version__</span>
-<span id="cb3-14"><a href="#cb3-14"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="im">import</span> sys</span>
+<span id="cb3-7"><a href="#cb3-7"></a></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="im">from</span> pmotools.pmo_engine.pmo_reader <span class="im">import</span> PMOReader</span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="im">from</span> pmotools.utils.small_utils <span class="im">import</span> Utils</span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="im">from</span> pmotools.pmo_engine.pmo_checker <span class="im">import</span> PMOChecker</span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="im">from</span> pmotools.pmo_engine.pmo_processor <span class="im">import</span> PMOProcessor</span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="im">from</span> pmotools.pmo_engine.pmo_exporter <span class="im">import</span> PMOExporter</span>
+<span id="cb3-13"><a href="#cb3-13"></a></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="im">from</span> pmotools <span class="im">import</span> __version__ <span class="im">as</span> __pmotools_version__</span>
 <span id="cb3-15"><a href="#cb3-15"></a></span>
-<span id="cb3-16"><a href="#cb3-16"></a><span class="kw">def</span> parse_args_extract_for_allele_table():</span>
-<span id="cb3-17"><a href="#cb3-17"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb3-18"><a href="#cb3-18"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
-<span id="cb3-19"><a href="#cb3-19"></a>    parser.add_argument(</span>
-<span id="cb3-20"><a href="#cb3-20"></a>        <span class="st">"--jsonschema"</span>,</span>
-<span id="cb3-21"><a href="#cb3-21"></a>        default<span class="op">=</span>os.path.join(</span>
-<span id="cb3-22"><a href="#cb3-22"></a>            os.path.dirname(</span>
-<span id="cb3-23"><a href="#cb3-23"></a>                os.path.dirname(os.path.dirname(os.path.abspath(<span class="va">__file__</span>)))</span>
-<span id="cb3-24"><a href="#cb3-24"></a>            ),</span>
-<span id="cb3-25"><a href="#cb3-25"></a>            <span class="st">"schemas/"</span>,</span>
-<span id="cb3-26"><a href="#cb3-26"></a>            <span class="ss">f"portable_microhaplotype_object_v</span><span class="sc">{</span>__pmotools_version__<span class="sc">}</span><span class="ss">.schema.json"</span>,</span>
-<span id="cb3-27"><a href="#cb3-27"></a>        ),</span>
-<span id="cb3-28"><a href="#cb3-28"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb3-29"><a href="#cb3-29"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb3-30"><a href="#cb3-30"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the jsonschema to check the PMO against"</span>,</span>
-<span id="cb3-31"><a href="#cb3-31"></a>    )</span>
-<span id="cb3-32"><a href="#cb3-32"></a></span>
-<span id="cb3-33"><a href="#cb3-33"></a>    parser.add_argument(</span>
-<span id="cb3-34"><a href="#cb3-34"></a>        <span class="st">"--delim"</span>,</span>
-<span id="cb3-35"><a href="#cb3-35"></a>        default<span class="op">=</span><span class="st">"tab"</span>,</span>
-<span id="cb3-36"><a href="#cb3-36"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb3-37"><a href="#cb3-37"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb3-38"><a href="#cb3-38"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the delimiter of the input text file, examples tab,comma"</span>,</span>
-<span id="cb3-39"><a href="#cb3-39"></a>    )</span>
-<span id="cb3-40"><a href="#cb3-40"></a>    parser.add_argument(</span>
-<span id="cb3-41"><a href="#cb3-41"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"Output allele table file name path"</span></span>
-<span id="cb3-42"><a href="#cb3-42"></a>    )</span>
-<span id="cb3-43"><a href="#cb3-43"></a>    parser.add_argument(</span>
-<span id="cb3-44"><a href="#cb3-44"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
-<span id="cb3-45"><a href="#cb3-45"></a>    )</span>
-<span id="cb3-46"><a href="#cb3-46"></a>    parser.add_argument(</span>
-<span id="cb3-47"><a href="#cb3-47"></a>        <span class="st">"--allele_freqs_output"</span>,</span>
+<span id="cb3-16"><a href="#cb3-16"></a></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="kw">def</span> get_parser() <span class="op">-&gt;</span> argparse.ArgumentParser:</span>
+<span id="cb3-18"><a href="#cb3-18"></a>    parser <span class="op">=</span> argparse.ArgumentParser(</span>
+<span id="cb3-19"><a href="#cb3-19"></a>        prog<span class="op">=</span><span class="st">"pmotools-python extract_allele_table"</span>,</span>
+<span id="cb3-20"><a href="#cb3-20"></a>        description<span class="op">=</span><span class="st">"Extract allele tables for tools like dcifer or moire"</span>,</span>
+<span id="cb3-21"><a href="#cb3-21"></a>        epilog<span class="op">=</span><span class="st">"""</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a><span class="st">    Examples:</span></span>
+<span id="cb3-23"><a href="#cb3-23"></a><span class="st">      </span><span class="sc">%(prog)s</span><span class="st"> --file input.pmo --output output.tsv</span></span>
+<span id="cb3-24"><a href="#cb3-24"></a><span class="st">      </span><span class="sc">%(prog)s</span><span class="st"> --file input.pmo.gz --output output.tsv --delim comma</span></span>
+<span id="cb3-25"><a href="#cb3-25"></a><span class="st">      </span><span class="sc">%(prog)s</span><span class="st"> --file input.pmo --output output.tsv --allele_freqs_output freqs.tsv --overwrite</span></span>
+<span id="cb3-26"><a href="#cb3-26"></a><span class="st">      </span><span class="sc">%(prog)s</span><span class="st"> --file input.pmo --output output.tsv --microhap_fields reads,mhap_id</span></span>
+<span id="cb3-27"><a href="#cb3-27"></a><span class="st">      </span><span class="sc">%(prog)s</span><span class="st"> --file input.pmo --output output.tsv --specimen_info_meta_fields collection_date,collection_country</span></span>
+<span id="cb3-28"><a href="#cb3-28"></a><span class="st">    """</span>,</span>
+<span id="cb3-29"><a href="#cb3-29"></a>        formatter_class<span class="op">=</span>argparse.RawDescriptionHelpFormatter,</span>
+<span id="cb3-30"><a href="#cb3-30"></a>    )</span>
+<span id="cb3-31"><a href="#cb3-31"></a>    parser.add_argument(<span class="st">"--file"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"PMO file"</span>)</span>
+<span id="cb3-32"><a href="#cb3-32"></a>    parser.add_argument(</span>
+<span id="cb3-33"><a href="#cb3-33"></a>        <span class="st">"--jsonschema"</span>,</span>
+<span id="cb3-34"><a href="#cb3-34"></a>        default<span class="op">=</span>os.path.join(</span>
+<span id="cb3-35"><a href="#cb3-35"></a>            os.path.dirname(</span>
+<span id="cb3-36"><a href="#cb3-36"></a>                os.path.dirname(os.path.dirname(os.path.abspath(<span class="va">__file__</span>)))</span>
+<span id="cb3-37"><a href="#cb3-37"></a>            ),</span>
+<span id="cb3-38"><a href="#cb3-38"></a>            <span class="st">"schemas/"</span>,</span>
+<span id="cb3-39"><a href="#cb3-39"></a>            <span class="ss">f"portable_microhaplotype_object_v</span><span class="sc">{</span>__pmotools_version__<span class="sc">}</span><span class="ss">.schema.json"</span>,</span>
+<span id="cb3-40"><a href="#cb3-40"></a>        ),</span>
+<span id="cb3-41"><a href="#cb3-41"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb3-42"><a href="#cb3-42"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb3-43"><a href="#cb3-43"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the jsonschema to check the PMO against"</span>,</span>
+<span id="cb3-44"><a href="#cb3-44"></a>    )</span>
+<span id="cb3-45"><a href="#cb3-45"></a>    parser.add_argument(</span>
+<span id="cb3-46"><a href="#cb3-46"></a>        <span class="st">"--delim"</span>,</span>
+<span id="cb3-47"><a href="#cb3-47"></a>        default<span class="op">=</span><span class="st">"tab"</span>,</span>
 <span id="cb3-48"><a href="#cb3-48"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb3-49"><a href="#cb3-49"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"if also writing out allele frequencies, write to this file"</span>,</span>
-<span id="cb3-50"><a href="#cb3-50"></a>    )</span>
-<span id="cb3-51"><a href="#cb3-51"></a></span>
+<span id="cb3-49"><a href="#cb3-49"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb3-50"><a href="#cb3-50"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"the delimiter of the input text file, examples tab,comma"</span>,</span>
+<span id="cb3-51"><a href="#cb3-51"></a>    )</span>
 <span id="cb3-52"><a href="#cb3-52"></a>    parser.add_argument(</span>
-<span id="cb3-53"><a href="#cb3-53"></a>        <span class="st">"--specimen_info_meta_fields"</span>,</span>
-<span id="cb3-54"><a href="#cb3-54"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb3-55"><a href="#cb3-55"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb3-56"><a href="#cb3-56"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"Meta Fields if any to include from the specimen table"</span>,</span>
+<span id="cb3-53"><a href="#cb3-53"></a>        <span class="st">"--output"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, required<span class="op">=</span><span class="va">True</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"Output allele table file name path"</span></span>
+<span id="cb3-54"><a href="#cb3-54"></a>    )</span>
+<span id="cb3-55"><a href="#cb3-55"></a>    parser.add_argument(</span>
+<span id="cb3-56"><a href="#cb3-56"></a>        <span class="st">"--overwrite"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"If output file exists, overwrite it"</span></span>
 <span id="cb3-57"><a href="#cb3-57"></a>    )</span>
 <span id="cb3-58"><a href="#cb3-58"></a>    parser.add_argument(</span>
-<span id="cb3-59"><a href="#cb3-59"></a>        <span class="st">"--library_sample_info_meta_fields"</span>,</span>
-<span id="cb3-60"><a href="#cb3-60"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb3-61"><a href="#cb3-61"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb3-62"><a href="#cb3-62"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"Meta Fields if any to include from the library sample table"</span>,</span>
-<span id="cb3-63"><a href="#cb3-63"></a>    )</span>
-<span id="cb3-64"><a href="#cb3-64"></a>    parser.add_argument(</span>
-<span id="cb3-65"><a href="#cb3-65"></a>        <span class="st">"--microhap_fields"</span>,</span>
-<span id="cb3-66"><a href="#cb3-66"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb3-67"><a href="#cb3-67"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb3-68"><a href="#cb3-68"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"additional optional fields from the detected microhaplotype object to include"</span>,</span>
-<span id="cb3-69"><a href="#cb3-69"></a>    )</span>
-<span id="cb3-70"><a href="#cb3-70"></a>    parser.add_argument(</span>
-<span id="cb3-71"><a href="#cb3-71"></a>        <span class="st">"--representative_haps_fields"</span>,</span>
-<span id="cb3-72"><a href="#cb3-72"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb3-73"><a href="#cb3-73"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb3-74"><a href="#cb3-74"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"additional optional fields from the detected representative object to include"</span>,</span>
-<span id="cb3-75"><a href="#cb3-75"></a>    )</span>
-<span id="cb3-76"><a href="#cb3-76"></a>    parser.add_argument(</span>
-<span id="cb3-77"><a href="#cb3-77"></a>        <span class="st">"--default_base_col_names"</span>,</span>
-<span id="cb3-78"><a href="#cb3-78"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb3-79"><a href="#cb3-79"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb3-80"><a href="#cb3-80"></a>        default<span class="op">=</span><span class="st">"library_sample_name,target_name,mhap_id"</span>,</span>
-<span id="cb3-81"><a href="#cb3-81"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"default base column names, must be length 3"</span>,</span>
-<span id="cb3-82"><a href="#cb3-82"></a>    )</span>
-<span id="cb3-83"><a href="#cb3-83"></a></span>
-<span id="cb3-84"><a href="#cb3-84"></a>    <span class="cf">return</span> parser.parse_args()</span>
-<span id="cb3-85"><a href="#cb3-85"></a></span>
-<span id="cb3-86"><a href="#cb3-86"></a></span>
-<span id="cb3-87"><a href="#cb3-87"></a><span class="kw">def</span> extract_for_allele_table():</span>
-<span id="cb3-88"><a href="#cb3-88"></a>    args <span class="op">=</span> parse_args_extract_for_allele_table()</span>
-<span id="cb3-89"><a href="#cb3-89"></a>    compressed_output <span class="op">=</span> (</span>
-<span id="cb3-90"><a href="#cb3-90"></a>        <span class="st">"."</span> <span class="kw">not</span> <span class="kw">in</span> args.output <span class="kw">and</span> args.<span class="bu">file</span>.endswith(<span class="st">".gz"</span>)</span>
-<span id="cb3-91"><a href="#cb3-91"></a>    ) <span class="kw">or</span> args.output.endswith(<span class="st">".gz"</span>)</span>
-<span id="cb3-92"><a href="#cb3-92"></a></span>
-<span id="cb3-93"><a href="#cb3-93"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(</span>
-<span id="cb3-94"><a href="#cb3-94"></a>        args.delim, gzip<span class="op">=</span>compressed_output</span>
-<span id="cb3-95"><a href="#cb3-95"></a>    )</span>
-<span id="cb3-96"><a href="#cb3-96"></a></span>
-<span id="cb3-97"><a href="#cb3-97"></a>    allele_per_sample_table_out_fnp <span class="op">=</span> (</span>
-<span id="cb3-98"><a href="#cb3-98"></a>        args.output</span>
-<span id="cb3-99"><a href="#cb3-99"></a>        <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output</span>
-<span id="cb3-100"><a href="#cb3-100"></a>        <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
-<span id="cb3-101"><a href="#cb3-101"></a>    )</span>
-<span id="cb3-102"><a href="#cb3-102"></a>    Utils.inputOutputFileCheck(</span>
-<span id="cb3-103"><a href="#cb3-103"></a>        args.<span class="bu">file</span>, allele_per_sample_table_out_fnp, args.overwrite</span>
-<span id="cb3-104"><a href="#cb3-104"></a>    )</span>
-<span id="cb3-105"><a href="#cb3-105"></a></span>
-<span id="cb3-106"><a href="#cb3-106"></a>    allele_freq_output <span class="op">=</span> <span class="st">""</span></span>
-<span id="cb3-107"><a href="#cb3-107"></a>    <span class="cf">if</span> args.allele_freqs_output <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb3-108"><a href="#cb3-108"></a>        allele_freq_output <span class="op">=</span> Utils.appendStrAsNeeded(</span>
-<span id="cb3-109"><a href="#cb3-109"></a>            args.allele_freqs_output, output_extension</span>
-<span id="cb3-110"><a href="#cb3-110"></a>        )</span>
-<span id="cb3-111"><a href="#cb3-111"></a>        Utils.inputOutputFileCheck(args.<span class="bu">file</span>, allele_freq_output, args.overwrite)</span>
-<span id="cb3-112"><a href="#cb3-112"></a></span>
-<span id="cb3-113"><a href="#cb3-113"></a>    pmodata <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
-<span id="cb3-114"><a href="#cb3-114"></a>    <span class="cf">with</span> <span class="bu">open</span>(args.jsonschema, <span class="st">"r"</span>) <span class="im">as</span> f:</span>
-<span id="cb3-115"><a href="#cb3-115"></a>        schema_dict <span class="op">=</span> json.load(f)</span>
-<span id="cb3-116"><a href="#cb3-116"></a>        checker <span class="op">=</span> PMOChecker(schema_dict)</span>
-<span id="cb3-117"><a href="#cb3-117"></a>        <span class="co"># make sure PMO is valid</span></span>
-<span id="cb3-118"><a href="#cb3-118"></a>        checker.validate_pmo_json(pmodata)</span>
-<span id="cb3-119"><a href="#cb3-119"></a></span>
-<span id="cb3-120"><a href="#cb3-120"></a>    <span class="cf">if</span> args.specimen_info_meta_fields <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb3-121"><a href="#cb3-121"></a>        args.specimen_info_meta_fields <span class="op">=</span> Utils.parse_delimited_input_or_file(</span>
-<span id="cb3-122"><a href="#cb3-122"></a>            args.specimen_info_meta_fields, <span class="st">","</span></span>
-<span id="cb3-123"><a href="#cb3-123"></a>        )</span>
-<span id="cb3-124"><a href="#cb3-124"></a>    <span class="cf">if</span> args.microhap_fields <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb3-125"><a href="#cb3-125"></a>        args.microhap_fields <span class="op">=</span> Utils.parse_delimited_input_or_file(</span>
-<span id="cb3-126"><a href="#cb3-126"></a>            args.microhap_fields, <span class="st">","</span></span>
-<span id="cb3-127"><a href="#cb3-127"></a>        )</span>
-<span id="cb3-128"><a href="#cb3-128"></a>    <span class="cf">if</span> args.library_sample_info_meta_fields <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb3-129"><a href="#cb3-129"></a>        args.library_sample_info_meta_fields <span class="op">=</span> Utils.parse_delimited_input_or_file(</span>
-<span id="cb3-130"><a href="#cb3-130"></a>            args.library_sample_info_meta_fields, <span class="st">","</span></span>
-<span id="cb3-131"><a href="#cb3-131"></a>        )</span>
-<span id="cb3-132"><a href="#cb3-132"></a>    <span class="cf">if</span> args.representative_haps_fields <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb3-133"><a href="#cb3-133"></a>        args.representative_haps_fields <span class="op">=</span> Utils.parse_delimited_input_or_file(</span>
-<span id="cb3-134"><a href="#cb3-134"></a>            args.representative_haps_fields, <span class="st">","</span></span>
-<span id="cb3-135"><a href="#cb3-135"></a>        )</span>
-<span id="cb3-136"><a href="#cb3-136"></a></span>
-<span id="cb3-137"><a href="#cb3-137"></a>    allele_table <span class="op">=</span> PMOExporter.extract_alleles_per_sample_table(</span>
-<span id="cb3-138"><a href="#cb3-138"></a>        pmodata,</span>
-<span id="cb3-139"><a href="#cb3-139"></a>        additional_specimen_info_fields<span class="op">=</span>args.specimen_info_meta_fields,</span>
-<span id="cb3-140"><a href="#cb3-140"></a>        additional_library_sample_info_fields<span class="op">=</span>args.library_sample_info_meta_fields,</span>
-<span id="cb3-141"><a href="#cb3-141"></a>        additional_microhap_fields<span class="op">=</span>args.microhap_fields,</span>
-<span id="cb3-142"><a href="#cb3-142"></a>        additional_representative_info_fields<span class="op">=</span>args.representative_haps_fields,</span>
-<span id="cb3-143"><a href="#cb3-143"></a>        default_base_col_names<span class="op">=</span>args.default_base_col_names.split(<span class="st">","</span>),</span>
-<span id="cb3-144"><a href="#cb3-144"></a>    )</span>
-<span id="cb3-145"><a href="#cb3-145"></a>    <span class="cf">with</span> Utils.smart_open_write(allele_per_sample_table_out_fnp) <span class="im">as</span> f:</span>
-<span id="cb3-146"><a href="#cb3-146"></a>        allele_table.to_csv(f, sep<span class="op">=</span>output_delim, index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb3-147"><a href="#cb3-147"></a></span>
-<span id="cb3-148"><a href="#cb3-148"></a>    <span class="cf">if</span> args.allele_freqs_output <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb3-149"><a href="#cb3-149"></a>        allele_freqs <span class="op">=</span> PMOProcessor.extract_allele_counts_freq_from_pmo(pmodata)</span>
-<span id="cb3-150"><a href="#cb3-150"></a>        <span class="cf">with</span> Utils.smart_open_write(allele_freq_output) <span class="im">as</span> f:</span>
-<span id="cb3-151"><a href="#cb3-151"></a>            allele_freqs.to_csv(f, sep<span class="op">=</span>output_delim, index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb3-152"><a href="#cb3-152"></a></span>
-<span id="cb3-153"><a href="#cb3-153"></a></span>
-<span id="cb3-154"><a href="#cb3-154"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb3-155"><a href="#cb3-155"></a>    extract_for_allele_table()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-59"><a href="#cb3-59"></a>        <span class="st">"--skip_validation"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"skip validation of PMO"</span></span>
+<span id="cb3-60"><a href="#cb3-60"></a>    )</span>
+<span id="cb3-61"><a href="#cb3-61"></a>    parser.add_argument(</span>
+<span id="cb3-62"><a href="#cb3-62"></a>        <span class="st">"--allele_freqs_output"</span>,</span>
+<span id="cb3-63"><a href="#cb3-63"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb3-64"><a href="#cb3-64"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"if also writing out allele frequencies, write to this file"</span>,</span>
+<span id="cb3-65"><a href="#cb3-65"></a>    )</span>
+<span id="cb3-66"><a href="#cb3-66"></a>    parser.add_argument(</span>
+<span id="cb3-67"><a href="#cb3-67"></a>        <span class="st">"--specimen_info_meta_fields"</span>,</span>
+<span id="cb3-68"><a href="#cb3-68"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb3-69"><a href="#cb3-69"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb3-70"><a href="#cb3-70"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"Meta Fields if any to include from the specimen table"</span>,</span>
+<span id="cb3-71"><a href="#cb3-71"></a>    )</span>
+<span id="cb3-72"><a href="#cb3-72"></a>    parser.add_argument(</span>
+<span id="cb3-73"><a href="#cb3-73"></a>        <span class="st">"--library_sample_info_meta_fields"</span>,</span>
+<span id="cb3-74"><a href="#cb3-74"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb3-75"><a href="#cb3-75"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb3-76"><a href="#cb3-76"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"Meta Fields if any to include from the library sample table"</span>,</span>
+<span id="cb3-77"><a href="#cb3-77"></a>    )</span>
+<span id="cb3-78"><a href="#cb3-78"></a>    parser.add_argument(</span>
+<span id="cb3-79"><a href="#cb3-79"></a>        <span class="st">"--microhap_fields"</span>,</span>
+<span id="cb3-80"><a href="#cb3-80"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb3-81"><a href="#cb3-81"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb3-82"><a href="#cb3-82"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"additional optional fields from the detected microhaplotype object to include"</span>,</span>
+<span id="cb3-83"><a href="#cb3-83"></a>    )</span>
+<span id="cb3-84"><a href="#cb3-84"></a>    parser.add_argument(</span>
+<span id="cb3-85"><a href="#cb3-85"></a>        <span class="st">"--representative_haps_fields"</span>,</span>
+<span id="cb3-86"><a href="#cb3-86"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb3-87"><a href="#cb3-87"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb3-88"><a href="#cb3-88"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"additional optional fields from the detected representative object to include"</span>,</span>
+<span id="cb3-89"><a href="#cb3-89"></a>    )</span>
+<span id="cb3-90"><a href="#cb3-90"></a>    parser.add_argument(</span>
+<span id="cb3-91"><a href="#cb3-91"></a>        <span class="st">"--default_base_col_names"</span>,</span>
+<span id="cb3-92"><a href="#cb3-92"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb3-93"><a href="#cb3-93"></a>        required<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb3-94"><a href="#cb3-94"></a>        default<span class="op">=</span><span class="st">"library_sample_name,target_name,mhap_id"</span>,</span>
+<span id="cb3-95"><a href="#cb3-95"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"default base column names, must be length 3"</span>,</span>
+<span id="cb3-96"><a href="#cb3-96"></a>    )</span>
+<span id="cb3-97"><a href="#cb3-97"></a>    <span class="cf">return</span> parser</span>
+<span id="cb3-98"><a href="#cb3-98"></a></span>
+<span id="cb3-99"><a href="#cb3-99"></a></span>
+<span id="cb3-100"><a href="#cb3-100"></a><span class="kw">def</span> parse_args_extract_for_allele_table():</span>
+<span id="cb3-101"><a href="#cb3-101"></a>    parser <span class="op">=</span> get_parser()</span>
+<span id="cb3-102"><a href="#cb3-102"></a>    <span class="cf">return</span> parser.parse_args()</span>
+<span id="cb3-103"><a href="#cb3-103"></a></span>
+<span id="cb3-104"><a href="#cb3-104"></a></span>
+<span id="cb3-105"><a href="#cb3-105"></a><span class="kw">def</span> extract_for_allele_table():</span>
+<span id="cb3-106"><a href="#cb3-106"></a>    args <span class="op">=</span> parse_args_extract_for_allele_table()</span>
+<span id="cb3-107"><a href="#cb3-107"></a>    compressed_output <span class="op">=</span> (</span>
+<span id="cb3-108"><a href="#cb3-108"></a>        <span class="st">"."</span> <span class="kw">not</span> <span class="kw">in</span> args.output <span class="kw">and</span> args.<span class="bu">file</span>.endswith(<span class="st">".gz"</span>)</span>
+<span id="cb3-109"><a href="#cb3-109"></a>    ) <span class="kw">or</span> args.output.endswith(<span class="st">".gz"</span>)</span>
+<span id="cb3-110"><a href="#cb3-110"></a></span>
+<span id="cb3-111"><a href="#cb3-111"></a>    output_delim, output_extension <span class="op">=</span> Utils.process_delimiter_and_output_extension(</span>
+<span id="cb3-112"><a href="#cb3-112"></a>        args.delim, gzip<span class="op">=</span>compressed_output</span>
+<span id="cb3-113"><a href="#cb3-113"></a>    )</span>
+<span id="cb3-114"><a href="#cb3-114"></a></span>
+<span id="cb3-115"><a href="#cb3-115"></a>    allele_per_sample_table_out_fnp <span class="op">=</span> (</span>
+<span id="cb3-116"><a href="#cb3-116"></a>        args.output</span>
+<span id="cb3-117"><a href="#cb3-117"></a>        <span class="cf">if</span> <span class="st">"STDOUT"</span> <span class="op">==</span> args.output</span>
+<span id="cb3-118"><a href="#cb3-118"></a>        <span class="cf">else</span> Utils.appendStrAsNeeded(args.output, output_extension)</span>
+<span id="cb3-119"><a href="#cb3-119"></a>    )</span>
+<span id="cb3-120"><a href="#cb3-120"></a>    Utils.inputOutputFileCheck(</span>
+<span id="cb3-121"><a href="#cb3-121"></a>        args.<span class="bu">file</span>, allele_per_sample_table_out_fnp, args.overwrite</span>
+<span id="cb3-122"><a href="#cb3-122"></a>    )</span>
+<span id="cb3-123"><a href="#cb3-123"></a></span>
+<span id="cb3-124"><a href="#cb3-124"></a>    allele_freq_output <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb3-125"><a href="#cb3-125"></a>    <span class="cf">if</span> args.allele_freqs_output <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb3-126"><a href="#cb3-126"></a>        allele_freq_output <span class="op">=</span> Utils.appendStrAsNeeded(</span>
+<span id="cb3-127"><a href="#cb3-127"></a>            args.allele_freqs_output, output_extension</span>
+<span id="cb3-128"><a href="#cb3-128"></a>        )</span>
+<span id="cb3-129"><a href="#cb3-129"></a>        Utils.inputOutputFileCheck(args.<span class="bu">file</span>, allele_freq_output, args.overwrite)</span>
+<span id="cb3-130"><a href="#cb3-130"></a></span>
+<span id="cb3-131"><a href="#cb3-131"></a>    pmodata <span class="op">=</span> PMOReader.read_in_pmo(args.<span class="bu">file</span>)</span>
+<span id="cb3-132"><a href="#cb3-132"></a>    <span class="cf">if</span> <span class="kw">not</span> args.skip_validation:</span>
+<span id="cb3-133"><a href="#cb3-133"></a>        <span class="cf">with</span> <span class="bu">open</span>(args.jsonschema, <span class="st">"r"</span>) <span class="im">as</span> f:</span>
+<span id="cb3-134"><a href="#cb3-134"></a>            schema_dict <span class="op">=</span> json.load(f)</span>
+<span id="cb3-135"><a href="#cb3-135"></a>            checker <span class="op">=</span> PMOChecker(schema_dict)</span>
+<span id="cb3-136"><a href="#cb3-136"></a>            <span class="co"># make sure PMO is valid</span></span>
+<span id="cb3-137"><a href="#cb3-137"></a>            checker.validate_pmo_json(pmodata)</span>
+<span id="cb3-138"><a href="#cb3-138"></a>            sys.stderr.write(<span class="st">"PMO is valid</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb3-139"><a href="#cb3-139"></a></span>
+<span id="cb3-140"><a href="#cb3-140"></a>    <span class="cf">if</span> args.specimen_info_meta_fields <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb3-141"><a href="#cb3-141"></a>        args.specimen_info_meta_fields <span class="op">=</span> Utils.parse_delimited_input_or_file(</span>
+<span id="cb3-142"><a href="#cb3-142"></a>            args.specimen_info_meta_fields, <span class="st">","</span></span>
+<span id="cb3-143"><a href="#cb3-143"></a>        )</span>
+<span id="cb3-144"><a href="#cb3-144"></a>    <span class="cf">if</span> args.microhap_fields <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb3-145"><a href="#cb3-145"></a>        args.microhap_fields <span class="op">=</span> Utils.parse_delimited_input_or_file(</span>
+<span id="cb3-146"><a href="#cb3-146"></a>            args.microhap_fields, <span class="st">","</span></span>
+<span id="cb3-147"><a href="#cb3-147"></a>        )</span>
+<span id="cb3-148"><a href="#cb3-148"></a>    <span class="cf">if</span> args.library_sample_info_meta_fields <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb3-149"><a href="#cb3-149"></a>        args.library_sample_info_meta_fields <span class="op">=</span> Utils.parse_delimited_input_or_file(</span>
+<span id="cb3-150"><a href="#cb3-150"></a>            args.library_sample_info_meta_fields, <span class="st">","</span></span>
+<span id="cb3-151"><a href="#cb3-151"></a>        )</span>
+<span id="cb3-152"><a href="#cb3-152"></a>    <span class="cf">if</span> args.representative_haps_fields <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb3-153"><a href="#cb3-153"></a>        args.representative_haps_fields <span class="op">=</span> Utils.parse_delimited_input_or_file(</span>
+<span id="cb3-154"><a href="#cb3-154"></a>            args.representative_haps_fields, <span class="st">","</span></span>
+<span id="cb3-155"><a href="#cb3-155"></a>        )</span>
+<span id="cb3-156"><a href="#cb3-156"></a></span>
+<span id="cb3-157"><a href="#cb3-157"></a>    allele_table <span class="op">=</span> PMOExporter.extract_alleles_per_sample_table(</span>
+<span id="cb3-158"><a href="#cb3-158"></a>        pmodata,</span>
+<span id="cb3-159"><a href="#cb3-159"></a>        additional_specimen_info_fields<span class="op">=</span>args.specimen_info_meta_fields,</span>
+<span id="cb3-160"><a href="#cb3-160"></a>        additional_library_sample_info_fields<span class="op">=</span>args.library_sample_info_meta_fields,</span>
+<span id="cb3-161"><a href="#cb3-161"></a>        additional_microhap_fields<span class="op">=</span>args.microhap_fields,</span>
+<span id="cb3-162"><a href="#cb3-162"></a>        additional_representative_info_fields<span class="op">=</span>args.representative_haps_fields,</span>
+<span id="cb3-163"><a href="#cb3-163"></a>        default_base_col_names<span class="op">=</span>args.default_base_col_names.split(<span class="st">","</span>),</span>
+<span id="cb3-164"><a href="#cb3-164"></a>    )</span>
+<span id="cb3-165"><a href="#cb3-165"></a>    <span class="cf">with</span> Utils.smart_open_write(allele_per_sample_table_out_fnp) <span class="im">as</span> f:</span>
+<span id="cb3-166"><a href="#cb3-166"></a>        allele_table.to_csv(f, sep<span class="op">=</span>output_delim, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb3-167"><a href="#cb3-167"></a></span>
+<span id="cb3-168"><a href="#cb3-168"></a>    <span class="cf">if</span> args.allele_freqs_output <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb3-169"><a href="#cb3-169"></a>        allele_freqs <span class="op">=</span> PMOProcessor.extract_allele_counts_freq_from_pmo(pmodata)</span>
+<span id="cb3-170"><a href="#cb3-170"></a>        <span class="cf">with</span> Utils.smart_open_write(allele_freq_output) <span class="im">as</span> f:</span>
+<span id="cb3-171"><a href="#cb3-171"></a>            allele_freqs.to_csv(f, sep<span class="op">=</span>output_delim, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb3-172"><a href="#cb3-172"></a></span>
+<span id="cb3-173"><a href="#cb3-173"></a></span>
+<span id="cb3-174"><a href="#cb3-174"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb3-175"><a href="#cb3-175"></a>    extract_for_allele_table()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -548,100 +584,109 @@ options:
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># default </span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>PMO is valid</code></pre>
 </div>
-<div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># changing default column names  </span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--default_base_col_names</span> sample,target,hapid</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
-<p>Changing the output file delimiter</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--delim</span> ,</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># changing default column names  </span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--default_base_col_names</span> sample,target,hapid</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>PMO is valid</code></pre>
+</div>
+</div>
+<p>Changing the output file delimiter</p>
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--delim</span> ,</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>PMO is valid</code></pre>
+</div>
 </div>
 <p>Adding on additional columns from the specimen_infos section</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># adding other PMO fields </span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="at">--specimen_info_meta_fields</span> collection_country,collection_date <span class="kw">|</span> <span class="fu">head</span>  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># adding other PMO fields </span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="at">--specimen_info_meta_fields</span> collection_country,collection_date <span class="kw">|</span> <span class="fu">head</span>  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
-<pre><code>bioinformatics_run_name library_sample_name target_name mhap_id collection_country  collection_date
-Mozambique2018-SeekDeep 8025875168  t99 3   NA  NA
-Mozambique2018-SeekDeep 8025875168  t99 0   NA  NA
-Mozambique2018-SeekDeep 8025875168  t97 0   NA  NA
-Mozambique2018-SeekDeep 8025875168  t97 3   NA  NA
-Mozambique2018-SeekDeep 8025875168  t94 1   NA  NA
-Mozambique2018-SeekDeep 8025875168  t94 0   NA  NA
-Mozambique2018-SeekDeep 8025875168  t90 2   NA  NA
-Mozambique2018-SeekDeep 8025875168  t90 0   NA  NA
-Mozambique2018-SeekDeep 8025875168  t85 0   NA  NA</code></pre>
+<pre><code>library_sample_name target_name mhap_id bioinformatics_run_name collection_country  collection_date
+8025875168  t99 ATGGAAAAATGGAATATGAAGTATTAAGTGATGATAAAATAGTGTATGAAAATATACAACATGATTTATTAAAAACAATAGAAGATGGTGAAGAAATGTTAAAAGGAACTGAAAGGAAGGATAATATAGATATACTGAGGACTCCTGGAAGGGGAGAATATAATATGTGGTCTACTTCTGGACTAGGGTTCTATGAAT  Mozambique2018-SeekDeep NA  NA
+8025875168  t99 ATGGAAAAATGGAATATGAAGTATTAAGTGATGATAAAATAGTGTATGAAAATATACAACATGATTTATTAAAAACAATAGAAGATGATGACGAAATGTTAAAAGGAACTGAAAGGAAGGATAATATAGATATACTGAGGACTCCTGGAAGGGGAGAATATAATATGTGGTCTACTTCTGGACTAGGGTTCTATGAAT  Mozambique2018-SeekDeep NA  NA
+8025875168  t97 TAAACACCAGTACCATTTTTTTCTGATAAATTAATATTTTTTTGTATAACATCATATTTATCCCTTTTCGTGGTAAGTGCAGTATCCTGTTTTATTATTATATTATCGAATTCATCATGGTGTATATTTCTTTCT Mozambique2018-SeekDeep NA  NA
+8025875168  t97 TAATCACCAGTACCATTTTTTTCTGATAAATTAATATTTTTTTGTATAACATCATATTTATCCCTTTTCGTGGTAAGTGCAGTATCCTGTTTTATTATTATATTATCGAATTCATCATGGTGTATATTTCTTTCA Mozambique2018-SeekDeep NA  NA
+8025875168  t94 TATTAAAACTTTTTTTTCTTTCTGTAAAGTTTGTACATTATGTTTTGATGAGTTTTTATTATCTTCATAAAACTTTATATATTTATAAAAATTATTTTGTATAAAATCATTTAATAAAGGTAACATAATTTTTTTAGCTTGATTCAATTCACTACATGAATGTATAT Mozambique2018-SeekDeep NA  NA
+8025875168  t94 TATTAAAACTTTTTTTTCTTTCTGTAAAGTTTGTACATTATGTTTTGATGAGTTTTGATTATCTTCATAAAACTTTATATATTTATAAAAATTATTTTGTATAAAATCATTTAATAAAGGTAACATAATTTTTTTAGCTTGATTCAATTCACTACATGAATGTATAT Mozambique2018-SeekDeep NA  NA
+8025875168  t90 TTACAATGTTCTTCGCATTCGAAATTTTTTTCAGGATTACTTGAAAAGCCTTGTGGACAATTACAATATTCATATCCATGAGCATTCTTACAAACACCTTTTCCACAATTTAAAAAACATTTTTCTTCATTTAA  Mozambique2018-SeekDeep NA  NA
+8025875168  t90 TTACAATGTTCTTCGCATTCGAAATTTTTTTCAGGATTACTTGAAAAGCCTTCTGGACAATTACAATATTCATATCCATGAACATTCTTACAAACACCTTTTCCACAATTTAAAAAACATTTTTCTTCATTTAA  Mozambique2018-SeekDeep NA  NA
+8025875168  t85 AACATTTTTTTAACATCTTTACCTTTTTGACTTGGTTCTTCATCATAATTCTGTTGTTCTGCAGAATCAGCATTTACTTCAGTTTCTTCTTTATTTTGAAAAGTGTTTGATTCTACATGAGAATTGGAAGATGAACGTCTATGTTTTACTTCTGTATAACTAGTACGTTCTCCAGTATGATGAGCCTTAAGGTTTACATCTTCAGTTTCTT Mozambique2018-SeekDeep NA  NA</code></pre>
 </div>
 </div>
 <p>Can continue to add on more columns from other sections</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># adding other PMO fields including seq field </span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="at">--specimen_info_meta_fields</span> collection_country,collection_date <span class="at">--representative_haps_fields</span> seq <span class="kw">|</span> <span class="fu">head</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># adding other PMO fields including reads field </span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="at">--specimen_info_meta_fields</span> collection_country,collection_date <span class="at">--microhap_fields</span> reads <span class="kw">|</span> <span class="fu">head</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
-<pre><code>bioinformatics_run_name library_sample_name target_name mhap_id collection_country  collection_date seq
-Mozambique2018-SeekDeep 8025875168  t99 3   NA  NA  ATGGAAAAATGGAATATGAAGTATTAAGTGATGATAAAATAGTGTATGAAAATATACAACATGATTTATTAAAAACAATAGAAGATGGTGAAGAAATGTTAAAAGGAACTGAAAGGAAGGATAATATAGATATACTGAGGACTCCTGGAAGGGGAGAATATAATATGTGGTCTACTTCTGGACTAGGGTTCTATGAAT
-Mozambique2018-SeekDeep 8025875168  t99 0   NA  NA  ATGGAAAAATGGAATATGAAGTATTAAGTGATGATAAAATAGTGTATGAAAATATACAACATGATTTATTAAAAACAATAGAAGATGATGACGAAATGTTAAAAGGAACTGAAAGGAAGGATAATATAGATATACTGAGGACTCCTGGAAGGGGAGAATATAATATGTGGTCTACTTCTGGACTAGGGTTCTATGAAT
-Mozambique2018-SeekDeep 8025875168  t97 0   NA  NA  TAAACACCAGTACCATTTTTTTCTGATAAATTAATATTTTTTTGTATAACATCATATTTATCCCTTTTCGTGGTAAGTGCAGTATCCTGTTTTATTATTATATTATCGAATTCATCATGGTGTATATTTCTTTCT
-Mozambique2018-SeekDeep 8025875168  t97 3   NA  NA  TAATCACCAGTACCATTTTTTTCTGATAAATTAATATTTTTTTGTATAACATCATATTTATCCCTTTTCGTGGTAAGTGCAGTATCCTGTTTTATTATTATATTATCGAATTCATCATGGTGTATATTTCTTTCA
-Mozambique2018-SeekDeep 8025875168  t94 1   NA  NA  TATTAAAACTTTTTTTTCTTTCTGTAAAGTTTGTACATTATGTTTTGATGAGTTTTTATTATCTTCATAAAACTTTATATATTTATAAAAATTATTTTGTATAAAATCATTTAATAAAGGTAACATAATTTTTTTAGCTTGATTCAATTCACTACATGAATGTATAT
-Mozambique2018-SeekDeep 8025875168  t94 0   NA  NA  TATTAAAACTTTTTTTTCTTTCTGTAAAGTTTGTACATTATGTTTTGATGAGTTTTGATTATCTTCATAAAACTTTATATATTTATAAAAATTATTTTGTATAAAATCATTTAATAAAGGTAACATAATTTTTTTAGCTTGATTCAATTCACTACATGAATGTATAT
-Mozambique2018-SeekDeep 8025875168  t90 2   NA  NA  TTACAATGTTCTTCGCATTCGAAATTTTTTTCAGGATTACTTGAAAAGCCTTGTGGACAATTACAATATTCATATCCATGAGCATTCTTACAAACACCTTTTCCACAATTTAAAAAACATTTTTCTTCATTTAA
-Mozambique2018-SeekDeep 8025875168  t90 0   NA  NA  TTACAATGTTCTTCGCATTCGAAATTTTTTTCAGGATTACTTGAAAAGCCTTCTGGACAATTACAATATTCATATCCATGAACATTCTTACAAACACCTTTTCCACAATTTAAAAAACATTTTTCTTCATTTAA
-Mozambique2018-SeekDeep 8025875168  t85 0   NA  NA  AACATTTTTTTAACATCTTTACCTTTTTGACTTGGTTCTTCATCATAATTCTGTTGTTCTGCAGAATCAGCATTTACTTCAGTTTCTTCTTTATTTTGAAAAGTGTTTGATTCTACATGAGAATTGGAAGATGAACGTCTATGTTTTACTTCTGTATAACTAGTACGTTCTCCAGTATGATGAGCCTTAAGGTTTACATCTTCAGTTTCTT</code></pre>
+<pre><code>library_sample_name target_name mhap_id bioinformatics_run_name collection_country  collection_date reads
+8025875168  t99 ATGGAAAAATGGAATATGAAGTATTAAGTGATGATAAAATAGTGTATGAAAATATACAACATGATTTATTAAAAACAATAGAAGATGGTGAAGAAATGTTAAAAGGAACTGAAAGGAAGGATAATATAGATATACTGAGGACTCCTGGAAGGGGAGAATATAATATGTGGTCTACTTCTGGACTAGGGTTCTATGAAT  Mozambique2018-SeekDeep NA  NA  283
+8025875168  t99 ATGGAAAAATGGAATATGAAGTATTAAGTGATGATAAAATAGTGTATGAAAATATACAACATGATTTATTAAAAACAATAGAAGATGATGACGAAATGTTAAAAGGAACTGAAAGGAAGGATAATATAGATATACTGAGGACTCCTGGAAGGGGAGAATATAATATGTGGTCTACTTCTGGACTAGGGTTCTATGAAT  Mozambique2018-SeekDeep NA  NA  203
+8025875168  t97 TAAACACCAGTACCATTTTTTTCTGATAAATTAATATTTTTTTGTATAACATCATATTTATCCCTTTTCGTGGTAAGTGCAGTATCCTGTTTTATTATTATATTATCGAATTCATCATGGTGTATATTTCTTTCT Mozambique2018-SeekDeep NA  NA  787
+8025875168  t97 TAATCACCAGTACCATTTTTTTCTGATAAATTAATATTTTTTTGTATAACATCATATTTATCCCTTTTCGTGGTAAGTGCAGTATCCTGTTTTATTATTATATTATCGAATTCATCATGGTGTATATTTCTTTCA Mozambique2018-SeekDeep NA  NA  74
+8025875168  t94 TATTAAAACTTTTTTTTCTTTCTGTAAAGTTTGTACATTATGTTTTGATGAGTTTTTATTATCTTCATAAAACTTTATATATTTATAAAAATTATTTTGTATAAAATCATTTAATAAAGGTAACATAATTTTTTTAGCTTGATTCAATTCACTACATGAATGTATAT Mozambique2018-SeekDeep NA  NA  259
+8025875168  t94 TATTAAAACTTTTTTTTCTTTCTGTAAAGTTTGTACATTATGTTTTGATGAGTTTTGATTATCTTCATAAAACTTTATATATTTATAAAAATTATTTTGTATAAAATCATTTAATAAAGGTAACATAATTTTTTTAGCTTGATTCAATTCACTACATGAATGTATAT Mozambique2018-SeekDeep NA  NA  41
+8025875168  t90 TTACAATGTTCTTCGCATTCGAAATTTTTTTCAGGATTACTTGAAAAGCCTTGTGGACAATTACAATATTCATATCCATGAGCATTCTTACAAACACCTTTTCCACAATTTAAAAAACATTTTTCTTCATTTAA  Mozambique2018-SeekDeep NA  NA  224
+8025875168  t90 TTACAATGTTCTTCGCATTCGAAATTTTTTTCAGGATTACTTGAAAAGCCTTCTGGACAATTACAATATTCATATCCATGAACATTCTTACAAACACCTTTTCCACAATTTAAAAAACATTTTTCTTCATTTAA  Mozambique2018-SeekDeep NA  NA  78
+8025875168  t85 AACATTTTTTTAACATCTTTACCTTTTTGACTTGGTTCTTCATCATAATTCTGTTGTTCTGCAGAATCAGCATTTACTTCAGTTTCTTCTTTATTTTGAAAAGTGTTTGATTCTACATGAGAATTGGAAGATGAACGTCTATGTTTTACTTCTGTATAACTAGTACGTTCTCCAGTATGATGAGCCTTAAGGTTTACATCTTCAGTTTCTT Mozambique2018-SeekDeep NA  NA  267</code></pre>
 </div>
 </div>
 <section id="creating-output-for-moire" class="level2"><h2 class="anchored" data-anchor-id="creating-output-for-moire">Creating output for MOIRE</h2>
 <p>MOIRE is a program that can be used to estimate COI and other population estimates from a population. See it’s <a href="https://github.com/EPPIcenter/moire">github</a> for full usage.</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> example</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># default table is all moire needs </span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> example</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># default table is all moire needs </span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"example/extraction_allele_table.tsv"</span>, sep <span class="op">=</span> <span class="st">"\t"</span><span class="op">)</span></span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"example/extraction_allele_table.tsv"</span>, sep <span class="op">=</span> <span class="st">"\t"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">load_long_form_data</span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># With data in appropriate format, run MCMC as follows</span></span>
-<span><span class="va">mcmc_results</span> <span class="op">&lt;-</span> <span class="fu">moire</span><span class="fu">::</span><span class="fu">run_mcmc</span><span class="op">(</span><span class="va">data</span>, is_missing <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">is_missing</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="va">mcmc_results</span> <span class="op">&lt;-</span> <span class="fu">moire</span><span class="fu">::</span><span class="fu"><a href="https://EPPIcenter.github.io/moire/reference/run_mcmc.html">run_mcmc</a></span><span class="op">(</span><span class="va">data</span>, is_missing <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">is_missing</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section><section id="creating-output-for-dcifer" class="level2"><h2 class="anchored" data-anchor-id="creating-output-for-dcifer">Creating output for dcifer</h2>
 <p>dcifer is a program that can estimate IBD even from mixed infections. See it’s <a href="https://github.com/EPPIcenter/dcifer">github</a> for full usage</p>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> example</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># default </span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--delim</span> ,</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># dcifer can calculate allele frequencies if not provided or you can have extract_allele_table write them as well </span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--allele_freqs_output</span> allele_freqs_extraction <span class="at">--delim</span> ,</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> example</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># default </span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--delim</span> ,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># dcifer can calculate allele frequencies if not provided or you can have extract_allele_table write them as well </span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--allele_freqs_output</span> allele_freqs_extraction <span class="at">--delim</span> ,</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>PMO is valid
+PMO is valid</code></pre>
+</div>
 </div>
 <div class="cell" data-layout-align="center">
-<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dsmp</span> <span class="op">&lt;-</span> <span class="fu">readDat</span><span class="op">(</span><span class="st">"example/extraction_allele_table.csv"</span>, svar <span class="op">=</span> <span class="st">"sampleID"</span>, lvar <span class="op">=</span> <span class="st">"locus"</span>, avar <span class="op">=</span> <span class="st">"allele"</span><span class="op">)</span></span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dsmp</span> <span class="op">&lt;-</span> <span class="fu">readDat</span><span class="op">(</span><span class="st">"example/extraction_allele_table.csv"</span>, svar <span class="op">=</span> <span class="st">"sampleID"</span>, lvar <span class="op">=</span> <span class="st">"locus"</span>, avar <span class="op">=</span> <span class="st">"allele"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">lrank</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
 <span><span class="va">coi</span>   <span class="op">&lt;-</span> <span class="fu">getCOI</span><span class="op">(</span><span class="va">dsmp</span>, lrank <span class="op">=</span> <span class="va">lrank</span><span class="op">)</span></span>
@@ -1107,184 +1152,195 @@ Mozambique2018-SeekDeep 8025875168  t85 0   NA  NA  AACATTTTTTTAACATCTTTACCTTTTT
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Extracting allele tables using pmotools-python</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, echo=F}</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../common.R"</span>)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="fu"># pmotools-python extract_allele_table</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>To extract allele table information from a PMO the command line interactive script with <span class="in">`pmotools-python extract_allele_table`</span> can be used </span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>pmotools-python extract_allele_table </span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>**Required arguments**</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="ss">    *  </span>**\-\-file** - the PMO file to extract from </span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="ss">    *  </span>**\-\-output** - the output stub of the files to be created </span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>**Optional arguments** </span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>By default only 3 fields are extracted by this extractor, 1) sampleID (library_sample_sample_name), 2) locus (target_name), and 3) allele (microhaplotype_id) with those default column names. This can be controlled by **\-\-default_base_col_names** and if you supply 3 comma separated values you can change the default header. </span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>You can also add to the table any values from the other portions of the PMO file by using the following arguments </span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>adding fields arguments </span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a><span class="ss">    *  </span>**\-\-specimen_info_meta_fields** - Meta Fields if any to include from the specimen table </span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a><span class="ss">    *  </span>**\-\-library_sample_info_meta_fields** - Meta Fields if any to include from the library_sample table </span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a><span class="ss">    *  </span>**\-\-microhap_fields** - additional optional fields from the detected microhaplotype object to include </span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a><span class="ss">    *  </span>**\-\-representative_haps_fields** - additional optional fields from the detected representative object to include </span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>Other optional arguments have to do with the ouput file over writing and delimiter being used, use <span class="in">`-h`</span> to see all arguments </span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">-h</span></span>
-<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`extract_allele_table`</span> script is below</span>
-<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
-<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/src/pmotools/scripts/pmo_to_tables/extract_allele_table.py</span></span>
-<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/src/pmotools/scripts/pmo_to_tables/extract_allele_table.py</span></span>
-<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a>Can download example PMOs here </span>
-<span id="cb16-57"><a href="#cb16-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-58"><a href="#cb16-58" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
-<span id="cb16-59"><a href="#cb16-59" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz </span>
-<span id="cb16-60"><a href="#cb16-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-61"><a href="#cb16-61" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz</span>
-<span id="cb16-62"><a href="#cb16-62" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-63"><a href="#cb16-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-64"><a href="#cb16-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-67"><a href="#cb16-67" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb16-68"><a href="#cb16-68" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> example</span>
-<span id="cb16-69"><a href="#cb16-69" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb16-70"><a href="#cb16-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-71"><a href="#cb16-71" aria-hidden="true" tabindex="-1"></a><span class="co"># default </span></span>
-<span id="cb16-72"><a href="#cb16-72" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span></span>
-<span id="cb16-73"><a href="#cb16-73" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-74"><a href="#cb16-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-75"><a href="#cb16-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-78"><a href="#cb16-78" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb16-79"><a href="#cb16-79" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb16-80"><a href="#cb16-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-81"><a href="#cb16-81" aria-hidden="true" tabindex="-1"></a><span class="co"># changing default column names  </span></span>
-<span id="cb16-82"><a href="#cb16-82" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--default_base_col_names</span> sample,target,hapid</span>
-<span id="cb16-83"><a href="#cb16-83" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-84"><a href="#cb16-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-85"><a href="#cb16-85" aria-hidden="true" tabindex="-1"></a>Changing the output file delimiter  </span>
-<span id="cb16-86"><a href="#cb16-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-89"><a href="#cb16-89" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb16-90"><a href="#cb16-90" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb16-91"><a href="#cb16-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-92"><a href="#cb16-92" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--delim</span> ,</span>
-<span id="cb16-93"><a href="#cb16-93" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-94"><a href="#cb16-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-95"><a href="#cb16-95" aria-hidden="true" tabindex="-1"></a>Adding on additional columns from the specimen_infos section </span>
-<span id="cb16-96"><a href="#cb16-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-97"><a href="#cb16-97" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
-<span id="cb16-98"><a href="#cb16-98" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb16-99"><a href="#cb16-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-100"><a href="#cb16-100" aria-hidden="true" tabindex="-1"></a><span class="co"># adding other PMO fields </span></span>
-<span id="cb16-101"><a href="#cb16-101" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="at">--specimen_info_meta_fields</span> collection_country,collection_date <span class="kw">|</span> <span class="fu">head</span>  </span>
-<span id="cb16-102"><a href="#cb16-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-103"><a href="#cb16-103" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-104"><a href="#cb16-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-105"><a href="#cb16-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, echo = F}</span></span>
-<span id="cb16-106"><a href="#cb16-106" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb16-107"><a href="#cb16-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-108"><a href="#cb16-108" aria-hidden="true" tabindex="-1"></a><span class="co"># adding other PMO fields </span></span>
-<span id="cb16-109"><a href="#cb16-109" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="at">--specimen_info_meta_fields</span> collection_country,collection_date <span class="dv">2</span><span class="op">&gt;</span>/dev/null <span class="kw">|</span> <span class="fu">head</span>  </span>
-<span id="cb16-110"><a href="#cb16-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-111"><a href="#cb16-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-112"><a href="#cb16-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-113"><a href="#cb16-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-114"><a href="#cb16-114" aria-hidden="true" tabindex="-1"></a>Can continue to add on more columns from other sections </span>
-<span id="cb16-115"><a href="#cb16-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-116"><a href="#cb16-116" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
-<span id="cb16-117"><a href="#cb16-117" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb16-118"><a href="#cb16-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-119"><a href="#cb16-119" aria-hidden="true" tabindex="-1"></a><span class="co"># adding other PMO fields including seq field </span></span>
-<span id="cb16-120"><a href="#cb16-120" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="at">--specimen_info_meta_fields</span> collection_country,collection_date <span class="at">--representative_haps_fields</span> seq <span class="kw">|</span> <span class="fu">head</span> </span>
-<span id="cb16-121"><a href="#cb16-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-122"><a href="#cb16-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-123"><a href="#cb16-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-124"><a href="#cb16-124" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, echo = F}</span></span>
-<span id="cb16-125"><a href="#cb16-125" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb16-126"><a href="#cb16-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-127"><a href="#cb16-127" aria-hidden="true" tabindex="-1"></a><span class="co"># adding other PMO fields including seq field </span></span>
-<span id="cb16-128"><a href="#cb16-128" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="at">--specimen_info_meta_fields</span> collection_country,collection_date <span class="at">--representative_haps_fields</span> seq <span class="dv">2</span><span class="op">&gt;</span>/dev/null <span class="kw">|</span> <span class="fu">head</span> </span>
-<span id="cb16-129"><a href="#cb16-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-130"><a href="#cb16-130" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-131"><a href="#cb16-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-132"><a href="#cb16-132" aria-hidden="true" tabindex="-1"></a><span class="fu">## Creating output for MOIRE </span></span>
-<span id="cb16-133"><a href="#cb16-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-134"><a href="#cb16-134" aria-hidden="true" tabindex="-1"></a>MOIRE is a program that can be used to estimate COI and other population estimates from a population. See it's <span class="co">[</span><span class="ot">github</span><span class="co">](https://github.com/EPPIcenter/moire)</span> for full usage. </span>
-<span id="cb16-135"><a href="#cb16-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-136"><a href="#cb16-136" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
-<span id="cb16-137"><a href="#cb16-137" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> example</span>
-<span id="cb16-138"><a href="#cb16-138" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb16-139"><a href="#cb16-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-140"><a href="#cb16-140" aria-hidden="true" tabindex="-1"></a><span class="co"># default table is all moire needs </span></span>
-<span id="cb16-141"><a href="#cb16-141" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span></span>
-<span id="cb16-142"><a href="#cb16-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-143"><a href="#cb16-143" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-144"><a href="#cb16-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-145"><a href="#cb16-145" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval = F}</span></span>
-<span id="cb16-146"><a href="#cb16-146" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"example/extraction_allele_table.tsv"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span>
-<span id="cb16-147"><a href="#cb16-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-148"><a href="#cb16-148" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">load_long_form_data</span>(df)</span>
-<span id="cb16-149"><a href="#cb16-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-150"><a href="#cb16-150" aria-hidden="true" tabindex="-1"></a><span class="co"># With data in appropriate format, run MCMC as follows</span></span>
-<span id="cb16-151"><a href="#cb16-151" aria-hidden="true" tabindex="-1"></a>mcmc_results <span class="ot">&lt;-</span> moire<span class="sc">::</span><span class="fu">run_mcmc</span>(data, <span class="at">is_missing =</span> data<span class="sc">$</span>is_missing)</span>
-<span id="cb16-152"><a href="#cb16-152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-153"><a href="#cb16-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-154"><a href="#cb16-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-155"><a href="#cb16-155" aria-hidden="true" tabindex="-1"></a><span class="fu">## Creating output for dcifer </span></span>
-<span id="cb16-156"><a href="#cb16-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-157"><a href="#cb16-157" aria-hidden="true" tabindex="-1"></a>dcifer is a program that can estimate IBD even from mixed infections. See it's <span class="co">[</span><span class="ot">github</span><span class="co">](https://github.com/EPPIcenter/dcifer)</span> for full usage</span>
-<span id="cb16-158"><a href="#cb16-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-161"><a href="#cb16-161" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb16-162"><a href="#cb16-162" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> example</span>
-<span id="cb16-163"><a href="#cb16-163" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
-<span id="cb16-164"><a href="#cb16-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-165"><a href="#cb16-165" aria-hidden="true" tabindex="-1"></a><span class="co"># default </span></span>
-<span id="cb16-166"><a href="#cb16-166" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--delim</span> ,</span>
-<span id="cb16-167"><a href="#cb16-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-168"><a href="#cb16-168" aria-hidden="true" tabindex="-1"></a><span class="co"># dcifer can calculate allele frequencies if not provided or you can have extract_allele_table write them as well </span></span>
-<span id="cb16-169"><a href="#cb16-169" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--allele_freqs_output</span> allele_freqs_extraction <span class="at">--delim</span> ,</span>
-<span id="cb16-170"><a href="#cb16-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-171"><a href="#cb16-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-172"><a href="#cb16-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-173"><a href="#cb16-173" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval = F}</span></span>
-<span id="cb16-174"><a href="#cb16-174" aria-hidden="true" tabindex="-1"></a>dsmp <span class="ot">&lt;-</span> <span class="fu">readDat</span>(<span class="st">"example/extraction_allele_table.csv"</span>, <span class="at">svar =</span> <span class="st">"sampleID"</span>, <span class="at">lvar =</span> <span class="st">"locus"</span>, <span class="at">avar =</span> <span class="st">"allele"</span>)</span>
-<span id="cb16-175"><a href="#cb16-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-176"><a href="#cb16-176" aria-hidden="true" tabindex="-1"></a>lrank <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb16-177"><a href="#cb16-177" aria-hidden="true" tabindex="-1"></a>coi   <span class="ot">&lt;-</span> <span class="fu">getCOI</span>(dsmp, <span class="at">lrank =</span> lrank)</span>
-<span id="cb16-178"><a href="#cb16-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-179"><a href="#cb16-179" aria-hidden="true" tabindex="-1"></a>afreq <span class="ot">&lt;-</span> <span class="fu">calcAfreq</span>(dsmp, coi, <span class="at">tol =</span> <span class="fl">1e-5</span>) </span>
-<span id="cb16-180"><a href="#cb16-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-181"><a href="#cb16-181" aria-hidden="true" tabindex="-1"></a>dres0 <span class="ot">&lt;-</span> <span class="fu">ibdDat</span>(dsmp, coi, afreq, <span class="at">pval =</span> <span class="cn">TRUE</span>, <span class="at">confint =</span> <span class="cn">TRUE</span>, <span class="at">rnull =</span> <span class="dv">0</span>, </span>
-<span id="cb16-182"><a href="#cb16-182" aria-hidden="true" tabindex="-1"></a>                <span class="at">alpha =</span> <span class="fl">0.05</span>, <span class="at">nr =</span> <span class="fl">1e3</span>)   </span>
-<span id="cb16-183"><a href="#cb16-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-184"><a href="#cb16-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-185"><a href="#cb16-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-186"><a href="#cb16-186" aria-hidden="true" tabindex="-1"></a></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Extracting allele tables using pmotools-python</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, echo=F}</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../common.R"</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="fu"># pmotools-python extract_allele_table</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>To extract allele table information from a PMO the command line interactive script with <span class="in">`pmotools-python extract_allele_table`</span> can be used </span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>pmotools-python extract_allele_table </span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>**Required arguments**</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="ss">    *  </span>**\-\-file** - the PMO file to extract from </span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="ss">    *  </span>**\-\-output** - the output stub of the files to be created </span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>**Optional arguments** </span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>By default only 3 fields are extracted by this extractor, 1) sampleID (library_sample_sample_name), 2) locus (target_name), and 3) allele (microhaplotype_id) with those default column names. This can be controlled by **\-\-default_base_col_names** and if you supply 3 comma separated values you can change the default header. </span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>You can also add to the table any values from the other portions of the PMO file by using the following arguments </span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>adding fields arguments </span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a><span class="ss">    *  </span>**\-\-specimen_info_meta_fields** - Meta Fields if any to include from the specimen table </span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a><span class="ss">    *  </span>**\-\-library_sample_info_meta_fields** - Meta Fields if any to include from the library_sample table </span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a><span class="ss">    *  </span>**\-\-microhap_fields** - additional optional fields from the detected microhaplotype object to include </span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a><span class="ss">    *  </span>**\-\-representative_haps_fields** - additional optional fields from the detected representative object to include </span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>Other optional arguments have to do with the ouput file over writing and delimiter being used, use <span class="in">`-h`</span> to see all arguments </span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">-h</span></span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>The python code for <span class="in">`extract_allele_table`</span> script is below</span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-line-numbers: true</span></span>
+<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: pmotools-python/src/pmotools/scripts/pmo_to_tables/extract_allele_table.py</span></span>
+<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a><span class="co">#| file: ../pmotools-python/src/pmotools/scripts/pmo_to_tables/extract_allele_table.py</span></span>
+<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-55"><a href="#cb20-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-56"><a href="#cb20-56" aria-hidden="true" tabindex="-1"></a>Can download example PMOs here </span>
+<span id="cb20-57"><a href="#cb20-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-58"><a href="#cb20-58" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
+<span id="cb20-59"><a href="#cb20-59" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/moz2018_PMO.json.gz </span>
+<span id="cb20-60"><a href="#cb20-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-61"><a href="#cb20-61" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://plasmogenepi.github.io/PMO_Docs/format/PathWeaverHeome1_PMO.json.gz</span>
+<span id="cb20-62"><a href="#cb20-62" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-63"><a href="#cb20-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-64"><a href="#cb20-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-67"><a href="#cb20-67" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb20-68"><a href="#cb20-68" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> example</span>
+<span id="cb20-69"><a href="#cb20-69" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb20-70"><a href="#cb20-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-71"><a href="#cb20-71" aria-hidden="true" tabindex="-1"></a><span class="co"># default </span></span>
+<span id="cb20-72"><a href="#cb20-72" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span></span>
+<span id="cb20-73"><a href="#cb20-73" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-74"><a href="#cb20-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-75"><a href="#cb20-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-78"><a href="#cb20-78" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb20-79"><a href="#cb20-79" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb20-80"><a href="#cb20-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-81"><a href="#cb20-81" aria-hidden="true" tabindex="-1"></a><span class="co"># changing default column names  </span></span>
+<span id="cb20-82"><a href="#cb20-82" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--default_base_col_names</span> sample,target,hapid</span>
+<span id="cb20-83"><a href="#cb20-83" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-84"><a href="#cb20-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-85"><a href="#cb20-85" aria-hidden="true" tabindex="-1"></a>Changing the output file delimiter  </span>
+<span id="cb20-86"><a href="#cb20-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-89"><a href="#cb20-89" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb20-90"><a href="#cb20-90" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb20-91"><a href="#cb20-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-92"><a href="#cb20-92" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--delim</span> ,</span>
+<span id="cb20-93"><a href="#cb20-93" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-94"><a href="#cb20-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-95"><a href="#cb20-95" aria-hidden="true" tabindex="-1"></a>Adding on additional columns from the specimen_infos section </span>
+<span id="cb20-96"><a href="#cb20-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-97"><a href="#cb20-97" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
+<span id="cb20-98"><a href="#cb20-98" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb20-99"><a href="#cb20-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-100"><a href="#cb20-100" aria-hidden="true" tabindex="-1"></a><span class="co"># adding other PMO fields </span></span>
+<span id="cb20-101"><a href="#cb20-101" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="at">--specimen_info_meta_fields</span> collection_country,collection_date <span class="kw">|</span> <span class="fu">head</span>  </span>
+<span id="cb20-102"><a href="#cb20-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-103"><a href="#cb20-103" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-104"><a href="#cb20-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-105"><a href="#cb20-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, echo = F}</span></span>
+<span id="cb20-106"><a href="#cb20-106" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb20-107"><a href="#cb20-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-108"><a href="#cb20-108" aria-hidden="true" tabindex="-1"></a><span class="co"># adding other PMO fields </span></span>
+<span id="cb20-109"><a href="#cb20-109" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="at">--specimen_info_meta_fields</span> collection_country,collection_date <span class="dv">2</span><span class="op">&gt;</span>/dev/null <span class="kw">|</span> <span class="fu">head</span>  </span>
+<span id="cb20-110"><a href="#cb20-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-111"><a href="#cb20-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-112"><a href="#cb20-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-113"><a href="#cb20-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-114"><a href="#cb20-114" aria-hidden="true" tabindex="-1"></a>Can continue to add on more columns from other sections </span>
+<span id="cb20-115"><a href="#cb20-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-116"><a href="#cb20-116" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
+<span id="cb20-117"><a href="#cb20-117" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb20-118"><a href="#cb20-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-119"><a href="#cb20-119" aria-hidden="true" tabindex="-1"></a><span class="co"># adding other PMO fields including reads field </span></span>
+<span id="cb20-120"><a href="#cb20-120" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="at">--specimen_info_meta_fields</span> collection_country,collection_date <span class="at">--microhap_fields</span> reads <span class="kw">|</span> <span class="fu">head</span> </span>
+<span id="cb20-121"><a href="#cb20-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-122"><a href="#cb20-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-123"><a href="#cb20-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-124"><a href="#cb20-124" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, echo = F}</span></span>
+<span id="cb20-125"><a href="#cb20-125" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb20-126"><a href="#cb20-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-127"><a href="#cb20-127" aria-hidden="true" tabindex="-1"></a><span class="co"># adding other PMO fields including seq field </span></span>
+<span id="cb20-128"><a href="#cb20-128" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> STDOUT <span class="at">--specimen_info_meta_fields</span> collection_country,collection_date <span class="at">--microhap_fields</span> reads <span class="dv">2</span><span class="op">&gt;</span>/dev/null <span class="kw">|</span> <span class="fu">head</span> </span>
+<span id="cb20-129"><a href="#cb20-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-130"><a href="#cb20-130" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-131"><a href="#cb20-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-132"><a href="#cb20-132" aria-hidden="true" tabindex="-1"></a><span class="fu">## Creating output for MOIRE </span></span>
+<span id="cb20-133"><a href="#cb20-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-134"><a href="#cb20-134" aria-hidden="true" tabindex="-1"></a>MOIRE is a program that can be used to estimate COI and other population estimates from a population. See it's <span class="co">[</span><span class="ot">github</span><span class="co">](https://github.com/EPPIcenter/moire)</span> for full usage. </span>
+<span id="cb20-135"><a href="#cb20-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-136"><a href="#cb20-136" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, eval = F}</span></span>
+<span id="cb20-137"><a href="#cb20-137" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> example</span>
+<span id="cb20-138"><a href="#cb20-138" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb20-139"><a href="#cb20-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-140"><a href="#cb20-140" aria-hidden="true" tabindex="-1"></a><span class="co"># default table is all moire needs </span></span>
+<span id="cb20-141"><a href="#cb20-141" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span></span>
+<span id="cb20-142"><a href="#cb20-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-143"><a href="#cb20-143" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-144"><a href="#cb20-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-145"><a href="#cb20-145" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval = F}</span></span>
+<span id="cb20-146"><a href="#cb20-146" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"example/extraction_allele_table.tsv"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span>
+<span id="cb20-147"><a href="#cb20-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-148"><a href="#cb20-148" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">load_long_form_data</span>(df)</span>
+<span id="cb20-149"><a href="#cb20-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-150"><a href="#cb20-150" aria-hidden="true" tabindex="-1"></a><span class="co"># With data in appropriate format, run MCMC as follows</span></span>
+<span id="cb20-151"><a href="#cb20-151" aria-hidden="true" tabindex="-1"></a>mcmc_results <span class="ot">&lt;-</span> moire<span class="sc">::</span><span class="fu">run_mcmc</span>(data, <span class="at">is_missing =</span> data<span class="sc">$</span>is_missing)</span>
+<span id="cb20-152"><a href="#cb20-152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-153"><a href="#cb20-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-154"><a href="#cb20-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-155"><a href="#cb20-155" aria-hidden="true" tabindex="-1"></a><span class="fu">## Creating output for dcifer </span></span>
+<span id="cb20-156"><a href="#cb20-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-157"><a href="#cb20-157" aria-hidden="true" tabindex="-1"></a>dcifer is a program that can estimate IBD even from mixed infections. See it's <span class="co">[</span><span class="ot">github</span><span class="co">](https://github.com/EPPIcenter/dcifer)</span> for full usage</span>
+<span id="cb20-158"><a href="#cb20-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-161"><a href="#cb20-161" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb20-162"><a href="#cb20-162" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> example</span>
+<span id="cb20-163"><a href="#cb20-163" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example </span>
+<span id="cb20-164"><a href="#cb20-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-165"><a href="#cb20-165" aria-hidden="true" tabindex="-1"></a><span class="co"># default </span></span>
+<span id="cb20-166"><a href="#cb20-166" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--delim</span> ,</span>
+<span id="cb20-167"><a href="#cb20-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-168"><a href="#cb20-168" aria-hidden="true" tabindex="-1"></a><span class="co"># dcifer can calculate allele frequencies if not provided or you can have extract_allele_table write them as well </span></span>
+<span id="cb20-169"><a href="#cb20-169" aria-hidden="true" tabindex="-1"></a><span class="ex">pmotools-python</span> extract_allele_table <span class="at">--file</span> ../../format/moz2018_PMO.json.gz <span class="at">--output</span> extraction <span class="at">--overwrite</span> <span class="at">--allele_freqs_output</span> allele_freqs_extraction <span class="at">--delim</span> ,</span>
+<span id="cb20-170"><a href="#cb20-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-171"><a href="#cb20-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-172"><a href="#cb20-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-173"><a href="#cb20-173" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval = F}</span></span>
+<span id="cb20-174"><a href="#cb20-174" aria-hidden="true" tabindex="-1"></a>dsmp <span class="ot">&lt;-</span> <span class="fu">readDat</span>(<span class="st">"example/extraction_allele_table.csv"</span>, <span class="at">svar =</span> <span class="st">"sampleID"</span>, <span class="at">lvar =</span> <span class="st">"locus"</span>, <span class="at">avar =</span> <span class="st">"allele"</span>)</span>
+<span id="cb20-175"><a href="#cb20-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-176"><a href="#cb20-176" aria-hidden="true" tabindex="-1"></a>lrank <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb20-177"><a href="#cb20-177" aria-hidden="true" tabindex="-1"></a>coi   <span class="ot">&lt;-</span> <span class="fu">getCOI</span>(dsmp, <span class="at">lrank =</span> lrank)</span>
+<span id="cb20-178"><a href="#cb20-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-179"><a href="#cb20-179" aria-hidden="true" tabindex="-1"></a>afreq <span class="ot">&lt;-</span> <span class="fu">calcAfreq</span>(dsmp, coi, <span class="at">tol =</span> <span class="fl">1e-5</span>) </span>
+<span id="cb20-180"><a href="#cb20-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-181"><a href="#cb20-181" aria-hidden="true" tabindex="-1"></a>dres0 <span class="ot">&lt;-</span> <span class="fu">ibdDat</span>(dsmp, coi, afreq, <span class="at">pval =</span> <span class="cn">TRUE</span>, <span class="at">confint =</span> <span class="cn">TRUE</span>, <span class="at">rnull =</span> <span class="dv">0</span>, </span>
+<span id="cb20-182"><a href="#cb20-182" aria-hidden="true" tabindex="-1"></a>                <span class="at">alpha =</span> <span class="fl">0.05</span>, <span class="at">nr =</span> <span class="fl">1e3</span>)   </span>
+<span id="cb20-183"><a href="#cb20-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-184"><a href="#cb20-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-185"><a href="#cb20-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-186"><a href="#cb20-186" aria-hidden="true" tabindex="-1"></a></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>A <a href="https://plasmogenepi.org">PlasmoGenEpi</a> project <br><a href="https://plasmogenepi.org" class="footer-logo-link" aria-label="PlasmoGenEpi"></a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 <script src="../site_libs/quarto-html/zenscroll-min.js"></script>

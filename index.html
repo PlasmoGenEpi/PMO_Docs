@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta charset="UTF-8">
+<meta name="generator" content="quarto-1.9.36">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Portable Microhaplotype Object (PMO)</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -56,7 +58,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -81,17 +82,19 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./images/pmo_logo_mini.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-49a824ff064150fa59632921ab93e189.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-51c09c167a706ef208dabe9d498949d7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6a2c4b793c0becaeb94cc5bf146c1484.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-d3f04e06c4dac2d35cbd8a0ed1255062.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -126,7 +129,7 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    </a>
+    <img src="./images/PMO_logo.png" alt="Portable Microhaplotype Object (PMO)" class="navbar-logo light-content"><img src="./images/PMO_logo.png" alt="Portable Microhaplotype Object (PMO)" class="navbar-logo dark-content"></a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Portable Microhaplotype Object (PMO)</span>
     </a>
@@ -174,69 +177,72 @@ div.csl-indent {
   </li>  
     </ul>
 </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tools-installation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Tools Installation</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-tools-installation">
-<li>
-    <a class="dropdown-item" href="./Tools_Installation/pmotools-python_installation.html">
- <span class="dropdown-text">pmotools-python installation</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./pmotools-app-usage/pmotools-app.html"> 
+<span class="menu-text">PMO App</span></a>
   </li>  
-    </ul>
-</li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pmotools-python-usages" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">pmotools-python usages</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pmotools-python" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">pmotools-python</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python-usages">
-<li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header"><span class="menuTitle">Python interface</span></li>
-        <li class="dropdown-header"><span class="menuTitle">Building a PMO</span></li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-pmotools-python">
+<li>
+    <a class="dropdown-item" href="./pmotools-python-usages/general_info.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Tools_Installation/pmotools-python_installation.html">
+ <span class="dropdown-text">Installation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://plasmogenepi.github.io/pmotools-python/index.html">
+ <span class="dropdown-text">Manual</span></a>
+  </li>  
+        <li class="dropdown-header"><span class="menuTitle">Python Interface Tutorials</span></li>
+        <li>
+    <a class="dropdown-item" href="./pmotools-python-usages-notebooks/building_a_minimum_pmo/Create_minimal_pmo.html">
+ <span class="dropdown-text">Building a PMO with minimum required fields</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./pmotools-python-usages-notebooks/building_a_minimum_pmo/Update_meta_in_a_minimal_pmo.html">
+ <span class="dropdown-text">Updating the Specimen Meta Information in a minimum PMO</span></a>
+  </li>  
         <li>
     <a class="dropdown-item" href="./pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.html">
- <span class="dropdown-text">Example of how to build a PMO</span></a>
+ <span class="dropdown-text">Building a PMO including optional sections and fields</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Interacting with a PMO file</span></li>
         <li>
     <a class="dropdown-item" href="./pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.html">
- <span class="dropdown-text">Getting basic info out of a PMO</span></a>
+ <span class="dropdown-text">Getting basic information from a PMO file</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Command line interface</span></li>
-        <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header"><span class="menuTitle">pmotools-python</span></li>
+        <li class="dropdown-header"><span class="menuTitle">Command line Interface Tutorials</span></li>
         <li>
     <a class="dropdown-item" href="./pmotools-python-usages/pmotools-python.html">
- <span class="dropdown-text">Command line interface to pmotools-python with pmotools-python</span></a>
+ <span class="dropdown-text">Command line interface guide</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Extracting out of PMO</span></li>
         <li>
     <a class="dropdown-item" href="./pmotools-python-usages/extracting_allele_tables.html">
- <span class="dropdown-text">Extracting allele tables using pmotools-python</span></a>
+ <span class="dropdown-text">Extracting allele tables from a PMO</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Subset PMO</span></li>
         <li>
     <a class="dropdown-item" href="./pmotools-python-usages/subsetting_from_PMO.html">
- <span class="dropdown-text">Subsetting from a PMO using pmotools-python</span></a>
+ <span class="dropdown-text">Subsetting a PMO</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Getting sub info from PMO</span></li>
         <li>
     <a class="dropdown-item" href="./pmotools-python-usages/getting_basic_info_from_pmo.html">
- <span class="dropdown-text">Getting basic info out of PMO using pmotools-python</span></a>
+ <span class="dropdown-text">Getting basic information from a PMO</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./pmotools-python-usages/extracting_panel_info_from_pmo.html">
- <span class="dropdown-text">Getting panel info out of PMO using pmotools-python</span></a>
+ <span class="dropdown-text">Extracting panel info from PMO</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Handling Multiple PMOs</span></li>
         <li>
     <a class="dropdown-item" href="./pmotools-python-usages/handling_multiple_pmos.html">
- <span class="dropdown-text">Handling multiple PMOs pmotools-python</span></a>
+ <span class="dropdown-text">Handling Multiple PMOs</span></a>
   </li>  
-        <li class="dropdown-header"><span class="menuTitle">Validating PMO files</span></li>
         <li>
     <a class="dropdown-item" href="./pmotools-python-usages/validating_pmos.html">
- <span class="dropdown-text">Validating PMOs pmotools-python</span></a>
+ <span class="dropdown-text">Validating PMO files</span></a>
   </li>  
     </ul>
 </li>
@@ -293,13 +299,14 @@ div.csl-indent {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
    
   <ul>
-<li><a href="#why-targeted-sequencing-needs-a-data-standard" id="toc-why-targeted-sequencing-needs-a-data-standard" class="nav-link active" data-scroll-target="#why-targeted-sequencing-needs-a-data-standard">Why targeted sequencing needs a data standard</a></li>
-  <li><a href="#goals-of-the-pmo-data-standard" id="toc-goals-of-the-pmo-data-standard" class="nav-link" data-scroll-target="#goals-of-the-pmo-data-standard">Goals of the PMO data standard</a></li>
-  <li><a href="#our-approach-to-development" id="toc-our-approach-to-development" class="nav-link" data-scroll-target="#our-approach-to-development">Our approach to development</a></li>
-  <li><a href="#how-pmo-fits-into-the-data-generation-and-analysis-ecosystem" id="toc-how-pmo-fits-into-the-data-generation-and-analysis-ecosystem" class="nav-link" data-scroll-target="#how-pmo-fits-into-the-data-generation-and-analysis-ecosystem">How PMO fits into the data generation and analysis ecosystem</a></li>
-  <li><a href="#more-details-on-pmo-structure-and-ontology" id="toc-more-details-on-pmo-structure-and-ontology" class="nav-link" data-scroll-target="#more-details-on-pmo-structure-and-ontology">More details on PMO structure and ontology</a></li>
-  <li><a href="#convenience-utilities-for-pmo" id="toc-convenience-utilities-for-pmo" class="nav-link" data-scroll-target="#convenience-utilities-for-pmo">Convenience utilities for PMO</a></li>
-  <li><a href="#building-a-community-of-pmo-users-and-tools" id="toc-building-a-community-of-pmo-users-and-tools" class="nav-link" data-scroll-target="#building-a-community-of-pmo-users-and-tools">Building a community of PMO users and tools</a></li>
+<li><a href="#quick-start" id="toc-quick-start" class="nav-link active" data-scroll-target="#quick-start">Quick Start</a></li>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
+  <li><a href="#pmo-structure-and-ontology" id="toc-pmo-structure-and-ontology" class="nav-link" data-scroll-target="#pmo-structure-and-ontology">PMO structure and ontology</a></li>
+  <li><a href="#convenience-tools" id="toc-convenience-tools" class="nav-link" data-scroll-target="#convenience-tools">Convenience Tools</a></li>
+  <li><a href="#pmo-in-the-wider-ecosystem" id="toc-pmo-in-the-wider-ecosystem" class="nav-link" data-scroll-target="#pmo-in-the-wider-ecosystem">PMO in the Wider Ecosystem</a></li>
+  <li><a href="#development-approach" id="toc-development-approach" class="nav-link" data-scroll-target="#development-approach">Development Approach</a></li>
+  <li><a href="#community-engagement" id="toc-community-engagement" class="nav-link" data-scroll-target="#community-engagement">Community Engagement</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -319,27 +326,36 @@ div.csl-indent {
 
 
 </header><p>Multiplexed targeted sequencing is now widely used to generate data for the most informative genomic regions of organisms, but the lack of an appropriate data standard has hindered data sharing, reuse, and downstream analysis. Here, we provide details for an extensible standard and related convenience utilities to store lossless, compact representations of phased, processed target sequences (microhaplotypes) along with an efficient relational ontology in a portable JSON file.</p>
-<p><img src="images/high_level_tables_a.svg" class="img-fluid"></p>
-<section id="why-targeted-sequencing-needs-a-data-standard" class="level2"><h2 class="anchored" data-anchor-id="why-targeted-sequencing-needs-a-data-standard">Why targeted sequencing needs a data standard</h2>
+<p><img src="images/high_level_tables.png" class="img-fluid"> * specimen_info and library_sample_info only need identifiers which can be autogenerated from the detected_microhalotypes</p>
+<section id="quick-start" class="level2"><h2 class="anchored" data-anchor-id="quick-start">Quick Start</h2>
+<p>To get started, you can use the PMO App to build a PMO or use the pmotools-python package to build a PMO. We recommend using the PMO App if you don’t have any programming/ Python experience and the pmotools-python package for more advanced usage.</p>
+<p><a href="./pmotools-app-usage/pmotools-app.html" class="btn btn-secondary"><i class="fa-solid fa-laptop" aria-label="laptop"></i> PMO App documentation</a> <a href="./pmotools-python-usages/general_info.html" class="btn btn-secondary"><i class="fa-solid fa-laptop" aria-label="laptop"></i> pmotools-python documentation</a></p>
+<p>If you are new to building a PMO, the template below can be a useful starting point.</p>
+<p><a href="overview/PMO_building_template.xlsx" class="btn btn-primary" download="PMO_building_template.xlsx"><i class="fa-solid fa-download" aria-label="download"></i> Download Excel PMO Template</a></p>
+</section><section id="motivation" class="level2"><h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
 <p><strong>Targeted amplicon sequencing</strong> is now established as a sensitive and efficient means of obtaining relevant information about a wide variety of organisms. Applications are broad and expanding, including microbiome analysis, pathogen identification, detection of antimicrobial resistance, and tracking the spread of viruses, bacteria, and eukaryotic pathogens.</p>
-<p>Many of these applications utilize the full sequences provided by individual reads because they contain multiple, phased variants (<strong>microhaplotypes</strong>)<span class="citation" data-cites="Oldoni2019-kb">(<a href="#ref-Oldoni2019-kb" role="doc-biblioref">Oldoni, Kidd, and Podini 2019</a>)</span> - information that is lost when decomposing these data into independent variants such as SNPs. This information is particularly valuable when sequencing samples containing organisms with more than one sequence per target, such as mixed bacterial samples, commonly polyclonal pathogens (e.g., Plasmodium) <span class="citation" data-cites="Tessema2022-fg">(<a href="#ref-Tessema2022-fg" role="doc-biblioref">Tessema et al. 2022</a>)</span>,<span class="citation" data-cites="LaVerriere2022-ya">(<a href="#ref-LaVerriere2022-ya" role="doc-biblioref">LaVerriere et al. 2022</a>)</span>,<span class="citation" data-cites="Jacob2021-ib">(<a href="#ref-Jacob2021-ib" role="doc-biblioref">Jacob et al. 2021</a>)</span>,<span class="citation" data-cites="Kattenberg_Johanna_Helena2023-jw">(<a href="#ref-Kattenberg_Johanna_Helena2023-jw" role="doc-biblioref">Kattenberg Johanna Helena et al. 2023</a>)</span>,<span class="citation" data-cites="Aranda-Diaz2025-yg">(<a href="#ref-Aranda-Diaz2025-yg" role="doc-biblioref">Aranda-Díaz et al. 2025</a>)</span>,<span class="citation" data-cites="Sadler2024-jw">(<a href="#ref-Sadler2024-jw" role="doc-biblioref">Sadler et al. 2024</a>)</span>, and diploid or polyploid organisms. Thus, data formats designed for small variants that do not preserve full sequences, such as the popular variant call format (VCF), are not well suited to store microhaplotype data.</p>
-</section><section id="goals-of-the-pmo-data-standard" class="level2"><h2 class="anchored" data-anchor-id="goals-of-the-pmo-data-standard">Goals of the PMO data standard</h2>
+<p>Many of these applications utilize the full sequences provided by individual reads because they contain multiple, phased variants (<strong>microhaplotypes</strong>)<span class="citation" data-cites="Oldoni2019-kb">(<a href="#ref-Oldoni2019-kb" role="doc-biblioref">Oldoni et al. 2019</a>)</span> - information that is lost when decomposing these data into independent variants such as SNPs. This information is particularly valuable when sequencing samples containing organisms with more than one sequence per target, such as mixed bacterial samples, commonly polyclonal pathogens (e.g., Plasmodium) <span class="citation" data-cites="Tessema2022-fg">(<a href="#ref-Tessema2022-fg" role="doc-biblioref">Tessema et al. 2022</a>)</span>,<span class="citation" data-cites="LaVerriere2022-ya">(<a href="#ref-LaVerriere2022-ya" role="doc-biblioref">LaVerriere et al. 2022</a>)</span>,<span class="citation" data-cites="Jacob2021-ib">(<a href="#ref-Jacob2021-ib" role="doc-biblioref">Jacob et al. 2021</a>)</span>,<span class="citation" data-cites="Kattenberg_Johanna_Helena2023-jw">(<a href="#ref-Kattenberg_Johanna_Helena2023-jw" role="doc-biblioref"><span class="nocase">Kattenberg Johanna Helena et al.</span> 2023</a>)</span>,<span class="citation" data-cites="Aranda-Diaz2025-yg">(<a href="#ref-Aranda-Diaz2025-yg" role="doc-biblioref">Aranda-Díaz et al. 2025</a>)</span>,<span class="citation" data-cites="Sadler2024-jw">(<a href="#ref-Sadler2024-jw" role="doc-biblioref">Sadler et al. 2024</a>)</span>, and diploid or polyploid organisms. Thus, data formats designed for small variants that do not preserve full sequences, such as the popular variant call format (VCF), are not well suited to store microhaplotype data.</p>
+</section><section id="objectives" class="level2"><h2 class="anchored" data-anchor-id="objectives">Objectives</h2>
 <ul>
 <li>Provide a <strong>structured and flexible framework</strong> to help individual researchers and groups to organize their data in a findable and accessible way.</li>
 <li>Create a standard for <strong>data sharing</strong>, including for repositories, academic reports, and public health entities, to aid in interoperability, transparency, and reproducibility</li>
 <li>Maximize <strong>data reuse</strong> by lowering the barriers for making data publicly available in a standardized format.</li>
 <li>Provide a consistent format to allow <strong>harmonization of downstream analysis tools</strong> across data sets and minimize the need for tedious and error-prone tasks such as data reshaping</li>
-</ul></section><section id="our-approach-to-development" class="level2"><h2 class="anchored" data-anchor-id="our-approach-to-development">Our approach to development</h2>
+</ul></section><section id="pmo-structure-and-ontology" class="level2"><h2 class="anchored" data-anchor-id="pmo-structure-and-ontology">PMO structure and ontology</h2>
+<p>Please see this <a href="./format/FormatOverview.html">page</a> for details on the internal structure of a PMO and its naming schema.</p>
+</section><section id="convenience-tools" class="level2"><h2 class="anchored" data-anchor-id="convenience-tools">Convenience Tools</h2>
+<p>There are two ways to build a PMO using our tools:</p>
+<ul>
+<li>
+<a href="https://pmotools.app/">PMO App</a> - An interactive, no-code PMO builder. The first load may take a moment. The app runs entirely in your browser, and all data remain on your computer—nothing is uploaded.</li>
+<li>
+<a href="./pmotools-python-usages/pmotools-python.html">pmotools-python</a> - Build and work with PMO files in Python or from the command line. See the <a href="https://plasmogenepi.github.io/pmotools-python">documentation</a> and <a href="./pmotools-python-usages/pmotools-python.html">tutorials</a>.</li>
+</ul></section><section id="pmo-in-the-wider-ecosystem" class="level2"><h2 class="anchored" data-anchor-id="pmo-in-the-wider-ecosystem">PMO in the Wider Ecosystem</h2>
+<p>PMO serves as a convergence point within the broader data ecosystem between sample collection/allele calling and various downstream analyses. Please see <a href="./PMO_Ecosystem/Pmo_in_the_ecosystem.html">here</a> for more details</p>
+</section><section id="development-approach" class="level2"><h2 class="anchored" data-anchor-id="development-approach">Development Approach</h2>
 <p>The microbiome community has created data standards for a single locus, including BIOM and ESS-DIVE. Here, we extend these standards to an arbitrary number of loci in a framework extensible to any type of targeted sequence data. The format is lossless, allowing recovery of full sequence data, while achieving data compression of ~6x and up to ~80x with additional compression using standard tools (e.g., gzip). Optional fields allow data generators with domain expertise to include additionally processed sequence data such as variants with masked domains, e.g.&nbsp;for highly error prone areas such as tandem repeats. Notably, the framework provides a robust relational ontology for sample, laboratory, and bioinformatic metadata in addition to sequence data, mitigating the common problem of partially or completely orphaned data. A full ontology has been built out for Plasmodium, leveraging existing fields where available, and the modular structure can be flexibly extended to other biological systems, including those containing multiple types of organisms. All data are encoded in a standard JSON file, enhancing portability and ease-of-interpretation. The end result is a design which is efficient, lightweight, and flexible, organizing metadata together with genetic data. Finally, we have created a set of convenience utilities to make it easy to create, manipulate, share, import, and export PMO files.</p>
 <p>Please see <a href="./format/DevelopmentOfFormat.html">here</a> for a detailed breakdown of how the fields chosen relate to other standards</p>
-</section><section id="how-pmo-fits-into-the-data-generation-and-analysis-ecosystem" class="level2"><h2 class="anchored" data-anchor-id="how-pmo-fits-into-the-data-generation-and-analysis-ecosystem">How PMO fits into the data generation and analysis ecosystem</h2>
-<p>PMO serves as a convergence point within the broader data ecosystem between sample collection/allele calling and various downstream analyses. Please see <a href="./PMO_Ecosystem/Pmo_in_the_ecosystem.html">here</a> for more details</p>
-</section><section id="more-details-on-pmo-structure-and-ontology" class="level2"><h2 class="anchored" data-anchor-id="more-details-on-pmo-structure-and-ontology">More details on PMO structure and ontology</h2>
-<p>Please see this <a href="./format/FormatOverview.html">page</a> for details on the internal structure of a PMO and its naming schema.</p>
-</section><section id="convenience-utilities-for-pmo" class="level2"><h2 class="anchored" data-anchor-id="convenience-utilities-for-pmo">Convenience utilities for PMO</h2>
-<p>For building a PMO from sample meta and allele called data, please see <a href="https://plasmogenepi.github.io/pmotool-app-web/">pmo-app</a>, an interactive builder of PMO, on the first time opening this page it may take some time to load. The app runs locally but in the browser but no data is uploaded anywhere and stays private on your computer.</p>
-<p>See this <a href="./pmotools-python-usages/pmotools-python.html">page</a> for instructions on the python commandline client implementation of interacting with PMOs with examples of the python code used and how to run some pre-built scripts on the command line.</p>
-</section><section id="building-a-community-of-pmo-users-and-tools" class="level2"><h2 class="anchored" data-anchor-id="building-a-community-of-pmo-users-and-tools">Building a community of PMO users and tools</h2>
+</section><section id="community-engagement" class="level2"><h2 class="anchored" data-anchor-id="community-engagement">Community Engagement</h2>
 <p>The development of the PMO format would not be possible without the community engagement and feedback that we have received and we want to continue to incorporate feedback while we maintain the format. Please reach out to <a href="mailto:info@plasmogenepi.org">info@plasmogenepi.org</a> with any general questions or feedback.</p>
 <p>If you have questions on the documentation of the format, you can use the github issues page to ask questions, post suggestions for both the documentation and format: <a href="https://github.com/PlasmoGenEpi/PMO_Docs/issues" class="uri">https://github.com/PlasmoGenEpi/PMO_Docs/issues</a></p>
 <p>If you have questions on the python implementation of interacting with the format, you can use github issues page here: <a href="https://github.com/PlasmoGenEpi/pmotools-python/issues" class="uri">https://github.com/PlasmoGenEpi/pmotools-python/issues</a></p>
@@ -348,27 +364,27 @@ div.csl-indent {
 <!-- -->
 
 
-</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-Aranda-Diaz2025-yg" class="csl-entry" role="listitem">
-Aranda-Díaz, Andrés, Eric Neubauer Vickers, Kathryn Murie, Brian Palmer, Nicholas Hathaway, Inna Gerlovina, Simone Boene, et al. 2025. <span>“Sensitive and Modular Amplicon Sequencing of Plasmodium Falciparum Diversity and Resistance for Research and Public Health.”</span> <em>Sci. Rep.</em> 15 (March): 10737.
+Aranda-Díaz, Andrés, Eric Neubauer Vickers, Kathryn Murie, et al. 2025. <span>“Sensitive and Modular Amplicon Sequencing of Plasmodium Falciparum Diversity and Resistance for Research and Public Health.”</span> <em>Sci. Rep.</em> 15 (March): 10737.
 </div>
 <div id="ref-Jacob2021-ib" class="csl-entry" role="listitem">
-Jacob, Christopher G, Nguyen Thuy-Nhien, Mayfong Mayxay, Richard J Maude, Huynh Hong Quang, Bouasy Hongvanthong, Viengxay Vanisaveth, et al. 2021. <span>“Genetic Surveillance in the Greater Mekong Subregion and South Asia to Support Malaria Control and Elimination.”</span> <em>Elife</em> 10 (August).
+Jacob, Christopher G, Nguyen Thuy-Nhien, Mayfong Mayxay, et al. 2021. <span>“Genetic Surveillance in the Greater Mekong Subregion and South Asia to Support Malaria Control and Elimination.”</span> <em>Elife</em> 10 (August).
 </div>
 <div id="ref-Kattenberg_Johanna_Helena2023-jw" class="csl-entry" role="listitem">
-Kattenberg Johanna Helena, Fernandez-Miñope Carlos, van Dijk Norbert J., Llacsahuanga Allcca Lidia, Guetens Pieter, Valdivia Hugo O., Van geertruyden Jean-Pierre, et al. 2023. <span>“Malaria Molecular Surveillance in the Peruvian Amazon with a Novel Highly Multiplexed Plasmodium Falciparum <span>AmpliSeq</span> Assay.”</span> <em>Microbiology Spectrum</em> 0 (0): e00960–22.
+<span class="nocase">Kattenberg Johanna Helena, Fernandez-Miñope Carlos, van Dijk Norbert J., et al.</span> 2023. <span>“Malaria Molecular Surveillance in the Peruvian Amazon with a Novel Highly Multiplexed Plasmodium Falciparum <span>AmpliSeq</span> Assay.”</span> <em>Microbiology Spectrum</em> 0 (0): e00960–22.
 </div>
 <div id="ref-LaVerriere2022-ya" class="csl-entry" role="listitem">
-LaVerriere, Emily, Philipp Schwabl, Manuela Carrasquilla, Aimee R Taylor, Zachary M Johnson, Meg Shieh, Ruchit Panchal, et al. 2022. <span>“Design and Implementation of Multiplexed Amplicon Sequencing Panels to Serve Genomic Epidemiology of Infectious Disease: A Malaria Case Study.”</span> <em>Mol. Ecol. Resour.</em> 22 (6): 2285–2303.
+LaVerriere, Emily, Philipp Schwabl, Manuela Carrasquilla, et al. 2022. <span>“Design and Implementation of Multiplexed Amplicon Sequencing Panels to Serve Genomic Epidemiology of Infectious Disease: A Malaria Case Study.”</span> <em>Mol. Ecol. Resour.</em> 22 (6): 2285–303.
 </div>
 <div id="ref-Oldoni2019-kb" class="csl-entry" role="listitem">
 Oldoni, Fabio, Kenneth K Kidd, and Daniele Podini. 2019. <span>“Microhaplotypes in Forensic Genetics.”</span> <em>Forensic Sci. Int. Genet.</em> 38 (January): 54–69.
 </div>
 <div id="ref-Sadler2024-jw" class="csl-entry" role="listitem">
-Sadler, Jacob M, Alfred Simkin, Valery P K Tchuenkam, Isabela Gerdes Gyuricza, Abebe A Fola, Kevin Wamae, Ashenafi Assefa, et al. 2024. <span>“Application of a New Highly Multiplexed Amplicon Sequencing Tool to Evaluate Plasmodium Falciparum Antimalarial Resistance and Relatedness in Individual and Pooled Samples from Dschang, Cameroon.”</span> <em>Front. Parasitol.</em> 3: 1509261.
+Sadler, Jacob M, Alfred Simkin, Valery P K Tchuenkam, et al. 2024. <span>“Application of a New Highly Multiplexed Amplicon Sequencing Tool to Evaluate Plasmodium Falciparum Antimalarial Resistance and Relatedness in Individual and Pooled Samples from Dschang, Cameroon.”</span> <em>Front. Parasitol.</em> 3: 1509261.
 </div>
 <div id="ref-Tessema2022-fg" class="csl-entry" role="listitem">
-Tessema, Sofonias K, Nicholas J Hathaway, Noam B Teyssier, Maxwell Murphy, Anna Chen, Ozkan Aydemir, Elias M Duarte, et al. 2022. <span>“Sensitive, Highly Multiplexed Sequencing of Microhaplotypes from the Plasmodium Falciparum Heterozygome.”</span> <em>J. Infect. Dis.</em> 225 (April): 1227–37.
+Tessema, Sofonias K, Nicholas J Hathaway, Noam B Teyssier, et al. 2022. <span>“Sensitive, Highly Multiplexed Sequencing of Microhaplotypes from the Plasmodium Falciparum Heterozygome.”</span> <em>J. Infect. Dis.</em> 225 (April): 1227–37.
 </div>
 </div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -832,59 +848,84 @@ Tessema, Sofonias K, Nicholas J Hathaway, Noam B Teyssier, Maxwell Murphy, Anna 
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Multiplexed targeted sequencing is now widely used to generate data for the most informative genomic regions of organisms, but the lack of an appropriate data standard has hindered data sharing, reuse, and downstream analysis. Here, we provide details for an extensible standard and related convenience utilities to store lossless, compact representations of phased, processed target sequences (microhaplotypes) along with an efficient relational ontology in a portable JSON file.</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/high_level_tables_a.svg)</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## Why targeted sequencing needs a data standard</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>**Targeted amplicon sequencing** is now established as a sensitive and efficient means of obtaining relevant information about a wide variety of organisms. Applications are broad and expanding, including microbiome analysis, pathogen identification, detection of antimicrobial resistance, and tracking the spread of viruses, bacteria, and eukaryotic pathogens. </span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>Many of these applications utilize the full sequences provided by individual reads because they contain multiple, phased variants (**microhaplotypes**)<span class="co">[</span><span class="ot">@Oldoni2019-kb</span><span class="co">]</span> - information that is lost when decomposing these data into independent variants such as SNPs. This information is particularly valuable when sequencing samples containing organisms with more than one sequence per target, such as mixed bacterial samples, commonly polyclonal pathogens (e.g., Plasmodium) <span class="co">[</span><span class="ot">@Tessema2022-fg</span><span class="co">]</span>,<span class="co">[</span><span class="ot">@LaVerriere2022-ya</span><span class="co">]</span>,<span class="co">[</span><span class="ot">@Jacob2021-ib</span><span class="co">]</span>,<span class="co">[</span><span class="ot">@Kattenberg_Johanna_Helena2023-jw</span><span class="co">]</span>,<span class="co">[</span><span class="ot">@Aranda-Diaz2025-yg</span><span class="co">]</span>,<span class="co">[</span><span class="ot">@Sadler2024-jw</span><span class="co">]</span>, and diploid or polyploid organisms. Thus, data formats designed for small variants that do not preserve full sequences, such as the popular variant call format (VCF), are not well suited to store microhaplotype data. </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## Goals of the PMO data standard  </span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>Provide a **structured and flexible framework** to help individual researchers and groups to organize their data in a findable and accessible way.</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>Create a standard for **data sharing**, including for repositories, academic reports, and public health entities, to aid in interoperability, transparency, and reproducibility</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>Maximize **data reuse** by lowering the barriers for making data publicly available in a standardized format. </span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>Provide a consistent format to allow **harmonization of downstream analysis tools** across data sets and minimize the need for tedious and error-prone tasks such as data reshaping</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/high_level_tables.png)</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>specimen_info and library_sample_info only need identifiers which can be autogenerated from the detected_microhalotypes </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Quick Start</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>To get started, you can use the PMO App to build a PMO or use the pmotools-python package to build a PMO. We recommend using the PMO App if you don't have any programming/ Python experience and the pmotools-python package for more advanced usage.</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">{{&lt; fa laptop &gt;}} PMO App documentation</span><span class="co">](pmotools-app-usage/pmotools-app.qmd)</span>{.btn .btn-secondary}</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">{{&lt; fa laptop &gt;}} pmotools-python documentation</span><span class="co">](pmotools-python-usages/general_info.qmd)</span>{.btn .btn-secondary}</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>If you are new to building a PMO, the template below can be a useful starting point.</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">{{&lt; fa download &gt;}} Download Excel PMO Template</span><span class="co">](overview/PMO_building_template.xlsx)</span>{.btn .btn-primary download="PMO_building_template.xlsx"}</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">## Motivation</span></span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Our approach to development  </span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>**Targeted amplicon sequencing** is now established as a sensitive and efficient means of obtaining relevant information about a wide variety of organisms. Applications are broad and expanding, including microbiome analysis, pathogen identification, detection of antimicrobial resistance, and tracking the spread of viruses, bacteria, and eukaryotic pathogens. </span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>The microbiome community has created data standards for a single locus, including BIOM and ESS-DIVE. Here, we extend these standards to an arbitrary number of loci in a framework extensible to any type of targeted sequence data. The format is lossless, allowing recovery of full sequence data, while achieving data compression of ~6x and up to ~80x with additional compression using standard tools (e.g., gzip). Optional fields allow data generators with domain expertise to include additionally processed sequence data such as variants with masked domains, e.g. for highly error prone areas such as tandem repeats. Notably, the framework provides a robust relational ontology for sample, laboratory, and bioinformatic metadata in addition to sequence data, mitigating the common problem of partially or completely orphaned data. A full ontology has been built out for Plasmodium, leveraging existing fields where available, and the modular structure can be flexibly extended to other biological systems, including those containing multiple types of organisms. All data are encoded in a standard JSON file, enhancing portability and ease-of-interpretation. The end result is a design which is efficient, lightweight, and flexible, organizing metadata together with genetic data. Finally, we have created a set of convenience utilities to make it easy to create, manipulate, share, import, and export PMO files.</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>Many of these applications utilize the full sequences provided by individual reads because they contain multiple, phased variants (**microhaplotypes**)<span class="co">[</span><span class="ot">@Oldoni2019-kb</span><span class="co">]</span> - information that is lost when decomposing these data into independent variants such as SNPs. This information is particularly valuable when sequencing samples containing organisms with more than one sequence per target, such as mixed bacterial samples, commonly polyclonal pathogens (e.g., Plasmodium) <span class="co">[</span><span class="ot">@Tessema2022-fg</span><span class="co">]</span>,<span class="co">[</span><span class="ot">@LaVerriere2022-ya</span><span class="co">]</span>,<span class="co">[</span><span class="ot">@Jacob2021-ib</span><span class="co">]</span>,<span class="co">[</span><span class="ot">@Kattenberg_Johanna_Helena2023-jw</span><span class="co">]</span>,<span class="co">[</span><span class="ot">@Aranda-Diaz2025-yg</span><span class="co">]</span>,<span class="co">[</span><span class="ot">@Sadler2024-jw</span><span class="co">]</span>, and diploid or polyploid organisms. Thus, data formats designed for small variants that do not preserve full sequences, such as the popular variant call format (VCF), are not well suited to store microhaplotype data. </span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>Please see <span class="co">[</span><span class="ot">here</span><span class="co">](format/DevelopmentOfFormat.qmd)</span> for a detailed breakdown of how the fields chosen relate to other standards</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## How PMO fits into the data generation and analysis ecosystem</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>PMO serves as a convergence point within the broader data ecosystem between sample collection/allele calling and various downstream analyses. Please see <span class="co">[</span><span class="ot">here</span><span class="co">](PMO_Ecosystem/Pmo_in_the_ecosystem.qmd)</span> for more details</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="fu">## More details on PMO structure and ontology</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objectives  </span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>Provide a **structured and flexible framework** to help individual researchers and groups to organize their data in a findable and accessible way.</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>Create a standard for **data sharing**, including for repositories, academic reports, and public health entities, to aid in interoperability, transparency, and reproducibility</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>Maximize **data reuse** by lowering the barriers for making data publicly available in a standardized format. </span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="ss">*  </span>Provide a consistent format to allow **harmonization of downstream analysis tools** across data sets and minimize the need for tedious and error-prone tasks such as data reshaping</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>Please see this <span class="co">[</span><span class="ot">page</span><span class="co">](format/FormatOverview.qmd)</span> for details on the internal structure of a PMO and its naming schema. </span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="fu">## PMO structure and ontology</span></span>
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu">## Convenience utilities for PMO </span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>Please see this <span class="co">[</span><span class="ot">page</span><span class="co">](format/FormatOverview.qmd)</span> for details on the internal structure of a PMO and its naming schema. </span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>For building a PMO from sample meta and allele called data, please see <span class="co">[</span><span class="ot">pmo-app</span><span class="co">](https://plasmogenepi.github.io/pmotool-app-web/)</span>, an interactive builder of PMO, on the first time opening this page it may take some time to load. The app runs locally but in the browser but no data is uploaded anywhere and stays private on your computer. </span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="fu">## Convenience Tools</span></span>
 <span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>See this <span class="co">[</span><span class="ot">page</span><span class="co">](pmotools-python-usages/pmotools-python.qmd)</span> for instructions on the python commandline client implementation of interacting with PMOs with examples of the python code used and how to run some pre-built scripts on the command line.  </span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>There are two ways to build a PMO using our tools:</span>
 <span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="fu">## Building a community of PMO users and tools</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">PMO App</span><span class="co">](https://pmotools.app/)</span> - An interactive, no-code PMO builder. The first load may take a moment. The app runs entirely in your browser, and all data remain on your computer—nothing is uploaded.</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">pmotools-python</span><span class="co">](pmotools-python-usages/pmotools-python.qmd)</span> - Build and work with PMO files in Python or from the command line. See the <span class="co">[</span><span class="ot">documentation</span><span class="co">](https://plasmogenepi.github.io/pmotools-python)</span> and <span class="co">[</span><span class="ot">tutorials</span><span class="co">](pmotools-python-usages/pmotools-python.qmd)</span>.</span>
 <span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>The development of the PMO format would not be possible without the community engagement and feedback that we have received and we want to continue to incorporate feedback while we maintain the format. Please reach out to <span class="co">[</span><span class="ot">info@plasmogenepi.org</span><span class="co">](mailto:info@plasmogenepi.org)</span> with any general questions or feedback. </span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="fu">## PMO in the Wider Ecosystem</span></span>
 <span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>If you have questions on the documentation of the format, you can use the github issues page to ask questions, post suggestions for both the documentation and format: <span class="ot">&lt;https://github.com/PlasmoGenEpi/PMO_Docs/issues&gt;</span> </span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>PMO serves as a convergence point within the broader data ecosystem between sample collection/allele calling and various downstream analyses. Please see <span class="co">[</span><span class="ot">here</span><span class="co">](PMO_Ecosystem/Pmo_in_the_ecosystem.qmd)</span> for more details</span>
 <span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>If you have questions on the python implementation of interacting with the format, you can use github issues page here: <span class="ot">&lt;https://github.com/PlasmoGenEpi/pmotools-python/issues&gt;</span></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="fu">## Development Approach </span></span>
 <span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>The microbiome community has created data standards for a single locus, including BIOM and ESS-DIVE. Here, we extend these standards to an arbitrary number of loci in a framework extensible to any type of targeted sequence data. The format is lossless, allowing recovery of full sequence data, while achieving data compression of ~6x and up to ~80x with additional compression using standard tools (e.g., gzip). Optional fields allow data generators with domain expertise to include additionally processed sequence data such as variants with masked domains, e.g. for highly error prone areas such as tandem repeats. Notably, the framework provides a robust relational ontology for sample, laboratory, and bioinformatic metadata in addition to sequence data, mitigating the common problem of partially or completely orphaned data. A full ontology has been built out for Plasmodium, leveraging existing fields where available, and the modular structure can be flexibly extended to other biological systems, including those containing multiple types of organisms. All data are encoded in a standard JSON file, enhancing portability and ease-of-interpretation. The end result is a design which is efficient, lightweight, and flexible, organizing metadata together with genetic data. Finally, we have created a set of convenience utilities to make it easy to create, manipulate, share, import, and export PMO files.</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>Please see <span class="co">[</span><span class="ot">here</span><span class="co">](format/DevelopmentOfFormat.qmd)</span> for a detailed breakdown of how the fields chosen relate to other standards</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="fu">## Community Engagement</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>The development of the PMO format would not be possible without the community engagement and feedback that we have received and we want to continue to incorporate feedback while we maintain the format. Please reach out to <span class="co">[</span><span class="ot">info@plasmogenepi.org</span><span class="co">](mailto:info@plasmogenepi.org)</span> with any general questions or feedback. </span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>If you have questions on the documentation of the format, you can use the github issues page to ask questions, post suggestions for both the documentation and format: <span class="ot">&lt;https://github.com/PlasmoGenEpi/PMO_Docs/issues&gt;</span> </span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>If you have questions on the python implementation of interacting with the format, you can use github issues page here: <span class="ot">&lt;https://github.com/PlasmoGenEpi/pmotools-python/issues&gt;</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>A <a href="https://plasmogenepi.org">PlasmoGenEpi</a> project <br><a href="https://plasmogenepi.org" class="footer-logo-link" aria-label="PlasmoGenEpi"></a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 <script src="site_libs/quarto-html/zenscroll-min.js"></script>

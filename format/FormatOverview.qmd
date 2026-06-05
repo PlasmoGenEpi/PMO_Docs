@@ -7,7 +7,6 @@ title: PMO fields overview
 source("../common.R")
 ```
 
-
 # The design goal behind PMO  
 
 The format was created while attempting to stay consistent with previous standards like [MIxS standards](https://genomicsstandardsconsortium.github.io/mixs/). These are the standards that the short read archive (SRA) use to validate metadata upon submission. This also helps to keep data standards to adhere to FAIR (Findable, Accessible, Interoperable, and Reusable). 

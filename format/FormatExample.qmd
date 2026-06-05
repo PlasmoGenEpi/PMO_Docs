@@ -17,8 +17,86 @@ $(document).ready(function() {
 });
 </script>
 
+## Minimum PMO example 
 
-# Example data format 
+### S_aureus
+
+Contains the PMO for the S. aureus dataset - Furstenau2025_PMO.json.gz. This PMO was contructed from SRA-sourced data[@Furstenau2025-bu]
+
+```{r}
+#| results: asis
+#| echo: false
+
+cat(createDownloadLink("../pmo_example_datasets/S_aureus/minimum_Furstenau2025_PMO.json.gz"))
+
+```
+
+
+
+## Example data from PMO manuscript 
+
+### ANOSPP
+
+Anopheles and Plasmodium data obtained from 4128 mosquito samples from Gabon that were sequenced as part of the ANOSPP (ANOpheles SPecies identification and Plasmodium detection) project[@Makunin2021-pg]
+
+```{r}
+#| results: asis
+#| echo: false
+
+cat(createDownloadLink("../pmo_example_datasets/ANOSPP/anospp_pmo.json.gz"))
+
+```
+
+### GENE8
+
+Public genomic surveillance data of Plasmodium falciparum from four countries: Eswatini, Namibia, South Africa, and Zambia. This folder contains input files, intermediate PMOs, and processing notebooks [@Aranda-Diaz2025-vx][@Eloff2025-bs][@Nhlengethwa2025-tl][@Raman2025-dk]
+```{r}
+#| results: asis
+#| echo: false
+
+cat(createDownloadLink("../pmo_example_datasets/GENE8/dataset1_pmo_qc_pass.json.gz"))
+
+```
+
+### mips_v_mad4hatter
+
+Contains the PMO containing specimens that were sequenced using both the MAD4HatTeR amplicon sequencing and the DR23K molecular inversion probe (MIP) assay [@Katairo2025-vo]
+
+```{r}
+#| results: asis
+#| echo: false
+
+cat(createDownloadLink("../pmo_example_datasets/mips_v_mad4hatter/PRJNA1252738_PMO.json.gz"))
+
+```
+
+### E_coli
+
+Contains the PMO for the E. coli dataset - e_coli_coliseq_PMO.json.gz. This PMO was contructed from SRA-sourced data[@Williamson2024-uv] 
+
+```{r}
+#| results: asis
+#| echo: false
+
+cat(createDownloadLink("../pmo_example_datasets/E_coli/e_coli_coliseq_PMO.json.gz"))
+
+```
+
+### S_aureus
+
+Contains the PMO for the S. aureus dataset - Furstenau2025_PMO.json.gz. This PMO was contructed from SRA-sourced data[@Furstenau2025-bu]
+
+```{r}
+#| results: asis
+#| echo: false
+
+cat(createDownloadLink("../pmo_example_datasets/S_aureus/Furstenau2025_PMO.json.gz"))
+
+```
+
+
+
+### Additional Example data format 
 
 Example created from a study from Mozambique[@Tessema2022-fg] 
 
@@ -32,7 +110,7 @@ cat(createDownloadLink("moz2018_PMO.json.gz"))
 
 ```
 
-## From Pf7+ data for the same panel above 
+#### From Pf7+ data for the same panel above 
 
 
 Global data microhaplotypes were constructed by PathWeaver for the same targeted amplicon panel above. This includes approximately 1900 samples.  

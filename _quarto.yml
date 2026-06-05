@@ -26,6 +26,7 @@ project:
 
 website:
   title: "Portable Microhaplotype Object (PMO)"
+  favicon: images/pmo_logo_mini.png
   navbar:
     left:
       - href: index.qmd
@@ -56,10 +57,10 @@ website:
           - text: <span class='menuTitle'>Python Interface Tutorials</span>
           - href: pmotools-python-usages-notebooks/building_a_minimum_pmo/Create_minimal_pmo.ipynb
             text: "Building a PMO with minimum required fields"
-          - href: pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.ipynb
-            text: "Building a PMO including optional sections and fields"
           - href: pmotools-python-usages-notebooks/building_a_minimum_pmo/Update_meta_in_a_minimal_pmo.ipynb
             text: "Updating the Specimen Meta Information in a minimum PMO"
+          - href: pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.ipynb
+            text: "Building a PMO including optional sections and fields"
           - href: pmotools-python-usages-notebooks/getting_basic_info_on_pmo_file.ipynb
             text: "Getting basic information from a PMO file"
           - text: <span class='menuTitle'>Command line Interface Tutorials</span>

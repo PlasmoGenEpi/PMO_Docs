@@ -106,8 +106,8 @@ Can continue to add on more columns from other sections
 ```{bash, eval = F}
 cd example 
 
-# adding other PMO fields including seq field 
-pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output STDOUT --specimen_info_meta_fields collection_country,collection_date --representative_haps_fields seq | head 
+# adding other PMO fields including reads field 
+pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output STDOUT --specimen_info_meta_fields collection_country,collection_date --microhap_fields reads | head 
 
 ```
 
@@ -115,7 +115,7 @@ pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --o
 cd example 
 
 # adding other PMO fields including seq field 
-pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output STDOUT --specimen_info_meta_fields collection_country,collection_date --representative_haps_fields seq 2>/dev/null | head 
+pmotools-python extract_allele_table --file ../../format/moz2018_PMO.json.gz --output STDOUT --specimen_info_meta_fields collection_country,collection_date --microhap_fields reads 2>/dev/null | head 
 
 ```
 

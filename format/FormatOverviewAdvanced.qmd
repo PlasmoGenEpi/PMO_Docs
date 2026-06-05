@@ -219,7 +219,11 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ### Example  
 ```{json}  
-
+        {
+          "program": "SeekDeep extractorPairedEnd",
+          "program_description": "Takes raw paired-end reads and demultiplexes on primers and does QC filtering",
+          "program_version": "v2.6.5"
+        },
 ```  
   </div>
 </div><br>
@@ -237,7 +241,37 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ### Example  
 ```{json}  
-
+    {
+      "methods": [
+        {
+          "program": "SeekDeep extractorPairedEnd",
+          "program_description": "Takes raw paired-end reads and demultiplexes on primers and does QC filtering",
+          "program_version": "v2.6.5"
+        },
+        {
+          "additional_argument": [
+            "--illumina",
+            "--qualThres 25,20"
+          ],
+          "program": "SeekDeep qluster",
+          "program_description": "Takes sequences per sample per target and clusters them",
+          "program_version": "v2.6.5"
+        },
+        {
+          "additional_argument": [
+            "--strictErrors",
+            "--illumina",
+            "--removeOneSampOnlyOneOffHaps",
+            "--excludeCommonlyLowFreqHaplotypes",
+            "--excludeLowFreqOneOffs",
+            "--rescueExcludedOneOffLowFreqHaplotypes"
+          ],
+          "program": "SeekDeep processClusters",
+          "program_description": "Compare across samples for each target to create population level identifiers and do post artifact cleanup",
+          "program_version": "v2.6.5"
+        }
+      ]
+    },
 ```  
   </div>
 </div><br>
@@ -340,6 +374,7 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  a list of the microhaplotypes detected for this target  
 
 ### Example  
+
 ```{json}  
 
 ```  
@@ -370,8 +405,17 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  a link to the where this genome's annotation file could be downloaded  
 
 ### Example  
-```{json}  
 
+```{json}  
+    {
+      "genome_version": "GCF_000013425.1",
+      "gff_url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/013/425/GCF_000013425.1_ASM1342v1/GCF_000013425.1_ASM1342v1_genomic.gff.gz",
+      "name": "NCTC8325",
+      "taxon_id": [
+        1280
+      ],
+      "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/013/425/GCF_000013425.1_ASM1342v1/GCF_000013425.1_ASM1342v1_genomic.fna.gz"
+    }
 ```  
   </div>
 </div><br>
@@ -402,8 +446,15 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  which strand the location is, either + for plus strand or - for negative strand  
 
 ### Example  
-```{json}  
 
+```{json}  
+{
+          "chrom": "LS483365.1",
+          "end": 849631,
+          "genome_id": 0,
+          "start": 849607,
+          "strand": "+"
+        },
 ```  
   </div>
 </div><br>
@@ -440,8 +491,20 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
     *  the index into the sequencing_info list  
 
 ### Example  
-```{json}  
 
+```{json}  
+    {
+      "alternate_identifiers": [
+        "85b498-Wk22-Nasal"
+      ],
+      "experiment_accession": "SRX26225188",
+      "fastqs_loc": "ftp.sra.ebi.ac.uk/vol1/fastq/SRR308/078/SRR30825778/SRR30825778_1.fastq.gz;ftp.sra.ebi.ac.uk/vol1/fastq/SRR308/078/SRR30825778/SRR30825778_2.fastq.gz",
+      "library_sample_name": "SRR30825778",
+      "panel_id": 0,
+      "run_accession": "SRR30825778",
+      "sequencing_info_id": 0,
+      "specimen_id": 0
+    },
 ```  
   </div>
 </div><br>
@@ -625,7 +688,12 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ### Example  
 ```{json}  
-
+    "pmo_version": "1.0.0",
+    "creation_date": "2026-05-13",
+    "generation_method": {
+      "program_name": "pmotools-python.PMOReader.combine_multiple_pmos",
+      "program_version": "1.0.0"
+    }
 ```  
   </div>
 </div><br>
@@ -648,7 +716,16 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ### Example  
 ```{json}  
-
+{
+        "location": {
+          "chrom": "LS483365.1",
+          "end": 849631,
+          "genome_id": 0,
+          "start": 849607,
+          "strand": "+"
+        },
+        "seq": "GGAGTTATCATGCCAACAGTTATA"
+      },
 ```  
   </div>
 </div><br>
@@ -678,7 +755,11 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ### Example  
 ```{json}  
-
+    {
+      "BioProject_accession": "PRJNA1166327",
+      "project_description": "Amplicon sequencing of Staphylococcus aureus from oral and nasal samples",
+      "project_name": "PRJNA1166327"
+    },
 ```  
   </div>
 </div><br>
@@ -866,7 +947,44 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ### Example  
 ```{json}  
-
+      {
+        "microhaplotypes": [
+          {
+            "seq": "CAATATAATAACCTAATAAAATGTTTAGGTCAACCTTTATTTTAATTTTTTTAAAAGTATGAATTATTATGTTGAACGTTCGATTTAATATTAAGAAAAA"
+          },
+          {
+            "seq": "CAATATAATAACCTAATAAAACGTTTAGGTCAACCTAAATTTATTTTAATTTTTTTAAAAGTATGAATTATTATGTTGAACGTTCAATTTAATGGTAAGTAAAA"
+          },
+          {
+            "seq": "CAATATAATAACCTAATAAAATGTTTAGGTCAACCTAAATTTATTTTAATTTTTTTAAAAGTATGAATTATTATGTTGAACGTTCGATTTAATATTAAGAAAAA"
+          },
+          {
+            "seq": "CAATATAATAACCTAATAAAACGTTTAGGTCAACCTAAATTTATTTTAATTTTTTAAAAGTATGAATTATTATGTTGAACGTTCGATTTAATATTAAGAAAAA"
+          },
+          {
+            "seq": "CAATATAATAACCTAATAAAATGTTTAGGTCAACCTAAATTTATTTTAATTTTTTTTAAAAGCCTGAATTATTATGTTGAACGTTCGATTTAATATTAAGAAAAA"
+          },
+          {
+            "seq": "CAATATAATAACCTAATAAAATGTTTATGTCAACCTAAATTTATTTTAATTTTTTTAAAAGTATGAATTATTATGTTGAACGTTCAATTTAATGGTAAGTAAAA"
+          },
+          {
+            "seq": "CAATATAATAACCTAATAAAACGTTTAGGTCAACCTAAATTTATTTTATTTTTTTAAAAGTATGAATTATTATTTTGAATGTTCGATTTAATGGTAAGAAAAA"
+          },
+          {
+            "seq": "CAATATAATAACCTAATAAAATGTTTAGGTCAACCTAAATTTATTTTAATTTTTTTAAAAGCCTGAATTATTATGTTGAACGTTCGATTTAATATTAAGAAAAA"
+          },
+          {
+            "seq": "CAATATAATAACCTAATAAAACATTTAGGTCAACCTAAATTTATTTTAATTTTTTTAAAAGTATGAATTATTATGTTGAACGTTCAATTTAATGGTAAGTAAAA"
+          },
+          {
+            "seq": "CAATATAATAACCTAATAAAACGTTTAGGTCAACCTAAATTTATTTTAATTTTTTTAAAAGTATGAATTATTATGTTGAACGTTCGATTTAATATTAAGAAAAA"
+          },
+          {
+            "seq": "CAATATAATAACCTAATAAAATGCTTAGGTCAACCTAAATTTATTTTAATTTTTTTAAAAGCCTGAATTATTATGTTGAACGTTCGATTTAATATTAAGAAAAA"
+          }
+        ],
+        "target_id": 25
+      },
 ```  
   </div>
 </div><br>
@@ -964,7 +1082,15 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ### Example  
 ```{json}  
-
+    {
+      "library_layout": "PAIRED",
+      "library_selection": "PCR",
+      "library_source": "GENOMIC",
+      "library_strategy": "AMPLICON",
+      "seq_instrument_model": "Illumina MiSeq",
+      "seq_platform": "ILLUMINA",
+      "sequencing_info_name": "seq_info"
+    },
 ```  
   </div>
 </div><br>
@@ -1064,7 +1190,18 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ### Example  
 ```{json}  
-
+    {
+      "collection_country": "USA",
+      "collection_date": "2022-03-21",
+      "geo_admin1": "Phoenix",
+      "host_taxon_id": 9606,
+      "project_id": 0,
+      "specimen_accession": "SAMN43965049",
+      "specimen_name": "85b498-Wk22-Nasal",
+      "specimen_taxon_id": [
+        1280
+      ]
+    },
 ```  
   </div>
 </div><br>

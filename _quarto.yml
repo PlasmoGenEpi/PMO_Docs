@@ -27,7 +27,15 @@ project:
 website:
   title: "Portable Microhaplotype Object (PMO)"
   favicon: images/pmo_logo_mini.png
+  page-footer:
+    center: |
+      A [PlasmoGenEpi](https://plasmogenepi.org) project
+      <br>
+      <a href="https://plasmogenepi.org" class="footer-logo-link" aria-label="PlasmoGenEpi"></a>
   navbar:
+    logo: images/PMO_logo.png
+    logo-alt: "Portable Microhaplotype Object (PMO)"
+    logo-href: index.qmd
     left:
       - href: index.qmd
         text: Home

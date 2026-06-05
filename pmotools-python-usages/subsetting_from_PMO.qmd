@@ -290,7 +290,7 @@ filter to a read amount and then write allele table
 ```{bash}
 cd example 
 
-pmotools-python extract_pmo_with_read_filter --read_count_minimum 1000 --file ../../format/moz2018_PMO.json.gz --output STDOUT | pmotools-python extract_allele_table --file STDIN --output moz2018_PMO_minReadCount1000_allele_table.tsv.gz  --microhap_fields reads --representative_haps_fields seq --default_base_col_names specimen_name,target_id,allele --overwrite
+pmotools-python extract_pmo_with_read_filter --read_count_minimum 1000 --file ../../format/moz2018_PMO.json.gz --output STDOUT | pmotools-python extract_allele_table --file STDIN --output moz2018_PMO_minReadCount1000_allele_table.tsv.gz  --microhap_fields reads --default_base_col_names specimen_name,target_id,allele --overwrite
 
 ```
 

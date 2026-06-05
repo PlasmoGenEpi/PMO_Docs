@@ -32,6 +32,7 @@ There are several different "samples" information that can be stored within a PM
     * This is an identifier for a specific targeted amplicon sequencing run/DNA extraction, if you have performed sequencing in replicates or had to do a new extraction/run for a specimen, you will have multiple **library_sample_name**s for the same specimen  
 
 ![](sample_identifiers_hiearchy.png)
+
 Each of these identifiers should be unique within the PMO dataset, for example even if a **specimen_name** was sequenced several times, the **library_sample_name** should be unique even if ran on different plates, within the samplesheet itself they may have the same name but once being entered into a PMO, should have a unique **library_sample_name**. This occurs most frequently with positive controls, e.g. if sequenced **specimen_name** 3D7 multiple times, depending on how you set up your experiment people may have named it 3D7 each time. 
 
 

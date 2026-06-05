@@ -35,6 +35,38 @@ code {
   color: #8be9fd;
 }
 
+#title-block-header .quarto-title-block > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+#title-block-header .quarto-title-block > div::before {
+  content: "";
+  display: block;
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  background: url("images/PMO_logo.png") center / contain no-repeat;
+}
+
+#title-block-header h1.title {
+  margin: 0;
+}
+
+a.footer-logo-link {
+  display: inline-block;
+  width: 120px;
+  height: 32px;
+  margin-top: 0.5rem;
+  background: url("images/PGE_logo.png") center / contain no-repeat;
+}
+
+.navbar-logo img {
+  max-height: 36px;
+  width: auto;
+}
+
 
 
 

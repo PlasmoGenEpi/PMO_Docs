@@ -6,65 +6,51 @@ title: pmotools-python installation
 source("../common.R")
 ```
 
+**pmotools-python** is a Python toolkit for working with PMO files. It provides a library you can import in your own scripts and a command-line interface (`pmotools-python`) for common PMO tasks. For an overview of what you can do after installing, see the [getting started guide](../pmotools-python-usages/general_info.qmd).
 
-# pmotools-python
+## Install from PyPI
 
-pmotools-python is a tool base for interacting with the PMO format file in python. It provides both code to include in your python package as well as a command line interface to run some basic scripts on PMO files. 
-
-
-## Installation 
-
-pmotools-python code can be found on github <https://github.com/PlasmoGenEpi/pmotools-python/tree/develop> and is available via [pypi](https://pypi.org/project/pmotools/) 
+The latest release is on [PyPI](https://pypi.org/project/pmotools/). Source code is on [GitHub](https://github.com/PlasmoGenEpi/pmotools-python/tree/develop). For most users, we recommend installing with pip:
 
 ```{bash, eval = F}
-pip install pmotools 
+pip install pmotools
 ```
 
-To see an example of how to build, go to [dataset1_pmo_generation](../pmotools-python-usages-notebooks/building_a_pmo/dataset1_pmo_generation.ipynb)
+To try building a PMO after installation, see [Creating a minimum PMO](../pmotools-python-usages-notebooks/building_a_minimum_pmo/Create_minimal_pmo.ipynb).
 
+## Install from source (development)
 
-### Development 
+To install the latest development version, clone the repository and install in editable mode.
 
-To install the developmental version, you can download the code from github 
-
-### Set up
-
-Downloading repo 
+### Clone the repository
 
 ```{bash, eval = F}
 git clone git@github.com:PlasmoGenEpi/pmotools-python.git
-```
-
-Currently (as 2025-09) majority of code is currently still in develop branch 
-```{bash, eval = F}
 cd pmotools-python
 git checkout develop
 ```
 
 
-#### Setting up python environment 
+### Set up a Conda environment (recommended)
 
-To set up a conda environment that has all the python libraries that would be needed by pmotools-python 
-
-```{bash, eval = F}
-conda env create -f envs/pmotools-env.yml 
-
-conda active pmotools
-
-```
-
-### Installing 
-
-From within repo can install with pip in a virtual environment 
+To create a conda environment with the dependencies tested against pmotools-python:
 
 ```{bash, eval = F}
-pip install -e . 
-
+conda env create -f envs/pmotools-env.yml
+conda activate pmotools
 ```
 
-### Adding autocompletion 
+### Install the package
 
-To enable bash auto-completion for `pmotools-python`, add the following to your `~/.bash_completion` and make sure it's being loaded as part of your .bashrc and/or ~/.bash_profile (on MacOS) or ~/.profile (on ubuntu)
+From within the cloned repository:
+
+```{bash, eval = F}
+pip install -e .
+```
+
+## Bash autocompletion (optional)
+
+To enable tab completion for `pmotools-python`, add the following to `~/.bash_completion` and ensure that file is sourced from your shell profile (for example `~/.bashrc`, `~/.bash_profile` on macOS, or `~/.profile` on Ubuntu):
 
 ```{bash, eval = F}
 _pmotools_python_complete()
@@ -103,10 +89,6 @@ _pmotools_python_complete()
 }
 
 complete -F _pmotools_python_complete pmotools-python
-
 ```
 
-The above can also be found within the repo in the `etc/` folder. 
-
-
-
+This script is also available in the repository under `etc/`.

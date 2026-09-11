@@ -1,0 +1,38 @@
+<svg width="690" height="205" viewBox="0 0 690 205" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;" role="img" aria-label="Color key for the PMO schema diagram">
+<title>Color key</title>
+<g font-family="Helvetica,Arial,sans-serif" font-size="14" fill="black">
+<text x="10" y="18" font-size="16" font-weight="bold">Color key</text>
+<!-- column headers (mirrors the header row of each class table) -->
+<rect x="10" y="30" width="250" height="26" fill="none" stroke="#000000"/>
+<text x="135" y="48" text-anchor="middle" font-weight="bold">type</text>
+<rect x="280" y="30" width="180" height="26" fill="none" stroke="#000000"/>
+<text x="370" y="48" text-anchor="middle" font-weight="bold">list or single value</text>
+<rect x="480" y="30" width="180" height="26" fill="none" stroke="#000000"/>
+<text x="570" y="48" text-anchor="middle" font-weight="bold">fields</text>
+<!-- column 1: value type -->
+<rect x="10" y="56" width="250" height="24" fill="#009ffa" stroke="#000000"/>
+<text x="135" y="73" text-anchor="middle">integer</text>
+<rect x="10" y="80" width="250" height="24" fill="#00e307" stroke="#000000"/>
+<text x="135" y="97" text-anchor="middle">number</text>
+<rect x="10" y="104" width="250" height="24" fill="#ffdc3d" stroke="#000000"/>
+<text x="135" y="121" text-anchor="middle">string</text>
+<rect x="10" y="128" width="250" height="24" fill="#ef0096" stroke="#000000"/>
+<text x="135" y="145" text-anchor="middle">boolean</text>
+<rect x="10" y="152" width="250" height="24" fill="#ffcfe2" stroke="#000000"/>
+<text x="135" y="169" text-anchor="middle">PMO class (e.g. SpecimenInfo)</text>
+<!-- column 2: cardinality -->
+<rect x="280" y="56" width="180" height="24" fill="#ff71fd" stroke="#000000"/>
+<text x="370" y="73" text-anchor="middle">list</text>
+<rect x="280" y="80" width="180" height="24" fill="#7cfffa" stroke="#000000"/>
+<text x="370" y="97" text-anchor="middle">single</text>
+<!-- column 3: required vs optional -->
+<rect x="480" y="56" width="180" height="24" fill="#f60239" stroke="#000000"/>
+<text x="570" y="73" text-anchor="middle">required</text>
+<rect x="480" y="80" width="180" height="24" fill="#00dcb5" stroke="#000000"/>
+<text x="570" y="97" text-anchor="middle">optional</text>
+<!-- edges -->
+<line x1="280" y1="128" x2="340" y2="128" stroke="#000000" stroke-width="2"/>
+<polygon points="340,124 348,128 340,132" fill="#000000" stroke="#000000"/>
+<text x="356" y="133">arrow: field points to the PMO class it references</text>
+</g>
+</svg>

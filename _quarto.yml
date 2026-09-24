@@ -35,7 +35,6 @@ website:
   navbar:
     logo: images/PMO_logo.png
     logo-alt: "Portable Microhaplotype Object (PMO)"
-    logo-href: index.qmd
     left:
       - href: index.qmd
         text: Home

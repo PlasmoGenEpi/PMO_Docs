@@ -22,6 +22,12 @@ Started development of a tool called pmotools. Python implementation can be foun
 Below is an overview of the entire format currently in  development which is under active development and optimization. Please send questions to [info@plasmogenepi.org](mailto:info@plasmogenepi.org)
 
 
+Each class is drawn as a table: the first column is the field's value type, the second whether it holds a list or a single value, and the third the field name colored by whether it is required or optional. Arrows connect a field to the class it references.
+
+```{r, echo=FALSE, results="asis"}
+cat(readr::read_lines("portable_microhaplotype_object.schema.color_key.svg"), sep = "\n")
+```
+
 :::{.column-screen}
 
 ```{r, echo=FALSE, results="asis"}
@@ -70,6 +76,23 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 
 ### Example  
 
+
+#### Minimum required PMO top fields 
+```{json}
+{
+    "pmo_header": {},
+    "target_info": [],
+    "panel_info": [],
+    "specimen_info": [],
+    "library_sample_info": [],
+    "representative_microhaplotypes": {},
+    "detected_microhaplotypes": [],
+}
+
+```  
+
+#### Full available PMO top fields 
+
 ```{json}  
 {
     "pmo_header": {},
@@ -88,19 +111,11 @@ cat(readr::read_lines("portable_microhaplotype_object.schema.dot.svg", skip = 6)
 }
 ```
 
-```{json}
-{
-    "pmo_header": {},
-    "target_info": [],
-    "panel_info": [],
-    "specimen_info": [],
-    "library_sample_info": [],
-    "representative_microhaplotypes": {},
-    "detected_microhaplotypes": [],
-}
 
-```  
 
+#### Example with some data filed in
+
+full dataset won't fit on screen, where data keeps going has ... 
 
 ```{json}
 {
